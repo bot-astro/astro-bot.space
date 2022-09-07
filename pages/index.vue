@@ -1,3 +1,3 @@
 <template>
-  <h1>Astro</h1>
+  <PageLandingIntro />
 </template>
