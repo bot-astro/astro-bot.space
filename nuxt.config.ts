@@ -1,8 +1,9 @@
-import { defineNuxtConfig } from 'nuxt'
-
 export default defineNuxtConfig({
-  buildModules: [
-    '@nuxtjs/tailwindcss'
+  modules: [
+    'nuxt-icon',
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    '@vueuse/nuxt'
   ],
   runtimeConfig: {
     public: {

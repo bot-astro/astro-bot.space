@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <p>
-      Navigation
-    </p>
-  </div>
+  <button>
+    Default Button
+  </button>
 </template>
 
 <script lang="ts" setup>
