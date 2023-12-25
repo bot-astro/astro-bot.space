@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 
 onMounted(() => {
-  location.replace(config.public.inviteUrl)
-})
+  location.replace(config.public.inviteUrl);
+});
 </script>
