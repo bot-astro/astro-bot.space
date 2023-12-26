@@ -1,117 +1,103 @@
 <template>
-  <div class="mx-auto flex h-28 max-w-7xl gap-x-4 px-6 backdrop-blur">
-    <!-- astro logo -->
-    <div class="flex items-center px-2">
-      <a href="/" aria-label="home" class="flex items-center">
-        <img
-          src="/img/logo.png"
-          class="mr-4 h-16 w-16"
-          alt="Astro-s logo"
-          draggable="false"
-        />
-        <p
-          class="select-none text-3xl font-bold text-purple-50 transition-colors duration-150 hover:text-purple-100"
-        >
-          Astro
-        </p>
-      </a>
-    </div>
-
-    <!-- desktop: navbar items -->
-    <div
-      class="hidden select-none items-center gap-6 whitespace-nowrap px-6 text-lg lg:flex xl:gap-8 xl:px-8 xl:text-xl"
-    >
-      <a
-        href="/invite"
-        class="opacity-75 transition duration-150 hover:text-purple-50 hover:opacity-100"
-      >
-        Invite
-      </a>
-      <a
-        href="/premium"
-        class="opacity-75 transition duration-150 hover:text-purple-50 hover:opacity-100"
-      >
-        Premium
-      </a>
-      <Menu as="div" class="relative">
-        <MenuButton
-          v-slot="{ open }"
-          class="relative flex items-center gap-x-1 opacity-75 transition duration-150 hover:text-purple-50 hover:opacity-100"
-        >
-          <p>Features</p>
-          <Icon
-            name="fluent:chevron-down-12-regular"
-            :class="[
-              { 'rotate-180': open },
-              'h-4 origin-center transition-transform duration-150',
-            ]"
+  <!-- full navbar container -->
+  <div
+    ref="navbarContainer"
+    class="transition-[background box-shadow] sticky top-0 z-50 min-w-full duration-100"
+  >
+    <!-- navbar content container -->
+    <header class="container mx-auto flex h-16">
+      <!-- astro logo -->
+      <div class="flex items-center px-2">
+        <a href="/" aria-label="home" class="flex items-center">
+          <img
+            src="/img/logo.png"
+            class="mr-4 h-8 w-8"
+            alt="Astro-s logo"
+            draggable="false"
           />
-        </MenuButton>
-        <transition
-          enter-active-class="transition duration-100 ease-out"
-          enter-from-class="scale-95 transform opacity-0"
-          enter-to-class="scale-100 transform opacity-100"
-          leave-active-class="transition duration-75 ease-in"
-          leave-from-class="scale-100 transform opacity-100"
-          leave-to-class="scale-95 transform opacity-0"
-        >
-          <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right">
-            <MenuItem>
-              <a href="/temporary-voice-channels" class="block"
-                >Temporary voice channels</a
-              >
-            </MenuItem>
-            <MenuItem>
-              <a href="/voice-roles" class="block">Voice roles</a>
-            </MenuItem>
-          </MenuItems>
-        </transition>
-      </Menu>
-      <a
-        href="/support"
-        class="opacity-75 transition duration-150 hover:text-purple-50 hover:opacity-100"
-      >
-        Support
-      </a>
-    </div>
-
-    <!-- mobile: spacer -->
-    <div class="flex flex-grow lg:hidden" data-v-044af020=""></div>
-
-    <!-- auth indicator -->
-    <div class="flex items-center">
-      <!-- desktop -->
-      <div class="hidden lg:flex"></div>
-
-      <!-- mobile -->
-      <div class="flex items-center lg:hidden">
-        <button
-          onclick="this.classList.toggle('hamburger-opened'); this.setAttribute('aria-expanded', this.classList.contains('hamburger-opened'))"
-          @click="toggleMobileNavbarOpenState"
-        >
-          <svg
-            class="z-40 inline h-14 w-14 cursor-pointer"
-            viewBox="0 0 100 100"
-          >
-            <path
-              class="hamburger-line rounded-lg"
-              id="hamburger-line-1"
-              d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"
-            />
-            <path
-              class="hamburger-line"
-              id="hamburger-line-2"
-              d="M 20,50 H 80"
-            />
-            <path
-              class="hamburger-line"
-              id="hamburger-line-3"
-              d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"
-            />
-          </svg>
-        </button>
+          <p>Astro</p>
+        </a>
       </div>
-    </div>
+
+      <!-- desktop: navbar items -->
+      <div class="hidden items-center gap-4 whitespace-nowrap lg:flex">
+        <a href="/invite"> Invite </a>
+        <a href="/premium"> Premium </a>
+        <Menu as="div" class="relative">
+          <MenuButton
+            v-slot="{ open }"
+            class="relative flex items-center gap-x-1"
+          >
+            <p>Features</p>
+            <Icon
+              name="fluent:chevron-down-12-regular"
+              :class="[
+                { 'rotate-180': open },
+                'h-4 origin-center transition-transform duration-150',
+              ]"
+            />
+          </MenuButton>
+          <transition
+            enter-active-class="transition duration-100 ease-out"
+            enter-from-class="scale-95 transform opacity-0"
+            enter-to-class="scale-100 transform opacity-100"
+            leave-active-class="transition duration-75 ease-in"
+            leave-from-class="scale-100 transform opacity-100"
+            leave-to-class="scale-95 transform opacity-0"
+          >
+            <MenuItems class="absolute left-0 z-10 mt-2 flex flex-col gap-y-2">
+              <MenuItem>
+                <a href="/temporary-voice-channels" class=""
+                  >Temporary voice channels</a
+                >
+              </MenuItem>
+              <MenuItem>
+                <a href="/voice-roles" class="">Voice roles</a>
+              </MenuItem>
+            </MenuItems>
+          </transition>
+        </Menu>
+        <a href="/support"> Support </a>
+      </div>
+
+      <!-- mobile: spacer -->
+      <div class="flex flex-grow lg:hidden" data-v-044af020=""></div>
+
+      <!-- auth indicator -->
+      <div class="flex items-center">
+        <!-- desktop -->
+        <div class="hidden lg:flex"></div>
+
+        <!-- mobile -->
+        <div class="flex items-center lg:hidden">
+          <button
+            onclick="this.classList.toggle('hamburger-opened'); this.setAttribute('aria-expanded', this.classList.contains('hamburger-opened'))"
+            @click="toggleMobileNavbarOpenState"
+          >
+            <svg
+              class="z-20 inline h-8 w-8 cursor-pointer"
+              viewBox="0 0 100 100"
+            >
+              <path
+                class="hamburger-line"
+                id="hamburger-line-1"
+                d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"
+              />
+              <path
+                class="hamburger-line"
+                id="hamburger-line-2"
+                d="M 20,50 H 80"
+              />
+              <path
+                class="hamburger-line"
+                id="hamburger-line-3"
+                d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
   </div>
   <!--
   <Disclosure as="nav" class="backdrop-blur" v-slot="{ open }">
@@ -174,7 +160,28 @@
 
 <script lang="ts" setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { useWindowScroll } from "@vueuse/core";
 
+// Navbar border toggling
+const navbarContainer = ref<HTMLElement | null>(null);
+const { y } = useWindowScroll();
+const scrolledClasses = [
+  "bg-black",
+  "md:bg-opacity-50",
+  "md:backdrop-saturate-150",
+  "shadow-[inset_0_-1px_0_0_hsla(0,0%,100%,0.1)]",
+  "md:backdrop-blur-sm",
+];
+
+watch(y, () => {
+  if (y.value > 0) {
+    navbarContainer.value?.classList.add(...scrolledClasses);
+  } else {
+    navbarContainer.value?.classList.remove(...scrolledClasses);
+  }
+});
+
+// mobile: navbar open state
 let navbarOpened = ref(false);
 
 function toggleMobileNavbarOpenState() {
