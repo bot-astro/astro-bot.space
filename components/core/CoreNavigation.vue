@@ -8,21 +8,21 @@
     <header class="container mx-auto flex h-16">
       <!-- astro logo -->
       <div class="flex items-center px-2">
-        <a href="/" aria-label="home" class="flex items-center">
-          <img
+        <NuxtLink to="/" aria-label="home" class="flex items-center">
+          <NuxtImg
             src="/img/logo.png"
             class="mr-4 h-8 w-8"
             alt="Astro-s logo"
             draggable="false"
           />
           <p>Astro</p>
-        </a>
+        </NuxtLink>
       </div>
 
       <!-- desktop: navbar items -->
       <div class="hidden items-center gap-4 whitespace-nowrap lg:flex">
-        <a href="/invite"> Invite </a>
-        <a href="/premium"> Premium </a>
+        <NuxtLink to="/invite"> Invite </NuxtLink>
+        <NuxtLink to="/premium"> Premium </NuxtLink>
         <Menu as="div" class="relative">
           <MenuButton
             v-slot="{ open }"
@@ -47,17 +47,17 @@
           >
             <MenuItems class="absolute left-0 z-10 mt-2 flex flex-col gap-y-2">
               <MenuItem>
-                <a href="/temporary-voice-channels" class=""
-                  >Temporary voice channels</a
+                <NuxtLink to="/temporary-voice-channels" class=""
+                  >Temporary voice channels</NuxtLink
                 >
               </MenuItem>
               <MenuItem>
-                <a href="/voice-roles" class="">Voice roles</a>
+                <NuxtLink to="/voice-roles" class="">Voice roles</NuxtLink>
               </MenuItem>
             </MenuItems>
           </transition>
         </Menu>
-        <a href="/support"> Support </a>
+        <NuxtLink to="/support"> Support </NuxtLink>
       </div>
 
       <!-- mobile: spacer -->

@@ -1,4 +1,4 @@
-interface AuthStore {
+interface AuthData {
   sessionToken: string;
   discordUser: DiscordUser;
 }
@@ -6,6 +6,9 @@ interface AuthStore {
 interface DiscordUser {
   id: string;
   username: string;
-  discriminator: string;
   avatar?: string;
 }
+
+const authSessionStorageKeys = {
+  authPreviousRoute: "auth-previous-route",
+};

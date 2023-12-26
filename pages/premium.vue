@@ -8,6 +8,6 @@
 const config = useRuntimeConfig();
 
 onMounted(() => {
-  location.replace(config.public.premiumUrl);
+  navigateTo(config.public.premiumUrl, { replace: true })
 });
 </script>
