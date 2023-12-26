@@ -8,6 +8,6 @@
 const config = useRuntimeConfig();
 
 onMounted(() => {
-  navigateTo(config.public.inviteUrl, { replace: true })
+  navigateTo(config.public.inviteUrl, { replace: true, external: true })
 });
 </script>

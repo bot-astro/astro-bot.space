@@ -15,4 +15,5 @@ export default defineNuxtConfig({
       oauthUrl: process.env.OAUTH_URL
     },
   },
+  
 });

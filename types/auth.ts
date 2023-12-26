@@ -8,7 +8,3 @@ interface DiscordUser {
   username: string;
   avatar?: string;
 }
-
-const authSessionStorageKeys = {
-  authPreviousRoute: "auth-previous-route",
-};

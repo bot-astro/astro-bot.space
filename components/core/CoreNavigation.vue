@@ -60,13 +60,23 @@
         <NuxtLink to="/support"> Support </NuxtLink>
       </div>
 
-      <!-- mobile: spacer -->
-      <div class="flex flex-grow lg:hidden" data-v-044af020=""></div>
+      <!-- spacer -->
+      <div class="flex flex-grow" data-v-044af020=""></div>
 
       <!-- auth indicator -->
       <div class="flex items-center">
         <!-- desktop -->
-        <div class="hidden lg:flex"></div>
+        <div class="hidden lg:flex">
+          <div v-if="authStore.data"></div>
+          <div v-else>
+            <button
+              @click="navigateTo('/login')"
+              class="flex items-center justify-center rounded bg-purple-500 bg-opacity-80 px-3 py-1.5 hover:bg-opacity-100"
+            >
+              Login
+            </button>
+          </div>
+        </div>
 
         <!-- mobile -->
         <div class="flex items-center lg:hidden">
@@ -187,6 +197,9 @@ let navbarOpened = ref(false);
 function toggleMobileNavbarOpenState() {
   navbarOpened.value = !navbarOpened.value;
 }
+
+// navbar auth status
+const authStore = useAuthStore();
 </script>
 
 <style scoped>

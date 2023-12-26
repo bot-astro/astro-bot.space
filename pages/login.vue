@@ -4,15 +4,15 @@
 
 <script lang="ts" setup>
 const config = useRuntimeConfig();
-const route = useRoute()
+const route = useRoute();
 
 onMounted(() => {
   sessionStorage.setItem(
-    authSessionStorageKeys.authPreviousRoute,
-    route.redirectedFrom?.fullPath ?? "/"
+    "auth-previous-route",
+    route.redirectedFrom?.fullPath ?? "/",
   );
 
-  navigateTo(config.public.oauthUrl, { replace: true })
+  navigateTo(config.public.oauthUrl, { replace: true, external: true });
 });
 </script>
 
