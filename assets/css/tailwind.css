@@ -23,3 +23,15 @@ html {
     Segoe UI Symbol,
     Noto Color Emoji;
 }
+
+a {
+  @apply text-gray-400 transition-colors duration-150 hover:text-purple-50;
+}
+
+.primary-button {
+  @apply flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 transition-all duration-150 hover:scale-105;
+}
+
+.button {
+  @apply flex items-center justify-center rounded bg-purple-500 bg-opacity-80 px-3 py-1.5 hover:bg-opacity-100;
+}

@@ -1,7 +1,9 @@
 <template>
   <NuxtLoadingIndicator />
-  <CoreNavigation />
-  <slot></slot>
+  <div class="min-h-screen">
+    <CoreNavigation />
+    <slot></slot>
+  </div>
 
   <CoreFooter />
 </template>

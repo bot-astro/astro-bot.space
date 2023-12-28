@@ -15,7 +15,6 @@
             alt="Astro-s logo"
             draggable="false"
           />
-          <p>Astro</p>
         </NuxtLink>
       </div>
 
@@ -35,12 +34,7 @@
         <div class="hidden lg:flex">
           <div v-if="authStore.data"></div>
           <div v-else>
-            <button
-              @click="navigateTo('/login')"
-              class="flex items-center justify-center rounded bg-purple-500 bg-opacity-80 px-3 py-1.5 hover:bg-opacity-100"
-            >
-              Login
-            </button>
+            <button @click="navigateTo('/login')" class="button">Login</button>
           </div>
         </div>
 
@@ -58,7 +52,7 @@
                 : 'fluent:line-horizontal-3-20-filled'
             "
             @click="toggleMobileNavbarOpenState"
-            class="z-10"
+            class="z-10 cursor-pointer"
           />
 
           <!-- mobile navbar drawer -->
@@ -75,10 +69,7 @@
 
               <div v-if="authStore.data"></div>
               <div v-else>
-                <button
-                  @click="navigateTo('/login')"
-                  class="flex items-center justify-center rounded bg-purple-500 bg-opacity-80 px-3 py-1.5 hover:bg-opacity-100"
-                >
+                <button @click="navigateTo('/login')" class="button">
                   Login
                 </button>
               </div>
