@@ -1,10 +1,10 @@
 <template>
-  <div class="flex min-h-screen flex-col items-center">
+  <div class="flex min-h-screen flex-col items-center justify-center">
     <!-- first section with get started button -->
     <div
-      class="flex min-h-screen max-w-prose flex-col items-center justify-center p-4"
+      class="-mt-36 flex max-w-prose flex-col items-center justify-center p-4"
     >
-      <NuxtImg src="/img/logo.png" class="h-48 w-48" />
+      <NuxtImg src="/img/logo.png" class="h-48 w-48 select-none" />
       <p class="mt-5 font-display text-7xl tracking-widest">ASTRO</p>
       <p class="mt-4 text-center text-xl text-gray-400">
         The most unique and complete discord bot for temporary voice channels

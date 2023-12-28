@@ -24,6 +24,20 @@ html {
     Noto Color Emoji;
 }
 
+body {
+  background-color: #131313;
+  background-image: radial-gradient(circle at center center, #c744f7, #e5e5f7),
+    repeating-radial-gradient(
+      circle at center center,
+      #c144f7,
+      #c744f7,
+      10px,
+      transparent 20px,
+      transparent 10px
+    );
+  background-blend-mode: multiply;
+}
+
 a {
   @apply text-gray-400 transition-colors duration-150 hover:text-purple-50;
 }

@@ -27,7 +27,7 @@ const { size, color } = withDefaults(
   }>(),
   {
     size: 48,
-    color: "text-black",
+    color: "text-white",
   },
 );
 

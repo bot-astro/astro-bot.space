@@ -5,13 +5,13 @@
     class="transition-[background box-shadow] sticky top-0 z-50 min-w-full duration-100"
   >
     <!-- navbar content container -->
-    <header class="container mx-auto flex h-16 px-4">
+    <header class="container mx-auto flex h-16 gap-4 px-4">
       <!-- astro logo -->
-      <div class="flex items-center px-2">
+      <div class="flex items-center">
         <NuxtLink to="/" aria-label="home" class="flex items-center">
           <NuxtImg
             src="/img/logo.png"
-            class="mr-4 h-8 w-8"
+            class="mr-4 h-10 w-10 select-none"
             alt="Astro-s logo"
             draggable="false"
           />
@@ -19,7 +19,7 @@
       </div>
 
       <!-- desktop: navbar items -->
-      <div class="hidden items-center gap-4 whitespace-nowrap lg:flex">
+      <div class="hidden items-center gap-8 whitespace-nowrap lg:flex">
         <NuxtLink to="/invite"> Invite </NuxtLink>
         <NuxtLink to="/premium"> Premium </NuxtLink>
         <NuxtLink to="/support"> Support </NuxtLink>

@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full h-full items-center justify-center">
-    <UtilCircularLoading :size="48" />
+  <div class="flex min-h-screen items-center justify-center">
+    <UtilCircularLoading />
   </div>
 </template>
 

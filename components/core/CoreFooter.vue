@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full p-4">
+  <div
+    class="w-full border-t border-neutral-800 bg-neutral-950 px-4 pb-4 pt-12"
+  >
     <!-- footer links section -->
     <div class="flex justify-around md:justify-evenly">
       <div class="flex flex-col gap-y-3">
@@ -8,21 +10,19 @@
           <NuxtLink to="/support"> Support </NuxtLink>
           <NuxtLink to="/premium"> Premium </NuxtLink>
           <NuxtLink to="/support"> Status </NuxtLink>
-          <NuxtLink to="/changelog"> Changelog </NuxtLink>
         </div>
       </div>
       <div class="flex flex-col gap-y-3">
         <p class="text-lg">Company</p>
         <div class="flex flex-col gap-y-2">
           <NuxtLink to="/"> Home </NuxtLink>
-          <NuxtLink to="/team"> Team </NuxtLink>
           <a href="mailto:hi@astro-bot.space"> Contact us </a>
         </div>
       </div>
       <div class="flex flex-col gap-y-3">
         <p class="text-lg">Legal</p>
         <div class="flex flex-col gap-y-2">
-          <NuxtLink to="/privace"> Privacy policy </NuxtLink>
+          <NuxtLink to="/privacy"> Privacy policy </NuxtLink>
           <NuxtLink to="/terms"> Terms of Service </NuxtLink>
           <NuxtLink href="mailto:hi@astro-bot.space"> Refund policy </NuxtLink>
         </div>
