@@ -9,7 +9,7 @@
         <div class="flex flex-col gap-y-2">
           <NuxtLink to="/support"> Support </NuxtLink>
           <NuxtLink to="/premium"> Premium </NuxtLink>
-          <NuxtLink to="/support"> Status </NuxtLink>
+          <NuxtLink to="/status"> Status </NuxtLink>
         </div>
       </div>
       <div class="flex flex-col gap-y-3">
@@ -24,7 +24,7 @@
         <div class="flex flex-col gap-y-2">
           <NuxtLink to="/privacy"> Privacy policy </NuxtLink>
           <NuxtLink to="/terms"> Terms of Service </NuxtLink>
-          <NuxtLink href="mailto:hi@astro-bot.space"> Refund policy </NuxtLink>
+          <NuxtLink href="/refund-policy"> Refund policy </NuxtLink>
         </div>
       </div>
     </div>
