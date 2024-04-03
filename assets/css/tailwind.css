@@ -1,5 +1,51 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@import './ext/fonts.css';
+@import "./ext/fonts.css";
+
+html {
+  @apply bg-gray-950 text-white;
+  font-family:
+    Inter,
+    GoNotoCurrent,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+}
+
+body {
+  background-color: #131313;
+  background-image: radial-gradient(circle at center center, #c744f7, #e5e5f7),
+    repeating-radial-gradient(
+      circle at center center,
+      #c144f7,
+      #c744f7,
+      10px,
+      transparent 20px,
+      transparent 10px
+    );
+  background-blend-mode: multiply;
+}
+
+a {
+  @apply text-gray-400 transition-colors duration-150 hover:text-purple-50;
+}
+
+.primary-button {
+  @apply flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 transition-all duration-150 hover:scale-105;
+}
+
+.button {
+  @apply flex items-center justify-center rounded bg-purple-500 bg-opacity-80 px-3 py-1.5 hover:bg-opacity-100;
+}
