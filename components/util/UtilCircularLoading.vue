@@ -1,24 +1,3 @@
-<template>
-  <div class="wrapper" :style="`height: ${size}px; width: ${size}px;`">
-    <div class="inner" :style="`width: ${size}px`">
-      <div v-for="i in 2" :class="`part-wrapper ${i === 1 ? 'left' : 'right'}`">
-        <svg class="part-inner" :viewBox="viewBox">
-          <circle
-            fill="none"
-            :class="`path stroke-current ${color}`"
-            :cx="centerPoint"
-            :cy="centerPoint"
-            :r="circleRadius"
-            :stroke-width="strokeWidth"
-            :stroke-dasharray="full"
-            :stroke-dashoffset="half"
-          />
-        </svg>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
 const { size, color } = withDefaults(
   defineProps<{
@@ -39,6 +18,40 @@ const strokeWidth = circleRadius * 0.25;
 const full = 2 * Math.PI * circleRadius;
 const half = full / 2;
 </script>
+
+<template>
+  <div
+    class="wrapper"
+    :style="`height: ${size}px; width: ${size}px;`"
+  >
+    <div
+      class="inner"
+      :style="`width: ${size}px`"
+    >
+      <div
+        v-for="i in 2"
+        :key="i"
+        :class="`part-wrapper ${i === 1 ? 'left' : 'right'}`"
+      >
+        <svg
+          class="part-inner"
+          :viewBox="viewBox"
+        >
+          <circle
+            fill="none"
+            :class="`path stroke-current ${color}`"
+            :cx="centerPoint"
+            :cy="centerPoint"
+            :r="circleRadius"
+            :stroke-width="strokeWidth"
+            :stroke-dasharray="full"
+            :stroke-dashoffset="half"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .wrapper {

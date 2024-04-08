@@ -25,6 +25,7 @@ html {
 }
 
 body {
+  @apply selection:bg-purple-500 selection:text-white;
   background-color: #131313;
   background-image: radial-gradient(circle at center center, #c744f7, #e5e5f7),
     repeating-radial-gradient(
@@ -43,9 +44,13 @@ a {
 }
 
 .primary-button {
-  @apply flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 transition-all duration-150 hover:scale-105;
+  @apply flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90;
+}
+
+.text-button {
+  @apply text-gray-400 transition-colors duration-150 hover:text-purple-50 cursor-pointer;
 }
 
 .button {
-  @apply flex items-center justify-center rounded bg-purple-500 bg-opacity-80 px-3 py-1.5 hover:bg-opacity-100;
+  @apply flex items-center justify-center w-fit rounded bg-purple-500 bg-opacity-80 px-5 py-1.5 hover:bg-opacity-100;
 }

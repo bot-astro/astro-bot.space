@@ -1,9 +1,10 @@
+<!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <NuxtLoadingIndicator />
   <div class="min-h-screen">
     <CoreNavigation />
-    <slot></slot>
+    <slot />
   </div>
 
-  <CoreFooter />
+  <CoreFooter class="mt-32" />
 </template>

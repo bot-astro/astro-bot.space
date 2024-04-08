@@ -1,10 +1,11 @@
+// eslint-disable-next-line unused-imports/no-unused-vars
 interface AuthData {
-  sessionToken: string;
-  discordUser: DiscordUser;
+  token: string
+  user: DiscordUser
 }
 
 interface DiscordUser {
-  id: string;
-  username: string;
-  avatar?: string;
+  id: string
+  username: string
+  avatar?: string
 }
