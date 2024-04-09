@@ -22,5 +22,10 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/content',
     '@pinia-plugin-persistedstate/nuxt',
+    'nuxt-headlessui',
   ],
+
+  headlessui: {
+    prefix: 'H',
+  },
 })

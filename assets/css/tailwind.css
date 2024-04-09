@@ -39,18 +39,36 @@ body {
   background-blend-mode: multiply;
 }
 
-a {
-  @apply text-gray-400 transition-colors duration-150 hover:text-purple-50;
-}
+@layer components {
+  .text-button {
+    @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
+  }
 
-.primary-button {
-  @apply flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90;
-}
+  .text-button-primary {
+    @apply p-1 transition text-grey-50 hover:text-purple-50 flex-shrink-0 cursor-pointer;
+  }
+  
+  .button {
+    @apply transition duration-75 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative bg-purple-500 bg-opacity-80 hover:bg-opacity-100 focus:bg-opacity-100 py-1.5 px-4;
+  }
 
-.text-button {
-  @apply text-gray-400 transition-colors duration-150 hover:text-purple-50 cursor-pointer;
-}
+  .primary-button {
+    @apply flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90;
+  }
 
-.button {
-  @apply flex items-center justify-center w-fit rounded bg-purple-500 bg-opacity-80 px-5 py-1.5 hover:bg-opacity-100;
+  .menu {
+    @apply border border-light-grey rounded-md shadow-lg mt-2 bg-grey-800 min-w-full;
+  }
+
+  .menu-item {
+    @apply px-3 py-2 my-1 transition ease-in-out cursor-pointer text-white text-opacity-80 hover:text-white hover:bg-background;
+  }
+
+  .danger {
+    @apply text-red-400 hover:text-red-500;
+  }
+
+  a {
+    @apply text-button;
+  }
 }

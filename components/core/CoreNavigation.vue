@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+/*
+SCROLLING ANIMATION
+*/
 import { useWindowScroll } from '@vueuse/core'
-
-const route = useRoute()
 
 // Navbar border toggling
 const navbarContainer = ref<HTMLElement | null>(null)
@@ -21,29 +22,34 @@ watch(y, () => {
     navbarContainer.value?.classList.remove(...scrolledClasses)
 })
 
-// mobile: navbar open state
+/*
+MOBILE: NAVBAR OPEN STATE
+*/
 const navbarOpened = ref(false)
 
 function toggleMobileNavbarOpenState() {
   navbarOpened.value = !navbarOpened.value
 }
 
-// navbar auth status
+/*
+AUTH STATUS
+*/
 const authStore = useAuthStore()
+const isLoggedIn = computed(() => {
+  return authStore.data !== undefined
+})
 
 function logout() {
   authStore.logout()
 }
 
-const profilePopupShown = ref(false)
-
-function toggleProfilePopup() {
-  profilePopupShown.value = !profilePopupShown.value
-}
+/*
+ROUTE CHANGE HANDLING
+*/
+const route = useRoute()
 
 watch(() => route.fullPath, () => {
   navbarOpened.value = false
-  profilePopupShown.value = false
 })
 </script>
 
@@ -72,74 +78,82 @@ watch(() => route.fullPath, () => {
       </div>
 
       <!-- desktop: navbar items -->
-      <div class="hidden items-center gap-8 whitespace-nowrap lg:flex">
+      <div class="hidden items-center gap-8 whitespace-nowrap lg:flex w-full">
         <NuxtLink to="/invite">
           Add to server
         </NuxtLink>
         <NuxtLink to="/support">
           Support
         </NuxtLink>
+        <HMenu as="div" class="relative inline-block">
+          <HMenuButton class="flex gap-2 items-center text-button">
+            <span>Features</span>
+            <IconDropdown />
+          </HMenuButton>
+          <HMenuItems class="flex flex-col absolute menu">
+            <HMenuItem class="menu-item">
+              <NuxtLink to="temporary-voice-channels">
+                Temporary Voice Channels
+              </NuxtLink>
+            </HMenuItem>
+            <CoreMenuDivider />
+            <HMenuItem class="menu-item">
+              <NuxtLink to="voice-roles">
+                Voice roles
+              </NuxtLink>
+            </HMenuItem>
+          </HMenuItems>
+        </HMenu>
       </div>
 
       <!-- spacer -->
       <div
         class="flex flex-grow"
-        data-v-044af020=""
       />
 
       <!-- auth indicator -->
       <div class="flex items-center">
         <!-- desktop -->
         <div class="hidden lg:flex">
-          <div v-if="authStore.data" class="relative">
-            <button
-              class="flex items-center gap-2 text-button"
-              @click="toggleProfilePopup()"
-            >
-              <NuxtImg
-                :src="`https://cdn.discordapp.com/avatars/${authStore.data.user.id}/${authStore.data.user.avatar}.png`"
-                class="rounded-full size-8"
-              />
-              <span>{{ authStore.data.user.username }}</span>
-              <Icon
-                name="fluent:chevron-down-12-regular"
-              />
-            </button>
-
-            <div v-if="profilePopupShown" class="absolute z-10 mt-8 -left-1/2 bg-black p-6 border-gray-800 border-2 rounded-lg shadow-lg">
-              <div class="flex flex-col justify-center items-center gap-2">
-                <Icon
-                  name="fluent:dismiss-12-filled"
-                  class="size-6 self-end text-button"
-                  @click="toggleProfilePopup()"
-                />
-
+          <HMenu v-if="authStore.data" as="div" class="relative inline-block">
+            <HMenuButton class="flex gap-2 items-center text-button">
+              <button
+                class="flex items-center gap-2 text-button-primary"
+              >
                 <NuxtImg
                   :src="`https://cdn.discordapp.com/avatars/${authStore.data.user.id}/${authStore.data.user.avatar}.png`"
-                  class="rounded-full size-24"
+                  class="rounded-full size-8"
                 />
-
-                <span class="text-xl">{{ authStore.data.user.username }}</span>
-
-                <div class="flex gap-8">
-                  <div class="flex flex-col">
-                    <NuxtLink to="/guilds" class="text-2xl font-bold">
-                      Servers
-                    </NuxtLink>
-                    <NuxtLink to="/billing" class="text-2xl font-bold">
-                      Billing
-                    </NuxtLink>
-                  </div>
-                  <Icon
-                    name="material-symbols:logout"
-                    class="size-8 self-end text-button"
-                    role="button"
-                    @click="logout()"
-                  />
+                <span>{{ authStore.data.user.username }}</span>
+                <IconDropdown />
+              </button>
+            </HMenuButton>
+            <HMenuItems class="flex flex-col absolute menu right-0">
+              <HMenuItem class="menu-item">
+                <NuxtLink to="guilds">
+                  Servers
+                </NuxtLink>
+              </HMenuItem>
+              <CoreMenuDivider />
+              <HMenuItem class="menu-item">
+                <NuxtLink to="profile">
+                  Profile
+                </NuxtLink>
+              </HMenuItem>
+              <CoreMenuDivider />
+              <HMenuItem class="menu-item">
+                <NuxtLink to="profile">
+                  Billing
+                </NuxtLink>
+              </HMenuItem>
+              <CoreMenuDivider />
+              <HMenuItem class="menu-item danger">
+                <div @click="logout()">
+                  Logout
                 </div>
-              </div>
-            </div>
-          </div>
+              </HMenuItem>
+            </HMenuItems>
+          </HMenu>
           <div v-else>
             <button
               class="button"
@@ -152,75 +166,75 @@ watch(() => route.fullPath, () => {
 
         <!-- mobile -->
         <div class="flex items-center lg:hidden">
-          <!-- background shadow -->
-          <div
-            v-if="navbarOpened"
-            class="bg-gray-darker fixed left-0 top-0 h-screen w-screen opacity-50"
-          />
-          <Icon
-            :name="
-              navbarOpened
-                ? 'fluent:dismiss-20-filled'
-                : 'fluent:line-horizontal-3-20-filled'
-            "
-            class="z-10 size-8 cursor-pointer select-none"
-            @click="toggleMobileNavbarOpenState"
-          />
-
-          <!-- mobile navbar drawer backdrop -->
-          <div v-if="navbarOpened" class="fixed left-0 top-0 w-full h-full backdrop-blur-sm" />
-
-          <!-- mobile navbar drawer -->
-          <div
-            v-if="navbarOpened"
-            class="fixed left-0 top-0 flex h-screen w-4/5 flex-col justify-between bg-black"
-          >
-            <div class="flex flex-col px-6 py-4 gap-1">
-              <NuxtLink to="/invite" class="text-2xl font-bold">
-                Invite
-              </NuxtLink>
-              <NuxtLink to="/premium" class="text-2xl font-bold">
-                Premium
-              </NuxtLink>
-              <NuxtLink to="/support" class="text-2xl font-bold">
-                Support
-              </NuxtLink>
-
-              <hr class="my-2 opacity-25">
-
-              <div v-if="authStore.data" class="flex flex-col gap-1">
-                <NuxtLink to="/guilds" class="text-2xl font-bold">
-                  Servers
-                </NuxtLink>
-                <NuxtLink to="/billing" class="text-2xl font-bold">
-                  Billing
-                </NuxtLink>
-                <div class="flex items-center gap-4 mt-2">
+          <HMenu v-slot="{ open }" as="div" class="relative inline-block">
+            <HMenuButton class="flex gap-2 items-center text-button">
+              <Icon
+                :name="
+                  open
+                    ? 'fluent:dismiss-20-filled'
+                    : 'fluent:line-horizontal-3-20-filled'
+                "
+                class="z-10 size-8 cursor-pointer select-none "
+                @click="toggleMobileNavbarOpenState"
+              />
+            </HMenuButton>
+            <HMenuItems class="flex flex-col absolute menu right-0 min-w-48 shadow-lg">
+              <!-- authenticated items -->
+              <HMenuItem v-if="authStore.data" as="div" class="px-3 pt-2 my-1">
+                <div
+                  class="flex items-center gap-2"
+                >
                   <NuxtImg
                     :src="`https://cdn.discordapp.com/avatars/${authStore.data.user.id}/${authStore.data.user.avatar}.png`"
-                    class="rounded-full size-12"
+                    class="rounded-full size-6"
                   />
-
-                  <span class="text-xl font-bold text-gray-300">{{ authStore.data.user.username }}</span>
+                  <span class="text-sm text-grey-300">Logged in as {{ authStore.data.user.username }}</span>
                 </div>
-
-                <button
-                  class="button mt-2"
-                  @click="logout()"
-                >
+              </HMenuItem>
+              <HMenuItem v-if="isLoggedIn" class="menu-item">
+                <NuxtLink to="guilds">
+                  Servers
+                </NuxtLink>
+              </HMenuItem>
+              <HMenuItem v-if="isLoggedIn" class="menu-item">
+                <NuxtLink to="profile">
+                  Profile
+                </NuxtLink>
+              </HMenuItem>
+              <HMenuItem v-if="isLoggedIn" class="menu-item">
+                <NuxtLink to="profile">
+                  Billing
+                </NuxtLink>
+              </HMenuItem>
+              <CoreMenuDivider v-if="isLoggedIn" />
+              <HMenuItem class="menu-item">
+                <NuxtLink to="guilds">
+                  Add to server
+                </NuxtLink>
+              </HMenuItem>
+              <HMenuItem class="menu-item">
+                <NuxtLink to="profile">
+                  Support
+                </NuxtLink>
+              </HMenuItem>
+              <HMenuItem class="menu-item">
+                <NuxtLink to="profile">
+                  Features
+                </NuxtLink>
+              </HMenuItem>
+              <CoreMenuDivider />
+              <HMenuItem v-if="isLoggedIn" class="menu-item danger">
+                <div @click="logout()">
                   Logout
-                </button>
-              </div>
-              <div v-else>
-                <button
-                  class="button"
-                  @click="navigateTo('/login')"
-                >
+                </div>
+              </HMenuItem>
+              <HMenuItem v-else class="menu-item">
+                <NuxtLink to="login">
                   Login
-                </button>
-              </div>
-            </div>
-          </div>
+                </NuxtLink>
+              </HMenuItem>
+            </HMenuItems>
+          </HMenu>
         </div>
       </div>
     </header>

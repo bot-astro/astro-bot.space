@@ -5,7 +5,7 @@
     class="w-full border-t border-neutral-800 bg-neutral-950 px-4 pb-4 pt-12"
   >
     <!-- footer links section -->
-    <div class="flex justify-around md:justify-evenly">
+    <div class="flex justify-between flex-wrap gap-12 my-6">
       <div class="flex flex-col gap-y-3">
         <p class="text-lg">
           Resources
