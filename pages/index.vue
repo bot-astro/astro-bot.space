@@ -25,6 +25,9 @@
 
     <!-- features section -->
     <div class="flex flex-col">
+      <div class="flex">
+        
+      </div>
       <!-- TODO: explanation of temporary voice channels (with interface) -->
       <!-- TODO: explanation of voice roles -->
     </div>

@@ -5,5 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div />
+  <div>
+    Multiple guilds
+  </div>
 </template>

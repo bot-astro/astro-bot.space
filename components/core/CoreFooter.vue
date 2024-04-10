@@ -5,12 +5,12 @@
     class="w-full border-t border-neutral-800 bg-neutral-950 px-4 pb-4 pt-12"
   >
     <!-- footer links section -->
-    <div class="flex justify-between flex-wrap gap-12 my-6">
-      <div class="flex flex-col gap-y-3">
-        <p class="text-lg">
+    <div class="flex justify-between sm:justify-around flex-wrap gap-12 my-6">
+      <div class="flex flex-col gap-y-4">
+        <p>
           Resources
         </p>
-        <div class="flex flex-col gap-y-2">
+        <div class="flex flex-col gap-y-3 text-sm">
           <NuxtLink to="/support">
             Support
           </NuxtLink>
@@ -22,22 +22,22 @@
           </NuxtLink>
         </div>
       </div>
-      <div class="flex flex-col gap-y-3">
-        <p class="text-lg">
+      <div class="flex flex-col gap-y-4">
+        <p>
           Company
         </p>
-        <div class="flex flex-col gap-y-2">
+        <div class="flex flex-col gap-y-3 text-sm">
           <NuxtLink to="/">
             Home
           </NuxtLink>
           <a href="mailto:hi@astro-bot.space"> Contact us </a>
         </div>
       </div>
-      <div class="flex flex-col gap-y-3">
-        <p class="text-lg">
+      <div class="flex flex-col gap-y-4">
+        <p>
           Legal
         </p>
-        <div class="flex flex-col gap-y-2">
+        <div class="flex flex-col gap-y-3 text-sm">
           <NuxtLink to="/privacy">
             Privacy policy
           </NuxtLink>
@@ -52,19 +52,14 @@
     </div>
 
     <!-- footer socials and developed by text -->
-    <div class="mt-6 flex items-center justify-between">
-      <div>
-        <NuxtLink to="/github">
-          <Icon
-            name="pajamas:github"
-            class="h-5 w-5 text-white"
-          />
-        </NuxtLink>
-      </div>
-      <div class="flex items-center">
+    <div class="mt-12 flex items-center justify-between">
+      <span class="text-sm text-secondary">
+        @ Astro Bot 2024 - All rights reserved
+      </span>
+      <div class="flex items-center text-sm">
         <Icon
           name="fluent:code-16-filled"
-          class="h-6 w-6"
+          class="size-5"
         />
         &nbsp;by&nbsp;<a
           href="https://giuliopime.dev"

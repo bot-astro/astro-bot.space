@@ -14,11 +14,21 @@ onMounted(async () => {
     isError.value = true
   }
   else {
-    const { data, error } = await useFetch<AuthData>(`${config.public.apiBaseUrl}/auth/id/${oauthCode}`)
+    const { data, error } = await useFetch<AuthDataWithGuild>(`${config.public.apiBaseUrl}/auth/id/${oauthCode}`)
 
     if (data.value != null) {
-      authStore.set(data.value)
-      navigateTo(previousRoute, { replace: true })
+      const authData: AuthData = {
+        token: data.value.token,
+        user: data.value.user,
+      }
+
+      authStore.set(authData)
+
+      const guild = data.value.guild
+      if (guild !== undefined)
+        navigateTo(`/guilds/${guild.id}`, { replace: true })
+      else
+        navigateTo(previousRoute, { replace: true })
     }
     else if (error.value != null) {
       isError.value = true

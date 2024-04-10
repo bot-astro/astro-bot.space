@@ -96,7 +96,7 @@ watch(() => route.fullPath, () => {
                 Temporary Voice Channels
               </NuxtLink>
             </HMenuItem>
-            <CoreMenuDivider />
+            <DefaultMenuDivider />
             <HMenuItem class="menu-item">
               <NuxtLink to="voice-roles">
                 Voice roles
@@ -112,11 +112,11 @@ watch(() => route.fullPath, () => {
       />
 
       <!-- auth indicator -->
-      <div class="flex items-center">
+      <div class="flex items-center shrink-0">
         <!-- desktop -->
         <div class="hidden lg:flex">
           <HMenu v-if="authStore.data" as="div" class="relative inline-block">
-            <HMenuButton class="flex gap-2 items-center text-button">
+            <HMenuButton class="flex">
               <button
                 class="flex items-center gap-2 text-button-primary"
               >
@@ -128,25 +128,25 @@ watch(() => route.fullPath, () => {
                 <IconDropdown />
               </button>
             </HMenuButton>
-            <HMenuItems class="flex flex-col absolute menu right-0">
+            <HMenuItems class="flex flex-col absolute menu right-0 w-full">
               <HMenuItem class="menu-item">
                 <NuxtLink to="guilds">
                   Servers
                 </NuxtLink>
               </HMenuItem>
-              <CoreMenuDivider />
+              <DefaultMenuDivider />
               <HMenuItem class="menu-item">
                 <NuxtLink to="profile">
                   Profile
                 </NuxtLink>
               </HMenuItem>
-              <CoreMenuDivider />
+              <DefaultMenuDivider />
               <HMenuItem class="menu-item">
                 <NuxtLink to="profile">
                   Billing
                 </NuxtLink>
               </HMenuItem>
-              <CoreMenuDivider />
+              <DefaultMenuDivider />
               <HMenuItem class="menu-item danger">
                 <div @click="logout()">
                   Logout
@@ -188,7 +188,7 @@ watch(() => route.fullPath, () => {
                     :src="`https://cdn.discordapp.com/avatars/${authStore.data.user.id}/${authStore.data.user.avatar}.png`"
                     class="rounded-full size-6"
                   />
-                  <span class="text-sm text-grey-300">Logged in as {{ authStore.data.user.username }}</span>
+                  <span class="text-sm text-secondary">Logged in as {{ authStore.data.user.username }}</span>
                 </div>
               </HMenuItem>
               <HMenuItem v-if="isLoggedIn" class="menu-item">
@@ -206,7 +206,7 @@ watch(() => route.fullPath, () => {
                   Billing
                 </NuxtLink>
               </HMenuItem>
-              <CoreMenuDivider v-if="isLoggedIn" />
+              <DefaultMenuDivider v-if="isLoggedIn" />
               <HMenuItem class="menu-item">
                 <NuxtLink to="guilds">
                   Add to server
@@ -222,7 +222,7 @@ watch(() => route.fullPath, () => {
                   Features
                 </NuxtLink>
               </HMenuItem>
-              <CoreMenuDivider />
+              <DefaultMenuDivider />
               <HMenuItem v-if="isLoggedIn" class="menu-item danger">
                 <div @click="logout()">
                   Logout

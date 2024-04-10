@@ -40,6 +40,10 @@ body {
 }
 
 @layer components {
+  .text-secondary {
+    @apply text-grey-300;
+  }
+
   .text-button {
     @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
   }
@@ -69,6 +73,6 @@ body {
   }
 
   a {
-    @apply text-button;
+    @apply transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
   }
 }

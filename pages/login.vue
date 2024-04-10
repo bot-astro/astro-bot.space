@@ -1,15 +1,19 @@
+<!-- eslint-disable no-console -->
 <script lang="ts" setup>
-const config = useRuntimeConfig();
-const route = useRoute();
+const config = useRuntimeConfig()
+const route = useRoute()
+const router = useRouter()
+
+const previousRoute = route.query.from?.toString() ?? router.options.history.state.back?.toString() ?? '/'
 
 onMounted(() => {
   sessionStorage.setItem(
-    "auth-previous-route",
-    route.redirectedFrom?.fullPath ?? "/",
-  );
+    'auth-previous-route',
+    previousRoute,
+  )
 
-  navigateTo(config.public.oauthUrl, { replace: true, external: true });
-});
+  navigateTo(config.public.oauthUrl, { replace: true, external: true })
+})
 </script>
 
 <template>

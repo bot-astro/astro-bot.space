@@ -3,7 +3,7 @@ function isAuthenticated(): boolean {
   return authStore.data !== undefined
 }
 
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware((_to, from) => {
   if (isAuthenticated() === false)
-    return navigateTo('/login')
+    return navigateTo(`/login?from=${from.fullPath}`)
 })
