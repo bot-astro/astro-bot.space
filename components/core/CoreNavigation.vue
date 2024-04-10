@@ -86,7 +86,7 @@ watch(() => route.fullPath, () => {
           Support
         </NuxtLink>
         <HMenu as="div" class="relative inline-block">
-          <HMenuButton class="flex gap-2 items-center text-button">
+          <HMenuButton class="flex gap-2 items-center button-text">
             <span>Features</span>
             <IconDropdown />
           </HMenuButton>
@@ -104,6 +104,9 @@ watch(() => route.fullPath, () => {
             </HMenuItem>
           </HMenuItems>
         </HMenu>
+        <NuxtLink to="/premium">
+          Premium
+        </NuxtLink>
       </div>
 
       <!-- spacer -->
@@ -118,7 +121,7 @@ watch(() => route.fullPath, () => {
           <HMenu v-if="authStore.data" as="div" class="relative inline-block">
             <HMenuButton class="flex">
               <button
-                class="flex items-center gap-2 text-button-primary"
+                class="flex items-center gap-2 button-text-primary"
               >
                 <NuxtImg
                   :src="`https://cdn.discordapp.com/avatars/${authStore.data.user.id}/${authStore.data.user.avatar}.png`"
@@ -167,7 +170,7 @@ watch(() => route.fullPath, () => {
         <!-- mobile -->
         <div class="flex items-center lg:hidden">
           <HMenu v-slot="{ open }" as="div" class="relative inline-block">
-            <HMenuButton class="flex gap-2 items-center text-button">
+            <HMenuButton class="flex gap-2 items-center button-text">
               <Icon
                 :name="
                   open
@@ -178,7 +181,7 @@ watch(() => route.fullPath, () => {
                 @click="toggleMobileNavbarOpenState"
               />
             </HMenuButton>
-            <HMenuItems class="flex flex-col absolute menu right-0 min-w-48 shadow-lg">
+            <HMenuItems class="flex flex-col absolute menu right-0 min-w-56 shadow-lg">
               <!-- authenticated items -->
               <HMenuItem v-if="authStore.data" as="div" class="px-3 pt-2 my-1">
                 <div
@@ -206,7 +209,12 @@ watch(() => route.fullPath, () => {
                   Billing
                 </NuxtLink>
               </HMenuItem>
-              <DefaultMenuDivider v-if="isLoggedIn" />
+              <HMenuItem v-if="!isLoggedIn" class="menu-item">
+                <NuxtLink to="login" class="text-purple-500 hover:text-purple-400">
+                  Login
+                </NuxtLink>
+              </HMenuItem>
+              <DefaultMenuDivider />
               <HMenuItem class="menu-item">
                 <NuxtLink to="guilds">
                   Add to server
@@ -218,20 +226,29 @@ watch(() => route.fullPath, () => {
                 </NuxtLink>
               </HMenuItem>
               <HMenuItem class="menu-item">
-                <NuxtLink to="profile">
-                  Features
+                <NuxtLink to="premium">
+                  Premium
                 </NuxtLink>
               </HMenuItem>
               <DefaultMenuDivider />
+              <HMenuItem as="div" class="px-3 pt-2">
+                <span class="text-sm text-secondary">Features</span>
+              </HMenuItem>
+              <HMenuItem class="menu-item">
+                <NuxtLink to="temporary-voice-channels">
+                  Temporary voice channels
+                </NuxtLink>
+              </HMenuItem>
+              <HMenuItem class="menu-item">
+                <NuxtLink to="voice-roles">
+                  Voice roles
+                </NuxtLink>
+              </HMenuItem>
+              <DefaultMenuDivider v-if="isLoggedIn" />
               <HMenuItem v-if="isLoggedIn" class="menu-item danger">
                 <div @click="logout()">
                   Logout
                 </div>
-              </HMenuItem>
-              <HMenuItem v-else class="menu-item">
-                <NuxtLink to="login">
-                  Login
-                </NuxtLink>
               </HMenuItem>
             </HMenuItems>
           </HMenu>

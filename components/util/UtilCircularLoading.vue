@@ -1,22 +1,22 @@
 <script lang="ts" setup>
 const { size, color } = withDefaults(
   defineProps<{
-    size: number;
-    color: string;
+    size?: number
+    color?: string
   }>(),
   {
     size: 48,
-    color: "text-white",
+    color: 'text-white',
   },
-);
+)
 
-const viewBox = `0 0 ${size} ${size}`;
-const centerPoint = size / 2;
-const circleRadius = (size / 2) * 0.75;
-const strokeWidth = circleRadius * 0.25;
+const viewBox = `0 0 ${size} ${size}`
+const centerPoint = size / 2
+const circleRadius = (size / 2) * 0.75
+const strokeWidth = circleRadius * 0.25
 
-const full = 2 * Math.PI * circleRadius;
-const half = full / 2;
+const full = 2 * Math.PI * circleRadius
+const half = full / 2
 </script>
 
 <template>
