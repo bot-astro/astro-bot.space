@@ -6,25 +6,16 @@ interface AuthState {
 
 export const useAuthStore = defineStore({
   id: 'authStore',
+  persist: true,
   state: (): AuthState => ({
     data: undefined,
   }),
-  persist: true,
+  getters: {
+    isAuthenticated: (state) => state.data === undefined
+  },
   actions: {
-    set(data: AuthData) {
+    set(data: AuthData | undefined) {
       this.data = data
-    },
-    logout() {
-      if (this.data?.user?.id && this.data?.token) {
-        const config = useRuntimeConfig()
-        $fetch(`${config.public.apiBaseUrl}/auth/user/delete/${this.data?.user.id}`, {
-          headers: {
-            Authorization: this.data.token,
-          },
-        })
-      }
-
-      this.data = undefined
-    },
+    }
   },
 })

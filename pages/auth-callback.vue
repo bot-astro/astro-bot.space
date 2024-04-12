@@ -7,7 +7,7 @@ const isError = ref(false)
 onMounted(async () => {
   await nextTick()
 
-  const previousRoute = sessionStorage.getItem('auth-previous-route') ?? '/'
+  const previousRoute = sessionStorage.getItem(StorageKeys.AUTH_PREVIOUS_ROUTE) ?? '/'
   const oauthCode = route.query.code?.toString()
 
   if (oauthCode == null) {

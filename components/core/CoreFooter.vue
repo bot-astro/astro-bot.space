@@ -2,10 +2,10 @@
 
 <template>
   <div
-    class="w-full border-t border-neutral-800 bg-neutral-950 px-4 pb-4 pt-12"
+    class="w-full border-t border-neutral-800 px-4 pt-12 pb-4 bg-neutral-950"
   >
     <!-- footer links section -->
-    <div class="flex justify-between sm:justify-around flex-wrap gap-12 my-6">
+    <div class="my-6 flex flex-wrap justify-between gap-12 sm:justify-around">
       <div class="flex flex-col gap-y-4">
         <p>
           Resources

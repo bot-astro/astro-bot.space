@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen w-full flex flex-col items-center mt-20 md:mt-32 px-4">
+  <main class="mt-20 flex min-h-screen w-full flex-col items-center px-4 md:mt-32">
     <div class="prose prose-invert">
       <ContentDoc path="privacy-policy" />
     </div>

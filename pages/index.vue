@@ -3,7 +3,7 @@ const isIllustrationDialogOpened = ref(false)
 const illustrationSrc = ref<string | null>(null)
 
 function onMouseMove(payload: MouseEvent) {
-  const target = payload.currentTarget as HTMLElement
+  const target = payload.currentTarget as HTMLElement | null
 
   if (target !== null) {
     const rect = target.getBoundingClientRect()
@@ -31,92 +31,92 @@ function setIsIllustrationDialogOpen(value: boolean) {
   <div class="flex min-h-screen flex-col items-center justify-center">
     <!-- first section with get started button -->
     <div
-      class="min-h-screen flex max-w-prose flex-col items-center justify-center p-4"
+      class="flex min-h-screen max-w-prose flex-col items-center justify-center p-4"
     >
       <NuxtImg
         src="/img/logo.png"
         class="h-48 w-48 select-none"
       />
-      <p class="mt-5 font-display text-7xl tracking-widest">
+      <p class="mt-5 text-7xl tracking-widest font-display">
         ASTRO
       </p>
       <p class="mt-4 text-center text-xl text-gray-400">
         The most unique and complete discord bot for temporary voice channels
         and voice roles!
       </p>
-      <button
-        class="button-primary mt-6 text-xl"
-        @click="navigateTo('/dashboard')"
+      <NuxtLink
+        class="mt-6 text-xl button-primary"
+        to="/guilds"
       >
         Get started
-      </button>
+      </NuxtLink>
     </div>
 
     <!-- features section -->
-    <div class="flex flex-col mx-12 w-3/4 md:w-auto gap-32">
+    <div class="mx-12 flex w-3/4 flex-col gap-32 md:w-auto">
       <!-- illustration popup -->
       <HDialog
         :open="isIllustrationDialogOpened"
-        class="fixed top-0 left-0 h-full w-full flex items-center justify-center  z-50"
+        class="fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center"
         @close="setIsIllustrationDialogOpen"
       >
-        <HDialogPanel class="flex items-center justify-center w-full h-full cursor-pointer cursor-zoom-out" @click="setIsIllustrationDialogOpen(false)">
+        <HDialogPanel class="flex h-full w-full cursor-zoom-out items-center justify-center" @click="setIsIllustrationDialogOpen(false)">
           <NuxtImg
             v-if="illustrationSrc"
             :src="illustrationSrc"
-            class="rounded-xl w-4/5 md:w-auto md:h-1/2 z-10 select-none"
+            class="z-10 w-4/5 select-none rounded-xl md:h-1/2 md:w-auto"
             draggable="false"
           />
-          <div class="fixed bg-background backdrop-blur bg-opacity-50 w-full h-full" />
+          <div class="fixed h-full w-full bg-opacity-50 backdrop-blur bg-background" />
         </HDialogPanel>
       </HDialog>
 
-      <div class="flex flex-col md:max-w-screen-lg md:flex-row feature-box border-box-border rounded-md bg-background" @mousemove="onMouseMove">
+      <div class="flex flex-col rounded-md feature-box border-box-border bg-background md:max-w-screen-lg md:flex-row" @mousemove="onMouseMove">
         <NuxtImg
           src="illustration/temp_vc.gif"
-          class="rounded-l md:h-64 z-10 select-none cursor-zoom-in hover:border-2"
+          class="z-10 cursor-zoom-in select-none rounded-l hover:border-2 md:h-64"
           draggable="false"
           @click="showIllustration('illustration/temp_vc.gif')"
         />
         <div class="flex flex-col p-4">
-          <span class="font-display text-2xl font-medium tracking-wide">Temporary Voice Channels</span>
+          <span class="text-2xl font-medium tracking-wide font-display"><span class="animate-dissolve">Temporary </span>Voice Channels</span>
           <span class="mt-4 text-secondary">
             Astro generates fully customisable temporary voice channels on prompt and deletes them when they get empty.
             Ships with extreme customisation so that you can create the perfect system for your server!
           </span>
           <div class="grow" />
-          <NuxtLink to="temporary-voice-channels" class="button mt-4 w-full md:w-fit">
+          <NuxtLink to="temporary-voice-channels" class="mt-4 w-full button md:w-fit">
             Explore
           </NuxtLink>
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row-reverse md:max-w-screen-lg feature-box border-box-border rounded-md bg-background" @mousemove="onMouseMove">
+      <div class="flex flex-col rounded-md feature-box border-box-border bg-background md:max-w-screen-lg md:flex-row-reverse" @mousemove="onMouseMove">
         <NuxtImg
           src="illustration/voice_role.gif"
-          class="md:h-64 z-10 select-none rounded-r cursor-zoom-in hover:border-2"
+          class="z-10 cursor-zoom-in select-none rounded-r hover:border-2 md:h-64"
           draggable="false"
           @click="showIllustration('illustration/voice_role.gif')"
         />
         <div class="flex flex-col p-4">
-          <span class="font-display text-2xl font-medium tracking-wide">Voice Roles</span>
+          <span class="text-2xl font-medium tracking-wide font-display animate-light">Voice Roles</span>
           <span class="mt-4 text-secondary">
             Astro can assign or remove a role when a user joins a specific voice channel!
             This way you can, for example, let people see gaming text chats only while they are in a gaming VC, imagination is your only limit!
           </span>
           <div class="grow" />
-          <NuxtLink to="temporary-voice-channels" class="button mt-4 w-full md:w-fit">
+          <NuxtLink to="temporary-voice-channels" class="mt-4 w-full button md:w-fit">
             Explore
           </NuxtLink>
         </div>
       </div>
 
-      <div class="flex flex-col md:max-w-screen-lg feature-box border-box-border rounded-md bg-background p-6 justify-center items-center" @mousemove="onMouseMove">
-        <span class="font-display text-2xl font-medium tracking-wide">Voice Channels Exclusive</span>
+      <div class="flex flex-col items-center justify-center rounded-md p-6 feature-box border-box-border bg-background md:max-w-screen-lg" @mousemove="onMouseMove">
+        <span class="text-2xl font-medium tracking-wide font-display">Voice Channels Exclusive</span>
         <span class="mt-4 text-secondary">
           Focusing only on voice channels makes Astro the best bot of its kind, try it now!
         </span>
-        <NuxtLink to="guilds" class="button-primary mt-6 w-full md:w-fit">
+        <NuxtLink to="guilds" class="mt-6 w-full button-primary md:w-fit">
           Get started
         </NuxtLink>
       </div>
@@ -133,6 +133,7 @@ function setIsIllustrationDialogOpen(value: boolean) {
 }
 
 .feature-box::before {
+  /*noinspection CssUnresolvedCustomProperty*/
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
     /* #A855F799, */
@@ -153,5 +154,31 @@ function setIsIllustrationDialogOpen(value: boolean) {
 
 .feature-box:hover::before {
     opacity: 1;
+}
+
+.animate-dissolve {
+  animation: dissolve 4s steps(1, end) infinite;
+}
+
+.animate-light {
+  animation: light 4s steps(1, end) infinite;
+}
+
+@keyframes dissolve {
+  0%, 20%, 80%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes light {
+  0%, 25%, 70%, 80%, 100% {
+    opacity: 1;
+  }
+  23%, 68%, 79%, 85% {
+    opacity: 0.2;
+  }
 }
 </style>

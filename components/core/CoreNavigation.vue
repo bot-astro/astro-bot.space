@@ -3,6 +3,8 @@
 SCROLLING ANIMATION
 */
 import { useWindowScroll } from '@vueuse/core'
+import {useLogin} from "~/composables/auth/useLogin";
+import {useLogout} from "~/composables/auth/useLogout";
 
 // Navbar border toggling
 const navbarContainer = ref<HTMLElement | null>(null)
@@ -35,13 +37,9 @@ function toggleMobileNavbarOpenState() {
 AUTH STATUS
 */
 const authStore = useAuthStore()
-const isLoggedIn = computed(() => {
-  return authStore.data !== undefined
+const isAuthenticated = computed(() => {
+  return authStore.isAuthenticated
 })
-
-function logout() {
-  authStore.logout()
-}
 
 /*
 ROUTE CHANGE HANDLING
@@ -57,7 +55,7 @@ watch(() => route.fullPath, () => {
   <!-- full navbar container -->
   <div
     ref="navbarContainer"
-    class="transition-[background box-shadow] sticky top-0 z-50 min-w-full duration-100"
+    class="sticky top-0 z-50 min-w-full duration-100 transition-[background box-shadow]"
   >
     <!-- navbar content container -->
     <header class="container mx-auto flex h-16 gap-4 px-4">
@@ -78,7 +76,7 @@ watch(() => route.fullPath, () => {
       </div>
 
       <!-- desktop: navbar items -->
-      <div class="hidden items-center gap-8 whitespace-nowrap lg:flex w-full">
+      <div class="hidden w-full items-center gap-8 whitespace-nowrap lg:flex">
         <NuxtLink to="/invite">
           Add to server
         </NuxtLink>
@@ -86,11 +84,11 @@ watch(() => route.fullPath, () => {
           Support
         </NuxtLink>
         <HMenu as="div" class="relative inline-block">
-          <HMenuButton class="flex gap-2 items-center button-text">
+          <HMenuButton class="flex items-center gap-2 button-text">
             <span>Features</span>
             <IconDropdown />
           </HMenuButton>
-          <HMenuItems class="flex flex-col absolute menu">
+          <HMenuItems class="absolute flex flex-col menu">
             <HMenuItem class="menu-item">
               <NuxtLink to="temporary-voice-channels">
                 Temporary Voice Channels
@@ -115,7 +113,7 @@ watch(() => route.fullPath, () => {
       />
 
       <!-- auth indicator -->
-      <div class="flex items-center shrink-0">
+      <div class="flex shrink-0 items-center">
         <!-- desktop -->
         <div class="hidden lg:flex">
           <HMenu v-if="authStore.data" as="div" class="relative inline-block">
@@ -131,7 +129,7 @@ watch(() => route.fullPath, () => {
                 <IconDropdown />
               </button>
             </HMenuButton>
-            <HMenuItems class="flex flex-col absolute menu right-0 w-full">
+            <HMenuItems class="absolute right-0 flex w-full flex-col menu">
               <HMenuItem class="menu-item">
                 <NuxtLink to="guilds">
                   Servers
@@ -151,7 +149,7 @@ watch(() => route.fullPath, () => {
               </HMenuItem>
               <DefaultMenuDivider />
               <HMenuItem class="menu-item danger">
-                <div @click="logout()">
+                <div @click="useLogout()">
                   Logout
                 </div>
               </HMenuItem>
@@ -160,7 +158,7 @@ watch(() => route.fullPath, () => {
           <div v-else>
             <button
               class="button"
-              @click="navigateTo('/login')"
+              @click="useLogin()"
             >
               Login
             </button>
@@ -170,20 +168,20 @@ watch(() => route.fullPath, () => {
         <!-- mobile -->
         <div class="flex items-center lg:hidden">
           <HMenu v-slot="{ open }" as="div" class="relative inline-block">
-            <HMenuButton class="flex gap-2 items-center button-text">
+            <HMenuButton class="flex items-center gap-2 button-text">
               <Icon
                 :name="
                   open
                     ? 'fluent:dismiss-20-filled'
                     : 'fluent:line-horizontal-3-20-filled'
                 "
-                class="z-10 size-8 cursor-pointer select-none "
+                class="z-10 cursor-pointer select-none size-8"
                 @click="toggleMobileNavbarOpenState"
               />
             </HMenuButton>
-            <HMenuItems class="flex flex-col absolute menu right-0 min-w-56 shadow-lg">
+            <HMenuItems class="absolute right-0 flex flex-col shadow-lg menu min-w-56">
               <!-- authenticated items -->
-              <HMenuItem v-if="authStore.data" as="div" class="px-3 pt-2 my-1">
+              <HMenuItem v-if="authStore.data" as="div" class="my-1 px-3 pt-2">
                 <div
                   class="flex items-center gap-2"
                 >
@@ -194,22 +192,22 @@ watch(() => route.fullPath, () => {
                   <span class="text-sm text-secondary">Logged in as {{ authStore.data.user.username }}</span>
                 </div>
               </HMenuItem>
-              <HMenuItem v-if="isLoggedIn" class="menu-item">
+              <HMenuItem v-if="isAuthenticated" class="menu-item">
                 <NuxtLink to="guilds">
                   Servers
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem v-if="isLoggedIn" class="menu-item">
+              <HMenuItem v-if="isAuthenticated" class="menu-item">
                 <NuxtLink to="profile">
                   Profile
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem v-if="isLoggedIn" class="menu-item">
+              <HMenuItem v-if="isAuthenticated" class="menu-item">
                 <NuxtLink to="profile">
                   Billing
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem v-if="!isLoggedIn" class="menu-item">
+              <HMenuItem v-if="!isAuthenticated" class="menu-item">
                 <NuxtLink to="login" class="text-purple-500 hover:text-purple-400">
                   Login
                 </NuxtLink>
@@ -244,9 +242,9 @@ watch(() => route.fullPath, () => {
                   Voice roles
                 </NuxtLink>
               </HMenuItem>
-              <DefaultMenuDivider v-if="isLoggedIn" />
-              <HMenuItem v-if="isLoggedIn" class="menu-item danger">
-                <div @click="logout()">
+              <DefaultMenuDivider v-if="isAuthenticated" />
+              <HMenuItem v-if="isAuthenticated" class="menu-item danger">
+                <div @click="useLogout()">
                   Logout
                 </div>
               </HMenuItem>
