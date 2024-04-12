@@ -74,6 +74,14 @@ body {
     @apply px-3 py-2 transition ease-in-out cursor-pointer text-white text-opacity-80 hover:text-white hover:bg-background;
   }
 
+  .menu-item-first {
+    @apply rounded-t-md;
+  }
+
+  .menu-item-last {
+    @apply rounded-b-md;
+  }
+
   .danger {
     @apply text-red-400 hover:text-red-500;
   }

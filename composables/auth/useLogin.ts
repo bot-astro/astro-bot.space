@@ -1,17 +1,12 @@
-export const useLogin = () => {
-    const config = useRuntimeConfig()
-    const router = useRouter()
+export function useLogin() {
+  const config = useRuntimeConfig()
+  const router = useRouter()
 
-    const previousRoute = router.options.history.state.back?.toString() ?? '/'
+  const previousRoute = router.options.history.state.back?.toString() ?? '/'
+  sessionStorage.setItem(
+    StorageKeys.AUTH_PREVIOUS_ROUTE,
+    previousRoute,
+  )
 
-    onMounted(() => {
-        if (process.client) {
-            sessionStorage.setItem(
-                StorageKeys.AUTH_PREVIOUS_ROUTE,
-                previousRoute,
-            )
-
-            navigateTo(config.public.oauthUrl, { replace: true, external: true })
-        }
-    })
+  navigateTo(config.public.oauthUrl, { replace: true, external: true })
 }

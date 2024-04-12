@@ -23,7 +23,7 @@ module.exports = {
           900: '#09080a',
         },
         'light-grey': '#2c2f35',
-        'background': '#100f13'
+        'background': '#100f13',
       },
       fontFamily: {
         display: ['Evolve', ...defaultTheme.fontFamily.sans],

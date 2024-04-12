@@ -1,4 +1,4 @@
-interface AuthData {
-    token: string
-    user: DiscordUser,
+export interface AuthData {
+  token: string
+  user: DiscordUser
 }

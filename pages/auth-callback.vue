@@ -11,7 +11,8 @@ onMounted(async () => {
 
   if (oauthCode == null) {
     isError.value = true
-  } else {
+  }
+  else {
     const { data, error } = await useApiFetch<AuthDataWithGuild>(ApiEndpoints.LOGIN(oauthCode))
 
     if (data.value != null) {

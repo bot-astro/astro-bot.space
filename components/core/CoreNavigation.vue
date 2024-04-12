@@ -3,8 +3,8 @@
 SCROLLING ANIMATION
 */
 import { useWindowScroll } from '@vueuse/core'
-import {useLogin} from "~/composables/auth/useLogin";
-import {useLogout} from "~/composables/auth/useLogout";
+import { useLogin } from '~/composables/auth/useLogin'
+import { useLogout } from '~/composables/auth/useLogout'
 
 // Navbar border toggling
 const navbarContainer = ref<HTMLElement | null>(null)
@@ -207,10 +207,10 @@ watch(() => route.fullPath, () => {
                   Billing
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem v-if="!isAuthenticated" class="menu-item">
-                <NuxtLink to="login" class="text-purple-500 hover:text-purple-400">
+              <HMenuItem v-if="!isAuthenticated" class="menu-item menu-item-first">
+                <button class="text-start text-purple-500 hover:text-purple-400" @click="useLogin()">
                   Login
-                </NuxtLink>
+                </button>
               </HMenuItem>
               <DefaultMenuDivider />
               <HMenuItem class="menu-item">
@@ -237,13 +237,13 @@ watch(() => route.fullPath, () => {
                   Temporary voice channels
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem class="menu-item">
+              <HMenuItem class="menu-item" :class="!isAuthenticated ? 'menu-item-last' : ''">
                 <NuxtLink to="voice-roles">
                   Voice roles
                 </NuxtLink>
               </HMenuItem>
               <DefaultMenuDivider v-if="isAuthenticated" />
-              <HMenuItem v-if="isAuthenticated" class="menu-item danger">
+              <HMenuItem v-if="isAuthenticated" class="menu-item danger menu-item-last">
                 <div @click="useLogout()">
                   Logout
                 </div>

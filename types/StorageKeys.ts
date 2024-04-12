@@ -1,3 +1,3 @@
-enum StorageKeys {
-    AUTH_PREVIOUS_ROUTE = "auth-previous-route"
+export enum StorageKeys {
+  AUTH_PREVIOUS_ROUTE = 'auth-previous-route',
 }

@@ -1,5 +1,5 @@
-interface DiscordGuildFromOAuth {
-    id: string,
-    name: string,
-    icon?: string
+export interface DiscordGuildFromOAuth {
+  id: string
+  name: string
+  icon?: string
 }

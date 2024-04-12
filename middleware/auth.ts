@@ -1,4 +1,4 @@
-import {useLogin} from "~/composables/auth/useLogin";
+import { useLogin } from '~/composables/auth/useLogin'
 
 function isAuthenticated(): boolean {
   const authStore = useAuthStore()

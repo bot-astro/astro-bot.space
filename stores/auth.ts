@@ -11,11 +11,11 @@ export const useAuthStore = defineStore({
     data: undefined,
   }),
   getters: {
-    isAuthenticated: (state) => state.data === undefined
+    isAuthenticated: state => state.data !== undefined,
   },
   actions: {
     set(data: AuthData | undefined) {
       this.data = data
-    }
+    },
   },
 })
