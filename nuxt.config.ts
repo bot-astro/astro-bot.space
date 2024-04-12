@@ -1,7 +1,7 @@
 /* eslint-disable node/prefer-global/process */
 export default defineNuxtConfig({
   imports: {
-    dirs: ['types/*.ts', 'types/**/*.ts'],
+    dirs: ['types/*.ts', 'types/**/*.ts', 'stores/*.ts', 'stores/**/*.ts'],
   },
 
   css: ['~/assets/css/tailwind.css'],

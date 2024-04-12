@@ -37,9 +37,6 @@ function toggleMobileNavbarOpenState() {
 AUTH STATUS
 */
 const authStore = useAuthStore()
-const isAuthenticated = computed(() => {
-  return authStore.isAuthenticated
-})
 
 /*
 ROUTE CHANGE HANDLING
@@ -55,7 +52,7 @@ watch(() => route.fullPath, () => {
   <!-- full navbar container -->
   <div
     ref="navbarContainer"
-    class="sticky top-0 z-50 min-w-full duration-100 transition-[background box-shadow]"
+    class="transition-[background box-shadow] sticky top-0 z-50 min-w-full duration-100"
   >
     <!-- navbar content container -->
     <header class="container mx-auto flex h-16 gap-4 px-4">
@@ -84,11 +81,11 @@ watch(() => route.fullPath, () => {
           Support
         </NuxtLink>
         <HMenu as="div" class="relative inline-block">
-          <HMenuButton class="flex items-center gap-2 button-text">
+          <HMenuButton class="button-text flex items-center gap-2">
             <span>Features</span>
             <IconDropdown />
           </HMenuButton>
-          <HMenuItems class="absolute flex flex-col menu">
+          <HMenuItems class="menu absolute flex flex-col">
             <HMenuItem class="menu-item">
               <NuxtLink to="temporary-voice-channels">
                 Temporary Voice Channels
@@ -119,17 +116,18 @@ watch(() => route.fullPath, () => {
           <HMenu v-if="authStore.data" as="div" class="relative inline-block">
             <HMenuButton class="flex">
               <button
-                class="flex items-center gap-2 button-text-primary"
+                class="button-text-primary flex items-center gap-2"
               >
                 <NuxtImg
-                  :src="`https://cdn.discordapp.com/avatars/${authStore.data.user.id}/${authStore.data.user.avatar}.png`"
-                  class="rounded-full size-8"
+                  v-if="authStore.data.user.avatar"
+                  :src="discordUserAvatarUri(authStore.data.user.id, authStore.data.user.avatar)"
+                  class="size-8 rounded-full"
                 />
                 <span>{{ authStore.data.user.username }}</span>
                 <IconDropdown />
               </button>
             </HMenuButton>
-            <HMenuItems class="absolute right-0 flex w-full flex-col menu">
+            <HMenuItems class="menu absolute right-0 flex w-full flex-col">
               <HMenuItem class="menu-item">
                 <NuxtLink to="guilds">
                   Servers
@@ -168,46 +166,47 @@ watch(() => route.fullPath, () => {
         <!-- mobile -->
         <div class="flex items-center lg:hidden">
           <HMenu v-slot="{ open }" as="div" class="relative inline-block">
-            <HMenuButton class="flex items-center gap-2 button-text">
+            <HMenuButton class="button-text flex items-center gap-2">
               <Icon
                 :name="
                   open
                     ? 'fluent:dismiss-20-filled'
                     : 'fluent:line-horizontal-3-20-filled'
                 "
-                class="z-10 cursor-pointer select-none size-8"
+                class="size-8 z-10 cursor-pointer select-none"
                 @click="toggleMobileNavbarOpenState"
               />
             </HMenuButton>
-            <HMenuItems class="absolute right-0 flex flex-col shadow-lg menu min-w-56">
+            <HMenuItems class="menu min-w-56 absolute right-0 flex flex-col shadow-lg">
               <!-- authenticated items -->
               <HMenuItem v-if="authStore.data" as="div" class="my-1 px-3 pt-2">
                 <div
                   class="flex items-center gap-2"
                 >
                   <NuxtImg
-                    :src="`https://cdn.discordapp.com/avatars/${authStore.data.user.id}/${authStore.data.user.avatar}.png`"
-                    class="rounded-full size-6"
+                    v-if="authStore.data.user.avatar"
+                    :src="discordUserAvatarUri(authStore.data.user.id, authStore.data.user.avatar)"
+                    class="size-6 rounded-full"
                   />
-                  <span class="text-sm text-secondary">Logged in as {{ authStore.data.user.username }}</span>
+                  <span class="text-secondary text-sm">Logged in as {{ authStore.data.user.username }}</span>
                 </div>
               </HMenuItem>
-              <HMenuItem v-if="isAuthenticated" class="menu-item">
+              <HMenuItem v-if="authStore.isAuthenticated" class="menu-item">
                 <NuxtLink to="guilds">
                   Servers
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem v-if="isAuthenticated" class="menu-item">
+              <HMenuItem v-if="authStore.isAuthenticated" class="menu-item">
                 <NuxtLink to="profile">
                   Profile
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem v-if="isAuthenticated" class="menu-item">
+              <HMenuItem v-if="authStore.isAuthenticated" class="menu-item">
                 <NuxtLink to="profile">
                   Billing
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem v-if="!isAuthenticated" class="menu-item menu-item-first">
+              <HMenuItem v-if="!authStore.isAuthenticated" class="menu-item menu-item-first">
                 <button class="text-start text-purple-500 hover:text-purple-400" @click="useLogin()">
                   Login
                 </button>
@@ -230,20 +229,20 @@ watch(() => route.fullPath, () => {
               </HMenuItem>
               <DefaultMenuDivider />
               <HMenuItem as="div" class="px-3 pt-2">
-                <span class="text-sm text-secondary">Features</span>
+                <span class="text-secondary text-sm">Features</span>
               </HMenuItem>
               <HMenuItem class="menu-item">
                 <NuxtLink to="temporary-voice-channels">
                   Temporary voice channels
                 </NuxtLink>
               </HMenuItem>
-              <HMenuItem class="menu-item" :class="!isAuthenticated ? 'menu-item-last' : ''">
+              <HMenuItem class="menu-item" :class="!authStore.isAuthenticated ? 'menu-item-last' : ''">
                 <NuxtLink to="voice-roles">
                   Voice roles
                 </NuxtLink>
               </HMenuItem>
-              <DefaultMenuDivider v-if="isAuthenticated" />
-              <HMenuItem v-if="isAuthenticated" class="menu-item danger menu-item-last">
+              <DefaultMenuDivider v-if="authStore.isAuthenticated" />
+              <HMenuItem v-if="authStore.isAuthenticated" class="menu-item danger menu-item-last">
                 <div @click="useLogout()">
                   Logout
                 </div>
