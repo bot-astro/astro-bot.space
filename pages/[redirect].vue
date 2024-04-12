@@ -1,6 +1,6 @@
 <script setup>
 import { nextTick } from 'vue'
-import { redirects } from '../assets/config/redirects'
+import { redirects } from 'assets/config/redirects'
 
 const config = useRuntimeConfig()
 const route = useRoute()

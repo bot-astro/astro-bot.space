@@ -5,7 +5,7 @@ function isAuthenticated(): boolean {
   return authStore.data !== undefined
 }
 
-export default defineNuxtRouteMiddleware((_to, from) => {
+export default defineNuxtRouteMiddleware((_to, _from) => {
   if (!isAuthenticated())
     return useLogin()
 })

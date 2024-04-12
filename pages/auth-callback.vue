@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 const route = useRoute()
-const config = useRuntimeConfig()
 const authStore = useAuthStore()
 const isError = ref(false)
 
@@ -12,9 +11,8 @@ onMounted(async () => {
 
   if (oauthCode == null) {
     isError.value = true
-  }
-  else {
-    const { data, error } = await useFetch<AuthDataWithGuild>(`${config.public.apiBaseUrl}/auth/id/${oauthCode}`)
+  } else {
+    const { data, error } = await useApiFetch<AuthDataWithGuild>(ApiEndpoints.LOGIN(oauthCode))
 
     if (data.value != null) {
       const authData: AuthData = {

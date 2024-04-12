@@ -18,8 +18,6 @@ function onMouseMove(payload: MouseEvent) {
 function showIllustration(src: string) {
   illustrationSrc.value = src
   isIllustrationDialogOpened.value = true
-  // eslint-disable-next-line no-console
-  console.log(isIllustrationDialogOpened)
 }
 
 function setIsIllustrationDialogOpen(value: boolean) {
