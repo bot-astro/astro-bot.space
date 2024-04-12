@@ -22,7 +22,10 @@ onMounted(() => {
     if (redirect) {
       setTimeout(() => {
         try {
-          const redirectUrl = redirect.url.replace('{APPLICATION_ID}', config.public.applicationId)
+          const redirectUrl = redirect.url
+            .replace('{APPLICATION_ID}', config.public.applicationId)
+            .replace('{GUILD_ID}', route.query.guild_id?.toString() ?? '')
+
           location.replace(redirectUrl)
         }
         catch (error) {}

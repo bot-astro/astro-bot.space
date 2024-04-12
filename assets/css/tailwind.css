@@ -66,6 +66,10 @@ body {
     @apply text-white flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90;
   }
 
+  .group {
+    @apply border-box-border bg-grey-800 rounded-md px-3 py-3;
+  }
+
   .menu {
     @apply border border-light-grey rounded-md shadow-lg mt-2 bg-grey-800 min-w-full;
   }
@@ -88,5 +92,9 @@ body {
 
   a {
     @apply transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
+  }
+
+  input {
+    @apply rounded h-9 bg-grey-900 border-box-border placeholder-grey-400 px-2.5 py-1 outline-none focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:placeholder-opacity-60 disabled:opacity-80;
   }
 }

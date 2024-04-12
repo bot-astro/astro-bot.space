@@ -52,8 +52,8 @@
     </div>
 
     <!-- footer socials and developed by text -->
-    <div class="mt-12 flex items-center justify-between">
-      <span class="text-sm text-secondary">
+    <div class="mt-12 flex flex-col items-center justify-between sm:flex-row">
+      <span class="mb-2 text-center text-sm text-secondary sm:mb-0">
         @ Astro Bot 2024 - All rights reserved
       </span>
       <div class="flex items-center text-sm">
