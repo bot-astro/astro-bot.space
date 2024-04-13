@@ -43,11 +43,19 @@ body {
   .border-box-border {
     @apply border border-light-grey;
   }
+
+  .border-box-border-danger {
+    @apply border border-red-500 border-opacity-50;
+  }
 }
 
 @layer components {
   .text-secondary {
     @apply text-grey-300;
+  }
+
+  .text-danger {
+    @apply text-red-400 text-opacity-80;
   }
 
   .button-text {
@@ -56,6 +64,10 @@ body {
 
   .button-text-primary {
     @apply p-1 transition text-grey-50 hover:text-purple-50 flex-shrink-0 cursor-pointer;
+  }
+
+  .button-text-danger {
+    @apply text-red-400 text-opacity-75;
   }
   
   .button {

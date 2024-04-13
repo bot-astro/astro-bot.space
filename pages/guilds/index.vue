@@ -32,6 +32,19 @@ const guilds = computed(() => {
         :value="search"
         @input="event => search = event.target?.value ?? ''">
     </div>
+
+    <div
+      v-if="guildsStore.isLoading"
+      class="w-full mt-4 flex justify-center"
+    >
+      <UtilCircularLoading />
+    </div>
+    <div
+      v-else-if="guildsStore.isError"
+      class="w-full mt-4 flex justify-center border-box-border-danger rounded-md p-4 text-danger"
+    >
+      Something went wrong, please try again later
+    </div>
     <div class="mt-4 w-full grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-4">
       <div
         v-for="guild in guilds"
