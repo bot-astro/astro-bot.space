@@ -67,7 +67,7 @@ body {
   }
 
   .button-text-danger {
-    @apply text-red-400 text-opacity-75;
+    @apply text-red-400 text-opacity-75 cursor-pointer hover:text-opacity-100;
   }
   
   .button {
@@ -109,4 +109,36 @@ body {
   input {
     @apply rounded h-9 bg-grey-900 border-box-border placeholder-grey-400 px-2.5 py-1 outline-none focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:placeholder-opacity-60 disabled:opacity-80;
   }
+}
+
+/* ANIMATIONS */
+.backlit-box {
+  position: relative;
+}
+.backlit-box * {
+  z-index: 4;
+}
+
+.backlit-box::before {
+  /*noinspection CssUnresolvedCustomProperty*/
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    /* #A855F799, */
+    #ec489a99,
+    transparent 30%
+  );
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.backlit-box:hover::before {
+    opacity: 1;
 }

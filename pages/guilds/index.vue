@@ -12,7 +12,7 @@ const guilds = computed(() => {
     .filter(guild => guild.can_manage)
     .filter(guild => search.value.length > 0 ? guild.name.toLowerCase().includes(search.value.toLowerCase()) : true)
     .sort((a, b) => {
-      return a.settings === b.settings ? 0 : a.settings !== undefined ? -1 : 1;
+      return a.settings === b.settings ? 0 : a.settings !== undefined ? -1 : 1
     })
 })
 </script>
@@ -25,12 +25,21 @@ const guilds = computed(() => {
         <span class="text-sm text-secondary">Select a server to manage</span>
       </div>
 
-      <input
-        class="w-full md:w-auto"
-        type="text"
-        placeholder="Search by name"
-        :value="search"
-        @input="event => search = event.target?.value ?? ''">
+      <div class="flex items-center gap-2">
+        <Icon
+          name="fluent:arrow-sync-12-regular"
+          class="button-text-danger size-6"
+          @click="guildsStore.fetch()"
+        />
+
+        <input
+          class="w-full md:w-auto"
+          type="text"
+          placeholder="Search by name"
+          :value="search"
+          @input="event => search = event.target?.value ?? ''"
+        >
+      </div>
     </div>
 
     <div
@@ -48,6 +57,7 @@ const guilds = computed(() => {
     <div class="mt-4 w-full grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-4">
       <div
         v-for="guild in guilds"
+        :key="guild.id"
         class="flex select-none flex-col group gap-4"
       >
         <div class="flex items-center gap-4">
@@ -58,7 +68,7 @@ const guilds = computed(() => {
               class="rounded-full max-w-none w-12 h-12 md:w-14 md:h-14 border-box-border"
             />
             <p v-else class="flex items-center justify-center truncate rounded-full font-semibold text-white size-14 border-box-border hover:opacity-80">
-              {{ guild.name.split(" ").map((a) => a.charAt(0).toUpperCase()).join("")}}
+              {{ guild.name.split(" ").map((a) => a.charAt(0).toUpperCase()).join("") }}
             </p>
           </div>
 

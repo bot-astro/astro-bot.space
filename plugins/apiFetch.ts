@@ -16,7 +16,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
 
   return {
     provide: {
-      apiFetch: instance
-    }
+      apiFetch: instance,
+    },
   }
 })
