@@ -118,8 +118,8 @@ const authStore = useAuthStore()
             </NuxtLink>
           </HMenuItem>
           <HMenuItem class="menu-item">
-            <NuxtLink to="/premium">
-              Premium
+            <NuxtLink to="/ultimate">
+              Ultimate
             </NuxtLink>
           </HMenuItem>
           <DefaultMenuDivider />

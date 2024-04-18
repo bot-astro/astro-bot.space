@@ -5,6 +5,7 @@ defineProps<{
   description: string
   buttonText?: string
   buttonTo?: string
+  buttonStyleClasses?: string
   reverse: boolean
 }>()
 
@@ -57,7 +58,7 @@ function setIsIllustrationDialogOpen(value: boolean) {
         {{ description }}
       </span>
       <div v-if="buttonText" class="grow" />
-      <NuxtLink v-if="buttonTo && buttonText" :to="buttonTo" class="mt-4 w-full button md:w-fit">
+      <NuxtLink v-if="buttonTo && buttonText" :to="buttonTo" class="mt-4 w-full button md:w-fit" :class="buttonStyleClasses ? buttonStyleClasses : ''">
         {{ buttonText }}
       </NuxtLink>
     </div>

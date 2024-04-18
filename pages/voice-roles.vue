@@ -1,6 +1,6 @@
 <template>
   <div class="w-3/4 md:w-auto flex flex-col items-center mt-16 gap-16 mx-12">
-    <span class="text-4xl font-medium tracking-wide font-display animate-light">Voice Roles</span>
+    <span class="text-title animate-light">Voice Roles</span>
 
     <CoreFeatureBox
       title="Connect voice channels to roles"
@@ -24,7 +24,7 @@
       <span class="mt-4 text-secondary">
         It takes just a couple of minutes to get started using Astro, try it now!
       </span>
-      <NuxtLink to="/guilds" class="mt-6 w-full button-primary md:w-fit">
+      <NuxtLink to="/guilds" class="mt-6 w-full button-primary-bordered md:w-fit">
         Get started
       </NuxtLink>
     </div>

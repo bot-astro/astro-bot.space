@@ -13,7 +13,7 @@ const guildStore = useGuildStore()
           :src="discordGuildIconUri(guildStore.guild.id, guildStore.guild.icon)"
           class="rounded-full max-w-none w-6 h-6 md:w-8 md:h-8 border-box-border"
         />
-        <!-- name & premium status -->
+        <!-- name & ultimate status -->
         <div class="flex flex-col">
           <span> {{ guildStore.guild.name }}</span>
           <span class="text-secondary text-xs">Free</span>

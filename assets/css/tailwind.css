@@ -5,7 +5,7 @@
 @import "./ext/fonts.css";
 
 html {
-  @apply bg-gray-950 text-white;
+  @apply bg-gray-950 text-neutral-200;
   font-family:
     Inter,
     GoNotoCurrent,
@@ -58,6 +58,14 @@ body {
     @apply text-red-400 text-opacity-80;
   }
 
+  .text-title {
+    @apply text-4xl font-medium tracking-wide font-display text-center;
+  }
+
+  .text-subtitle {
+    @apply text-xl font-medium tracking-wide text-center text-grey-300;
+  }
+
   .button-text {
     @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
   }
@@ -75,7 +83,15 @@ body {
   }
 
   .button-primary {
-    @apply text-white flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90;
+    @apply text-white flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-80;
+  }
+
+  .button-secondary {
+    @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer bg-grey-800 hover:bg-background border-box-border hover:border-grey-400 disabled:hover:cursor-not-allowed;
+  }
+
+  .button-primary-bordered {
+    @apply text-white border border-transparent flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90 hover:border-white;
   }
 
   .group {
@@ -96,6 +112,10 @@ body {
 
   .menu-item-last {
     @apply rounded-b-md;
+  }
+
+  .tab {
+    @apply border-box-border px-2 py-1 rounded;
   }
 
   .danger {

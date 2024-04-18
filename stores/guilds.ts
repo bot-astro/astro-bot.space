@@ -32,6 +32,7 @@ export const useGuildsStore = defineStore({
         this.isError = false
       }
       else if (data.value !== null) {
+        this.isError = false
         this.guilds = data.value
         this.isLoading = false
         this.lastFetch = Date.now()

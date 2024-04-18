@@ -14,8 +14,8 @@
           <NuxtLink to="/support">
             Support
           </NuxtLink>
-          <NuxtLink to="/premium">
-            Premium
+          <NuxtLink to="/ultimate">
+            Ultimate
           </NuxtLink>
           <NuxtLink to="/status">
             Status

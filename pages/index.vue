@@ -53,7 +53,7 @@
         <span class="mt-4 text-secondary">
           Focusing only on voice channels makes Astro the best bot of its kind, try it now!
         </span>
-        <NuxtLink to="/guilds" class="mt-6 w-full button-primary md:w-fit">
+        <NuxtLink to="/guilds" class="mt-6 w-full button-primary-bordered md:w-fit">
           Get started
         </NuxtLink>
       </div>

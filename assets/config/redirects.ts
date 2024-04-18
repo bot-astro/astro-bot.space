@@ -15,8 +15,8 @@ export const redirects: Array<Redirect> = [
     url: 'https://discord.com/oauth2/authorize?client_id={APPLICATION_ID}&scope=bot+applications.commands&permissions=8&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fauth-callback&guild_id={GUILD_ID}&disable_guild_select=true',
   },
   {
-    id: 'discord-premium',
-    name: 'Discord premium',
+    id: 'discord-ultimate',
+    name: 'Discord ultimate',
     url: 'https://discord.com/application-directory/{APPLICATION_ID}/premium',
   },
   {

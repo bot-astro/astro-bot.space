@@ -74,8 +74,8 @@ watch(y, () => {
             </HMenuItem>
           </HMenuItems>
         </HMenu>
-        <NuxtLink to="/premium">
-          Premium
+        <NuxtLink to="/ultimate">
+          Ultimate
         </NuxtLink>
       </div>
 
