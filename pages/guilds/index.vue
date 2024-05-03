@@ -11,9 +11,6 @@ const guilds = computed(() => {
   return guildsStore.guilds
     .filter(guild => guild.can_manage)
     .filter(guild => search.value.length > 0 ? guild.name.toLowerCase().includes(search.value.toLowerCase()) : true)
-    .sort((a, b) => {
-      return a.settings === b.settings ? 0 : a.settings !== undefined ? -1 : 1
-    })
 })
 </script>
 

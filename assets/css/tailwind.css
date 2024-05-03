@@ -5,42 +5,65 @@
 @tailwind utilities;
  
 @layer base {
+  /* all colors are in dark mode by default, there is no light mode */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
- 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
- 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
- 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
- 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
- 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --ring: 240 10% 3.9%;
- 
+    /* color palette */
+    --purple-50: 270, 100%, 98.04%;
+    --purple-400: 270, 95.24%, 75.29%;
+    --purple-500: 270.74, 91.01%, 65.1%;
+
+    --pink-500: 330.37, 81.19%, 60.39%;
+
+    --red-400: 0, 90.6%, 70.78%;
+    --red-500: 0, 84.24%, 60.2%;
+
+    --white: 0, 0%, 100%;
+
+    --gray-50: 0, 0%, 75.69%;
+    --gray-300: 229.41, 7.11%, 53.14%;
+    --gray-800: 260, 13.04%, 9.02%;
+    --gray-900: 270, 11.11%, 3.53%;
+
+
+    /* background for core components */
+    --background: var(--gray-900);
+    /* background for container components such as cards or general group of content */
+    --background-container: var(--gray-800);
+    /* background for interactive components such as modals, dropdowns, menus */
+    --background-interactive: var(--gray-800);
+    /* alternative background to contrast other background sections */
+    --background-alternative: var(--gray-800);
+
+    /* background for buttons and other clickable components such as switches or tabs */
+    --background-button: var(--purple-500);
+
+    /* background for buttons and other clicable components that need to standout more */
+    --background-button-standout: linear-gradient(to right, var(--purple-500), var(--pink-500));
+
+    /* base foreground color for text and other elements */
+    --foregound: var(--white);
+    /* foreground colors for text and other elements considered secondary */
+    --foreground-secondary: var(--gray-300);
+    /* foreground color for destructive content or errors */
+    --foreground-destructive: var(--red-400);
+
+    /* foreground color for text links */
+    --foreground-link: var(--gray-300);
+    --foreground-link-hover: var(--purple-50);
+
+    /* foreground color for links that need to standout more */
+    --foreground-link-standout: var(--purple-400);
+
+    /* border color */
+    --border: 220, 9.28%, 19.02%;
+    /* border color for destructive components or error containers */
+    --border-destructive: var(--red-500);
+
+    /* border radius */
     --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+
+    
+    /*
  
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
@@ -65,22 +88,18 @@
  
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
- 
     --ring: 240 4.9% 83.9%;
+      */
   }
 }
- 
-/* @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
+
+
+html, body, #__nuxt {
+  @apply w-full h-full;
+}
 
 html {
-  @apply bg-gray-950 text-white;
+  @apply bg-bg text-foreground;
   font-family:
     Inter,
     GoNotoCurrent,
@@ -101,6 +120,7 @@ html {
 
 body {
   @apply selection:bg-purple-500 selection:text-white;
+  /* TODO: Find better pattern */
   background-color: #131313;
   background-image: radial-gradient(circle at center center, #c744f7, #e5e5f7),
     repeating-radial-gradient(
@@ -115,11 +135,11 @@ body {
 }
 
 @layer base {
-  .border-box-border {
-    @apply border border-light-grey;
+  .bordered {
+    @apply border border-border;
   }
 
-  .border-box-border-danger {
+  .bordered-danger {
     @apply border border-red-500 border-opacity-50;
   }
 }
@@ -236,4 +256,8 @@ body {
 
 .backlit-box:hover::before {
     opacity: 1;
+}
+
+html, body, #__nuxt {
+  @apply w-full h-full;
 }

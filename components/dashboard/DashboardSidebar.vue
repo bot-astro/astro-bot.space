@@ -1,11 +1,13 @@
 <script setup lang="ts">
 const guildsStore = useGuildsStore()
-
 const { selectedGuild, selectedGuildSettings, isSelectedGuildSettingsLoading } = storeToRefs(guildsStore)
+
+const dashboardSectionStore = useDashboardSectionStore()
+const { selectedSection } = storeToRefs(dashboardSectionStore)
 </script>
 
 <template>
-  <div class="flex flex-col min-w-64">
+  <div class="flex flex-col min-w-64 min-h-full">
     <!-- Server indicator -->
     <div class="border-box-border bg-grey-900 h-20 w-full p-4">
       <!-- server loaded -->
@@ -37,6 +39,31 @@ const { selectedGuild, selectedGuildSettings, isSelectedGuildSettingsLoading } =
       </div>
     </div>
 
-    <div />
+    <!-- settings navigation -->
+    <div class="flex flex-col grow bg-grey-800 py-4 border-r border-light-grey">
+      <div
+        class="flex flex-row items-center gap-3 px-4 py-2 hover:bg-grey-900 cursor-pointer transition-colors"
+        :class="selectedSection === DashboardSection.OVERVIEW ? 'bg-grey-900' : ''"
+        @click="dashboardSectionStore.selectSection(DashboardSection.OVERVIEW)"
+      >
+        <Icon
+          name="lucide:server"
+          class="size-4"
+        />
+        <span>Overview</span>
+      </div>
+
+      <div
+        class="flex flex-row items-center gap-3 px-4 py-2 hover:bg-grey-900 cursor-pointer transition-colors"
+        :class="selectedSection === DashboardSection.ERRORS ? 'bg-grey-900' : ''"
+        @click="dashboardSectionStore.selectSection(DashboardSection.ERRORS)"
+      >
+        <Icon
+          name="fluent:warning-24-regular"
+          class="size-4"
+        />
+        <span>Errors</span>
+      </div>
+    </div>
   </div>
 </template>

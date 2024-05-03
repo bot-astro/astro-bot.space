@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import DashboardOverviewPage from '~/components/dashboard/sections/DashboardOverviewPage.vue'
+
 definePageMeta({
   middleware: 'auth',
   layout: 'dashboard',
@@ -9,11 +11,13 @@ const guildsStore = useGuildsStore()
 
 guildsStore.fetchIfOutdated()
 guildsStore.select(guildId)
+
+const dashboardSectionStore = useDashboardSectionStore()
 </script>
 
 <template>
-  <div>
-    <span>Single guild {{ guildsStore.selectedGuild?.id }}</span>
+  <div class="h-full w-full">
+    <DashboardOverviewPage v-if="dashboardSectionStore.selectedSection === DashboardSection.OVERVIEW" />
   </div>
 </template>
 

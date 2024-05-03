@@ -1,0 +1,12 @@
+export enum DashboardSection {
+  OVERVIEW,
+  ERRORS,
+  GENERATORS,
+  GENERATOR,
+  INTERFACES,
+  INTERFACE,
+  TEMPLATES,
+  TEMPLATE,
+  VOICE_ROLES,
+  VOICE_ROLE,
+}

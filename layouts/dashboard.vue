@@ -4,13 +4,13 @@
 
 <template>
   <NuxtLoadingIndicator />
-  <div class="flex text-sm">
+  <div class="flex text-sm w-full h-full">
     <DashboardSidebar />
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full h-full">
       <DashboardNavbar />
-      <div class="flex flex-col">
+      <div class="flex flex-col grow">
         <slot />
-        <CoreFooter class="mt-32" />
+        <CoreFooter class="mt-auto" />
       </div>
     </div>
   </div>
