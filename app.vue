@@ -3,7 +3,7 @@ provideHeadlessUseId(() => useId())
 </script>
 
 <template>
-  <div class="dark">
+  <div class="">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

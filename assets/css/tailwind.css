@@ -7,68 +7,77 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 240 10% 3.9%;
  
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
  
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 3.9%;
  
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 3.9%;
  
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
  
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
  
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
  
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
  
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
  
-    --ring: 222.2 84% 4.9%;
+    --ring: 240 10% 3.9%;
  
     --radius: 0.5rem;
   }
  
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
  
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
  
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
  
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
  
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
  
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
  
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
  
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }
+ 
+/* @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
 
 html {
   @apply bg-gray-950 text-white;
@@ -124,6 +133,14 @@ body {
     @apply text-red-400 text-opacity-80;
   }
 
+  .text-title {
+    @apply text-4xl font-medium tracking-wide font-display text-center;
+  }
+
+  .text-subtitle {
+    @apply text-xl font-medium tracking-wide text-center text-grey-300;
+  }
+
   .button-text {
     @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
   }
@@ -133,7 +150,7 @@ body {
   }
 
   .button-text-danger {
-    @apply text-red-400 text-opacity-75;
+    @apply text-red-400 text-opacity-75 cursor-pointer hover:text-opacity-100;
   }
   
   .button {
@@ -141,7 +158,15 @@ body {
   }
 
   .button-primary {
-    @apply text-white flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90;
+    @apply text-white flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-80;
+  }
+
+  .button-secondary {
+    @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer bg-grey-800 hover:bg-background border-box-border hover:border-grey-400 disabled:hover:cursor-not-allowed;
+  }
+
+  .button-primary-bordered {
+    @apply text-white border border-transparent flex items-center justify-center rounded-md bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-2 transition-all duration-150 hover:opacity-90 hover:border-white;
   }
 
   .group {
@@ -164,6 +189,10 @@ body {
     @apply rounded-b-md;
   }
 
+  .tab {
+    @apply border-box-border px-2 py-1 rounded;
+  }
+
   .danger {
     @apply text-red-400 hover:text-red-500;
   }
@@ -175,6 +204,14 @@ body {
   input {
     @apply rounded h-9 bg-grey-900 border-box-border placeholder-grey-400 px-2.5 py-1 outline-none focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:placeholder-opacity-60 disabled:opacity-80;
   }
+}
+
+/* ANIMATIONS */
+.backlit-box {
+  position: relative;
+}
+.backlit-box * {
+  z-index: 4;
 }
 
 .backlit-box::before {
