@@ -10,7 +10,13 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.1",
-    "@tailwindcss/typography": "^0.5.10"
+    "@tailwindcss/typography": "^0.5.10",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.377.0",
+    "radix-vue": "^1.7.3",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.12.2",
@@ -27,6 +33,7 @@
     "nuxt-headlessui": "^1.2.0",
     "nuxt-icon": "^0.6.7",
     "pinia": "^2.1.7",
+    "shadcn-nuxt": "^0.10.4",
     "vue": "^3.4.21",
     "vue-eslint-parser": "^9.4.2",
     "vue-router": "^4.3.0"

@@ -6,6 +6,11 @@ interface GuildsState {
   isError: boolean
   isLoading: boolean
   lastFetch?: number
+
+  selectedGuildId?: string
+  selectedGuildSettings?: DashboardGuildSettings
+  isSelectedGuildError: boolean
+  isSelectedGuildSettingsLoading: boolean
 }
 
 export const useGuildsStore = defineStore({
@@ -16,7 +21,16 @@ export const useGuildsStore = defineStore({
     isError: false,
     isLoading: false,
     lastFetch: undefined,
+    selectedGuildId: undefined,
+    selectedGuildSettings: undefined,
+    isSelectedGuildError: false,
+    isSelectedGuildSettingsLoading: false
   }),
+  getters: {
+    selectedGuild(state) {
+      return state.guilds.find(guild => guild.id === state.selectedGuildId)
+    }
+  },
   actions: {
     async fetchIfOutdated() {
       const currentTimestamp = Date.now()
@@ -41,6 +55,28 @@ export const useGuildsStore = defineStore({
         this.isLoading = false
         this.isError = true
         console.error('Failed fetching guilds', error.value)
+      }
+    },
+    async select(id: string | undefined) {
+      this.selectedGuildId = id
+      
+      if (id !== undefined) {
+        const { data, error, pending } = await useApiFetch<DashboardGuildSettings>(ApiEndpoints.GUILD_SETTINGS(id))
+
+        if (pending.value === true) {
+          this.isSelectedGuildSettingsLoading = true
+          this.isSelectedGuildError = false
+        }
+        else if (data.value !== null) {
+          this.isSelectedGuildError = false
+          this.selectedGuildSettings = data.value
+          this.isSelectedGuildSettingsLoading = false
+        }
+        else if (error.value !== null) {
+          this.isSelectedGuildSettingsLoading = false
+          this.isSelectedGuildError = true
+          console.error('Failed fetching guild settings', error.value)
+        }
       }
     },
   },

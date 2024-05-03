@@ -78,12 +78,12 @@ const guilds = computed(() => {
           class="button w-full flex items-center justify-center"
           :to="`/guilds/${guild.id}`"
         >
-          <Icon
+          <!-- <Icon
             v-if="guild.settings === undefined"
             name="fluent:add-12-filled"
             class="flex items-center justify-center text-center text-white"
-          />
-          {{ guild.settings !== undefined ? 'Manage' : 'Add Astro' }}
+          /> -->
+          Manage
         </NuxtLink>
       </div>
     </div>

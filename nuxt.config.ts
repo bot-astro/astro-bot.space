@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   },
 
   devtools: {
-    enabled: false,
+    enabled: true,
   },
 
   modules: [
@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-headlessui',
+    "shadcn-nuxt"
   ],
 
   headlessui: {
