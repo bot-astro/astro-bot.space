@@ -49,34 +49,37 @@ watch(y, () => {
 
       <!-- desktop: navbar items -->
       <div class="hidden w-full items-center gap-8 whitespace-nowrap lg:flex">
-        <NuxtLink to="/invite">
-          Add to server
-        </NuxtLink>
-        <NuxtLink to="/support">
-          Support
-        </NuxtLink>
-        <HMenu as="div" class="relative inline-block">
-          <HMenuButton class="flex items-center gap-2 button-text">
+        <ButtonText
+          text="Add to server"
+          to="/invite"
+        />
+        <ButtonText
+          text="Support"
+          to="/support"
+        />
+        <Menu>
+          <MenuButton class="flex items-center gap-2 button-text">
             <span>Features</span>
             <IconDropdown />
-          </HMenuButton>
-          <HMenuItems class="absolute flex flex-col menu">
-            <HMenuItem class="menu-item menu-item-first">
+          </MenuButton>
+          <MenuItems class="flex flex-col">
+            <MenuItem :first="true">
               <NuxtLink to="/temporary-voice-channels">
                 Temporary Voice Channels
               </NuxtLink>
-            </HMenuItem>
-            <DefaultMenuDivider />
-            <HMenuItem class="menu-item menu-item-last">
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem :last="true">
               <NuxtLink to="/voice-roles">
                 Voice roles
               </NuxtLink>
-            </HMenuItem>
-          </HMenuItems>
-        </HMenu>
-        <NuxtLink to="/ultimate">
-          Ultimate
-        </NuxtLink>
+            </MenuItem>
+          </MenuItems>
+        </Menu>
+        <ButtonText
+          text="Ultimate"
+          to="/ultimate"
+        />
       </div>
 
       <!-- spacer -->

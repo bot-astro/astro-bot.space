@@ -21,7 +21,7 @@ function decreaseQuantity() {
       <span class="text-subtitle">Take your server to the next level!</span>
     </div>
 
-    <div class="flex flex-col border-box-border rounded-lg bg-grey-900">
+    <div class="flex flex-col border-box-border rounded-lg bg-gray-900">
       <div class="flex flex-col py-8 px-12">
         <!-- purchase section -->
         <div class="flex flex-col gap-8 items-center">
@@ -82,7 +82,7 @@ function decreaseQuantity() {
       </div>
 
       <!-- feature comparison section -->
-      <div class="flex flex-col mt-4 border-light-grey border-t w-full px-4 py-2 justify-center gap-3 md:gap-1">
+      <div class="flex flex-col mt-4 border-light-gray border-t w-full px-4 py-2 justify-center gap-3 md:gap-1">
         <div class="grid grid-cols-7 pt-1">
           <span class="col-span-3 font-semibold md:text-lg">Feature</span>
           <span class="col-span-2 text-center font-semibold md:text-lg">Premium</span>

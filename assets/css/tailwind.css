@@ -99,7 +99,7 @@ html, body, #__nuxt {
 }
 
 html {
-  @apply bg-bg text-foreground;
+  @apply bg-bg text-white;
   font-family:
     Inter,
     GoNotoCurrent,
@@ -134,7 +134,31 @@ body {
   background-blend-mode: multiply;
 }
 
-@layer base {
+@layer components {
+  /* BUTTON */
+  .button-text {
+    @apply text-foreground-link hover:text-foreground-link-hover transition-colors;
+  }
+
+  /* MENU */
+  .menu {
+    @apply border border-border rounded-md shadow-lg mt-2 bg-bg-container min-w-full;
+  }
+
+  .menu-item {
+    @apply px-3 py-2 transition ease-in-out cursor-pointer text-foreground text-opacity-80 hover:bg-bg;
+  }
+
+  .menu-item-first {
+    @apply rounded-t-md;
+  }
+
+  .menu-item-last {
+    @apply rounded-b-md;
+  }
+}
+
+/* @layer base {
   .bordered {
     @apply border border-border;
   }
@@ -146,7 +170,7 @@ body {
 
 @layer components {
   .text-secondary {
-    @apply text-grey-300;
+    @apply text-gray-300;
   }
 
   .text-danger {
@@ -158,15 +182,15 @@ body {
   }
 
   .text-subtitle {
-    @apply text-xl font-medium tracking-wide text-center text-grey-300;
+    @apply text-xl font-medium tracking-wide text-center text-gray-300;
   }
 
   .button-text {
-    @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
+    @apply p-1 transition text-gray-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
   }
 
   .button-text-primary {
-    @apply p-1 transition text-grey-50 hover:text-purple-50 flex-shrink-0 cursor-pointer;
+    @apply p-1 transition text-gray-50 hover:text-purple-50 flex-shrink-0 cursor-pointer;
   }
 
   .button-text-danger {
@@ -182,7 +206,7 @@ body {
   }
 
   .button-secondary {
-    @apply p-1 transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer bg-grey-800 hover:bg-background border-box-border hover:border-grey-400 disabled:hover:cursor-not-allowed;
+    @apply p-1 transition text-gray-300 hover:text-purple-50 flex-shrink-0 cursor-pointer bg-gray-800 hover:bg-background border-box-border hover:border-gray-400 disabled:hover:cursor-not-allowed;
   }
 
   .button-primary-bordered {
@@ -190,23 +214,7 @@ body {
   }
 
   .group {
-    @apply border-box-border bg-grey-800 rounded-md px-3 py-3;
-  }
-
-  .menu {
-    @apply border border-light-grey rounded-md shadow-lg mt-2 bg-grey-800 min-w-full;
-  }
-
-  .menu-item {
-    @apply px-3 py-2 transition ease-in-out cursor-pointer text-white text-opacity-80 hover:text-white hover:bg-background;
-  }
-
-  .menu-item-first {
-    @apply rounded-t-md;
-  }
-
-  .menu-item-last {
-    @apply rounded-b-md;
+    @apply border-box-border bg-gray-800 rounded-md px-3 py-3;
   }
 
   .tab {
@@ -218,13 +226,13 @@ body {
   }
 
   a {
-    @apply transition text-grey-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
+    @apply transition text-gray-300 hover:text-purple-50 flex-shrink-0 cursor-pointer;
   }
 
   input {
-    @apply rounded h-9 bg-grey-900 border-box-border placeholder-grey-400 px-2.5 py-1 outline-none focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:placeholder-opacity-60 disabled:opacity-80;
+    @apply rounded h-9 bg-gray-900 border-box-border placeholder-gray-400 px-2.5 py-1 outline-none focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:placeholder-opacity-60 disabled:opacity-80;
   }
-}
+} */
 
 /* ANIMATIONS */
 .backlit-box {

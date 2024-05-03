@@ -66,14 +66,14 @@ module.exports = {
           DEFAULT: 'hsl(var(--border))',
           destructive: 'hsl(var(--border-destructive))',
         }
-        // 'grey': {
+        // 'gray': {
         //   50: '#c1c1c1',
         //   300: '#7f8290',
         //   400: '#6b7280',
         //   800: '#16141a',
         //   900: '#09080a',
         // },
-        // 'light-grey': '#2c2f35',
+        // 'light-gray': '#2c2f35',
         // 'background': '#100f13',
         // 'border': 'hsl(var(--border))',
         // 'input': 'hsl(var(--input))',

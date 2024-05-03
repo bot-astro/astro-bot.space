@@ -1,3 +1,3 @@
 <template>
-  <hr class="border-light-grey" role="none">
+  <hr class="border-border" role="none">
 </template>
