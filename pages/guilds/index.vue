@@ -23,11 +23,13 @@ const guilds = computed(() => {
       </div>
 
       <div class="flex items-center gap-2">
-        <Icon
-          name="fluent:arrow-sync-12-regular"
-          class="button-text-danger size-6"
-          @click="guildsStore.fetch()"
-        />
+        <ButtonText destructive>
+          <Icon
+            name="fluent:arrow-sync-12-regular"
+            class="size-6"
+            @click="guildsStore.fetch()"
+          />
+        </ButtonText>
 
         <input
           class="w-full md:w-auto"
@@ -47,7 +49,7 @@ const guilds = computed(() => {
     </div>
     <div
       v-else-if="guildsStore.isError"
-      class="w-full mt-4 flex justify-center border-box-border-danger rounded-md p-4 text-danger"
+      class="w-full mt-4 flex justify-center bordered-destructive rounded-md p-4 text-destructive"
     >
       Something went wrong, please try again later
     </div>
@@ -62,9 +64,9 @@ const guilds = computed(() => {
             <NuxtImg
               v-if="guild.icon !== undefined"
               :src="discordGuildIconUri(guild.id, guild.icon)"
-              class="rounded-full max-w-none w-12 h-12 md:w-14 md:h-14 border-box-border"
+              class="rounded-full max-w-none w-12 h-12 md:w-14 md:h-14 bordered"
             />
-            <p v-else class="flex items-center justify-center truncate rounded-full font-semibold text-white size-14 border-box-border hover:opacity-80">
+            <p v-else class="flex items-center justify-center truncate rounded-full font-semibold text-white size-14 bordered hover:opacity-80">
               {{ guild.name.split(" ").map((a) => a.charAt(0).toUpperCase()).join("") }}
             </p>
           </div>

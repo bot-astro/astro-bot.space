@@ -1,26 +1,25 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
 
-interface ButtonTextProps {
+interface ButtonStandoutProps {
   to?: string
-  destructive?: boolean
   class?: HTMLAttributes['class']
 }
 
-const props = defineProps<ButtonTextProps>()
+const props = defineProps<ButtonStandoutProps>()
 </script>
 
 <template>
   <NuxtLink
     v-if="to"
-    :class="cn(destructive ? 'button-text-destructive' : 'button-text', props.class)"
+    :class="cn('button-standout', props.class)"
     :to="props.to"
   >
     <slot />
   </NuxtLink>
   <button
     v-else
-    :class="cn(destructive ? 'button-text-destructive' : 'button-text', props.class)"
+    :class="cn('button-standout', props.class)"
   >
     <slot />
   </button>

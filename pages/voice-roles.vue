@@ -17,16 +17,19 @@
     />
 
     <div
-      class="flex flex-col w-full items-center justify-center rounded-md p-6 backlit-box border-box-border bg-background md:max-w-screen-lg"
+      class="flex flex-col w-full items-center justify-center rounded-md p-6 backlit-box bordered bg-bg md:max-w-screen-lg"
       @mousemove="onBacklitBoxMouseMove"
     >
       <span class="text-2xl font-medium tracking-wide font-display">Conviced?</span>
-      <span class="mt-4 text-secondary">
+      <span class="mt-4 text-dimmed">
         It takes just a couple of minutes to get started using Astro, try it now!
       </span>
-      <NuxtLink to="/guilds" class="mt-6 w-full button-primary-bordered md:w-fit">
+      <ButtonStandout
+        to="/guilds"
+        class="mt-6 w-full md:w-fit"
+      >
         Get started
-      </NuxtLink>
+      </ButtonStandout>
     </div>
   </div>
 </template>

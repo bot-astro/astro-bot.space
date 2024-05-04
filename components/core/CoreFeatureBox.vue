@@ -22,7 +22,7 @@ function setIsIllustrationDialogOpen(value: boolean) {
 
 <template>
   <div
-    class="flex flex-col rounded-md backlit-box border-box-border bg-background md:max-w-screen-lg"
+    class="flex flex-col rounded-md backlit-box bordered bg-bg md:max-w-screen-lg"
     :class="reverse ? 'md:flex-row-reverse' : 'md:flex-row'"
     @mousemove="onBacklitBoxMouseMove"
   >
@@ -46,7 +46,8 @@ function setIsIllustrationDialogOpen(value: boolean) {
     <!-- feature box -->
     <NuxtImg
       :src="illustrationSrc"
-      class="z-10 cursor-zoom-in select-none rounded-r hover:border-2 md:h-64"
+      class="z-10 cursor-zoom-in select-none hover:border-2 md:h-64"
+      :class="reverse ? 'rounded-r' : 'rounded-l'"
       draggable="false"
       @click="showIllustration()"
     />
@@ -54,13 +55,17 @@ function setIsIllustrationDialogOpen(value: boolean) {
       <slot>
         <span v-if="title" class="text-2xl font-medium tracking-wide font-display">{{ title }}</span>
       </slot>
-      <span class="mt-4 text-secondary">
+      <span class="mt-4 text-dimmed">
         {{ description }}
       </span>
       <div v-if="buttonText" class="grow" />
-      <NuxtLink v-if="buttonTo && buttonText" :to="buttonTo" class="mt-4 w-full button md:w-fit" :class="buttonStyleClasses ? buttonStyleClasses : ''">
+      <Button
+        v-if="buttonTo && buttonText"
+        :to="buttonTo"
+        class="mt-4 w-full md:w-fit" :class="buttonStyleClasses ? buttonStyleClasses : ''"
+      >
         {{ buttonText }}
-      </NuxtLink>
+      </Button>
     </div>
   </div>
 </template>

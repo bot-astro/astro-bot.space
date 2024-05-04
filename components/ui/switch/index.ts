@@ -1,0 +1,1 @@
+export { default as SwitchDoubleText } from "./SwitchDoubleText.vue"

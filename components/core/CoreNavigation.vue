@@ -50,13 +50,15 @@ watch(y, () => {
       <!-- desktop: navbar items -->
       <div class="hidden w-full items-center gap-8 whitespace-nowrap lg:flex">
         <ButtonText
-          text="Add to server"
           to="/invite"
-        />
+        >
+          Add to server
+        </ButtonText>
         <ButtonText
-          text="Support"
           to="/support"
-        />
+        >
+          Support
+        </ButtonText>
         <Menu>
           <MenuButton class="flex items-center gap-2 button-text">
             <span>Features</span>
@@ -77,9 +79,10 @@ watch(y, () => {
           </MenuItems>
         </Menu>
         <ButtonText
-          text="Ultimate"
           to="/ultimate"
-        />
+        >
+          Ultimate
+        </ButtonText>
       </div>
 
       <!-- spacer -->

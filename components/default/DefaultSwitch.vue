@@ -9,7 +9,7 @@ function toggle() {
 <template>
   <Switch
     v-model="enabled"
-    class="relative bg-gray-900 border-box-border flex w-14 shrink-0 items-center rounded-full border p-1 shadow-lg cursor-pointer"
+    class="relative bg-gray-900 bordered flex w-14 shrink-0 items-center rounded-full border p-1 shadow-lg cursor-pointer"
     @click="toggle"
   >
     <span

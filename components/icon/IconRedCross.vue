@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
-  <Icon name="fluent:dismiss-12-filled" class="text-danger" />
+  <Icon name="fluent:dismiss-12-filled" class="text-destructive" />
 </template>

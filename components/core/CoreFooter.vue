@@ -11,15 +11,15 @@
           Resources
         </p>
         <div class="flex flex-col gap-y-3 text-sm">
-          <NuxtLink to="/support">
+          <ButtonText to="/support">
             Support
-          </NuxtLink>
-          <NuxtLink to="/ultimate">
+          </ButtonText>
+          <ButtonText to="/ultimate">
             Ultimate
-          </NuxtLink>
-          <NuxtLink to="/status">
+          </ButtonText>
+          <ButtonText to="/status">
             Status
-          </NuxtLink>
+          </ButtonText>
         </div>
       </div>
       <div class="flex flex-col gap-y-4">
@@ -27,10 +27,10 @@
           Company
         </p>
         <div class="flex flex-col gap-y-3 text-sm">
-          <NuxtLink to="/">
+          <ButtonText to="/">
             Home
-          </NuxtLink>
-          <a href="mailto:hi@astro-bot.space"> Contact us </a>
+          </ButtonText>
+          <a href="mailto:hi@astro-bot.space" class="button-text"> Contact us </a>
         </div>
       </div>
       <div class="flex flex-col gap-y-4">
@@ -38,23 +38,23 @@
           Legal
         </p>
         <div class="flex flex-col gap-y-3 text-sm">
-          <NuxtLink to="/privacy">
+          <ButtonText to="/privacy">
             Privacy policy
-          </NuxtLink>
-          <NuxtLink to="/terms">
+          </ButtonText>
+          <ButtonText to="/terms">
             Terms of Service
-          </NuxtLink>
-          <NuxtLink href="/refund-policy">
+          </ButtonText>
+          <ButtonText to="/refund-policy">
             Refund policy
-          </NuxtLink>
+          </ButtonText>
         </div>
       </div>
     </div>
 
     <!-- footer socials and developed by text -->
     <div class="mt-12 flex flex-col items-center justify-between sm:flex-row">
-      <span class="mb-2 text-center text-sm text-secondary sm:mb-0">
-        @ Astro Bot 2024 - All rights reserved
+      <span class="mb-2 text-center text-sm text-dimmed sm:mb-0">
+        @ Astro Bot {{ new Date().getFullYear() }} - All rights reserved
       </span>
       <div class="flex items-center text-sm">
         <Icon
@@ -64,7 +64,7 @@
         &nbsp;by&nbsp;<a
           href="https://giuliopime.dev"
           target="_blank"
-          class="text-purple-400"
+          class="text-foreground-link-standout hover:opacity-80"
         >Giuliopime</a>
       </div>
     </div>

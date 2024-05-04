@@ -4,6 +4,14 @@ definePageMeta({
 })
 
 const quantity = ref(1)
+const isMonthly = ref(true)
+
+const price = computed(() => {
+  if (isMonthly.value)
+    return (quantity.value * 3.99).toFixed(2)
+  else
+    return (quantity.value * 39.99).toFixed(2)
+})
 
 function increaseQuantity() {
   quantity.value = quantity.value + 1
@@ -21,7 +29,7 @@ function decreaseQuantity() {
       <span class="text-subtitle">Take your server to the next level!</span>
     </div>
 
-    <div class="flex flex-col border-box-border rounded-lg bg-gray-900">
+    <div class="flex flex-col bordered rounded-lg bg-gray-900">
       <div class="flex flex-col py-8 px-12">
         <!-- purchase section -->
         <div class="flex flex-col gap-8 items-center">
@@ -29,16 +37,16 @@ function decreaseQuantity() {
           <div class="flex flex-col md:flex-row gap-8 md:gap-24 justify-evenly w-full">
             <!-- total -->
             <div class="flex flex-col items-center justify-center gap-2">
-              <span class="text-center text-6xl font-display font-semibold tracking-wide">$3.99</span>
-              <span class="text-center text-xl">per month for {{ quantity }} server{{ quantity > 1 ? 's' : '' }}</span>
+              <span class="text-center text-6xl font-display font-semibold tracking-wide">${{ price }}</span>
+              <span class="text-center text-xl">per {{ isMonthly ? 'month' : 'year ' }} for {{ quantity }} server{{ quantity > 1 ? 's' : '' }}</span>
             </div>
             <!-- quantity & frequency -->
             <div class="flex flex-col items-center gap-6">
               <div class="flex flex-col gap-1">
                 <span class="text-center text-lg font-semibold">Server quantity</span>
                 <div class="flex items-center justify-center gap-2">
-                  <button
-                    class="rounded-lg button-secondary aspect-square text-center"
+                  <ButtonSecondary
+                    class="rounded-lg aspect-square text-center"
                     :disabled="quantity < 2"
                     @click="decreaseQuantity"
                   >
@@ -46,25 +54,26 @@ function decreaseQuantity() {
                       name="fluent:line-horizontal-1-24-filled"
                       class="size-4 m-1"
                     />
-                  </button>
-                  <span class="border-box-border self-stretch flex items-center justify-center px-3 rounded-lg select-none min-w-12 text-center">
+                  </ButtonSecondary>
+                  <span class="bordered self-stretch flex items-center justify-center px-3 rounded-lg select-none min-w-12 text-center">
                     {{ quantity }}
                   </span>
-                  <button
-                    class="border-box-border rounded-lg button-secondary aspect-square text-center"
+                  <ButtonSecondary
+                    class="rounded-lg aspect-square text-center"
                     @click="increaseQuantity"
                   >
                     <Icon
                       name="fluent:add-12-filled"
                       class="size-4 m-1"
                     />
-                  </button>
+                  </ButtonSecondary>
                 </div>
               </div>
               <div class="flex flex-col gap-1">
                 <span class="text-center text-lg font-semibold">Billed</span>
                 <div class="flex items-center justify-center gap-2">
-                  <DefaultTextSwitch
+                  <SwitchDoubleText
+                    v-model="isMonthly"
                     first="Monthly"
                     second="Yearly"
                   />
@@ -74,15 +83,15 @@ function decreaseQuantity() {
           </div>
           <!-- purchase button container -->
           <div>
-            <button class="button-primary text-xl ">
+            <ButtonStandout class="text-xl">
               Subscribe
-            </button>
+            </ButtonStandout>
           </div>
         </div>
       </div>
 
       <!-- feature comparison section -->
-      <div class="flex flex-col mt-4 border-light-gray border-t w-full px-4 py-2 justify-center gap-3 md:gap-1">
+      <div class="flex flex-col mt-4 border-t border-border w-full px-4 py-2 justify-center gap-3 md:gap-1">
         <div class="grid grid-cols-7 pt-1">
           <span class="col-span-3 font-semibold md:text-lg">Feature</span>
           <span class="col-span-2 text-center font-semibold md:text-lg">Premium</span>

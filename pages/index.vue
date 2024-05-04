@@ -15,12 +15,12 @@
         The most unique and complete discord bot for temporary voice channels
         and voice roles!
       </p>
-      <NuxtLink
-        class="mt-6 text-xl button-primary"
+      <ButtonStandout
         to="/guilds"
+        class="mt-6 text-xl"
       >
         Get started
-      </NuxtLink>
+      </ButtonStandout>
     </div>
 
     <!-- features section -->
@@ -46,16 +46,19 @@
       </CoreFeatureBox>
 
       <div
-        class="flex flex-col items-center justify-center rounded-md p-6 backlit-box border-box-border bg-background md:max-w-screen-lg"
+        class="flex flex-col items-center justify-center rounded-md p-6 backlit-box bordered bg-bg md:max-w-screen-lg"
         @mousemove="onBacklitBoxMouseMove"
       >
         <span class="text-2xl font-medium tracking-wide font-display">Voice Channels Exclusive</span>
-        <span class="mt-4 text-secondary">
+        <span class="mt-4 text-dimmed">
           Focusing only on voice channels makes Astro the best bot of its kind, try it now!
         </span>
-        <NuxtLink to="/guilds" class="mt-6 w-full button-primary-bordered md:w-fit">
+        <ButtonStandout
+          to="/guilds"
+          class="mt-6 w-full md:w-fit"
+        >
           Get started
-        </NuxtLink>
+        </ButtonStandout>
       </div>
     </div>
   </div>

@@ -1,1 +1,4 @@
 export { default as ButtonText } from './ButtonText.vue'
+export { default as Button } from './Button.vue'
+export { default as ButtonStandout } from './ButtonStandout.vue'
+export { default as ButtonSecondary } from './ButtonSecondary.vue'

@@ -27,45 +27,44 @@ module.exports = {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        'purple': {
-          50: 'hsl(var(--purple-50))',
-          400: 'hsl(var(--purple-400))',
-          500: 'hsl(var(--purple-500))',
+        purple: {
+          50: 'hsl(var(--purple-50) / <alpha-value>)',
+          400: 'hsl(var(--purple-400) / <alpha-value>)',
+          500: 'hsl(var(--purple-500) / <alpha-value>)',
         },
-        'pink': {
-          500: 'hsl(var(--pink-500))',
+        pink: {
+          500: 'hsl(var(--pink-500) / <alpha-value>)',
         },
-        'red': {
-          400: 'hsl(var(--red-400))',
-          500: 'hsl(var(--red-500))',
+        red: {
+          400: 'hsl(var(--red-400) / <alpha-value>)',
+          500: 'hsl(var(--red-500) / <alpha-value>)',
         },
-        'white': 'hsl(var(--white))',
-        'gray': {
-          50: 'hsl(var(--gray-50))',
-          300: 'hsl(var(--gray-300))',
-          800: 'hsl(var(--gray-800))',
-          900: 'hsl(var(--gray-900))',
+        white: 'hsl(var(--white) / <alpha-value>)',
+        gray: {
+          50: 'hsl(var(--gray-50) / <alpha-value>)',
+          300: 'hsl(var(--gray-300) / <alpha-value>)',
+          800: 'hsl(var(--gray-800) / <alpha-value>)',
+          900: 'hsl(var(--gray-900) / <alpha-value>)',
         },
-        'bg': {
-          DEFAULT: 'hsl(var(--background))',
-          container: 'hsl(var(--background-container))',
-          interactive: 'hsl(var(--background-interactive))',
-          alternative: 'hsl(var(--background-alternative))',
-          button: 'hsl(var(--background-button))',
-          'button-standout': 'hsl(var(--background-button-standout))',
+        bg: {
+          DEFAULT: 'hsl(var(--background) / <alpha-value>)',
+          container: 'hsl(var(--background-container) / <alpha-value>)',
+          interactive: 'hsl(var(--background-interactive) / <alpha-value>)',
+          alternative: 'hsl(var(--background-alternative) / <alpha-value>)',
+          button: 'hsl(var(--background-button) / <alpha-value>)',
         },
-        'foreground': {
-          DEFAULT: 'hsl(var(--foreground))',
-          secondary: 'hsl(var(--foreground-secondary))',
-          destructive: 'hsl(var(--foreground-destructive))',
-          link: 'hsl(var(--foreground-link))',
-          'link-hover': 'hsl(var(--foreground-link-hover))',
-          'link-standout': 'hsl(var(--foreground-link-standout))',
+        foreground: {
+          'DEFAULT': 'hsl(var(--foreground) / <alpha-value>)',
+          'secondary': 'hsl(var(--foreground-secondary) / <alpha-value>)',
+          'destructive': 'hsl(var(--foreground-destructive) / <alpha-value>)',
+          'link': 'hsl(var(--foreground-link) / <alpha-value>)',
+          'link-hover': 'hsl(var(--foreground-link-hover) / <alpha-value>)',
+          'link-standout': 'hsl(var(--foreground-link-standout) / <alpha-value>)',
         },
-        'border': {
-          DEFAULT: 'hsl(var(--border))',
-          destructive: 'hsl(var(--border-destructive))',
-        }
+        border: {
+          DEFAULT: 'hsl(var(--border) / <alpha-value>)',
+          destructive: 'hsl(var(--border-destructive) / <alpha-value>)',
+        },
         // 'gray': {
         //   50: '#c1c1c1',
         //   300: '#7f8290',

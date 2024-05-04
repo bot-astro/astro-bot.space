@@ -9,11 +9,9 @@ const authStore = useAuthStore()
   <div>
     <!-- desktop -->
     <div class="hidden lg:flex">
-      <HMenu v-if="authStore.data" as="div" class="relative inline-block">
-        <HMenuButton class="flex">
-          <button
-            class="flex items-center gap-2 button-text-primary"
-          >
+      <Menu v-if="authStore.data">
+        <MenuButton class="flex">
+          <ButtonText class="flex items-center gap-2">
             <NuxtImg
               v-if="authStore.data.user.avatar"
               :src="discordUserAvatarUri(authStore.data.user.id, authStore.data.user.avatar)"
@@ -21,60 +19,57 @@ const authStore = useAuthStore()
             />
             <span>{{ authStore.data.user.username }}</span>
             <IconDropdown />
-          </button>
-        </HMenuButton>
-        <HMenuItems class="absolute right-0 flex w-full flex-col menu">
-          <HMenuItem class="menu-item menu-item-first">
+          </ButtonText>
+        </MenuButton>
+        <MenuItems class="right-0 flex flex-col">
+          <MenuItem :first="true">
             <NuxtLink to="/guilds">
               Servers
             </NuxtLink>
-          </HMenuItem>
-          <DefaultMenuDivider />
-          <HMenuItem class="menu-item">
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem>
             <NuxtLink to="/profile">
               Profile
             </NuxtLink>
-          </HMenuItem>
-          <DefaultMenuDivider />
-          <HMenuItem class="menu-item">
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem>
             <NuxtLink to="/profile">
               Billing
             </NuxtLink>
-          </HMenuItem>
-          <DefaultMenuDivider />
-          <HMenuItem class="menu-item danger menu-item-last">
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem :last="true" class="text-foreground-destructive">
             <div @click="useLogout()">
               Logout
             </div>
-          </HMenuItem>
-        </HMenuItems>
-      </HMenu>
-      <div v-else>
-        <button
-          class="button menu-item-last"
-          @click="useLogin()"
-        >
-          Login
-        </button>
-      </div>
+          </MenuItem>
+        </MenuItems>
+      </Menu>
+      <Button v-else @click="useLogin()">
+        Login
+      </Button>
     </div>
 
     <!-- mobile -->
     <div class="flex items-center lg:hidden">
-      <HMenu v-slot="{ open }" as="div" class="relative inline-block">
-        <HMenuButton class="flex items-center gap-2 button-text">
-          <Icon
-            :name="
-              open
-                ? 'fluent:dismiss-20-filled'
-                : 'fluent:line-horizontal-3-20-filled'
-            "
-            class="z-10 cursor-pointer select-none size-8"
-          />
-        </HMenuButton>
-        <HMenuItems class="absolute right-0 flex flex-col shadow-lg menu min-w-56">
+      <Menu v-slot="{ open }">
+        <MenuButton class="flex items-center gap-2">
+          <ButtonText>
+            <Icon
+              :name="
+                open
+                  ? 'fluent:dismiss-20-filled'
+                  : 'fluent:line-horizontal-3-20-filled'
+              "
+              class="z-10 cursor-pointer select-none size-8"
+            />
+          </ButtonText>
+        </MenuButton>
+        <MenuItems class="right-0 flex flex-col shadow-lg min-w-56">
           <!-- authenticated items -->
-          <HMenuItem v-if="authStore.data" as="div" class="my-1 px-3 pt-2">
+          <MenuItem v-if="authStore.data" class="my-1 px-3 pt-2" :disabled="true">
             <div
               class="flex items-center gap-2"
             >
@@ -83,67 +78,67 @@ const authStore = useAuthStore()
                 :src="discordUserAvatarUri(authStore.data.user.id, authStore.data.user.avatar)"
                 class="rounded-full size-6"
               />
-              <span class="text-sm text-secondary">Logged in as {{ authStore.data.user.username }}</span>
+              <span class="text-sm text-foreground-secondary">Logged in as {{ authStore.data.user.username }}</span>
             </div>
-          </HMenuItem>
-          <HMenuItem v-if="authStore.isAuthenticated" class="menu-item">
+          </MenuItem>
+          <MenuItem v-if="authStore.isAuthenticated">
             <NuxtLink to="/guilds">
               Servers
             </NuxtLink>
-          </HMenuItem>
-          <HMenuItem v-if="authStore.isAuthenticated" class="menu-item">
+          </MenuItem>
+          <MenuItem v-if="authStore.isAuthenticated">
             <NuxtLink to="/profile">
               Profile
             </NuxtLink>
-          </HMenuItem>
-          <HMenuItem v-if="authStore.isAuthenticated" class="menu-item">
+          </MenuItem>
+          <MenuItem v-if="authStore.isAuthenticated">
             <NuxtLink to="/profile">
               Billing
             </NuxtLink>
-          </HMenuItem>
-          <HMenuItem v-if="!authStore.isAuthenticated" class="menu-item menu-item-first">
-            <button class="text-start text-purple-500 hover:text-purple-400" @click="useLogin()">
+          </MenuItem>
+          <MenuItem v-if="!authStore.isAuthenticated" :first="true" @click="useLogin()">
+            <button class="text-start text-foreground-link-standout">
               Login
             </button>
-          </HMenuItem>
-          <DefaultMenuDivider />
-          <HMenuItem class="menu-item">
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem>
             <NuxtLink to="/guilds">
               Add to server
             </NuxtLink>
-          </HMenuItem>
-          <HMenuItem class="menu-item">
+          </MenuItem>
+          <MenuItem>
             <NuxtLink to="/profile">
               Support
             </NuxtLink>
-          </HMenuItem>
-          <HMenuItem class="menu-item">
+          </MenuItem>
+          <MenuItem>
             <NuxtLink to="/ultimate">
               Ultimate
             </NuxtLink>
-          </HMenuItem>
-          <DefaultMenuDivider />
-          <HMenuItem as="div" class="px-3 pt-2">
-            <span class="text-sm text-secondary">Features</span>
-          </HMenuItem>
-          <HMenuItem class="menu-item">
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem as="div" class="px-3 pt-2" :disabled="true">
+            <span class="text-sm text-foreground-secondary">Features</span>
+          </MenuItem>
+          <MenuItem>
             <NuxtLink to="/temporary-voice-channels">
               Temporary voice channels
             </NuxtLink>
-          </HMenuItem>
-          <HMenuItem class="menu-item" :class="!authStore.isAuthenticated ? 'menu-item-last' : ''">
+          </MenuItem>
+          <MenuItem :last="!authStore.isAuthenticated">
             <NuxtLink to="/voice-roles">
               Voice roles
             </NuxtLink>
-          </HMenuItem>
-          <DefaultMenuDivider v-if="authStore.isAuthenticated" />
-          <HMenuItem v-if="authStore.isAuthenticated" class="menu-item danger menu-item-last">
+          </MenuItem>
+          <MenuDivider v-if="authStore.isAuthenticated" />
+          <MenuItem v-if="authStore.isAuthenticated" class="text-foreground-destructive" :last="true">
             <div @click="useLogout()">
               Logout
             </div>
-          </HMenuItem>
-        </HMenuItems>
-      </HMenu>
+          </MenuItem>
+        </MenuItems>
+      </Menu>
     </div>
   </div>
 </template>

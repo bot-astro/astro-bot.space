@@ -1,9 +1,15 @@
 <script lang="ts" setup>
-defineProps<{
+import type { HTMLAttributes } from 'vue'
+
+interface SwitchDoubleTextProps {
   first: string
   second: string
-}>()
-const enabled = ref(false)
+  class?: HTMLAttributes['class']
+}
+
+const props = defineProps<SwitchDoubleTextProps>()
+
+const enabled = defineModel<boolean>()
 
 function toggle() {
   enabled.value = !enabled.value
@@ -11,9 +17,9 @@ function toggle() {
 </script>
 
 <template>
-  <Switch
+  <HSwitch
     v-model="enabled"
-    class="relative grid grid-cols-2 bg-gray-900 gap-2 border-box-border rounded-full border p-1 cursor-pointer"
+    :class="cn('relative grid grid-cols-2 bg-bg-interactive gap-2 bordered rounded-full p-1 cursor-pointer', props.class)"
     @click="toggle"
   >
     <!-- <span
@@ -22,11 +28,11 @@ function toggle() {
     /> -->
     <span
       class="select-none text-center rounded-full px-2 py-1 text-sm transition-all bg-opacity-70"
-      :class="enabled ? 'bg-purple-500' : 'hover:bg-gray-300 hover:bg-opacity-30'"
+      :class="enabled ? 'bg-bg-button' : 'hover:bg-gray-300 hover:bg-opacity-30'"
     >{{ first }}</span>
     <span
       class="select-none text-center rounded-full px-2 py-1 text-sm transition-all bg-opacity-70"
-      :class="!enabled ? 'bg-purple-500' : 'hover:bg-gray-300 hover:bg-opacity-30'"
+      :class="!enabled ? 'bg-bg-button' : 'hover:bg-gray-300 hover:bg-opacity-30'"
     >{{ second }}</span>
-  </Switch>
+  </HSwitch>
 </template>
