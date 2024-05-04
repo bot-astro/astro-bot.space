@@ -17,9 +17,6 @@
           <ButtonText to="/ultimate">
             Ultimate
           </ButtonText>
-          <ButtonText to="/status">
-            Status
-          </ButtonText>
         </div>
       </div>
       <div class="flex flex-col gap-y-4">
