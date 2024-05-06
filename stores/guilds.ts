@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import objectHash from 'object-hash'
 import type { DashboardGuild } from '~/types/api/dashboard/DashboardGuild'
 
 interface GuildsState {
@@ -11,6 +12,10 @@ interface GuildsState {
   selectedGuildSettings?: DashboardGuildSettings
   isSelectedGuildError: boolean
   isSelectedGuildSettingsLoading: boolean
+
+  modifiableSelectedGuildSettings?: DashboardGuildSettings
+  saveLoading: boolean
+  saveError: boolean
 }
 
 export const useGuildsStore = defineStore({
@@ -24,12 +29,22 @@ export const useGuildsStore = defineStore({
     selectedGuildId: undefined,
     selectedGuildSettings: undefined,
     isSelectedGuildError: false,
-    isSelectedGuildSettingsLoading: false
+    isSelectedGuildSettingsLoading: false,
+    modifiableSelectedGuildSettings: undefined,
+    saveLoading: false,
+    saveError: false,
   }),
   getters: {
     selectedGuild(state) {
       return state.guilds.find(guild => guild.id === state.selectedGuildId)
-    }
+    },
+    // MODIFIED INDICATOR
+    areSettingsModified(state) {
+      if (state.selectedGuildSettings === undefined || state.modifiableSelectedGuildSettings === undefined)
+        return false
+      else
+        return objectHash(state.selectedGuildSettings) !== objectHash(state.modifiableSelectedGuildSettings)
+    },
   },
   actions: {
     async fetchIfOutdated() {
@@ -58,25 +73,56 @@ export const useGuildsStore = defineStore({
       }
     },
     async select(id: string | undefined) {
-      this.selectedGuildId = id
-      
-      if (id !== undefined) {
-        const { data, error, pending } = await useApiFetch<DashboardGuildSettings>(ApiEndpoints.GUILD_SETTINGS(id))
+      const { $apiFetch } = useNuxtApp()
 
-        if (pending.value === true) {
-          this.isSelectedGuildSettingsLoading = true
+      this.selectedGuildId = id
+
+      this.isSelectedGuildSettingsLoading = true
+      this.isSelectedGuildError = false
+
+      if (id !== undefined) {
+        try {
+          const data = await $apiFetch<DashboardGuildSettings>(ApiEndpoints.GUILD_SETTINGS(id))
           this.isSelectedGuildError = false
-        }
-        else if (data.value !== null) {
-          this.isSelectedGuildError = false
-          this.selectedGuildSettings = data.value
+          this.selectedGuildSettings = structuredClone(data)
+          this.modifiableSelectedGuildSettings = structuredClone(data)
           this.isSelectedGuildSettingsLoading = false
+          this.saveLoading = false
+          this.saveError = false
         }
-        else if (error.value !== null) {
+        catch (e) {
           this.isSelectedGuildSettingsLoading = false
           this.isSelectedGuildError = true
-          console.error('Failed fetching guild settings', error.value)
+          console.error('Failed fetching guild settings', e)
         }
+      }
+    },
+    async saveModifiedGuildSettings() {
+      if (this.selectedGuildId !== undefined && this.modifiableSelectedGuildSettings !== undefined) {
+        const { $apiFetch } = useNuxtApp()
+
+        this.saveError = false
+        this.saveLoading = true
+
+        try {
+          const data = await $apiFetch<DashboardGuildSettings>(ApiEndpoints.GUILD_SETTINGS_UPDATE(this.selectedGuildId), {
+            method: 'post',
+            body: this.modifiableSelectedGuildSettings,
+          })
+
+          this.saveLoading = false
+          this.saveError = false
+          this.selectedGuildSettings = structuredClone(data)
+          this.modifiableSelectedGuildSettings = structuredClone(data)
+        }
+        catch (e) {
+          this.saveLoading = false
+          this.saveError = true
+          console.error('failed saving guild settings', e)
+        }
+      }
+      else {
+        console.error('tried to save modified guild settings without a selected guild id')
       }
     },
   },

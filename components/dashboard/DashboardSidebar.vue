@@ -29,7 +29,7 @@ const { selectedSection } = storeToRefs(dashboardSectionStore)
           <Skeleton v-else class="h-2" />
 
           <span v-if="!isSelectedGuildSettingsLoading" class="text-secondary text-xs">
-            {{ selectedGuildSettings?.upgradedByUserID !== undefined ? 'Ultimate' : 'Free' }}
+            {{ selectedGuildSettings?.upgraded_by_user_id !== undefined ? 'Ultimate' : 'Free' }}
           </span>
         </div>
       </div>

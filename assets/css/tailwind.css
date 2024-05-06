@@ -193,7 +193,7 @@ body {
   }
 
   .button {
-    @apply text-foreground w-fit transition duration-75 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative bg-bg-button/80 hover:bg-bg-button/100 focus:bg-bg-button/100 py-1.5 px-4;
+    @apply text-foreground w-fit transition duration-75 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative bg-bg-button/80 enabled:hover:bg-bg-button/100 focus:bg-bg-button/100 py-1.5 px-4;
   }
 
   .button-secondary {
@@ -309,6 +309,16 @@ body {
 } */
 
 /* ANIMATIONS */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
 .backlit-box {
   position: relative;
 }
@@ -338,8 +348,4 @@ body {
 
 .backlit-box:hover::before {
     opacity: 1;
-}
-
-html, body, #__nuxt {
-  @apply w-full h-full;
 }

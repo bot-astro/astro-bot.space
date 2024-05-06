@@ -1,4 +1,4 @@
 export interface DashboardGuildSettings {
-  upgradedByUserID?: string
-  allowMissingAdminPerm: boolean
+  upgraded_by_user_id?: string
+  allow_missing_admin_perm: boolean
 }

@@ -14,4 +14,5 @@
       </div>
     </div>
   </div>
+  <DashboardSettingsSaveToast />
 </template>

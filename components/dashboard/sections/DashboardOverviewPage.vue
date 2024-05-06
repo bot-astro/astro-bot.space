@@ -1,10 +1,13 @@
 <script lang="ts" setup>
-import ButtonDestructive from '~/components/ui/button/ButtonDestructive.vue'
-
 const guildsStore = useGuildsStore()
-const { selectedGuild, selectedGuildSettings } = storeToRefs(guildsStore)
+const { selectedGuild, selectedGuildSettings, modifiableSelectedGuildSettings } = storeToRefs(guildsStore)
 
-const adminRequired = ref(true)
+function setAllowMissingAdminPermissions(value: boolean) {
+  console.log(value)
+  console.log(`${modifiableSelectedGuildSettings?.value?.allow_missing_admin_perm} maosd`)
+  if (modifiableSelectedGuildSettings?.value !== undefined)
+    modifiableSelectedGuildSettings.value.allow_missing_admin_perm = value
+}
 </script>
 
 <template>
@@ -24,7 +27,8 @@ const adminRequired = ref(true)
     </div>
 
     <!-- interactive content -->
-    <div class="flex flex-col gap-6 mt-12">
+    <div v-if="modifiableSelectedGuildSettings === undefined" />
+    <div v-else class="flex flex-col gap-6 mt-12">
       <div class="flex flex-col gap-1">
         <span class="text-group-name">SETTINGS</span>
         <div class="flex flex-col gap-2">
@@ -35,7 +39,10 @@ const adminRequired = ref(true)
               <span>Disabling this will make Astro ignore permission issues. <span class="text-destructive">It's recommended to keep this on!</span></span>
             </template>
 
-            <Switch v-model="adminRequired" />
+            <Switch
+              :model-value="modifiableSelectedGuildSettings.allow_missing_admin_perm"
+              @update:model-value="setAllowMissingAdminPermissions"
+            />
           </GroupSetting>
           <GroupSetting
             heading="Slash command permissions"
@@ -53,9 +60,11 @@ const adminRequired = ref(true)
         <div class="flex flex-col gap-2">
           <GroupSetting
             heading="Ultimate server"
-            :description="`Your server is currently ${selectedGuildSettings?.upgradedByUserID ? 'upgraded' : 'not upgraded'} to ultimate`"
+            :description="`Your server is currently ${selectedGuildSettings?.upgraded_by_user_id ? 'upgraded' : 'not upgraded'} to ultimate`"
           >
-            <Button>Upgrade</Button>
+            <Button>
+              Upgrade
+            </Button>
           </GroupSetting>
         </div>
       </div>

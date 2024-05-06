@@ -11,4 +11,5 @@ export class ApiEndpoints {
   public static GUILD_CHANNELS = (guildID: string) => `/dashboard/guilds/${guildID}/channels`
   public static GUILD_ROLES = (guildID: string) => `/dashboard/guilds/${guildID}/roles`
   public static GUILD_SETTINGS = (guildID: string) => `/dashboard/guilds/${guildID}/data`
+  public static GUILD_SETTINGS_UPDATE = (guildID: string) => `/dashboard/guilds/${guildID}/data/settings`
 }

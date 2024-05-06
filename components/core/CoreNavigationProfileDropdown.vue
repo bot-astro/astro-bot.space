@@ -67,7 +67,7 @@ const authStore = useAuthStore()
             />
           </ButtonText>
         </MenuButton>
-        <MenuItems class="right-0 flex flex-col shadow-lg min-w-56">
+        <MenuItems class="right-0 flex flex-col shadow-lg min-w-56 z-20">
           <!-- authenticated items -->
           <MenuItem v-if="authStore.data" class="my-1 px-3 pt-2" :disabled="true">
             <div
