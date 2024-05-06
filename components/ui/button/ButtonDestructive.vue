@@ -1,28 +1,25 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
 
-interface ButtonProps {
+interface ButtonDestructiveProps {
   to?: string
-  external?: boolean
   class?: HTMLAttributes['class']
 }
 
-const props = defineProps<ButtonProps>()
+const props = defineProps<ButtonDestructiveProps>()
 </script>
 
 <template>
-  <!-- TODO: Fix external property -->
   <NuxtLink
     v-if="to"
-    :class="cn('button', props.class)"
+    :class="cn('button-destructive', props.class)"
     :to="props.to"
-    :external
   >
     <slot />
   </NuxtLink>
   <button
     v-else
-    :class="cn('button', props.class)"
+    :class="cn('button-destructive', props.class)"
   >
     <slot />
   </button>

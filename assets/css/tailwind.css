@@ -17,6 +17,7 @@
     --red-400: 0deg 90.6% 70.78%;
     --red-500: 0deg 84.24% 60.2%;
 
+    --white-full: 0deg 0% 100%;
     --white: 0deg 0% 90%;
 
     --gray-50: 0deg 0% 75.69%;
@@ -159,11 +160,27 @@ body {
   }
 
   .text-title {
-    @apply text-4xl font-medium tracking-wide font-display text-center;
+    @apply text-4xl font-medium tracking-wide font-display;
+  }
+
+  .text-title-no-font {
+    @apply text-4xl font-medium tracking-wide;
   }
 
   .text-subtitle {
-    @apply text-xl font-medium tracking-wide text-center text-dimmed;
+    @apply text-xl font-medium tracking-wide text-dimmed;
+  }
+
+  .text-group-name {
+    @apply text-sm text-dimmed font-semibold;
+  }
+
+  .text-heading {
+    @apply text-base;
+  }
+
+  .text-description {
+    @apply text-dimmed;
   }
 
   /* BUTTON */
@@ -186,6 +203,10 @@ body {
   .button-standout {
     background: var(--background-button-standout);
     @apply text-foreground flex items-center justify-center rounded-md px-5 py-2 transition-all duration-150 hover:opacity-80;
+  }
+
+  .button-destructive {
+    @apply text-foreground-destructive/80 hover:text-foreground-destructive/100 w-fit transition duration-100 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative border border-red-500/20 hover:border-red-500/100 py-1.5 px-4;
   }
 
   /* MENU */

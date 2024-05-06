@@ -32,15 +32,11 @@ const { selectedSection } = storeToRefs(dashboardSectionStore)
             {{ selectedGuildSettings?.upgradedByUserID !== undefined ? 'Ultimate' : 'Free' }}
           </span>
         </div>
-
-        <div class="grow" />
-
-        <IconDropdown class="-rotate-90" />
       </div>
     </div>
 
     <!-- settings navigation -->
-    <div class="flex flex-col grow bg-gray-800 py-4 border-r bordered">
+    <div class="flex flex-col grow bg-gray-800 py-4 border-r border-border">
       <div
         class="flex flex-row items-center gap-3 px-4 py-2 hover:bg-gray-900 cursor-pointer transition-colors"
         :class="selectedSection === DashboardSection.OVERVIEW ? 'bg-gray-900' : ''"

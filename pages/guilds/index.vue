@@ -73,8 +73,8 @@ const guilds = computed(() => {
 
           <span>{{ guild.name }}</span>
         </div>
-        <NuxtLink
-          class="button w-full flex items-center justify-center"
+        <Button
+          class="w-full flex items-center justify-center"
           :to="`/guilds/${guild.id}`"
         >
           <!-- <Icon
@@ -83,7 +83,7 @@ const guilds = computed(() => {
             class="flex items-center justify-center text-center text-white"
           /> -->
           Manage
-        </NuxtLink>
+        </Button>
       </div>
     </div>
   </div>

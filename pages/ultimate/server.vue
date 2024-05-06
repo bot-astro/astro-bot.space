@@ -25,8 +25,8 @@ function decreaseQuantity() {
 <template>
   <div class="w-3/4 md:w-auto flex flex-col items-center mt-16 gap-16 mx-12">
     <div class="flex flex-col gap-4">
-      <span class="text-title">Ultimate server</span>
-      <span class="text-subtitle">Take your server to the next level!</span>
+      <span class="text-title text-center">Ultimate server</span>
+      <span class="text-subtitle text-center">Take your server to the next level!</span>
     </div>
 
     <div class="flex flex-col bordered rounded-lg bg-gray-900">

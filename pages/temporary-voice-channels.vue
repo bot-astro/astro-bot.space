@@ -1,6 +1,6 @@
 <template>
   <div class="w-3/4 md:w-auto flex flex-col items-center mt-16 gap-16 mx-12">
-    <span class="text-title"><span class="animate-dissolve">Temporary </span>Voice Channels</span>
+    <span class="text-title text-center"><span class="animate-dissolve">Temporary </span>Voice Channels</span>
 
     <CoreFeatureBox
       title="Full customisation"
