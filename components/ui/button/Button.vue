@@ -19,7 +19,7 @@ const props = defineProps<ButtonProps>()
     :to="props.to"
     :external
   >
-    <IconLoading v-show="loading" />
+    <IconLoading v-show="loading === true" />
     <slot />
   </NuxtLink>
   <button

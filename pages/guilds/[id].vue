@@ -18,6 +18,7 @@ const dashboardSectionStore = useDashboardSectionStore()
 <template>
   <div class="min-h-full w-full">
     <DashboardOverviewPage v-if="dashboardSectionStore.selectedSection === DashboardSection.OVERVIEW" />
+    <DashboardErrorPage v-if="dashboardSectionStore.selectedSection === DashboardSection.ERRORS" />
   </div>
 </template>
 

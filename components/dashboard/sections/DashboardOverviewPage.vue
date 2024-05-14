@@ -1,13 +1,6 @@
 <script lang="ts" setup>
 const guildsStore = useGuildsStore()
 const { selectedGuild, selectedGuildSettings, modifiableSelectedGuildSettings } = storeToRefs(guildsStore)
-
-function setAllowMissingAdminPermissions(value: boolean) {
-  console.log(value)
-  console.log(`${modifiableSelectedGuildSettings?.value?.allow_missing_admin_perm} maosd`)
-  if (modifiableSelectedGuildSettings?.value !== undefined)
-    modifiableSelectedGuildSettings.value.allow_missing_admin_perm = value
-}
 </script>
 
 <template>
@@ -40,8 +33,8 @@ function setAllowMissingAdminPermissions(value: boolean) {
             </template>
 
             <Switch
-              :model-value="modifiableSelectedGuildSettings.allow_missing_admin_perm"
-              @update:model-value="setAllowMissingAdminPermissions"
+              :model-value="!guildsStore.modifiableSelectedGuildSettings!.allow_missing_admin_perm"
+              @update:model-value="$event => (guildsStore.setAllowMissingAdminPermission(!$event))"
             />
           </GroupSetting>
           <GroupSetting
@@ -76,7 +69,7 @@ function setAllowMissingAdminPermissions(value: boolean) {
             heading="Reset temporary voice channels cache"
             description="If you are encountering weird issues with temporary voice channels, expecially when the incremental names for the channels start with a wrong number or skip some, hit this button, otherwise try to avoid this!"
           >
-            <ButtonDestructive>Clear cache</ButtonDestructive>
+            <ButtonDestructive >Clear cache</ButtonDestructive>
           </GroupSetting>
         </div>
       </div>

@@ -193,7 +193,7 @@ body {
   }
 
   .button {
-    @apply text-foreground w-fit transition duration-75 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative bg-bg-button/80 enabled:hover:bg-bg-button/100 focus:bg-bg-button/100 py-1.5 px-4;
+    @apply text-foreground w-fit transition duration-75 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative bg-bg-button/80 hover:bg-bg-button/100 focus:bg-bg-button/100 py-1.5 px-4;
   }
 
   .button-secondary {

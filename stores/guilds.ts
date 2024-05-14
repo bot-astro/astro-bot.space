@@ -125,5 +125,10 @@ export const useGuildsStore = defineStore({
         console.error('tried to save modified guild settings without a selected guild id')
       }
     },
+    // SETTINGS MODIFIERS
+    setAllowMissingAdminPermission(value: boolean) {
+      if (this.modifiableSelectedGuildSettings !== undefined)
+        this.modifiableSelectedGuildSettings.allow_missing_admin_perm = value
+    },
   },
 })
