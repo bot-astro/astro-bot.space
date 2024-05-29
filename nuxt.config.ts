@@ -27,10 +27,21 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-headlessui',
-    "shadcn-nuxt"
+    'shadcn-nuxt',
+    'nuxt-api-party',
+    "nuxt-auth-utils"
   ],
 
   headlessui: {
     prefix: 'H',
+  },
+
+  apiParty: {
+    endpoints: {
+      api: {
+        url: process.env.API_BASE_URL!,
+        schema: './schemas/openapi3_0.yaml',
+      },
+    },
   },
 })

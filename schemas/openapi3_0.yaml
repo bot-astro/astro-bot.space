@@ -1,0 +1,1032 @@
+openapi: 3.0.3
+info:
+  title: Astro Bot API
+  description: API for managing Astro Bot dashboard features.
+  version: 1.0.0
+servers:
+  - url: https://staging-api.astro-bot.space
+    description: Staging environment
+  - url: https://api.astro-bot.space
+    description: Production environment
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: '#/components/schemas/DiscordAuthUser'
+        guild:
+          $ref: '#/components/schemas/DiscordAuthGuild'
+    DiscordAuthUser:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        discriminator:
+          type: string
+        avatar:
+          type: string
+          nullable: true
+    DiscordAuthGuild:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        icon:
+          type: string
+          nullable: true
+    UserSubscriptionsInfo:
+      type: object
+      properties:
+        upgradedGuilds:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpgradedGuildInfo'
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSubscription'
+    UpgradedGuildInfo:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
+        guildId:
+          type: string
+    UserSubscription:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
+        quantities:
+          type: integer
+    DiscordGuild:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        icon:
+          type: string
+          nullable: true
+        can_manage:
+          type: boolean
+    DiscordGuildChannel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        type:
+          type: integer
+        parentID:
+          type: string
+          nullable: true
+        parentName:
+          type: string
+          nullable: true
+    DiscordGuildRole:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        color:
+          type: integer
+        position:
+          type: integer
+    GuildError:
+      type: object
+      properties:
+        description:
+          type: string
+        instant:
+          type: string
+          format: date-time
+          nullable: true
+    GuildData:
+      type: object
+      properties:
+        guild_id:
+          type: string
+        upgraded_by_user_id:
+          type: string
+          nullable: true
+        entitlements:
+          type: array
+          items:
+            $ref: '#/components/schemas/GuildEntitlement'
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateData'
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectionData'
+        generators:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeneratorData'
+        interfaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/InterfaceData'
+        allow_missing_admin_perm:
+          type: boolean
+    GuildEntitlement:
+      type: object
+      properties:
+        id:
+          type: string
+        sku_id:
+          type: string
+        ends_at:
+          type: integer
+          nullable: true
+    TemplateData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        enabled_generator_ids:
+          type: array
+          items:
+            type: string
+          nullable: true
+        vc_name:
+          type: string
+          nullable: true
+        vc_limit:
+          type: integer
+          nullable: true
+        vc_bitrate:
+          type: integer
+          nullable: true
+        vc_region:
+          type: string
+          nullable: true
+    GeneratorData:
+      type: object
+      properties:
+        id:
+          type: string
+        fallback_id:
+          type: string
+          nullable: true
+        queue_mode:
+          type: boolean
+        default_name:
+          type: string
+        default_locked_name:
+          type: string
+          nullable: true
+        default_hidden_name:
+          type: string
+          nullable: true
+        user_limit:
+          type: integer
+        bitrate:
+          type: integer
+        category:
+          type: string
+          nullable: true
+        permissions_inherited:
+          $ref: '#/components/schemas/PermissionsInherited'
+        permissions_target_role:
+          type: string
+          nullable: true
+        permissions_immune_role:
+          type: string
+          nullable: true
+        owner_permissions:
+          type: integer
+        owner_role:
+          type: string
+          nullable: true
+        initial_state:
+          $ref: '#/components/schemas/VCState'
+        initial_position:
+          $ref: '#/components/schemas/InitialPosition'
+        rename_conditions:
+          $ref: '#/components/schemas/RenameConditions'
+        commands_settings:
+          $ref: '#/components/schemas/CommandsSettings'
+        auto_chat:
+          type: boolean
+        auto_waiting:
+          type: boolean
+        chat_category:
+          type: string
+          nullable: true
+        chat_topic:
+          type: string
+          nullable: true
+        chat_nsfw:
+          type: boolean
+        chat_slowmode:
+          type: integer
+        chat_permissions_inherited:
+          $ref: '#/components/schemas/PermissionsInherited'
+        default_chat_name:
+          type: string
+        default_chat_text:
+          type: string
+          nullable: true
+        default_chat_text_embed:
+          type: boolean
+        chat_interface:
+          type: integer
+        waiting_category:
+          type: string
+          nullable: true
+        waiting_permissions_inherited:
+          $ref: '#/components/schemas/PermissionsInherited'
+        default_waiting_name:
+          type: string
+        waiting_bitrate:
+          type: integer
+        waiting_position:
+          $ref: '#/components/schemas/InitialPosition'
+        waiting_user_limit:
+          type: integer
+    InterfaceData:
+      type: object
+      properties:
+        channel_id:
+          type: string
+        message_id:
+          type: string
+        buttons:
+          type: array
+          items:
+            $ref: '#/components/schemas/InterfaceButton'
+        embed_style:
+          $ref: '#/components/schemas/EmbedStyle'
+        generate_embed_fields:
+          type: boolean
+    EmbedStyle:
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        timestamp:
+          type: integer
+          nullable: true
+        color:
+          type: integer
+        thumbnail:
+          type: string
+          nullable: true
+        image:
+          type: string
+          nullable: true
+        author_name:
+          type: string
+          nullable: true
+        author_url:
+          type: string
+          nullable: true
+        author_icon_url:
+          type: string
+          nullable: true
+        footer:
+          type: string
+          nullable: true
+        footer_icon_url:
+          type: string
+          nullable: true
+    InterfaceButton:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        emoji:
+          type: string
+          nullable: true
+        button_style_key:
+          type: integer
+        button_disabled:
+          type: boolean
+        position:
+          type: array
+          items:
+            type: integer
+          minItems: 2
+          maxItems: 2
+        field_value:
+          type: string
+          nullable: true
+    ConnectionData:
+      type: object
+      properties:
+        id:
+          type: string
+        role_id:
+          type: string
+        action:
+          $ref: '#/components/schemas/ConnectionAction'
+    CommandsSettings:
+      type: object
+      properties:
+        max_user_limit:
+          type: integer
+        min_user_limit:
+          type: integer
+        max_bitrate:
+          type: integer
+          nullable: true
+        min_bitrate:
+          type: integer
+        badwords_allowed:
+          type: boolean
+    RenameConditions:
+      type: object
+      properties:
+        state_change:
+          type: boolean
+        owner_change:
+          type: boolean
+        renamed:
+          type: boolean
+        activity_change:
+          type: boolean
+    PermissionsInherited:
+      type: string
+      enum:
+        - GENERATOR
+        - CATEGORY
+        - NONE
+    InitialPosition:
+      type: string
+      enum:
+        - BEFORE
+        - AFTER
+        - BOTTOM
+    VCState:
+      type: string
+      enum:
+        - UNLOCKED
+        - LOCKED
+        - HIDDEN
+        - UNHIDDEN
+    ConnectionAction:
+      type: string
+      enum:
+        - ASSIGN
+        - REMOVE
+        - TOGGLE
+security:
+  - BearerAuth: []
+paths:
+  /dashboard/auth/login/{code}:
+    get:
+      summary: Login using Discord OAuth code
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid code
+        '200':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+  /dashboard/auth/logout:
+    get:
+      summary: Logout
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Session invalidated
+  /dashboard/users/@me:
+    get:
+      summary: Get current user info
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: User info retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscordAuthUser'
+  /chargebee/portal-session:
+    get:
+      summary: Get Chargebee portal session
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Portal session access URL
+        '400':
+          description: Failed creating portal session
+  /chargebee/subscriptions/{user_id}:
+    get:
+      summary: Get user subscriptions
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User active subscriptions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSubscriptionsInfo'
+        '400':
+          description: Failed creating portal session
+  /dashboard/guilds:
+    get:
+      summary: Get user guilds
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: User guilds retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiscordGuild'
+
+  /dashboard/guilds/{guild_id}/channels:
+    get:
+      summary: Get guild channels
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Guild channels retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiscordGuildChannel'
+  /dashboard/guilds/{guild_id}/roles:
+    get:
+      summary: Get guild roles
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Guild roles retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiscordGuildRole'
+  /dashboard/guilds/{guild_id}/vc/cache:
+    delete:
+      summary: Delete temporary VC cache
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Temporary VC cache deleted
+  /dashboard/guilds/{guild_id}/errors:
+    delete:
+      summary: Delete guild errors
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Guild errors deleted
+  /dashboard/guilds/{guild_id}/upgrade/{subscription_id}:
+    get:
+      summary: Upgrade guild
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscription_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Guild upgraded, you should update the upgraded_by_user_id property for the guild in order to stay on sync with the backend
+        '404':
+          description: Subscription or guild or user not found
+        '405':
+          description: Subscription doesn’t have available upgrades (already used all of them on other guilds)
+        '409':
+          description: Guild already upgraded to premium
+
+  /dashboard/guilds/{guild_id}/downgrade:
+    get:
+      summary: Downgrade guild
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Guild downgraded, you should unset the upgraded_by_user_id property for the guild in order to stay on sync with the backend
+        '404':
+          description: Guild or user not found
+        '403':
+          description: The guild was upgraded by another user
+
+  /dashboard/guilds/{guild_id}/data:
+    get:
+      summary: Get guild data
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: GuildData retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+
+    post:
+      summary: Update guild data
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                allow_missing_admin_perm:
+                  type: boolean
+      responses:
+        '200':
+          description: Updated GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+
+  /dashboard/guilds/{guild_id}/data/generator:
+    post:
+      summary: Create a new generator
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+        '405':
+          description: Bot is missing permissions in the guild to create the entity
+
+  /dashboard/guilds/{guild_id}/data/generator/{generator_id}:
+    post:
+      summary: Update generator data
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: generator_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneratorData'
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild or generator not found
+    delete:
+      summary: Delete generator
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: generator_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+
+  /dashboard/guilds/{guild_id}/data/interface:
+    post:
+      summary: Create a new interface
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channel_id:
+                  type: string
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+        '405':
+          description: Bot is missing permissions in the guild to create the entity
+
+  /dashboard/guilds/{guild_id}/data/interface/{interface_message_id}:
+    post:
+      summary: Update interface data
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: interface_message_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InterfaceData'
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild or interface not found
+        '405':
+          description: Bot is missing permissions in the guild to create the entity
+    delete:
+      summary: Delete interface
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: interface_message_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+  /dashboard/guilds/{guild_id}/data/voice-role:
+    post:
+      summary: Create a voice role connection
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionData'
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+
+  /dashboard/guilds/{guild_id}/data/voice-role/{channel_id}:
+    post:
+      summary: Update voice role connection
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: channel_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionData'
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild or voice role not found
+
+    delete:
+      summary: Delete voice role connection
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: channel_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+  /dashboard/guilds/{guild_id}/data/template:
+    post:
+      summary: Create a new template
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateData'
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
+
+  /dashboard/guilds/{guild_id}/data/template/{template_id}:
+    post:
+      summary: Update template data
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: template_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateData'
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '400':
+          description: Invalid data
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild or template not found
+
+    delete:
+      summary: Delete template
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: template_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: GuildData
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuildData'
+        '403':
+          description: User cannot manage the guild
+        '404':
+          description: Guild not found
