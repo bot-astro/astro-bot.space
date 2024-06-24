@@ -1,4 +1,4 @@
-export interface AuthData {
+export interface SessionData {
   token: string
   user: DiscordUser
 }

@@ -1,11 +1,7 @@
-import { useLogin } from '~/composables/auth/useLogin'
+export default defineNuxtRouteMiddleware(async (_to, _from) => {
+  const session = useUserSession()
 
-function isAuthenticated(): boolean {
-  const authStore = useAuthStore()
-  return authStore.data !== undefined
-}
-
-export default defineNuxtRouteMiddleware((_to, _from) => {
-  if (!isAuthenticated())
-    return useLogin()
+  if (!session.loggedIn.value) {
+    return useAuth().login(_to.fullPath)
+  }
 })

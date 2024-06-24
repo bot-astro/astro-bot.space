@@ -1,10 +1,32 @@
-/* eslint-disable node/prefer-global/process */
+import { redirects } from './assets/config/redirects'
+
 export default defineNuxtConfig({
-  imports: {
-    dirs: ['types/*.ts', 'types/**/*.ts', 'stores/*.ts', 'stores/**/*.ts'],
+  devtools: {
+    enabled: true
   },
 
-  css: ['~/assets/css/tailwind.css'],
+  imports: {
+    dirs: ['types']
+  },
+
+  modules: [
+    '@nuxt/content',
+    '@nuxt/image',
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-api-party',
+    'nuxt-auth-utils',
+    'nuxt-headlessui',
+    'nuxt-icon',
+    'shadcn-nuxt'
+  ],
+
+  routeRules: {
+    ...Object.assign({}, ...redirects.map((r) => ({
+      [r.path]: { redirect: r.target }
+    })))
+  },
 
   runtimeConfig: {
     public: {
@@ -12,28 +34,9 @@ export default defineNuxtConfig({
       oauthUrl: process.env.OAUTH_URL,
       applicationId: process.env.APPLICATION_ID,
     },
-  },
-
-  devtools: {
-    enabled: true,
-  },
-
-  modules: [
-    'nuxt-icon',
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-    '@vueuse/nuxt',
-    '@nuxt/image',
-    '@nuxt/content',
-    '@pinia-plugin-persistedstate/nuxt',
-    'nuxt-headlessui',
-    'shadcn-nuxt',
-    'nuxt-api-party',
-    "nuxt-auth-utils"
-  ],
-
-  headlessui: {
-    prefix: 'H',
+    session: {
+      name: 'astro-session'
+    }
   },
 
   apiParty: {
@@ -41,7 +44,12 @@ export default defineNuxtConfig({
       api: {
         url: process.env.API_BASE_URL!,
         schema: './schemas/openapi3_0.yaml',
+        cookies: true
       },
     },
+  },
+
+  headlessui: {
+    prefix: 'H',
   },
 })

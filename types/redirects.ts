@@ -1,5 +1,6 @@
 export interface Redirect {
   id: string
+  path: string
   name: string
-  url: string
+  target: string
 }

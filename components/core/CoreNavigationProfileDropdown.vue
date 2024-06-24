@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import { useLogin } from '~/composables/auth/useLogin'
-import { useLogout } from '~/composables/auth/useLogout'
-
-const authStore = useAuthStore()
+const session = useUserSession()
+const user = session.user
+const loggedIn = session.loggedIn
 </script>
 
 <template>
   <div>
     <!-- desktop -->
     <div class="hidden lg:flex">
-      <Menu v-if="authStore.data">
+      <Menu v-if="user">
         <MenuButton class="flex">
           <ButtonText class="flex items-center gap-2">
             <NuxtImg
-              v-if="authStore.data.user.avatar"
-              :src="discordUserAvatarUri(authStore.data.user.id, authStore.data.user.avatar)"
+              v-if="user.avatar"
+              :src="discordUserAvatarUri(user.id, user.avatar)"
               class="rounded-full size-8"
             />
-            <span>{{ authStore.data.user.username }}</span>
+            <span>{{ user.username }}</span>
             <IconDropdown />
           </ButtonText>
         </MenuButton>
@@ -41,13 +40,13 @@ const authStore = useAuthStore()
           </MenuItem>
           <MenuDivider />
           <MenuItem :last="true" class="text-foreground-destructive">
-            <div @click="useLogout()">
+            <div @click="useAuth().logout()">
               Logout
             </div>
           </MenuItem>
         </MenuItems>
       </Menu>
-      <Button v-else @click="useLogin()">
+      <Button v-else @click="useAuth().login(useRoute().fullPath)">
         Login
       </Button>
     </div>
@@ -69,34 +68,34 @@ const authStore = useAuthStore()
         </MenuButton>
         <MenuItems class="right-0 flex flex-col shadow-lg min-w-56 z-20">
           <!-- authenticated items -->
-          <MenuItem v-if="authStore.data" class="my-1 px-3 pt-2" :disabled="true">
+          <MenuItem v-if="user" class="my-1 px-3 pt-2" :disabled="true">
             <div
               class="flex items-center gap-2"
             >
               <NuxtImg
-                v-if="authStore.data.user.avatar"
-                :src="discordUserAvatarUri(authStore.data.user.id, authStore.data.user.avatar)"
+                v-if="user.avatar"
+                :src="discordUserAvatarUri(user.id, user.avatar)"
                 class="rounded-full size-6"
               />
-              <span class="text-sm text-foreground-secondary">Logged in as {{ authStore.data.user.username }}</span>
+              <span class="text-sm text-foreground-secondary">Logged in as {{ user.username }}</span>
             </div>
           </MenuItem>
-          <MenuItem v-if="authStore.isAuthenticated">
+          <MenuItem v-if="loggedIn">
             <NuxtLink to="/guilds">
               Servers
             </NuxtLink>
           </MenuItem>
-          <MenuItem v-if="authStore.isAuthenticated">
+          <MenuItem v-if="loggedIn">
             <NuxtLink to="/profile">
               Profile
             </NuxtLink>
           </MenuItem>
-          <MenuItem v-if="authStore.isAuthenticated">
+          <MenuItem v-if="loggedIn">
             <NuxtLink to="/profile">
               Billing
             </NuxtLink>
           </MenuItem>
-          <MenuItem v-if="!authStore.isAuthenticated" :first="true" @click="useLogin()">
+          <MenuItem v-if="!loggedIn" :first="true" @click="useAuth().login()">
             <button class="text-start text-foreground-link-standout">
               Login
             </button>
@@ -126,14 +125,14 @@ const authStore = useAuthStore()
               Temporary voice channels
             </NuxtLink>
           </MenuItem>
-          <MenuItem :last="!authStore.isAuthenticated">
+          <MenuItem :last="!loggedIn">
             <NuxtLink to="/voice-roles">
               Voice roles
             </NuxtLink>
           </MenuItem>
-          <MenuDivider v-if="authStore.isAuthenticated" />
-          <MenuItem v-if="authStore.isAuthenticated" class="text-foreground-destructive" :last="true">
-            <div @click="useLogout()">
+          <MenuDivider v-if="loggedIn" />
+          <MenuItem v-if="loggedIn" class="text-foreground-destructive" :last="true">
+            <div @click="useAuth().logout()">
               Logout
             </div>
           </MenuItem>
