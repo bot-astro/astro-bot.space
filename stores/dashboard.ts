@@ -100,11 +100,8 @@ export const useDashboardStore = defineStore('dashboard', () => {
           guild_id: currentGuildId.value
         }
       })
-      // errors.value = [...errors.value, { guild_id: currentGuildId.value, errors: r }]
-      errors.value = [...errors.value, { guild_id: currentGuildId.value, errors: [{ description: "Your server has exceeded the maximum amount of interfaces.\nEither upgrade to premium or delete one or more interface with `/interface delete`!", instant: new Date().toLocaleString() }] }]
-      console.log(errors.value)
-      // return r
-      return errors.value.find(w => w.guild_id === currentGuildId.value)?.errors
+      errors.value = [...errors.value, { guild_id: currentGuildId.value, errors: r }]
+      return r
     } else {
       return wrapper?.errors
     }
