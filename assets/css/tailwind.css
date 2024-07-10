@@ -319,6 +319,17 @@ body {
   opacity: 0;
 }
 
+.jump-in-enter-active,
+.jump-in-leave-active {
+  transition: all 20s ease-in-out;
+}
+
+.jump-in-enter-from,
+.jump-in-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
 .backlit-box {
   position: relative;
 }

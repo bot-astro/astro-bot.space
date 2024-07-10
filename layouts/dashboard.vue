@@ -12,5 +12,6 @@
       </div>
     </div>
     <DashboardSettingsSaveToast />
+    <CoreModal />
   </div>
 </template>
