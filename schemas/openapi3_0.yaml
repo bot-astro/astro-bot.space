@@ -544,6 +544,25 @@ paths:
         '200':
           description: Temporary VC cache deleted
   /dashboard/guilds/{guild_id}/errors:
+    get:
+      summary: Get guild errors
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: guild_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Guild errors retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GuildError'
     delete:
       summary: Delete guild errors
       security:
