@@ -3,7 +3,7 @@
     <NuxtLoadingIndicator />
     <div class="flex text-sm w-full h-screen">
       <DashboardSidebar />
-      <div class="flex flex-col w-full h-full">
+      <div class="flex flex-col max-w-[calc(100%-256px)] w-full h-full">
         <DashboardNavbar />
         <div class="flex flex-col grow">
           <slot />
