@@ -5,13 +5,14 @@ export default function () {
     login: (path?: string) => {
       const config = useRuntimeConfig()
 
-      const previousRoute = path ?? '/'
+      const previous_route = path ?? '/'
+
       sessionStorage.setItem(
         StorageKeys.AUTH_REDIRECT,
-        previousRoute,
+        previous_route,
       )
 
-      navigateTo(config.public.oauthUrl, { replace: true, external: true })
+      navigateTo(config.public.login_oauth_url, { replace: true, external: true })
     },
     logout: async () => {
       await $fetch('/api/auth/logout')

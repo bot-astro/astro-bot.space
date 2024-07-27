@@ -8,7 +8,7 @@
         src="/img/logo.png"
         class="h-48 w-48 select-none"
       />
-      <p class="mt-5 text-7xl tracking-widest font-display">
+      <p class="mt-5 font-display text-7xl tracking-widest">
         ASTRO
       </p>
       <p class="mt-4 text-center text-xl text-gray-400">
@@ -32,7 +32,7 @@
         button-to="/temporary-voice-channels"
         :reverse="false"
       >
-        <span class="text-2xl font-medium tracking-wide font-display"><span class="animate-dissolve">Temporary </span>Voice Channels</span>
+        <span class="font-display text-2xl font-medium tracking-wide"><span class="animate-dissolve">Temporary </span>Voice Channels</span>
       </CoreFeatureBox>
 
       <CoreFeatureBox
@@ -42,15 +42,15 @@
         button-to="/voice-roles"
         :reverse="true"
       >
-        <span class="text-2xl font-medium tracking-wide font-display animate-light">Voice Roles</span>
+        <span class="animate-light font-display text-2xl font-medium tracking-wide">Voice Roles</span>
       </CoreFeatureBox>
 
       <div
-        class="flex flex-col items-center justify-center rounded-md p-6 backlit-box bordered bg-bg md:max-w-screen-lg"
+        class="backlit-box bordered flex flex-col items-center justify-center rounded-md bg-bg p-6 md:max-w-screen-lg"
         @mousemove="onBacklitBoxMouseMove"
       >
-        <span class="text-2xl font-medium tracking-wide font-display">Voice Channels Exclusive</span>
-        <span class="mt-4 text-dimmed">
+        <span class="font-display text-2xl font-medium tracking-wide">Voice Channels Exclusive</span>
+        <span class="text-dimmed mt-4">
           Focusing only on voice channels makes Astro the best bot of its kind, try it now!
         </span>
         <ButtonStandout

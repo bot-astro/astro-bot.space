@@ -4,14 +4,15 @@
 
 <script lang="ts" setup>
 import { StorageKeys } from '~/assets/config/storage';
+import {QueryKeys} from "assets/config/query";
 
 onMounted(() => {
   const route = useRoute()
 
-  const previousRoute = sessionStorage.getItem(StorageKeys.AUTH_REDIRECT)
+  const previous_route = sessionStorage.getItem(StorageKeys.AUTH_REDIRECT)
 
-  const guildId = route.query.guildId
-  const finalRoute = guildId ? `/guilds/${guildId}` : previousRoute ?? '/dashboard'
+  const guild_id = route.query[QueryKeys.GUILD_ID]
+  const finalRoute = guild_id ? `/guilds/${guild_id}` : previous_route ?? '/guilds'
 
   navigateTo(finalRoute, { replace: true })
 })

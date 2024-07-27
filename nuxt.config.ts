@@ -24,15 +24,18 @@ export default defineNuxtConfig({
 
   routeRules: {
     ...Object.assign({}, ...redirects.map((r) => ({
-      [r.path]: { redirect: r.target }
+      [r.path]: {
+        redirect: r.target
+      }
     })))
   },
 
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.API_BASE_URL,
-      oauthUrl: process.env.OAUTH_URL,
-      applicationId: process.env.APPLICATION_ID,
+      login_oauth_url: process.env.LOGIN_OAUTH_URL,
+      invite_oauth_url: process.env.INVITE_OAUTH_URL,
+      invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
     },
     session: {
       name: 'astro-session'

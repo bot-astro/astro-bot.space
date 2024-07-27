@@ -14,11 +14,13 @@ export const useDashboardStore = defineStore('dashboard', () => {
   const guilds = ref<components['schemas']['DiscordGuild'][]>([])
   const currentGuild = computed(() => guilds.value.find(g => g.id === currentGuildId.value))
 
-  if (import.meta.dev) {
-    import('~/guilds.json').then(r => guilds.value = r.default.guilds)
-  } else {
-    $api('/dashboard/guilds').then(r => guilds.value = r)
-  }
+  // if (import.meta.dev) {
+  //   import('~/guilds.json').then(r => guilds.value = r.default.guilds)
+  // } else {
+  //   $api('/dashboard/guilds').then(r => guilds.value = r)
+  // }
+
+  $api('/dashboard/guilds').then(r => {guilds.value = r; console.log(r) })
 
   const loading = ref(false)
   const edited = ref(false)

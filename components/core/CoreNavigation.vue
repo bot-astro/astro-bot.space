@@ -49,9 +49,7 @@ watch(y, () => {
 
       <!-- desktop: navbar items -->
       <div class="hidden w-full items-center gap-8 whitespace-nowrap lg:flex">
-        <ButtonText
-          to="/invite"
-        >
+        <ButtonText @click="useInvite().invite()">
           Add to server
         </ButtonText>
         <ButtonText
