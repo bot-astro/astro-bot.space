@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    "@nuxt/icon",
     '@nuxt/content',
     '@nuxt/image',
     '@nuxtjs/tailwindcss',
@@ -17,8 +18,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-api-party',
     'nuxt-auth-utils',
-    'nuxt-headlessui',
-    'nuxt-icon',
     'shadcn-nuxt'
   ],
 
@@ -50,9 +49,5 @@ export default defineNuxtConfig({
         cookies: true
       },
     },
-  },
-
-  headlessui: {
-    prefix: 'H',
-  },
+  }
 })

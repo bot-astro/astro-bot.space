@@ -48,7 +48,7 @@ watch(y, () => {
       </div>
 
       <!-- desktop: navbar items -->
-      <div class="hidden w-full items-center gap-8 whitespace-nowrap lg:flex">
+      <div class="hidden w-full items-center gap-8 whitespace-nowrap lg:flex select-none">
         <ButtonText @click="useInvite().invite()">
           Add to server
         </ButtonText>
@@ -57,25 +57,20 @@ watch(y, () => {
         >
           Support
         </ButtonText>
-        <Menu>
-          <MenuButton class="flex items-center gap-2 button-text">
+        <DropdownMenu>
+          <DropdownMenuTrigger class="flex items-center gap-2 button-text">
             <span>Features</span>
             <IconDropdown />
-          </MenuButton>
-          <MenuItems class="flex flex-col">
-            <MenuItem :first="true">
-              <NuxtLink to="/temporary-voice-channels">
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem @click="navigateTo('/temporary-voice-channels')">
                 Temporary Voice Channels
-              </NuxtLink>
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem :last="true">
-              <NuxtLink to="/voice-roles">
+            </DropdownMenuItem>
+            <DropdownMenuItem @click="navigateTo('/voice-roles')">
                 Voice roles
-              </NuxtLink>
-            </MenuItem>
-          </MenuItems>
-        </Menu>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <ButtonText
           to="/ultimate"
         >

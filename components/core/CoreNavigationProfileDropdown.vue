@@ -1,143 +1,129 @@
 <script setup lang="ts">
+import {DropdownMenuRoot} from "radix-vue";
+
 const session = useUserSession()
 const user = session.user
-const loggedIn = session.loggedIn
+const is_logged_in = session.loggedIn
+
+let is_mobile_dropdown_open = ref(false)
+
+const iconName = computed(() => {
+  return is_mobile_dropdown_open.value
+    ? 'fluent:dismiss-20-filled'
+    : 'fluent:line-horizontal-3-20-filled';
+});
 </script>
 
 <template>
   <div>
     <!-- desktop -->
     <div class="hidden lg:flex">
-      <Menu v-if="user">
-        <MenuButton class="flex">
-          <ButtonText class="flex items-center gap-2">
-            <NuxtImg
-              v-if="user.avatar"
-              :src="discordUserAvatarUri(user.id, user.avatar)"
-              class="rounded-full size-8"
-            />
-            <span>{{ user.username }}</span>
-            <IconDropdown />
-          </ButtonText>
-        </MenuButton>
-        <MenuItems class="right-0 flex flex-col">
-          <MenuItem :first="true">
-            <NuxtLink to="/guilds">
-              Servers
-            </NuxtLink>
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem>
-            <NuxtLink to="/profile">
-              Profile
-            </NuxtLink>
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem>
-            <NuxtLink to="/profile">
-              Billing
-            </NuxtLink>
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem :last="true" class="text-foreground-destructive">
-            <div @click="useAuth().logout()">
-              Logout
-            </div>
-          </MenuItem>
-        </MenuItems>
-      </Menu>
+      <DropdownMenu v-if="user">
+        <DropdownMenuTrigger class="flex items-center gap-2">
+          <NuxtImg
+            v-if="user.avatar"
+            :src="discordUserAvatarUri(user.id, user.avatar)"
+            class="rounded-full size-8"
+          />
+          <span>{{ user.username }}</span>
+          <IconDropdown />
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent>
+          <DropdownMenuItem @click="navigateTo('/guilds')">
+            Servers
+          </DropdownMenuItem>
+          <!--          TODO: Integrate chargebee customer portal -->
+          <DropdownMenuItem @click="">
+            Billing
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            class="text-foreground-destructive"
+            @click="useAuth().logout()"
+          >
+            Logout
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
       <Button v-else @click="useAuth().login(useRoute().fullPath)">
         Login
       </Button>
     </div>
 
-    <!-- mobile -->
+    <!--  Mobile navbar  -->
     <div class="flex items-center lg:hidden">
-      <Menu v-slot="{ open }">
-        <MenuButton class="flex items-center gap-2">
-          <ButtonText>
-            <Icon
-              :name="
-                open
-                  ? 'fluent:dismiss-20-filled'
-                  : 'fluent:line-horizontal-3-20-filled'
-              "
-              class="z-10 cursor-pointer select-none size-8"
-            />
-          </ButtonText>
-        </MenuButton>
-        <MenuItems class="right-0 flex flex-col shadow-lg min-w-56 z-20">
-          <!-- authenticated items -->
-          <MenuItem v-if="user" class="my-1 px-3 pt-2" :disabled="true">
-            <div
-              class="flex items-center gap-2"
-            >
-              <NuxtImg
-                v-if="user.avatar"
-                :src="discordUserAvatarUri(user.id, user.avatar)"
-                class="rounded-full size-6"
+        <DropdownMenu v-model:open="is_mobile_dropdown_open">
+          <DropdownMenuTrigger>
+            <ButtonText>
+              <Icon
+                :name="is_mobile_dropdown_open ? 'fluent:dismiss-20-filled' : 'fluent:line-horizontal-3-20-filled'"
+                class="z-10 cursor-pointer select-none size-8 pointer-events-auto"
               />
-              <span class="text-sm text-foreground-secondary">Logged in as {{ user.username }}</span>
-            </div>
-          </MenuItem>
-          <MenuItem v-if="loggedIn">
-            <NuxtLink to="/guilds">
+            </ButtonText>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent>
+            <DropdownMenuItem v-if="user" class="my-1 px-3 pt-2" disabled>
+              <div class="flex items-center gap-2">
+                <NuxtImg
+                  v-if="user.avatar"
+                  :src="discordUserAvatarUri(user.id, user.avatar)"
+                  class="rounded-full size-6"
+                />
+                <span class="text-sm text-foreground-secondary">Logged in as {{ user.username }}</span>
+              </div>
+            </DropdownMenuItem>
+            <DropdownMenuItem v-if="is_logged_in" @click="navigateTo('/guilds')">
               Servers
-            </NuxtLink>
-          </MenuItem>
-          <MenuItem v-if="loggedIn">
-            <NuxtLink to="/profile">
-              Profile
-            </NuxtLink>
-          </MenuItem>
-          <MenuItem v-if="loggedIn">
-            <NuxtLink to="/profile">
+            </DropdownMenuItem>
+            <!--            TODO: Open billing portal -->
+            <DropdownMenuItem v-if="is_logged_in" @click="">
               Billing
-            </NuxtLink>
-          </MenuItem>
-          <MenuItem v-if="!loggedIn" :first="true" @click="useAuth().login()">
-            <button class="text-start text-foreground-link-standout">
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              v-if="!is_logged_in"
+              @click="useAuth().login(useRoute().fullPath)"
+              class="text-foreground-link-standout"
+            >
               Login
-            </button>
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem>
-            <NuxtLink to="/guilds">
+            </DropdownMenuItem>
+
+            <DropdownMenuSeparator />
+
+            <DropdownMenuItem @click="navigateTo('/guilds')">
               Add to server
-            </NuxtLink>
-          </MenuItem>
-          <MenuItem>
-            <NuxtLink to="/profile">
+            </DropdownMenuItem>
+            <DropdownMenuItem @click="navigateTo('/support')">
               Support
-            </NuxtLink>
-          </MenuItem>
-          <MenuItem>
-            <NuxtLink to="/ultimate">
+            </DropdownMenuItem>
+            <DropdownMenuItem @click="navigateTo('/ultimate')">
               Ultimate
-            </NuxtLink>
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem as="div" class="px-3 pt-2" :disabled="true">
-            <span class="text-sm text-foreground-secondary">Features</span>
-          </MenuItem>
-          <MenuItem>
-            <NuxtLink to="/temporary-voice-channels">
+            </DropdownMenuItem>
+
+            <DropdownMenuSeparator />
+
+            <DropdownMenuItem class="px-3 pt-2" disabled>
+              <span class="text-sm text-foreground-secondary">Features</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem @click="navigateTo('/temporary-voice-channels')">
               Temporary voice channels
-            </NuxtLink>
-          </MenuItem>
-          <MenuItem :last="!loggedIn">
-            <NuxtLink to="/voice-roles">
+            </DropdownMenuItem>
+            <DropdownMenuItem @click="navigateTo('/voice-roles')">
               Voice roles
-            </NuxtLink>
-          </MenuItem>
-          <MenuDivider v-if="loggedIn" />
-          <MenuItem v-if="loggedIn" class="text-foreground-destructive" :last="true">
-            <div @click="useAuth().logout()">
+            </DropdownMenuItem>
+
+            <DropdownMenuSeparator v-if="is_logged_in" />
+
+            <DropdownMenuItem
+              v-if="is_logged_in"
+              class="text-foreground-destructive"
+              @click="useAuth().logout()"
+            >
               Logout
-            </div>
-          </MenuItem>
-        </MenuItems>
-      </Menu>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
     </div>
   </div>
 </template>
