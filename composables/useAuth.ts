@@ -1,4 +1,4 @@
-import { StorageKeys } from "~/assets/config/storage"
+import { StorageKeys } from "assets/config/StorageKeys"
 
 export default function () {
   return {

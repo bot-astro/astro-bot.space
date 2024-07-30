@@ -1,4 +1,4 @@
-import {QueryKeys} from "assets/config/query";
+import {RouterQueryKeys} from "assets/config/RouterQueryKeys";
 
 export default eventHandler(async (event) => {
   const { code } = getQuery(event)
@@ -29,6 +29,6 @@ export default eventHandler(async (event) => {
 
   const guild_id = data.guild?.id
 
-  const redirectRoute = guild_id ? `/redirect?${QueryKeys.GUILD_ID}=${guild_id}` : '/redirect'
+  const redirectRoute = guild_id ? `/redirect?${RouterQueryKeys.GUILD_ID}=${guild_id}` : '/redirect'
   return sendRedirect(event, redirectRoute)
 })

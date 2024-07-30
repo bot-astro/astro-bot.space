@@ -4,10 +4,3 @@ export interface DiscordUser {
   avatar?: string
   discriminator: string
 }
-
-export interface DiscordGuild {
-  id: string
-  name: string
-  icon?: string
-  can_manage: boolean
-}

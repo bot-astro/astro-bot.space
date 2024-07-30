@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import {Switch} from "~/components/ui/switch";
+import SwitchTabs from "~/components/ui/switch/SwitchTabs.vue";
+
 definePageMeta({
   middleware: 'auth',
 })
@@ -38,7 +41,7 @@ function decreaseQuantity() {
             <!-- total -->
             <div class="flex flex-col items-center justify-center gap-2">
               <span class="text-center text-6xl font-display font-semibold tracking-wide">${{ price }}</span>
-              <span class="text-center text-xl">per {{ isMonthly ? 'month' : 'year ' }} for {{ quantity }} server{{ quantity > 1 ? 's' : '' }}</span>
+              <span class="text-center text-xl">per {{ isMonthly ? 'month' : 'year ' }} for {{ quantity }} server<span :class="quantity > 1 ? 'visible' : 'invisible'">s</span></span>
             </div>
             <!-- quantity & frequency -->
             <div class="flex flex-col items-center gap-6">
@@ -46,7 +49,7 @@ function decreaseQuantity() {
                 <span class="text-center text-lg font-semibold">Server quantity</span>
                 <div class="flex items-center justify-center gap-2">
                   <ButtonSecondary
-                    class="rounded-lg aspect-square text-center"
+                    class="rounded-lg aspect-square text-center flex items-center justify-center"
                     :disabled="quantity < 2"
                     @click="decreaseQuantity"
                   >
@@ -55,11 +58,11 @@ function decreaseQuantity() {
                       class="size-4 m-1"
                     />
                   </ButtonSecondary>
-                  <span class="bordered self-stretch flex items-center justify-center px-3 rounded-lg select-none min-w-12 text-center">
+                  <span class="bordered self-stretch flex items-center justify-center px-3 rounded-lg select-none w-12 text-center">
                     {{ quantity }}
                   </span>
                   <ButtonSecondary
-                    class="rounded-lg aspect-square text-center"
+                    class="rounded-lg aspect-square text-center flex items-center justify-center"
                     @click="increaseQuantity"
                   >
                     <Icon
@@ -72,11 +75,7 @@ function decreaseQuantity() {
               <div class="flex flex-col gap-1">
                 <span class="text-center text-lg font-semibold">Billed</span>
                 <div class="flex items-center justify-center gap-2">
-                  <SwitchDoubleText
-                    v-model="isMonthly"
-                    first="Monthly"
-                    second="Yearly"
-                  />
+                  <SwitchTabs v-model="isMonthly" first="Monthly" second="Yearly" />
                 </div>
               </div>
             </div>

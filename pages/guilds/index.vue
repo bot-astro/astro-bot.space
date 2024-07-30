@@ -43,10 +43,10 @@ const guilds = computed(() => {
         <div class="flex items-center gap-4">
           <div class="relative">
             <NuxtImg
-v-if="guild.id && guild.icon" :src="discordGuildIconUri(guild.id, guild.icon)"
+              v-if="guild.id && guild.icon" :src="discordGuildIconUri(guild.id, guild.icon)"
               class="rounded-full max-w-none w-12 h-12 md:w-14 md:h-14 bordered" />
             <p
-v-else
+              v-else
               class="flex items-center justify-center truncate rounded-full font-semibold text-white size-14 bordered hover:opacity-80">
               {{ guild.name?.split(" ").map((a) => a.charAt(0).toUpperCase()).join("") }}
             </p>
@@ -55,11 +55,6 @@ v-else
           <span>{{ guild.name }}</span>
         </div>
         <Button class="w-full flex items-center justify-center" :to="`/guilds/${guild.id}`">
-          <!-- <Icon
-            v-if="guild.settings === undefined"
-            name="fluent:add-12-filled"
-            class="flex items-center justify-center text-center text-white"
-          /> -->
           Manage
         </Button>
       </div>

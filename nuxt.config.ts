@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   },
 
   imports: {
-    dirs: ['types']
+    dirs: ['types', 'data']
   },
 
   modules: [
@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@vueuse/nuxt',
+    '@hebilicious/vue-query-nuxt',
     'nuxt-api-party',
     'nuxt-auth-utils',
     'shadcn-nuxt'
@@ -31,7 +32,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.API_BASE_URL,
+      astro_api_base_url: process.env.API_BASE_URL,
       login_oauth_url: process.env.LOGIN_OAUTH_URL,
       invite_oauth_url: process.env.INVITE_OAUTH_URL,
       invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
