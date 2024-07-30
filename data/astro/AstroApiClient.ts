@@ -2,6 +2,7 @@ import {useApiFetch} from "~/composables/useApiFetch";
 import {AstroApiErrorCode} from "~/data/astro/core/AstroApiErrorCode";
 import {AstroApiError} from "~/data/astro/core/AstroApiError";
 import type {DashboardGuild} from "~/types/dashboard";
+import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 
 /**
  * Api client to interact with the Astro APIs
@@ -36,5 +37,9 @@ export class AstroApiClient {
     }
 
     return res.data.value ?? []
+  }
+
+  public get_guild_settings = async () : Promise<GuildSettings> => {
+    return Promise.reject('todo')
   }
 }
