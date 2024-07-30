@@ -31,7 +31,15 @@ export class AstroApiClient {
   // those are unused because you cannot use useFetch in nuxt api routes //
 
   public login = async (code: string): Promise<LoginResponse> => {
-    const res = await useApiFetch<LoginResponse>(this.url(`/dashboard/auth/login/${code}`), {}, false)
+    const res = await useApiFetch<LoginResponse>(
+      this.url(`/dashboard/auth/login/${code}`),
+      {
+        credentials: 'include'
+      },
+      false
+    )
+
+    console.log(res)
 
     if (res.data.value !== null) {
       return res.data.value

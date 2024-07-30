@@ -18,7 +18,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@hebilicious/vue-query-nuxt',
     'nuxt-api-party',
-    'nuxt-auth-utils',
     'shadcn-nuxt'
   ],
 
@@ -36,12 +35,6 @@ export default defineNuxtConfig({
       login_oauth_url: process.env.LOGIN_OAUTH_URL,
       invite_oauth_url: process.env.INVITE_OAUTH_URL,
       invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
-    },
-    session: {
-      name: 'astro-session',
-      cookie: {
-        sameSite: "None"
-      }
     }
   },
 

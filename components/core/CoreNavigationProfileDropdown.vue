@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import {DropdownMenuRoot} from "radix-vue";
+import useUserSession from "~/composables/useUserSession";
 
-const session = useUserSession()
-const user = session.user
-const is_logged_in = session.loggedIn
+const session = useUserSession().data
+const user = session?.user
+const is_logged_in = computed(() => session?.user !== undefined)
 
 let is_mobile_dropdown_open = ref(false)
-
-const iconName = computed(() => {
-  return is_mobile_dropdown_open.value
-    ? 'fluent:dismiss-20-filled'
-    : 'fluent:line-horizontal-3-20-filled';
-});
 </script>
 
 <template>

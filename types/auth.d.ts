@@ -1,14 +1,6 @@
-// auth.d.ts
-declare module '#auth-utils' {
-  interface User {
-    id: string
-    username: string
-    avatar?: string
-  }
+import type {DiscordUser} from "~/types/discord";
 
-  interface UserSession {
-    // add your own props if needed
-  }
+export interface UserSession {
+  token: string;
+  user: DiscordUser;
 }
-
-export {}

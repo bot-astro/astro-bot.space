@@ -1,4 +1,5 @@
 import { StorageKeys } from "assets/config/StorageKeys"
+import useUserSession from "~/composables/useUserSession";
 
 export default function () {
   return {
@@ -15,7 +16,19 @@ export default function () {
       navigateTo(config.public.login_oauth_url, { replace: true, external: true })
     },
     logout: async () => {
-      await $fetch('/api/auth/logout')
+      const { $astroApiClient } = useNuxtApp()
+      const userSession = useUserSession()
+
+      if (userSession.data !== undefined) {
+        try {
+          await $astroApiClient.logout()
+        } catch (e) {
+          console.error(e)
+        }
+      }
+
+      userSession.clear()
+
       location.reload()
     }
   }

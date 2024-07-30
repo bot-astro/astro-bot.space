@@ -12,13 +12,20 @@ export async function useApiFetch<T>(
   options: UseFetchOptions<T> = {},
   redirect_on_401: boolean = true,
 ) {
+  const config = useRuntimeConfig()
+
   const res = await useFetch(url, {
     ...options,
     credentials: 'include',
     cache: "no-cache", // cache handled by vue-query
     retry: false, // retries are handled by vue-query
-
+    headers: {
+      ...options.headers,
+      'Content-Type': 'application/json'
+    }
   })
+
+  console.log(res)
 
   // if (res.error.value?.status == 401 && redirect_on_401) {
   //   useAuth().login(useRoute().fullPath)
