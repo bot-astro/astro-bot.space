@@ -38,17 +38,20 @@ export default defineNuxtConfig({
       invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
     },
     session: {
-      name: 'astro-session'
+      name: 'astro-session',
+      cookie: {
+        sameSite: "None"
+      }
     }
   },
 
-  apiParty: {
-    endpoints: {
-      api: {
-        url: process.env.API_BASE_URL!,
-        schema: './schemas/openapi3_0.yaml',
-        cookies: true
-      },
-    },
-  }
+  // apiParty: {
+  //   endpoints: {
+  //     api: {
+  //       url: process.env.API_BASE_URL!,
+  //       schema: './schemas/openapi3_0.yaml',
+  //       cookies: true
+  //     },
+  //   },
+  // }
 })

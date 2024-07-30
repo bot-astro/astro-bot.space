@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import {useGuilds} from "~/data/astro/query/useGuilds";
+
 definePageMeta({
   middleware: 'auth',
 })
 
 const search = ref('')
 
-const { data, pending, error, refresh } = useApiData('/dashboard/guilds')
+const { data, error, isPending: is_pending, refetch } = useGuilds()
 
 const guilds = computed(() => {
   return (data.value || [])
@@ -24,14 +26,14 @@ const guilds = computed(() => {
 
       <div class="flex items-center gap-2">
         <ButtonText destructive>
-          <Icon name="fluent:arrow-sync-12-regular" class="size-6" @click="refresh" />
+          <Icon name="fluent:arrow-sync-12-regular" class="size-6" @click="refetch" />
         </ButtonText>
 
         <input v-model="search" class="w-full md:w-auto" type="text" placeholder="Search by name">
       </div>
     </div>
 
-    <div v-if="pending" class="w-full mt-4 flex justify-center">
+    <div v-if="is_pending" class="w-full mt-4 flex justify-center">
       <UtilCircularLoading />
     </div>
     <div v-else-if="error" class="w-full mt-4 flex justify-center bordered-destructive rounded-md p-4 text-destructive">

@@ -1,23 +1,28 @@
 import {RouterQueryKeys} from "assets/config/RouterQueryKeys";
+import type {LoginResponse, SessionData} from "~/types/session";
 
 export default eventHandler(async (event) => {
+  const config = useRuntimeConfig()
   const { code } = getQuery(event)
 
   if (!code) {
-    throw createError({ status: 401, statusMessage: 'Missing the OAuth2 authorization code!' })
+    return sendRedirect(event, '/')
   }
 
-  const data = await $api('/dashboard/auth/login/{code}', {
-    path: {
-      code: code?.toString(),
-    },
-  })
+  let data: LoginResponse | null = null
+  try {
+    data = await $fetch<LoginResponse>(`${config.public.astro_api_base_url}/dashboard/auth/login/${code}`, {
+      credentials: 'include'
+    })
+  } catch (e) {
+    console.error(e)
+  }
 
-  if (!data.token || !data.user) {
+  if (data === null) {
     throw createError({ status: 500, statusMessage: 'Missing session data!' })
   }
 
-  const token = data.token!
+  const token = data.token
   const user = data.user as DiscordUser
 
   const sessionData: SessionData = {

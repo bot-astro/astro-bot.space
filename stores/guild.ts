@@ -1,5 +1,6 @@
 import {useGuilds} from "~/data/astro/query/useGuilds";
 import type {DashboardSection} from "~/types/dashboard";
+import {useGuildSettings} from "~/data/astro/query/useGuildSettings";
 
 export const useGuildStore = defineStore('guild', () => {
   const current_guild_id = ref(useRoute().params.guild_id as string | undefined)
@@ -47,11 +48,15 @@ export const useGuildStore = defineStore('guild', () => {
 
 
   /// GUILD SETTINGS ///
-  const loading = ref(false)
-  const edited = ref(false)
   const guild_settings = computed(() => {
     if (current_guild_id.value !== undefined) {
-      const settings =
+      const settings = useGuildSettings(current_guild_id.value)
+
+      return {
+        is_pending: settings.isPending,
+        error: settings.error,
+        data: settings.data
+      }
     } else {
       return null
     }

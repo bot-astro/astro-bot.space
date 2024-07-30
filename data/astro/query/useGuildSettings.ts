@@ -1,10 +1,10 @@
-import {guilds_qk} from "~/data/astro/config/query-keys";
+import {guild_settings_qk, guilds_qk} from "~/data/astro/config/query-keys";
 
-export function useGuildSettings() {
+export function useGuildSettings(guild_id: string) {
   const { $astroApiClient } = useNuxtApp()
 
   return useQuery({
-    queryKey: guilds_qk,
-    queryFn: () => $astroApiClient.get_guilds()
+    queryKey: guild_settings_qk(guild_id),
+    queryFn: () => $astroApiClient.get_guild_settings(guild_id)
   })
 }

@@ -4,11 +4,10 @@ declare module '#auth-utils' {
     id: string
     username: string
     avatar?: string
-    discriminator: string
   }
 
   interface UserSession {
-    // Add your own fields
+    // add your own props if needed
   }
 }
 
