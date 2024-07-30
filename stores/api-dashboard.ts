@@ -6,6 +6,7 @@ interface GuildErrorWrapper {
   guild_id: string
   errors: components['schemas']['GuildError'][]
 }
+// test
 
 export const useApiDashboardStore = defineStore('api-dashboard', () => {
   // const currentGuildId = computed(() => useRoute().params.guildId as string)
