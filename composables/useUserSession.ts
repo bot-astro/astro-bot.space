@@ -5,9 +5,11 @@ export default function() {
   const cookie = useCookie<UserSession | undefined>(CookieKeys.USER_SESSION)
   const state = useState(CookieKeys.USER_SESSION, () => cookie.value);
 
+  watch(state, () => { cookie.value = state.value }, { deep: true });
+
   return {
-    data: cookie,
-    set: (userSession: UserSession) => cookie.value = userSession,
-    clear: () => cookie.value = undefined
+    data: state,
+    set: (userSession: UserSession) => state.value = userSession,
+    clear: () => state.value = undefined
   }
 }
