@@ -19,7 +19,7 @@ export default function () {
       const { $astroApiClient } = useNuxtApp()
       const userSession = useUserSession()
 
-      if (userSession.data !== undefined) {
+      if (userSession.data.value !== undefined) {
         try {
           await $astroApiClient.logout()
         } catch (e) {

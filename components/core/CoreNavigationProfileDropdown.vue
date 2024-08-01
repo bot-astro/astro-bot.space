@@ -2,8 +2,8 @@
 import useUserSession from "~/composables/useUserSession";
 
 const session = useUserSession().data
-const user = session?.user
-const is_logged_in = computed(() => session?.user !== undefined)
+const user = session.value?.user
+const is_logged_in = computed(() => session.value?.user !== undefined)
 
 let is_mobile_dropdown_open = ref(false)
 </script>

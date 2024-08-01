@@ -1,6 +1,9 @@
 import { redirects } from './assets/config/redirects'
 
 export default defineNuxtConfig({
+  // fuck ssr honestly
+  ssr: false,
+
   devtools: {
     enabled: true
   },

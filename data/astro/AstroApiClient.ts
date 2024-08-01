@@ -39,17 +39,18 @@ export class AstroApiClient {
       false
     )
 
-    console.log(res)
-
-    if (res.data.value !== null) {
-      return res.data.value
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.statusCode) {
+        case 400: {
+          throw new AstroApiError(AstroApiErrorCode.INVALID_DISCORD_CODE)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
     }
-
-    if (res.error.value?.status === 400) {
-      throw new AstroApiError(AstroApiErrorCode.INVALID_DISCORD_CODE)
-    }
-
-    throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
   }
 
   public logout = async (): Promise<void> => {
@@ -61,20 +62,20 @@ export class AstroApiClient {
   public get_self_user = async (): Promise<DiscordUser> => {
     const res = await useApiFetch<DiscordUser>(this.url('/dashboard/users/@me'))
 
-    if (res.data.value !== null) {
-      return res.data.value
+    if (res.data) {
+      return res.data
     } else {
       throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
     }
   }
 
 
-  /// CHARGEBEE ///
+    /// CHARGEBEE ///
   public get_chargebee_portal_session_url = async (): Promise<string> => {
     const res = await useApiFetch<string>(this.url('/chargebee/portal-session'))
 
-    if (res.data.value !== null) {
-      return res.data.value
+    if (res.data) {
+      return res.data
     } else {
       throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
     }
@@ -83,13 +84,12 @@ export class AstroApiClient {
   public get_user_chargebee_subscriptions = async (): Promise<UserChargebeeSubscriptions> => {
     const res = await useApiFetch<UserChargebeeSubscriptions>(this.url('/chargebee/subscriptions'))
 
-    if (res.data.value !== null) {
-      return res.data.value
+    if (res.data) {
+      return res.data
     } else {
       throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
     }
   }
-
 
 
   /// GUILDS ///
@@ -102,11 +102,11 @@ export class AstroApiClient {
   public get_guilds = async () : Promise<DiscordGuild[]> => {
     const res = await useApiFetch<DiscordGuild[]>(this.url('dashboard/guilds'))
 
-    if (res.error.value !== null) {
+    if (res.error) {
       throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
     }
 
-    return res.data.value ?? []
+    return res.data ?? []
   }
 
 
@@ -114,10 +114,10 @@ export class AstroApiClient {
   public get_guild_settings = async (guild_id: string) : Promise<GuildSettings> => {
     const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data`))
 
-    if (res.data.value !== null) {
-      return res.data.value
+    if (res.data) {
+      return res.data
     } else {
-      switch (res.error.value?.status ?? 500) {
+      switch (res.error.status ?? 500) {
         case 403: {
           throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
         }
@@ -136,8 +136,8 @@ export class AstroApiClient {
   public get_guild_errors = async (guild_id: string) : Promise<GSError[]> => {
     const res = await useApiFetch<GSError[]>(this.url(`/dashboard/guilds/${guild_id}/errors`))
 
-    if (res.data.value !== null) {
-      return res.data.value
+    if (res.data) {
+      return res.data
     } else {
       throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
     }
