@@ -1,6 +1,9 @@
 <template>
   <div>
     generators
+    <p v-for="i in Array.from(Array(100).keys())">
+      {{ i }}
+    </p>
   </div>
 </template>
 

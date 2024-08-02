@@ -7,4 +7,6 @@ export const enum AstroApiErrorCode {
 
   CANNOT_MANAGE_GUILD = 'You do not have permissions to manage this server',
   GUILD_NOT_FOUND = 'Server not found',
+
+  INVALID_GUILD_SETTINGS = 'The new settings cannot be saved because they are malformed'
 }

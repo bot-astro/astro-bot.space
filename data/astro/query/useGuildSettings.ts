@@ -1,10 +1,17 @@
-import {guild_settings_qk, guilds_qk} from "~/data/astro/config/query-keys";
+import {guild_settings_qk} from "~/data/astro/config/query-keys";
+import type {Ref} from "vue";
 
-export function useGuildSettings(guild_id: string) {
+export function useGuildSettings(guild_id: Ref<string | undefined>) {
   const { $astroApiClient } = useNuxtApp()
 
   return useQuery({
     queryKey: guild_settings_qk(guild_id),
-    queryFn: () => $astroApiClient.get_guild_settings(guild_id)
+    queryFn: (context) => {
+      if (context.queryKey[1] === undefined) {
+        throw Error('guild_id is undefined')
+      } else {
+        return $astroApiClient.get_guild_settings(context.queryKey[1])
+      }
+    }
   })
 }

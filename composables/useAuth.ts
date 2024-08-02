@@ -1,5 +1,6 @@
 import { StorageKeys } from "assets/config/StorageKeys"
 import useUserSession from "~/composables/useUserSession";
+import type {DiscordUser} from "~/types/discord";
 
 export default function () {
   return {

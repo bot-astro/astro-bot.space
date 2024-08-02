@@ -32,7 +32,7 @@ function decreaseQuantity() {
       <span class="text-subtitle text-center">Take your server to the next level with premium functionalities!</span>
     </div>
 
-    <div class="flex flex-col bordered rounded-lg bg-gray-900">
+    <div class="flex flex-col bordered rounded-lg bg-background">
       <div class="flex flex-col py-8 px-12">
         <!-- purchase section -->
         <div class="flex flex-col gap-8 items-center">

@@ -14,6 +14,7 @@
     "@nuxt/image": "^1.7.0",
     "@pinia/nuxt": "^0.5.2",
     "@tanstack/vue-query": "^5.51.15",
+    "@tanstack/vue-query-devtools": "^5.51.17",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "fast-equals": "^5.0.1",

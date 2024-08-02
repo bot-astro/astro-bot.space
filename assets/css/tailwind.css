@@ -22,6 +22,10 @@
 
     --gray-50: 0deg 0% 75.69%;
     --gray-300: 229.41deg 7.11% 53.14%;
+    --gray-400: 230deg 7% 30%;
+    --gray-500: 240deg 7% 20%;
+    --gray-600: 245deg 10% 15%;
+    --gray-700: 250deg 11% 9%;
     --gray-800: 260deg 13.04% 9.02%;
     --gray-900: 270deg 11.11% 3.53%;
 
@@ -60,9 +64,11 @@
     /* border radius */
     --radius: 0.5rem;
 
+    /* skeletons and disabled stuff */
+    --muted: var(--gray-600)
+
     /* TODO: THE FOLLOWING HAVE NOT BEEN MODIFIED YET AND THEY SHOULD */
-    /*--muted: 240 4.8% 95.9%;*/
-    /*--muted-foreground: 240 3.8% 46.1%;*/
+    /*--muted-fdoreground: 240 3.8% 46.1%;*/
 
     /*--popover: 0 0% 100%;*/
     /*--popover-foreground: 240 10% 3.9%;*/
@@ -114,7 +120,7 @@
   }
 
   html, body, #__nuxt {
-    @apply w-full h-full;
+    @apply w-full;
   }
 
   body {
@@ -131,6 +137,26 @@
     transparent 10px
     );
     background-blend-mode: multiply;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /*@apply bg-background rounded-r;*/
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[hsl(var(--gray-400))] rounded;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[hsl(var(--gray-300))];
   }
 }
 
@@ -165,7 +191,7 @@
   }
 
   .text-title-no-font {
-    @apply text-4xl font-medium tracking-wide;
+    @apply text-2xl md:text-4xl font-medium tracking-wide;
   }
 
   .text-subtitle {
@@ -186,11 +212,11 @@
 
   /* BUTTON */
   .button-text {
-    @apply text-foreground-link hover:text-foreground-link-hover transition-colors;
+    @apply text-foreground-link hover:text-foreground-link-hover transition-colors flex items-center;
   }
 
   .button-text-destructive {
-    @apply text-foreground-destructive text-opacity-75 cursor-pointer hover:text-opacity-100;
+    @apply text-foreground-destructive text-opacity-75 cursor-pointer hover:text-opacity-100 flex items-center;
   }
 
   .button {

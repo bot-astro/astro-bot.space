@@ -18,28 +18,10 @@ function setIsIllustrationDialogOpen(value: boolean) {
 
 <template>
   <div
-    class="flex flex-col rounded-md backlit-box bordered bg-bg md:max-w-screen-lg"
+    class="flex flex-col rounded-md backlit-box bordered bg-background md:max-w-screen-lg"
     :class="reverse ? 'md:flex-row-reverse' : 'md:flex-row'"
     @mousemove="onBacklitBoxMouseMove"
   >
-    <!-- illustration popup -->
-
-<!--    <HDialog-->
-<!--      :open="isIllustrationDialogOpened"-->
-<!--      class="fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center"-->
-<!--      @close="setIsIllustrationDialogOpen"-->
-<!--    >-->
-<!--      <HDialogPanel class="flex h-full w-full cursor-zoom-out items-center justify-center" @click="setIsIllustrationDialogOpen(false)">-->
-<!--        <NuxtImg-->
-<!--          v-if="illustrationSrc"-->
-<!--          :src="illustrationSrc"-->
-<!--          class="z-10 w-4/5 select-none rounded-xl md:h-1/2 md:w-auto"-->
-<!--          draggable="false"-->
-<!--        />-->
-<!--        <div class="fixed h-full w-full bg-opacity-50 backdrop-blur bg-background" />-->
-<!--      </HDialogPanel>-->
-<!--    </HDialog>-->
-
     <!-- feature box -->
     <Dialog v-model:open="is_illustration_open">
       <NuxtImg

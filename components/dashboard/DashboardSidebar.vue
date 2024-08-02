@@ -1,55 +1,62 @@
 <template>
-  <div class="flex flex-col min-w-64 min-h-full">
+  <div class="flex flex-col min-h-full">
     <!-- Server indicator -->
-    <div class="bordered bg-gray-900 h-20 w-full p-4">
-      <!-- server loaded -->
-      <div v-if="currentGuild" class="flex items-center h-full gap-2 w-full">
-        <!-- guild icon -->
-        <NuxtImg v-if="currentGuild.icon !== undefined" :src="discordGuildIconUri(currentGuild.id!, currentGuild.icon!)"
-          class="rounded-full max-w-none w-6 h-6 md:w-8 md:h-8 bordered" />
-        <p v-else-if="currentGuild.name !== undefined"
-          class="flex items-center justify-center truncate rounded-full font-semibold text-white w-6 h-6 md:w-8 md:h-8 bordered">
-          {{ currentGuild.name.split(" ").map((a) => a.charAt(0).toUpperCase()).join("") }}
-        </p>
-        <Skeleton v-else class="rounded-full w-6 h-6 md:w-8 md:h-8" />
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <div class="bordered bg-background min-h-16 md:min-h-20 w-full p-4 flex items-center text-start">
+          <!-- server loaded -->
+          <div class="flex items-center h-full gap-2 w-full">
+            <!-- guild icon -->
+            <NuxtImg v-if="guild_info?.icon" :src="discordGuildIconUri(guild_info.id, guild_info.icon)"
+                     class="rounded-full max-w-none w-6 h-6 md:w-8 md:h-8 bordered" />
+            <p
+              v-else-if="guild_info?.name"
+              class="flex items-center justify-center truncate rounded-full font-semibold text-white w-6 h-6 md:w-8 md:h-8 bordered">
+              {{ guild_info.name.split(" ").map((a) => a.charAt(0).toUpperCase()).join("") }}
+            </p>
+            <Skeleton v-else class="rounded-full w-6 h-6 md:w-8 md:h-8" />
 
-        <!-- name & ultimate status -->
-        <div class="flex flex-col grow">
-          <span v-if="currentGuild?.name !== undefined"> {{ currentGuild.name }}</span>
-          <Skeleton v-else class="h-2" />
+            <!-- name & ultimate status -->
+            <div class="flex flex-col grow">
+              <span v-if="guild_info"> {{ guild_info.name }}</span>
+              <Skeleton v-else class="h-2 mb-1" />
 
-          <span v-if="data && status === 'success'" class="text-secondary text-xs">
-            {{ data.upgraded_by_user_id !== undefined ? 'Ultimate' : 'Free' }}
-          </span>
+              <span v-if="guild_settings" class="text-secondary text-xs">
+                {{ isGuildUltimate(guild_settings) ? 'Ultimate' : 'Free' }}
+              </span>
+            </div>
+
+            <IconDropdown class="size-5 text-foreground-secondary -rotate-90" />
+          </div>
         </div>
-      </div>
-    </div>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent class="max-h-72 overflow-y-auto" side="right">
+        <DropdownMenuItem
+          v-for="_guild in managed_guilds"
+          :key="_guild.id"
+          @click="set_section_and_guild(undefined, _guild.id)"
+        >
+          <div class="flex items-center gap-2">
+            <NuxtImg v-if="_guild.icon" :src="discordGuildIconUri(_guild.id, _guild.icon)" class="rounded-full size-4" />
+            <p
+              v-else
+              class="flex items-center justify-center truncate rounded-full font-semibold text-white size-4 text-xs bordered">
+              {{ _guild.name.split(" ").map((a) => a.charAt(0).toUpperCase()).join("") }}
+            </p>
+            <span>{{ _guild.name }}</span>
+          </div>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+
+
 
     <!-- settings navigation -->
-    <div class="flex flex-col grow bg-gray-800 border-r border-border">
-      <div class="p-4">
-        <Menu v-if="guilds?.length && currentGuild" class="w-full">
-          <MenuButton class="flex bg-black shadow rounded border-1 border-purple-900 px-4 py-2 w-full">
-            <ButtonText class="flex items-center gap-2 w-full text-sm">
-              <NuxtImg :src="discordGuildIconUri(currentGuild.id!, currentGuild.icon!)" class="rounded-full size-4" />
-              <span>{{ currentGuild.name }}</span>
-              <div class="flex-grow" />
-              <IconDropdown />
-            </ButtonText>
-          </MenuButton>
-          <MenuItems class="right-0 flex flex-col max-h-[320px] overflow-auto overscroll-contain">
-            <MenuItem v-for="_guild in guildsCanManage">
-            <NuxtLink class="flex gap-2 items-center" @click="dashboard.setContext(undefined, _guild.id)">
-              <NuxtImg :src="discordGuildIconUri(_guild.id!, _guild.icon!)" class="rounded-full size-4" />
-              <span class="">{{ _guild.name }}</span>
-            </NuxtLink>
-            </MenuItem>
-          </MenuItems>
-        </Menu>
-      </div>
+    <div class="flex flex-col grow bg-background-container border-r border-border pt-4 min-h-full">
       <div v-for="section in sections"
-        class="flex flex-row items-center gap-3 px-4 py-2 hover:bg-gray-900 cursor-pointer transition-colors"
-        :class="currentSection.id === section.id ? 'bg-gray-900' : ''" @click="dashboard.setContext(section)">
+        class="flex flex-row items-center gap-3 px-4 py-2 hover:bg-background cursor-pointer transition-colors"
+        :class="current_section.id === section.id ? 'bg-background' : ''" @click="set_section_and_guild(section)">
         <Icon :name="section.icon" class="size-4" />
         <span>{{ section.name }}</span>
       </div>
@@ -58,13 +65,17 @@
 </template>
 
 <script lang="ts" setup>
-const dashboard = useDashboardStore()
+const guild_id = useGuildId()
+const { sections, current_section, set_section_and_guild } = useDashboardSections()
 
-const { currentGuild, guilds } = storeToRefs(dashboard)
+const { data: guilds } = useGuilds()
+const managed_guilds = computed(() =>
+  (guilds.value ?? [])
+    .filter(g => g.can_manage)
+    .sort((a, b) => a.name.localeCompare(b.name))
+)
 
-const guildsCanManage = computed(() => guilds.value.filter(g => g.can_manage).sort((a, b) => a.name!.localeCompare(b.name!)))
+const guild_info = useGuildInfo()
 
-const { data, status } = useAsyncData('settings', () => dashboard.currentSettings)
-
-const { sections, currentSection } = storeToRefs(dashboard)
+const { data: guild_settings, error: guild_settings_error, isPending: guild_settings_pending } = useGuildSettings(guild_id)
 </script>

@@ -8,8 +8,21 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
+
   imports: {
-    dirs: ['types', 'data']
+    dirs: [
+      'types',
+      'types/**',
+      'composables/**',
+      'data',
+      'data/**',
+    ]
   },
 
   modules: [

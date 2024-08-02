@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
 
-interface SkeletonProps {
+interface GroupSettingProps {
   heading: string
   description?: string
   class?: HTMLAttributes['class']
 }
 
-const props = defineProps<SkeletonProps>()
+const props = defineProps<GroupSettingProps>()
 </script>
 
 <template>

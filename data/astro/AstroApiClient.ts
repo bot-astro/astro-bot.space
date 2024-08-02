@@ -6,6 +6,7 @@ import type {LoginResponse} from "~/types/session";
 import type {DiscordGuild, DiscordUser} from "~/types/discord";
 import type {UserChargebeeSubscriptions} from "~/types/user";
 import type {GSError} from "~/types/guild-settings/error";
+import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
 
 /**
  * Api client to interact with the Astro APIs
@@ -118,6 +119,31 @@ export class AstroApiClient {
       return res.data
     } else {
       switch (res.error.status ?? 500) {
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public update_guild_settings = async (guild_id: string, settings_rb: GuildSettingsRB): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data`), {
+      method: 'POST'
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 400: {
+          throw new AstroApiError(AstroApiErrorCode.INVALID_GUILD_SETTINGS)
+        }
         case 403: {
           throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
         }
