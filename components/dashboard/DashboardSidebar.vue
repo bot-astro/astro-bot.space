@@ -31,7 +31,7 @@
         </div>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent class="max-h-72 overflow-y-auto" side="right">
+      <DropdownMenuContent class="max-h-72 overflow-y-auto" :side="width > 700 ? 'right' : 'bottom'">
         <DropdownMenuItem
           v-for="_guild in managed_guilds"
           :key="_guild.id"
@@ -65,6 +65,8 @@
 </template>
 
 <script lang="ts" setup>
+const { width } = useWindowSize()
+
 const guild_id = useGuildId()
 const { sections, current_section, set_section_and_guild } = useDashboardSections()
 
