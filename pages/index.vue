@@ -46,7 +46,7 @@
       </CoreFeatureBox>
 
       <div
-        class="backlit-box bordered flex flex-col items-center justify-center rounded-md bg-bg p-6 md:max-w-screen-lg"
+        class="backlit-box bordered flex flex-col items-center justify-center rounded-md bg-background p-6 md:max-w-screen-lg"
         @mousemove="onBacklitBoxMouseMove"
       >
         <span class="font-display text-2xl font-medium tracking-wide">Voice Channels Exclusive</span>

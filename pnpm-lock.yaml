@@ -59,6 +59,9 @@ dependencies:
   vue-router:
     specifier: ^4.4.0
     version: 4.4.0(vue@3.4.34)
+  vue-sonner:
+    specifier: ^1.1.4
+    version: 1.1.4
 
 devDependencies:
   '@nuxt/devtools':
@@ -7878,6 +7881,10 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.6.3
       vue: 3.4.34(typescript@5.5.4)
+
+  /vue-sonner@1.1.4:
+    resolution: {integrity: sha512-ATt+o38ALfPBfmaT3rfr10K+mkZ/7EdqZewEZVI3krSc1RaIDK8fI9gQro0Jlh8HZcOHv2oUDJufSIUl/qpdOA==}
+    dev: false
 
   /vue@3.4.34(typescript@5.5.4):
     resolution: {integrity: sha512-VZze05HWlA3ItreQ/ka7Sx7PoD0/3St8FEiSlSTVgb6l4hL+RjtP2/8g5WQBzZgyf8WG2f+g1bXzC7zggLhAJA==}

@@ -134,7 +134,8 @@ export class AstroApiClient {
 
   public update_guild_settings = async (guild_id: string, settings_rb: GuildSettingsRB): Promise<GuildSettings> => {
     const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data`), {
-      method: 'POST'
+      method: 'POST',
+      body: settings_rb,
     })
 
     if (res.data) {

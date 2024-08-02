@@ -9,14 +9,14 @@
       <DashboardSidebar
         :class="cn(
           mobile_sidebar_open ? 'flex' : 'hidden',
-           'fixed z-40'
+           'fixed md:hidden z-40'
          )"
       />
       <div
         @click="mobile_sidebar_open = false"
         :class="cn(
-          mobile_sidebar_open ? 'visible' : 'invisible',
-          'fixed inset-0 z-30 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0'
+          mobile_sidebar_open ? 'flex' : 'hidden',
+          'fixed md:hidden inset-0 z-30 bg-black/80'
         )"
       />
 
