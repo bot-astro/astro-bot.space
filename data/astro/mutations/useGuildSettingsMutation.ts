@@ -1,5 +1,4 @@
 import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
-import {guild_settings_qk} from "~/data/astro/config/query-keys";
 
 export interface GuildSettingsMutationParams {
   guild_id: string

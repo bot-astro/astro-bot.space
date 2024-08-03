@@ -158,6 +158,55 @@ export class AstroApiClient {
     }
   }
 
+  public upgrade_guild = async (guild_id: string, subscription_id: string): Promise<void> => {
+    const res = await useApiFetch(this.url(`dashboard/guilds/${guild_id}/upgrade/${subscription_id}`))
+
+    if (res.error) {
+      switch (res.error.status ?? 500) {
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        case 405: {
+          throw new AstroApiError(AstroApiErrorCode.SUBSCRIPTION_USED)
+        }
+        case 409: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_ALREADY_ULTIMATE)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public downgrade_guild = async (guild_id: string): Promise<void> => {
+    const res = await useApiFetch(this.url(`dashboard/guilds/${guild_id}/downgrade`))
+
+    if (res.error) {
+      switch (res.error.status ?? 500) {
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_UPGRADED_BY_OTHER)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public clear_temporary_vcs_cache = async (guild_id: string): Promise<void> => {
+    const res = await useApiFetch(this.url(`/dashboard/guilds/${guild_id}/vc/cache`), {
+      method: 'DELETE'
+    })
+
+    if (res.error) {
+      throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+    }
+  }
+
 
   /// ERRORS ///
   public get_guild_errors = async (guild_id: string) : Promise<GSError[]> => {

@@ -51,7 +51,7 @@ const guilds = computed(() => {
     </div>
 
     <div v-if="is_pending" class="w-full mt-4 flex justify-center">
-      <UtilCircularLoading />
+      <IconLoading />
     </div>
     <div v-else-if="error" class="w-full mt-4 flex justify-center bordered-destructive rounded-md p-4 text-destructive">
       Something went wrong, please try again later

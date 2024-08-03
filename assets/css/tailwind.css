@@ -14,6 +14,12 @@
 
     --pink-500: 330.37deg 81.19% 60.39%;
 
+    --yellow-500: 37.62deg 95.85% 62.16%;
+    --yellow-600: 37.5deg 95.73% 54.12%;
+    --yellow-800: 37.86deg 96.26% 20.98%;
+
+    --orange-500: 27deg 96% 61%;
+
     --red-400: 0deg 90.6% 70.78%;
     --red-500: 0deg 84.24% 60.2%;
 
@@ -40,6 +46,8 @@
     --background-alternative: var(--gray-800);
     /* background for buttons and other clickable components such as switches or tabs */
     --background-button: var(--purple-500);
+    /* background for ultimate containers like buttons for premium features */
+    --background-ultimate: var(--yellow-600);
 
     /* background for buttons and other clicable components that need to standout more */
     --background-button-standout: linear-gradient(to right, hsl(var(--purple-500)), hsl(var(--pink-500)));
@@ -55,6 +63,7 @@
     --foreground-link-hover: var(--purple-50);
     /* foreground color for links that need to standout more */
     --foreground-link-standout: var(--purple-400);
+    --foreground-ultimate: var(--white-900);
 
     /* border color */
     --border: 220deg 9.28% 19.02%;
@@ -146,7 +155,7 @@
 
   /* Track */
   ::-webkit-scrollbar-track {
-    /*@apply bg-background rounded-r;*/
+    /*@apply rounded-r bg-background;*/
   }
 
   /* Handle */
@@ -164,7 +173,7 @@
 @layer components {
   /* generic group of contents */
   .group {
-    @apply bordered bg-background-container rounded-md px-3 py-3;
+    @apply rounded-md px-3 py-3 bordered bg-background-container;
   }
 
   /* anything that needs a border */
@@ -183,7 +192,7 @@
   }
 
   .text-destructive {
-    @apply text-foreground-destructive text-opacity-80;
+    @apply text-opacity-80 text-foreground-destructive;
   }
 
   .text-title {
@@ -191,7 +200,7 @@
   }
 
   .text-title-no-font {
-    @apply text-2xl md:text-4xl font-medium tracking-wide;
+    @apply text-2xl font-medium tracking-wide md:text-4xl;
   }
 
   .text-subtitle {
@@ -199,7 +208,7 @@
   }
 
   .text-group-name {
-    @apply text-sm text-dimmed font-semibold;
+    @apply text-sm font-semibold text-dimmed;
   }
 
   .text-heading {
@@ -212,28 +221,32 @@
 
   /* BUTTON */
   .button-text {
-    @apply text-foreground-link hover:text-foreground-link-hover transition-colors flex items-center;
+    @apply flex items-center transition-colors text-foreground-link hover:text-foreground-link-hover;
   }
 
   .button-text-destructive {
-    @apply text-foreground-destructive text-opacity-75 cursor-pointer hover:text-opacity-100 flex items-center;
+    @apply flex cursor-pointer items-center text-opacity-75 text-foreground-destructive hover:text-opacity-100;
   }
 
   .button {
-    @apply text-foreground w-fit transition duration-75 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative bg-background-button/80 hover:bg-background-button/100 focus:bg-background-button/100 py-1.5 px-4;
+    @apply relative flex w-fit flex-shrink-0 items-center justify-center gap-2 truncate rounded px-4 transition duration-75 text-foreground bg-background-button/80 py-1.5 hover:bg-background-button/100 focus:bg-background-button/100 disabled:cursor-not-allowed disabled:bg-background-interactive disabled:bordered disabled:text-foreground-link;
   }
 
   .button-secondary {
-    @apply p-1 transition text-foreground-link hover:text-foreground-link-hover flex-shrink-0 cursor-pointer bg-background-interactive hover:bg-background bordered hover:border-gray-400 disabled:hover:cursor-not-allowed;
+    @apply flex-shrink-0 cursor-pointer p-1 transition text-foreground-link bg-background-interactive bordered hover:text-foreground-link-hover hover:bg-background hover:border-gray-400 disabled:hover:cursor-not-allowed;
   }
 
   .button-standout {
     background: var(--background-button-standout);
-    @apply text-foreground flex items-center justify-center rounded-md px-5 py-2 transition-all duration-150 hover:opacity-80;
+    @apply flex items-center justify-center rounded-md px-5 py-2 transition-all duration-150 text-foreground hover:opacity-80;
+  }
+
+  .button-ultimate {
+    @apply flex items-center justify-center rounded-md bg-opacity-80 px-5 py-2 transition-all duration-150 text-foreground-ultimate bg-background-ultimate hover:bg-opacity-100;
   }
 
   .button-destructive {
-    @apply text-foreground-destructive/80 hover:text-foreground-destructive/100 w-fit transition duration-100 truncate flex items-center justify-center gap-2 flex-shrink-0 rounded relative border border-red-500/20 hover:border-red-500/100 py-1.5 px-4;
+    @apply relative flex w-fit flex-shrink-0 items-center justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 hover:text-foreground-destructive/100 hover:border-red-500/100 disabled:cursor-not-allowed;
   }
 
   /* MENU */
@@ -241,12 +254,12 @@
     @apply rounded-t-md rounded-b-none;
   }
   .menu-item:last-child {
-    @apply rounded-b-md rounded-t-none;
+    @apply rounded-t-none rounded-b-md;
   }
 
   /* INPUT */
   input {
-    @apply rounded h-9 bg-background bordered placeholder-gray-400 px-2.5 py-1 outline-none focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:placeholder-opacity-60 disabled:opacity-80;
+    @apply h-9 rounded py-1 outline-none bg-background bordered placeholder-gray-400 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:placeholder-opacity-60 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:opacity-80;
   }
 }
 

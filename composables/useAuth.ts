@@ -18,6 +18,9 @@ export default function () {
     },
     logout: async () => {
       const { $astroApiClient } = useNuxtApp()
+      const queryClient = useQueryClient()
+
+
       const userSession = useUserSession()
 
       if (userSession.data.value !== undefined) {
@@ -29,6 +32,8 @@ export default function () {
       }
 
       userSession.clear()
+
+      await queryClient.invalidateQueries()
 
       location.reload()
     }

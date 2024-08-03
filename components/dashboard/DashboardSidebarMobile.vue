@@ -33,12 +33,6 @@
 </template>
 
 <script lang="ts" setup>
-const emit_expanded = defineEmits(['onExpand'])
-
-const guild_id = useGuildId()
 const { sections, current_section, set_section_and_guild } = useDashboardSections()
-
 const guild_info = useGuildInfo()
-
-const { data: guild_settings, error: guild_settings_error, isPending: guild_settings_pending } = useGuildSettings(guild_id)
 </script>

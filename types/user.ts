@@ -19,8 +19,8 @@ export interface UserUpgradedGuild {
 
 export interface UserSubscription {
   subscription_id: string;
-  /**
-   * how many guild upgrades this subscription can be used for
-   */
-  quantity: number;
+  annual: boolean;
+  quantities: number;
+  used: number;
+  available: number;
 }

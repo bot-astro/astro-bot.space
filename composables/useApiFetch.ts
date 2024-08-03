@@ -35,7 +35,7 @@ export async function useApiFetch<T>(
 
     if (e instanceof FetchError) {
         if (e.statusCode === 401 && redirect_on_401) {
-          useAuth().login(useRoute().fullPath)
+          // useAuth().login(useRoute().fullPath)
           throw new AstroApiError(AstroApiErrorCode.UNAUTHENTICATED)
         } else {
           return {

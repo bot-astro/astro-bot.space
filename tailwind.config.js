@@ -35,6 +35,14 @@ module.exports = {
         pink: {
           500: 'hsl(var(--pink-500) / <alpha-value>)',
         },
+        yellow: {
+          500: 'hsl(var(--yellow-500) / <alpha-value>)',
+          600: 'hsl(var(--yellow-600) / <alpha-value>)',
+          800: 'hsl(var(--yellow-800) / <alpha-value>)',
+        },
+        orange: {
+          500: 'hsl(var(--orange-500) / <alpha-value>)',
+        },
         red: {
           400: 'hsl(var(--red-400) / <alpha-value>)',
           500: 'hsl(var(--red-500) / <alpha-value>)',
@@ -56,6 +64,7 @@ module.exports = {
           interactive: 'hsl(var(--background-interactive) / <alpha-value>)',
           alternative: 'hsl(var(--background-alternative) / <alpha-value>)',
           button: 'hsl(var(--background-button) / <alpha-value>)',
+          ultimate: 'hsl(var(--background-ultimate) / <alpha-value>)',
         },
         foreground: {
           'DEFAULT': 'hsl(var(--foreground) / <alpha-value>)',
@@ -64,6 +73,7 @@ module.exports = {
           'link': 'hsl(var(--foreground-link) / <alpha-value>)',
           'link-hover': 'hsl(var(--foreground-link-hover) / <alpha-value>)',
           'link-standout': 'hsl(var(--foreground-link-standout) / <alpha-value>)',
+          'ultimate': 'hsl(var(--foreground-ultimate) / <alpha-value>)',
         },
         border: {
           DEFAULT: 'hsl(var(--border) / <alpha-value>)',
