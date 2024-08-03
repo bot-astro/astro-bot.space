@@ -1,6 +1,6 @@
 import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
 
-export interface GuildSettingsMutationParams {
+interface GuildSettingsMutationParams {
   guild_id: string
   guild_settings_rb: GuildSettingsRB
 }

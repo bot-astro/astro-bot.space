@@ -3,10 +3,11 @@ import {AstroApiErrorCode} from "~/data/astro/core/AstroApiErrorCode";
 import {AstroApiError} from "~/data/astro/core/AstroApiError";
 import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 import type {LoginResponse} from "~/types/session";
-import type {DiscordGuild, DiscordUser} from "~/types/discord";
+import type {DiscordGuild, DiscordGuildChannel, DiscordRole, DiscordUser} from "~/types/discord";
 import type {UserChargebeeSubscriptions} from "~/types/user";
 import type {GSError} from "~/types/guild-settings/error";
 import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
+import type {GSGenerator} from "~/types/guild-settings/generator";
 
 /**
  * Api client to interact with the Astro APIs
@@ -83,7 +84,7 @@ export class AstroApiClient {
   }
 
   public get_user_chargebee_subscriptions = async (): Promise<UserChargebeeSubscriptions> => {
-    const res = await useApiFetch<UserChargebeeSubscriptions>(this.url('/chargebee/subscriptions'))
+    const res = await useApiFetch<UserChargebeeSubscriptions>(this.url(`/chargebee/subscriptions`))
 
     if (res.data) {
       return res.data
@@ -108,6 +109,26 @@ export class AstroApiClient {
     }
 
     return res.data ?? []
+  }
+
+  public get_guild_channels = async (guild_id: string) : Promise<DiscordGuildChannel[]> => {
+    const res = await useApiFetch<DiscordGuildChannel[]>(this.url(`/dashboard/guilds/${guild_id}/channels`))
+
+    if (res.data) {
+      return res.data
+    } else {
+      throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+    }
+  }
+
+  public get_guild_roles = async (guild_id: string) : Promise<DiscordRole[]> => {
+    const res = await useApiFetch<DiscordRole[]>(this.url(`/dashboard/guilds/${guild_id}/roles`))
+
+    if (res.data) {
+      return res.data
+    } else {
+      throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+    }
   }
 
 
@@ -143,7 +164,7 @@ export class AstroApiClient {
     } else {
       switch (res.error.status ?? 500) {
         case 400: {
-          throw new AstroApiError(AstroApiErrorCode.INVALID_GUILD_SETTINGS)
+          throw new AstroApiError(AstroApiErrorCode.INVALID_SETTINGS)
         }
         case 403: {
           throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
@@ -158,6 +179,7 @@ export class AstroApiClient {
     }
   }
 
+  /// ULTIMATE ///
   public upgrade_guild = async (guild_id: string, subscription_id: string): Promise<void> => {
     const res = await useApiFetch(this.url(`dashboard/guilds/${guild_id}/upgrade/${subscription_id}`))
 
@@ -197,6 +219,7 @@ export class AstroApiClient {
     }
   }
 
+  /// SETTINGS UTILS ///
   public clear_temporary_vcs_cache = async (guild_id: string): Promise<void> => {
     const res = await useApiFetch(this.url(`/dashboard/guilds/${guild_id}/vc/cache`), {
       method: 'DELETE'
@@ -216,6 +239,91 @@ export class AstroApiClient {
       return res.data
     } else {
       throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+    }
+  }
+
+  public clear_guild_errors = async (guild_id: string) : Promise<void> => {
+    const res = await useApiFetch(this.url(`/dashboard/guilds/${guild_id}/errors`), {
+      method: 'DELETE'
+    })
+
+    if (res.error) {
+      throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+    }
+  }
+
+
+  /// GENERATOR ///
+  public create_generator = async (guild_id: string): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/generator`), {
+      method: 'POST'
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        case 405: {
+          throw new AstroApiError(AstroApiErrorCode.ASTRO_MISSING_PERMISSIONS)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public update_generator = async (guild_id: string, generator_id: string, generator_settings: GSGenerator): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/generator/${generator_id}`), {
+      method: 'POST',
+      body: generator_settings
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 400: {
+          throw new AstroApiError(AstroApiErrorCode.INVALID_SETTINGS)
+        }
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public delete_generator = async (guild_id: string, generator_id: string): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/generator/${generator_id}`), {
+      method: 'DELETE'
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
     }
   }
 }

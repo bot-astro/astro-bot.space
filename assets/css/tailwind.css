@@ -220,33 +220,37 @@
   }
 
   /* BUTTON */
+  .button-base {
+    @apply select-none flex items-center transition-colors cursor-pointer disabled:cursor-not-allowed;
+  }
+
   .button-text {
-    @apply flex items-center transition-colors text-foreground-link hover:text-foreground-link-hover;
+    @apply button-base text-foreground-link hover:text-foreground-link-hover;
   }
 
   .button-text-destructive {
-    @apply flex cursor-pointer items-center text-opacity-75 text-foreground-destructive hover:text-opacity-100;
+    @apply button-base text-opacity-75 text-foreground-destructive hover:text-opacity-100;
   }
 
   .button {
-    @apply relative flex w-fit flex-shrink-0 items-center justify-center gap-2 truncate rounded px-4 transition duration-75 text-foreground bg-background-button/80 py-1.5 hover:bg-background-button/100 focus:bg-background-button/100 disabled:cursor-not-allowed disabled:bg-background-interactive disabled:bordered disabled:text-foreground-link;
+    @apply button-base relative w-fit flex-shrink-0 justify-center gap-2 truncate rounded px-4 transition duration-75 text-foreground bg-background-button/80 py-1.5 hover:bg-background-button/100 focus:bg-background-button/100 disabled:bg-background-interactive disabled:bordered disabled:text-foreground-link;
   }
 
   .button-secondary {
-    @apply flex-shrink-0 cursor-pointer p-1 transition text-foreground-link bg-background-interactive bordered hover:text-foreground-link-hover hover:bg-background hover:border-gray-400 disabled:hover:cursor-not-allowed;
+    @apply button-base rounded flex-shrink-0 p-1 px-2 transition text-foreground-link bg-background-interactive bordered hover:text-foreground-link-hover hover:bg-background hover:border-gray-400;
   }
 
   .button-standout {
     background: var(--background-button-standout);
-    @apply flex items-center justify-center rounded-md px-5 py-2 transition-all duration-150 text-foreground hover:opacity-80;
+    @apply button-base justify-center rounded-md px-5 py-2 transition-all duration-150 text-foreground hover:opacity-80;
   }
 
   .button-ultimate {
-    @apply flex items-center justify-center rounded-md bg-opacity-80 px-5 py-2 transition-all duration-150 text-foreground-ultimate bg-background-ultimate hover:bg-opacity-100;
+    @apply button-base justify-center gap-2 rounded-md bg-opacity-80 px-5 py-2 transition-all duration-150 text-foreground-ultimate bg-background-ultimate hover:bg-opacity-100;
   }
 
   .button-destructive {
-    @apply relative flex w-fit flex-shrink-0 items-center justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 hover:text-foreground-destructive/100 hover:border-red-500/100 disabled:cursor-not-allowed;
+    @apply button-base relative w-fit flex-shrink-0 justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 hover:text-foreground-destructive/100 hover:border-red-500/100;
   }
 
   /* MENU */
@@ -261,6 +265,14 @@
   input {
     @apply h-9 rounded py-1 outline-none bg-background bordered placeholder-gray-400 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:placeholder-opacity-60 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:opacity-80;
   }
+}
+
+@layer utilities {
+  .dashboard-section-title {
+    @apply text-title-no-font font-bold;
+  }
+
+  .dashboard-section-description {}
 }
 
 /* ANIMATIONS */

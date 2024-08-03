@@ -4,10 +4,10 @@
     <div class="flex items-center gap-4">
       <Icon name="lucide:server" class="size-10" />
       <div class="flex flex-col">
-        <span v-if="guild_info" class="text-title-no-font font-bold">{{ guild_info.name }}</span>
+        <span v-if="guild_info" class="dashboard-section-title">{{ guild_info.name }}</span>
         <Skeleton v-else class="h-10 w-72" />
 
-        <span>Manage your server's basic settings</span>
+        <span class="dashboard-section-description">Manage your server's basic settings</span>
       </div>
     </div>
 
@@ -45,15 +45,15 @@
             heading="Ultimate server"
             :description="`Your server is currently ${isGuildUltimate(guild_settings) ? 'upgraded' : 'not upgraded'} to ultimate`"
           >
-            <ButtonDestructive v-if="isGuildUltimate(guild_settings)" @click="downgrade_guild({ guild_id: guild_id! })">
+            <ButtonDestructive :loading="downgrade_guild_loading" v-if="isGuildUltimate(guild_settings)" @click="downgrade_guild({ guild_id: guild_id! })">
               Downgrade
             </ButtonDestructive>
-            <ButtonUltimate v-else @click="upgrade_dialog_open = true">
+            <ButtonUltimate :loading="upgrade_guild_loading" v-else @click="upgrade_dialog_open = true">
               Upgrade
             </ButtonUltimate>
             <DashboardUpgradeDialog
               v-model:open="upgrade_dialog_open"
-              @onUpgrade="(sub_id) => upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id })"
+              @onUpgrade="(sub_id) => { upgrade_dialog_open = false; upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id }) }"
               @onPurchaseOnWebsite="() => navigateTo('/ultimate', { external: true, open: { target: '_blank' } })"
               @onPurchaseOnDiscord="() => navigateTo('/discord-ultimate', { external: true, open: { target: '_blank' } })"
             />
@@ -165,7 +165,7 @@ const require_admin_perms = computed({
   }
 })
 
-const { mutate: upgrade_guild } = useGuildUpgradeMutation()
-const { mutate: downgrade_guild } = useGuildDowngradeMutation()
+const { mutate: upgrade_guild, isPending: upgrade_guild_loading } = useGuildUpgradeMutation()
+const { mutate: downgrade_guild, isPending: downgrade_guild_loading } = useGuildDowngradeMutation()
 const { mutate: clear_temporary_vcs_cache, isPending: is_clear_temporary_vcs_cache_pending } = useClearTemporaryVCsCacheMutation()
 </script>

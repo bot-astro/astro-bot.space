@@ -1,6 +1,6 @@
 import {useMutation} from "#imports";
 
-export interface GuildUpgradeMutationParams {
+interface GuildUpgradeMutationParams {
   guild_id: string
   subscription_id: string
 }

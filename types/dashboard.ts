@@ -1,4 +1,4 @@
-export default interface DashboardSection {
+export interface DashboardSection {
   id: number
   name: string
   description: string

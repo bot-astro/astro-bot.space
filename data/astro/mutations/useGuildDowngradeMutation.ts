@@ -1,4 +1,4 @@
-export interface UseGuildDowngradeMutationParams {
+interface UseGuildDowngradeMutationParams {
   guild_id: string
 }
 
