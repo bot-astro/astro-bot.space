@@ -80,11 +80,11 @@
 </template>
 
 <script lang="ts" setup>
-import type DashboardSection from "~/types/dashboard";
 import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 import {deepEqual} from "fast-equals";
 import {toast} from "vue-sonner";
 import {useClearTemporaryVCsCacheMutation} from "~/data/astro/mutations/useClearTemporaryVCsCacheMutation";
+import type {DashboardSection} from "~/types/dashboard";
 
 definePageMeta({
   middleware: 'auth',

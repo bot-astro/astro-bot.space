@@ -15,5 +15,10 @@ export const enum AstroApiErrorCode {
   GUILD_ALREADY_ULTIMATE = 'This server is already upgraded to Ultimate',
   GUILD_UPGRADED_BY_OTHER = 'This server was upgraded by another user',
 
+  ULTIMATE_REQUIRED_TO_CREATE_GENERATOR = 'Ultimate is required to create a new generator',
+  ULTIMATE_REQUIRED_TO_CREATE_INTERFACE = 'Ultimate is required to create a new interface',
+  ULTIMATE_REQUIRED_TO_CREATE_TEMPLATE = 'Ultimate is required to create a new template',
+  ULTIMATE_REQUIRED_TO_CREATE_VOICE_ROLE = 'Ultimate is required to create a new voice role',
+
   INVALID_SETTINGS = 'The new settings cannot be saved because they are malformed'
 }

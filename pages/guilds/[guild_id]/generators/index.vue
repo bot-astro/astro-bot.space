@@ -84,11 +84,20 @@
         <IconLoading />
       </div>
     </div>
+
+    <DashboardUpgradeDialog
+      v-model:open="upgrade_dialog_open"
+      @onUpgrade="(sub_id) => { upgrade_dialog_open = false; upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id }) }"
+      @onPurchaseOnWebsite="() => navigateTo('/ultimate', { external: true, open: { target: '_blank' } })"
+      @onPurchaseOnDiscord="() => navigateTo('/discord-ultimate', { external: true, open: { target: '_blank' } })"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
 import {IconNames} from "assets/config/IconNames";
+import type {DashboardSection} from "~/types/dashboard";
+import {toast} from "vue-sonner";
 
 definePageMeta({
   middleware: 'auth',
@@ -104,6 +113,25 @@ definePageMeta({
 const guild_id = useGuildId()
 const { data: guild_channels } = useGuildChannels(guild_id)
 const { data: guild_settings, isError: guild_settings_error } = useGuildSettings(guild_id)
-const { mutate: create_generator, isPending: create_generator_loading } = useCreateGeneratorMutation()
-const { mutate: delete_generator, isPending: delete_generator_loading } = useDeleteGeneratorMutation()
+const { mutate: create_generator, isPending: create_generator_loading, error: create_generator_error } = useCreateGeneratorMutation()
+const { mutate: delete_generator, isPending: delete_generator_loading, error: delete_generator_error } = useDeleteGeneratorMutation()
+
+const upgrade_dialog_open = ref(false)
+
+watch(create_generator_error, (e) => {
+  if (e?.message) {
+    if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ULTIMATE_REQUIRED_TO_CREATE_GENERATOR) {
+      toast.error(e.code, {
+        action: {
+          label: 'Upgrade',
+          onClick: () => {
+            upgrade_dialog_open.value = true
+          }
+        }
+      })
+    } else {
+      toast.error(e.message)
+    }
+  }
+})
 </script>

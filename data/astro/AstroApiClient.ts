@@ -263,6 +263,9 @@ export class AstroApiClient {
       return res.data
     } else {
       switch (res.error.status ?? 500) {
+        case 402: {
+          throw new AstroApiError(AstroApiErrorCode.ULTIMATE_REQUIRED_TO_CREATE_GENERATOR)
+        }
         case 403: {
           throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
         }
