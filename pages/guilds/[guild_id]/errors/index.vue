@@ -20,9 +20,9 @@
           <div class="flex items-center gap-4 px-4 py-6">
             <Icon name="i-fluent-error-circle-20-regular" size="1.5rem" class="flex-shrink-0" />
             <div class="flex flex-col">
-            <span class="text-ellipsis overflow-hidden">
-              {{ error.description }}
-            </span>
+              <span class="text-ellipsis overflow-hidden">
+                {{ error.description }}
+              </span>
               <p v-if="error.instant" class="text-sm opacity-50">
                 {{ new Date(error.instant).toDateString() }} at {{ new Date(error.instant).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }}
               </p>
@@ -54,7 +54,7 @@
           <hr class="w-full bordered" v-if="i !== (errors.length - 1)">
         </div>
       </div>
-      <div v-else class="flex flex-col items-center p-8 gap-2">
+      <div v-else class="flex flex-col items-center p-8 gap-2 text-center">
         <p class="text-2xl font-bold">
           No errors encountered so far!
         </p>
@@ -63,10 +63,10 @@
         </p>
       </div>
     </div>
-    <div v-else-if="errors_error" class="text-foreground-destructive">
+    <div v-else-if="errors_error" class="center text-foreground-destructive">
       Something went wrong, please try again later
     </div>
-    <div v-else class="flex items-center justify-center">
+    <div v-else class="center">
       <IconLoading />
     </div>
   </div>

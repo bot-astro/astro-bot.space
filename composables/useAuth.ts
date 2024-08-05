@@ -17,7 +17,7 @@ export default function () {
       navigateTo(config.public.login_oauth_url, { replace: true, external: true })
     },
     logout: async () => {
-      const { $astroApiClient } = useNuxtApp()
+      const app = useNuxtApp()
       const queryClient = useQueryClient()
 
 
@@ -25,7 +25,7 @@ export default function () {
 
       if (userSession.data.value !== undefined) {
         try {
-          await $astroApiClient.logout()
+          await app.$astroApiClient.logout()
         } catch (e) {
           console.error(e)
         }
@@ -33,7 +33,7 @@ export default function () {
 
       userSession.clear()
 
-      await queryClient.invalidateQueries()
+      await app.runWithContext(async () => await queryClient.invalidateQueries())
 
       location.reload()
     }

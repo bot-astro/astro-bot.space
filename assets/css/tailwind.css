@@ -171,6 +171,11 @@
 
 
 @layer components {
+  /* util for centering with flex */
+  .center {
+    @apply flex items-center justify-center text-center;
+  }
+
   /* generic group of contents */
   .group {
     @apply rounded-md px-3 py-3 bordered bg-background-container;

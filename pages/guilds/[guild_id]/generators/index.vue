@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8">
+  <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
       <Icon name="lucide:server" class="size-10" />
       <div class="flex flex-col">
@@ -7,15 +7,89 @@
         <span class="dashboard-section-description">Manage temporary voice channels generators here!</span>
       </div>
       <div class="flex-grow" />
-      <Button @click="">
+      <Button
+        :loading="create_generator_loading"
+        @click="create_generator({ guild_id: guild_id! })"
+      >
         <Icon name="fluent:add-12-regular" />
         Create
       </Button>
+    </div>
+
+    <div class="flex w-full items-center justify-center">
+      <div v-if="guild_settings && guild_channels" class="w-full">
+        <div v-if="guild_settings.generators.length > 0" class="group p-0">
+          <div v-for="(gen, i) in guild_settings.generators" class="flex flex-col">
+            <div class="flex items-center gap-4 px-4 py-6">
+              <Icon :name="IconNames.GENERATOR" class="flex-shrink-0 size-4" />
+              <div class="flex flex-col">
+                <span class="text-md">
+                  {{ guild_channels.find(c => c.id == gen.id)?.name ?? "Deleted channel" }}
+                </span>
+                <span class="text-foreground-secondary">
+                  {{ guild_channels.find(c => c.id == gen.id)?.parent_name ? `Category: ${guild_channels.find(c => c.id == gen.id)?.parent_name}` : "Not in a category" }}
+                </span>
+              </div>
+              <div class="grow" />
+              <Button @click="navigateTo(`${$route.fullPath}/${gen.id}`)">
+                Manage
+              </Button>
+              <AlertDialog>
+                <AlertDialogTrigger>
+                  <ButtonDestructive
+                    :loading="delete_generator_loading"
+                  >
+                    Delete
+                  </ButtonDestructive>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you sure you want to delete the generator?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be un-done and you wont be able to restore this generator!
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Go back</AlertDialogCancel>
+                    <AlertDialogAction
+                      :destructive="true"
+                      :loading="delete_generator_loading"
+                      @click="delete_generator({ guild_id: guild_id!, generator_id: gen.id })"
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
+
+            <hr class="w-full bordered" v-if="i !== (guild_settings.generators.length - 1)">
+          </div>
+        </div>
+        <div v-else class="flex min-h-full flex-col items-center justify-center gap-4">
+          <span class="text-center text-xl font-semibold">You didn't create any generator yet!</span>
+          <Button
+            :loading="create_generator_loading"
+            @click="create_generator({ guild_id: guild_id! })"
+          >
+            <Icon name="fluent:add-12-regular" />
+            Create
+          </Button>
+        </div>
+      </div>
+      <div v-else-if="guild_settings_error" class="grow">
+        <span class="center text-foreground-destructive">Something went wrong, please try again later</span>
+      </div>
+      <div v-else class="center">
+        <IconLoading />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import {IconNames} from "assets/config/IconNames";
+
 definePageMeta({
   middleware: 'auth',
   layout: 'dashboard',
@@ -26,4 +100,10 @@ definePageMeta({
     description: 'Generators Description',
   } as DashboardSection
 })
+
+const guild_id = useGuildId()
+const { data: guild_channels } = useGuildChannels(guild_id)
+const { data: guild_settings, isError: guild_settings_error } = useGuildSettings(guild_id)
+const { mutate: create_generator, isPending: create_generator_loading } = useCreateGeneratorMutation()
+const { mutate: delete_generator, isPending: delete_generator_loading } = useDeleteGeneratorMutation()
 </script>
