@@ -238,7 +238,7 @@
   }
 
   .button {
-    @apply button-base relative w-fit flex-shrink-0 justify-center gap-2 truncate rounded px-4 transition duration-75 text-foreground bg-background-button/80 py-1.5 hover:bg-background-button/100 focus:bg-background-button/100 disabled:bg-background-interactive disabled:bordered disabled:text-foreground-link;
+    @apply button-base w-fit flex-shrink-0 justify-center gap-2 truncate rounded px-4 transition duration-75 text-foreground bg-background-button/80 py-1.5 hover:bg-background-button/100 focus:bg-background-button/100 disabled:bg-background-interactive disabled:bordered disabled:text-foreground-link;
   }
 
   .button-secondary {
@@ -255,7 +255,7 @@
   }
 
   .button-destructive {
-    @apply button-base relative w-fit flex-shrink-0 justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 hover:text-foreground-destructive/100 hover:border-red-500/100;
+    @apply button-base w-fit flex-shrink-0 justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 hover:text-foreground-destructive/100 hover:border-red-500/100;
   }
 
   /* MENU */

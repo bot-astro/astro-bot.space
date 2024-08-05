@@ -16,11 +16,12 @@ module.exports = {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
     },
     extend: {
+      screens: {
+        'xsm': '360px',
+        "2xl": "1400px",
+      },
       fontFamily: {
         display: ['Evolve', ...defaultTheme.fontFamily.sans],
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],

@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col">
+    <DashboardSettingsSaveToast open />
     <!-- intro -->
     <div class="flex items-center gap-4">
       <Icon name="lucide:server" class="size-10" />
@@ -82,9 +83,8 @@
 <script lang="ts" setup>
 import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 import {deepEqual} from "fast-equals";
-import {toast} from "vue-sonner";
-import {useClearTemporaryVCsCacheMutation} from "~/data/astro/mutations/useClearTemporaryVCsCacheMutation";
 import type {DashboardSection} from "~/types/dashboard";
+import {useToast} from "~/components/ui/toast";
 
 definePageMeta({
   middleware: 'auth',
@@ -97,12 +97,13 @@ definePageMeta({
   } as DashboardSection
 })
 
+const { toast } = useToast()
 const guild_id = useGuildId()
 const guild_info = useGuildInfo()
 
 const upgrade_dialog_open = ref(false)
 
-const { data: guild_settings, error: guild_settings_error, isPending: guild_settings_pending } = useGuildSettings(guild_id)
+const { data: guild_settings, error: guild_settings_error } = useGuildSettings(guild_id)
 const m_guild_settings = ref<GuildSettings | undefined>(undefined)
 const guild_settings_edited = ref(false)
 const guild_settings_edited_toast = ref<string | number | undefined>(undefined)
@@ -127,6 +128,9 @@ watch(m_guild_settings, (new_settings) => {
 
 watch(guild_settings_edited, (edited) => {
   if (edited) {
+    guild_settings_edited_toast.value = toast({
+
+    })
     guild_settings_edited_toast.value = toast('Careful - you have unsaved changes!', {
       position: 'bottom-center',
       duration: Infinity,
@@ -165,7 +169,31 @@ const require_admin_perms = computed({
   }
 })
 
-const { mutate: upgrade_guild, isPending: upgrade_guild_loading } = useGuildUpgradeMutation()
-const { mutate: downgrade_guild, isPending: downgrade_guild_loading } = useGuildDowngradeMutation()
-const { mutate: clear_temporary_vcs_cache, isPending: is_clear_temporary_vcs_cache_pending } = useClearTemporaryVCsCacheMutation()
+const { mutate: upgrade_guild, isPending: upgrade_guild_loading, error: upgrade_guild_error } = useGuildUpgradeMutation()
+const { mutate: downgrade_guild, isPending: downgrade_guild_loading, error: downgrade_guild_error } = useGuildDowngradeMutation()
+const { mutate: clear_temporary_vcs_cache, isPending: is_clear_temporary_vcs_cache_pending, error: clear_temporary_vcs_cache_error } = useClearTemporaryVCsCacheMutation()
+
+watch(upgrade_guild_error, e => {
+  if (e?.message) {
+    toast.error(e.message)
+  }
+})
+
+watch(downgrade_guild_error, e => {
+  if (e?.message) {
+    toast.error(e.message)
+  }
+})
+
+watch(clear_temporary_vcs_cache_error, e => {
+  if (e?.message) {
+    toast.error(e.message)
+  }
+})
+
+watch(guild_settings_error, e => {
+  if (e?.message) {
+    toast.error(e.message)
+  }
+})
 </script>
