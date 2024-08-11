@@ -44,9 +44,11 @@ const guilds = computed(() => {
       </div>
 
       <div class="flex items-center gap-2">
-        <ButtonText @click="() => permission_dialog_open = true">
-          <IconQuestion class="size-6" />
-        </ButtonText>
+        <DashboardInfoButton title="Required permissions" guide_button_uri="/guides/basic">
+          <span>
+            In order to manage Astro's settings for a server, you need to have either <Badge variant="discord">Manage channels</Badge>, <Badge variant="discord">Manage server</Badge> or <Badge variant="discord">Administrator</Badge> permissions.
+          </span>
+        </DashboardInfoButton>
 
         <ButtonText destructive>
           <Icon name="fluent:arrow-sync-12-regular" class="size-6" @click="refetch" />
