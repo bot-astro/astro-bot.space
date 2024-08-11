@@ -35,6 +35,8 @@
     --gray-800: 260deg 13.04% 9.02%;
     --gray-900: 270deg 11.11% 3.53%;
 
+    --discord: 88 101 242;
+
 
     /* background for core components */
     --background: var(--gray-900);
@@ -172,6 +174,10 @@
 
 @layer components {
   /* util for centering with flex */
+  .vertical-center {
+    @apply flex items-center;
+  }
+
   .center {
     @apply flex items-center justify-center text-center;
   }

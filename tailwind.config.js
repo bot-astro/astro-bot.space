@@ -58,6 +58,7 @@ module.exports = {
           800: 'hsl(var(--gray-800) / <alpha-value>)',
           900: 'hsl(var(--gray-900) / <alpha-value>)',
         },
+        discord: 'rgb(var(--discord) / <alpha-value>)',
         /// SHADCN & UTILS ///
         background: {
           DEFAULT: 'hsl(var(--background) / <alpha-value>)',

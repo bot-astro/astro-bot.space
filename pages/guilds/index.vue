@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {useGuilds} from "~/data/astro/query/useGuilds";
+import IconQuestion from "~/components/icon/IconQuestion.vue";
 
 definePageMeta({
   middleware: 'auth',
@@ -23,9 +24,14 @@ const guilds = computed(() => {
     <Dialog v-model:open="permission_dialog_open">
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Required permissions</DialogTitle>
+          <DialogTitle class="vertical-center gap-2">
+            <IconQuestion class="size-6"/>
+            <span>
+              Required permissions
+            </span>
+          </DialogTitle>
           <DialogDescription>
-            In order to manage Astro's settings for a server, you need to have either <code>Manage channels</code>, <code>Manage server</code> or <code>Administrator</code> permissions.
+            In order to manage Astro's settings for a server, you need to have either <Badge variant="discord">Manage channels</Badge>, <Badge variant="discord">Manage server</Badge> or <Badge variant="discord">Administrator</Badge> permissions.
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
@@ -39,7 +45,7 @@ const guilds = computed(() => {
 
       <div class="flex items-center gap-2">
         <ButtonText @click="() => permission_dialog_open = true">
-          <Icon name="fluent:question-circle-32-regular" class="size-6" />
+          <IconQuestion class="size-6" />
         </ButtonText>
 
         <ButtonText destructive>

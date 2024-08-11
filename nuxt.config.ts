@@ -33,7 +33,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     '@hebilicious/vue-query-nuxt',
-    'nuxt-api-party',
     'shadcn-nuxt'
   ],
 
@@ -53,14 +52,4 @@ export default defineNuxtConfig({
       invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
     }
   },
-
-  // apiParty: {
-  //   endpoints: {
-  //     api: {
-  //       url: process.env.API_BASE_URL!,
-  //       schema: './schemas/openapi3_0.yaml',
-  //       cookies: true
-  //     },
-  //   },
-  // }
 })

@@ -20,7 +20,6 @@
     "fast-equals": "^5.0.1",
     "lucide-vue-next": "^0.417.0",
     "nuxt": "3.12.2",
-    "nuxt-api-party": "^2.0.8",
     "pinia": "^2.2.0",
     "radix-vue": "^1.9.2",
     "tailwind-merge": "^2.4.0",
