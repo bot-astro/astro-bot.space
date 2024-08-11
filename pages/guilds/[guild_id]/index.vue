@@ -1,6 +1,12 @@
 <template>
   <div class="flex flex-col">
-    <DashboardSettingsSaveToast open />
+    <DashboardSettingsSaveToast
+      :open="guild_settings_edited"
+      :loading="save_guild_settings_pending"
+      @save="save_guild_settings({ guild_id: guild_id!, guild_settings_rb: { allow_missing_admin_perm: m_guild_settings!.allow_missing_admin_perm } })"
+      @reset="() => m_guild_settings = useClone(guild_settings)"
+    />
+
     <!-- intro -->
     <div class="flex items-center gap-4">
       <Icon name="lucide:server" class="size-10" />
@@ -20,10 +26,10 @@
           <div class="flex flex-col gap-2">
             <GroupSetting heading="Require Admin permission">
               <template #description>
-              <span>
-                Disabling this will make Astro ignore permission issues.
-                <span class="text-destructive">It's recommended to keep this on!</span>
-              </span>
+                <span>
+                  Disabling this will make Astro ignore permission issues.
+                  <span class="text-destructive">It's recommended to keep this on!</span>
+                </span>
               </template>
               <Switch v-model:checked="require_admin_perms" />
             </GroupSetting>
@@ -84,7 +90,6 @@
 import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 import {deepEqual} from "fast-equals";
 import type {DashboardSection} from "~/types/dashboard";
-import {useToast} from "~/components/ui/toast";
 
 definePageMeta({
   middleware: 'auth',
@@ -97,7 +102,7 @@ definePageMeta({
   } as DashboardSection
 })
 
-const { toast } = useToast()
+import { toast } from 'vue-sonner'
 const guild_id = useGuildId()
 const guild_info = useGuildInfo()
 
@@ -106,10 +111,17 @@ const upgrade_dialog_open = ref(false)
 const { data: guild_settings, error: guild_settings_error } = useGuildSettings(guild_id)
 const m_guild_settings = ref<GuildSettings | undefined>(undefined)
 const guild_settings_edited = ref(false)
-const guild_settings_edited_toast = ref<string | number | undefined>(undefined)
 
-const { isPending: save_guild_settings_pending, isError: save_guild_settings_error, mutate: save_guild_settings } = useGuildSettingsMutation()
-
+const require_admin_perms = computed({
+  get() {
+    return !(m_guild_settings.value?.allow_missing_admin_perm ?? false)
+  },
+  set(required) {
+    if (m_guild_settings.value) {
+      m_guild_settings.value.allow_missing_admin_perm = !required
+    }
+  }
+})
 
 watch(guild_settings, (new_settings) => {
   if (new_settings) {
@@ -126,53 +138,18 @@ watch(m_guild_settings, (new_settings) => {
 }, { deep: true })
 
 
-watch(guild_settings_edited, (edited) => {
-  if (edited) {
-    guild_settings_edited_toast.value = toast({
-
-    })
-    guild_settings_edited_toast.value = toast('Careful - you have unsaved changes!', {
-      position: 'bottom-center',
-      duration: Infinity,
-      dismissible: true,
-      onDismiss(toast) {
-        m_guild_settings.value = guild_settings.value
-      },
-      action: {
-        label: 'Save changes',
-        onClick: () => {
-          if (m_guild_settings.value && guild_id.value) {
-            save_guild_settings({
-              guild_id: guild_id.value,
-              guild_settings_rb: {
-                allow_missing_admin_perm: m_guild_settings.value.allow_missing_admin_perm
-              }
-            })
-          }
-        }
-      }
-    })
-  } else {
-    toast.dismiss(guild_settings_edited_toast.value)
-  }
-})
-
-
-const require_admin_perms = computed({
-  get() {
-    return !(m_guild_settings.value?.allow_missing_admin_perm ?? false)
-  },
-  set(required) {
-    if (m_guild_settings.value) {
-      m_guild_settings.value.allow_missing_admin_perm = !required
-    }
-  }
-})
-
+/////////////////
+/// MUTATIONS ///
+/////////////////
+const { isPending: save_guild_settings_pending, error: save_guild_settings_error, mutate: save_guild_settings } = useGuildSettingsMutation()
 const { mutate: upgrade_guild, isPending: upgrade_guild_loading, error: upgrade_guild_error } = useGuildUpgradeMutation()
 const { mutate: downgrade_guild, isPending: downgrade_guild_loading, error: downgrade_guild_error } = useGuildDowngradeMutation()
 const { mutate: clear_temporary_vcs_cache, isPending: is_clear_temporary_vcs_cache_pending, error: clear_temporary_vcs_cache_error } = useClearTemporaryVCsCacheMutation()
 
+
+////////////////////
+/// ERROR TOASTS ///
+////////////////////
 watch(upgrade_guild_error, e => {
   if (e?.message) {
     toast.error(e.message)
@@ -192,6 +169,12 @@ watch(clear_temporary_vcs_cache_error, e => {
 })
 
 watch(guild_settings_error, e => {
+  if (e?.message) {
+    toast.error(e.message)
+  }
+})
+
+watch(save_guild_settings_error, e => {
   if (e?.message) {
     toast.error(e.message)
   }

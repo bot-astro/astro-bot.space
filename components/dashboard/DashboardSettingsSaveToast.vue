@@ -7,7 +7,11 @@
         <ButtonText class="hover:underline" @click="$emit('reset')">
           Reset
         </ButtonText>
-        <Button class="bg-[#248046] hover:bg-[#1A6334]" @click="$emit('save')">
+        <Button
+          class="bg-[#248046] hover:bg-[#1A6334]"
+          @click="$emit('save')"
+          :loading="props.loading"
+        >
           Save
         </Button>
       </div>
@@ -16,6 +20,6 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ open: boolean }>()
+const props = defineProps<{ open: boolean, loading: boolean }>()
 const emit = defineEmits(['reset', 'save'])
 </script>
