@@ -52,7 +52,7 @@
             heading="Ultimate server"
             :description="`Your server is currently ${isGuildUltimate(guild_settings) ? 'upgraded' : 'not upgraded'} to ultimate`"
           >
-            <ButtonDestructive :loading="downgrade_guild_loading" v-if="isGuildUltimate(guild_settings)" @click="downgrade_guild({ guild_id: guild_id! })">
+            <ButtonDestructive :loading="downgrade_guild_loading" v-if="isGuildUltimate(guild_settings)" @click="on_downgrade_clicked">
               Downgrade
             </ButtonDestructive>
             <ButtonUltimate :loading="upgrade_guild_loading" v-else @click="upgrade_dialog_open = true">
@@ -64,6 +64,31 @@
               @onPurchaseOnWebsite="() => navigateTo('/ultimate', { external: true, open: { target: '_blank' } })"
               @onPurchaseOnDiscord="() => navigateTo('/discord-ultimate', { external: true, open: { target: '_blank' } })"
             />
+            <Dialog v-model:open="downgrade_on_discord_dialog_open">
+              <DialogContent>
+                <div class="flex flex-col gap-2">
+                  <p class="text-xl text-center">
+                    Downgrade server
+                  </p>
+
+                  <div>
+                    <p>This server was upgraded to Ultimate via the Discord store. You need to cancel the subscription on Discord to downgrade from Ultimate.</p>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row justify-end mt-8 gap-2">
+                    <ButtonSecondary
+                      class="w-full sm:w-min"
+                      @click="navigateTo(
+                        'https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ',
+                        { open: { target: '_blank' } }
+                        )"
+                    >
+                      Official guide
+                    </ButtonSecondary>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </GroupSetting>
         </div>
       </div>
@@ -107,6 +132,7 @@ const guild_id = useGuildId()
 const guild_info = useGuildInfo()
 
 const upgrade_dialog_open = ref(false)
+const downgrade_on_discord_dialog_open = ref(false)
 
 const { data: guild_settings, error: guild_settings_error } = useGuildSettings(guild_id)
 const m_guild_settings = ref<GuildSettings | undefined>(undefined)
@@ -145,6 +171,16 @@ const { isPending: save_guild_settings_pending, error: save_guild_settings_error
 const { mutate: upgrade_guild, isPending: upgrade_guild_loading, error: upgrade_guild_error } = useGuildUpgradeMutation()
 const { mutate: downgrade_guild, isPending: downgrade_guild_loading, error: downgrade_guild_error } = useGuildDowngradeMutation()
 const { mutate: clear_temporary_vcs_cache, isPending: is_clear_temporary_vcs_cache_pending, error: clear_temporary_vcs_cache_error } = useClearTemporaryVCsCacheMutation()
+
+const on_downgrade_clicked = () => {
+  if (guild_settings.value) {
+    if (guild_settings.value.upgraded_by_user_id !== null) {
+      downgrade_guild({ guild_id: guild_id! })
+    } else {
+      downgrade_on_discord_dialog_open.value = true
+    }
+  }
+}
 
 
 ////////////////////

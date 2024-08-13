@@ -67,6 +67,7 @@ module.exports = {
           alternative: 'hsl(var(--background-alternative) / <alpha-value>)',
           button: 'hsl(var(--background-button) / <alpha-value>)',
           ultimate: 'hsl(var(--background-ultimate) / <alpha-value>)',
+          'ultimate-secondary': 'hsl(var(--background-ultimate-secondary) / <alpha-value>)',
         },
         foreground: {
           'DEFAULT': 'hsl(var(--foreground) / <alpha-value>)',
@@ -76,6 +77,7 @@ module.exports = {
           'link-hover': 'hsl(var(--foreground-link-hover) / <alpha-value>)',
           'link-standout': 'hsl(var(--foreground-link-standout) / <alpha-value>)',
           'ultimate': 'hsl(var(--foreground-ultimate) / <alpha-value>)',
+          'ultimate-secondary': 'hsl(var(--foreground-ultimate-secondary) / <alpha-value>)'
         },
         border: {
           DEFAULT: 'hsl(var(--border) / <alpha-value>)',

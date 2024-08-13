@@ -11,6 +11,8 @@ export const badgeVariants = cva(
           'border-transparent bg-background-button hover:bg-background-button/80',
         discord:
           'border-transparent bg-discord',
+        ultimate:
+          'border-transparent text-foreground-ultimate-secondary bg-background-ultimate-secondary',
         destructive:
           'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
       },

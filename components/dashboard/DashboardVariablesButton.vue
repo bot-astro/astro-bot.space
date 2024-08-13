@@ -15,13 +15,19 @@
       </div>
 
       <div v-for="category in Object.values(VariableCategory)" :key="category" class="flex flex-col gap-1">
-        <span class="text-foreground-secondary">{{category}}</span>
+        <div class="vertical-center gap-2">
+          <span class="text-foreground-secondary">{{category}}</span>
+          <Badge v-if="category == VariableCategory.INCREMENTAL_VALUES" variant="ultimate" class="text-xs">Ultimate</Badge>
+        </div>
         <div class="flex flex-wrap gap-2 text-xs">
           <ButtonSecondary
             v-for="variable in variables.filter(v => v.category === category)"
             @click="$emit('variableSelect', `{${variable.name}}`)"
+            class="relative"
+            :disabled="variable.ultimate && !props.is_ultimate"
           >
             {{`\{${variable.name}\}`}}
+            <DashboardUltimateOverlay v-if="variable.ultimate" />
           </ButtonSecondary>
         </div>
       </div>
@@ -32,9 +38,8 @@
 <script setup lang="ts">
 import {IconNames} from "assets/config/IconNames";
 
-const emit = defineEmits<{
-  variableSelect: [string],
-}>()
+const props = defineProps<{ is_ultimate: boolean }>()
+defineEmits<{ variableSelect: [string] }>()
 
 enum VariableCategory {
   VOICE_CHANNEL_OWNER = "Voice channel owner",
@@ -46,31 +51,32 @@ enum VariableCategory {
 interface VariableInfo {
   name: string;
   category: VariableCategory;
+  ultimate: boolean;
 }
 
 
 const variables: VariableInfo[] = [
-  { name: "nickname", category: VariableCategory.VOICE_CHANNEL_OWNER },
-  { name: "username", category: VariableCategory.VOICE_CHANNEL_OWNER },
-  { name: "mention", category: VariableCategory.VOICE_CHANNEL_OWNER },
-  { name: "id", category: VariableCategory.VOICE_CHANNEL_OWNER },
+  { name: "nickname", category: VariableCategory.VOICE_CHANNEL_OWNER, ultimate: false },
+  { name: "username", category: VariableCategory.VOICE_CHANNEL_OWNER, ultimate: false },
+  { name: "mention", category: VariableCategory.VOICE_CHANNEL_OWNER, ultimate: false },
+  { name: "id", category: VariableCategory.VOICE_CHANNEL_OWNER, ultimate: false },
 
-  { name: "activity_name", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY },
-  { name: "activity_emoji", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY },
-  { name: "activity_start_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY },
-  { name: "activity_end_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY },
-  { name: "activity_type", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY },
-  { name: "activity_link", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY },
+  { name: "activity_name", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
+  { name: "activity_emoji", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
+  { name: "activity_start_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
+  { name: "activity_end_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
+  { name: "activity_type", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
+  { name: "activity_link", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
 
-  { name: "vc_name", category: VariableCategory.VOICE_CHANNEL_PROPERTIES },
-  { name: "vc_bitrate", category: VariableCategory.VOICE_CHANNEL_PROPERTIES },
-  { name: "vc_userlimit", category: VariableCategory.VOICE_CHANNEL_PROPERTIES },
-  { name: "vc_users", category: VariableCategory.VOICE_CHANNEL_PROPERTIES },
-  { name: "vc_id", category: VariableCategory.VOICE_CHANNEL_PROPERTIES },
-  { name: "vc_mention", category: VariableCategory.VOICE_CHANNEL_PROPERTIES },
+  { name: "vc_name", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },
+  { name: "vc_bitrate", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },
+  { name: "vc_userlimit", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },
+  { name: "vc_users", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },
+  { name: "vc_id", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },
+  { name: "vc_mention", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },
 
-  { name: "n", category: VariableCategory.INCREMENTAL_VALUES },
-  { name: "roman", category: VariableCategory.INCREMENTAL_VALUES },
-  { name: "nato", category: VariableCategory.INCREMENTAL_VALUES },
+  { name: "n", category: VariableCategory.INCREMENTAL_VALUES, ultimate: true },
+  { name: "roman", category: VariableCategory.INCREMENTAL_VALUES, ultimate: true },
+  { name: "nato", category: VariableCategory.INCREMENTAL_VALUES, ultimate: true },
 ]
 </script>

@@ -14,9 +14,9 @@
 
     --pink-500: 330.37deg 81.19% 60.39%;
 
-    --yellow-500: 37.62deg 95.85% 62.16%;
+    --yellow-500: 38deg 95.9% 62.2%;
     --yellow-600: 37.5deg 95.73% 54.12%;
-    --yellow-800: 37.86deg 96.26% 20.98%;
+    --yellow-800: 38deg 96.3% 21%;
 
     --orange-500: 27deg 96% 61%;
 
@@ -50,6 +50,7 @@
     --background-button: var(--purple-500);
     /* background for ultimate containers like buttons for premium features */
     --background-ultimate: var(--yellow-600);
+    --background-ultimate-secondary: var(--yellow-800);
 
     /* background for buttons and other clicable components that need to standout more */
     --background-button-standout: linear-gradient(to right, hsl(var(--purple-500)), hsl(var(--pink-500)));
@@ -66,6 +67,7 @@
     /* foreground color for links that need to standout more */
     --foreground-link-standout: var(--purple-400);
     --foreground-ultimate: var(--white-900);
+    --foreground-ultimate-secondary: var(--yellow-500);
 
     /* border color */
     --border: 220deg 9.28% 19.02%;
@@ -274,7 +276,7 @@
   }
 
   .button-destructive {
-    @apply button-base w-fit flex-shrink-0 justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 hover:text-foreground-destructive/100 hover:border-red-500/100;
+    @apply button-base w-fit flex-shrink-0 justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 bg-background/80 hover:bg-background/100 hover:text-foreground-destructive/100 hover:border-red-500/100;
   }
 
   /* MENU */
@@ -287,7 +289,7 @@
 
   /* INPUT */
   input {
-  @apply h-9 rounded py-1 outline-none bg-background bordered placeholder-gray-400 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80 invalid:focus-visible:border-border-destructive invalid:border-border-destructive disabled:placeholder-opacity-60 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:opacity-80;
+    @apply h-9 rounded py-1 outline-none bg-background bordered placeholder-gray-400 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80 invalid:focus-visible:border-border-destructive invalid:border-border-destructive disabled:placeholder-opacity-60 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:opacity-80;
   }
 }
 
@@ -297,6 +299,29 @@
   }
 
   .dashboard-section-description {}
+}
+
+/* INPUT UTILITIES */
+.input-suffix-container::after {
+  position: absolute;
+  right: .5rem;
+  transition: all .05s ease-in-out;
+}
+
+.input-suffix-container:hover::after,
+.input-suffix-container:focus-within::after {
+  right: 1.5rem;
+}
+
+@supports (-moz-appearance:none) {
+  .input-suffix-container::after {
+    right: 1.5em;
+  }
+}
+
+
+.kbps::after {
+  content: 'kbps';
 }
 
 /* ANIMATIONS */

@@ -115,6 +115,7 @@ const { data: guild_channels } = useGuildChannels(guild_id)
 const { data: guild_settings, isError: guild_settings_error } = useGuildSettings(guild_id)
 const { mutate: create_generator, isPending: create_generator_loading, error: create_generator_error } = useCreateGeneratorMutation()
 const { mutate: delete_generator, isPending: delete_generator_loading, error: delete_generator_error } = useDeleteGeneratorMutation()
+const { mutate: upgrade_guild } = useGuildUpgradeMutation()
 
 const upgrade_dialog_open = ref(false)
 

@@ -46,7 +46,7 @@
       </AlertDialog>
     </div>
 
-    <div class="flex flex-col gap-12" v-if="m_generator_settings && guild_channels">
+    <div class="flex flex-col gap-12" v-if="m_generator_settings && guild_channels && guild_roles">
       <div class="groups-wrapper">
         <span class="text-group-name">VOICE CHANNEL NAME</span>
         <div class="groups-container">
@@ -64,7 +64,7 @@
                   maxlength="500"
                   required
                 >
-                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_name += v" />
+                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_name += v" :is_ultimate="is_ultimate" />
               </div>
             </template>
           </GroupSetting>
@@ -81,7 +81,7 @@
                   minlength="2"
                   maxlength="500"
                 >
-                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_locked_name += v" />
+                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_locked_name += v" :is_ultimate="is_ultimate"/>
               </div>
             </template>
           </GroupSetting>
@@ -98,7 +98,7 @@
                   minlength="2"
                   maxlength="500"
                 >
-                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_hidden_name += v" />
+                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_hidden_name += v" :is_ultimate="is_ultimate" />
               </div>
             </template>
           </GroupSetting>
@@ -145,20 +145,23 @@
           >
             <template #bottom-action>
               <Select
-                v-model:model-value="category"
-                @update:modelValue="(category_id) => m_generator_settings!.category = category_id"
-              >
+                v-model:model-value="category_id"
+                @update:model-value="(category_id) => m_generator_settings!.category = category_id !== 'no_category' ? category_id : null"
+                >
                 <SelectTrigger>
-                  <SelectValue />
+                  <SelectValue aria-label="value">{{category}}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectItem
                       v-for="category in guild_channels.filter(c => c.type == 4)"
+                      :key="category.id"
                       :value="category.id"
                     >
-                      {{category.name}}
+                      {{ category.name }}
                     </SelectItem>
+                    <!-- 'No category' option -->
+                    <SelectItem value="no_category">No category</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -172,6 +175,7 @@
           >
             <template #bottom-action>
               <Select
+                required
                 v-model:model-value="m_generator_settings.initial_position"
                 @update:modelValue="(pos) => m_generator_settings!.initial_position = GSGeneratorInitialPosition[pos as keyof typeof GSGeneratorInitialPosition]"
               >
@@ -186,6 +190,162 @@
                     >
                       {{capitalize(pos)}}
                     </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="User limit"
+            description="The user limit, or 0 for no user limit"
+            compact
+          >
+            <template #bottom-action>
+              <input
+                v-model="m_generator_settings.user_limit"
+                type="number"
+                min="0"
+                max="99"
+                required
+              >
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Bitrate"
+            description="The bitrate in kbps, or 0 for using your Discord server default bitrate"
+            compact
+          >
+            <template #bottom-action>
+              <div class="relative vertical-center">
+                <input
+                  v-bind:value="m_generator_settings.bitrate / 1000"
+                  @input="m_generator_settings.bitrate = $event.target.value * 1000"
+                  type="number"
+                  min="0"
+                  max="384"
+                  class="grow"
+                  required
+                >
+                <span :class="cn('absolute text-foreground-secondary transition-all duration-100', m_generator_settings.bitrate >= 100000 ? 'left-10' : m_generator_settings.bitrate >= 10000 ? 'left-8' : 'left-6')">kbps</span>
+              </div>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Region "
+            compact
+          >
+            <template #description>
+              <span class="text-foreground-secondary">
+                To change region that is applied to temporary voice channels, change the region of the generator, using the channel settings inside Discord.
+                <ButtonText
+                  class="text-foreground-link-standout"
+                  @click="navigateTo(
+                    'https://support.discord.com/hc/en-us/articles/1500007645701-Voice-Regions-on-Discord-FAQ#h_01F3RXJ4YCHYS652ETKWJ499Y3',
+                    { open: { target: '_blank' } }
+                  )"
+                >
+                  See guide
+                </ButtonText>
+              </span>
+            </template>
+          </GroupSetting>
+        </div>
+      </div>
+
+      <div class="groups-wrapper">
+        <span class="text-group-name">VOICE CHANNEL PERMISSIONS</span>
+        <div class="groups-container-compact flex-wrap">
+          <GroupSetting
+            heading="Inheriting"
+            description="Choose if temporary voice channels inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
+            compact
+          >
+            <template #bottom-action>
+              <Select
+                required
+                v-model:model-value="m_generator_settings.permissions_inherited"
+                @update:modelValue="(v) => m_generator_settings!.permissions_inherited = GSGeneratorPermissionsInherited[v as keyof typeof GSGeneratorPermissionsInherited]"
+              >
+                <SelectTrigger>
+                  <SelectValue></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="v in Object.values(GSGeneratorPermissionsInherited)"
+                      :value="v"
+                    >
+                      {{capitalize(v)}}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Target role"
+            description="Astro will modify the permissions of this role when needed, for example when a user locks or hides the channel"
+            compact
+          >
+            <template #bottom-action>
+              <Select
+                v-model:model-value="target_role_id"
+                @update:model-value="(role_id) => m_generator_settings!.permissions_target_role = role_id !== 'no_role' ? role_id : null"
+              >
+                <SelectTrigger>
+                  <SelectValue aria-label="value">{{target_role}}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => a.position - b.position)"
+                      :key="role.id"
+                      :value="role.id"
+                    >
+                      <div class="vertical-center gap-2">
+                        <span :class="`size-3 rounded-full min-w-3 min-h-3`" :style="`background-color: #${role.color.toString(16)}`"></span>
+                        {{ role.name }}
+                      </div>
+                    </SelectItem>
+                    <!-- @everyone role option -->
+                    <SelectItem value="no_role">@everyone</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Moderator role"
+            description="This role will always have permissions to manage the channel, even when the channel is locked or hidden"
+            compact
+          >
+            <template #bottom-action>
+              <Select
+                v-model:model-value="moderator_role_id"
+                @update:model-value="(role_id) => m_generator_settings!.permissions_immune_role = role_id !== 'no_role' ? role_id : null"
+              >
+                <SelectTrigger>
+                  <SelectValue aria-label="value">{{moderator_role}}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => a.position - b.position)"
+                      :key="role.id"
+                      :value="role.id"
+                    >
+                      <div class="vertical-center gap-2">
+                        <span :class="`size-3 rounded-full min-w-3 min-h-3`" :style="`background-color: #${role.color.toString(16)}`"></span>
+                        {{ role.name }}
+                      </div>
+                    </SelectItem>
+                    <!-- @everyone role option -->
+                    <SelectItem value="no_role">No role</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -226,7 +386,15 @@ watch(() => route.params, (params) => {
 })
 
 const { data: guild_channels } = useGuildChannels(guild_id)
+const { data: guild_roles } = useGuildRoles(guild_id)
 const { data: guild_settings, error: guild_settings_error } = useGuildSettings(guild_id)
+const is_ultimate = computed(() => {
+  if (guild_settings.value) {
+    return isGuildUltimate(guild_settings.value)
+  } else {
+    return false
+  }
+})
 const generator_settings = computed(() => {
   return guild_settings.value?.generators?.find(g => g.id == generator_id.value)
 })
@@ -250,9 +418,48 @@ watch(m_generator_settings, (new_m_generator_settings) => {
 
 
 /// COMPUTED SETTINGS ///
+const category_id = computed({
+  get() {
+    return m_generator_settings.value?.category ?? 'no_category'
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.category = value !== 'no_category' ? value : null
+    }
+  },
+});
 const category = computed(() => {
-  return guild_channels.find(c => c.id == m_generator_settings.category)?.name ?? 'None'
+  return guild_channels.value?.find(c => c.id === category_id.value)?.name ?? 'No category'
+});
+
+const target_role_id = computed({
+  get() {
+    return m_generator_settings.value?.permissions_target_role ?? 'no_role'
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.permissions_target_role = value !== 'no_role' ? value : null
+    }
+  }
 })
+const target_role = computed(() => {
+  return guild_roles.value?.find(r => r.id === target_role_id.value)?.name ?? '@everyone'
+})
+
+const moderator_role_id = computed({
+  get() {
+    return m_generator_settings.value?.permissions_immune_role ?? 'no_role'
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.permissions_immune_role = value !== 'no_role' ? value : null
+    }
+  }
+})
+const moderator_role = computed(() => {
+  return guild_roles.value?.find(r => r.id === moderator_role_id.value)?.name ?? 'Not set'
+})
+
 
 /// MUTATIONS ///
 const { mutate: delete_generator, isPending: delete_generator_loading, error: delete_generator_error, isSuccess: delete_generator_success } = useDeleteGeneratorMutation()
