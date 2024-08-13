@@ -4,5 +4,6 @@ export const IconNames = {
   GENERATOR: "i-lucide-copy-plus",
   INTERFACE: "i-lucide-mouse-pointer-click",
   VOICE_ROLE: "i-lucide-file-volume",
-  TEMPLATE: "i-lucide-layout-template"
+  TEMPLATE: "i-lucide-layout-template",
+  VARIABLES: "fluent:braces-variable-20-regular"
 }

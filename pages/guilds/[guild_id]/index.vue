@@ -20,13 +20,13 @@
 
     <!-- interactive content -->
     <div class="flex flex-col gap-12">
-      <div class="flex flex-col gap-6 mt-12">
-        <div class="flex flex-col gap-1">
+      <div class="mt-12">
+        <div class="groups-wrapper">
           <span class="text-group-name">SETTINGS</span>
-          <div class="flex flex-col gap-2">
+          <div class="groups-container">
             <GroupSetting heading="Require Admin permission">
               <template #description>
-                <span>
+                <span class="text-description">
                   Disabling this will make Astro ignore permission issues.
                   <span class="text-destructive">It's recommended to keep this on!</span>
                 </span>
@@ -45,9 +45,9 @@
         </div>
       </div>
 
-      <div v-if="guild_settings" class="flex flex-col gap-1">
+      <div v-if="guild_settings" class="groups-wrapper">
         <span class="text-group-name">ULTIMATE</span>
-        <div class="flex flex-col gap-2">
+        <div class="groups-container">
           <GroupSetting
             heading="Ultimate server"
             :description="`Your server is currently ${isGuildUltimate(guild_settings) ? 'upgraded' : 'not upgraded'} to ultimate`"
@@ -68,9 +68,9 @@
         </div>
       </div>
 
-      <div class="flex flex-col gap-1">
+      <div class="groups-wrapper">
         <span class="text-group-name">DANGEROUS</span>
-        <div class="flex flex-col gap-2">
+        <div class="groups-container">
           <GroupSetting
             heading="Reset temporary voice channels cache"
             description="If you are encountering weird issues with temporary voice channels, especially when the incremental names for the channels start with a wrong number or skip some, hit this button, otherwise try to avoid this!"

@@ -76,13 +76,13 @@
     --radius: 0.5rem;
 
     /* skeletons and disabled stuff */
-    --muted: var(--gray-600)
+    --muted: var(--gray-600);
 
     /* TODO: THE FOLLOWING HAVE NOT BEEN MODIFIED YET AND THEY SHOULD */
-    /*--muted-fdoreground: 240 3.8% 46.1%;*/
+    --muted-foreground: var(--foreground-secondary);
 
-    /*--popover: 0 0% 100%;*/
-    /*--popover-foreground: 240 10% 3.9%;*/
+    --popover: var(--background-interactive);
+    --popover-foreground: var(--foreground);
 
     /*--card: 0 0% 100%;*/
     /*--card-foreground: 240 10% 3.9%;*/
@@ -101,7 +101,7 @@
     /*--destructive: 0 84.2% 60.2%;*/
     /*--destructive-foreground: 0 0% 98%;*/
 
-    /*--ring: 240 10% 3.9%;*/
+    --ring: var(--pink-500);
   }
 }
 
@@ -183,9 +183,22 @@
   }
 
   /* generic group of contents */
+  .groups-wrapper {
+    @apply flex flex-col gap-1;
+  }
+
+  .groups-container {
+    @apply flex flex-col gap-2;
+  }
+
+  .groups-container-compact {
+    @apply flex gap-2;
+  }
+
   .group {
     @apply rounded-md px-3 py-3 bordered bg-background-container;
   }
+
 
   /* anything that needs a border */
   .bordered {
@@ -248,7 +261,7 @@
   }
 
   .button-secondary {
-    @apply button-base rounded flex-shrink-0 p-1 px-2 transition text-foreground-link bg-background-interactive bordered hover:text-foreground-link-hover hover:bg-background hover:border-gray-400;
+    @apply button-base rounded flex-shrink-0 py-1.5 px-2 transition text-foreground-link bg-background-interactive bordered hover:text-foreground-link-hover hover:bg-background hover:border-gray-400;
   }
 
   .button-standout {
@@ -257,7 +270,7 @@
   }
 
   .button-ultimate {
-    @apply button-base justify-center gap-2 rounded-md bg-opacity-80 px-5 py-2 transition-all duration-150 text-foreground-ultimate bg-background-ultimate hover:bg-opacity-100;
+    @apply button-base justify-center gap-2 rounded-md bg-opacity-80 px-5 py-1.5 transition-all duration-150 text-foreground-ultimate bg-background-ultimate hover:bg-opacity-90;
   }
 
   .button-destructive {
@@ -274,7 +287,7 @@
 
   /* INPUT */
   input {
-    @apply h-9 rounded py-1 outline-none bg-background bordered placeholder-gray-400 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80 disabled:placeholder-opacity-60 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:opacity-80;
+  @apply h-9 rounded py-1 outline-none bg-background bordered placeholder-gray-400 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80 invalid:focus-visible:border-border-destructive invalid:border-border-destructive disabled:placeholder-opacity-60 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:opacity-80;
   }
 }
 

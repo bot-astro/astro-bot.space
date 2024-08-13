@@ -38,7 +38,6 @@
         </div>
       </div>
     </div>
-    <CoreModal />
   </div>
 </template>
 

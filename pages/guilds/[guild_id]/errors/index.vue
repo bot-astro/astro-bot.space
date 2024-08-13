@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-8">
 <!--     intro-->
     <div class="flex items-center gap-4">
-      <Icon name="lucide:server" class="size-10" />
+      <Icon :name="IconNames.ERROR" class="size-10" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Errors</span>
         <span class="dashboard-section-description">View and clear your server's errors</span>
@@ -23,8 +23,8 @@
               <span class="text-ellipsis overflow-hidden">
                 {{ error.description }}
               </span>
-              <p v-if="error.instant" class="text-sm opacity-50">
-                {{ new Date(error.instant).toDateString() }} at {{ new Date(error.instant).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }}
+              <p v-if="error.timestamp" class="text-sm opacity-50">
+                {{ new Date(error.timestamp).toDateString() }} at {{ new Date(error.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }}
               </p>
             </div>
             <div class="flex-grow"></div>
@@ -36,16 +36,27 @@
               </DialogTrigger>
 
               <DialogContent>
-                <div class="flex flex-col gap-4 p-4">
+                <div class="flex flex-col text-sm">
                   <p class="text-lg font-bold">
                     Error Details
                   </p>
-                  <p>
+                  <p class="mt-2">
                     {{ error.description }}
                   </p>
-                  <p v-if="error.instant" class="text-sm opacity-50">
-                    {{ new Date(error.instant).toDateString() }} at {{ new Date(error.instant).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }}
+                  <p class="text-sm opacity-50 mt-1">
+                    {{ new Date(error.timestamp).toDateString() }} at {{ new Date(error.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }}
                   </p>
+                  <div class="w-full flex items-center justify-end gap-2 mt-2">
+                    <ButtonSecondary
+                      @click="navigateToGuide(error.guide ?? GSErrorGuide.TEMPLATE)"
+                    >
+                      See guide
+                    </ButtonSecondary>
+
+                    <ButtonUltimate @click="navigateTo(`/guilds/${guild_id}/`)">
+                      Upgrade server
+                    </ButtonUltimate>
+                  </div>
                 </div>
               </DialogContent>
             </Dialog>
@@ -76,7 +87,8 @@
 import {useGuildErrors} from "~/data/astro/query/useGuildErrors";
 import {useClearGuildErrorsMutation} from "~/data/astro/mutations/useClearGuildErrors";
 import type { DashboardSection } from "~/types/dashboard";
-
+import {GSErrorGuide} from "~/types/guild-settings/error";
+import {IconNames} from "assets/config/IconNames";
 
 definePageMeta({
   middleware: 'auth',
@@ -92,4 +104,28 @@ definePageMeta({
 const guild_id = useGuildId()
 const { data: errors, isPending: errors_pending, isError: errors_error } = useGuildErrors(guild_id);
 const { mutate: clear_errors, isPending: clear_pending } = useClearGuildErrorsMutation()
+
+function navigateToGuide(guide: GSErrorGuide) {
+  let guide_uri = "/guides"
+
+  switch (guide) {
+    case GSErrorGuide.BASIC:
+      guide_uri += "/basic"
+      break;
+    case GSErrorGuide.GENERATOR:
+      guide_uri += "/generator"
+      break;
+    case GSErrorGuide.TEMPLATE:
+      guide_uri += "/template"
+      break;
+    case GSErrorGuide.INTERFACE:
+      guide_uri += "/interface"
+      break;
+    case GSErrorGuide.VOICE_ROLE:
+      guide_uri += "/voice-role"
+      break;
+  }
+
+  navigateTo(guide_uri, { open: { target: "_blank" } })
+}
 </script>

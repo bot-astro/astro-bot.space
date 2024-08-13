@@ -30,7 +30,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/image',
     '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
     '@vueuse/nuxt',
     '@hebilicious/vue-query-nuxt',
     'shadcn-nuxt'

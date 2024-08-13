@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
-      <Icon name="lucide:server" class="size-10" />
+      <Icon :name="IconNames.GENERATOR" class="size-10" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Generators</span>
         <span class="dashboard-section-description">Manage temporary voice channels generators here!</span>
@@ -132,6 +132,12 @@ watch(create_generator_error, (e) => {
     } else {
       toast.error(e.message)
     }
+  }
+})
+
+watch(delete_generator_error, (e) => {
+  if (e?.message) {
+    toast.error(e.message)
   }
 })
 </script>

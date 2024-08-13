@@ -83,7 +83,7 @@ module.exports = {
         },
         /// TODO: THOSE ARE NOT MODIFIED YET ///
         // input: "hsl(var(--input))",
-        // ring: "hsl(var(--ring))",
+        ring: "hsl(var(--ring))",
         // primary: {
         //   DEFAULT: "hsl(var(--primary))",
         //   foreground: "hsl(var(--primary-foreground))",
@@ -104,10 +104,10 @@ module.exports = {
         //   DEFAULT: "hsl(var(--accent))",
         //   foreground: "hsl(var(--accent-foreground))",
         // },
-        // popover: {
-        //   DEFAULT: "hsl(var(--popover))",
-        //   foreground: "hsl(var(--popover-foreground))",
-        // },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
         // card: {
         //   DEFAULT: "hsl(var(--card))",
         //   foreground: "hsl(var(--card-foreground))",
