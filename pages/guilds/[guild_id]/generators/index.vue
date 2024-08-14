@@ -9,12 +9,25 @@
       <div class="flex-grow" />
       <Button
         :loading="create_generator_loading"
-        @click="create_generator({ guild_id: guild_id! })"
+        @click="() => {
+            if(guild_settings && !is_ultimate && guild_settings.generators.length < 2)
+              create_generator({ guild_id: guild_id! })
+            else
+              ultimate_required_dialog_open = true
+          }
+         "
       >
         <Icon name="fluent:add-12-regular" />
         Create
       </Button>
     </div>
+
+    <DashboardUltimateRequiredDialog
+      v-model:model-value="ultimate_required_dialog_open"
+      @upgrade="ultimate_required_dialog_open=false; upgrade_dialog_open=true"
+    >
+      Ultimate is required to have more than 2 temporary voice channel generators. Upgrade your server to Ultimate to create more generators.
+    </DashboardUltimateRequiredDialog>
 
     <div class="flex w-full items-center justify-center">
       <div v-if="guild_settings && guild_channels" class="w-full">
@@ -97,7 +110,8 @@
 <script lang="ts" setup>
 import {IconNames} from "assets/config/IconNames";
 import type {DashboardSection} from "~/types/dashboard";
-import {toast} from "vue-sonner";
+import {useToast} from "~/components/ui/toast";
+import DashboardUltimateRequiredDialog from "~/components/dashboard/DashboardUltimateRequiredDialog.vue";
 
 definePageMeta({
   middleware: 'auth',
@@ -110,6 +124,7 @@ definePageMeta({
   } as DashboardSection
 })
 
+const { toast } = useToast()
 const guild_id = useGuildId()
 const { data: guild_channels } = useGuildChannels(guild_id)
 const { data: guild_settings, isError: guild_settings_error } = useGuildSettings(guild_id)
@@ -117,28 +132,32 @@ const { mutate: create_generator, isPending: create_generator_loading, error: cr
 const { mutate: delete_generator, isPending: delete_generator_loading, error: delete_generator_error } = useDeleteGeneratorMutation()
 const { mutate: upgrade_guild } = useGuildUpgradeMutation()
 
+const is_ultimate = computed(() => {
+  if (guild_settings.value) {
+    return isGuildUltimate(guild_settings.value)
+  } else {
+    return false
+  }
+})
+
+const ultimate_required_dialog_open = ref(false)
 const upgrade_dialog_open = ref(false)
 
 watch(create_generator_error, (e) => {
   if (e?.message) {
-    if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ULTIMATE_REQUIRED_TO_CREATE_GENERATOR) {
-      toast.error(e.code, {
-        action: {
-          label: 'Upgrade',
-          onClick: () => {
-            upgrade_dialog_open.value = true
-          }
-        }
-      })
-    } else {
-      toast.error(e.message)
-    }
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 
 watch(delete_generator_error, (e) => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 </script>

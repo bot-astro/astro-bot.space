@@ -1,4 +1,4 @@
-# Nuxt 3 Minimal Starter
+# astro-bot.space
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
@@ -36,9 +36,9 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) f
 
 ## Modules & Libraries
 
-Design and CSS with [Tailwind](https://nuxt.com/modules/tailwindcss). Inspiration for simple components can be gathered with [Headless UI](https://headlessui.com/).
+Design and CSS with [Tailwind](https://nuxt.com/modules/tailwindcss). Inspiration for simple components can be gathered with [shadcn-vue](https://www.shadcn-vue.com/).
 
-Store management with [Pinia](https://pinia.vuejs.org/ssr/nuxt.html). It is the superior solution for local state.
+Store management with [vue-query](https://tanstack.com/query/latest/docs/framework/vue/overview). It is the superior solution for local state.
 
 Icon management with [Nuxt Icon](https://nuxt.com/modules/icon). Icons can be browsed on [Icones](https://icones.js.org/), specifically the [Fluent UI System Icons](https://icones.js.org/collection/fluent).
 

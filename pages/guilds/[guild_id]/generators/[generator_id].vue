@@ -4,7 +4,7 @@
       :open="generator_settings_edited"
       :loading="update_generator_pending"
       @save="update_generator({ guild_id: guild_id!, generator_id: generator_id!, generator_settings: m_generator_settings! })"
-      @reset="() => m_generator_settings = useClone(generator_settings)"
+      @reset="m_generator_settings = useClone(generator_settings)"
     />
 
     <div class="flex items-center gap-4">
@@ -353,6 +353,52 @@
           </GroupSetting>
         </div>
       </div>
+
+      <div class="groups-wrapper">
+        <span class="text-group-name">OWNER SETTINGS</span>
+        <div class="groups-container">
+          <GroupSetting
+            heading="Owner permissions"
+            description="Those permissions will be applied to the temporary voice channel owner."
+          >
+            <template #bottom-action>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Owner role"
+            description="This role will be given to temporary voice channel owners"
+            class="relative"
+            ultimate
+          >
+              <Select
+                :disabled="!is_ultimate"
+                v-model:model-value="owner_role_id"
+                @update:model-value="(role_id) => m_generator_settings!.owner_role = role_id !== 'no_role' ? role_id : null"
+              >
+                <SelectTrigger class="w-fit">
+                  <SelectValue aria-label="value">{{owner_role}}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => a.position - b.position)"
+                      :key="role.id"
+                      :value="role.id"
+                    >
+                      <div class="vertical-center gap-2">
+                        <span :class="`size-3 rounded-full min-w-3 min-h-3`" :style="`background-color: #${role.color.toString(16)}`"></span>
+                        {{ role.name }}
+                      </div>
+                    </SelectItem>
+                    <!-- no role option -->
+                    <SelectItem value="no_role">No role</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+          </GroupSetting>
+        </div>
+      </div>
     </div>
 
     <div v-else-if="guild_settings_error" class="center text-foreground-destructive">
@@ -365,18 +411,19 @@
 </template>
 
 <script setup lang="ts">
-import {toast} from "vue-sonner";
 import {IconNames} from "assets/config/IconNames";
 import useUpdateGeneratorMutation from "~/data/astro/mutations/useUpdateGeneratorMutation";
 import type {GSGenerator} from "~/types/guild-settings/generator";
 import {deepEqual} from "fast-equals";
 import {Select, SelectItem} from "~/components/ui/select";
+import {useToast} from "~/components/ui/toast";
 
 definePageMeta({
   middleware: 'auth',
   layout: 'dashboard',
 })
 
+const { toast } = useToast()
 const route = useRoute()
 const guild_id = useGuildId()
 const generator_id = ref(route.params.generator_id as string | undefined)
@@ -460,6 +507,19 @@ const moderator_role = computed(() => {
   return guild_roles.value?.find(r => r.id === moderator_role_id.value)?.name ?? 'Not set'
 })
 
+const owner_role_id = computed({
+  get() {
+    return m_generator_settings.value?.owner_role ?? 'no_role'
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.owner_role = value !== 'no_role' ? value : null
+    }
+  }
+})
+const owner_role = computed(() => {
+  return guild_roles.value?.find(r => r.id === owner_role_id.value)?.name ?? 'Not set'
+})
 
 /// MUTATIONS ///
 const { mutate: delete_generator, isPending: delete_generator_loading, error: delete_generator_error, isSuccess: delete_generator_success } = useDeleteGeneratorMutation()
@@ -475,13 +535,19 @@ watch(delete_generator_success, (s) => {
 /// ERROR TOASTS ///
 watch(delete_generator_error, (e) => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 
 watch(update_generator_error, (e) => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 </script>

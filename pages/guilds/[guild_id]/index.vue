@@ -115,6 +115,7 @@
 import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 import {deepEqual} from "fast-equals";
 import type {DashboardSection} from "~/types/dashboard";
+import {useToast} from "~/components/ui/toast";
 
 definePageMeta({
   middleware: 'auth',
@@ -127,7 +128,7 @@ definePageMeta({
   } as DashboardSection
 })
 
-import { toast } from 'vue-sonner'
+const { toast } = useToast()
 const guild_id = useGuildId()
 const guild_info = useGuildInfo()
 
@@ -175,7 +176,7 @@ const { mutate: clear_temporary_vcs_cache, isPending: is_clear_temporary_vcs_cac
 const on_downgrade_clicked = () => {
   if (guild_settings.value) {
     if (guild_settings.value.upgraded_by_user_id !== null) {
-      downgrade_guild({ guild_id: guild_id! })
+      downgrade_guild({ guild_id: guild_id.value! })
     } else {
       downgrade_on_discord_dialog_open.value = true
     }
@@ -188,31 +189,46 @@ const on_downgrade_clicked = () => {
 ////////////////////
 watch(upgrade_guild_error, e => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 
 watch(downgrade_guild_error, e => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 
 watch(clear_temporary_vcs_cache_error, e => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 
 watch(guild_settings_error, e => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 
 watch(save_guild_settings_error, e => {
   if (e?.message) {
-    toast.error(e.message)
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
   }
 })
 </script>
