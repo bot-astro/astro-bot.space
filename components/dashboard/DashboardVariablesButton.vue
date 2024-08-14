@@ -17,17 +17,16 @@
       <div v-for="category in Object.values(VariableCategory)" :key="category" class="flex flex-col gap-1">
         <div class="vertical-center gap-2">
           <span class="text-foreground-secondary">{{category}}</span>
-          <Badge v-if="category == VariableCategory.INCREMENTAL_VALUES" variant="ultimate" class="text-xs">Ultimate</Badge>
+          <Badge v-if="category == VariableCategory.INCREMENTAL_VALUES && !is_ultimate" variant="ultimate" class="text-xs">Ultimate</Badge>
         </div>
         <div class="flex flex-wrap gap-2 text-xs">
           <ButtonSecondary
             v-for="variable in variables.filter(v => v.category === category)"
-            @click="$emit('variableSelect', `{${variable.name}}`)"
-            class="relative"
-            :disabled="variable.ultimate && !props.is_ultimate"
+            @click="variable.ultimate && !props.is_ultimate ? $emit('upgrade') : $emit('variableSelect', `{${variable.name}}`)"
+            :class="cn(variable.ultimate && !props.is_ultimate ? 'cursor-copy' : '', 'relative')"
           >
             {{`\{${variable.name}\}`}}
-            <DashboardUltimateOverlay v-if="variable.ultimate" />
+            <DashboardUltimateOverlay v-if="variable.ultimate && !is_ultimate" />
           </ButtonSecondary>
         </div>
       </div>
@@ -39,7 +38,7 @@
 import {IconNames} from "assets/config/IconNames";
 
 const props = defineProps<{ is_ultimate: boolean }>()
-defineEmits<{ variableSelect: [string] }>()
+defineEmits<{ variableSelect: [string], upgrade: [] }>()
 
 enum VariableCategory {
   VOICE_CHANNEL_OWNER = "Voice channel owner",

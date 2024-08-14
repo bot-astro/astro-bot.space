@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-8">
+  <div class="flex flex-col gap-8 mb-64">
     <DashboardSettingsSaveToast
       :open="generator_settings_edited"
       :loading="update_generator_pending"
@@ -64,7 +64,7 @@
                   maxlength="500"
                   required
                 >
-                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_name += v" :is_ultimate="is_ultimate" />
+                <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => m_generator_settings!.default_name += v" :is_ultimate="is_ultimate" />
               </div>
             </template>
           </GroupSetting>
@@ -81,7 +81,7 @@
                   minlength="2"
                   maxlength="500"
                 >
-                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_locked_name += v" :is_ultimate="is_ultimate"/>
+                <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => m_generator_settings!.default_locked_name += v" :is_ultimate="is_ultimate"/>
               </div>
             </template>
           </GroupSetting>
@@ -98,7 +98,7 @@
                   minlength="2"
                   maxlength="500"
                 >
-                <DashboardVariablesButton @variableSelect="(v) => m_generator_settings!.default_hidden_name += v" :is_ultimate="is_ultimate" />
+                <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => m_generator_settings!.default_hidden_name += v" :is_ultimate="is_ultimate" />
               </div>
             </template>
           </GroupSetting>
@@ -234,7 +234,7 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Region "
+            heading="Region"
             compact
           >
             <template #description>
@@ -276,6 +276,34 @@
                   <SelectGroup>
                     <SelectItem
                       v-for="v in Object.values(GSGeneratorPermissionsInherited)"
+                      :value="v"
+                    >
+                      {{capitalize(v)}}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Default state"
+            description="Whether the temporary voice channel should be locked or hidden upon creation"
+            compact
+          >
+            <template #bottom-action>
+              <Select
+                required
+                v-model:model-value="m_generator_settings.initial_state"
+                @update:modelValue="(v) => m_generator_settings!.initial_state = GSGeneratorVCState[v as keyof typeof GSGeneratorVCState]"
+              >
+                <SelectTrigger>
+                  <SelectValue></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="v in Object.values(GSGeneratorVCState).filter(v => v !== GSGeneratorVCState.UNHIDDEN)"
                       :value="v"
                     >
                       {{capitalize(v)}}
@@ -355,28 +383,114 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">OWNER SETTINGS</span>
-        <div class="groups-container">
+        <span class="text-group-name">COMMANDS SETTINGS</span>
+        <div class="groups-container-compact">
           <GroupSetting
-            heading="Owner permissions"
-            description="Those permissions will be applied to the temporary voice channel owner."
+            heading="Badwords filter"
+            description="If enabled, prevents users from using badwords in their channel name (English only)"
+            :ultimate="!is_ultimate"
+            compact
+            @upgrade="upgrade_dialog_open=true"
           >
             <template #bottom-action>
+              <Switch v-model:checked="badwords_filter" />
             </template>
           </GroupSetting>
 
           <GroupSetting
+            heading="Minimum user limit"
+            description="The minimum user limit users are allowed to set for their temporary voice channel, 0 means no limit"
+            compact
+          >
+            <template #bottom-action>
+              <input
+                v-model="m_generator_settings.commands_settings.min_user_limit"
+                type="number"
+                min="0"
+                :max="m_generator_settings.commands_settings.max_user_limit"
+                required
+              >
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Maximum user limit"
+            description="The maximum user limit users are allowed to set for their temporary voice channel, 0 means no limit"
+            compact
+          >
+            <template #bottom-action>
+              <input
+                v-model="m_generator_settings.commands_settings.min_user_limit"
+                type="number"
+                :min="m_generator_settings.commands_settings.min_user_limit"
+                :max="99"
+                required
+              >
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Minimum bitrate"
+            description="The minimum bitrate, in kbps, users are allowed to set for their temporary voice channel"
+            compact
+          >
+            <template #bottom-action>
+              <div class="relative vertical-center">
+                <input
+                  v-bind:value="m_generator_settings.commands_settings.min_bitrate / 1000"
+                  @input="m_generator_settings.commands_settings.min_bitrate = $event.target.value * 1000"
+                  type="number"
+                  min="0"
+                  :max="m_generator_settings.commands_settings.max_bitrate"
+                  class="grow"
+                  required
+                >
+                <span :class="cn('absolute text-foreground-secondary transition-all duration-100', m_generator_settings.commands_settings.min_bitrate >= 100000 ? 'left-10' : m_generator_settings.commands_settings.min_bitrate >= 10000 ? 'left-8' : 'left-6')">kbps</span>
+              </div>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Maximum bitrate"
+            description="The maximum bitrate, in kbps, users are allowed to set for their temporary voice channel"
+            compact
+          >
+            <template #bottom-action>
+              <div class="relative vertical-center">
+                <input
+                  v-bind:value="m_generator_settings.commands_settings.max_bitrate / 1000"
+                  @input="m_generator_settings.commands_settings.max_bitrate = $event.target.value * 1000"
+                  type="number"
+                  min="0"
+                  max="384"
+                  class="grow"
+                  required
+                >
+                <span :class="cn('absolute text-foreground-secondary transition-all duration-100', m_generator_settings.commands_settings.max_bitrate >= 100000 ? 'left-10' : m_generator_settings.commands_settings.max_bitrate >= 10000 ? 'left-8' : 'left-6')">kbps</span>
+              </div>
+            </template>
+          </GroupSetting>
+        </div>
+      </div>
+
+      <div class="groups-wrapper">
+        <span class="text-group-name">UTILITIES</span>
+        <div class="groups-container-compact">
+          <GroupSetting
             heading="Owner role"
             description="This role will be given to temporary voice channel owners"
             class="relative"
-            ultimate
+            :ultimate="!is_ultimate"
+            compact
+            @upgrade="upgrade_dialog_open=true"
           >
+            <template #bottom-action>
               <Select
                 :disabled="!is_ultimate"
                 v-model:model-value="owner_role_id"
                 @update:model-value="(role_id) => m_generator_settings!.owner_role = role_id !== 'no_role' ? role_id : null"
               >
-                <SelectTrigger class="w-fit">
+                <SelectTrigger>
                   <SelectValue aria-label="value">{{owner_role}}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
@@ -396,9 +510,431 @@
                   </SelectGroup>
                 </SelectContent>
               </Select>
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Queue mode"
+            description="When enabled, Astro will first move users into existing temporary voice channels if available. If there are no temporary voice channels available, it will create a new one"
+            compact
+          >
+            <template #bottom-action>
+              <Switch v-model:checked="m_generator_settings.queue_mode" />
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Fallback generator"
+            description="If this generator reaches the limit of temporary voice channels (Discord allows a maximum of 50 voice channels per category), Astro will move the user to this generator as fallback"
+            :ultimate="!is_ultimate"
+            compact
+            @upgrade="upgrade_dialog_open=true"
+          >
+            <template #bottom-action>
+              <Select
+                :disabled="!is_ultimate"
+                v-model:model-value="fallback_generator_id"
+                @update:model-value="(id) => m_generator_settings!.fallback_id = id !== 'no_fallback' ? id : null"
+              >
+                <SelectTrigger>
+                  <SelectValue aria-label="value">{{fallback_generator}}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="generator in guild_channels.filter(c => guild_settings?.generators.some(g => g.id == c.id))"
+                      :key="generator.id"
+                      :value="generator.id"
+                    >
+                      {{ generator.name }}
+                    </SelectItem>
+                    <!-- 'No category' option -->
+                    <SelectItem value="no_fallback">No fallback</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </template>
           </GroupSetting>
         </div>
       </div>
+
+      <div class="groups-wrapper">
+        <span class="text-group-name">WAITING ROOM</span>
+        <div class="groups-container">
+          <GroupSetting
+            heading="Automatic waiting room creation"
+            description="When enabled, Astro will automatically create a waiting room for temporary voice channels upon creation"
+            :ultimate="!is_ultimate"
+            @upgrade="upgrade_dialog_open=true"
+          >
+            <Switch :disabled="!is_ultimate" v-model:checked="m_generator_settings.auto_waiting" />
+          </GroupSetting>
+
+          <GroupSetting
+            heading="Name"
+            description="The default name for waiting rooms"
+          >
+            <template #bottom-action>
+              <div class="flex gap-2">
+                <input
+                  type="text"
+                  v-model="m_generator_settings.default_waiting_name"
+                  class="grow"
+                  minlength="2"
+                  maxlength="500"
+                  required
+                >
+                <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => m_generator_settings!.default_waiting_name += v" :is_ultimate="is_ultimate" />
+              </div>
+            </template>
+          </GroupSetting>
+
+          <div class="groups-container-compact">
+            <GroupSetting
+              heading="Category"
+              description="The category in which waiting rooms are generated"
+              compact
+            >
+              <template #bottom-action>
+                <Select
+                  v-model:model-value="waiting_category_id"
+                  @update:model-value="(category_id) => m_generator_settings!.waiting_category = category_id !== 'no_category' ? category_id : null"
+                >
+                  <SelectTrigger>
+                    <SelectValue aria-label="value">{{waiting_category}}</SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem
+                        v-for="category in guild_channels.filter(c => c.type == 4)"
+                        :key="category.id"
+                        :value="category.id"
+                      >
+                        {{ category.name }}
+                      </SelectItem>
+                      <!-- 'No category' option -->
+                      <SelectItem value="no_category">No category</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </template>
+            </GroupSetting>
+
+            <GroupSetting
+              heading="Position"
+              description="Whether waiting rooms should be generated above or below their corresponding temporary voice channel. Or at the bottom of the category"
+              compact
+            >
+              <template #bottom-action>
+                <Select
+                  required
+                  v-model:model-value="m_generator_settings.waiting_position"
+                  @update:modelValue="(pos) => m_generator_settings!.waiting_position = GSGeneratorInitialPosition[pos as keyof typeof GSGeneratorInitialPosition]"
+                >
+                  <SelectTrigger>
+                    <SelectValue></SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem
+                        v-for="pos in Object.values(GSGeneratorInitialPosition)"
+                        :value="pos"
+                      >
+                        {{capitalize(pos)}}
+                      </SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </template>
+            </GroupSetting>
+
+            <GroupSetting
+              heading="User limit"
+              description="The user limit for waiting rooms"
+              compact
+            >
+              <template #bottom-action>
+                <input
+                  v-model="m_generator_settings.waiting_user_limit"
+                  type="number"
+                  min="0"
+                  max="99"
+                  required
+                >
+              </template>
+            </GroupSetting>
+
+            <GroupSetting
+              heading="Bitrate"
+              description="The bitrate in kbps for waiting rooms, or 0 for using your Discord server default bitrate"
+              compact
+            >
+              <template #bottom-action>
+                <div class="relative vertical-center">
+                  <input
+                    v-bind:value="m_generator_settings.waiting_bitrate / 1000"
+                    @input="m_generator_settings.waiting_bitrate = $event.target.value * 1000"
+                    type="number"
+                    min="0"
+                    max="384"
+                    class="grow"
+                    required
+                  >
+                  <span :class="cn('absolute text-foreground-secondary transition-all duration-100', m_generator_settings.waiting_bitrate >= 100000 ? 'left-10' : m_generator_settings.waiting_bitrate >= 10000 ? 'left-8' : 'left-6')">kbps</span>
+                </div>
+              </template>
+            </GroupSetting>
+
+            <GroupSetting
+              heading="Permissions inheriting"
+              description="Choose if waiting rooms inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
+              compact
+            >
+              <template #bottom-action>
+                <Select
+                  required
+                  v-model:model-value="m_generator_settings.waiting_permissions_inherited"
+                  @update:modelValue="(v) => m_generator_settings!.waiting_permissions_inherited = GSGeneratorPermissionsInherited[v as keyof typeof GSGeneratorPermissionsInherited]"
+                >
+                  <SelectTrigger>
+                    <SelectValue></SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem
+                        v-for="v in Object.values(GSGeneratorPermissionsInherited)"
+                        :value="v"
+                      >
+                        {{capitalize(v)}}
+                      </SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </template>
+            </GroupSetting>
+          </div>
+          </div>
+        </div>
+
+        <div class="groups-wrapper">
+          <span class="text-group-name">PRIVATE TEXT CHAT</span>
+          <div class="groups-container">
+            <GroupSetting
+              heading="Automatic private chat creation"
+              description="When enabled, Astro will automatically create a private text channel for each temporary voice channel upon creation"
+              :ultimate="!is_ultimate"
+              @upgrade="upgrade_dialog_open=true"
+            >
+              <Switch :disabled="!is_ultimate" v-model:checked="m_generator_settings.auto_chat" />
+            </GroupSetting>
+
+            <GroupSetting
+              heading="Name"
+              description="The default name for private text chats"
+            >
+              <template #bottom-action>
+                <div class="flex gap-2">
+                  <input
+                    type="text"
+                    v-model="m_generator_settings.default_chat_name"
+                    class="grow"
+                    minlength="2"
+                    maxlength="500"
+                    required
+                  >
+                  <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => m_generator_settings!.default_chat_name += v" :is_ultimate="is_ultimate" />
+                </div>
+              </template>
+            </GroupSetting>
+
+            <GroupSetting
+              heading="Topic"
+              description="The topic automatically set on every private text chat"
+            >
+              <template #bottom-action>
+                <div class="flex gap-2">
+                  <input
+                    type="text"
+                    v-model="m_generator_settings.chat_topic"
+                    class="grow"
+                    minlength="0"
+                    maxlength="1024"
+                    required
+                  >
+                  <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => m_generator_settings!.default_chat_name += v" :is_ultimate="is_ultimate" />
+                </div>
+              </template>
+            </GroupSetting>
+
+            <GroupSetting
+              heading="Creation message type"
+              description="Choose the type of message that Astro should send in each private text chat upon creation"
+            >
+              <Select
+                required
+                v-model:model-value="private_chat_message_type"
+                @update:modelValue="(v) => private_chat_message_type = PrivateChatMessageType[v as keyof typeof PrivateChatMessageType]"
+              >
+                <SelectTrigger class="w32 md:w-64">
+                  <SelectValue></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="v in Object.values(PrivateChatMessageType)"
+                      :value="v"
+                    >
+                      {{capitalize(v)}}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </GroupSetting>
+
+            <GroupSetting
+              v-if="private_chat_message_type == PrivateChatMessageType.TEXT_MESSAGE || private_chat_message_type == PrivateChatMessageType.EMBED"
+              heading="Creation message"
+              description="A message that Astro sends in every private text chat upon creation"
+            >
+              <template #bottom-action>
+                <div class="flex gap-2">
+                  <input
+                    type="text"
+                    v-model="m_generator_settings.default_chat_text"
+                    class="grow"
+                    minlength="0"
+                    :maxlength="private_chat_message_type == PrivateChatMessageType.TEXT_MESSAGE ? 2048 : 4096"
+                    required
+                  >
+                  <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => m_generator_settings!.default_chat_name += v" :is_ultimate="is_ultimate" />
+                </div>
+              </template>
+            </GroupSetting>
+
+            <GroupSetting
+              v-if="private_chat_message_type == PrivateChatMessageType.INTERFACE"
+              heading="Interface for creation message"
+              description="The interface that Astro should send in private text chats upon creation"
+            >
+              <template #bottom-action>
+                <Select
+                  required
+                  v-model:model-value="m_generator_settings.chat_interface"
+                  @update:modelValue="(i) => m_generator_settings!.chat_interface = i"
+                >
+                  <SelectTrigger>
+                    <SelectValue aria-label="value">Interface in #{{chat_interface}}</SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem
+                        v-for="(v, index) in guild_settings!.interfaces"
+                        :key="v.message_id"
+                        :value="index"
+                        class=""
+                      >
+                        <div class="flex flex-col">
+                          <span>Interface in #{{guild_channels.find(c => c.id == v.channel_id)?.name}}</span>
+                          <span class="text-foreground-secondary">Message id: {{v.message_id}}</span>
+                        </div>
+                      </SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </template>
+            </GroupSetting>
+
+
+            <div class="groups-container-compact">
+              <GroupSetting
+                heading="Category"
+                description="The category in which private text chats are generated"
+                compact
+              >
+                <template #bottom-action>
+                  <Select
+                    v-model:model-value="private_chat_category_id"
+                    @update:model-value="(id) => m_generator_settings!.chat_category = id !== 'no_category' ? id : null"
+                  >
+                    <SelectTrigger>
+                      <SelectValue aria-label="value">{{private_chat_category}}</SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem
+                          v-for="category in guild_channels.filter(c => c.type == 4)"
+                          :key="category.id"
+                          :value="category.id"
+                        >
+                          {{ category.name }}
+                        </SelectItem>
+                        <!-- 'No category' option -->
+                        <SelectItem value="no_category">No category</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </template>
+              </GroupSetting>
+
+              <GroupSetting
+                heading="Permission Inheriting"
+                description="Choose if private text chats inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
+                compact
+              >
+                <template #bottom-action>
+                  <Select
+                    required
+                    v-model:model-value="m_generator_settings.chat_permissions_inherited"
+                    @update:modelValue="(v) => m_generator_settings!.chat_permissions_inherited = GSGeneratorPermissionsInherited[v as keyof typeof GSGeneratorPermissionsInherited]"
+                  >
+                    <SelectTrigger>
+                      <SelectValue></SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem
+                          v-for="v in Object.values(GSGeneratorPermissionsInherited)"
+                          :value="v"
+                        >
+                          {{capitalize(v)}}
+                        </SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </template>
+              </GroupSetting>
+
+              <GroupSetting
+                heading="Nsfw"
+                description="Control the nsfw setting for private text chats"
+                compact
+              >
+                <template #bottom-action>
+                  <Switch v-model:checked="m_generator_settings.chat_nsfw" />
+                </template>
+              </GroupSetting>
+
+              <GroupSetting
+                heading="Slowmode"
+                description="Set the slowmode of private text chats, in seconds. Use 0 for no slowmode"
+                compact
+              >
+                <template #bottom-action>
+                  <input
+                    v-model="m_generator_settings.chat_slowmode"
+                    type="number"
+                    min="0"
+                    max="21600"
+                    required
+                  >
+                </template>
+              </GroupSetting>
+  <!-- message (embed, normal, interface) -->
+            </div>
+          </div>
+        </div>
+
+
     </div>
 
     <div v-else-if="guild_settings_error" class="center text-foreground-destructive">
@@ -407,6 +943,13 @@
     <div v-else class="center">
       <IconLoading />
     </div>
+
+    <DashboardUpgradeDialog
+      v-model:open="upgrade_dialog_open"
+      @onUpgrade="(sub_id) => { upgrade_dialog_open = false; upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id }) }"
+      @onPurchaseOnWebsite="() => navigateTo('/ultimate', { external: true, open: { target: '_blank' } })"
+      @onPurchaseOnDiscord="() => navigateTo('/discord-ultimate', { external: true, open: { target: '_blank' } })"
+    />
   </div>
 </template>
 
@@ -435,6 +978,8 @@ watch(() => route.params, (params) => {
 const { data: guild_channels } = useGuildChannels(guild_id)
 const { data: guild_roles } = useGuildRoles(guild_id)
 const { data: guild_settings, error: guild_settings_error } = useGuildSettings(guild_id)
+
+const upgrade_dialog_open = ref(false)
 const is_ultimate = computed(() => {
   if (guild_settings.value) {
     return isGuildUltimate(guild_settings.value)
@@ -442,6 +987,7 @@ const is_ultimate = computed(() => {
     return false
   }
 })
+
 const generator_settings = computed(() => {
   return guild_settings.value?.generators?.find(g => g.id == generator_id.value)
 })
@@ -465,6 +1011,17 @@ watch(m_generator_settings, (new_m_generator_settings) => {
 
 
 /// COMPUTED SETTINGS ///
+const badwords_filter = computed({
+  get() {
+    return !(m_generator_settings.value?.commands_settings.badwords_allowed ?? true)
+  },
+  set(required) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.commands_settings.badwords_allowed = !required
+    }
+  }
+})
+
 const category_id = computed({
   get() {
     return m_generator_settings.value?.category ?? 'no_category'
@@ -521,9 +1078,142 @@ const owner_role = computed(() => {
   return guild_roles.value?.find(r => r.id === owner_role_id.value)?.name ?? 'Not set'
 })
 
+const fallback_generator_id = computed({
+  get() {
+    return m_generator_settings.value?.fallback_id ?? 'no_fallback'
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.fallback_id = value !== 'no_fallback' ? value : null
+    }
+  },
+});
+const fallback_generator = computed(() => {
+  return guild_channels.value?.find(c => c.id === fallback_generator_id.value)?.name ?? 'No fallback'
+});
+
+const waiting_category_id = computed({
+  get() {
+    return m_generator_settings.value?.waiting_category ?? 'no_category'
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.waiting_category = value !== 'no_category' ? value : null
+    }
+  },
+});
+const waiting_category = computed(() => {
+  return guild_channels.value?.find(c => c.id === waiting_category_id.value)?.name ?? 'No category'
+});
+
+const private_chat_category_id = computed({
+  get() {
+    return m_generator_settings.value?.chat_category ?? 'no_category'
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.chat_category = value !== 'no_category' ? value : null
+    }
+  },
+});
+const private_chat_category = computed(() => {
+  return guild_channels.value?.find(c => c.id === private_chat_category_id.value)?.name ?? 'No category'
+});
+
+const chat_interface = computed(() => {
+  if (m_generator_settings.value && guild_settings.value && guild_channels.value) {
+    const astro_interface = m_generator_settings.value.chat_interface != -1 ? guild_settings.value.interfaces[m_generator_settings.value.chat_interface] : null
+    if (astro_interface == null) {
+      return "No interface"
+    } else {
+      return guild_channels.value?.find(c => c.id == astro_interface.channel_id)?.name ?? "No interface"
+    }
+  } else {
+    return "No interface"
+  }
+})
+
+
+const enum PrivateChatMessageType {
+  NO_MESSAGE = "No message",
+  TEXT_MESSAGE = "Text message",
+  EMBED = "Embed message",
+  INTERFACE = "Astro interface"
+}
+
+const private_chat_message_type = computed({
+  get() {
+    if (m_generator_settings.value) {
+      if (m_generator_settings.value.chat_interface != -1) {
+        return PrivateChatMessageType.INTERFACE
+      } else if (m_generator_settings.value.default_chat_text !== null) {
+        if (m_generator_settings.value.default_chat_text_embed)
+          return PrivateChatMessageType.EMBED
+        else
+          return PrivateChatMessageType.TEXT_MESSAGE
+      } else {
+        return PrivateChatMessageType.NO_MESSAGE
+      }
+    } else {
+      return PrivateChatMessageType.NO_MESSAGE
+    }
+  },
+  set(value) {
+    switch (value) {
+      case PrivateChatMessageType.NO_MESSAGE: {
+        if (m_generator_settings.value) {
+          m_generator_settings.value.chat_interface = -1
+          m_generator_settings.value.default_chat_text = null
+        }
+        break;
+      }
+      case PrivateChatMessageType.TEXT_MESSAGE: {
+        if (m_generator_settings.value) {
+          m_generator_settings.value.chat_interface = -1
+          if (m_generator_settings.value.default_chat_text == null) {
+            m_generator_settings.value.default_chat_text = "This is your private text chat!"
+          }
+          m_generator_settings.value.default_chat_text_embed = false
+        }
+        break;
+      }
+      case PrivateChatMessageType.EMBED: {
+        if (m_generator_settings.value) {
+          m_generator_settings.value.chat_interface = -1
+          if (m_generator_settings.value.default_chat_text == null) {
+            m_generator_settings.value.default_chat_text = "This is your private text chat"
+          }
+          m_generator_settings.value.default_chat_text_embed = true
+        }
+        break;
+      }
+      case PrivateChatMessageType.INTERFACE: {
+        if (m_generator_settings.value && guild_settings.value) {
+          if (guild_settings.value.interfaces.length > 0) {
+            if (m_generator_settings.value.chat_interface == -1)
+              m_generator_settings.value.chat_interface = 0
+
+            m_generator_settings.value.default_chat_text = null
+          } else {
+            toast({
+              description: 'You need to first create an Interface to be able to use it as the private text chat message',
+              variant: 'destructive'
+            })
+          }
+        }
+        break;
+      }
+      default:
+        break;
+    }
+  }
+})
+
+
 /// MUTATIONS ///
 const { mutate: delete_generator, isPending: delete_generator_loading, error: delete_generator_error, isSuccess: delete_generator_success } = useDeleteGeneratorMutation()
 const { mutate: update_generator, isPending: update_generator_pending, error: update_generator_error } = useUpdateGeneratorMutation()
+const { mutate: upgrade_guild } = useGuildUpgradeMutation()
 
 /// SUCCESS ACTIONS ///
 watch(delete_generator_success, (s) => {
