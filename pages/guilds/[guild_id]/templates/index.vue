@@ -23,9 +23,163 @@
             Create template
           </p>
 
-          <div class="groups-wrapper mt-4 max-h-[70vh] overflow-y-scroll">
-            <div class="groups-container">
-<!--              name, generators, bitrate, user limit, name, region-->
+          <div class="flex flex-col gap-6 max-h-[70vh] overflow-y-scroll mt-4">
+            <div class="groups-wrapper">
+              <span class="text-group-name">USAGE SETTINGS</span>
+              <div class="groups-container">
+                <GroupSetting
+                  heading="Name"
+                  description="The name that users see when they are choosing a template to apply to their temporary voice channel (this is not the name of the voice channel itself)"
+                >
+                  <template #bottom-action>
+                    <div class="flex gap-2">
+                      <input
+                        placeholder="Insert a name"
+                        type="text"
+                        v-model="create_template_name"
+                        class="grow"
+                        minlength="1"
+                        required
+                      >
+                    </div>
+                  </template>
+                </GroupSetting>
+
+                <GroupSetting
+                  heading="Enabled generators"
+                  description="Make this template usable only in temporary voice channels created by certain generators"
+                >
+                  <template #bottom-action>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger
+                        class="w-full bg-background rounded bordered h-9 py-1 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80"
+                      >
+                        {{create_template_generators == null ? 'Any generator' : create_template_generators.length == 0 ? 'Disabled for every generator' : `Allowed in ${create_template_generators.length} generators`}}
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuCheckboxItem
+                          v-bind:checked="create_template_generators == null"
+                          @update:checked="create_template_generators == null ? create_template_generators = [] : create_template_generators = null"
+                        >
+                          Any generator
+                        </DropdownMenuCheckboxItem>
+
+                        <DropdownMenuCheckboxItem
+                          v-for="generator in guild_settings!.generators"
+                          :key="generator.id"
+                          v-bind:checked="create_template_generators != null && create_template_generators.some(g => g == generator.id)"
+                          @update:checked="() => {
+                            const was_checked = create_template_generators != null && create_template_generators.some(g => g == generator.id)
+
+                            if (was_checked) {
+                              create_template_generators = create_template_generators!.filter(g => g != generator.id)
+                            } else {
+                              if (create_template_generators == null) {
+                                create_template_generators = []
+                              }
+
+                              create_template_generators.push(generator.id)
+                            }
+                          }"
+                        >
+                          {{guild_channels!.find(c => c.id == generator.id)?.name ?? 'Deleted channel'}}
+                        </DropdownMenuCheckboxItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </template>
+                </GroupSetting>
+              </div>
+            </div>
+
+            <div class="groups-wrapper">
+              <span class="text-group-name">VOICE CHANNEL SETTINGS</span>
+              <div class="groups-container">
+                <GroupSetting
+                  heading="Name"
+                  description="The name applied to temporary voice channels"
+                >
+                  <template #bottom-action>
+                    <div class="flex gap-2">
+                      <input
+                        placeholder="Not set"
+                        type="text"
+                        v-bind:value="create_template_vc_name != null ? create_template_vc_name : undefined"
+                        @input="$event.target.value ? (create_template_vc_name = $event.target.value) : (create_template_vc_name = null)"
+                        class="grow"
+                        minlength="2"
+                        maxlength="500"
+                      >
+                      <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => create_template_vc_name != null ? (create_template_vc_name += v) : (create_template_vc_name = v)" :is_ultimate="is_ultimate" />
+                    </div>
+                  </template>
+                </GroupSetting>
+
+                <GroupSetting
+                  heading="User limit"
+                  description="The user limit applied to the temporary voice channel"
+                >
+                  <template #bottom-action>
+                    <input
+                      placeholder="Not set"
+                      v-bind:value="create_template_vc_user_limit != null ? create_template_vc_user_limit : undefined"
+                      @input="$event.target.value ? (create_template_vc_user_limit = $event.target.value) : (create_template_vc_user_limit = null)"
+                      type="number"
+                      min="0"
+                      max="99"
+                    >
+                  </template>
+                </GroupSetting>
+
+                <GroupSetting
+                  heading="Bitrate"
+                  description="The bitrate in kbps that gets applied to the temporary voice channel"
+                >
+                  <template #bottom-action>
+                    <div class="relative vertical-center">
+                      <input
+                        placeholder="Not set"
+                        v-bind:value="create_template_vc_bitrate != null ? create_template_vc_bitrate / 1000 : undefined"
+                        @input="$event.target.value ? (create_template_vc_bitrate = $event.target.value * 1000) : (create_template_vc_bitrate = null)"
+                        type="number"
+                        min="8"
+                        max="384"
+                        class="grow"
+                      >
+                      <span :class="cn('absolute text-foreground-secondary transition-all duration-100', create_template_vc_bitrate == null ? 'hidden' : create_template_vc_bitrate >= 100000 ? 'left-10' : create_template_vc_bitrate >= 10000 ? 'left-8' : 'left-6')">kbps</span>
+                    </div>
+                  </template>
+                </GroupSetting>
+
+                <GroupSetting
+                  heading="Region"
+                  description="The voice region applied to temporary voice channels"
+                >
+                  <template #bottom-action>
+                    <Select
+                      v-model:model-value="create_template_vc_region_model"
+                      @update:model-value="(key) => create_template_vc_region = key !== 'no_region' ? key : null"
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Not set" aria-label="value">{{discord_regions.find(r => r.key == create_template_vc_region)?.name}}</SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectItem
+                            v-for="region in discord_regions"
+                            :key="region.key"
+                            :value="region.key"
+                          >
+                            {{region.emoji}} {{ region.name }}
+                          </SelectItem>
+
+                          <SelectItem value="no_region">Not set</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </template>
+                </GroupSetting>
+                <!--              region-->
+              </div>
             </div>
           </div>
 
@@ -125,6 +279,7 @@ import {IconNames} from "assets/config/IconNames";
 import type {DashboardSection} from "~/types/dashboard";
 import {useToast} from "~/components/ui/toast";
 import {Select, SelectItem} from "~/components/ui/select";
+import {discord_regions} from "../../../../types/discord";
 
 definePageMeta({
   middleware: 'auth',
@@ -146,6 +301,12 @@ const { mutate: delete_template, isPending: delete_template_loading, error: dele
 const { mutate: upgrade_guild } = useGuildUpgradeMutation()
 
 const create_template_dialog_open = ref(false)
+const create_template_name = ref<string>('')
+const create_template_generators = ref<string[] | null>(null)
+const create_template_vc_name = ref<string | null>(null)
+const create_template_vc_user_limit = ref<number | null>(null)
+const create_template_vc_bitrate = ref<number | null>(null)
+const create_template_vc_region = ref<string | null>(null)
 
 const is_ultimate = computed(() => {
   if (guild_settings.value) {
@@ -165,16 +326,35 @@ const create_template_clicked = () => {
     create_template_dialog_open.value = true
 }
 
+const create_template_vc_region_model = computed({
+  get() {
+    return create_template_vc_region.value != null ? create_template_vc_region.value : undefined
+  },
+  set(value) {
+    if (value != 'no_region' && value)
+      create_template_vc_region.value = value
+    else
+      create_template_vc_region.value = null
+  }
+})
+
 const create_template_form_submission = () => {
-  if (!create_template_channel_id.value || !create_template_role_id.value) {
+  if (!create_template_name.value) {
     toast({
-      description: 'Please select a channel and role to create the voice role',
+      description: 'Please select a name for the template',
       variant: 'destructive'
     })
   } else {
     create_template({
       guild_id: guild_id.value!,
       template_settings: {
+        id: '',
+        name: create_template_name.value,
+        enabled_generator_ids: create_template_generators.value,
+        vc_name: create_template_vc_name.value,
+        vc_bitrate: create_template_vc_bitrate.value,
+        vc_limit: create_template_vc_user_limit.value,
+        vc_region: create_template_vc_region.value
       }
     })
 
