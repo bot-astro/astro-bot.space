@@ -9,6 +9,7 @@ import type {GSError} from "~/types/guild-settings/error";
 import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
 import type {GSGenerator} from "~/types/guild-settings/generator";
 import type {GSVoiceRole} from "~/types/guild-settings/voice_role";
+import type {GSTemplate} from "~/types/guild-settings/template";
 
 /**
  * Api client to interact with the Astro APIs
@@ -389,6 +390,85 @@ export class AstroApiClient {
 
   public delete_voice_role = async (guild_id: string, channel_id: string): Promise<GuildSettings> => {
     const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/voice-role/${channel_id}`), {
+      method: 'DELETE'
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+
+  /// TEMPLATES ///
+  public create_template = async (guild_id: string, template: GSTemplate): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/template`), {
+      method: 'POST',
+      body: template
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 400: {
+          throw new AstroApiError(AstroApiErrorCode.INVALID_SETTINGS)
+        }
+        case 402: {
+          throw new AstroApiError(AstroApiErrorCode.ULTIMATE_REQUIRED_TO_CREATE_TEMPLATE)
+        }
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public update_template = async (guild_id: string, template_id: string, template: GSTemplate): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/template/${template_id}`), {
+      method: 'POST',
+      body: template
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 400: {
+          throw new AstroApiError(AstroApiErrorCode.INVALID_SETTINGS)
+        }
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public delete_template = async (guild_id: string, template_id: string): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/template/${template_id}`), {
       method: 'DELETE'
     })
 
