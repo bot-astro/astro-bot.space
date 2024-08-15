@@ -24,7 +24,7 @@
           </p>
 
           <div class="groups-wrapper mt-4 max-h-[70vh] overflow-y-scroll">
-            <div class="groups-container-compact">
+            <div class="groups-container">
               <GroupSetting
                 heading="Channel"
               >
@@ -297,7 +297,7 @@ const create_voice_role_form_submission = () => {
         id: create_voice_role_channel_id.value,
         role_id: create_voice_role_role_id.value,
         action: create_voice_role_action.value,
-        permanent: create_voice_role_permanent.value
+        permanent_dashboard: create_voice_role_permanent.value
       }
     })
 

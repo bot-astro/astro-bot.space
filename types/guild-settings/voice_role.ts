@@ -2,7 +2,7 @@ export interface GSVoiceRole {
   id: string;
   role_id: string;
   action: GSVoiceRoleAction;
-  permanent: boolean;
+  permanent_dashboard: boolean;
 }
 
 export const enum GSVoiceRoleAction {
