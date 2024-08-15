@@ -8,6 +8,7 @@ import type {UserChargebeeSubscriptions} from "~/types/user";
 import type {GSError} from "~/types/guild-settings/error";
 import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
 import type {GSGenerator} from "~/types/guild-settings/generator";
+import type {GSVoiceRole} from "~/types/guild-settings/voice_role";
 
 /**
  * Api client to interact with the Astro APIs
@@ -310,6 +311,84 @@ export class AstroApiClient {
 
   public delete_generator = async (guild_id: string, generator_id: string): Promise<GuildSettings> => {
     const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/generator/${generator_id}`), {
+      method: 'DELETE'
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  /// VOICE ROLE ///
+  public create_voice_role = async (guild_id: string, voice_role: GSVoiceRole): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/voice-role`), {
+      method: 'POST',
+      body: voice_role
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 400: {
+          throw new AstroApiError(AstroApiErrorCode.INVALID_SETTINGS)
+        }
+        case 402: {
+          throw new AstroApiError(AstroApiErrorCode.ULTIMATE_REQUIRED_TO_CREATE_VOICE_ROLE)
+        }
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public update_voice_role = async (guild_id: string, channel_id: string, voice_role: GSVoiceRole): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/voice-role/${channel_id}`), {
+      method: 'POST',
+      body: voice_role
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error.status ?? 500) {
+        case 400: {
+          throw new AstroApiError(AstroApiErrorCode.INVALID_SETTINGS)
+        }
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
+  public delete_voice_role = async (guild_id: string, channel_id: string): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/data/voice-role/${channel_id}`), {
       method: 'DELETE'
     })
 

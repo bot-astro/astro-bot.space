@@ -100,7 +100,7 @@ function decreaseQuantity() {
         <div class="grid grid-cols-7 items-center">
           <span class="col-span-3">Unlimited temporary vc generators</span>
           <span class="col-span-2 text-center"><IconGreenCheck class="size-7" /></span>
-          <span class="col-span-2 text-center select-none">Maximum 3</span>
+          <span class="col-span-2 text-center select-none">Maximum 2</span>
         </div>
         <div class="grid grid-cols-7 items-center">
           <span class="col-span-3">Unlimited interfaces</span>

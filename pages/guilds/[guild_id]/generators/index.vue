@@ -10,10 +10,10 @@
       <Button
         :loading="create_generator_loading"
         @click="() => {
-            if(guild_settings && !is_ultimate && guild_settings.generators.length < 2)
-              create_generator({ guild_id: guild_id! })
-            else
+            if(guild_settings && !is_ultimate && guild_settings.generators.length > 1)
               ultimate_required_dialog_open = true
+            else
+              create_generator({ guild_id: guild_id! })
           }
          "
       >
@@ -44,36 +44,38 @@
                 </span>
               </div>
               <div class="grow" />
-              <Button @click="navigateTo(`${$route.fullPath}/${gen.id}`)">
-                Manage
-              </Button>
-              <AlertDialog>
-                <AlertDialogTrigger>
-                  <ButtonDestructive
-                    :loading="delete_generator_loading"
-                  >
-                    Delete
-                  </ButtonDestructive>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure you want to delete the generator?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be un-done and you wont be able to restore this generator!
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Go back</AlertDialogCancel>
-                    <AlertDialogAction
-                      :destructive="true"
+              <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+                <Button @click="navigateTo(`${$route.fullPath}/${gen.id}`)">
+                  Manage
+                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger>
+                    <ButtonDestructive
                       :loading="delete_generator_loading"
-                      @click="delete_generator({ guild_id: guild_id!, generator_id: gen.id })"
                     >
                       Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+                    </ButtonDestructive>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Are you sure you want to delete the generator?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be un-done and you wont be able to restore this generator!
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Go back</AlertDialogCancel>
+                      <AlertDialogAction
+                        :destructive="true"
+                        :loading="delete_generator_loading"
+                        @click="delete_generator({ guild_id: guild_id!, generator_id: gen.id })"
+                      >
+                        Delete
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </div>
             </div>
 
             <hr class="w-full bordered" v-if="i !== (guild_settings.generators.length - 1)">

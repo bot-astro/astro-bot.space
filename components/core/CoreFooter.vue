@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <div
@@ -11,11 +12,14 @@
           Resources
         </p>
         <div class="flex flex-col gap-y-3 text-sm">
-          <ButtonText to="/support">
-            Support
+          <ButtonText to="/guides">
+            Guides
           </ButtonText>
           <ButtonText to="/ultimate">
             Ultimate
+          </ButtonText>
+          <ButtonText to="/support">
+            Support
           </ButtonText>
         </div>
       </div>

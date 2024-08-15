@@ -330,7 +330,7 @@
                 <SelectContent>
                   <SelectGroup>
                     <SelectItem
-                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => a.position - b.position)"
+                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => b.position - a.position)"
                       :key="role.id"
                       :value="role.id"
                     >
@@ -363,7 +363,7 @@
                 <SelectContent>
                   <SelectGroup>
                     <SelectItem
-                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => a.position - b.position)"
+                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => b.position - a.position)"
                       :key="role.id"
                       :value="role.id"
                     >
@@ -496,7 +496,7 @@
                 <SelectContent>
                   <SelectGroup>
                     <SelectItem
-                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => a.position - b.position)"
+                      v-for="role in guild_roles.filter(r => r.id !== guild_id).sort((a, b) => b.position - a.position)"
                       :key="role.id"
                       :value="role.id"
                     >

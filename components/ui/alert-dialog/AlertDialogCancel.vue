@@ -12,7 +12,7 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <AlertDialogCancel v-bind="delegatedProps" :class="cn('button-secondary', 'mt-2 sm:mt-0', props.class)">
+  <AlertDialogCancel v-bind="delegatedProps" :class="cn('button-secondary', props.class)">
     <slot />
   </AlertDialogCancel>
 </template>
