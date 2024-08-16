@@ -10,7 +10,7 @@
     <div class="flex items-center gap-4">
       <Icon :name="IconNames.VOICE_ROLE" class="size-10" />
       <div class="flex flex-col">
-        <span v-if="guild_channels" class="dashboard-section-title">
+        <span v-if="guild_channels && guild_roles && voice_role_settings" class="dashboard-section-title">
           {{ guild_channels.find(c => c.id == voice_role_id)?.name ?? "Deleted channel" }} <span class="text-foreground-secondary">x</span> @{{ guild_roles.find(r => r.id == voice_role_settings.role_id)?.name ?? "Deleted role" }}
         </span>
         <Skeleton v-else class="h-10 w-72" />
@@ -46,7 +46,10 @@
       </AlertDialog>
     </div>
 
-    <div class="flex flex-col gap-12" v-if="m_voice_role_settings && guild_channels && guild_roles">
+    <div
+      class="flex flex-col gap-12"
+      v-if="m_voice_role_settings != undefined && guild_channels != undefined && guild_roles != undefined"
+    >
       <div class="groups-wrapper">
         <span class="text-group-name">SETTINGS</span>
         <div class="groups-container">
@@ -61,7 +64,7 @@
             <template #bottom-action>
               <Select
                 v-model:model-value="m_voice_role_settings.id"
-                @update:model-value="(id) => m_voice_role_settings.id = id"
+                @update:model-value="(id) => m_voice_role_settings!.id = id"
               >
                 <SelectTrigger>
                   <SelectValue aria-label="value">{{guild_channels?.find(c => c.id == m_voice_role_settings!.id)?.name ?? ''}}</SelectValue>
@@ -151,56 +154,46 @@
     <div v-else-if="guild_settings_error" class="center text-foreground-destructive">
       Something went wrong, please try again later
     </div>
-    <div v-else class="center">
+    <div v-else-if="guild_settings_pending" class="center">
       <IconLoading />
     </div>
-
-    <DashboardUpgradeDialog
-      v-model:open="upgrade_dialog_open"
-      @onUpgrade="(sub_id) => { upgrade_dialog_open = false; upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id }) }"
-      @onPurchaseOnWebsite="() => navigateTo('/ultimate', { external: true, open: { target: '_blank' } })"
-      @onPurchaseOnDiscord="() => navigateTo('/discord-ultimate', { external: true, open: { target: '_blank' } })"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
 import {IconNames} from "assets/config/IconNames";
-import useUpdateGeneratorMutation from "~/data/astro/mutations/useUpdateGeneratorMutation";
 import {deepEqual} from "fast-equals";
 import {useToast} from "~/components/ui/toast";
 import type {GSVoiceRole, GSVoiceRoleAction} from "~/types/guild-settings/voice_role";
 import {Select, SelectItem} from "~/components/ui/select";
+import type {DashboardSection} from "~/types/dashboard";
 
 definePageMeta({
   middleware: 'auth',
   layout: 'dashboard',
+  section: {
+    id: 10,
+    name: 'Test',
+    icon: 'i-lucide-file-volume',
+    description: 'Voice Role description',
+  } as DashboardSection
 })
 
 const { toast } = useToast()
 const route = useRoute()
 const guild_id = useGuildId()
-const voice_role_id = ref(route.params.voice_role_id as string | undefined)
+let voice_role_id = route.params.voice_role_id as string
 
 watch(() => route.params, (params) => {
-  voice_role_id.value = params.voice_role_id as string | undefined
+  voice_role_id = params.voice_role_id as string
 })
 
 const { data: guild_channels } = useGuildChannels(guild_id)
 const { data: guild_roles } = useGuildRoles(guild_id)
-const { data: guild_settings, error: guild_settings_error } = useGuildSettings(guild_id)
-
-const upgrade_dialog_open = ref(false)
-const is_ultimate = computed(() => {
-  if (guild_settings.value) {
-    return isGuildUltimate(guild_settings.value)
-  } else {
-    return false
-  }
-})
+const { data: guild_settings, error: guild_settings_error, isPending: guild_settings_pending } = useGuildSettings(guild_id)
 
 const voice_role_settings = computed(() => {
-  return guild_settings.value?.connections?.find(c => c.id == voice_role_id.value)
+  return guild_settings.value?.connections?.find(c => c.id == voice_role_id)
 })
 const m_voice_role_settings = ref<GSVoiceRole | undefined>(undefined)
 const voice_role_settings_edited = ref(false)

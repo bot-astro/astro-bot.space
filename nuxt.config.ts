@@ -4,6 +4,12 @@ export default defineNuxtConfig({
   // fuck ssr honestly
   ssr: false,
 
+  app: {
+    head: {
+      script: [{ src: "https://js.chargebee.com/v2/chargebee.js", 'data-cb-site': process.env.CHARGEBEE_SITE}]
+    }
+  },
+
   devtools: {
     enabled: true
   },

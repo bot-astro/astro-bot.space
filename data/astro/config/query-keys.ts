@@ -1,5 +1,6 @@
 import type {Ref} from "vue";
 
+export const user_chargebee_portal_session_url: any[] = ['user', 'chargebee_portal_session_url']
 export const user_subscriptions_qk: any[] = ['user', 'subscriptions']
 
 export const guilds_qk: any[] = ['guilds']

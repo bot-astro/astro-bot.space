@@ -85,6 +85,22 @@ export class AstroApiClient {
     }
   }
 
+  public get_chargebee_hosted_page_checkout = async (monthly: boolean, quantity: number): Promise<any> => {
+    const res = await useApiFetch<any>(this.url('/chargebee/checkout'), {
+      method: 'POST',
+      body: {
+        monthly,
+        quantity
+      }
+    })
+
+    if (res.data) {
+      return res.data
+    } else {
+      throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+    }
+  }
+
   public get_user_chargebee_subscriptions = async (): Promise<UserChargebeeSubscriptions> => {
     const res = await useApiFetch<UserChargebeeSubscriptions>(this.url(`/chargebee/subscriptions`))
 

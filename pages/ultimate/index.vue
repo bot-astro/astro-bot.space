@@ -1,10 +1,16 @@
 <script lang="ts" setup>
 import {Switch} from "~/components/ui/switch";
 import SwitchTabs from "~/components/ui/switch/SwitchTabs.vue";
+import useUserSession from "~/composables/useUserSession";
+import {toast} from "~/components/ui/toast";
 
 definePageMeta({
   middleware: 'auth',
 })
+
+const { $astroApiClient } = useNuxtApp()
+const session = useUserSession().data
+const user = computed(() => session.value?.user)
 
 const quantity = ref(1)
 const isMonthly = ref(true)
@@ -22,6 +28,31 @@ function increaseQuantity() {
 
 function decreaseQuantity() {
   quantity.value = quantity.value - 1
+}
+
+function subscribe() {
+  try {
+    let cbInstance = Chargebee.getInstance();
+
+    cbInstance.openCheckout({
+      // This function returns a promise that resolves a hosted page object.
+      hostedPage: function() {
+        // We will discuss on how to implement this end point in the next step.
+        return $astroApiClient.get_chargebee_hosted_page_checkout(isMonthly.value, quantity.value)
+      },
+
+      success: function(hostedPageId) {
+        // TODO: Open popup with success and dashboard button
+        navigateTo('/guilds')
+      }
+    });
+  } catch (e) {
+    console.error(e)
+    toast({
+      description: "Something went wrong initiating the checkout, please try again later",
+      variant: 'destructive'
+    })
+  }
 }
 </script>
 
@@ -82,7 +113,7 @@ function decreaseQuantity() {
           </div>
           <!-- purchase button container -->
           <div>
-            <ButtonStandout class="text-xl">
+            <ButtonStandout @click="subscribe">
               Subscribe
             </ButtonStandout>
           </div>

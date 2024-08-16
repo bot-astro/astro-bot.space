@@ -1,11 +1,28 @@
 <script setup lang="ts">
 import useUserSession from "~/composables/useUserSession";
+import {useToast} from "~/components/ui/toast";
 
+const { $astroApiClient } = useNuxtApp()
+const { toast } = useToast()
 const session = useUserSession().data
 const user = computed(() => session.value?.user)
 const is_logged_in = computed(() => session.value?.user !== undefined)
 
 let is_mobile_dropdown_open = ref(false)
+
+const on_billing_clicked = async () => {
+  try {
+    const url = await $astroApiClient.get_chargebee_portal_session_url()
+    navigateTo(url, { external: true, open: { target: '_blank' } })
+  } catch (e) {
+    console.log(e)
+
+    toast({
+      description: 'Something went wrong when opening the billing portal, try again later',
+      variant: 'destructive'
+    })
+  }
+}
 </script>
 
 <template>
@@ -72,7 +89,7 @@ let is_mobile_dropdown_open = ref(false)
               Servers
             </DropdownMenuItem>
             <!--            TODO: Open billing portal -->
-            <DropdownMenuItem v-if="is_logged_in" @click="">
+            <DropdownMenuItem v-if="is_logged_in" @click="on_billing_clicked">
               Billing
             </DropdownMenuItem>
             <DropdownMenuItem
