@@ -29,7 +29,6 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       props.class,
     )"
     v-slot="{ checked }"
-    @click="emits('update:checked', !props.checked)"
   >
 
     <span

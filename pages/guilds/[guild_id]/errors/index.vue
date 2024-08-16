@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-8">
 <!--     intro-->
     <div class="flex items-center gap-4">
-      <Icon :name="IconNames.ERROR" class="size-10" />
+      <Icon :name="IconNames.ERROR" class="size-10 text-foreground-link-standout" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Errors</span>
         <span class="dashboard-section-description">View and clear your server's errors</span>

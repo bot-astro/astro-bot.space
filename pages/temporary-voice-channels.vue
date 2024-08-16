@@ -38,7 +38,7 @@
     />
 
     <div
-      class="flex flex-col w-full items-center justify-center rounded-md p-6 backlit-box bordered bg-bg md:max-w-screen-lg"
+      class="flex flex-col w-full items-center justify-center rounded-md p-6 backlit-box bordered bg-background md:max-w-screen-lg"
       @mousemove="onBacklitBoxMouseMove"
     >
       <span class="text-2xl font-medium tracking-wide font-display">Conviced?</span>

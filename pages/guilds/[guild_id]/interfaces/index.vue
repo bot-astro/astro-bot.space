@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
-      <IconInterface class="size-10" />
+      <IconInterface class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Interfaces</span>
         <span class="dashboard-section-description">Manage the interfaces of your server here!</span>

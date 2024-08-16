@@ -45,7 +45,7 @@ const on_billing_clicked = async () => {
             Servers
           </DropdownMenuItem>
           <!--          TODO: Integrate chargebee customer portal -->
-          <DropdownMenuItem @click="">
+          <DropdownMenuItem @click="on_billing_clicked">
             Billing
           </DropdownMenuItem>
           <DropdownMenuItem

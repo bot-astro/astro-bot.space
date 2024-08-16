@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
-      <IconGenerator class="size-10" />
+      <IconGenerator class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Generators</span>
         <span class="dashboard-section-description">Manage temporary voice channels generators here!</span>

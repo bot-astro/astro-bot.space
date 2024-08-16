@@ -18,8 +18,6 @@ export default function () {
     },
     logout: async () => {
       const app = useNuxtApp()
-      const queryClient = useQueryClient()
-
 
       const userSession = useUserSession()
 
@@ -33,7 +31,11 @@ export default function () {
 
       userSession.clear()
 
-      await app.runWithContext(async () => await queryClient.invalidateQueries())
+      const scope = effectScope()
+      scope.run(async () => {
+        await app.runWithContext(async () => await useQueryClient().invalidateQueries())
+      })
+
 
       location.reload()
     }

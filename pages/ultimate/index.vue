@@ -106,7 +106,7 @@ function subscribe() {
               <div class="flex flex-col gap-1">
                 <span class="text-center text-lg font-semibold">Billed</span>
                 <div class="flex items-center justify-center gap-2">
-                  <SwitchTabs v-model="isMonthly" first="Monthly" second="Yearly" />
+                  <SwitchTabs v-model:checked="isMonthly" first="Monthly" second="Yearly" />
                 </div>
               </div>
             </div>
