@@ -287,7 +287,7 @@ definePageMeta({
   section: {
     id: 6,
     name: 'Templates',
-    icon: 'i-lucide-layout-template',
+    icon: 'astro:template',
     description: 'Template description',
   } as DashboardSection
 })

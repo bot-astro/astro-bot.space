@@ -57,7 +57,11 @@
       <div v-for="section in sections"
         class="flex flex-row items-center gap-3 px-4 py-2 hover:bg-background cursor-pointer transition-colors"
         :class="current_section.id === section.id ? 'bg-background' : ''" @click="set_section_and_guild(section)">
-        <Icon :name="section.icon" class="size-4" />
+        <IconGenerator v-if="section.icon == 'astro:generator'" class="size-4" />
+        <IconInterface v-else-if="section.icon == 'astro:interface'" class="size-4" />
+        <IconVoiceRole v-else-if="section.icon == 'astro:voice-role'" class="size-4" />
+        <IconTemplate v-else-if="section.icon == 'astro:template'" class="size-4" />
+        <Icon v-else :name="section.icon" class="size-4" />
         <span>{{ section.name }}</span>
       </div>
     </div>
@@ -65,6 +69,8 @@
 </template>
 
 <script lang="ts" setup>
+import IconVoiceRole from "~/components/icon/IconVoiceRole.vue";
+
 const { width } = useWindowSize()
 
 const guild_id = useGuildId()

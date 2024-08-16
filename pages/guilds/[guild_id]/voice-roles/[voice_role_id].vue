@@ -171,12 +171,6 @@ import type {DashboardSection} from "~/types/dashboard";
 definePageMeta({
   middleware: 'auth',
   layout: 'dashboard',
-  section: {
-    id: 10,
-    name: 'Test',
-    icon: 'i-lucide-file-volume',
-    description: 'Voice Role description',
-  } as DashboardSection
 })
 
 const { toast } = useToast()

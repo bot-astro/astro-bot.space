@@ -24,7 +24,7 @@ definePageMeta({
   section: {
     id: 4,
     name: 'Interfaces',
-    icon: 'i-lucide-mouse-pointer-click',
+    icon: 'astro:interface',
     description: 'Interfaces Description',
   } as DashboardSection
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
-      <Icon :name="IconNames.VOICE_ROLE" class="size-10" />
+      <IconVoiceRole />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Voice roles</span>
         <span class="dashboard-section-description">Voice roles allow to give temporary roles to users inside specific voice channels!</span>
@@ -239,6 +239,7 @@ import type {DashboardSection} from "~/types/dashboard";
 import {useToast} from "~/components/ui/toast";
 import {Select, SelectItem} from "~/components/ui/select";
 import type {GSVoiceRoleAction} from "~/types/guild-settings/voice_role";
+import IconVoiceRole from "~/components/icon/IconVoiceRole.vue";
 
 definePageMeta({
   middleware: 'auth',
@@ -246,7 +247,7 @@ definePageMeta({
   section: {
     id: 5,
     name: 'Voice role',
-    icon: 'i-lucide-file-volume',
+    icon: 'astro:voice-role',
     description: 'Voice Role description',
   } as DashboardSection
 })

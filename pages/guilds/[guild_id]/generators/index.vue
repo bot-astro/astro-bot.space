@@ -121,7 +121,7 @@ definePageMeta({
   section: {
     id: 3,
     name: 'Generators',
-    icon: 'i-lucide-copy-plus',
+    icon: 'astro:generator',
     description: 'Generators Description',
   } as DashboardSection
 })
