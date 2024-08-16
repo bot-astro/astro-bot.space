@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
-      <IconVoiceRole />
+      <IconVoiceRole class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Voice roles</span>
         <span class="dashboard-section-description">Voice roles allow to give temporary roles to users inside specific voice channels!</span>
@@ -143,7 +143,7 @@
         <div v-if="guild_settings.connections.length > 0" class="group p-0">
           <div v-for="(voice_role, i) in guild_settings.connections" class="flex flex-col">
             <div class="flex items-center gap-4 px-4 py-6">
-              <Icon :name="IconNames.VOICE_ROLE" class="flex-shrink-0 size-4" />
+              <IconVoiceRole class="flex-shrink-0 size-4" />
               <div class="flex flex-col gap-2 sm:gap-0">
                 <div class="flex flex-col sm:flex-row gap-0 sm:gap-2">
                   <span class="text-foreground-secondary">Channel: </span>

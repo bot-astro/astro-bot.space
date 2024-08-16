@@ -8,7 +8,7 @@
     />
 
     <div class="flex items-center gap-4">
-      <Icon :name="IconNames.GENERATOR" class="size-10" />
+      <IconGenerator class="size-10" />
       <div class="flex flex-col">
         <span v-if="guild_channels" class="dashboard-section-title">
           {{ guild_channels.find(c => c.id == generator_id)?.name ?? "Deleted channel" }}

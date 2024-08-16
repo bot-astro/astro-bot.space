@@ -8,7 +8,7 @@
     />
 
     <div class="flex items-center gap-4">
-      <Icon :name="IconNames.VOICE_ROLE" class="size-10" />
+      <IconVoiceRole class="size-10" />
       <div class="flex flex-col">
         <span v-if="guild_channels && guild_roles && voice_role_settings" class="dashboard-section-title">
           {{ guild_channels.find(c => c.id == voice_role_id)?.name ?? "Deleted channel" }} <span class="text-foreground-secondary">x</span> @{{ guild_roles.find(r => r.id == voice_role_settings.role_id)?.name ?? "Deleted role" }}

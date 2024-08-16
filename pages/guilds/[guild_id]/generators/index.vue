@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
-      <Icon :name="IconNames.GENERATOR" class="size-10" />
+      <IconGenerator class="size-10" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Generators</span>
         <span class="dashboard-section-description">Manage temporary voice channels generators here!</span>
@@ -34,7 +34,7 @@
         <div v-if="guild_settings.generators.length > 0" class="group p-0">
           <div v-for="(gen, i) in guild_settings.generators" class="flex flex-col">
             <div class="flex items-center gap-4 px-4 py-6">
-              <Icon :name="IconNames.GENERATOR" class="flex-shrink-0 size-4" />
+              <IconGenerator class="flex-shrink-0 size-4" />
               <div class="flex flex-col">
                 <span class="text-md">
                   {{ guild_channels.find(c => c.id == gen.id)?.name ?? "Deleted channel" }}

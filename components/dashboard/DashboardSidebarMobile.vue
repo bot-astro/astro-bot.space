@@ -18,7 +18,12 @@
         <div v-for="section in sections"
              class="flex cursor-pointer flex-row items-center justify-center py-2 transition-colors hover:bg-background"
              :class="current_section.id === section.id ? 'bg-background' : ''" @click="set_section_and_guild(section)">
-          <Icon :name="section.icon" class="size-4" />
+          <IconSettings v-if="section.icon == 'astro:settings'" class="size-4" />
+          <IconGenerator v-else-if="section.icon == 'astro:generator'" class="size-4" />
+          <IconInterface v-else-if="section.icon == 'astro:interface'" class="size-4" />
+          <IconVoiceRole v-else-if="section.icon == 'astro:voice-role'" class="size-4" />
+          <IconTemplate v-else-if="section.icon == 'astro:template'" class="size-4" />
+          <Icon v-else :name="section.icon" class="size-4" />
         </div>
       </div>
     </div>
@@ -33,6 +38,8 @@
 </template>
 
 <script lang="ts" setup>
+import IconVoiceRole from "~/components/icon/IconVoiceRole.vue";
+
 const { sections, current_section, set_section_and_guild } = useDashboardSections()
 const guild_info = useGuildInfo()
 </script>

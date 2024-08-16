@@ -2,7 +2,7 @@
   <Popover>
     <PopoverTrigger>
       <ButtonSecondary>
-        <Icon :name="IconNames.VARIABLES" class="size-6" />
+        <IconVariable class="size-6" />
       </ButtonSecondary>
     </PopoverTrigger>
     <PopoverContent class="flex flex-col gap-4 max-w-xs sm:max-w-sm md:max-w-lg border-border">

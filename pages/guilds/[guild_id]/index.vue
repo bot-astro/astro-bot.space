@@ -9,7 +9,7 @@
 
     <!-- intro -->
     <div class="flex items-center gap-4">
-      <Icon name="lucide:server" class="size-10" />
+      <IconSettings class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
         <span v-if="guild_info" class="dashboard-section-title">{{ guild_info.name }}</span>
         <Skeleton v-else class="h-10 w-72" />
@@ -123,7 +123,7 @@ definePageMeta({
   section: {
     id: 1,
     name: 'Overview',
-    icon: 'i-lucide-home',
+    icon: 'astro:settings',
     description: 'Overview Description',
   } as DashboardSection
 })

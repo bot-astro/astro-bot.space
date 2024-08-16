@@ -226,7 +226,7 @@
   }
 
   .text-title-no-font {
-    @apply text-2xl font-medium tracking-wide md:text-4xl;
+    @apply text-xl sm:text-2xl font-medium tracking-wide md:text-4xl;
   }
 
   .text-subtitle {
@@ -298,7 +298,9 @@
     @apply text-title-no-font font-bold;
   }
 
-  .dashboard-section-description {}
+  .dashboard-section-description {
+    @apply text-foreground-secondary
+  }
 }
 
 /* INPUT UTILITIES */

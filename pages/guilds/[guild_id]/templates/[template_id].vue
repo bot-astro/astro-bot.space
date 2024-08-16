@@ -8,7 +8,7 @@
     />
 
     <div class="flex items-center gap-4">
-      <Icon :name="IconNames.VOICE_ROLE" class="size-10" />
+      <IconTemplate class="size-10" />
       <div class="flex flex-col">
         <span v-if="template_settings" class="dashboard-section-title">
           {{ template_settings.name }}

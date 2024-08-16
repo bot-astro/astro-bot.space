@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-full flex-col gap-8">
     <div class="flex items-center gap-4">
-      <Icon :name="IconNames.TEMPLATE" class="size-10" />
+      <IconTemplate class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
         <span class="dashboard-section-title">Templates</span>
         <span class="dashboard-section-description">Templates let users apply multiple settings at once to their temporary voice channel!</span>
@@ -204,7 +204,7 @@
         <div v-if="guild_settings.templates.length > 0" class="group p-0">
           <div v-for="(template, i) in guild_settings.templates" class="flex flex-col">
             <div class="flex items-center gap-4 px-4 py-6">
-              <Icon :name="IconNames.TEMPLATE" class="flex-shrink-0 size-4" />
+              <IconTemplate class="flex-shrink-0 size-4" />
               <span class="text-md">
                 {{ template.name }}
               </span>
