@@ -988,9 +988,11 @@ const is_ultimate = computed(() => {
   }
 })
 
-const generator_settings = computed(() => {
-  return guild_settings.value?.generators?.find(g => g.id == generator_id.value)
-})
+const generator_settings = ref<GSGenerator | undefined>(undefined)
+watch(guild_settings, (new_guild_settings) => {
+  generator_settings.value = new_guild_settings?.generators?.find(c => c.id == generator_id.value)
+}, { deep: true, immediate: true })
+
 const m_generator_settings = ref<GSGenerator | undefined>(undefined)
 const generator_settings_edited = ref(false)
 
@@ -999,7 +1001,7 @@ watch(generator_settings, (new_generator_settings) => {
   if (new_generator_settings) {
     m_generator_settings.value = useClone(new_generator_settings)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 watch(m_generator_settings, (new_m_generator_settings) => {
   if (!generator_settings.value || !new_m_generator_settings) {
@@ -1007,7 +1009,7 @@ watch(m_generator_settings, (new_m_generator_settings) => {
   } else {
     generator_settings_edited.value = !deepEqual(new_m_generator_settings, generator_settings.value)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 
 /// COMPUTED SETTINGS ///

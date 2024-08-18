@@ -14,6 +14,7 @@ export function useGuilds() {
       //     }, 1000)
       //   )
       // } else {
+      //   return $astroApiClient.get_guilds()
       // }
         return $astroApiClient.get_guilds()
     }

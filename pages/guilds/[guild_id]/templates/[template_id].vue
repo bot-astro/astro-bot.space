@@ -262,7 +262,7 @@ const is_ultimate = computed(() => {
 })
 
 const template_settings = computed(() => {
-  return guild_settings.value?.templates?.find(t => t.id == template_id.value)
+  return guild_settings.value ? [...guild_settings.value.templates].find(c => c.id == template_id.value) : undefined
 })
 const m_template_settings = ref<GSTemplate | undefined>(undefined)
 const template_settings_edited = ref(false)
@@ -272,7 +272,7 @@ watch(template_settings, (new_template_settings) => {
   if (new_template_settings) {
     m_template_settings.value = useClone(new_template_settings)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 watch(m_template_settings, (new_m_template_settings) => {
   if (!template_settings.value || !new_m_template_settings) {
@@ -280,7 +280,7 @@ watch(m_template_settings, (new_m_template_settings) => {
   } else {
     template_settings_edited.value = !deepEqual(new_m_template_settings, template_settings.value)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 
 /// PROPERTIES ///

@@ -187,7 +187,7 @@ const { data: guild_roles } = useGuildRoles(guild_id)
 const { data: guild_settings, error: guild_settings_error, isPending: guild_settings_pending } = useGuildSettings(guild_id)
 
 const voice_role_settings = computed(() => {
-  return guild_settings.value?.connections?.find(c => c.id == voice_role_id)
+  return guild_settings.value ? [...guild_settings.value.connections].find(c => c.id == voice_role_id) : undefined
 })
 const m_voice_role_settings = ref<GSVoiceRole | undefined>(undefined)
 const voice_role_settings_edited = ref(false)
@@ -197,7 +197,7 @@ watch(voice_role_settings, (new_voice_role_settings) => {
   if (new_voice_role_settings) {
     m_voice_role_settings.value = useClone(new_voice_role_settings)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 watch(m_voice_role_settings, (new_m_voice_role_settings) => {
   if (!voice_role_settings.value || !new_m_voice_role_settings) {
@@ -205,7 +205,7 @@ watch(m_voice_role_settings, (new_m_voice_role_settings) => {
   } else {
     voice_role_settings_edited.value = !deepEqual(new_m_voice_role_settings, voice_role_settings.value)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 
 
