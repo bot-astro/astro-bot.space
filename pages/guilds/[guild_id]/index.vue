@@ -154,7 +154,7 @@ watch(guild_settings, (new_settings) => {
   if (new_settings) {
     m_guild_settings.value = useClone(new_settings)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 watch(m_guild_settings, (new_settings) => {
   if (!guild_settings.value || !new_settings) {
@@ -162,7 +162,7 @@ watch(m_guild_settings, (new_settings) => {
   } else {
     guild_settings_edited.value = !deepEqual(new_settings, guild_settings.value)
   }
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 
 /////////////////
