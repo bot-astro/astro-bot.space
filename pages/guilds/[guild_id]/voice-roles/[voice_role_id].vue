@@ -222,6 +222,12 @@ watch(delete_voice_role_success, (s) => {
 })
 
 /// ERROR TOASTS ///
+watch(guild_settings_error, (e) => {
+  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+    useInvite().invite_to_guild(guild_id.value)
+  }
+})
+
 watch(delete_voice_role_error, (e) => {
   if (e?.message) {
     toast({

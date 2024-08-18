@@ -10,6 +10,7 @@ export const enum AstroApiErrorCode {
 
   /// GUILD ///
   ASTRO_MISSING_PERMISSIONS = 'Astro is missing permissions to manage this server, make sure to give it Administrator permissions to avoid issues!',
+  ASTRO_NOT_IN_GUILD = 'Astro is not in this server',
   CANNOT_MANAGE_GUILD = 'You do not have permissions to manage this server',
   GUILD_NOT_FOUND = 'Server not found',
   GUILD_ALREADY_ULTIMATE = 'This server is already upgraded to Ultimate',
