@@ -57,10 +57,5 @@ export default defineNuxtConfig({
       invite_oauth_url: process.env.INVITE_OAUTH_URL,
       invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
     },
-    nitro: {
-      output: {
-        publicDir: resolve(__dirname, 'dist')
-      }
-    }
   },
 })
