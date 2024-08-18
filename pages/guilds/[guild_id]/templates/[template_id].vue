@@ -306,6 +306,12 @@ const { mutate: update_template, isPending: update_template_pending, error: upda
 const { mutate: upgrade_guild } = useGuildUpgradeMutation()
 
 /// SUCCESS ACTIONS ///
+watch(guild_settings_error, (e) => {
+  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+    useInvite().invite_to_guild(guild_id.value)
+  }
+})
+
 watch(delete_template_success, (s) => {
   if (s) {
     navigateTo(`/guilds/${guild_id.value}/templates`)

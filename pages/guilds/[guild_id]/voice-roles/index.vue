@@ -139,7 +139,7 @@
     </DashboardUltimateRequiredDialog>
 
     <div class="flex w-full items-center justify-center">
-      <div v-if="guild_settings && guild_channels" class="w-full">
+      <div v-if="guild_settings && guild_channels && guild_roles" class="w-full">
         <div v-if="guild_settings.connections.length > 0" class="group p-0">
           <div v-for="(voice_role, i) in guild_settings.connections" class="flex flex-col">
             <div class="flex items-center gap-4 px-4 py-6">
@@ -238,7 +238,7 @@ import {IconNames} from "assets/config/IconNames";
 import type {DashboardSection} from "~/types/dashboard";
 import {useToast} from "~/components/ui/toast";
 import {Select, SelectItem} from "~/components/ui/select";
-import type {GSVoiceRoleAction} from "~/types/guild-settings/voice_role";
+import  {GSVoiceRoleAction} from "~/types/guild-settings/voice_role";
 import IconVoiceRole from "~/components/icon/IconVoiceRole.vue";
 
 definePageMeta({
@@ -262,8 +262,8 @@ const { mutate: delete_voice_role, isPending: delete_voice_role_loading, error: 
 const { mutate: upgrade_guild } = useGuildUpgradeMutation()
 
 const create_voice_role_dialog_open = ref(false)
-const create_voice_role_channel_id = ref<string>(undefined)
-const create_voice_role_role_id = ref<string>(undefined)
+const create_voice_role_channel_id = ref<string | undefined>(undefined)
+const create_voice_role_role_id = ref<string | undefined>(undefined)
 const create_voice_role_action = ref<GSVoiceRoleAction>(GSVoiceRoleAction.ASSIGN)
 const create_voice_role_permanent = ref<boolean>(false)
 
@@ -305,6 +305,12 @@ const create_voice_role_form_submission = () => {
     create_voice_role_dialog_open.value = false
   }
 }
+
+watch(guild_settings_error, (e) => {
+  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+    useInvite().invite_to_guild(guild_id.value)
+  }
+})
 
 watch(create_voice_role_error, (e) => {
   if (e?.message) {

@@ -145,6 +145,12 @@ const is_ultimate = computed(() => {
 const ultimate_required_dialog_open = ref(false)
 const upgrade_dialog_open = ref(false)
 
+watch(guild_settings_error, (e) => {
+  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+    useInvite().invite_to_guild(guild_id.value)
+  }
+})
+
 watch(create_generator_error, (e) => {
   if (e?.message) {
     toast({

@@ -164,6 +164,9 @@ export class AstroApiClient {
         case 404: {
           throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
         }
+        case 405: {
+          throw new AstroApiError(AstroApiErrorCode.ASTRO_NOT_IN_GUILD)
+        }
         default: {
           throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
         }

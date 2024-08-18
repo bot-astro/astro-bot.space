@@ -215,6 +215,10 @@ watch(clear_temporary_vcs_cache_error, e => {
 })
 
 watch(guild_settings_error, e => {
+  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+    useInvite().invite_to_guild(guild_id.value)
+  }
+
   if (e?.message) {
     toast({
       description: e.message,

@@ -362,6 +362,12 @@ const create_template_form_submission = () => {
   }
 }
 
+watch(guild_settings_error, (e) => {
+  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+    useInvite().invite_to_guild(guild_id.value)
+  }
+})
+
 watch(create_template_error, (e) => {
   if (e?.message) {
     toast({
