@@ -7,15 +7,15 @@ export function useGuilds() {
   return useQuery({
     queryKey: guilds_qk,
     queryFn: (): Promise<DiscordGuild[]> => {
-      if (import.meta.dev) {
-        return new Promise(resolve => setTimeout(async () => {
-            let r = await import('~/guilds.json')
-            resolve(r.default as DiscordGuild[])
-          }, 1000)
-        )
-      } else {
+      // if (import.meta.dev) {
+      //   return new Promise(resolve => setTimeout(async () => {
+      //       let r = await import('~/guilds.json')
+      //       resolve(r.default as DiscordGuild[])
+      //     }, 1000)
+      //   )
+      // } else {
+      // }
         return $astroApiClient.get_guilds()
-      }
     }
   })
 }
