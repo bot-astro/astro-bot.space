@@ -102,7 +102,7 @@ const on_billing_clicked = async () => {
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem @click="navigateTo('/guilds')">
+            <DropdownMenuItem @click="useInvite().invite()">
               Add to server
             </DropdownMenuItem>
             <DropdownMenuItem @click="navigateTo('/support')">
