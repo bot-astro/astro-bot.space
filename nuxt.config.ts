@@ -1,4 +1,5 @@
 import { redirects } from './assets/config/redirects'
+import { resolve } from 'path'
 
 export default defineNuxtConfig({
   // fuck ssr honestly
@@ -55,6 +56,11 @@ export default defineNuxtConfig({
       login_oauth_url: process.env.LOGIN_OAUTH_URL,
       invite_oauth_url: process.env.INVITE_OAUTH_URL,
       invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
+    },
+    nitro: {
+      output: {
+        publicDir: resolve(__dirname, '.output')
+      }
     }
   },
 })
