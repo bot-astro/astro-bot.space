@@ -59,7 +59,7 @@ export default defineNuxtConfig({
     },
     nitro: {
       output: {
-        publicDir: resolve(__dirname, '.output')
+        publicDir: resolve(__dirname, 'dist')
       }
     }
   },
