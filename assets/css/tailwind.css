@@ -1,0 +1,380 @@
+@import "./ext/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* all colors are in dark mode by default, there is no light mode */
+  :root {
+    /* color palette */
+    --purple-50: 270deg 100% 98.04%;
+    --purple-400: 270deg 95.24% 75.29%;
+    --purple-500: 270.74deg 91.01% 65.1%;
+
+    --pink-500: 330.37deg 81.19% 60.39%;
+
+    --yellow-500: 38deg 95.9% 62.2%;
+    --yellow-600: 37.5deg 95.73% 54.12%;
+    --yellow-800: 38deg 96.3% 21%;
+
+    --orange-500: 27deg 96% 61%;
+
+    --red-400: 0deg 90.6% 70.78%;
+    --red-500: 0deg 84.24% 60.2%;
+
+    --white-500: 0deg 0% 90%;
+    --white-900: 0deg 0% 100%;
+
+    --gray-50: 0deg 0% 75.69%;
+    --gray-300: 229.41deg 7.11% 53.14%;
+    --gray-400: 230deg 7% 30%;
+    --gray-500: 240deg 7% 20%;
+    --gray-600: 245deg 10% 15%;
+    --gray-700: 250deg 11% 9%;
+    --gray-800: 260deg 13.04% 9.02%;
+    --gray-900: 270deg 11.11% 3.53%;
+
+    --discord: 88 101 242;
+
+
+    /* background for core components */
+    --background: var(--gray-900);
+    /* background for container components such as cards or general group of content */
+    --background-container: var(--gray-800);
+    /* background for interactive components such as modals, dropdowns, menus */
+    --background-interactive: var(--gray-800);
+    /* alternative background to contrast other background sections */
+    --background-alternative: var(--gray-800);
+    /* background for buttons and other clickable components such as switches or tabs */
+    --background-button: var(--purple-500);
+    /* background for ultimate containers like buttons for premium features */
+    --background-ultimate: var(--yellow-600);
+    --background-ultimate-secondary: var(--yellow-800);
+
+    /* background for buttons and other clicable components that need to standout more */
+    --background-button-standout: linear-gradient(to right, hsl(var(--purple-500)), hsl(var(--pink-500)));
+
+    /* base foreground color for text and other elements */
+    --foreground: var(--white-500);
+    /* foreground colors for text and other elements considered secondary */
+    --foreground-secondary: var(--gray-300);
+    /* foreground color for destructive content or errors */
+    --foreground-destructive: var(--red-400);
+    /* foreground color for text links */
+    --foreground-link: var(--gray-300);
+    --foreground-link-hover: var(--purple-50);
+    /* foreground color for links that need to standout more */
+    --foreground-link-standout: var(--purple-400);
+    --foreground-ultimate: var(--white-900);
+    --foreground-ultimate-secondary: var(--yellow-500);
+
+    /* border color */
+    --border: 220deg 9.28% 19.02%;
+    /* border color for destructive components or error containers */
+    --border-destructive: var(--red-500);
+
+    /* border radius */
+    --radius: 0.5rem;
+
+    /* skeletons and disabled stuff */
+    --muted: var(--gray-600);
+
+    /* TODO: THE FOLLOWING HAVE NOT BEEN MODIFIED YET AND THEY SHOULD */
+    --muted-foreground: var(--foreground-secondary);
+
+    --popover: var(--background-interactive);
+    --popover-foreground: var(--foreground);
+
+    /*--card: 0 0% 100%;*/
+    /*--card-foreground: 240 10% 3.9%;*/
+
+    /*--input: 240 5.9% 90%;*/
+
+    /*--primary: 240 5.9% 10%;*/
+    /*--primary-foreground: 0 0% 98%;*/
+
+    /*--secondary: 240 4.8% 95.9%;*/
+    /*--secondary-foreground: 240 5.9% 10%;*/
+
+    /*--accent: 240 4.8% 95.9%;*/
+    /*--accent-foreground: 240 5.9% 10%;*/
+
+    /*--destructive: 0 84.2% 60.2%;*/
+    /*--destructive-foreground: 0 0% 98%;*/
+
+    --ring: var(--pink-500);
+  }
+}
+
+@layer base {
+  /** {*/
+  /*  @apply border-border;*/
+/*}*/
+
+  html {
+    @apply bg-background text-foreground;
+    font-family:
+    Inter,
+    GoNotoCurrent,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+  }
+
+  html, body, #__nuxt {
+    @apply w-full;
+  }
+
+  body {
+    @apply selection:bg-purple-500 selection:text-foreground;
+    /* TODO: Find better pattern */
+    background-color: #131313;
+    background-image: radial-gradient(circle at center center, #c744f7, #e5e5f7),
+    repeating-radial-gradient(
+    circle at center center,
+    #c144f7,
+    #c744f7,
+    10px,
+    transparent 20px,
+    transparent 10px
+    );
+    background-blend-mode: multiply;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /*@apply rounded-r bg-background;*/
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[hsl(var(--gray-400))] rounded;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[hsl(var(--gray-300))];
+  }
+}
+
+
+@layer components {
+  /* util for centering with flex */
+  .vertical-center {
+    @apply flex items-center;
+  }
+
+  .center {
+    @apply flex items-center justify-center text-center;
+  }
+
+  /* generic group of contents */
+  .groups-wrapper {
+    @apply flex flex-col gap-1;
+  }
+
+  .groups-container {
+    @apply flex flex-col gap-2;
+  }
+
+  .groups-container-compact {
+    @apply flex gap-2 flex-wrap;
+  }
+
+  .group {
+    @apply rounded-md px-3 py-3 bordered bg-background-container;
+  }
+
+
+  /* anything that needs a border */
+  .bordered {
+    @apply border border-border;
+  }
+
+  /* anything that is destructive and needs a border */
+  .bordered-destructive {
+    @apply border border-border-destructive;
+  }
+
+  /* TEXT */
+  .text-dimmed {
+    @apply text-gray-300;
+  }
+
+  .text-destructive {
+    @apply text-opacity-80 text-foreground-destructive;
+  }
+
+  .text-title {
+    @apply text-4xl font-medium tracking-wide font-display;
+  }
+
+  .text-title-no-font {
+    @apply text-xl sm:text-2xl font-medium tracking-wide md:text-4xl;
+  }
+
+  .text-subtitle {
+    @apply text-xl font-medium tracking-wide text-dimmed;
+  }
+
+  .text-group-name {
+    @apply text-sm font-semibold text-dimmed;
+  }
+
+  .text-heading {
+    @apply text-base;
+  }
+
+  .text-description {
+    @apply text-dimmed;
+  }
+
+  /* BUTTON */
+  .button-base {
+    @apply select-none flex items-center transition-colors cursor-pointer disabled:cursor-not-allowed;
+  }
+
+  .button-text {
+    @apply button-base text-foreground-link hover:text-foreground-link-hover;
+  }
+
+  .button-text-destructive {
+    @apply button-base text-opacity-75 text-foreground-destructive hover:text-opacity-100;
+  }
+
+  .button {
+    @apply button-base w-fit flex-shrink-0 justify-center gap-2 truncate rounded px-4 transition duration-75 text-foreground bg-background-button/80 py-1.5 hover:bg-background-button/100 focus:bg-background-button/100 disabled:bg-background-interactive disabled:bordered disabled:text-foreground-link;
+  }
+
+  .button-secondary {
+    @apply button-base rounded flex-shrink-0 py-1.5 px-2 transition text-foreground-link bg-background-interactive bordered hover:text-foreground-link-hover hover:bg-background hover:border-gray-400;
+  }
+
+  .button-standout {
+    background: var(--background-button-standout);
+    @apply button-base justify-center rounded-md px-5 py-2 transition-all duration-150 text-foreground hover:opacity-80;
+  }
+
+  .button-ultimate {
+    @apply button-base justify-center gap-2 rounded-md bg-opacity-80 px-5 py-1.5 transition-all duration-150 text-foreground-ultimate bg-background-ultimate hover:bg-opacity-90;
+  }
+
+  .button-destructive {
+    @apply button-base w-fit flex-shrink-0 justify-center gap-2 truncate rounded border border-red-500/20 px-4 transition duration-100 text-foreground-destructive/80 py-1.5 bg-background/80 hover:bg-background/100 hover:text-foreground-destructive/100 hover:border-red-500/100;
+  }
+
+  /* MENU */
+  .menu-item:first-child {
+    @apply rounded-t-md rounded-b-none;
+  }
+  .menu-item:last-child {
+    @apply rounded-t-none rounded-b-md;
+  }
+
+  /* INPUT */
+  input {
+    @apply h-9 rounded py-1 outline-none bg-background bordered placeholder-gray-400 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80 invalid:focus-visible:border-border-destructive invalid:border-border-destructive disabled:placeholder-opacity-60 disabled:cursor-not-allowed disabled:border-opacity-40 disabled:opacity-80;
+  }
+}
+
+@layer utilities {
+  .dashboard-section-title {
+    @apply text-title-no-font font-bold;
+  }
+
+  .dashboard-section-description {
+    @apply text-foreground-secondary
+  }
+}
+
+/* INPUT UTILITIES */
+.input-suffix-container::after {
+  position: absolute;
+  right: .5rem;
+  transition: all .05s ease-in-out;
+}
+
+.input-suffix-container:hover::after,
+.input-suffix-container:focus-within::after {
+  right: 1.5rem;
+}
+
+@supports (-moz-appearance:none) {
+  .input-suffix-container::after {
+    right: 1.5em;
+  }
+}
+
+
+.kbps::after {
+  content: 'kbps';
+}
+
+/* ANIMATIONS */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.jump-in-enter-active,
+.jump-in-leave-active {
+  transition: all 20s ease-in-out;
+}
+
+.jump-in-enter-from,
+.jump-in-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.backlit-box {
+  position: relative;
+}
+.backlit-box * {
+  z-index: 4;
+}
+
+.backlit-box::before {
+  /*noinspection CssUnresolvedCustomProperty*/
+  background: radial-gradient(
+  800px circle at var(--mouse-x) var(--mouse-y),
+  /* #A855F799, */
+  #ec489a99,
+  transparent 30%
+  );
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.backlit-box:hover::before {
+  opacity: 1;
+}

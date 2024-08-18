@@ -1,0 +1,1 @@
+export { default as GroupSetting } from "./GroupSetting.vue"
