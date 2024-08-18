@@ -6,7 +6,8 @@
     >
       <NuxtImg
         src="/img/logo.png"
-        class="h-48 w-48 select-none"
+        class="select-none"
+        sizes="200px"
       />
       <p class="mt-5 font-display text-7xl tracking-widest">
         ASTRO
