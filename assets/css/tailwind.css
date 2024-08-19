@@ -134,21 +134,11 @@
 
   html, body, #__nuxt {
     @apply w-full;
+    overscroll-behavior: none;
   }
 
   body {
     @apply selection:bg-purple-500 selection:text-foreground;
-    /*background-color: #131313;*/
-    /*background-image: radial-gradient(circle at center center, #c744f7, #e5e5f7),*/
-    /*repeating-radial-gradient(*/
-    /*circle at center center,*/
-    /*#c144f7,*/
-    /*#c744f7,*/
-    /*10px,*/
-    /*transparent 20px,*/
-    /*transparent 10px*/
-    /*);*/
-    /*background-blend-mode: multiply;*/
   }
 
   /* width */

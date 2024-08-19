@@ -19,7 +19,7 @@ useSeoMeta({
   ogType: 'website',
   ogImage: 'https://astro-bot.space/img/logo.png',
   themeColor: '#BB4FEE',
-  author: 'Giulio Pimenoff Verdolin'
+  author: 'Giulio Pimenoff Verdolin',
 })
 
 useHead({
