@@ -201,7 +201,7 @@
 
     <div class="flex w-full items-center justify-center">
       <div v-if="guild_settings && guild_channels" class="w-full">
-        <div v-if="guild_settings.templates.length > 0" class="group p-0">
+        <div v-if="guild_settings.templates.length > 0" class="group-setting p-0">
           <div v-for="(template, i) in guild_settings.templates" class="flex flex-col">
             <div class="flex items-center gap-4 px-4 py-6">
               <IconTemplate class="flex-shrink-0 size-4" />

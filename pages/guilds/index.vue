@@ -79,7 +79,7 @@ const guilds = computed(() => {
     <div v-else>
       <div
         class="mt-4 w-full grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-4">
-        <div v-for="guild in guilds" :key="guild.id" class="flex select-none flex-col group gap-4">
+        <div v-for="guild in guilds" :key="guild.id" class="flex select-none flex-col group-setting gap-4">
           <div class="flex items-center gap-4">
             <div class="relative">
               <NuxtImg

@@ -14,7 +14,7 @@
     </div>
 
     <div v-if="errors">
-      <div v-if="errors.length > 0" class="flex flex-col group p-0">
+      <div v-if="errors.length > 0" class="flex flex-col group-setting p-0">
         <!-- errors -->
         <div v-for="(error, i) in errors" class="flex flex-col">
           <div class="flex items-center gap-4 px-4 py-6">

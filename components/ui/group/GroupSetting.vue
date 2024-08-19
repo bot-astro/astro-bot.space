@@ -14,7 +14,7 @@ defineEmits(['upgrade'])
 </script>
 
 <template>
-  <div :class="cn(props.class, props.compact && 'max-w-64', props.ultimate && 'relative', 'group flex flex-col gap-2 min-w-full md:min-w-0')">
+  <div :class="cn(props.class, props.compact && 'max-w-64', props.ultimate && 'relative', 'group-setting flex flex-col gap-2 min-w-full md:min-w-0')">
     <div class="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center">
       <div class="flex flex-col gap-1 md:gap-0">
         <div class="vertical-center gap-2">

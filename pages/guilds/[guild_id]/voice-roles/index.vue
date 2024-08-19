@@ -140,7 +140,7 @@
 
     <div class="flex w-full items-center justify-center">
       <div v-if="guild_settings && guild_channels && guild_roles" class="w-full">
-        <div v-if="guild_settings.connections.length > 0" class="group p-0">
+        <div v-if="guild_settings.connections.length > 0" class="group-setting p-0">
           <div v-for="(voice_role, i) in guild_settings.connections" class="flex flex-col">
             <div class="flex items-center gap-4 px-4 py-6">
               <IconVoiceRole class="flex-shrink-0 size-4" />

@@ -20,7 +20,10 @@ useSeoMeta({
   <div class="prose-td:text-center first:prose-td:text-start prose-th:text-center first:prose-th:text-start">
     <ContentDoc path="guide_basic" v-slot="{ doc }">
       <!-- Post title -->
-      <h1 class="mb-4">{{ doc.title }}</h1>
+      <div class="flex gap-4 items-center mb-4">
+        <IconBack class="size-8 shrink-0 hover:text-foreground-link-standout hover:cursor-pointer" @click="useRouter().back()"/>
+        <h1 class="mb-0">{{ doc.title }}</h1>
+      </div>
 
       <!-- Table of contents -->
       <ul>

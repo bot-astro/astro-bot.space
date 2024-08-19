@@ -187,7 +187,7 @@
     @apply flex gap-2 flex-wrap;
   }
 
-  .group {
+  .group-setting {
     @apply rounded-md px-3 py-3 bordered bg-background-container;
   }
 
