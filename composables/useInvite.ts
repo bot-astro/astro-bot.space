@@ -7,7 +7,7 @@ export default function () {
     invite_to_guild: (guild_id: string) => {
       const config = useRuntimeConfig()
       const url = config.public.invite_guild_oauth_url.replace('{GUILD_ID}', guild_id)
-      navigateTo(url, { replace: false, external: true })
+      navigateTo(url, { replace: true, external: true })
     }
   }
 }

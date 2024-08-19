@@ -6,7 +6,11 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      script: [{ src: "https://js.chargebee.com/v2/chargebee.js", 'data-cb-site': process.env.CHARGEBEE_SITE }]
+      script: [
+        { src: "https://js.chargebee.com/v2/chargebee.js", 'data-cb-site': process.env.CHARGEBEE_SITE },
+        { src: "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" },
+        { src: "https://threejs.org/examples/js/libs/stats.min.js" }
+      ]
     }
   },
 
