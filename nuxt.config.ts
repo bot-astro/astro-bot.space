@@ -38,11 +38,11 @@ export default defineNuxtConfig({
         {
           hid: 'og:image',
           property: 'og:image',
-          content: 'https://astro-bot.space/logo.png'
+          content: 'https://astro-bot.space/img/logo.png'
         },
         {
           name: 'theme-color',
-          content: '#8A47CA'
+          content: '#BB4FEE'
         },
         {
           name: 'author',
