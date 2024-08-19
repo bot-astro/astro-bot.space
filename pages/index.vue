@@ -6,7 +6,7 @@
     >
       <NuxtImg
         src="/img/logo.png"
-        class="select-none"
+        class="select-none h-48 w-48"
         sizes="200px"
       />
       <p class="mt-5 font-display text-7xl tracking-widest">
