@@ -33,3 +33,17 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+useHead({
+  title: "Voice Roles - "
+})
+
+useSeoMeta({
+  title: 'Voice Roles - Astro',
+  ogTitle: 'Voice Roles - Astro',
+  description: 'By using Astro\'s Voice Role feature, you can connect any kind of voice channel to a role. When a user joins the designed channel, he gets the role you configured, which unlocks so many cool scenarios!',
+  ogDescription: 'By using Astro\'s Voice Role feature, you can connect any kind of voice channel to a role. When a user joins the designed channel, he gets the role you configured, which unlocks so many cool scenarios!',
+  ogUrl: 'https://astro-bot.space/voice-roles'
+})
+</script>

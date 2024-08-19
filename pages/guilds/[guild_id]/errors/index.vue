@@ -101,6 +101,18 @@ definePageMeta({
   } as DashboardSection
 })
 
+useHead({
+  title: "Errors - "
+})
+
+useSeoMeta({
+  title: 'Errors - Astro - Temporary Voice Channels for your Discord!',
+  ogTitle: 'Errors - Astro - Temporary Voice Channels for your Discord!',
+  description: 'View all the issues Astro encountered while working in your server',
+  ogDescription: 'View all the issues Astro encountered while working in your server',
+  ogUrl: 'https://astro-bot.space/guilds'
+})
+
 const guild_id = useGuildId()
 const { data: errors, isPending: errors_pending, isError: errors_error } = useGuildErrors(guild_id);
 const { mutate: clear_errors, isPending: clear_pending } = useClearGuildErrorsMutation()

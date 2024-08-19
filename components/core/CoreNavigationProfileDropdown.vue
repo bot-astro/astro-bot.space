@@ -44,7 +44,6 @@ const on_billing_clicked = async () => {
           <DropdownMenuItem @click="navigateTo('/guilds')">
             Servers
           </DropdownMenuItem>
-          <!--          TODO: Integrate chargebee customer portal -->
           <DropdownMenuItem @click="on_billing_clicked">
             Billing
           </DropdownMenuItem>
@@ -88,7 +87,6 @@ const on_billing_clicked = async () => {
             <DropdownMenuItem v-if="is_logged_in" @click="navigateTo('/guilds')">
               Servers
             </DropdownMenuItem>
-            <!--            TODO: Open billing portal -->
             <DropdownMenuItem v-if="is_logged_in" @click="on_billing_clicked">
               Billing
             </DropdownMenuItem>
