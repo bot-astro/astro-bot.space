@@ -37,6 +37,20 @@
       </CoreFeatureBox>
 
       <CoreFeatureBox
+        title="Beautiful interface"
+        description="Astro ships with a beautiful default interface which makes it easy for mobile users to manage their private channel!"
+        illustration-src="guides/default_interface.png"
+        :reverse="true"
+      />
+
+      <CoreFeatureBox
+        title="But also customisable"
+        description="Astro interfaces are fully customisable down to the last pixel, make it look exactly how you need, imagination is your only limit!"
+        illustration-src="illustration/custom_interface.png"
+        :reverse="false"
+      />
+
+      <CoreFeatureBox
         illustration-src="illustration/voice_role.gif"
         description="Astro can assign or remove a role when a user joins a specific voice channel! This way you can, for example, let people see gaming text chats only while they are in a gaming VC, imagination is your only limit!"
         button-text="Explore"

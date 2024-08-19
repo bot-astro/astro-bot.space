@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 defineProps<{
-  illustrationSrc: string
+  illustrationSrc?: string
   title?: string
   description: string
   buttonText?: string
@@ -18,13 +18,14 @@ function setIsIllustrationDialogOpen(value: boolean) {
 
 <template>
   <div
-    class="flex flex-col rounded-md backlit-box bordered bg-background md:max-w-screen-lg"
+    class="flex flex-col rounded-md backlit-box bordered bg-background md:max-w-screen-lg md:h-64"
     :class="reverse ? 'md:flex-row-reverse' : 'md:flex-row'"
     @mousemove="onBacklitBoxMouseMove"
   >
     <!-- feature box -->
     <Dialog v-model:open="is_illustration_open">
       <NuxtImg
+        v-if="illustrationSrc"
         :src="illustrationSrc"
         class="z-10 cursor-zoom-in select-none border-white-500 hover:border-2 md:h-64"
         :class="reverse ? 'rounded-r' : 'rounded-l'"

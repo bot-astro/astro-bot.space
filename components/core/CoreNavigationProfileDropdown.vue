@@ -112,18 +112,6 @@ const on_billing_clicked = async () => {
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem class="px-3 pt-2" disabled>
-              <span class="text-sm text-foreground-secondary">Features</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem @click="navigateTo('/temporary-voice-channels')">
-              Temporary voice channels
-            </DropdownMenuItem>
-            <DropdownMenuItem @click="navigateTo('/voice-roles')">
-              Voice roles
-            </DropdownMenuItem>
-
-            <DropdownMenuSeparator v-if="is_logged_in" />
-
             <DropdownMenuItem
               v-if="is_logged_in"
               class="text-foreground-destructive"

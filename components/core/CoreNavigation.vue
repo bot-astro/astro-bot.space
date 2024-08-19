@@ -57,20 +57,6 @@ watch(y, () => {
         >
           Guides
         </ButtonText>
-        <DropdownMenu>
-          <DropdownMenuTrigger class="flex items-center gap-2 button-text">
-            <span>Features</span>
-            <IconDropdown />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem @click="navigateTo('/temporary-voice-channels')">
-                Temporary Voice Channels
-            </DropdownMenuItem>
-            <DropdownMenuItem @click="navigateTo('/voice-roles')">
-                Voice roles
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
         <ButtonText
           to="/ultimate"
         >
