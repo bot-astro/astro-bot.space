@@ -420,7 +420,7 @@
           >
             <template #bottom-action>
               <input
-                v-model="m_generator_settings.commands_settings.min_user_limit"
+                v-model="m_generator_settings.commands_settings.max_user_limit"
                 type="number"
                 :min="m_generator_settings.commands_settings.min_user_limit"
                 :max="99"

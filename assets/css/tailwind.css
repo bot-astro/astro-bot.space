@@ -36,6 +36,7 @@
     --gray-900: 270deg 11.11% 3.53%;
 
     --discord: 88 101 242;
+    --discord-green: 36 128 70;
 
 
     /* background for core components */
@@ -290,6 +291,20 @@
   .dashboard-section-description {
     @apply text-foreground-secondary
   }
+}
+
+.background-guide {
+  background-color: #131313;
+  background-image: radial-gradient(circle at center center, #c744f7, #e5e5f7),
+  repeating-radial-gradient(
+          circle at center center,
+          #c144f7,
+          #c744f7,
+          10px,
+          transparent 20px,
+          transparent 10px
+  );
+  background-blend-mode: multiply;
 }
 
 /* INPUT UTILITIES */

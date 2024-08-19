@@ -8,7 +8,7 @@
           Reset
         </ButtonText>
         <Button
-          class="bg-[#248046] hover:bg-[#1A6334]"
+          class="bg-[#248046] hover:bg-discord-green"
           @click="$emit('save')"
           :loading="props.loading"
         >

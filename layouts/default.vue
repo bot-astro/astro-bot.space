@@ -4,7 +4,7 @@
     <div class="min-h-screen w-full">
       <CoreNavigation />
       <div class="flex items-center justify-center w-full">
-        <slot class="" />
+        <slot />
       </div>
     </div>
 

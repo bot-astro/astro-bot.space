@@ -14,6 +14,15 @@ export default defineNuxtConfig({
     }
   },
 
+  content: {
+    markdown: {
+      toc: {
+        depth: 3,
+        searchDepth: 3
+      }
+    }
+  },
+
   site: {
     url: 'https://astro-bot.space',
     name: 'Astro - Temporary Voice Channels for your Discord!'

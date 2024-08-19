@@ -53,9 +53,9 @@ watch(y, () => {
           Add to server
         </ButtonText>
         <ButtonText
-          to="/support"
+          to="/guides"
         >
-          Support
+          Guides
         </ButtonText>
         <DropdownMenu>
           <DropdownMenuTrigger class="flex items-center gap-2 button-text">
