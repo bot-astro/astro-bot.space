@@ -29,8 +29,6 @@
       <CoreFeatureBox
         illustration-src="illustration/temp_vc.gif"
         description="Astro generates fully customisable temporary voice channels on prompt and deletes them when they get empty. Ships with extreme customisation so that you can create the perfect system for your server!"
-        button-text="Explore"
-        button-to="/temporary-voice-channels"
         :reverse="false"
       >
         <span class="font-display text-2xl font-medium tracking-wide"><span class="animate-dissolve">Temporary </span>Voice Channels</span>
@@ -53,8 +51,6 @@
       <CoreFeatureBox
         illustration-src="illustration/voice_role.gif"
         description="Astro can assign or remove a role when a user joins a specific voice channel! This way you can, for example, let people see gaming text chats only while they are in a gaming VC, imagination is your only limit!"
-        button-text="Explore"
-        button-to="/voice-roles"
         :reverse="true"
       >
         <span class="animate-light font-display text-2xl font-medium tracking-wide">Voice Roles</span>
