@@ -5,10 +5,6 @@
   <Toaster />
   <VueQueryDevtools />
   <CoreParticles />
-<!--  <NuxtParticles-->
-<!--    id="particles"-->
-<!--    :options="particlesOptions"-->
-<!--  />-->
 </template>
 
 <script setup lang="ts">

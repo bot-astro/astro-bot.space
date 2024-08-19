@@ -77,4 +77,14 @@ export default defineNuxtConfig({
       invite_guild_oauth_url: process.env.INVITE_GUILD_OAUTH_URL,
     },
   },
+
+  vueQuery: {
+    queryClientOptions: {
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false
+        }
+      }
+    }
+  }
 })
