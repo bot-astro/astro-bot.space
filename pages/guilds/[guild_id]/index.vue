@@ -137,7 +137,6 @@ useSeoMeta({
   ogTitle: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
   description: 'Configure all Astro settings for your server with the powerful and intuitive dashboard',
   ogDescription: 'Configure all Astro settings for your server with the powerful and intuitive dashboard',
-  ogUrl: 'https://astro-bot.space/guilds'
 })
 
 const { toast } = useToast()

@@ -110,7 +110,6 @@ useSeoMeta({
   ogTitle: 'Errors - Astro - Temporary Voice Channels for your Discord!',
   description: 'View all the issues Astro encountered while working in your server',
   ogDescription: 'View all the issues Astro encountered while working in your server',
-  ogUrl: 'https://astro-bot.space/guilds'
 })
 
 const guild_id = useGuildId()
