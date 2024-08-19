@@ -31,11 +31,6 @@ export default defineNuxtConfig({
           content: 'website'
         },
         {
-          hid: 'og:description',
-          property: 'og:description',
-          content: 'Astro is the most unique and complete bot for Temporary Voice Channels and Voice Roles! It has handy and unique features and it focuses exclusively on Voice Channels!'
-        },
-        {
           hid: 'og:image',
           property: 'og:image',
           content: 'https://astro-bot.space/img/logo.png'
@@ -48,11 +43,6 @@ export default defineNuxtConfig({
           name: 'author',
           content: 'Giulio Pimenoff Verdolin'
         },
-        {
-          hid: 'og:site_name',
-          property: 'og:site_name',
-          content: 'Astro - Temporary Voice Channels Discord Bot'
-        }
       ],
       link: [
         {
