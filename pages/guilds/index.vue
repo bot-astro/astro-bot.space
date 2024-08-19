@@ -49,7 +49,7 @@ const guilds = computed(() => {
       </DialogContent>
     </Dialog>
 
-    <div class="flex flex-col md:flex-row gap-2 md:gap-0 w-full justify-between items-center group">
+    <div class="flex flex-col md:flex-row gap-2 md:gap-0 w-full justify-between items-center group-setting">
       <div class="flex flex-col w-full text-center md:text-start">
         <span class="text-xl font-semibold">Servers</span>
         <span class="text-sm text-secondary">Select a server to manage</span>
