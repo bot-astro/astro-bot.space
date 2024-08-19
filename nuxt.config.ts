@@ -6,7 +6,6 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: '',
       titleTemplate: '%sAstro - Temporary Voice Channels for your Discord!',
       htmlAttrs: {
         lang: 'en'

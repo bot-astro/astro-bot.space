@@ -75,7 +75,7 @@ useSeoMeta({
 })
 
 useHead({
-  title: ""
+  title: null
 })
 </script>
 
