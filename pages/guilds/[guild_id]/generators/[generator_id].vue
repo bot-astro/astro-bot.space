@@ -440,7 +440,7 @@
                   v-bind:value="m_generator_settings.commands_settings.min_bitrate / 1000"
                   @input="m_generator_settings.commands_settings.min_bitrate = $event.target.value * 1000"
                   type="number"
-                  min="0"
+                  min="8"
                   :max="m_generator_settings.commands_settings.max_bitrate"
                   class="grow"
                   required
