@@ -975,7 +975,6 @@ useSeoMeta({
   ogTitle: 'Generator settings - Astro - Temporary Voice Channels for your Discord!',
   description: 'Configure all the settings of your temporary voice channel generator',
   ogDescription: 'Configure all the settings of your temporary voice channel generator',
-  ogUrl: 'https://astro-bot.space/guilds'
 })
 
 const { toast } = useToast()

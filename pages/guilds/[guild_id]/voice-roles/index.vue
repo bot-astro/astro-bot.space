@@ -261,7 +261,6 @@ useSeoMeta({
   ogTitle: 'Voice roles - Astro - Temporary Voice Channels for your Discord!',
   description: 'Create, view and delete voice roles for your server',
   ogDescription: 'Create, view and delete voice roles for your server',
-  ogUrl: 'https://astro-bot.space/guilds'
 })
 
 const { toast } = useToast()
