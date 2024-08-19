@@ -28,4 +28,16 @@ definePageMeta({
     description: 'Interfaces Description',
   } as DashboardSection
 })
+
+useHead({
+  title: "Interfaces - "
+})
+
+useSeoMeta({
+  title: 'Interfaces - Astro - Temporary Voice Channels for your Discord!',
+  ogTitle: 'Interfaces - Astro - Temporary Voice Channels for your Discord!',
+  description: 'Manage the interfaces of your server',
+  ogDescription: 'Manage the interfaces of your server',
+  ogUrl: 'https://astro-bot.space/guilds'
+})
 </script>

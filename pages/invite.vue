@@ -6,4 +6,8 @@
 onMounted(() => {
   useInvite().invite()
 })
+
+useHead({
+  title: "Invite - "
+})
 </script>

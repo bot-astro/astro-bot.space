@@ -8,6 +8,18 @@ definePageMeta({
   middleware: 'auth',
 })
 
+useHead({
+  title: "Ultimate - "
+})
+
+useSeoMeta({
+  title: 'Ultimate - Astro - Temporary Voice Channels for your Discord!',
+  ogTitle: 'Ultimate - Astro - Temporary Voice Channels for your Discord!',
+  description: 'Take your server to the next level with premium Astro functionalities',
+  ogDescription: 'Take your server to the next level with premium Astro functionalities',
+  ogUrl: 'https://astro-bot.space/ultimate'
+})
+
 const { $astroApiClient } = useNuxtApp()
 const session = useUserSession().data
 const user = computed(() => session.value?.user)

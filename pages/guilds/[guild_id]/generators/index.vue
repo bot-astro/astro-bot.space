@@ -126,6 +126,18 @@ definePageMeta({
   } as DashboardSection
 })
 
+useHead({
+  title: "Generators - "
+})
+
+useSeoMeta({
+  title: 'Generators' - Astro - Temporary Voice Channels for your Discord!',
+  ogTitle: 'Generators' - Astro - Temporary Voice Channels for your Discord!',
+  description: 'Create, view and delete temporary voice channel generators',
+  ogDescription: 'Create, view and delete temporary voice channel generators',
+  ogUrl: 'https://astro-bot.space/guilds'
+})
+
 const { toast } = useToast()
 const guild_id = useGuildId()
 const { data: guild_channels } = useGuildChannels(guild_id)

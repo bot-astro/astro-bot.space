@@ -54,3 +54,17 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+useHead({
+  title: "Temporary Voice Channels - "
+})
+
+useSeoMeta({
+  title: 'Temporary Voice Channels - Astro',
+  ogTitle: 'Temporary Voice Channels - Astro',
+  description: 'Astro is the best Discord bot for temporary voice channels. Extremely customisable with a powerful dashboard and tons of feature to enhance the user experience of your server!',
+  ogDescription: 'Astro is the best Discord bot for temporary voice channels. Extremely customisable with a powerful dashboard and tons of feature to enhance the user experience of your server!',
+  ogUrl: 'https://astro-bot.space/temporary-voice-channels'
+})
+</script>

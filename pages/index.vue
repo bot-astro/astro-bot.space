@@ -65,6 +65,20 @@
   </div>
 </template>
 
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Astro - Temporary Voice Channels for your Discord!',
+  ogTitle: 'Astro - Temporary Voice Channels for your Discord!',
+  description: 'Astro is the most unique and complete bot for Temporary Voice Channels! It has handy and unique features and it focuses exclusively on Voice Channels!',
+  ogDescription: 'Astro is the most unique and complete bot for Temporary Voice Channels! It has handy and unique features and it focuses exclusively on Voice Channels!',
+  ogUrl: 'https://astro-bot.space'
+})
+
+useHead({
+  title: ""
+})
+</script>
+
 <style>
 .animate-dissolve {
   animation: dissolve 4s steps(1, end) infinite;

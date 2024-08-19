@@ -252,6 +252,18 @@ definePageMeta({
   } as DashboardSection
 })
 
+useHead({
+  title: "Voice roles - "
+})
+
+useSeoMeta({
+  title: 'Voice roles - Astro - Temporary Voice Channels for your Discord!',
+  ogTitle: 'Voice roles - Astro - Temporary Voice Channels for your Discord!',
+  description: 'Create, view and delete voice roles for your server',
+  ogDescription: 'Create, view and delete voice roles for your server',
+  ogUrl: 'https://astro-bot.space/guilds'
+})
+
 const { toast } = useToast()
 const guild_id = useGuildId()
 const { data: guild_channels } = useGuildChannels(guild_id)
