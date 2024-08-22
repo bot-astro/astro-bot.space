@@ -17,6 +17,7 @@ export function useGuilds() {
       //   return $astroApiClient.get_guilds()
       // }
         return $astroApiClient.get_guilds()
-    }
+    },
+    staleTime: 300000
   })
 }

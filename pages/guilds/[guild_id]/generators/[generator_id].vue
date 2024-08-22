@@ -388,7 +388,7 @@
           <GroupSetting
             heading="Badwords filter"
             description="If enabled, prevents users from using badwords in their channel name (English only)"
-            :ultimate="!is_ultimate"
+            :ultimate="!is_ultimate && !badwords_filter"
             compact
             @upgrade="upgrade_dialog_open=true"
           >
@@ -564,10 +564,10 @@
           <GroupSetting
             heading="Automatic waiting room creation"
             description="When enabled, Astro will automatically create a waiting room for temporary voice channels upon creation"
-            :ultimate="!is_ultimate"
+            :ultimate="!is_ultimate && !m_generator_settings.auto_waiting"
             @upgrade="upgrade_dialog_open=true"
           >
-            <Switch :disabled="!is_ultimate" v-model:checked="m_generator_settings.auto_waiting" />
+            <Switch :disabled="!is_ultimate && !m_generator_settings.auto_waiting" v-model:checked="m_generator_settings.auto_waiting" />
           </GroupSetting>
 
           <GroupSetting
@@ -722,10 +722,10 @@
             <GroupSetting
               heading="Automatic private chat creation"
               description="When enabled, Astro will automatically create a private text channel for each temporary voice channel upon creation"
-              :ultimate="!is_ultimate"
+              :ultimate="!is_ultimate && !m_generator_settings.auto_chat"
               @upgrade="upgrade_dialog_open=true"
             >
-              <Switch :disabled="!is_ultimate" v-model:checked="m_generator_settings.auto_chat" />
+              <Switch :disabled="!is_ultimate && !m_generator_settings.auto_chat" v-model:checked="m_generator_settings.auto_chat" />
             </GroupSetting>
 
             <GroupSetting
