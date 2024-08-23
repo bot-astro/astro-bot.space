@@ -10,29 +10,30 @@
 <script setup lang="ts">
 import {VueQueryDevtools} from "@tanstack/vue-query-devtools";
 
-useSeoMeta({
-  charset: 'utf-8',
-  ogType: 'website',
-  ogImage: 'https://astro-bot.space/img/logo.png',
-  themeColor: '#BB4FEE',
-  author: 'Giulio Pimenoff Verdolin',
-})
+// since ssr: false this wont work
+// useSeoMeta({
+//   charset: 'utf-8',
+//   ogType: 'website',
+//   ogImage: 'https://astro-bot.space/img/logo.png',
+//   themeColor: '#BB4FEE',
+//   author: 'Giulio Pimenoff Verdolin',
+// })
 
-useHead({
-  titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk}Astro - Temporary Voice Channels for your Discord!` : 'Astro - Temporary Voice Channels for your Discord!';
-  },
-  htmlAttrs: {
-    lang: 'en'
-  },
-  link: [
-    {
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }
-  ],
-})
+// useHead({
+//   titleTemplate: (titleChunk) => {
+//     return titleChunk ? `${titleChunk}Astro - Temporary Voice Channels for your Discord!` : 'Astro - Temporary Voice Channels for your Discord!';
+//   },
+//   htmlAttrs: {
+//     lang: 'en'
+//   },
+//   link: [
+//     {
+//       rel: 'icon',
+//       type: 'image/x-icon',
+//       href: '/favicon.ico'
+//     }
+//   ],
+// })
 
 const particlesOptions = {
   particles: {

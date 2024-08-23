@@ -18,30 +18,69 @@
       </div>
     </div>
 
+    <div class="flex flex-wrap gap-4 mt-12">
+      <div
+        class="max-w-none md:max-w-96 group flex items-center gap-4 rounded-md px-3 py-3 bordered bg-background-container hover:cursor-pointer hover:bg-background-container/90"
+        @click="navigateTo(`${$route.fullPath}/generators`)"
+      >
+        <IconGenerator class="size-5 group-hover:stroke-foreground-link-standout shrink-0" />
+        <div class="flex flex-col">
+          <span class="text-heading group-hover:text-foreground-link-standout">Configure temporary voice channels</span>
+          <span class="text-description">Head over to the generators section to configure temporary voice channels</span>
+        </div>
+        <div class="grow" />
+        <IconDropdown class="size-5 -rotate-90 group-hover:text-foreground-link-standout shrink-0" />
+      </div>
+
+      <div
+        class="max-w-none md:max-w-96 group flex items-center gap-4 rounded-md px-3 py-3 bordered bg-background-container hover:cursor-pointer hover:bg-background-container/90"
+        @click="navigateTo(`/guides/interface`, { open: { target: '_blank' } })"
+      >
+        <IconInterface class="size-5 group-hover:stroke-foreground-link-standout shrink-0" />
+        <div class="flex flex-col">
+          <span class="text-heading group-hover:text-foreground-link-standout">Create an interface</span>
+          <span class="text-description">Create an interface to let your users manage their channel with simple buttons</span>
+        </div>
+        <div class="grow" />
+        <IconDropdown class="size-5 -rotate-90 group-hover:text-foreground-link-standout shrink-0" />
+      </div>
+
+      <div
+        class="max-w-none md:max-w-96 group flex items-center gap-4 rounded-md px-3 py-3 bordered bg-background-container hover:cursor-pointer hover:bg-background-container/90"
+        @click="navigateTo(`${$route.fullPath}/voice-roles`)"
+      >
+        <IconVoiceRole class="size-5 group-hover:stroke-foreground-link-standout shrink-0" />
+        <div class="flex flex-col">
+          <span class="text-heading group-hover:text-foreground-link-standout">Setup voice roles</span>
+          <span class="text-description">Connect voice channels to roles to enhance the user experience in your server!</span>
+        </div>
+        <div class="grow" />
+        <IconDropdown class="size-5 -rotate-90 group-hover:text-foreground-link-standout shrink-0" />
+      </div>
+    </div>
+
     <!-- interactive content -->
-    <div class="flex flex-col gap-12">
-      <div class="mt-12">
-        <div class="groups-wrapper">
-          <span class="text-group-name">SETTINGS</span>
-          <div class="groups-container">
-            <GroupSetting heading="Require Admin permission">
-              <template #description>
+    <div class="flex flex-col gap-12 mt-12">
+      <div class="groups-wrapper">
+        <span class="text-group-name">SETTINGS</span>
+        <div class="groups-container">
+          <GroupSetting heading="Require Admin permission">
+            <template #description>
                 <span class="text-description">
                   Disabling this will make Astro ignore permission issues.
                   <span class="text-destructive">It's recommended to keep this on!</span>
                 </span>
-              </template>
-              <Switch v-model:checked="require_admin_perms" />
-            </GroupSetting>
-            <GroupSetting
-              heading="Slash command permissions"
-              description="You can restrict access to Astro slash commands using Discord permissions directly!"
-            >
-              <Button target="_blank" to="https://support.discord.com/hc/en-us/articles/4644915651095-Command-Permissions">
-                Manage on Discord
-              </Button>
-            </GroupSetting>
-          </div>
+            </template>
+            <Switch v-model:checked="require_admin_perms" />
+          </GroupSetting>
+          <GroupSetting
+            heading="Slash command permissions"
+            description="You can restrict access to Astro slash commands using Discord permissions directly!"
+          >
+            <Button target="_blank" to="https://support.discord.com/hc/en-us/articles/4644915651095-Command-Permissions">
+              Manage on Discord
+            </Button>
+          </GroupSetting>
         </div>
       </div>
 
@@ -100,9 +139,31 @@
             heading="Reset temporary voice channels cache"
             description="If you are encountering weird issues with temporary voice channels, especially when the incremental names for the channels start with a wrong number or skip some, hit this button, otherwise try to avoid this!"
           >
-            <ButtonDestructive :loading="is_clear_temporary_vcs_cache_pending" @click="clear_temporary_vcs_cache({ guild_id: guild_id! })">
-              Clear cache
-            </ButtonDestructive>
+            <AlertDialog>
+              <AlertDialogTrigger>
+                <ButtonDestructive :loading="is_clear_temporary_vcs_cache_pending">
+                  Clear cache
+                </ButtonDestructive>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you sure you want to clear the cache?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    If you do this all the currently existing temporary voice channels wont be recognized by Astro anymore and you will need to delete them manually!
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Go back</AlertDialogCancel>
+                  <AlertDialogAction
+                    :destructive="true"
+                    :loading="is_clear_temporary_vcs_cache_pending"
+                    @click="clear_temporary_vcs_cache({ guild_id: guild_id! })"
+                  >
+                    Clear cache
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </GroupSetting>
         </div>
       </div>
@@ -129,14 +190,13 @@ definePageMeta({
 })
 
 useHead({
-  title: "Dashboard - "
-})
-
-useSeoMeta({
-  title: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Configure all Astro settings for your server with the powerful and intuitive dashboard',
-  ogDescription: 'Configure all Astro settings for your server with the powerful and intuitive dashboard',
+  title: "Dashboard - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Configure all Astro settings for your server with the powerful and intuitive dashboard' },
+    { property: 'og:title', content: 'Dashboard - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Configure all Astro settings for your server with the powerful and intuitive dashboard' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds' }
+  ]
 })
 
 const { toast } = useToast()

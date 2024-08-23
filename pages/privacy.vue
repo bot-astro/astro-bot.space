@@ -8,6 +8,6 @@
 
 <script setup lang="ts">
 useHead({
-  title: "Privacy Policy - "
+  title: "Privacy Policy - Astro - Temporary Voice Channels for your Discord!",
 })
 </script>

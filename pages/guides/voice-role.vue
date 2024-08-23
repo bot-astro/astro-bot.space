@@ -5,15 +5,13 @@ definePageMeta({
 
 
 useHead({
-  title: "Voice Role guide - "
-})
-
-useSeoMeta({
-  title: 'Voice Role guide - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Voice Role guide - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Learn how to configure voice role to make your server look extra slick',
-  ogDescription: 'Learn how to configure voice role to make your server look extra slick',
-  ogUrl: 'https://astro-bot.space/'
+  title: "Voice Role guide - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Learn how to configure voice role to make your server look extra slick' },
+    { property: 'og:title', content: 'Voice Role guide - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Learn how to configure voice role to make your server look extra slick' },
+    { property: 'og:url', content: 'https://astro-bot.space/guides/voice-role' }
+  ]
 })
 </script>
 

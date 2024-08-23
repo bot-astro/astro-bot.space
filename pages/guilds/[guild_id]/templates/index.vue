@@ -293,15 +293,15 @@ definePageMeta({
 })
 
 useHead({
-  title: "Templates - "
+  title: "Templates - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Create, view and delete templates for your server' },
+    { property: 'og:title', content: 'Templates - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Create, view and delete templates for your server' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/templates' }
+  ]
 })
 
-useSeoMeta({
-  title: 'Templates - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Templates - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Create, view and delete templates for your server',
-  ogDescription: 'Create, view and delete templates for your server',
-})
 
 const { toast } = useToast()
 const guild_id = useGuildId()

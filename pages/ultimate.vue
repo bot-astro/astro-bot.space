@@ -1,23 +1,18 @@
 <script lang="ts" setup>
-import {Switch} from "~/components/ui/switch";
-import SwitchTabs from "~/components/ui/switch/SwitchTabs.vue";
-import useUserSession from "~/composables/useUserSession";
-import {toast} from "~/components/ui/toast";
+import useUserSession from '~/composables/useUserSession';
 
 definePageMeta({
   middleware: 'auth',
 })
 
 useHead({
-  title: "Ultimate - "
-})
-
-useSeoMeta({
-  title: 'Ultimate - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Ultimate - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Take your server to the next level with premium Astro functionalities',
-  ogDescription: 'Take your server to the next level with premium Astro functionalities',
-  ogUrl: 'https://astro-bot.space/ultimate'
+  title: "Ultimate - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Take your server to the next level with premium Astro functionalities' },
+    { property: 'og:title', content: 'Ultimate - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Take your server to the next level with premium Astro functionalities' },
+    { property: 'og:url', content: 'https://astro-bot.space/ultimate' }
+  ]
 })
 
 const { $astroApiClient } = useNuxtApp()
@@ -83,7 +78,7 @@ function subscribe() {
           <div class="flex flex-col md:flex-row gap-8 md:gap-24 justify-evenly w-full">
             <!-- total -->
             <div class="flex flex-col items-center justify-center gap-2">
-              <span class="text-center text-6xl font-display font-semibold tracking-wide">${{ price }}</span>
+              <span class="text-center text-6xl font-display font-semibold">${{ price }}</span>
               <span class="text-center text-xl">per {{ isMonthly ? 'month' : 'year ' }} for {{ quantity }} server<span :class="quantity > 1 ? 'visible' : 'invisible'">s</span></span>
             </div>
             <!-- quantity & frequency -->

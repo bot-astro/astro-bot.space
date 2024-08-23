@@ -240,15 +240,15 @@ definePageMeta({
 })
 
 useHead({
-  title: "Template settings - "
+  title: "Template settings - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Configure this template settings' },
+    { property: 'og:title', content: 'Template settings - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Configure this template settings' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/template' }
+  ]
 })
 
-useSeoMeta({
-  title: 'Template settings - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Template settings - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Configure this template settings',
-  ogDescription: 'Configure this template settings',
-})
 
 const { toast } = useToast()
 const route = useRoute()

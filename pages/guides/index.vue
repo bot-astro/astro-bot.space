@@ -1,15 +1,14 @@
 <script setup lang="ts">
 useHead({
-  title: "Guides - "
+  title: "Guides - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Need help with Astro, check out these beginner friendly guides' },
+    { property: 'og:title', content: 'Guides - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Need help with Astro, check out these beginner friendly guides' },
+    { property: 'og:url', content: 'https://astro-bot.space/guides' }
+  ]
 })
 
-useSeoMeta({
-  title: 'Guides - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Guides - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Need help with Astro, check out these beginner friendly guides',
-  ogDescription: 'Need help with Astro, check out these beginner friendly guides',
-  ogUrl: 'https://astro-bot.space/guides'
-})
 </script>
 
 <template>

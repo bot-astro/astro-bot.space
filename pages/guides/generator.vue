@@ -4,15 +4,13 @@ definePageMeta({
 })
 
 useHead({
-  title: "Generator guide - "
-})
-
-useSeoMeta({
-  title: 'Generator guide - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Generator guide - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Learn how to configure and use temporary voice channel generators',
-  ogDescription: 'Learn how to configure and use temporary voice channel generators',
-  ogUrl: 'https://astro-bot.space/guides/generator'
+  title: "Generator guide - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Learn how to configure and use temporary voice channel generators' },
+    { property: 'og:title', content: 'Generator guide - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Learn how to configure and use temporary voice channel generators' },
+    { property: 'og:url', content: 'https://astro-bot.space/guides/generator' }
+  ]
 })
 
 </script>

@@ -174,14 +174,13 @@ definePageMeta({
 })
 
 useHead({
-  title: "Voice role settings - "
-})
-
-useSeoMeta({
-  title: 'Voice role settings - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Voice role settings - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Configure this voice role settings',
-  ogDescription: 'Configure this voice role settings',
+  title: "Voice role settings - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Configure this voice role settings' },
+    { property: 'og:title', content: 'Voice role settings - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Configure this voice role settings' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/voice_role' }
+  ]
 })
 
 const { toast } = useToast()

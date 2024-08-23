@@ -7,15 +7,13 @@ definePageMeta({
 })
 
 useHead({
-  title: "Dashboard - "
-})
-
-useSeoMeta({
-  title: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Configure all Astro settings with the powerful and intuitive dashboard',
-  ogDescription: 'Configure all Astro settings with the powerful and intuitive dashboard',
-  ogUrl: 'https://astro-bot.space/guilds'
+  title: "Dashboard - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Configure all Astro settings with the powerful and intuitive dashboard' },
+    { property: 'og:title', content: 'Dashboard - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Configure all Astro settings with the powerful and intuitive dashboard' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds' }
+  ]
 })
 
 const search = ref('')

@@ -5,15 +5,13 @@ definePageMeta({
 
 
 useHead({
-  title: "Template guide - "
-})
-
-useSeoMeta({
-  title: 'Template guide - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Template guide - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Discover templates and learn how to configure them, your users will love them',
-  ogDescription: 'Discover templates and learn how to configure them, your users will love them',
-  ogUrl: 'https://astro-bot.space/'
+  title: "Template guide - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Discover templates and learn how to configure them, your users will love them' },
+    { property: 'og:title', content: 'Template guide - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Discover templates and learn how to configure them, your users will love them' },
+    { property: 'og:url', content: 'https://astro-bot.space/guides/template' }
+  ]
 })
 </script>
 

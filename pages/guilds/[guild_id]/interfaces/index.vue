@@ -30,13 +30,12 @@ definePageMeta({
 })
 
 useHead({
-  title: "Interfaces - "
-})
-
-useSeoMeta({
-  title: 'Interfaces - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Interfaces - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Manage the interfaces of your server',
-  ogDescription: 'Manage the interfaces of your server',
+  title: "Interfaces - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Manage the interfaces of your server' },
+    { property: 'og:title', content: 'Interfaces - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Manage the interfaces of your server' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/interfaces' }
+  ]
 })
 </script>

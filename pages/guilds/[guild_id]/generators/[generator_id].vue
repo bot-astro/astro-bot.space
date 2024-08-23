@@ -967,15 +967,15 @@ definePageMeta({
 })
 
 useHead({
-  title: "Generator - "
+  title: "Generator - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Configure all the settings of your temporary voice channel generator' },
+    { property: 'og:title', content: 'Generator - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Configure all the settings of your temporary voice channel generator' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/generator' }
+  ]
 })
 
-useSeoMeta({
-  title: 'Generator settings - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Generator settings - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Configure all the settings of your temporary voice channel generator',
-  ogDescription: 'Configure all the settings of your temporary voice channel generator',
-})
 
 const { toast } = useToast()
 const route = useRoute()

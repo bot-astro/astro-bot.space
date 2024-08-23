@@ -4,15 +4,13 @@ definePageMeta({
 })
 
 useHead({
-  title: "Interface guide - "
-})
-
-useSeoMeta({
-  title: 'Interface guide - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Interface guide - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Learn how to make your interface look amazing and unique with this guide',
-  ogDescription: 'Learn how to make your interface look amazing and unique with this guide',
-  ogUrl: 'https://astro-bot.space/'
+  title: "Interface guide - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Learn how to make your interface look amazing and unique with this guide' },
+    { property: 'og:title', content: 'Interface guide - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Learn how to make your interface look amazing and unique with this guide' },
+    { property: 'og:url', content: 'https://astro-bot.space/guides/interface' }
+  ]
 })
 </script>
 

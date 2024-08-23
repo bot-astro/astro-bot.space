@@ -8,6 +8,6 @@
 
 <script setup lang="ts">
 useHead({
-  title: "Refund Policy - "
+  title: "Refund Policy - Astro - Temporary Voice Channels for your Discord!",
 })
 </script>

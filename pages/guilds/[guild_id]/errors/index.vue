@@ -102,14 +102,13 @@ definePageMeta({
 })
 
 useHead({
-  title: "Errors - "
-})
-
-useSeoMeta({
-  title: 'Errors - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Errors - Astro - Temporary Voice Channels for your Discord!',
-  description: 'View all the issues Astro encountered while working in your server',
-  ogDescription: 'View all the issues Astro encountered while working in your server',
+  title: "Errors - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'View all the issues Astro encountered while working in your server' },
+    { property: 'og:title', content: 'Errors - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'View all the issues Astro encountered while working in your server' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/errors' }
+  ]
 })
 
 const guild_id = useGuildId()

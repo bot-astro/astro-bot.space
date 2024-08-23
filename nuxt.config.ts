@@ -6,10 +6,22 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: 'Astro - Temporary Voice Channels for your Discord!',
+      meta: [
+        { charset: 'utf-8' },
+        { hid: 'description', name: 'description', content: 'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!' },
+        { name: 'og:title', content: 'Astro - Temporary Voice Channels for your Discord!' },
+        { name: 'og:description', content: 'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!' },
+        { name: 'og:image', content: '/og-image.png' },
+        { name: 'og:url', content: 'https://astro-bot.space' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+      ],
       script: [
         { src: "https://js.chargebee.com/v2/chargebee.js", 'data-cb-site': process.env.CHARGEBEE_SITE },
-        { src: "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" },
-        { src: "https://threejs.org/examples/js/libs/stats.min.js" }
+        { src: "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   },

@@ -4,16 +4,15 @@ definePageMeta({
 })
 
 useHead({
-  title: "Basics guide - "
+  title: "Basics guide - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Get started using Astro learning the basics' },
+    { property: 'og:title', content: 'Basics guide - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Get started using Astro learning the basics' },
+    { property: 'og:url', content: 'https://astro-bot.space/guides/basic' }
+  ]
 })
 
-useSeoMeta({
-  title: 'Basics guide - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Basics guide - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Get started using Astro learning the basics',
-  ogDescription: 'Get started using Astro learning the basics',
-  ogUrl: 'https://astro-bot.space/guides/basic'
-})
 </script>
 
 <template>

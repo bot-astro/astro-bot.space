@@ -253,14 +253,13 @@ definePageMeta({
 })
 
 useHead({
-  title: "Voice roles - "
-})
-
-useSeoMeta({
-  title: 'Voice roles - Astro - Temporary Voice Channels for your Discord!',
-  ogTitle: 'Voice roles - Astro - Temporary Voice Channels for your Discord!',
-  description: 'Create, view and delete voice roles for your server',
-  ogDescription: 'Create, view and delete voice roles for your server',
+  title: "Voice roles - Astro - Temporary Voice Channels for your Discord!",
+  meta: [
+    { name: 'description', content: 'Create, view and delete voice roles for your server' },
+    { property: 'og:title', content: 'Voice roles - Astro - Temporary Voice Channels for your Discord!' },
+    { property: 'og:description', content: 'Create, view and delete voice roles for your server' },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/voice_role' }
+  ]
 })
 
 const { toast } = useToast()
