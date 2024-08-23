@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { hid: 'description', name: 'description', content: 'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!' },
         { name: 'og:title', content: 'Astro - Temporary Voice Channels for your Discord!' },
         { name: 'og:description', content: 'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!' },
-        { name: 'og:image', content: '/og-image.png' },
+        { name: 'og:image', content: 'https://astro-bot.space/img/logo_bg.png' },
         { name: 'og:url', content: 'https://astro-bot.space' },
         { name: 'twitter:card', content: 'summary_large_image' },
       ],
