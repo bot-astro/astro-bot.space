@@ -2,13 +2,14 @@ import { redirects } from './assets/config/redirects'
 
 export default defineNuxtConfig({
   // fuck ssr honestly
-  ssr: false,
+  // ssr: false,
 
   app: {
     head: {
       title: 'Astro - Temporary Voice Channels for your Discord!',
       meta: [
         { charset: 'utf-8' },
+        { name: 'robots', content: 'noodp,noydir' },
         { hid: 'description', name: 'description', content: 'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!' },
         { name: 'og:title', content: 'Astro - Temporary Voice Channels for your Discord!' },
         { name: 'og:description', content: 'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!' },
@@ -41,7 +42,7 @@ export default defineNuxtConfig({
   },
 
   devtools: {
-    enabled: false
+    enabled: true
   },
 
   components: [
