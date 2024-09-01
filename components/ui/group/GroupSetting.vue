@@ -19,6 +19,7 @@ defineEmits(['upgrade'])
       <div class="flex flex-col gap-1 md:gap-0">
         <div class="vertical-center gap-2">
           <span class="text-heading">{{ props.heading }}</span>
+          <slot name="heading-action" />
           <Badge variant="ultimate" v-if="props.ultimate">Ultimate</Badge>
         </div>
         <span v-if="props.description" class="text-description">{{ props.description }}</span>

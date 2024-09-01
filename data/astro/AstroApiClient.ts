@@ -201,6 +201,26 @@ export class AstroApiClient {
   }
 
   /// ULTIMATE ///
+  public refresh_entitlements = async (guild_id: string): Promise<GuildSettings> => {
+    const res = await useApiFetch<GuildSettings>(this.url(`/dashboard/guilds/${guild_id}/entitlements/refresh`))
+
+    if (res.data) {
+      return res.data
+    } else {
+      switch (res.error?.status ?? 500) {
+        case 403: {
+          throw new AstroApiError(AstroApiErrorCode.CANNOT_MANAGE_GUILD)
+        }
+        case 404: {
+          throw new AstroApiError(AstroApiErrorCode.GUILD_NOT_FOUND)
+        }
+        default: {
+          throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+        }
+      }
+    }
+  }
+
   public upgrade_guild = async (guild_id: string, subscription_id: string): Promise<void> => {
     const res = await useApiFetch(this.url(`dashboard/guilds/${guild_id}/upgrade/${subscription_id}`))
 

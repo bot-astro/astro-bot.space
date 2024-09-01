@@ -91,12 +91,29 @@
             heading="Ultimate server"
             :description="`Your server is currently ${isGuildUltimate(guild_settings) ? 'upgraded' : 'not upgraded'} to ultimate`"
           >
+            <template #heading-action>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <ButtonText destructive :loading="is_refresh_entitlements_pending">
+                      <Icon name="fluent:arrow-sync-12-regular" class="size-5" @click="() => refresh_entitlements({ guild_id: guild_id! })" />
+                    </ButtonText>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Refresh Discord subscriptions data</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </template>
+
             <ButtonDestructive :loading="downgrade_guild_loading" v-if="isGuildUltimate(guild_settings)" @click="on_downgrade_clicked">
               Downgrade
             </ButtonDestructive>
             <ButtonUltimate :loading="upgrade_guild_loading" v-else @click="upgrade_dialog_open = true">
               Upgrade
             </ButtonUltimate>
+
+
             <DashboardUpgradeDialog
               v-model:open="upgrade_dialog_open"
               @onUpgrade="(sub_id) => { upgrade_dialog_open = false; upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id }) }"
@@ -177,6 +194,7 @@ import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 import {deepEqual} from "fast-equals";
 import type {DashboardSection} from "~/types/dashboard";
 import {useToast} from "~/components/ui/toast";
+import {useRefreshGuildEntitlementsMutation} from "~/data/astro/mutations/useRefreshGuildEntitlementsMutation";
 
 definePageMeta({
   middleware: 'auth',
@@ -243,6 +261,7 @@ const { isPending: save_guild_settings_pending, error: save_guild_settings_error
 const { mutate: upgrade_guild, isPending: upgrade_guild_loading, error: upgrade_guild_error } = useGuildUpgradeMutation()
 const { mutate: downgrade_guild, isPending: downgrade_guild_loading, error: downgrade_guild_error } = useGuildDowngradeMutation()
 const { mutate: clear_temporary_vcs_cache, isPending: is_clear_temporary_vcs_cache_pending, error: clear_temporary_vcs_cache_error } = useClearTemporaryVCsCacheMutation()
+const { mutate: refresh_entitlements, isPending: is_refresh_entitlements_pending, error: refresh_entitlements_error } = useRefreshGuildEntitlementsMutation()
 
 const on_downgrade_clicked = () => {
   if (guild_settings.value) {
@@ -299,6 +318,15 @@ watch(guild_settings_error, e => {
 })
 
 watch(save_guild_settings_error, e => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive'
+    })
+  }
+})
+
+watch(refresh_entitlements_error, e => {
   if (e?.message) {
     toast({
       description: e.message,
