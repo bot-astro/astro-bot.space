@@ -48,7 +48,7 @@
                   </p>
                   <div class="w-full flex items-center justify-end gap-2 mt-2">
                     <ButtonSecondary
-                      @click="navigateToGuide(error.guide ?? GSErrorGuide.TEMPLATE)"
+                      @click="navigateToGuide(error.guide ?? GSErrorGuide.BASIC)"
                     >
                       See guide
                     </ButtonSecondary>
