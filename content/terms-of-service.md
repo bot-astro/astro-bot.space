@@ -9,11 +9,10 @@ These terms and conditions ("Terms", "Terms of Service") govern your use of the 
 By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.
 
 ## Use License
-Permission is granted to use the Service for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.
+Permission is granted to use the Service for personal or commercial use. This is the grant of a license, not a transfer of title.
 
 You may not:
 - Modify or copy the materials;
-- Use the materials for any commercial purpose, or for any public display (commercial or non-commercial);
 - Attempt to decompile or reverse engineer any software contained on the Service;
 - Remove any copyright or other proprietary notations from the materials; or
 - Transfer the materials to another person or "mirror" the materials on any other server.
