@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type HTMLAttributes, computed } from 'vue'
 import {
+  Slot,
   SwitchRoot,
   type SwitchRootEmits,
   type SwitchRootProps,
@@ -34,10 +35,16 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <span
       class="select-none text-center rounded-full px-2 py-1 text-sm transition-all bg-opacity-70"
       :class="checked ? 'bg-background-button' : 'hover:bg-gray-300 hover:bg-opacity-30'"
-    >{{ first }}</span>
+    >
+      <span v-if="props.first">{{first}}</span>
+      <slot name="first" />
+    </span>
     <span
       class="select-none text-center rounded-full px-2 py-1 text-sm transition-all bg-opacity-70"
       :class="!checked ? 'bg-background-button' : 'hover:bg-gray-300 hover:bg-opacity-30'"
-    >{{ second }}</span>
+    >
+      <span v-if="props.second">{{second}}</span>
+      <slot name="second" />
+    </span>
   </SwitchRoot>
 </template>

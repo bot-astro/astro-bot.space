@@ -123,6 +123,8 @@
           <GroupSetting
             heading="Activity change"
             description="Whether the voice channel name should be update when the activity of the owner changes. For example when the owner stops playing a game"
+            :ultimate="!is_ultimate && !m_generator_settings.rename_conditions.activity_change"
+            @upgrade="upgrade_dialog_open=true"
           >
             <Switch v-model:checked="m_generator_settings.rename_conditions.activity_change" />
           </GroupSetting>
@@ -769,6 +771,8 @@
             <GroupSetting
               heading="Creation message type"
               description="Choose the type of message that Astro should send in each private text chat upon creation"
+              :ultimate="!is_ultimate && m_generator_settings.default_chat_text == null && m_generator_settings.chat_interface == -1"
+              @upgrade="upgrade_dialog_open=true"
             >
               <Select
                 required

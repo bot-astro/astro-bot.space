@@ -60,12 +60,12 @@ const variables: VariableInfo[] = [
   { name: "mention", category: VariableCategory.VOICE_CHANNEL_OWNER, ultimate: false },
   { name: "id", category: VariableCategory.VOICE_CHANNEL_OWNER, ultimate: false },
 
-  { name: "activity_name", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
-  { name: "activity_emoji", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
-  { name: "activity_start_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
-  { name: "activity_end_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
-  { name: "activity_type", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
-  { name: "activity_link", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: false },
+  { name: "activity_name", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: true },
+  { name: "activity_emoji", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: true },
+  { name: "activity_start_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: true },
+  { name: "activity_end_time", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: true },
+  { name: "activity_type", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: true },
+  { name: "activity_link", category: VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY, ultimate: true },
 
   { name: "vc_name", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },
   { name: "vc_bitrate", category: VariableCategory.VOICE_CHANNEL_PROPERTIES, ultimate: false },

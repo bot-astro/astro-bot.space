@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import useUserSession from '~/composables/useUserSession';
 
-definePageMeta({
-  middleware: 'auth',
-})
+// definePageMeta({
+//   middleware: 'auth',
+// })
 
 useHead({
   title: "Ultimate - Astro - Temporary Voice Channels for your Discord!",
@@ -78,7 +78,9 @@ function subscribe() {
           <div class="flex flex-col md:flex-row gap-8 md:gap-24 justify-evenly w-full">
             <!-- total -->
             <div class="flex flex-col items-center justify-center gap-2">
-              <span class="text-center text-6xl font-display font-semibold">${{ price }}</span>
+              <span class="text-center text-6xl font-display font-semibold relative">
+                ${{ price }}
+              </span>
               <span class="text-center text-xl">per {{ isMonthly ? 'month' : 'year ' }} for {{ quantity }} server<span :class="quantity > 1 ? 'visible' : 'invisible'">s</span></span>
             </div>
             <!-- quantity & frequency -->
@@ -112,8 +114,9 @@ function subscribe() {
               </div>
               <div class="flex flex-col gap-1">
                 <span class="text-center text-lg font-semibold">Billed</span>
-                <div class="flex items-center justify-center gap-2">
-                  <SwitchTabs v-model:checked="isMonthly" first="Monthly" second="Yearly" />
+                <div class="flex items-center justify-center gap-2 relative">
+                  <div :class="cn('absolute bg-discord-green py-1 px-2 rounded-full -top-3 -right-4 text-xs', isMonthly && 'bg-opacity-50 animate-pulse', !isMonthly && 'bg-opacity-95')">-16%</div>
+                  <SwitchTabs v-model:checked="isMonthly" first="Monthly" second="Yearly"/>
                 </div>
               </div>
             </div>
@@ -157,6 +160,11 @@ function subscribe() {
         </div>
         <div class="grid grid-cols-7 items-center">
           <span class="col-span-3">Numbered voice channel names</span>
+          <span class="col-span-2 text-center"><IconGreenCheck class="size-7" /></span>
+          <span class="col-span-2 text-center"><IconRedCross class="size-6" /></span>
+        </div>
+        <div class="grid grid-cols-7 items-center">
+          <span class="col-span-3">User activity variables for channel names</span>
           <span class="col-span-2 text-center"><IconGreenCheck class="size-7" /></span>
           <span class="col-span-2 text-center"><IconRedCross class="size-6" /></span>
         </div>
