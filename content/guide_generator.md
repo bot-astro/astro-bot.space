@@ -39,12 +39,16 @@ You can make use of `Variables` to make the channel name dynamic. Astro will rep
 | `{username}`            | The username of the owner                                              |
 | `{mention}`             | The mention (@name) of the owner                                       |
 | `{id}`                  | The ID of the owner                                                    |
-| `{activity_name}`       | The name of the activity of the owner (the game name for example)       |
-| `{activity_emoji}`      | An emoji representing the activity                                     |
-| `{activity_start_time}` | The time at which the owner started the activity                       |
-| `{activity_end_time}`   | The time at which the activity will end or has ended                   |
-| `{activity_type}`       | The type of the activity (playing, watching, listening, etc...)        |
-| `{activity_link}`       | The link of the twitch stream if the activity is a twitch stream       |
+
+#### Voice channel owner activity variables · [requires Ultimate](/ultimate)
+| Variable                | Description                                                       |
+|-------------------------|-------------------------------------------------------------------|
+| `{activity_name}`       | The name of the activity of the owner (the game name for example) |
+| `{activity_emoji}`      | An emoji representing the activity                                |
+| `{activity_start_time}` | The time at which the owner started the activity                  |
+| `{activity_end_time}`   | The time at which the activity will end or has ended              |
+| `{activity_type}`       | The type of the activity (playing, watching, listening, etc...)   |
+| `{activity_link}`       | The link of the twitch stream if the activity is a twitch stream  |
 
 #### Voice channel variables
 | Variable        | Description                         |

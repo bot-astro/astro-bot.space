@@ -17,7 +17,7 @@
       <div v-for="category in Object.values(VariableCategory)" :key="category" class="flex flex-col gap-1">
         <div class="vertical-center gap-2">
           <span class="text-foreground-secondary">{{category}}</span>
-          <Badge v-if="category == VariableCategory.INCREMENTAL_VALUES && !is_ultimate" variant="ultimate" class="text-xs">Ultimate</Badge>
+          <Badge v-if="(category == VariableCategory.INCREMENTAL_VALUES || category == VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY) && !is_ultimate" variant="ultimate" class="text-xs">Ultimate</Badge>
         </div>
         <div class="flex flex-wrap gap-2 text-xs">
           <ButtonSecondary
