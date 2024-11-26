@@ -78,10 +78,11 @@ function subscribe() {
           <div class="flex flex-col md:flex-row gap-8 md:gap-24 justify-evenly w-full">
             <!-- total -->
             <div class="flex flex-col items-center justify-center gap-2">
-              <span class="text-center text-6xl font-display font-semibold relative">
-                ${{ price }}
-              </span>
+              <div class="text-center text-6xl font-display font-semibold relative">
+                <span>${{ price }}</span>
+              </div>
               <span class="text-center text-xl">per {{ isMonthly ? 'month' : 'year ' }} for {{ quantity }} server<span :class="quantity > 1 ? 'visible' : 'invisible'">s</span></span>
+              <span :class="cn('p-2 rounded bg-background-container bordered -top-3 -right-4 text-base text-center')"><b>50% off</b> at checkout with code <code class="font-mono bg-discord-green py-1 px-2 rounded">BF2K24</code></span>
             </div>
             <!-- quantity & frequency -->
             <div class="flex flex-col items-center gap-6">
@@ -115,7 +116,7 @@ function subscribe() {
               <div class="flex flex-col gap-1">
                 <span class="text-center text-lg font-semibold">Billed</span>
                 <div class="flex items-center justify-center gap-2 relative">
-                  <div :class="cn('absolute bg-discord-green py-1 px-2 rounded-full -top-3 -right-4 text-xs', isMonthly && 'bg-opacity-50 animate-pulse', !isMonthly && 'bg-opacity-95')">-16%</div>
+<!--                  <div :class="cn('absolute bg-discord-green py-1 px-2 rounded-full -top-3 -right-4 text-xs', isMonthly && 'bg-opacity-50 animate-pulse', !isMonthly && 'bg-opacity-95')">-16%</div>-->
                   <SwitchTabs v-model:checked="isMonthly" first="Monthly" second="Yearly"/>
                 </div>
               </div>
