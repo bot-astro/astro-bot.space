@@ -3,7 +3,7 @@ import {AstroApiErrorCode} from "~/data/astro/core/AstroApiErrorCode";
 import {AstroApiError} from "~/data/astro/core/AstroApiError";
 import type {GuildSettings} from "~/types/guild-settings/guild_settings";
 import type {LoginResponse} from "~/types/session";
-import type {DiscordGuild, DiscordGuildChannel, DiscordRole, DiscordUser} from "~/types/discord";
+import type {DiscordGuild, DiscordGuildChannel, DiscordPermission, DiscordRole, DiscordUser} from "~/types/discord";
 import type {UserChargebeeSubscriptions} from "~/types/user";
 import type {GSError} from "~/types/guild-settings/error";
 import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
@@ -65,6 +65,18 @@ export class AstroApiClient {
   /// USER ///
   public get_self_user = async (): Promise<DiscordUser> => {
     const res = await useApiFetch<DiscordUser>(this.url('/dashboard/users/@me'))
+
+    if (res.data) {
+      return res.data
+    } else {
+      throw new AstroApiError(AstroApiErrorCode.UNKNOWN)
+    }
+  }
+
+
+  /// DISCORD ///
+  public get_discord_permissions = async (): Promise<DiscordPermission[]> => {
+    const res = await useApiFetch<DiscordPermission[]>(this.url('dashboard/discord/permissions'))
 
     if (res.data) {
       return res.data

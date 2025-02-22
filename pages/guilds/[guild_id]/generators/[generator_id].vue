@@ -479,6 +479,47 @@
         <span class="text-group-name">UTILITIES</span>
         <div class="groups-container-compact">
           <GroupSetting
+              heading="Owner permissions"
+              description="Select the Discord permissions a voice channel owner has over its temporary voice channel"
+              compact
+          >
+            <template #bottom-action>
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                    class="w-full bg-background rounded bordered h-9 py-1 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80"
+                >
+                  {{`${owner_permissions?.length ?? 0} selected permissions`}}
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <template v-for="category in permissionCategories" :key="category">
+                    <DropdownMenuLabel>{{ category.charAt(0).toUpperCase() + category.slice(1) }} permissions</DropdownMenuLabel>
+                    <DropdownMenuCheckboxItem
+                        :onSelect="(event) => event.preventDefault()"
+                        v-for="permission in (discord_permissions ?? []).filter(p => p.category == category)"
+                        :key="permission.id"
+                        v-bind:checked="owner_permissions != undefined && owner_permissions.some(p => p == permission.id)"
+                        @update:checked="() => {
+                            const was_checked = owner_permissions != undefined && owner_permissions.some(p => p == permission.id)
+
+                            if (was_checked) {
+                              owner_permissions = owner_permissions!.filter(p => p != permission.id)
+                            } else {
+                              if (owner_permissions == null) {
+                                owner_permissions = []
+                              }
+
+                              owner_permissions.push(permission.id)
+                            }
+                          }"
+                    >
+                      {{permission.name}}
+                    </DropdownMenuCheckboxItem>
+                  </template>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </template>
+          </GroupSetting>
+          <GroupSetting
             heading="Owner role"
             description="This role will be given to temporary voice channel owners"
             class="relative"
@@ -993,6 +1034,10 @@ watch(() => route.params, (params) => {
 const { data: guild_channels } = useGuildChannels(guild_id)
 const { data: guild_roles } = useGuildRoles(guild_id)
 const { data: guild_settings, error: guild_settings_error } = useGuildSettings(guild_id)
+const { data: discord_permissions } = useDiscordPermissions()
+
+const permissionCategories = ["general", "apps", "membership", "text", "voice"];
+
 
 const upgrade_dialog_open = ref(false)
 const is_ultimate = computed(() => {
@@ -1081,6 +1126,16 @@ const moderator_role = computed(() => {
   return guild_roles.value?.find(r => r.id === moderator_role_id.value)?.name ?? 'Not set'
 })
 
+const owner_permissions = computed({
+  get() {
+    return m_generator_settings.value?.owner_permission_ids
+  },
+  set(value) {
+    if (m_generator_settings.value) {
+      m_generator_settings.value.owner_permission_ids = value ?? []
+    }
+  }
+})
 const owner_role_id = computed({
   get() {
     return m_generator_settings.value?.owner_role ?? 'no_role'

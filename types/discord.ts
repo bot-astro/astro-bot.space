@@ -65,3 +65,10 @@ export const discord_regions: DiscordRegion[] = [
   { key: "us-west", name: "US West", emoji: "\ud83c\uddfa\ud83c\uddf8" },
   { key: "automatic", name: "Automatic", emoji: null }
 ];
+
+export interface DiscordPermission {
+  id: string;
+  name: string;
+  channel_types: string[],
+  category: string
+}

@@ -34,6 +34,10 @@ export interface GSGenerator {
    */
   owner_permissions: number;
   /**
+   * permission ids from / to the backend
+   */
+  owner_permission_ids: string[];
+  /**
    * owner role id
    */
   owner_role: string | null;
