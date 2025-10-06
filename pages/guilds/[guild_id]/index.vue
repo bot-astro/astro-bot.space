@@ -77,7 +77,7 @@
             heading="Slash command permissions"
             description="You can restrict access to Astro slash commands using Discord permissions directly!"
           >
-            <Button target="_blank" to="https://support.discord.com/hc/en-us/articles/4644915651095-Command-Permissions">
+            <Button target="_blank" to="https://discord.com/blog/slash-commands-permissions-discord-apps-bots">
               Manage on Discord
             </Button>
           </GroupSetting>
