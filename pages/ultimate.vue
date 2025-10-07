@@ -173,6 +173,11 @@ function subscribe() {
           <span class="col-span-2 text-center"><IconGreenCheck class="size-7" /></span>
           <span class="col-span-2 text-center"><IconRedCross class="size-6" /></span>
         </div>
+				<div class="grid grid-cols-7 items-center">
+					<span class="col-span-3">Bypass voting requirements</span>
+					<span class="col-span-2 text-center"><IconGreenCheck class="size-7" /></span>
+					<span class="col-span-2 text-center"><IconRedCross class="size-6" /></span>
+				</div>
         <div class="grid grid-cols-7 items-center">
           <span class="col-span-3">Badwords filter for voice channel names</span>
           <span class="col-span-2 text-center"><IconGreenCheck class="size-7" /></span>
