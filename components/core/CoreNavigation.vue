@@ -62,6 +62,12 @@ watch(y, () => {
         >
           Ultimate
         </ButtonText>
+				<ButtonText
+					to="https://github.com/bot-astro/astro"
+					target="_blank"
+				>
+					GitHub
+				</ButtonText>
       </div>
 
       <!-- spacer -->

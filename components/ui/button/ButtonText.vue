@@ -7,6 +7,7 @@ interface ButtonTextProps {
   loading?: boolean
   destructive?: boolean
   class?: HTMLAttributes['class']
+	target?: string
 }
 
 const props = defineProps<ButtonTextProps>()
@@ -17,6 +18,7 @@ const props = defineProps<ButtonTextProps>()
     v-if="to"
     :class="cn(destructive ? 'button-text-destructive' : 'button-text', props.class)"
     :to="props.to"
+		:target="props.target"
   >
     <IconLoading v-show="loading === true" />
     <slot />

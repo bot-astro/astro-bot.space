@@ -109,6 +109,9 @@ const on_billing_clicked = async () => {
             <DropdownMenuItem @click="navigateTo('/ultimate')">
               Ultimate
             </DropdownMenuItem>
+						<DropdownMenuItem @click="navigateTo('https://github.com/bot-astro/astro', { external: true, open: { target: '_blank' } })">
+							GitHub
+						</DropdownMenuItem>
 
             <DropdownMenuSeparator />
 

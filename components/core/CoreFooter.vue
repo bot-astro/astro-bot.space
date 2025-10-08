@@ -32,6 +32,7 @@
             Home
           </ButtonText>
           <a href="mailto:hi@astro-bot.space" class="button-text"> Contact us </a>
+					<a href="https://github.com/bot-astro/astro" target="_blank" class="button-text"> GitHub </a>
         </div>
       </div>
       <div class="flex flex-col gap-y-4">
