@@ -26,10 +26,6 @@ export default defineNuxtConfig({
     }
   },
 
-  nitro: {
-    compatibilityDate: '2024-04-03'
-  },
-
   content: {
     markdown: {
       toc: {
