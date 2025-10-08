@@ -5,8 +5,3 @@ node_modules
 .cache
 .output
 *.env
-
-### dev
-
-guilds.json
-guilds.backup.json

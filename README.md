@@ -1,69 +1,128 @@
+<a id="readme-top"></a>
 # astro-bot.space
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+<img src="https://astro-bot.space/img/logo_bg.png" width="40%" align="right">
 
-## Setup
+Astro is the most unique and complete discord bot for temporary voice channels and voice roles!
 
-Make sure to install the dependencies:
+This repository contains the code for the *frontend* of the bot.
 
-```bash
-pnpm i
-```
+Other repositories:
+- [Backend](https://github.com/bot-astro/astro)
+- [Infrastructure](https://github.com/giuliopime/gport)
 
-## Development Server
+Resources:
+- [Website](https://astro-bot.space)
+- [Demo](https://youtube.com)
 
-Start the development server on http://localhost:3000
+## Table of Contents
+- [About The Project](#about-the-project)
+- [Development](#development)
+    - [Prerequisites](#prerequisites)
+    - [Understanding the codebase](#understanding-the-codebase)
+    - [Running the application](#running-the-application)
+- [Deployment](#deployment)
+    - [Prerequisites](#prerequisites-1)
+    - [Setup Cloudflare worker](#setup-cloudflare-worker)
+- [Contributing](#contributing)
+    - [Top contributors](#top-contributors)
+- [License](#license)
+- [Contact](#contact)
 
-```bash
-pnpm dev
-```
 
-## Production
+<!-- ABOUT THE PROJECT -->
+## About The Project
+I initially built this bot for my friends Discord, but then it grew way beyond my expectations.  
+You can read the story of this project [on my blog post](https://giuliopime.dev/blog/so-i-built-a-discord-bot)!
 
-Build the application for production:
+> [!WARNING]
+> I do **not** provide support for self-hosting the bot.
 
-```bash
-pnpm build
-```
+## Development
+### Prerequisites
+- Node.js v22 or higher
+- pnpm (or any other package manager is fine)
+- Typescript
 
-Locally preview production build:
+### Understanding the codebase
+> [!NOTE]
+> This is a standard Nuxt3 project, refer to the framework [documentation](https://nuxt.com/docs/3.x/getting-started/introduction) for more info.  
 
-```bash
-pnpm run preview
-```
+Design and CSS with [Tailwind](https://nuxt.com/modules/tailwindcss). Inspiration for simple components can be gathered with [shadcn-vue](https://www.shadcn-vue.com/).  
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
+Store management with [vue-query](https://tanstack.com/query/latest/docs/framework/vue/overview).  
 
-## Modules & Libraries
+Icon management with [Nuxt Icon](https://nuxt.com/modules/icon). Icons can be browsed on [Icones](https://icones.js.org/).  
 
-Design and CSS with [Tailwind](https://nuxt.com/modules/tailwindcss). Inspiration for simple components can be gathered with [shadcn-vue](https://www.shadcn-vue.com/).
+General utilities from [VueUse](https://vueuse.org/guide/). Most of the general requirements can be solved with this library.  
 
-Store management with [vue-query](https://tanstack.com/query/latest/docs/framework/vue/overview). It is the superior solution for local state.
+### User authentication and redirect logic
+This is a bit tricky, so I made a couple of diagrams to explain the login flow and the server add flow:  
 
-Icon management with [Nuxt Icon](https://nuxt.com/modules/icon). Icons can be browsed on [Icones](https://icones.js.org/), specifically the [Fluent UI System Icons](https://icones.js.org/collection/fluent).
+![login flow](https://github.com/bot-astro/astro-bot.space/blob/master/dev-docs/diagrams/login-flow.png?raw=true)  
 
-General utilities from [VueUse](https://vueuse.org/guide/). Most of the general requirements can be solved with this library.
+![server-add flow](https://github.com/bot-astro/astro-bot.space/blob/master/dev-docs/diagrams/server-add-flow.png?raw=true)
+
+### Running the application
+1) Create the development `.env` file  
+   The `/env` folder contains a `.env.template`.  
+   Create a `.env` file in the root directory of the project and copy both the content of `/env/.env.template` inside it.
+2) Fill the `.env` file, each variable has a comment explaining what it does.
+3) Run in dev mode:
+    ```shell
+    pnpm run dev
+    ```
+   
+You will get instructions on how to access the website for local dev in the terminal logs.  
 
 ## Deployment
+> [!WARNING]
+> I do **not** provide support for self-hosting the bot.
 
-This web app should be deployed via [nitro on Cloudflare workers](https://nuxt.com/deploy/cloudflare). This allows cheap server-side rendering.
+### Prerequisites
+- A fork of this repository
+- Cloudflare account
 
-## Project Structure
+### Setup Cloudflare worker  
+This web app should be deployed via nitro on Cloudflare workers. This allows cheap server-side rendering.  
+Follow [this guide](https://nitro.build/deploy/providers/cloudflare) for deployment instructions.  
 
-The standard project structure should be well-known already, as in pages are stored in `/pages`, components in `/components`, etc. More defined and interesting is how the latter is being split into multiple locations.
+> [!IMPORTANT]
+> Remember to provide the worker with the environment variables required.  
+> You can see the required env variables and a description of them in `/env/.env.template`.  
 
-Any components, that are used as core parts of the web app, such as headers, footers, notification bars or similar, should be stored in the top level of `/components/core`.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Utility components, such as loading animations or similar should be stored in the top level of `/components/util`.
+<!-- CONTRIBUTING -->
+## Contributing
+If you have an idea, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-Default components, such as standard interpretations of extended components, like a custom button or color picker should be stored in `/components/default`.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-And any page-related components should be stored in `/components/page/PAGE_NAME`.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You should always try and keep components as low-level as possible, as in directory levels, since the naming convention requires component files to be named after the directory path they're located at. As an example, the intro component of the landing page would be name `PageLandingIntro.vue`, as in `/components/page` -> `/landing` -> `PageLandingIntro.vue`.
+### Top contributors:
 
-Such components should always only solve one problem, or integrate one specific behavior, instead of mixing multiple features together. This leads to lots of very small and highly reusable components, and simplifies the continuous development process. As an example, if you're building a message builder, split into as many components as possible, and reuse as much code as possible, e.g. each of the input fields could be using the same underlying component that handles the actual user input, but if required, these input components could be wrapped into other components, that extend the basic functionality.
+<a href="https://github.com/bot-astro/astro/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=bot-astro/astro" alt="contrib.rocks image" />
+</a>
 
-## Data Management
+<!-- LICENSE -->
+## License
 
-Data should always be fetched using the in-built composables, such as `useFetch` or `$fetch`, depending on the use case. The fetched data should then be stored in a custom and highly-specific Pinia store.
+Distributed under the AGPL-3.0 license. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+## Contact
+- [Discord server](https://astro-bot.space/support)
+- [hi@astro-bot.space](mailto:hi@astro-bot.space)
+- [giuliopime.dev](https://giuliopime.dev)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
