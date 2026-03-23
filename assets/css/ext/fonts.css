@@ -1,34 +1,34 @@
 @font-face {
   font-family: "Evolve";
-  src: url("/fonts/Evolve Bold.otf");
+  src: url("/fonts/Evolve-Bold.otf");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Evolve";
-  src: url("/fonts/Evolve Medium.otf");
+  src: url("/fonts/Evolve-Medium.otf");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Evolve";
-  src: url("/fonts/Evolve Regular.otf");
+  src: url("/fonts/Evolve-Regular.otf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Evolve";
-  src: url("/fonts/Evolve Light.otf");
+  src: url("/fonts/Evolve-Light.otf");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Evolve";
-  src: url("/fonts/Evolve Thin.otf");
+  src: url("/fonts/Evolve-Thin.otf");
   font-weight: 100;
   font-style: normal;
 }
