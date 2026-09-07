@@ -5,7 +5,7 @@ import tailwindcss from 'eslint-plugin-tailwindcss';
 
 export default withNuxt(
   // Bridge the plugin's typescript-eslint types to ESLint's native config types.
-  /** @type {import('eslint').Linter.Config | import('eslint').Linter.Config[]} */(
+  /** @type {import('eslint').Linter.Config | import('eslint').Linter.Config[]} */
   // @ts-expect-error
   tailwindcss.configs["flat/recommended"] || tailwindcss.configs.recommended,
   eslintConfigPrettier,

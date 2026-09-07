@@ -1,3 +1,4 @@
+import typography from '@tailwindcss/typography';
 import animate from "tailwindcss-animate";
 import { fontFamily as _fontFamily } from "tailwindcss/defaultTheme";
 
@@ -144,7 +145,6 @@ export const theme = {
         },
     },
 };
-export const plugins = [
-    require('@tailwindcss/typography'),
-    animate,
-];
+export const plugins = [typography, animate];
+
+export default { content, prefix, theme, plugins };
