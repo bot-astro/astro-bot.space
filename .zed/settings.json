@@ -9,11 +9,11 @@
       "language_servers": [
         "tailwindcss-intellisense-css",
         "!vscode-css-language-server",
-        "..."
-      ]
+        "...",
+      ],
     },
     "Vue.js": {
-      "formatter": [{ "code_action": "source.fixAll.eslint" }, "prettier"]
-    }
-  }
+      "formatter": [{ "code_action": "source.fixAll.eslint" }, "prettier"],
+    },
+  },
 }

@@ -6,7 +6,7 @@
 const { default: particlesSettings } = await import('~/assets/particles.json');
 
 onMounted(() => {
-  // @ts-expect-error
+  // @ts-expect-error this is registered by a head script declared in the nuxt.config.ts file
   window.particlesJS('particles-js', particlesSettings);
 });
 </script>

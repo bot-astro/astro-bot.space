@@ -25,7 +25,7 @@ const forwardedProps = useForwardProps(delegatedProps);
     :class="
       cn(
         'menu-item',
-        'relative text-foreground text-opacity-80 cursor-pointer flex select-none hover:bg-background items-center rounded-sm px-3 py-2 text-sm outline-none transition-colors focus:bg-accent data-[disabled]:pointer-events-none',
+        'text-opacity-80 focus:bg-accent relative flex cursor-pointer items-center rounded-sm px-3 py-2 text-sm text-foreground transition-colors outline-none select-none hover:bg-background data-disabled:pointer-events-none',
         inset && 'pl-8',
         props.class,
       )

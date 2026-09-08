@@ -26,13 +26,13 @@ const forwardedProps = useForwardProps(delegatedProps);
     v-bind="forwardedProps"
     :class="
       cn(
-        'flex-shrink-0 aspect-square h-4 w-4 rounded-full border border-border text-foreground ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'aspect-square size-4 shrink-0 rounded-full border border-border text-foreground ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
         props.class,
       )
     "
   >
     <RadioGroupIndicator class="flex items-center justify-center">
-      <Circle class="h-2.5 w-2.5 fill-current text-current" />
+      <Circle class="size-2.5 fill-current text-current" />
     </RadioGroupIndicator>
   </RadioGroupItem>
 </template>

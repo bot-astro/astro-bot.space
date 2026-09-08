@@ -32,28 +32,28 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
     v-bind="forwarded"
     :class="
       cn(
-        'peer grid grid-cols-2 bg-background-interactive gap-2 border border-border rounded-full p-1 cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
+        'peer grid cursor-pointer grid-cols-2 gap-2 rounded-full border border-border bg-background-interactive p-1 transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
         props.class,
       )
     "
   >
     <span
-      class="select-none text-center rounded-full px-2 py-1 text-sm transition-all bg-opacity-70"
+      class="bg-opacity-70 rounded-full px-2 py-1 text-center text-sm transition-all select-none"
       :class="
         checked
           ? 'bg-background-button'
-          : 'hover:bg-gray-300 hover:bg-opacity-30'
+          : 'hover:bg-opacity-30 hover:bg-gray-300'
       "
     >
       <span v-if="props.first">{{ first }}</span>
       <slot name="first" />
     </span>
     <span
-      class="select-none text-center rounded-full px-2 py-1 text-sm transition-all bg-opacity-70"
+      class="bg-opacity-70 rounded-full px-2 py-1 text-center text-sm transition-all select-none"
       :class="
         !checked
           ? 'bg-background-button'
-          : 'hover:bg-gray-300 hover:bg-opacity-30'
+          : 'hover:bg-opacity-30 hover:bg-gray-300'
       "
     >
       <span v-if="props.second">{{ second }}</span>

@@ -2,12 +2,14 @@
 import withNuxt from './.nuxt/eslint.config.mjs';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import tailwindcss from 'eslint-plugin-tailwindcss';
+import vueQuery from '@tanstack/eslint-plugin-query';
 
 export default withNuxt(
   // Bridge the plugin's typescript-eslint types to ESLint's native config types.
   /** @type {import('eslint').Linter.Config | import('eslint').Linter.Config[]} */
   // @ts-expect-error
-  tailwindcss.configs["flat/recommended"] || tailwindcss.configs.recommended,
+  tailwindcss.configs['flat/recommended'] || tailwindcss.configs.recommended,
+  vueQuery.configs['flat/recommended'],
   eslintConfigPrettier,
   {
     settings: {
@@ -19,6 +21,7 @@ export default withNuxt(
     },
     rules: {
       'vue/html-self-closing': 'error', // re-enable with rule's own defaults
+      'tailwindcss/no-custom-classname': 'off',
     },
   },
 );

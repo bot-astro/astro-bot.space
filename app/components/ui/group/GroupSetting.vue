@@ -20,11 +20,11 @@ defineEmits(['upgrade']);
         props.class,
         props.compact && 'max-w-64',
         props.ultimate && 'relative',
-        'group-setting flex flex-col gap-2 min-w-full md:min-w-0',
+        'group-setting flex min-w-full flex-col gap-2 md:min-w-0',
       )
     "
   >
-    <div class="flex flex-col md:flex-row gap-2 md:gap-4 md:items-center">
+    <div class="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
       <div class="flex flex-col gap-1 md:gap-0">
         <div class="vertical-center gap-2">
           <span class="text-heading">{{ props.heading }}</span>

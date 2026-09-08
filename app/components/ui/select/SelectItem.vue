@@ -27,14 +27,14 @@ const forwardedProps = useForwardProps(delegatedProps);
     v-bind="forwardedProps"
     :class="
       cn(
-        'relative flex w-full select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none cursor-pointer hover:bg-background focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'focus:bg-accent focus:text-accent-foreground relative flex w-full cursor-pointer items-center rounded-sm py-1.5 pr-2 pl-8 text-sm outline-none select-none hover:bg-background data-disabled:pointer-events-none data-disabled:opacity-50',
         props.class,
       )
     "
   >
-    <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span class="absolute left-2 flex size-3.5 items-center justify-center">
       <SelectItemIndicator>
-        <Check class="h-4 w-4" />
+        <Check class="size-4" />
       </SelectItemIndicator>
     </span>
 

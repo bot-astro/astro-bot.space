@@ -19,6 +19,7 @@
     "@nuxt/hints": "1.1.4",
     "@nuxt/icon": "2.5.1",
     "@nuxt/image": "2.1.0",
+    "@peterbud/nuxt-query": "1.11.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/vue-query": "^5.102.8",
     "@tanstack/vue-query-devtools": "^6.1.48",
@@ -36,6 +37,10 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
+    "@tanstack/eslint-plugin-query": "^5.102.8",
+    "@vueuse/core": "^14.4.0",
+    "@vueuse/nuxt": "^14.4.0",
+    "@vueuse/router": "^14.4.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-tailwindcss": "^4.4.0",
     "prettier": "^3.9.6",

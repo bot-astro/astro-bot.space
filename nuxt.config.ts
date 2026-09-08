@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
+import { redirects } from './app/constants/redirects'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -13,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     'shadcn-nuxt',
+    '@peterbud/nuxt-query',
   ],
 
   css: ['~/assets/css/tailwind.css'],
@@ -24,6 +26,42 @@ export default defineNuxtConfig({
     public: {
       astro_api_base_url: process.env.ASTRO_API_BASE_URL,
     },
+  },
+
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
+
+  imports: {
+    dirs: [
+      'types',
+      'types/**',
+      'composables/**',
+      'data',
+      'data/**',
+    ]
+  },
+
+  routeRules: {
+    ...Object.assign({}, ...redirects.map((r) => ({
+      [r.path]: {
+        redirect: r.target
+      }
+    })))
+  },
+
+  nuxtQuery: {
+    autoImports: true,
+    queryClientOptions: {
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false
+        }
+      }
+    }
   },
 
   app: {
