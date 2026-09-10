@@ -35,6 +35,10 @@ export default defineNuxtConfig({
     },
   ],
 
+  shadcn: {
+    prefix: '',
+  },
+
   imports: {
     dirs: [
       'types',
