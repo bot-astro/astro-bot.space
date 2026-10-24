@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue';
-import type { Component, VNode } from 'vue';
+import type { Component, Ref, VNode } from 'vue';
 import type { ToastProps } from '.';
 
 const TOAST_LIMIT = 1;
@@ -68,9 +68,10 @@ function addToRemoveQueue(toastId: string) {
   toastTimeouts.set(toastId, timeout);
 }
 
-const state = ref<State>({
+// cast: unwrapping the toast props type makes TS blow the instantiation depth
+const state = ref({
   toasts: [],
-});
+}) as Ref<State>;
 
 function dispatch(action: Action) {
   switch (action.type) {

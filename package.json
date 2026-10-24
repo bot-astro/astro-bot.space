@@ -47,6 +47,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "shadcn-nuxt": "^2.8.2",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.13"
   }
 }

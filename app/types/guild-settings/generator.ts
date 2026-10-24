@@ -8,14 +8,15 @@ export interface GSGenerator {
   default_name: string;
   default_locked_name: string | null;
   default_hidden_name: string | null;
+  default_status: string | null;
   /**
    * 0 for no user limit
    */
-  user_limit: number;
+  user_limit: number | null;
   /**
    * 0 for no bitrate
    */
-  bitrate: number;
+  bitrate: number | null;
   /**
    * category id, null for no category
    */
@@ -32,7 +33,7 @@ export interface GSGenerator {
   /**
    * permission bits (0 = no perms)
    */
-  owner_permissions: number;
+  owner_permissions: number | null;
   /**
    * permission ids from / to the backend
    */
@@ -55,7 +56,7 @@ export interface GSGenerator {
   /**
    * 0 for no slowmode
    */
-  chat_slowmode: number;
+  chat_slowmode: number | null;
   chat_permissions_inherited: GSGeneratorPermissionsInherited;
   default_chat_name: string;
   default_chat_text: string | null;
@@ -63,7 +64,7 @@ export interface GSGenerator {
   /**
    * **index** of the interface to send in the chat (this is such terrible design I know)
    */
-  chat_interface: number;
+  chat_interface: number | null;
 
   waiting_category: string | null;
   waiting_permissions_inherited: GSGeneratorPermissionsInherited;
@@ -71,31 +72,31 @@ export interface GSGenerator {
   /**
    * 0 for no bitrate
    */
-  waiting_bitrate: number;
+  waiting_bitrate: number | null;
   waiting_position: GSGeneratorInitialPosition;
   /**
    * 0 for no user limit
    */
-  waiting_user_limit: number;
+  waiting_user_limit: number | null;
 }
 
 export const enum GSGeneratorPermissionsInherited {
-  NONE = "NONE",
-  CATEGORY = "CATEGORY",
-  GENERATOR = "GENERATOR"
+  NONE = 'NONE',
+  CATEGORY = 'CATEGORY',
+  GENERATOR = 'GENERATOR',
 }
 
 export const enum GSGeneratorInitialPosition {
-  BEFORE = "BEFORE",
-  AFTER = "AFTER",
-  BOTTOM = "BOTTOM"
+  BEFORE = 'BEFORE',
+  AFTER = 'AFTER',
+  BOTTOM = 'BOTTOM',
 }
 
 export const enum GSGeneratorVCState {
-  UNLOCKED = "UNLOCKED",
-  LOCKED = "LOCKED",
-  HIDDEN = "HIDDEN",
-  UNHIDDEN = "UNHIDDEN"
+  UNLOCKED = 'UNLOCKED',
+  LOCKED = 'LOCKED',
+  HIDDEN = 'HIDDEN',
+  UNHIDDEN = 'UNHIDDEN',
 }
 
 export interface GSGeneratorRenameConditions {
@@ -109,11 +110,11 @@ export interface GSGeneratorCommandsSettings {
   /**
    * 99 for no limit
    */
-  max_user_limit: number;
+  max_user_limit: number | null;
   /**
    * 0 for no limit
    */
-  min_user_limit: number;
+  min_user_limit: number | null;
   /**
    * null for no limit
    */
@@ -121,6 +122,5 @@ export interface GSGeneratorCommandsSettings {
   /**
    * 8000 for no limit
    */
-  min_bitrate: number;
-  badwords_allowed: boolean;
+  min_bitrate: number | null;
 }

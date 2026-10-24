@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
-import { redirects } from './app/constants/redirects'
+import { redirects } from './app/constants/redirects';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/hints',
     '@nuxt/icon',
+    '@vueuse/nuxt',
     '@nuxt/image',
     'shadcn-nuxt',
     '@peterbud/nuxt-query',
@@ -40,21 +41,18 @@ export default defineNuxtConfig({
   },
 
   imports: {
-    dirs: [
-      'types',
-      'types/**',
-      'composables/**',
-      'data',
-      'data/**',
-    ]
+    dirs: ['types', 'types/**', 'composables/**', 'data', 'data/**'],
   },
 
   routeRules: {
-    ...Object.assign({}, ...redirects.map((r) => ({
-      [r.path]: {
-        redirect: r.target
-      }
-    })))
+    ...Object.assign(
+      {},
+      ...redirects.map((r) => ({
+        [r.path]: {
+          redirect: r.target,
+        },
+      })),
+    ),
   },
 
   nuxtQuery: {
@@ -62,10 +60,10 @@ export default defineNuxtConfig({
     queryClientOptions: {
       defaultOptions: {
         queries: {
-          refetchOnWindowFocus: false
-        }
-      }
-    }
+          refetchOnWindowFocus: false,
+        },
+      },
+    },
   },
 
   app: {

@@ -3,14 +3,16 @@
  *
  * @property id
  * @property name
- * @property icon can be undefined if the guild has no icon
+ * @property icon null if the guild has no icon
  * @property can_manage whether the logged-in user has permissions to manage the Astro guild settings
  */
 export interface DiscordGuild {
-  id: string
-  name: string
-  icon?: string
-  can_manage: boolean
+  id: string;
+  name: string;
+  icon: string | null;
+  permissions: number;
+  can_manage: boolean;
+  preferred_locale: string;
 }
 
 export interface DiscordGuildChannel {
@@ -41,27 +43,35 @@ export interface DiscordRegion {
 }
 
 export const discord_regions: DiscordRegion[] = [
-  { key: "brazil", name: "Brazil", emoji: "\ud83c\udde7\ud83c\uddf7" },
-  { key: "hongkong", name: "Hong Kong", emoji: "\ud83c\udded\ud83c\uddf0" },
-  { key: "india", name: "India", emoji: "\ud83c\uddee\ud83c\uddf3" },
-  { key: "japan", name: "Japan", emoji: "\ud83c\uddef\ud83c\uddf5" },
-  { key: "milan", name: "Milan", emoji: "\ud83c\uddee\ud83c\uddf9" },
-  { key: "rotterdam", name: "Rotterdam", emoji: "\ud83c\uddf3\ud83c\uddf1" },
-  { key: "russia", name: "Russia", emoji: "\ud83c\uddf7\ud83c\uddfa" },
-  { key: "singapore", name: "Singapore", emoji: "\ud83c\uddf8\ud83c\uddec" },
-  { key: "southafrica", name: "South Africa", emoji: "\ud83c\uddff\ud83c\udde6" },
-  { key: "south-korea", name: "South Korea", emoji: "\ud83c\uddf0\ud83c\uddf7" },
-  { key: "sydney", name: "Sydney", emoji: "\ud83c\udde6\ud83c\uddfa" },
-  { key: "us-central", name: "US Central", emoji: "\ud83c\uddfa\ud83c\uddf8" },
-  { key: "us-east", name: "US East", emoji: "\ud83c\uddfa\ud83c\uddf8" },
-  { key: "us-south", name: "US South", emoji: "\ud83c\uddfa\ud83c\uddf8" },
-  { key: "us-west", name: "US West", emoji: "\ud83c\uddfa\ud83c\uddf8" },
-  { key: "automatic", name: "Automatic", emoji: null }
+  { key: 'brazil', name: 'Brazil', emoji: '\ud83c\udde7\ud83c\uddf7' },
+  { key: 'hongkong', name: 'Hong Kong', emoji: '\ud83c\udded\ud83c\uddf0' },
+  { key: 'india', name: 'India', emoji: '\ud83c\uddee\ud83c\uddf3' },
+  { key: 'japan', name: 'Japan', emoji: '\ud83c\uddef\ud83c\uddf5' },
+  { key: 'milan', name: 'Milan', emoji: '\ud83c\uddee\ud83c\uddf9' },
+  { key: 'rotterdam', name: 'Rotterdam', emoji: '\ud83c\uddf3\ud83c\uddf1' },
+  { key: 'russia', name: 'Russia', emoji: '\ud83c\uddf7\ud83c\uddfa' },
+  { key: 'singapore', name: 'Singapore', emoji: '\ud83c\uddf8\ud83c\uddec' },
+  {
+    key: 'southafrica',
+    name: 'South Africa',
+    emoji: '\ud83c\uddff\ud83c\udde6',
+  },
+  {
+    key: 'south-korea',
+    name: 'South Korea',
+    emoji: '\ud83c\uddf0\ud83c\uddf7',
+  },
+  { key: 'sydney', name: 'Sydney', emoji: '\ud83c\udde6\ud83c\uddfa' },
+  { key: 'us-central', name: 'US Central', emoji: '\ud83c\uddfa\ud83c\uddf8' },
+  { key: 'us-east', name: 'US East', emoji: '\ud83c\uddfa\ud83c\uddf8' },
+  { key: 'us-south', name: 'US South', emoji: '\ud83c\uddfa\ud83c\uddf8' },
+  { key: 'us-west', name: 'US West', emoji: '\ud83c\uddfa\ud83c\uddf8' },
+  { key: 'automatic', name: 'Automatic', emoji: null },
 ];
 
 export interface DiscordPermission {
   id: string;
   name: string;
-  channel_types: string[],
-  category: string
+  channel_types: string[];
+  category: string;
 }

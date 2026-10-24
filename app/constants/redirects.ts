@@ -1,4 +1,4 @@
-import type { Redirect } from "~/types/Redirect";
+import type { Redirect } from '../types/Redirect';
 
 export const redirects: Array<Redirect> = [
   {
@@ -11,7 +11,8 @@ export const redirects: Array<Redirect> = [
     id: 'discord-ultimate',
     path: '/discord-ultimate',
     name: 'Discord ultimate',
-    target: 'https://discord.com/application-directory/715621848489918495/premium',
+    target:
+      'https://discord.com/application-directory/715621848489918495/premium',
   },
   {
     id: 'github',
@@ -19,4 +20,4 @@ export const redirects: Array<Redirect> = [
     name: 'GitHub',
     target: 'https://github.com/bot-astro',
   },
-]
+];

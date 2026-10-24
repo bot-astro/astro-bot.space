@@ -30,6 +30,7 @@
       >
         <div
           v-for="section in sections"
+          :key="section.id"
           class="flex cursor-pointer flex-row items-center justify-center py-2 transition-colors hover:bg-background"
           :class="current_section.id === section.id ? 'bg-background' : ''"
           @click="set_section_and_guild(section)"

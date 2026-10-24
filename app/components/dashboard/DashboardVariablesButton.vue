@@ -41,6 +41,7 @@
         <div class="flex flex-wrap gap-2 text-xs">
           <ButtonSecondary
             v-for="variable in variables.filter((v) => v.category === category)"
+            :key="variable.name"
             :class="
               cn(
                 variable.ultimate && !props.is_ultimate ? 'cursor-copy' : '',
@@ -64,7 +65,7 @@
   </Popover>
 </template>
 <script setup lang="ts">
-import { IconNames } from 'assets/config/IconNames';
+import { IconNames } from '~/constants/IconNames';
 
 const props = defineProps<{ is_ultimate: boolean }>();
 defineEmits<{ variableSelect: [string]; upgrade: [] }>();
