@@ -1,5 +1,5 @@
-import tailwindcss from '@tailwindcss/vite';
-import { redirects } from './app/constants/redirects';
+import tailwindcss from '@tailwindcss/vite'
+import { redirects } from './app/constants/redirects'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -73,4 +73,4 @@ export default defineNuxtConfig({
       ],
     },
   },
-});
+})

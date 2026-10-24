@@ -1,5 +1,5 @@
-import type {Ref} from "vue";
-import {guild_channels_qk} from "~/data/astro/config/query-keys";
+import type { Ref } from 'vue'
+import { guild_channels_qk } from '~/data/astro/config/query-keys'
 
 export function useGuildChannels(guild_id: Ref<string | undefined>) {
   const { $astroApiClient } = useNuxtApp()
@@ -12,6 +12,6 @@ export function useGuildChannels(guild_id: Ref<string | undefined>) {
       } else {
         return $astroApiClient.get_guild_channels(context.queryKey[1])
       }
-    }
+    },
   })
 }

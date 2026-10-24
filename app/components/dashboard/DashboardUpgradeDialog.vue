@@ -52,7 +52,7 @@
         </div>
         <div v-else class="text-description">
           <p>
-            You don't have any upgrade available.<br >Purchase a subscription
+            You don't have any upgrade available.<br />Purchase a subscription
             to upgrade the server to Ultimate and unlock advanced features!
           </p>
         </div>
@@ -79,18 +79,15 @@
 </template>
 
 <script setup lang="ts">
-const open = defineModel<boolean>();
+const open = defineModel<boolean>()
 
 const emit = defineEmits<{
-  onPurchaseOnDiscord: [];
-  onPurchaseOnWebsite: [];
-  onUpgrade: [subscription_id: string];
-}>();
+  onPurchaseOnDiscord: []
+  onPurchaseOnWebsite: []
+  onUpgrade: [subscription_id: string]
+}>()
 
-const {
-  data: user_subscriptions,
-  error: user_subscriptions_error,
-  isPending: user_subscriptions_pending,
-} = useUserSubscriptions();
-const selected_subscription_id = ref<string | undefined>(undefined);
+const { data: user_subscriptions, isPending: user_subscriptions_pending } =
+  useUserSubscriptions()
+const selected_subscription_id = ref<string | undefined>(undefined)
 </script>

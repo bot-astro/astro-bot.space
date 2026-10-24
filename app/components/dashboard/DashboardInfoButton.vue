@@ -7,7 +7,7 @@
     </PopoverTrigger>
     <DashboardInfoPopoverContent
       :title="props.title"
-      :guide_button_uri="props.guide_button_uri"
+      :guide-button-uri="props.guideButtonUri"
     >
       <slot />
     </DashboardInfoPopoverContent>
@@ -15,5 +15,5 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ title: string; guide_button_uri?: string }>();
+const props = defineProps<{ title: string; guideButtonUri?: string }>()
 </script>

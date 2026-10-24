@@ -3,6 +3,6 @@ export function useUserSubscriptions() {
 
   return useQuery({
     queryKey: user_subscriptions_qk,
-    queryFn: () => $astroApiClient.get_user_chargebee_subscriptions()
+    queryFn: () => $astroApiClient.get_user_chargebee_subscriptions(),
   })
 }

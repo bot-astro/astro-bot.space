@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import { type HTMLAttributes, computed } from 'vue';
-import type { ComboboxContentEmits, ComboboxContentProps } from 'radix-vue';
-import { ComboboxContent, useForwardPropsEmits } from 'radix-vue';
+import { type HTMLAttributes, computed } from 'vue'
+import type { ComboboxContentEmits, ComboboxContentProps } from 'radix-vue'
+import { ComboboxContent, useForwardPropsEmits } from 'radix-vue'
 
 const props = withDefaults(
   defineProps<ComboboxContentProps & { class?: HTMLAttributes['class'] }>(),
   {
+    class: undefined,
     dismissable: false,
   },
-);
-const emits = defineEmits<ComboboxContentEmits>();
+)
+const emits = defineEmits<ComboboxContentEmits>()
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { class: _, ...delegated } = props
 
-  return delegated;
-});
+  return delegated
+})
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits);
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>

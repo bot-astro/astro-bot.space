@@ -1,11 +1,11 @@
 export interface GSError {
-  id: string;
-  guild_id: string;
-  code: string;
-  description: string;
-  premium_required: boolean;
-  guide: GSErrorGuide | null;
-  timestamp: number;
+  id: string
+  guild_id: string
+  code: string
+  description: string
+  premium_required: boolean
+  guide: GSErrorGuide | null
+  timestamp: number
 }
 
 export const enum GSErrorGuide {

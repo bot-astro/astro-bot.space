@@ -29,6 +29,6 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ open: boolean; loading: boolean }>();
-const emit = defineEmits(['reset', 'save']);
+const props = defineProps<{ open: boolean; loading: boolean }>()
+defineEmits(['reset', 'save'])
 </script>

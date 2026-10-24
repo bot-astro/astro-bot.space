@@ -7,16 +7,16 @@ export enum AErrorCode {
 }
 
 export interface AErrorResponse {
-  code: AErrorCode;
-  message?: string | null;
+  code: AErrorCode
+  message?: string | null
 }
 
 export class AError extends Error {
-  readonly code: AErrorCode;
+  readonly code: AErrorCode
 
   constructor({ code, message }: AErrorResponse) {
-    super(message ?? code);
-    this.name = 'AError';
-    this.code = code;
+    super(message ?? code)
+    this.name = 'AError'
+    this.code = code
   }
 }

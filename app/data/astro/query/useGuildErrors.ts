@@ -1,5 +1,5 @@
-import type {Ref} from "vue";
-import {guild_errors_qk} from "~/data/astro/config/query-keys";
+import type { Ref } from 'vue'
+import { guild_errors_qk } from '~/data/astro/config/query-keys'
 
 export function useGuildErrors(guild_id: Ref<string | undefined>) {
   const { $astroApiClient } = useNuxtApp()
@@ -12,6 +12,6 @@ export function useGuildErrors(guild_id: Ref<string | undefined>) {
       } else {
         return $astroApiClient.get_guild_errors(context.queryKey[1])
       }
-    }
+    },
   })
 }

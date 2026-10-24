@@ -1,5 +1,5 @@
-import {guilds_qk} from "~/data/astro/config/query-keys";
-import type {DiscordGuild} from "~/types/discord";
+import { guilds_qk } from '~/data/astro/config/query-keys'
+import type { DiscordGuild } from '~/types/discord'
 
 export function useGuilds() {
   const { $astroApiClient } = useNuxtApp()
@@ -16,8 +16,8 @@ export function useGuilds() {
       // } else {
       //   return $astroApiClient.get_guilds()
       // }
-        return $astroApiClient.get_guilds()
+      return $astroApiClient.get_guilds()
     },
-    staleTime: 300000
+    staleTime: 300000,
   })
 }

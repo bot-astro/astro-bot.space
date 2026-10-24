@@ -1,3 +1,3 @@
 export const RouterQueryKeys = {
-  GUILD_ID: 'guild_id'
+  GUILD_ID: 'guild_id',
 }

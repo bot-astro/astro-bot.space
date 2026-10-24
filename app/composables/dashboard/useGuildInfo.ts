@@ -3,8 +3,9 @@ export default function () {
 
   const guilds = useGuilds()
   const guild_info = computed(() => {
-    return (guilds.data.value ?? [])
-      .find(guild => guild.id === guild_id.value)
+    return (guilds.data.value ?? []).find(
+      (guild) => guild.id === guild_id.value,
+    )
   })
 
   return guild_info

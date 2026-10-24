@@ -1,4 +1,4 @@
-import type { Redirect } from '../types/Redirect';
+import type { Redirect } from '../types/Redirect'
 
 export const redirects: Array<Redirect> = [
   {
@@ -20,4 +20,4 @@ export const redirects: Array<Redirect> = [
     name: 'GitHub',
     target: 'https://github.com/bot-astro',
   },
-];
+]

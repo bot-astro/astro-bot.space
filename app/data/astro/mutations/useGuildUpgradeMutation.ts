@@ -1,4 +1,4 @@
-import {useMutation} from "#imports";
+import { useMutation } from '#imports'
 
 interface GuildUpgradeMutationParams {
   guild_id: string
@@ -10,9 +10,12 @@ export function useGuildUpgradeMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (params: GuildUpgradeMutationParams) => $astroApiClient.upgrade_guild(params.guild_id, params.subscription_id),
-    async onSuccess(data, variables, context) {
-      await queryClient.invalidateQueries({ queryKey: guild_settings_qk(variables.guild_id) })
+    mutationFn: (params: GuildUpgradeMutationParams) =>
+      $astroApiClient.upgrade_guild(params.guild_id, params.subscription_id),
+    async onSuccess(data, variables) {
+      await queryClient.invalidateQueries({
+        queryKey: guild_settings_qk(variables.guild_id),
+      })
     },
   })
 }

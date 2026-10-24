@@ -3,7 +3,7 @@
     <NuxtLoadingIndicator />
     <div class="min-h-screen w-full">
       <CoreNavigation />
-      <div class="flex items-center justify-center w-full">
+      <div class="flex w-full items-center justify-center">
         <slot />
       </div>
     </div>

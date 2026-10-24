@@ -7,39 +7,39 @@
  * @property can_manage whether the logged-in user has permissions to manage the Astro guild settings
  */
 export interface DiscordGuild {
-  id: string;
-  name: string;
-  icon: string | null;
-  permissions: number;
-  can_manage: boolean;
-  preferred_locale: string;
+  id: string
+  name: string
+  icon: string | null
+  permissions: number
+  can_manage: boolean
+  preferred_locale: string
 }
 
 export interface DiscordGuildChannel {
-  id: string;
-  name: string | null;
+  id: string
+  name: string | null
   /**
    * 0: text channel
    * 2: voice channel
    * 4: category
    * 13: stage channel
    */
-  type: number;
-  parent_id: string | null;
-  parent_name: string | null;
+  type: number
+  parent_id: string | null
+  parent_name: string | null
 }
 
 export interface DiscordRole {
-  id: string;
-  name: string;
-  color: number;
-  position: number;
+  id: string
+  name: string
+  color: number
+  position: number
 }
 
 export interface DiscordRegion {
-  key: string;
-  name: string;
-  emoji: string | null;
+  key: string
+  name: string
+  emoji: string | null
 }
 
 export const discord_regions: DiscordRegion[] = [
@@ -67,11 +67,11 @@ export const discord_regions: DiscordRegion[] = [
   { key: 'us-south', name: 'US South', emoji: '\ud83c\uddfa\ud83c\uddf8' },
   { key: 'us-west', name: 'US West', emoji: '\ud83c\uddfa\ud83c\uddf8' },
   { key: 'automatic', name: 'Automatic', emoji: null },
-];
+]
 
 export interface DiscordPermission {
-  id: string;
-  name: string;
-  channel_types: string[];
-  category: string;
+  id: string
+  name: string
+  channel_types: string[]
+  category: string
 }

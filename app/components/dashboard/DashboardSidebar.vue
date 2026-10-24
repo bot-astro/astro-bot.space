@@ -110,26 +110,22 @@
 </template>
 
 <script lang="ts" setup>
-import IconVoiceRole from '~/components/icon/IconVoiceRole.vue';
+import IconVoiceRole from '~/components/icon/IconVoiceRole.vue'
 
-const { width } = useWindowSize();
+const { width } = useWindowSize()
 
-const guild_id = useGuildId();
+const guild_id = useGuildId()
 const { sections, current_section, set_section_and_guild } =
-  useDashboardSections();
+  useDashboardSections()
 
-const { data: guilds } = useGuilds();
+const { data: guilds } = useGuilds()
 const managed_guilds = computed(() =>
   (guilds.value ?? [])
     .filter((g) => g.can_manage)
     .sort((a, b) => a.name.localeCompare(b.name)),
-);
+)
 
-const guild_info = useGuildInfo();
+const guild_info = useGuildInfo()
 
-const {
-  data: guild_settings,
-  error: guild_settings_error,
-  isPending: guild_settings_pending,
-} = useGuildSettings(guild_id);
+const { data: guild_settings } = useGuildSettings(guild_id)
 </script>

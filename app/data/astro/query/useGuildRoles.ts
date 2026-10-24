@@ -1,5 +1,5 @@
-import type {Ref} from "vue";
-import {guild_roles_qk} from "~/data/astro/config/query-keys";
+import type { Ref } from 'vue'
+import { guild_roles_qk } from '~/data/astro/config/query-keys'
 
 export function useGuildRoles(guild_id: Ref<string | undefined>) {
   const { $astroApiClient } = useNuxtApp()
@@ -12,6 +12,6 @@ export function useGuildRoles(guild_id: Ref<string | undefined>) {
       } else {
         return $astroApiClient.get_guild_roles(context.queryKey[1])
       }
-    }
+    },
   })
 }

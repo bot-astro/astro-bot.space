@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 defineProps<{
-  illustrationSrc?: string;
-  title?: string;
-  description: string;
-  buttonText?: string;
-  buttonTo?: string;
-  buttonStyleClasses?: string;
-  reverse: boolean;
-}>();
+  illustrationSrc?: string
+  title?: string
+  description: string
+  buttonText?: string
+  buttonTo?: string
+  buttonStyleClasses?: string
+  reverse: boolean
+}>()
 
-const is_illustration_open = ref(false);
+const is_illustration_open = ref(false)
 
 function setIsIllustrationDialogOpen(value: boolean) {
-  is_illustration_open.value = value;
+  is_illustration_open.value = value
 }
 </script>
 

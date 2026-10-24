@@ -7,8 +7,9 @@ export function useRefreshGuildEntitlementsMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (params: RefreshGuildEntitlementsParams) => $astroApiClient.refresh_entitlements(params.guild_id),
-    onSuccess(data, variables, context) {
+    mutationFn: (params: RefreshGuildEntitlementsParams) =>
+      $astroApiClient.refresh_entitlements(params.guild_id),
+    onSuccess(data, variables) {
       queryClient.setQueryData(guild_settings_qk(variables.guild_id), data)
     },
   })

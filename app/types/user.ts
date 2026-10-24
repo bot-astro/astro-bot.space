@@ -1,32 +1,32 @@
 export interface User {
-  id: string;
-  username: string;
-  avatar: string | null;
+  id: string
+  username: string
+  avatar: string | null
 }
 
 export interface UserChargebeeSubscriptions {
   /**
    * used upgrades
    */
-  upgraded_guilds: UserUpgradedGuild[];
+  upgraded_guilds: UserUpgradedGuild[]
   /**
    * all user subscriptions
    */
-  subscriptions: UserSubscription[];
+  subscriptions: UserSubscription[]
 }
 
 export interface UserUpgradedGuild {
-  subscription_id: string;
+  subscription_id: string
   /**
    * the upgraded guild id
    */
-  guild_id: string;
+  guild_id: string
 }
 
 export interface UserSubscription {
-  subscription_id: string;
-  annual: boolean;
-  quantities: number;
-  used: number;
-  available: number;
+  subscription_id: string
+  annual: boolean
+  quantities: number
+  used: number
+  available: number
 }

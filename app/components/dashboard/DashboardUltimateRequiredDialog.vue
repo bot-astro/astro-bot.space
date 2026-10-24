@@ -18,6 +18,6 @@
 </template>
 
 <script setup lang="ts">
-const open = defineModel<boolean>();
-const emit = defineEmits(['upgrade']);
+const open = defineModel<boolean>()
+const emit = defineEmits(['upgrade'])
 </script>

@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from 'vue'
 
 interface GroupSettingProps {
-  heading: string;
-  description?: string;
-  class?: HTMLAttributes['class'];
-  compact?: boolean;
-  ultimate?: boolean;
+  heading: string
+  description?: string
+  class?: HTMLAttributes['class']
+  compact?: boolean
+  ultimate?: boolean
 }
 
-const props = defineProps<GroupSettingProps>();
-defineEmits(['upgrade']);
+const props = defineProps<GroupSettingProps>()
+defineEmits(['upgrade'])
 </script>
 
 <template>

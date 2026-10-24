@@ -31,7 +31,7 @@
             v-if="
               (category == VariableCategory.INCREMENTAL_VALUES ||
                 category == VariableCategory.VOICE_CHANNEL_OWNER_ACTIVITY) &&
-              !is_ultimate
+              !isUltimate
             "
             variant="ultimate"
             class="text-xs"
@@ -44,20 +44,18 @@
             :key="variable.name"
             :class="
               cn(
-                variable.ultimate && !props.is_ultimate ? 'cursor-copy' : '',
+                variable.ultimate && !props.isUltimate ? 'cursor-copy' : '',
                 'relative',
               )
             "
             @click="
-              variable.ultimate && !props.is_ultimate
+              variable.ultimate && !props.isUltimate
                 ? $emit('upgrade')
                 : $emit('variableSelect', `{${variable.name}}`)
             "
           >
             {{ `\{${variable.name}\}` }}
-            <DashboardUltimateOverlay
-              v-if="variable.ultimate && !is_ultimate"
-            />
+            <DashboardUltimateOverlay v-if="variable.ultimate && !isUltimate" />
           </ButtonSecondary>
         </div>
       </div>
@@ -65,10 +63,8 @@
   </Popover>
 </template>
 <script setup lang="ts">
-import { IconNames } from '~/constants/IconNames';
-
-const props = defineProps<{ is_ultimate: boolean }>();
-defineEmits<{ variableSelect: [string]; upgrade: [] }>();
+const props = defineProps<{ isUltimate: boolean }>()
+defineEmits<{ variableSelect: [string]; upgrade: [] }>()
 
 enum VariableCategory {
   VOICE_CHANNEL_OWNER = 'Voice channel owner',
@@ -78,9 +74,9 @@ enum VariableCategory {
 }
 
 interface VariableInfo {
-  name: string;
-  category: VariableCategory;
-  ultimate: boolean;
+  name: string
+  category: VariableCategory
+  ultimate: boolean
 }
 
 const variables: VariableInfo[] = [
@@ -178,5 +174,5 @@ const variables: VariableInfo[] = [
     category: VariableCategory.INCREMENTAL_VALUES,
     ultimate: true,
   },
-];
+]
 </script>

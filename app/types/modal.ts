@@ -1,4 +1,6 @@
+import type { Component } from 'vue'
+
 export interface ModalData {
-  component: any
-  data: any
+  component: Component
+  data: Record<string, unknown>
 }

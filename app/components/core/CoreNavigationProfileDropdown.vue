@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import { useToast } from '~/components/ui/toast';
-import { useUser } from '~/data/astro/query/useUser';
+import { useToast } from '~/components/ui/toast'
+import { useUser } from '~/data/astro/query/useUser'
 
-const { $astroApiClient } = useNuxtApp();
+const { $astroApiClient } = useNuxtApp()
 const { invite } = useInvite()
-const { toast } = useToast();
-const { data: user, isPending: user_is_pending, error: user_error } = useUser();
-const auth = useAuth();
-const route = useRoute();
-const is_logged_in = computed(() => !!user.value);
+const { toast } = useToast()
+const { data: user } = useUser()
+const auth = useAuth()
+const route = useRoute()
+const is_logged_in = computed(() => !!user.value)
 
-const is_mobile_dropdown_open = ref(false);
+const is_mobile_dropdown_open = ref(false)
 
 const on_billing_clicked = async () => {
   try {
-    const url = await $astroApiClient.get_chargebee_portal_session_url();
-    navigateTo(url, { external: true, open: { target: '_blank' } });
+    const url = await $astroApiClient.get_chargebee_portal_session_url()
+    navigateTo(url, { external: true, open: { target: '_blank' } })
   } catch (e) {
-    console.log(e);
+    console.log(e)
 
     toast({
       description:
         'Something went wrong when opening the billing portal, try again later',
       variant: 'destructive',
-    });
+    })
   }
-};
+}
 </script>
 
 <template>
@@ -107,9 +107,7 @@ const on_billing_clicked = async () => {
 
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem @click="invite">
-            Add to server
-          </DropdownMenuItem>
+          <DropdownMenuItem @click="invite"> Add to server </DropdownMenuItem>
           <DropdownMenuItem @click="navigateTo('/guides')">
             Guides
           </DropdownMenuItem>

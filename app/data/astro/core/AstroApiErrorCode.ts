@@ -21,5 +21,5 @@ export const enum AstroApiErrorCode {
   ULTIMATE_REQUIRED_TO_CREATE_TEMPLATE = 'Ultimate is required to create a new template',
   ULTIMATE_REQUIRED_TO_CREATE_VOICE_ROLE = 'Ultimate is required to create a new voice role',
 
-  INVALID_SETTINGS = 'The new settings cannot be saved because they are malformed'
+  INVALID_SETTINGS = 'The new settings cannot be saved because they are malformed',
 }
