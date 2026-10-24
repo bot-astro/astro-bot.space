@@ -10,7 +10,7 @@ export function useGuildChannels(guild_id: Ref<string | undefined>) {
       if (context.queryKey[1] === undefined) {
         throw Error('guild_id is undefined')
       } else {
-        return $astroApiClient.get_guild_channels(context.queryKey[1])
+        return $astroApiClient.get_guild_channels(context.queryKey[1] as string)
       }
     },
   })

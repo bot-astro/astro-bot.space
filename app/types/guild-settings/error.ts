@@ -8,7 +8,7 @@ export interface GSError {
   timestamp: number
 }
 
-export const enum GSErrorGuide {
+export enum GSErrorGuide {
   BASIC = 'BASIC',
   GENERATOR = 'GENERATOR',
   TEMPLATE = 'TEMPLATE',

@@ -80,19 +80,19 @@ export interface GSGenerator {
   waiting_user_limit: number | null
 }
 
-export const enum GSGeneratorPermissionsInherited {
+export enum GSGeneratorPermissionsInherited {
   NONE = 'NONE',
   CATEGORY = 'CATEGORY',
   GENERATOR = 'GENERATOR',
 }
 
-export const enum GSGeneratorInitialPosition {
+export enum GSGeneratorInitialPosition {
   BEFORE = 'BEFORE',
   AFTER = 'AFTER',
   BOTTOM = 'BOTTOM',
 }
 
-export const enum GSGeneratorVCState {
+export enum GSGeneratorVCState {
   UNLOCKED = 'UNLOCKED',
   LOCKED = 'LOCKED',
   HIDDEN = 'HIDDEN',

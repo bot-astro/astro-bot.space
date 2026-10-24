@@ -11,7 +11,7 @@ export interface GSVoiceRole {
   permanent: boolean
 }
 
-export const enum GSVoiceRoleAction {
+export enum GSVoiceRoleAction {
   ASSIGN = 'ASSIGN',
   REMOVE = 'REMOVE',
   TOGGLE = 'TOGGLE',

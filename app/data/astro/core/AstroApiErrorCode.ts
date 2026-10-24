@@ -1,4 +1,4 @@
-export const enum AstroApiErrorCode {
+export enum AstroApiErrorCode {
   UNKNOWN = 'Something went wrong, please try again later',
 
   /// AUTH ///
