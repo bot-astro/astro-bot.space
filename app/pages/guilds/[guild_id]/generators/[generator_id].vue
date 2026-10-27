@@ -431,21 +431,10 @@
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem
-                      v-for="role in guild_roles
-                        .filter((r) => r.id !== guild_id)
-                        .sort((a, b) => b.position - a.position)"
-                      :key="role.id"
-                      :value="role.id"
-                    >
-                      <div class="vertical-center gap-2">
-                        <span
-                          :class="`size-3 min-h-3 min-w-3 rounded-full`"
-                          :style="`background-color: #${role.color.toString(16)}`"
-                        />
-                        {{ role.name }}
-                      </div>
-                    </SelectItem>
+                    <DashboardRoleSelectItems
+                      :roles="guild_roles!"
+                      :guild_id="guild_id"
+                    />
                     <!-- @everyone role option -->
                     <SelectItem value="no_role">@everyone</SelectItem>
                   </SelectGroup>
@@ -475,21 +464,10 @@
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem
-                      v-for="role in guild_roles
-                        .filter((r) => r.id !== guild_id)
-                        .sort((a, b) => b.position - a.position)"
-                      :key="role.id"
-                      :value="role.id"
-                    >
-                      <div class="vertical-center gap-2">
-                        <span
-                          :class="`size-3 min-h-3 min-w-3 rounded-full`"
-                          :style="`background-color: #${role.color.toString(16)}`"
-                        />
-                        {{ role.name }}
-                      </div>
-                    </SelectItem>
+                    <DashboardRoleSelectItems
+                      :roles="guild_roles!"
+                      :guild_id="guild_id"
+                    />
                     <!-- @everyone role option -->
                     <SelectItem value="no_role">No role</SelectItem>
                   </SelectGroup>
@@ -712,21 +690,10 @@
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem
-                      v-for="role in guild_roles
-                        .filter((r) => r.id !== guild_id)
-                        .sort((a, b) => b.position - a.position)"
-                      :key="role.id"
-                      :value="role.id"
-                    >
-                      <div class="vertical-center gap-2">
-                        <span
-                          :class="`size-3 min-h-3 min-w-3 rounded-full`"
-                          :style="`background-color: #${role.color.toString(16)}`"
-                        />
-                        {{ role.name }}
-                      </div>
-                    </SelectItem>
+                    <DashboardRoleSelectItems
+                      :roles="guild_roles!"
+                      :guild_id="guild_id"
+                    />
                     <!-- no role option -->
                     <SelectItem value="no_role">No role</SelectItem>
                   </SelectGroup>

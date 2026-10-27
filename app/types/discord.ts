@@ -33,6 +33,8 @@ export interface DiscordRole {
   name: string
   color: number
   position: number
+  /** false when the role is above Astro's highest role, so Astro cannot assign it */
+  manageable: boolean
 }
 
 export interface DiscordRegion {
