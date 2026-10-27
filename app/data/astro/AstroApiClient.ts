@@ -21,9 +21,12 @@ import type { GSInterface } from '~/types/guild-settings/interface'
 export class AstroApiClient {
   // base url will be injected from env variables on global instance creation
   private readonly base_url
+  // local dev only, avoids Discord's rate limits on the user guilds endpoint
+  private readonly mock_discord_guilds
 
-  constructor(base_url: string) {
+  constructor(base_url: string, mock_discord_guilds: boolean = false) {
     this.base_url = base_url
+    this.mock_discord_guilds = mock_discord_guilds
   }
 
   /**
@@ -102,6 +105,11 @@ export class AstroApiClient {
    * @return the list of guilds of the logged-in user
    */
   public get_guilds = async (): Promise<DiscordGuild[]> => {
+    if (this.mock_discord_guilds) {
+      return (await import('~/data/astro/mocks/discord-guilds.json'))
+        .default as DiscordGuild[]
+    }
+
     return useApiFetch<DiscordGuild[]>(this.url('/v2/discord/guilds'))
   }
 
@@ -214,11 +222,21 @@ export class AstroApiClient {
     generator_id: string,
     generator_settings: GSGenerator,
   ): Promise<GuildSettings> => {
+    // empty optional texts mean "not set"
+    const body: GSGenerator = {
+      ...generator_settings,
+      default_locked_name: generator_settings.default_locked_name || null,
+      default_hidden_name: generator_settings.default_hidden_name || null,
+      default_status: generator_settings.default_status || null,
+      chat_topic: generator_settings.chat_topic || null,
+      default_chat_text: generator_settings.default_chat_text || null,
+    }
+
     return useApiFetch<GuildSettings>(
       this.url(`/v2/guilds/${guild_id}/settings/generators/${generator_id}`),
       {
         method: 'POST',
-        body: generator_settings,
+        body,
       },
     )
   }

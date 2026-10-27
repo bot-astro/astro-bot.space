@@ -217,8 +217,7 @@
 import { navigateTo } from '#imports'
 import useClone from '~/composables/useClone'
 import capitalize from '~/utils/capitalize'
-import { AstroApiError } from '~/data/astro/core/AstroApiError'
-import { AstroApiErrorCode } from '~/data/astro/core/AstroApiErrorCode'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import { deepEqual } from 'fast-equals'
 import { useToast } from '~/components/ui/toast'
 // enum is used as a value in the template
@@ -326,15 +325,15 @@ const {
 /// SUCCESS ACTIONS ///
 watch(delete_voice_role_success, (s) => {
   if (s) {
-    navigateTo(`/guilds/${guild_id.value}/voice_roles`)
+    navigateTo(`/guilds/${guild_id.value}/voice-roles`)
   }
 })
 
 /// ERROR TOASTS ///
 watch(guild_settings_error, (e) => {
   if (
-    e instanceof AstroApiError &&
-    e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD &&
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
     guild_id.value
   ) {
     useInvite().invite_to_guild(guild_id.value)

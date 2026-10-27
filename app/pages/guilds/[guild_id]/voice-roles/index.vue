@@ -349,8 +349,7 @@
 import { navigateTo } from '#imports'
 import capitalize from '~/utils/capitalize'
 import isGuildUltimate from '~/utils/isGuildUltimate'
-import { AstroApiError } from '~/data/astro/core/AstroApiError'
-import { AstroApiErrorCode } from '~/data/astro/core/AstroApiErrorCode'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import type { DashboardSection } from '~/types/dashboard'
 import { useToast } from '~/components/ui/toast'
 import { Select, SelectItem } from '~/components/ui/select'
@@ -407,7 +406,8 @@ const {
   isPending: delete_voice_role_loading,
   error: delete_voice_role_error,
 } = useDeleteVoiceRoleMutation()
-const { mutate: upgrade_guild } = useGuildUpgradeMutation()
+const { mutate: upgrade_guild, error: upgrade_guild_error } =
+  useGuildUpgradeMutation()
 
 const create_voice_role_dialog_open = ref(false)
 const create_voice_role_channel_id = ref<string | undefined>(undefined)
@@ -459,10 +459,19 @@ const create_voice_role_form_submission = () => {
   }
 }
 
+watch(upgrade_guild_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
 watch(guild_settings_error, (e) => {
   if (
-    e instanceof AstroApiError &&
-    e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD &&
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
     guild_id.value
   ) {
     useInvite().invite_to_guild(guild_id.value)

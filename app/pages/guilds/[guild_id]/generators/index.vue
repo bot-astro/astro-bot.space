@@ -220,12 +220,7 @@
           >
           <Button
             :loading="create_generator_loading"
-            @click="
-              create_generator({
-                guild_id: guild_id!,
-                generator_rb: { name: 'Generator', category_id: null },
-              })
-            "
+            @click="create_generator_dialog_open = true"
           >
             <Icon name="fluent:add-12-regular" />
             Create
@@ -271,8 +266,7 @@
 <script lang="ts" setup>
 import { navigateTo } from '#imports'
 import isGuildUltimate from '~/utils/isGuildUltimate'
-import { AstroApiError } from '~/data/astro/core/AstroApiError'
-import { AstroApiErrorCode } from '~/data/astro/core/AstroApiErrorCode'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import type { DashboardSection } from '~/types/dashboard'
 import { useToast } from '~/components/ui/toast'
 import DashboardUltimateRequiredDialog from '~/components/dashboard/DashboardUltimateRequiredDialog.vue'
@@ -326,7 +320,8 @@ const {
   isPending: delete_generator_loading,
   error: delete_generator_error,
 } = useDeleteGeneratorMutation()
-const { mutate: upgrade_guild } = useGuildUpgradeMutation()
+const { mutate: upgrade_guild, error: upgrade_guild_error } =
+  useGuildUpgradeMutation()
 
 const is_ultimate = computed(() => {
   if (guild_settings.value) {
@@ -337,15 +332,24 @@ const is_ultimate = computed(() => {
 })
 
 const create_generator_dialog_open = ref(false)
-const create_generator_name = ref('')
+const create_generator_name = ref('Generator')
 const create_generator_category_id = ref('no_category')
 const ultimate_required_dialog_open = ref(false)
 const upgrade_dialog_open = ref(false)
 
+watch(upgrade_guild_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
 watch(guild_settings_error, (e) => {
   if (
-    e instanceof AstroApiError &&
-    e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD &&
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
     guild_id.value
   ) {
     useInvite().invite_to_guild(guild_id.value)

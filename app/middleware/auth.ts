@@ -13,7 +13,8 @@ export default defineNuxtRouteMiddleware(async (_to, _from) => {
     })
   } catch (error) {
     if (error instanceof AError && error.code === AErrorCode.UNAUTHENTICATED) {
-      return useAuth().login(_to.fullPath)
+      // useAuth() can't be used here: the injection context is lost after the await
+      return $astroApiClient.loginViaDiscord(_to.fullPath)
     }
 
     throw error

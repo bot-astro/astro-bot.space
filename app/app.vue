@@ -3,4 +3,5 @@
     <NuxtPage />
   </NuxtLayout>
   <ParticlesBG />
+  <Toaster />
 </template>

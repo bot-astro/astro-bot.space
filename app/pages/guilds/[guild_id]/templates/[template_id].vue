@@ -358,8 +358,7 @@ import { navigateTo } from '#imports'
 import useClone from '~/composables/useClone'
 import cn from '~/utils/cn'
 import isGuildUltimate from '~/utils/isGuildUltimate'
-import { AstroApiError } from '~/data/astro/core/AstroApiError'
-import { AstroApiErrorCode } from '~/data/astro/core/AstroApiErrorCode'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import { deepEqual } from 'fast-equals'
 import { useToast } from '~/components/ui/toast'
 import { Select, SelectItem } from '~/components/ui/select'
@@ -473,13 +472,23 @@ const {
   isPending: update_template_pending,
   error: update_template_error,
 } = useUpdateTemplateMutation()
-const { mutate: upgrade_guild } = useGuildUpgradeMutation()
+const { mutate: upgrade_guild, error: upgrade_guild_error } =
+  useGuildUpgradeMutation()
 
 /// SUCCESS ACTIONS ///
+watch(upgrade_guild_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
 watch(guild_settings_error, (e) => {
   if (
-    e instanceof AstroApiError &&
-    e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD &&
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
     guild_id.value
   ) {
     useInvite().invite_to_guild(guild_id.value)

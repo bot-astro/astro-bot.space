@@ -29,6 +29,8 @@ export default defineNuxtConfig({
     public: {
       astro_api_base_url: process.env.ASTRO_API_BASE_URL,
       chargebee_site: process.env.CHARGEBEE_SITE,
+      // local dev only, serves app/data/astro/mocks/discord-guilds.json instead of calling the API (see `pnpm dev:mock`)
+      mock_discord_guilds: process.env.MOCK_DISCORD_GUILDS === 'true',
     },
   },
 

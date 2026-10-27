@@ -517,7 +517,6 @@
                   m_generator_settings.commands_settings.max_user_limit ??
                   undefined
                 "
-                required
               />
             </template>
           </GroupSetting>
@@ -536,7 +535,6 @@
                   undefined
                 "
                 :max="99"
-                required
               />
             </template>
           </GroupSetting>
@@ -550,7 +548,10 @@
               <div class="vertical-center relative">
                 <input
                   :value="
-                    m_generator_settings.commands_settings.min_bitrate! / 1000
+                    m_generator_settings.commands_settings.min_bitrate != null
+                      ? m_generator_settings.commands_settings.min_bitrate /
+                        1000
+                      : ''
                   "
                   type="number"
                   min="8"
@@ -559,7 +560,6 @@
                     undefined
                   "
                   class="grow"
-                  required
                   @input="
                     m_generator_settings.commands_settings.min_bitrate =
                       Number(($event.target as HTMLInputElement).value) * 1000
@@ -911,7 +911,6 @@
                   type="number"
                   min="0"
                   max="99"
-                  required
                 />
               </template>
             </GroupSetting>
@@ -1044,7 +1043,6 @@
                   class="grow"
                   minlength="0"
                   maxlength="1024"
-                  required
                 />
                 <DashboardVariablesButton
                   :is-ultimate="is_ultimate"
@@ -1271,7 +1269,6 @@
                   type="number"
                   min="0"
                   max="21600"
-                  required
                 />
               </template>
             </GroupSetting>
@@ -1331,8 +1328,7 @@ import {
   GSGeneratorVCState,
   type GSGenerator,
 } from '~/types/guild-settings/generator'
-import { AstroApiError } from '~/data/astro/core/AstroApiError'
-import { AstroApiErrorCode } from '~/data/astro/core/AstroApiErrorCode'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import useUpdateGeneratorMutation from '~/data/astro/mutations/useUpdateGeneratorMutation'
 import { deepEqual } from 'fast-equals'
 import { Select, SelectItem } from '~/components/ui/select'
@@ -1686,13 +1682,23 @@ const {
   isPending: update_generator_pending,
   error: update_generator_error,
 } = useUpdateGeneratorMutation()
-const { mutate: upgrade_guild } = useGuildUpgradeMutation()
+const { mutate: upgrade_guild, error: upgrade_guild_error } =
+  useGuildUpgradeMutation()
 
 /// SUCCESS ACTIONS ///
+watch(upgrade_guild_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
 watch(guild_settings_error, (e) => {
   if (
-    e instanceof AstroApiError &&
-    e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD &&
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
     guild_id.value
   ) {
     useInvite().invite_to_guild(guild_id.value)

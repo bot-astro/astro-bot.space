@@ -12,7 +12,6 @@ export interface DiscordGuild {
   icon: string | null
   permissions: number
   can_manage: boolean
-  preferred_locale: string
 }
 
 export interface DiscordGuildChannel {

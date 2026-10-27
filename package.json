@@ -5,10 +5,12 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:mock": "MOCK_DISCORD_GUILDS=true nuxt dev",
     "generate": "nuxt generate",
     "format": "prettier --write .",
     "lint": "eslint . --fix",
     "format:lint": "prettier --write . && eslint . --fix",
+    "env": "infisical export > .env",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

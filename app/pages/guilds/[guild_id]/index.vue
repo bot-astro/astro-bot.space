@@ -283,8 +283,7 @@
 import { navigateTo } from '#imports'
 import useClone from '~/composables/useClone'
 import isGuildUltimate from '~/utils/isGuildUltimate'
-import { AstroApiError } from '~/data/astro/core/AstroApiError'
-import { AstroApiErrorCode } from '~/data/astro/core/AstroApiErrorCode'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import type { GuildSettings } from '~/types/guild-settings/guild_settings'
 import { deepEqual } from 'fast-equals'
 import type { DashboardSection } from '~/types/dashboard'
@@ -442,8 +441,8 @@ watch(clear_temporary_vcs_cache_error, (e) => {
 
 watch(guild_settings_error, (e) => {
   if (
-    e instanceof AstroApiError &&
-    e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD &&
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
     guild_id.value
   ) {
     useInvite().invite_to_guild(guild_id.value)
