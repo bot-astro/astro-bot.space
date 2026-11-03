@@ -102,6 +102,7 @@
               <div class="flex gap-2">
                 <input
                   v-model="m_generator_settings.default_locked_name"
+                  placeholder="Not set"
                   type="text"
                   class="grow"
                   minlength="2"
@@ -125,6 +126,7 @@
               <div class="flex gap-2">
                 <input
                   v-model="m_generator_settings.default_hidden_name"
+                  placeholder="Not set"
                   type="text"
                   class="grow"
                   minlength="2"
@@ -271,35 +273,49 @@
           >
             <template #bottom-action>
               <input
-                v-model="m_generator_settings.user_limit"
+                :value="m_generator_settings.user_limit ?? ''"
+                placeholder="Not set"
                 type="number"
                 min="0"
                 max="99"
-                required
+                @input="
+                  m_generator_settings.user_limit =
+                    ($event.target as HTMLInputElement).value === ''
+                      ? null
+                      : Number(($event.target as HTMLInputElement).value)
+                "
               />
             </template>
           </GroupSetting>
 
           <GroupSetting
             heading="Bitrate"
-            description="The bitrate in kbps, or 0 for using your Discord server default bitrate"
+            description="The bitrate in kbps, leave empty for using your Discord server default bitrate"
             compact
           >
             <template #bottom-action>
               <div class="vertical-center relative">
                 <input
-                  :value="m_generator_settings.bitrate! / 1000"
+                  :value="
+                    m_generator_settings.bitrate != null
+                      ? m_generator_settings.bitrate / 1000
+                      : ''
+                  "
                   type="number"
                   min="0"
                   max="384"
                   class="grow"
-                  required
+                  placeholder="Not set"
                   @input="
                     m_generator_settings.bitrate =
-                      Number(($event.target as HTMLInputElement).value) * 1000
+                      ($event.target as HTMLInputElement).value === ''
+                        ? null
+                        : Number(($event.target as HTMLInputElement).value) *
+                          1000
                   "
                 />
                 <span
+                  v-if="m_generator_settings.bitrate != null"
                   :class="
                     cn(
                       'absolute text-foreground-secondary transition-all duration-100',
@@ -488,12 +504,21 @@
           >
             <template #bottom-action>
               <input
-                v-model="m_generator_settings.commands_settings.min_user_limit"
+                :value="
+                  m_generator_settings.commands_settings.min_user_limit ?? ''
+                "
+                placeholder="Not set"
                 type="number"
                 min="0"
                 :max="
                   m_generator_settings.commands_settings.max_user_limit ??
                   undefined
+                "
+                @input="
+                  m_generator_settings.commands_settings.min_user_limit =
+                    ($event.target as HTMLInputElement).value === ''
+                      ? null
+                      : Number(($event.target as HTMLInputElement).value)
                 "
               />
             </template>
@@ -506,13 +531,22 @@
           >
             <template #bottom-action>
               <input
-                v-model="m_generator_settings.commands_settings.max_user_limit"
+                :value="
+                  m_generator_settings.commands_settings.max_user_limit ?? ''
+                "
+                placeholder="Not set"
                 type="number"
                 :min="
                   m_generator_settings.commands_settings.min_user_limit ??
                   undefined
                 "
                 :max="99"
+                @input="
+                  m_generator_settings.commands_settings.max_user_limit =
+                    ($event.target as HTMLInputElement).value === ''
+                      ? null
+                      : Number(($event.target as HTMLInputElement).value)
+                "
               />
             </template>
           </GroupSetting>
@@ -534,16 +568,25 @@
                   type="number"
                   min="8"
                   :max="
-                    m_generator_settings.commands_settings.max_bitrate ??
-                    undefined
+                    m_generator_settings.commands_settings.max_bitrate != null
+                      ? m_generator_settings.commands_settings.max_bitrate /
+                        1000
+                      : 384
                   "
                   class="grow"
+                  placeholder="Not set"
                   @input="
                     m_generator_settings.commands_settings.min_bitrate =
-                      Number(($event.target as HTMLInputElement).value) * 1000
+                      ($event.target as HTMLInputElement).value === ''
+                        ? null
+                        : Number(($event.target as HTMLInputElement).value) *
+                          1000
                   "
                 />
                 <span
+                  v-if="
+                    m_generator_settings.commands_settings.min_bitrate != null
+                  "
                   :class="
                     cn(
                       'absolute text-foreground-secondary transition-all duration-100',
@@ -571,19 +614,33 @@
               <div class="vertical-center relative">
                 <input
                   :value="
-                    m_generator_settings.commands_settings.max_bitrate! / 1000
+                    m_generator_settings.commands_settings.max_bitrate != null
+                      ? m_generator_settings.commands_settings.max_bitrate /
+                        1000
+                      : ''
                   "
                   type="number"
-                  min="0"
+                  :min="
+                    m_generator_settings.commands_settings.min_bitrate != null
+                      ? m_generator_settings.commands_settings.min_bitrate /
+                        1000
+                      : 8
+                  "
                   max="384"
                   class="grow"
-                  required
+                  placeholder="Not set"
                   @input="
                     m_generator_settings.commands_settings.max_bitrate =
-                      Number(($event.target as HTMLInputElement).value) * 1000
+                      ($event.target as HTMLInputElement).value === ''
+                        ? null
+                        : Number(($event.target as HTMLInputElement).value) *
+                          1000
                   "
                 />
                 <span
+                  v-if="
+                    m_generator_settings.commands_settings.max_bitrate != null
+                  "
                   :class="
                     cn(
                       'absolute text-foreground-secondary transition-all duration-100',
@@ -632,7 +689,7 @@
                     >
                     <DropdownMenuCheckboxItem
                       v-for="permission in (discord_permissions ?? []).filter(
-                        (p) => p.category == category,
+                        (p) => p.category.toLowerCase() == category,
                       )"
                       :key="permission.id"
                       :on-select="(event) => event.preventDefault()"
@@ -874,34 +931,49 @@
             >
               <template #bottom-action>
                 <input
-                  v-model="m_generator_settings.waiting_user_limit"
+                  :value="m_generator_settings.waiting_user_limit ?? ''"
+                  placeholder="Not set"
                   type="number"
                   min="0"
                   max="99"
+                  @input="
+                    m_generator_settings.waiting_user_limit =
+                      ($event.target as HTMLInputElement).value === ''
+                        ? null
+                        : Number(($event.target as HTMLInputElement).value)
+                  "
                 />
               </template>
             </GroupSetting>
 
             <GroupSetting
               heading="Bitrate"
-              description="The bitrate in kbps for waiting rooms, or 0 for using your Discord server default bitrate"
+              description="The bitrate in kbps for waiting rooms, leave empty for using your Discord server default bitrate"
               compact
             >
               <template #bottom-action>
                 <div class="vertical-center relative">
                   <input
-                    :value="m_generator_settings.waiting_bitrate! / 1000"
+                    :value="
+                      m_generator_settings.waiting_bitrate != null
+                        ? m_generator_settings.waiting_bitrate / 1000
+                        : ''
+                    "
                     type="number"
                     min="0"
                     max="384"
                     class="grow"
-                    required
+                    placeholder="Not set"
                     @input="
                       m_generator_settings.waiting_bitrate =
-                        Number(($event.target as HTMLInputElement).value) * 1000
+                        ($event.target as HTMLInputElement).value === ''
+                          ? null
+                          : Number(($event.target as HTMLInputElement).value) *
+                            1000
                     "
                   />
                   <span
+                    v-if="m_generator_settings.waiting_bitrate != null"
                     :class="
                       cn(
                         'absolute text-foreground-secondary transition-all duration-100',
@@ -1006,6 +1078,7 @@
               <div class="flex gap-2">
                 <input
                   v-model="m_generator_settings.chat_topic"
+                  placeholder="Not set"
                   type="text"
                   class="grow"
                   minlength="0"
@@ -1232,10 +1305,17 @@
             >
               <template #bottom-action>
                 <input
-                  v-model="m_generator_settings.chat_slowmode"
+                  :value="m_generator_settings.chat_slowmode ?? ''"
+                  placeholder="Not set"
                   type="number"
                   min="0"
                   max="21600"
+                  @input="
+                    m_generator_settings.chat_slowmode =
+                      ($event.target as HTMLInputElement).value === ''
+                        ? null
+                        : Number(($event.target as HTMLInputElement).value)
+                  "
                 />
               </template>
             </GroupSetting>

@@ -120,7 +120,7 @@ export interface GSGeneratorCommandsSettings {
    */
   max_bitrate: number | null
   /**
-   * 8000 for no limit
+   * null for no limit
    */
   min_bitrate: number | null
 }
