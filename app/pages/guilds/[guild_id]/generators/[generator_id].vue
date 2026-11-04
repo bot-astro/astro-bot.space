@@ -1061,6 +1061,7 @@
                 />
                 <DashboardVariablesButton
                   :is-ultimate="is_ultimate"
+                  :disabled-categories="[VariableCategory.INCREMENTAL_VALUES]"
                   @upgrade="upgrade_dialog_open = true"
                   @variable-select="
                     (v) => (m_generator_settings!.default_chat_name += v)
@@ -1075,23 +1076,13 @@
             description="The topic automatically set on every private text chat"
           >
             <template #bottom-action>
-              <div class="flex gap-2">
-                <input
-                  v-model="m_generator_settings.chat_topic"
-                  placeholder="Not set"
-                  type="text"
-                  class="grow"
-                  minlength="0"
-                  maxlength="1024"
-                />
-                <DashboardVariablesButton
-                  :is-ultimate="is_ultimate"
-                  @upgrade="upgrade_dialog_open = true"
-                  @variable-select="
-                    (v) => (m_generator_settings!.default_chat_name += v)
-                  "
-                />
-              </div>
+              <input
+                v-model="m_generator_settings.chat_topic"
+                placeholder="Not set"
+                type="text"
+                minlength="0"
+                maxlength="1024"
+              />
             </template>
           </GroupSetting>
 

@@ -18,7 +18,7 @@
       @reset="m_interface_settings = useClone(interface_settings)"
     />
 
-    <div class="flex items-center gap-4">
+    <div class="flex flex-wrap items-center gap-4">
       <IconInterface class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
         <span v-if="guild_channels" class="dashboard-section-title">
@@ -32,41 +32,106 @@
           >Manage the message and buttons of this interface!</span
         >
       </div>
-      <div class="grow" />
-      <AlertDialog>
-        <AlertDialogTrigger>
-          <ButtonDestructive :loading="delete_interface_loading">
-            Delete
-          </ButtonDestructive>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle
-              >Are you sure you want to delete the interface?</AlertDialogTitle
-            >
-            <AlertDialogDescription>
-              This action cannot be un-done and you wont be able to restore this
-              interface!
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Go back</AlertDialogCancel>
-            <AlertDialogAction
-              :destructive="true"
-              :loading="delete_interface_loading"
-              @click="
-                delete_interface({
-                  guild_id: guild_id!,
-                  interface_id: interface_id!,
-                })
-              "
-            >
+      <div class="flex grow flex-wrap justify-end gap-2">
+        <ButtonSecondary
+          :loading="move_interface_loading"
+          @click="open_move_dialog"
+        >
+          Move
+        </ButtonSecondary>
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <ButtonDestructive :loading="delete_interface_loading">
               Delete
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+            </ButtonDestructive>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle
+                >Are you sure you want to delete the
+                interface?</AlertDialogTitle
+              >
+              <AlertDialogDescription>
+                This action cannot be un-done and you wont be able to restore
+                this interface!
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Go back</AlertDialogCancel>
+              <AlertDialogAction
+                :destructive="true"
+                :loading="delete_interface_loading"
+                @click="
+                  delete_interface({
+                    guild_id: guild_id!,
+                    interface_id: interface_id!,
+                  })
+                "
+              >
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
     </div>
+
+    <Dialog v-model:open="move_dialog_open">
+      <DialogContent>
+        <div class="flex flex-col gap-2">
+          <p class="text-center text-xl">Move interface</p>
+
+          <div class="mt-4 flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex flex-col">
+                <span class="text-heading">Channel</span>
+                <span class="text-description"
+                  >The interface message is sent in the new channel and the old
+                  interface is deleted</span
+                >
+              </div>
+              <Select v-model:model-value="move_channel_id">
+                <SelectTrigger>
+                  <SelectValue aria-label="value">{{
+                    guild_channels?.find((c) => c.id === move_channel_id)
+                      ?.name ?? 'Select a channel'
+                  }}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="channel in (guild_channels ?? []).filter(
+                        (c) => c.type == 0,
+                      )"
+                      :key="channel.id"
+                      :value="channel.id"
+                    >
+                      {{ channel.name }}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
+            <ButtonSecondary @click="move_dialog_open = false">
+              Go back
+            </ButtonSecondary>
+            <Button
+              :loading="move_interface_loading"
+              :disabled="
+                !move_channel_id ||
+                move_channel_id == interface_settings?.channel_id
+              "
+              @click="on_move_interface"
+            >
+              Move
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
 
     <div v-if="m_interface_settings" class="flex flex-col gap-12">
       <div class="groups-wrapper">
@@ -666,6 +731,7 @@ import type {
   GSInterface,
   GSInterfaceButton,
 } from '~/types/guild-settings/interface'
+import type { GuildSettings } from '~/types/guild-settings/guild_settings'
 import type { Media } from '~/types/media'
 import { useToast } from '~/components/ui/toast'
 import { Select, SelectItem } from '~/components/ui/select'
@@ -728,6 +794,9 @@ const is_ultimate = computed(() => {
     return false
   }
 })
+
+const move_dialog_open = ref(false)
+const move_channel_id = ref('')
 
 const m_interface_settings = ref<GSInterface | undefined>(undefined)
 const interface_settings_edited = ref(false)
@@ -998,6 +1067,11 @@ const {
 const { mutate: upgrade_guild, error: upgrade_guild_error } =
   useGuildUpgradeMutation()
 const {
+  mutate: move_interface,
+  isPending: move_interface_loading,
+  error: move_interface_error,
+} = useMoveInterfaceMutation()
+const {
   mutate: delete_interface,
   isPending: delete_interface_loading,
   error: delete_interface_error,
@@ -1052,7 +1126,49 @@ function on_interface_updated() {
   })
 }
 
+// the moved interface is a new message, so it has a new id
+function open_move_dialog() {
+  move_channel_id.value = interface_settings.value?.channel_id ?? ''
+  move_dialog_open.value = true
+}
+
+function on_move_interface() {
+  // the index has to be read before the settings are updated with the move
+  const index =
+    guild_settings.value?.interfaces.findIndex(
+      (i) => i.message_id == interface_id.value,
+    ) ?? -1
+
+  move_interface(
+    {
+      guild_id: guild_id.value!,
+      interface_id: interface_id.value!,
+      channel_id: move_channel_id.value,
+    },
+    { onSuccess: (data) => on_interface_moved(data, index) },
+  )
+}
+
+function on_interface_moved(data: GuildSettings, index: number) {
+  move_dialog_open.value = false
+
+  // the moved interface replaces the old one at the same position
+  const moved = data.interfaces[index]
+  if (moved) {
+    navigateTo(`/guilds/${guild_id.value}/interfaces/${moved.message_id}`)
+  }
+}
+
 /// ERROR TOASTS ///
+watch(move_interface_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
 watch(delete_interface_error, (e) => {
   if (e?.message) {
     toast({

@@ -386,6 +386,20 @@ export class AstroApiClient {
     )
   }
 
+  public move_interface = async (
+    guild_id: string,
+    message_id: string,
+    channel_id: string,
+  ): Promise<GuildSettings> => {
+    return useApiFetch<GuildSettings>(
+      this.url(`/v2/guilds/${guild_id}/settings/interfaces/${message_id}/move`),
+      {
+        method: 'POST',
+        body: { channel_id },
+      },
+    )
+  }
+
   public delete_interface = async (
     guild_id: string,
     message_id: string,

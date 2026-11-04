@@ -42,10 +42,11 @@
           <ButtonSecondary
             v-for="variable in variables.filter((v) => v.category === category)"
             :key="variable.name"
+            :disabled="disabledCategories.includes(category)"
             :class="
               cn(
                 variable.ultimate && !props.isUltimate ? 'cursor-copy' : '',
-                'relative',
+                'relative disabled:opacity-50',
               )
             "
             @click="
@@ -63,15 +64,14 @@
   </Popover>
 </template>
 <script setup lang="ts">
-const props = defineProps<{ isUltimate: boolean }>()
+const props = withDefaults(
+  defineProps<{
+    isUltimate: boolean
+    disabledCategories?: VariableCategory[]
+  }>(),
+  { disabledCategories: () => [] },
+)
 defineEmits<{ variableSelect: [string]; upgrade: [] }>()
-
-enum VariableCategory {
-  VOICE_CHANNEL_OWNER = 'Voice channel owner',
-  VOICE_CHANNEL_OWNER_ACTIVITY = 'Voice channel owner activity',
-  VOICE_CHANNEL_PROPERTIES = 'Voice channel properties',
-  INCREMENTAL_VALUES = 'Incremental values',
-}
 
 interface VariableInfo {
   name: string
