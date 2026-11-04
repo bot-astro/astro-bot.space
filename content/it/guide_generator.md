@@ -1,168 +1,168 @@
 ---
-title: Generators
-description: Learn how to configure and use temporary voice channel generators
+title: Generatori
+description: Scopri come configurare e utilizzare generatori di canali vocali temporanei
 ---
 
-## What is a generator?
+## Cos'è un generatore?
 
-Generators are channels created and managed by Astro.  
-When a user joins a generator, Astro creates a temporary voice channel and moves the user in it.
+I generatori sono canali creati e gestiti da Astro.  
+Quando un utente entra in un generatore, Astro crea un canale vocale temporaneo e sposta l'utente in esso.
 
-The user that creates the temporary voice channel it's called owner.
-The owner can manage the channel with the Astro slash commands or with the [interfaces](/guides/interface), both allow the user to change the channel name, user limit, permissions and everything else.
+L'utente che crea il canale vocale temporaneo è chiamato proprietario.
+Il proprietario può gestire il canale con i comandi slash Astro o con la [interfaces](/guides/interface), sia consentire all'utente di cambiare il nome del canale, il limite utente, i permessi e tutto il resto.
 
-Once the owner leaves, if there are other _non-bots_ users in the channel, the ownership will be transferred randomly to another user.  
-When instead the owner leaves and there are no more users in the channel, it will get deleted.
+Una volta che il proprietario lascia, se ci sono altri utenti _non-bots_ nel canale, la proprietà verrà trasferita in modo casuale a un altro utente.  
+Quando invece il proprietario parte e non ci sono più utenti nel canale, verrà eliminato.
 
-Generators are extremely customisable, in this guide you'll learn how to configure them so that they perfectly fit your server requirements!
+I generatori sono estremamente personalizzabili, in questa guida imparerai come configurarli in modo che soddisfino perfettamente i requisiti del server!
 
-## Creating and managing generators
+## Creare e gestire generatori
 
-Astro can manage multiple generator and each has its own settings.  
-On the generators section of the dashboard you will be able to see all the generators of your server, create new ones, manage and delete them.
+Astro può gestire più generatori e ognuno ha le proprie impostazioni.  
+Nella sezione dei generatori della dashboard potrai vedere tutti i generatori del tuo server, crearne di nuovi, gestirli ed eliminarli.
 
-_Remember that you can have a maximum of 2 generators without [Ultimate](/ultimate)._
+_Ricorda che puoi avere un massimo di 2 generatori senza [Ultimate](/ultimate)._
 
-## Name settings
+## Impostazioni nome
 
-A temporary voice channel can be in three different states: default, locked or hidden.  
-These states are toggled by users either via slash commands or the interface.
+Un canale vocale temporaneo può essere in tre diversi stati: predefinito, bloccato o nascosto.  
+Questi stati sono attivati dagli utenti tramite i comandi slash o l'interfaccia.
 
-You can provide a name for each state:
+È possibile fornire un nome per ogni stato:
 ![generator name settings](/guides/generator_name.png "Generator name settings")
 
-### Variables
+### Variabili
 
-You can make use of `Variables` to make the channel name dynamic. Astro will replace the variables with the appropriate value when applying the new name:
+Puoi usare `Variables` per rendere dinamico il nome del canale. Astro sostituirà le variabili con il valore appropriato quando si applica il nuovo nome:
 
-#### Voice channel owner variables
+#### Variabili proprietario canale vocale
 
-| Variable     | Description                                                           |
-| ------------ | --------------------------------------------------------------------- |
-| `{nickname}` | The nickname (or username if missing) of the owner |
-| `{username}` | The username of the owner                                             |
-| `{mention}`  | The mention (@name) of the owner      |
-| `{id}`       | The ID of the owner                                                   |
+| Variabile    | Descrizione                                                                      |
+| ------------ | -------------------------------------------------------------------------------- |
+| `{nickname}` | Il soprannome (o il nome utente se mancante) del proprietario |
+| `{username}` | Il nome utente del proprietario                                                  |
+| `{mention}`  | La menzione (@name) del proprietario             |
+| `{id}`       | L'ID del proprietario                                                            |
 
-#### Voice channel owner activity variables · [requires Ultimate](/ultimate)
+#### Variabili attività proprietario canale vocale · [richiede Ultimate](/ultimate)
 
-| Variable                | Description                                                                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `{activity_name}`       | The name of the activity of the owner (the game name for example)                                               |
-| `{activity_emoji}`      | An emoji representing the activity                                                                                                 |
-| `{activity_start_time}` | The time at which the owner started the activity                                                                                   |
-| `{activity_end_time}`   | The time at which the activity will end or has ended                                                                               |
-| `{activity_type}`       | The type of the activity (playing, watching, listening, etc...) |
-| `{activity_link}`       | The link of the twitch stream if the activity is a twitch stream                                                                   |
+| Variabile               | Descrizione                                                                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `{activity_name}`       | Il nome dell'attività del proprietario (il nome del gioco, per esempio)                                    |
+| `{activity_emoji}`      | Un'emoji che rappresenta l'attività                                                                                           |
+| `{activity_start_time}` | Il momento in cui il proprietario ha iniziato l'attività                                                                      |
+| `{activity_end_time}`   | Il momento in cui l'attività terminerà o è terminata                                                                          |
+| `{activity_type}`       | Il tipo di attività (giocare, guardare, ascoltare, ecc...) |
+| `{activity_link}`       | Il collegamento del flusso di twitch se l'attività è un flusso di twitch                                                      |
 
-#### Voice channel variables
+#### Variabili del canale vocale
 
-| Variable         | Description                                             |
+| Variabile        | Descrizione                                             |
 | ---------------- | ------------------------------------------------------- |
-| `{vc_name}`      | The name of the vc                                      |
-| `{vc_bitrate}`   | The bitrate of the vc                                   |
-| `{vc_userlimit}` | The user limit of the vc                                |
-| `{vc_users}`     | The amount of users in the vc                           |
-| `{vc_id}`        | The id of the vc                                        |
-| `{vc_mention}`   | The vc as a mention (#voice-channel) |
+| `{vc_name}`      | Il nome del vc                                          |
+| `{vc_bitrate}`   | Il bitrate del vc                                       |
+| `{vc_userlimit}` | Il limite utente del vc                                 |
+| `{vc_users}`     | La quantità di utenti nel vc                            |
+| `{vc_id}`        | L'id del vc                                             |
+| `{vc_mention}`   | Il vc come menzione (#voice-channel) |
 
-#### Incremental values variables · [requires Ultimate](/ultimate)
+#### Variabili dei valori incrementali · [requires Ultimate](/ultimate)
 
-| Variable  | Description                                                                                                             |
-| --------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `{n}`     | A simple incremental number (1, 2, 3...)             |
-| `{nato}`  | NATO incremental alphabet (Alpha, Bravo, Charlie...) |
-| `{roman}` | Roman incremental numbers (I, II, III, IV...)        |
+| Variabile | Descrizione                                                                                                                   |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `{n}`     | Un semplice numero incrementale (1, 2, 3...)               |
+| `{nato}`  | Alfabeto incrementale della NATO (Alfa, Bravo, Charlie...) |
+| `{roman}` | Numeri incrementali romani (I, II, III, IV...)             |
 
-**How do incremental numbers work?**  
-Considering the new Discord Limitation which permits to change a voice channel name only 2 times per every 10 minutes, this feature works a bit differently that what you might expect:  
-The voice channels will be generated incrementally: the bot will find the first missing voice channel and put the new voice channel in its place.
+\*\*Come funzionano i numeri incrementali? \*  
+Considerando la nuova Limitazione Discord che permette di cambiare un nome canale vocale solo 2 volte ogni 10 minuti, questa funzione funziona un po 'in modo diverso da quello che ci si può aspettare:  
+I canali vocali verranno generati in modo incrementale: il bot troverà il primo canale vocale mancante e metterà il nuovo canale vocale al suo posto.
 
-Example: We have 5 VCs generated by Astro incrementally [VC #1, VC#2, VC #3, VC #4 and VC#5], now let's say VC #3 gets deleted, what Astro will not do is rename every single VC to the proper name, so VC#4 to VC #3 and so on, instead the next time a VC will be created it will not be VC #6 but VC #3 so that the gap gets filled.
+Esempio: Abbiamo 5 VC generati da Astro in modo incrementale [VC #1, VC#2, VC #3, VC #4 e VC#5], ora diciamo che VC #3 viene eliminato, quello che Astro non farà è rinominare ogni singolo VC al nome corretto, così da VC#4 a VC #3 e così via, invece la prossima volta che verrà creato un VC non sarà VC #6 ma VC #3 in modo che il gap venga colmato.
 
-If you see that numbers are starting from the wrong number you can hit the `Clear cache` button on the dashboard to reset the count
-![clear cache](/guides/clear_cache.png "Clear cache")
+Se vedi che i numeri stanno iniziando dal numero sbagliato, puoi premere il pulsante `Cancella cache` sulla dashboard per resettare il conteggio
+! cancella cache](/guides/clear_cache. ng 'Cancella cache')
 
-### Name update conditions
+### Condizioni di aggiornamento nome
 
-You can also configure when a channel name should be updated:
-![generator name conditions](/guides/generator_name_conditions.png "Generator name update conditions")
+Puoi anche configurare quando un nome del canale deve essere aggiornato:
+![condizioni nome generatore](/guides/generator_name_conditions.png "Condizioni di aggiornamento nome generatore")
 
-### Name update limitations
+### Limiti di aggiornamento nome
 
-The name of a Discord voice channel can be changed only 2 times per every 10 minutes, Discord introduced this limitation a while ago, unfortunately.
-Because of that voice channel names may not be always precise if frequent changes occur.
+Il nome di un canale vocale Discord può essere cambiato solo 2 volte ogni 10 minuti, Discord ha introdotto questa limitazione un po 'fa, purtroppo.
+A causa di quel nome di canale vocale potrebbe non essere sempre preciso se si verificano cambiamenti frequenti.
 
-## Basic settings
+## Impostazioni di base
 
-In the dashboard you will also find the options to change:
+Nella dashboard troverete anche le opzioni per cambiare:
 
-- the category in which temporary voice channels are generated
-- the user limit
-- the bitrate
-- the position: whether the temporary voice channel should be created just before the generator, right after or at the bottom of the category
-- to change the region you can change the region of the generator channel inside Discord directly
+- la categoria in cui sono generati canali vocali temporanei
+- il limite utente
+- il bitrate
+- la posizione: se il canale vocale temporaneo deve essere creato appena prima del generatore, subito dopo o in fondo alla categoria
+- per cambiare la regione che puoi cambiare la regione del canale del generatore all'interno di Discord direttamente
 
-## Permission settings
+## Impostazioni dei permessi
 
-### Permission inheriting
+### Permesso ereditario
 
-Temporary voice channels by default inherit the permissions from the generator.  
-You can change this behaviour on the dashboard, you can make channels copy the permissions from the category instead or not copy any permission at all.
+Canali vocali temporanei per impostazione predefinita ereditano i permessi dal generatore.  
+È possibile modificare questo comportamento sul cruscotto, è possibile fare i canali copiare i permessi dalla categoria invece o non copiare alcun permesso a tutti.
 
-### Target role
+### Ruolo obiettivo
 
-The target role is one of the most important settings. When the channel permissions need to be modified, for example when it gets locked or hidden, Astro will modify the permissions of the target role to achieve the desired state.  
-As an example, if in your server users must complete a verification process and get a `Verified` role, then you probably wanna set that as the target role.
+Il ruolo di destinazione è una delle impostazioni più importanti. Quando i permessi del canale devono essere modificati, ad esempio quando viene bloccato o nascosto, Astro modificherà i permessi del ruolo di destinazione per raggiungere lo stato desiderato.  
+Ad esempio, se nel tuo server gli utenti devono completare un processo di verifica e ottenere un ruolo `Verificato`, allora probabilmente si vuole impostare che come ruolo di destinazione.
 
-### Moderator role
+### Ruolo del moderatore
 
-If you provide a moderator role, it will always have the necessary permissions to manage the channel, even when locked or hidden.
+Se si fornisce un ruolo di moderatore, avrà sempre i permessi necessari per gestire il canale, anche quando bloccato o nascosto.
 
-### Default state
+### Stato predefinito
 
-You can decide whether temporary voice channels should be generated locked or hidden by default.
+Puoi decidere se i canali vocali temporanei debbano essere generati bloccati o nascosti per impostazione predefinita.
 
-## Commands settings
+## Impostazioni comandi
 
-You can put some limitations on the user commands, such as whether they can use badwords in their voice channel name (only works in English), and provide some minimum and maximum values that users can use for the user limit and bitrate.
+È possibile mettere alcune limitazioni sui comandi utente, ad esempio se possono usare parole cattive nel loro nome del canale vocale (funziona solo in inglese), e fornire alcuni valori minimi e massimi che gli utenti possono utilizzare per il limite utente e bitrate.
 
-## Useful utilities
+## Utilità utili
 
-### Owner role
+### Ruolo del proprietario
 
-If provided, Astro will assign this role to temporary voice channel owners, and remove it from them when they leave the channel or when the ownership gets transfered.
+Se fornito, Astro assegnerà questo ruolo ai proprietari temporanei del canale vocale, e rimuoverlo da loro quando lasciano il canale o quando la proprietà viene trasferita.
 
-### Queue mode
+### Modalità coda
 
-With queue mode enabled, Astro will try to fill existing channels before creating new ones.  
-Useful feature when channels have a user limit set and you need to make sure that channels are all filled with the maximum amount of users.
+Con la modalità coda abilitata, Astro cercherà di riempire i canali esistenti prima di crearne di nuovi.  
+Funzione utile quando i canali hanno un limite utente impostato e si deve assicurarsi che i canali sono tutti riempiti con la quantità massima di utenti.
 
 ### Fallback generator
 
-When the generator category fills up (gets to 50 channels) users that join the generator will be moved to the fallback generator if set.
+Quando la categoria generatore si riempie (arriva a 50 canali) gli utenti che uniscono il generatore verranno spostati al generatore di ripiego, se impostato.
 
-## Waiting rooms
+## Stanze d'attesa
 
-A waiting room is simply a voice channel that gets created near a temporary voice channel.  
-Users can join the waiting room to indicate that they are waiting to get in the temporary voice channel, and the owner of it can drag users from the waiting room to its channel.
+Una sala d'attesa è semplicemente un canale vocale che viene creato vicino a un canale vocale temporaneo.  
+Gli utenti possono entrare nella sala d'attesa per indicare che stanno aspettando di entrare nel canale vocale temporaneo, e il proprietario di esso può trascinare gli utenti dalla sala d'attesa al suo canale.
 
-On the dashboard you can choose whether Astro should automatically create a waiting room for each temporary voice channel, and configure all aspects of it: name (can make use of variables there too), user limit, bitrate, etc...
+Sul cruscotto è possibile scegliere se Astro debba creare automaticamente una sala d'attesa per ogni canale vocale temporaneo, e configurare tutti gli aspetti di esso: nome (può fare uso di variabili anche lì), limite utente, bitrate, ecc...
 
-Users are also able to create a waiting room with the appropriate slash command or interface button.
+Gli utenti sono anche in grado di creare una sala d'attesa con l'apposito comando slash o pulsante di interfaccia.
 
-## Private text chats
+## Chat di testo privato
 
-A private text chat instead is a text channel that is only visible to users inside a temporary voice channel.  
-You can configure whether Astro should create a private text chat for each temporary voice channel on the dashboard, along with its settings, like for waiting rooms.
+Una chat di testo privata è invece un canale di testo che è visibile solo agli utenti all'interno di un canale vocale temporaneo.  
+È possibile configurare se Astro dovrebbe creare una chat di testo privata per ogni canale vocale temporaneo sulla dashboard, insieme alle sue impostazioni, come per le sale d'attesa.
 
-Users are also able to create a private text chat with the appropriate slash command or interface button.
+Gli utenti sono anche in grado di creare una chat di testo privata con il comando di barra appropriato o pulsante di interfaccia.
 
-### Creation message
+### Messaggio di creazione
 
-You can also provide a message that Astro sends into temporary voice channels when created.  
-The message will be sent in the private text chat if that exists, otherwise in the voice channel chat (yeah it's confusing, but voice channels now also have an integrated text chat).
+È inoltre possibile fornire un messaggio che Astro invia nei canali vocali temporanei una volta creato.  
+Il messaggio verrà inviato nella chat di testo privata se esiste, altrimenti nel canale vocale chat (sì, è confusione, ma i canali vocali ora hanno anche una chat di testo integrata).
 
-You can choose whether the message should be an embed or a simple text message.
+È possibile scegliere se il messaggio deve essere un embed o un semplice messaggio di testo.
 
-Alternatively, you can make Astro send an [Interface](/guides/interface) in the text chat!
+In alternativa, puoi fare in modo che Astro invii una [Interface](/guides/interface) nella chat di testo!
