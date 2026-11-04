@@ -1,84 +1,84 @@
 ---
-title: The basics
-description: Get started using Astro learning the basics
+title: Le basi
+description: Inizia a usare Astro imparando le basi
 ---
 
-## What can Astro do?
+## Cosa può fare Astro?
 
-Astro focuses exclusively on the voice aspect of Discord and improves it with some unique and advanced features.
+Astro si concentra esclusivamente sull'aspetto vocale di Discord e lo migliora con alcune caratteristiche uniche e avanzate.
 
-The main feature it provides are Temporary voice channels.  
-A temporary voice channel gets created by so-called generators (which are created and managed by Astro). When a user joins a generator, Astro creates a temporary voice channel for the user and moves him/her into it. Once the temporary voice channel gets empty, Astro automatically deletes it.  
-This way you won't have a bunch of empty voice channels sitting around in your server!
+La caratteristica principale che fornisce sono i canali vocali temporanei.  
+Un canale vocale temporaneo viene creato dai cosiddetti generatori (che sono creati e gestiti da Astro). Quando un utente entra in un generatore, Astro crea un canale vocale temporaneo per l'utente e lo sposta in esso. Una volta che il canale vocale temporaneo si svuota, Astro lo cancella automaticamente.  
+In questo modo non avrai un sacco di canali vocali vuoti seduti nel tuo server!
 
-Complementary to that, Astro provides ways to let users manage their temporary voice channels, such as renaming the channel, changing the user limit, locking / hiding the channel and much more. That can be done either via slash commands, or Astro interfaces. An interface is simply a message with buttons created by Astro that allows users to quickly perform actions on their voice channel.
+A complemento di questo, Astro fornisce modi per consentire agli utenti di gestire i loro canali vocali temporanei, come rinominare il canale, cambiare il limite utente, bloccare / nascondere il canale e molto altro. Questo può essere fatto sia tramite comandi slash o interfacce Astro. Un'interfaccia è semplicemente un messaggio con i pulsanti creati da Astro che consente agli utenti di eseguire rapidamente azioni sul loro canale vocale.
 
-Additionally, Astro provides a way to group a bunch of settings together and apply them all at once to a temporary voice channel: templates. Lets say for example you have a gaming server where users play a bunch of different games, you can create a template for each game with its own name, user limit, etc...
+Inoltre, Astro fornisce un modo per raggruppare insieme un sacco di impostazioni e applicarle tutte contemporaneamente a un canale vocale temporaneo: modelli. Diciamo per esempio che hai un server di gioco dove gli utenti giocano un sacco di giochi diversi, è possibile creare un modello per ogni gioco con il proprio nome, limite utente, ecc...
 
-Another extremely useful feature are Voice roles. With voice roles, you can ensure users get a specific role when they are inside a specific voice channel. It's a really powerful feature which unlocks many different scenarios.
+Un'altra caratteristica estremamente utile sono i ruoli vocali. Con i ruoli vocali, è possibile garantire che gli utenti ottengano un ruolo specifico quando sono all'interno di un canale vocale specifico. È una caratteristica davvero potente che sblocca molti scenari diversi.
 
-You can read more about all those features in their corresponding [guide](/guides).  
-Here we are gonna cover up the basics on how to get started using Astro in your server!
+Puoi leggere di più su tutte queste funzionalità nella loro corrispondente [guide](/guides).  
+Qui stiamo andando a coprire le basi su come iniziare a utilizzare Astro nel tuo server!
 
-## Inviting the bot
+## Invito al bot
 
-First thing first invite the bot to your server. To do so you can simply click [this link](/invite) and select a server!  
-Otherwise you can also visit the [dashboard](/guilds) and you will be automatically prompted to invite Astro in the server you want to manage if it's not added to it yet.
+Prima cosa invita il bot al tuo server. Per farlo puoi semplicemente cliccare su [questo link](/invite) e selezionare un server!  
+Altrimenti puoi anche visitare la [dashboard](/guilds) e ti verrà richiesto automaticamente di invitare Astro nel server che vuoi gestire se non è ancora stato aggiunto.
 
-## Server requirements
+## Requisiti del server
 
-In order to be able to use Astro in your server you must meet these requirements:
+Per essere in grado di utilizzare Astro nel tuo server è necessario soddisfare questi requisiti:
 
-- have less than 50 bots (Discord imposed limit)
-- have at least `Manage Channels` permissions
+- avere meno di 50 bot (limite imposto di Discord)
+- ha almeno i permessi `Manage Channels`
 
-## Bot permissions
+## Autorizzazioni Bot
 
-Astro requires `Administrator` permissions by default to work and ensure a great user experience for the average Discord users.
+Astro richiede permessi `Administrator` per impostazione predefinita per funzionare e garantire una grande esperienza utente per gli utenti medi di Discord.
 
-If you own a professional server and cannot give that permission to Astro for security reasons, you can disable this requirement via the apposite toggle on the dashboard
-![admin permission toggle](/guides/admin_permissions.png "Admin permission toggle")
-_You may ask for guidelines in the Support Server regarding the permissions that Astro needs in order to work, but in depth support is not provided for that._
+Se possiedi un server professionale e non puoi concedere tale permesso a Astro per motivi di sicurezza, puoi disabilitare questo requisito tramite l'interruttore apposite sulla dashboard
+! admin permission toggle](/guides/admin_permissions. ng 'Admin permission toggle')
+_You may ask for guidelines in the Support Server regarding the permissions that Astro need in order to work, ma a tal fine non è previsto un sostegno approfondito._
 
-## Command permissions
+## Autorizzazioni di comando
 
-Remember that you can always configure who has access to Astro slash commands via Discord slash command permissions.  
-[Read more about it here](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+Ricorda che puoi sempre configurare chi ha accesso ai comandi slash Astro tramite i permessi di comando slash Discord.  
+[Per saperne di più qui](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
 
-## Errors & Issues
+## Errori E Problemi
 
-Astro will report all the issues and errors it encounters when working in your server.  
-Anytime you experience something working not quite right remember to check the errors section in the dashboard!
+Astro segnalerà tutti i problemi e gli errori che incontra quando lavora nel tuo server.  
+Ogni volta che si verifica qualcosa che non funziona bene ricordatevi di controllare la sezione errori nella dashboard!
 
-## Ultimate
+## Ultima
 
-Ultimate is the premium version of Astro, and it provides many useful advanced features while removing all limitations:
+Ultimate è la versione premium di Astro, e fornisce molte utili funzionalità avanzate rimuovendo tutte le limitazioni:
 
-| Feature                                   |                      Premium                      |                            Free                            |
-| ----------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
-| Unlimited temporary vc generators         | <span class="text-discord-green text-lg">✓</span> |                          Maximum 2                         |
-| Unlimited interfaces                      | <span class="text-discord-green text-lg">✓</span> |                          Maximum 1                         |
-| Unlimited voice roles                     | <span class="text-discord-green text-lg">✓</span> |                          Maximum 1                         |
-| Unlimited templates                       | <span class="text-discord-green text-lg">✓</span> |                          Maximum 3                         |
-| Numbered voice channel names              | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Customisable interfaces                   | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Badwords filter for voice channel names   | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Waiting rooms                             | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Private text chats                        | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Voice role for channel owners             | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Custom messages at voice channel creation | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Fallback generators                       | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| Caratteristica                                           |                      Premium                      |                             Gratis                             |
+| -------------------------------------------------------- | :-----------------------------------------------: | :------------------------------------------------------------: |
+| Generatori temporanei vc illimitati                      | <span class="text-discord-green text-lg">✓</span> |                            Massimo 2                           |
+| Interfacce illimitate                                    | <span class="text-discord-green text-lg">✓</span> |                            Massimo 1                           |
+| Ruoli vocali illimitati                                  | <span class="text-discord-green text-lg">✓</span> |                            Massimo 1                           |
+| Modelli illimitati                                       | <span class="text-discord-green text-lg">✓</span> |                            Massimo 3                           |
+| Nomi dei canali vocali numerati                          | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
+| Interfacce personalizzabili                              | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
+| Filtro delle parole cattive per i nomi dei canali vocali | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
+| Stanze d'attesa                                          | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
+| Chat di testo privato                                    | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
+| Ruolo vocale per i proprietari dei canali                | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
+| Messaggi personalizzati alla creazione del canale vocale | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
+| Generatori di Fallback                                   | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg"><unk></span> |
 
-### Upgrading your server to Ultimate
+### Aggiornamento del server a Ultimate
 
-Once you purchase a subscription on the [Ultimate page](/ultimate) or via the [Discord App Store](https://discord.com/application-directory/715621848489918495/premium) you can upgrade your server via the apposite button on the dashboard
-![ultimate upgrade](/guides/ultimate.png "Ultimate upgrade")
+Una volta acquistato un abbonamento sulla [Ultimate page](/ultimate) o tramite il [Discord App Store](https://discord.com/application-directory/715621848489918495/premium) è possibile aggiornare il server tramite il pulsante apposite sulla dashboard
+! aggiornamento ultimo](/guide/ultimate. ng 'Ultimate upgrade')
 
-### Managing your subscription
+### Gestire il tuo abbonamento
 
-You can view, manage and cancel your Ultimate subscriptions using the [Billing portal](/billing).  
-If you purchased Ultimate via the Discord App Store checkout [this guide](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+Puoi visualizzare, gestire e annullare i tuoi abbonamenti Ultimate utilizzando il [portale di fatturazione](/billing).  
+Se hai acquistato Ultimate tramite il Checkout Discord App Store [questa guida](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
 
-## Support
+## Supporto
 
-Feel free to join the [Support / Community Server](/support) if you got any question!
+Sentitevi liberi di unirvi al [Support / Community Server](/support) se avete qualche domanda!
