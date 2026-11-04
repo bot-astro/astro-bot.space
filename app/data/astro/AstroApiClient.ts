@@ -14,6 +14,7 @@ import type { GSVoiceRole } from '~/types/guild-settings/voice_role'
 import type { GeneratorCreateRB } from '~/types/guild-settings/request-bodies/generator_create_rb'
 import type { GSTemplate } from '~/types/guild-settings/template'
 import type { GSInterface } from '~/types/guild-settings/interface'
+import type { Media, MediaType } from '~/types/media'
 
 /**
  * Api client to interact with the Astro APIs
@@ -352,11 +353,35 @@ export class AstroApiClient {
     message_id: string,
     interface_settings: GSInterface,
   ): Promise<GuildSettings> => {
+    // empty optional texts mean "not set"
+    const embed_style = interface_settings.embed_style
+    const body: GSInterface = {
+      ...interface_settings,
+      embed_style: {
+        ...embed_style,
+        url: embed_style.url || null,
+        title: embed_style.title || null,
+        description: embed_style.description || null,
+        thumbnail: embed_style.thumbnail || null,
+        image: embed_style.image || null,
+        author_name: embed_style.author_name || null,
+        author_url: embed_style.author_url || null,
+        author_icon_url: embed_style.author_icon_url || null,
+        footer: embed_style.footer || null,
+        footer_icon_url: embed_style.footer_icon_url || null,
+      },
+      buttons: interface_settings.buttons.map((b) => ({
+        ...b,
+        name: b.name || null,
+        emoji: b.emoji || null,
+      })),
+    }
+
     return useApiFetch<GuildSettings>(
       this.url(`/v2/guilds/${guild_id}/settings/interfaces/${message_id}`),
       {
         method: 'POST',
-        body: interface_settings,
+        body,
       },
     )
   }
@@ -371,5 +396,39 @@ export class AstroApiClient {
         method: 'DELETE',
       },
     )
+  }
+
+  /// MEDIA ///
+  public get_media = async (guild_id: string): Promise<Media[]> => {
+    return useApiFetch<Media[]>(this.url(`/v2/guilds/${guild_id}/media`))
+  }
+
+  public upload_media = async (
+    guild_id: string,
+    type: MediaType,
+    file: File,
+  ): Promise<Media> => {
+    const body = new FormData()
+    body.append(
+      'meta',
+      new Blob([JSON.stringify({ media_type: type })], {
+        type: 'application/json',
+      }),
+    )
+    body.append('media', file)
+
+    return useApiFetch<Media>(this.url(`/v2/guilds/${guild_id}/media`), {
+      method: 'POST',
+      body,
+    })
+  }
+
+  public delete_media = async (
+    guild_id: string,
+    media_id: string,
+  ): Promise<void> => {
+    return useApiFetch(this.url(`/v2/guilds/${guild_id}/media/${media_id}`), {
+      method: 'DELETE',
+    })
   }
 }

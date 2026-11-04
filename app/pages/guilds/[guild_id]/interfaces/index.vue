@@ -34,38 +34,35 @@
           <p class="text-center text-xl">Create interface</p>
 
           <div class="mt-4 flex flex-col gap-6">
-            <div class="groups-wrapper">
-              <div class="groups-container">
-                <GroupSetting
-                  heading="Channel"
-                  description="The text channel in which the interface message is sent"
+            <div class="flex flex-col gap-2">
+              <div class="flex flex-col">
+                <span class="text-heading">Channel</span>
+                <span class="text-description"
+                  >The text channel in which the interface message is sent</span
                 >
-                  <template #bottom-action>
-                    <Select v-model:model-value="create_interface_channel_id">
-                      <SelectTrigger>
-                        <SelectValue aria-label="value">{{
-                          guild_channels?.find(
-                            (c) => c.id === create_interface_channel_id,
-                          )?.name ?? 'Select a channel'
-                        }}</SelectValue>
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectItem
-                            v-for="channel in (guild_channels ?? []).filter(
-                              (c) => c.type == 0,
-                            )"
-                            :key="channel.id"
-                            :value="channel.id"
-                          >
-                            {{ channel.name }}
-                          </SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
-                  </template>
-                </GroupSetting>
               </div>
+              <Select v-model:model-value="create_interface_channel_id">
+                <SelectTrigger>
+                  <SelectValue aria-label="value">{{
+                    guild_channels?.find(
+                      (c) => c.id === create_interface_channel_id,
+                    )?.name ?? 'Select a channel'
+                  }}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      v-for="channel in (guild_channels ?? []).filter(
+                        (c) => c.type == 0,
+                      )"
+                      :key="channel.id"
+                      :value="channel.id"
+                    >
+                      {{ channel.name }}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
@@ -117,17 +114,42 @@
           >
             <div class="flex items-center gap-4 px-4 py-6">
               <IconInterface class="size-4 shrink-0" />
-              <div class="flex flex-col">
-                <span class="text-md">
-                  {{
-                    guild_channels.find((c) => c.id == inter.channel_id)
-                      ?.name ?? 'Deleted channel'
-                  }}
-                </span>
-                <span class="text-foreground-secondary">
-                  {{ inter.buttons.length }}
-                  {{ inter.buttons.length === 1 ? 'button' : 'buttons' }}
-                </span>
+              <div class="flex flex-col gap-2 sm:gap-0">
+                <div class="flex flex-col gap-0 sm:flex-row sm:gap-2">
+                  <span class="text-foreground-secondary">Channel: </span>
+                  <div class="vertical-center gap-2">
+                    {{
+                      guild_channels.find((c) => c.id == inter.channel_id)
+                        ?.name ?? 'Deleted channel'
+                    }}
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-0 sm:flex-row sm:gap-2">
+                  <span
+                    v-if="
+                      guild_channels.find((c) => c.id == inter.channel_id)
+                        ?.parent_name
+                    "
+                    class="text-foreground-secondary"
+                    >Category:
+                  </span>
+                  <span v-else class="text-foreground-secondary"
+                    >Not in a category</span
+                  >
+                  <div
+                    v-if="
+                      guild_channels.find((c) => c.id == inter.channel_id)
+                        ?.parent_name
+                    "
+                    class="vertical-center gap-2"
+                  >
+                    {{
+                      guild_channels.find((c) => c.id == inter.channel_id)
+                        ?.parent_name
+                    }}
+                  </div>
+                </div>
               </div>
               <div class="grow" />
               <div

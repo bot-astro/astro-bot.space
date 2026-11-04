@@ -56,7 +56,7 @@
 
       <div
         class="group flex max-w-none items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90 md:max-w-96"
-        @click="navigateTo(`/guides/interface`, { open: { target: '_blank' } })"
+        @click="navigateTo(`${$route.fullPath}/interfaces`)"
       >
         <IconInterface
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"

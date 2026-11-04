@@ -163,7 +163,7 @@ const guilds = computed(() => {
           class="gap-2"
           @click="() => (permission_dialog_open = true)"
         >
-          <Icon name="fluent:question-circle-32-regular" class="size-6" />
+          <IconQuestion class="size-6" />
           See required permissions
         </ButtonText>
       </div>

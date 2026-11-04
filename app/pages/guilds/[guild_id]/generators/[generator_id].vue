@@ -1139,11 +1139,10 @@
             description="A message that Astro sends in every private text chat upon creation"
           >
             <template #bottom-action>
-              <div class="flex gap-2">
-                <input
+              <div class="flex items-start gap-2">
+                <textarea
                   v-model="m_generator_settings.default_chat_text"
-                  type="text"
-                  class="grow"
+                  class="min-h-20 grow resize-y"
                   minlength="0"
                   :maxlength="
                     private_chat_message_type ==

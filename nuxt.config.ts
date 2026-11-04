@@ -21,6 +21,12 @@ export default defineNuxtConfig({
   ],
 
   css: ['~/assets/css/tailwind.css'],
+
+  icon: {
+    // need to have classes work with tailwind
+    cssLayer: 'base',
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

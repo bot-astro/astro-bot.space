@@ -6,25 +6,19 @@ export interface GSInterface {
 }
 
 export interface GSInterfaceButton {
-  /**
-   * id = command that the button executes
-   * TODO: figure out how to get the available commands and map them to a user readable name
-   *
-   * it contains query parameters too:
-   * - interface=true if it's an interface button
-   *
-   * example: `vc-lock?interface=true`
-   */
   id: string
   name: string | null
   emoji: string | null
-  /**
-   * TODO: figure out how to get the available style keys and map them to colors
-   * probably do this statically instead of making an api call
-   */
   button_style_key: number
   button_disabled: boolean
-  position: number[]
+  /**
+   * action row (0-4) and position in the row (0-4)
+   */
+  position: { first: number; second: number }
+  /**
+   * defaults to the id
+   */
+  field_value: string
 }
 
 export interface GSInterfaceEmbedStyle {
@@ -33,7 +27,7 @@ export interface GSInterfaceEmbedStyle {
   description: string | null
   timestamp: number | null
   /**
-   * rgb integer representing the color
+   * color as a signed argb integer, the alpha is ignored by Discord
    */
   color: number
   /**

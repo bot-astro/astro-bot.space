@@ -272,7 +272,8 @@
   }
 
   /* Inputs */
-  input {
+  input,
+  textarea {
     @apply h-9 rounded bordered bg-background px-2.5 py-1 placeholder-gray-400 outline-none invalid:border-border-destructive focus-visible:border-pink-500/80 invalid:focus-visible:border-border-destructive disabled:cursor-not-allowed disabled:border-border/40 disabled:placeholder-gray-400/60 disabled:opacity-80 disabled:invalid:border-border-destructive/40;
   }
 }

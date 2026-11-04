@@ -7,6 +7,7 @@ interface GroupSettingProps {
   class?: HTMLAttributes['class']
   compact?: boolean
   ultimate?: boolean
+  hideUltimateBadge?: boolean
 }
 
 const props = defineProps<GroupSettingProps>()
@@ -29,7 +30,11 @@ defineEmits(['upgrade'])
         <div class="vertical-center gap-2">
           <span class="text-heading">{{ props.heading }}</span>
           <slot name="heading-action" />
-          <Badge v-if="props.ultimate" variant="ultimate">Ultimate</Badge>
+          <Badge
+            v-if="props.ultimate && !props.hideUltimateBadge"
+            variant="ultimate"
+            >Ultimate</Badge
+          >
         </div>
         <span v-if="props.description" class="text-description">{{
           props.description
