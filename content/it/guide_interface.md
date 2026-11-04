@@ -1,82 +1,82 @@
 ---
-title: Interfaces
-description: Learn how to make your interface look amazing and unique with this guide
+title: Interfacce
+description: Impara a rendere la tua interfaccia sorprendente e unica con questa guida
 ---
 
-## What is an interface?
+## Che cos'è un'interfaccia?
 
-An interface is a message that allows users to manage their temporary voice channel quickly via simple buttons.  
-Here is what the default interface looks like:
-![default interface](/guides/default_interface.png "Default interface")
+Un'interfaccia è un messaggio che consente agli utenti di gestire rapidamente il loro canale vocale temporaneo tramite semplici pulsanti.  
+Ecco come appare l'interfaccia predefinita:
+![interfaccia predefinita](/guides/default_interface.png "Interfaccia predefinita")
 
-## Creating an interface
+## Creazione di un'interfaccia
 
-You can create a new interface on the dashboard, in the interfaces section.  
-It will ask for a channel and you can choose the one you want.
+È possibile creare una nuova interfaccia sul cruscotto, nella sezione interfacce.  
+Si chiederà un canale e si può scegliere quello che si desidera.
 
-## Changing channel or re-sending an interface
+## Modifica del canale o ri-invio di un'interfaccia
 
-If you mistakenly deleted an interface message or simply wanna change the channel, you can do it from the interface settings on the dashboard.
+Se hai erroneamente cancellato un messaggio di interfaccia o vuoi semplicemente cambiare il canale, puoi farlo dalle impostazioni dell'interfaccia sul cruscotto.
 
-## Customising an interface
+## Personalizzare un'interfaccia
 
-You can customise every interface on the dashboard: open the interfaces section, choose an interface and click on manage.  
-Once you are done, save your changes and Astro will update the message right away.
+È possibile personalizzare ogni interfaccia sul cruscotto: aprire la sezione interfacce, scegliere un'interfaccia e fare clic su gestire.  
+Una volta che hai finito, salva le modifiche e Astro aggiornerà subito il messaggio.
 
-_Remember that without [Ultimate](/ultimate) you can only disable or enable the buttons of an interface, everything else requires it._
+_Ricorda che senza [Ultimate](/ultimate) puoi solo disabilitare o abilitare i pulsanti di un'interfaccia, tutto il resto lo richiede._
 
-### Message settings
+### Impostazioni messaggio
 
-The message is split in three parts, each one with its own settings:
+Il messaggio è diviso in tre parti, ognuna con le proprie impostazioni:
 
-- `Header`: the author name, the author link and the author image
-- `Body`: the title, the title link, the thumbnail, the description and the image
-- `Footer`: the footer text, the footer image, the color of the line on the left of the message and a timestamp
+- `Intestazione`: il nome dell'autore, il link dell'autore e l'immagine dell'autore
+- `Corpo`: il titolo, il link del titolo, la miniatura, la descrizione e l'immagine
+- `Footer`: il testo a piè di pagina, l'immagine a piè di pagina, il colore della riga sulla sinistra del messaggio e un timestamp
 
-Every setting is optional, if you leave a text empty it simply won't be shown.  
-The author image and the image have a default value, you can bring it back with the `Reset to default` button.
+Ogni impostazione è opzionale, se si lascia un testo vuoto semplicemente non sarà mostrato.  
+L'immagine dell'autore e l'immagine hanno un valore predefinito, puoi riportarla con il pulsante `Reimposta a default`.
 
-### Images
+### Immagini
 
-Images are picked from your server media storage. Click on `Choose image` to open it, from there you can:
+Le immagini sono raccolte dall'archivio multimediale del server. Clicca su `Scegli immagine` per aprirlo, da lì puoi:
 
-- upload a new image
-- preview the images you already uploaded
-- select an image for the setting you are editing
-- delete the images you don't need anymore
+- carica una nuova immagine
+- anteprima delle immagini che hai già caricato
+- seleziona un'immagine per l'impostazione che stai modificando
+- elimina le immagini di cui non hai più bisogno
 
-_Deleting an image also clears it from the settings of the interface you are editing, other interfaces using it will keep a broken image until you change it._
+_Eliminando un'immagine la cancella anche dalle impostazioni dell'interfaccia che si sta modificando, altre interfacce che lo utilizzano manterranno un'immagine interrotta fino a quando non la cambiere._
 
-Images that are not used by any interface are cleaned up automatically from time to time.
+Le immagini che non vengono utilizzate da nessuna interfaccia vengono pulite automaticamente di tanto in tanto.
 
-### Custom emojis
+### Emoji personalizzate
 
-Emojis can be used in the message texts and on the buttons. Standard emojis can simply be pasted, custom Discord emojis need their code instead:
+Emojis può essere utilizzato nei testi dei messaggi e sui pulsanti. Le emoji standard possono essere semplicemente incollate, le emoji Discord personalizzate hanno bisogno del loro codice:
 
-1. Go on Discord and write the emoji prefixed with a backslash, for example `\:name:`
-2. Send the message, Discord will send the code of the emoji, like `<:name:id>` (or `<a:name:id>` for animated emojis)
-3. Copy that code and paste it in the dashboard
+1. Vai su Discord e scrivi il prefisso emoji con una barra rovesciata, per esempio `\:name:`
+2. Invia il messaggio, Discord invierà il codice delle emoji, come `<:name:id>` (o `<a:name:id>` per le emoji animate)
+3. Copia quel codice e incollalo nella dashboard
 
-## Buttons
+## Pulsanti
 
-An interface can have up to 5 rows with 5 buttons each, the dashboard shows them as a grid.  
-Click on a button to edit it, or on an empty position to add a new one.
+Un'interfaccia può avere fino a 5 righe con 5 pulsanti ciascuna, il cruscotto li mostra come una griglia.  
+Fare clic su un pulsante per modificarlo, o su una posizione vuota per aggiungerne una nuova.
 
-Each button has these settings:
+Ogni pulsante ha queste impostazioni:
 
-- `Button`: which button is shown in this position. A button can be used only once per interface, so the ones already placed somewhere else are not selectable. Choose `No button` to remove it
-- `Disabled`: users can see the button but can't click it
-- `Name`: the text shown on the button
-- `Emoji`: the emoji shown on the button
-- `Style`: the color of the button
+- `Button`: quale pulsante è mostrato in questa posizione. Un pulsante può essere utilizzato solo una volta per interfaccia, quindi quelli già posizionati da qualche altra parte non sono selezionabili. Scegli `No button` per rimuoverlo
+- `Disabilitato`: gli utenti possono vedere il pulsante ma non possono cliccarlo
+- `Nome`: il testo mostrato sul pulsante
+- `Emoji`: le emoji mostrate sul pulsante
+- `Stile`: il colore del pulsante
 
-A button needs at least a name or an emoji to be shown.
+Un pulsante richiede almeno un nome o un'emoji per essere mostrato.
 
-## Deleting an interface
+## Eliminazione di un'interfaccia
 
-You can delete an interface at any time from the dashboard.
+È possibile eliminare un'interfaccia in qualsiasi momento dalla dashboard.
 
-### Example of custom interface
+### Esempio di interfaccia personalizzata
 
-The image below is an example of a custom interface:
-![custom interface](/illustration/custom_interface.png "Custom interface")
+L'immagine sottostante è un esempio di interfaccia personalizzata:
+![interfaccia personalizzata](/illustration/custom_interface.png "Interfaccia personalizzata")
