@@ -1,46 +1,46 @@
 ---
-title: Templates
-description: Discover templates and learn how to configure them, your users will love them
+title: Modelli
+description: Scopri i modelli e impara a configurarli, i tuoi utenti li ameranno
 ---
 
-## What is a template
+## Cos'è un modello
 
-Templates encapsulate a set of voice channel settings that can be applied all at once on temporary voice channels.
+I modelli incapsulano una serie di impostazioni del canale vocale che possono essere applicate tutte contemporaneamente su canali vocali temporanei.
 
-This is useful for example in gaming servers where users might be playing many different games.  
-Having a template for each game would allow to make the voice channel more fitting to that game, for example with a specific name or user limit.
+Questo è utile per esempio nei server di gioco dove gli utenti potrebbero giocare molti giochi diversi.  
+Avere un modello per ogni gioco permetterebbe di rendere il canale vocale più adatto a quel gioco, ad esempio con un nome specifico o un limite utente.
 
-## Using templates
+## Utilizzo di modelli
 
-Users of your server can use templates either via `/template` which provides autocompletion for which templates are available, and via the apposite interface button.
+Gli utenti del tuo server possono utilizzare i modelli sia tramite `/template` che fornisce il completamento automatico per cui sono disponibili i modelli, sia tramite il pulsante dell'interfaccia apposite .
 
-## Creating and managing templates
+## Creazione e gestione di modelli
 
-You can create, manage and delete templates on the [dashboard](/guilds).
+È possibile creare, gestire ed eliminare i modelli [dashboard](/guilds).
 
-_Remember that without [Ultimate](/ultimate) you can have a maximum of 3 templates._
+_Ricorda che senza [Ultimate](/ultimate) puoi avere un massimo di 3 modelli._
 
-## Template name
+## Nome del modello
 
-The name of a template is simply a name useful to users to identify a template.  
-**It is not** the name that the temporary voice channel gets when the template is applied.
+Il nome di un modello è semplicemente un nome utile agli utenti per identificare un modello.  
+**Non è** il nome che il canale vocale temporaneo riceve quando viene applicato il modello.
 
-When a user wants to apply a template to its channel, he will only see a list of templates where each has its own name.
+Quando un utente vuole applicare un modello al suo canale, vedrà solo un elenco di modelli in cui ognuno ha il proprio nome.
 
-## Voice channel settings
+## Impostazioni canale vocale
 
-On the dashboard you can configure the settings that get applied to the temporary voice channel when a template is used.
+Nella dashboard è possibile configurare le impostazioni che vengono applicate al canale vocale temporaneo quando viene utilizzato un modello.
 
-You can choose:
+Puoi scegliere:
 
-- the name for the voice channel, which supports [variables](http://localhost:3000/guides/generator#variables)
-- the user limit
-- the bitrate
-- the region
+- il nome del canale vocale, che supporta [variables](http://localhost:3000/guides/generator#variables)
+- il limite utente
+- il bitrate
+- la regione
 
-_None of these settings are required so you do not need to set them all._
+_Nessuna di queste impostazioni è richiesta per cui non è necessario impostarle tutti._
 
-## Enabled generators
+## Generatori abilitati
 
-If you want to restrict a template to some specific generators you can do that on the dashboard.  
-If you do so, the template will not be usable by any temporary voice channel that has been created by a generator not in that `Enabled generators` list.
+Se si desidera limitare un modello ad alcuni generatori specifici è possibile farlo sulla dashboard.  
+Se lo fai, il template non sarà utilizzabile da nessun canale vocale temporaneo creato da un generatore non in quell'elenco di generatori attivati.
