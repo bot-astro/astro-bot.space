@@ -1,35 +1,35 @@
 ---
-title: Voice roles
-description: Learn how to configure voice role to make your server look extra slick
+title: Ruoli vocali
+description: Scopri come configurare il ruolo vocale per rendere il tuo server più slick
 ---
 
-## What is a voice role
+## Che cos'è un ruolo vocale
 
-Voice roles (previously called connections) allow to connect voice channels to roles.  
-They allow users to get a role while they are inside a specific voice channel, and Astro will remove the role from them when they leave that channel.
+I ruoli vocali (precedentemente chiamati connessioni) consentono di collegare i canali vocali ai ruoli.  
+Consentono agli utenti di avere un ruolo mentre sono all'interno di un canale vocale specifico, e Astro rimuoverà il ruolo da loro quando lasciano quel canale.
 
-Here in this example, a voice role is created on the category. The user receives a role that permits the user to see a bunch of channels related to that category:
-![voice role example](/illustration/voice_role.gif "Voice role example")
+Qui in questo esempio, viene creato un ruolo vocale sulla categoria. L'utente riceve un ruolo che permette all'utente di vedere un gruppo di canali relativi a quella categoria:
+![esempio ruolo vocale](/illustration/voice_role . se 'Esempio ruolo vocale')
 
-## Creating and managing voice roles
+## Creare e gestire ruoli vocali
 
-You can create, manage and delete voice roles on the dashboard.
+È possibile creare, gestire ed eliminare i ruoli vocali nella dashboard.
 
-_Remember that without [Ultimate](/ultimate) you can have only 1 voice role._
+_Ricorda che senza [Ultimate](/ultimate) puoi avere solo 1 ruolo vocale._
 
-## Channel setting
+## Impostazioni canale
 
-When you create or edit a voice role, you must select a channel for it.  
-The channel can be either:
+Quando si crea o modifica un ruolo vocale, è necessario selezionare un canale per esso.  
+Il canale può essere:
 
-- a normal voice channel (includes stage channels)
-- a category: every voice channel inside that category will trigger the voice role
-- a generator: every temporary voice channel created by that generator will trigger the voice role
+- un canale vocale normale (inclusi i canali di stadio)
+- una categoria: ogni canale vocale all'interno di quella categoria attiverà il ruolo vocale
+- un generatore: ogni canale vocale temporaneo creato da quel generatore attiverà il ruolo vocale
 
-## Action setting
+## Impostazione delle azioni
 
-There are three different actions you can choose from:
+Ci sono tre azioni diverse tra cui puoi scegliere:
 
-- `Assign`: Astro assigns the role to the user when he joins the channel and removes the role when the user leaves
-- `Remove`: remove the role when the user join the channel and give it back when the user leaves
-- `Toggle`: if the user doesn't have the role before joining the channel, it will behave like `Assign`, otherwise like `Remove` (basically toggles the role as the name suggests)
+- `Assegno`: Astro assegna il ruolo all'utente quando entra nel canale e rimuove il ruolo quando l'utente lascia
+- `Remove`: rimuovi il ruolo quando l'utente entra nel canale e restituiscilo quando l'utente lascia
+- `Toggle`: se l'utente non ha il ruolo prima di entrare nel canale, si comporterà come `Assegno`, altrimenti come `Remove` (fondamentalmente commuta il ruolo come suggerisce il nome)
