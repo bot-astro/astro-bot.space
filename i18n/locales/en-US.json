@@ -126,8 +126,8 @@
     "get_started": "Get started",
     "temp_vc": {
       "description": "Astro generates fully customisable temporary voice channels on prompt and deletes them when they get empty. Ships with extreme customisation so that you can create the perfect system for your server!",
-      "title_animated": "Temporary ",
-      "title": "Voice Channels"
+      "title": "{animated} Voice Channels",
+      "animated": "Temporary"
     },
     "default_interface": {
       "title": "Beautiful interface",

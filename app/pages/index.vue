@@ -21,12 +21,17 @@
         :description="$t('home.temp_vc.description')"
         :reverse="false"
       >
-        <span class="font-display text-2xl font-medium tracking-wide"
-          ><span class="animate-dissolve">{{
-            $t('home.temp_vc.title_animated')
-          }}</span
-          >{{ $t('home.temp_vc.title') }}</span
+        <i18n-t
+          keypath="home.temp_vc.title"
+          tag="span"
+          class="font-display text-2xl font-medium tracking-wide"
         >
+          <template #animated>
+            <span class="animate-dissolve">{{
+              $t('home.temp_vc.animated')
+            }}</span>
+          </template>
+        </i18n-t>
       </CoreFeatureBox>
 
       <CoreFeatureBox
