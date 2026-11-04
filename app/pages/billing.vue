@@ -10,6 +10,7 @@ definePageMeta({
 })
 
 const { $astroApiClient } = useNuxtApp()
+const { t } = useI18n()
 
 onMounted(async () => {
   try {
@@ -19,8 +20,7 @@ onMounted(async () => {
     console.log(e)
 
     toast({
-      description:
-        'Something went wrong when opening the billing portal, try again later',
+      description: t('error.billing_portal'),
       variant: 'destructive',
     })
   }

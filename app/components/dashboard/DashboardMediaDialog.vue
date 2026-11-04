@@ -2,10 +2,9 @@
   <Dialog v-model:open="open">
     <DialogContent class="max-w-3xl">
       <div class="flex flex-col gap-2">
-        <p class="text-center text-xl">Media storage</p>
+        <p class="text-center text-xl">{{ $t('dashboard.media.title') }}</p>
         <p class="text-center text-foreground-secondary">
-          Upload images or pick one of the images you already uploaded (png,
-          jpeg, gif or webp)
+          {{ $t('dashboard.media.description') }}
         </p>
       </div>
 
@@ -21,7 +20,7 @@
         <div v-if="filtered_media.length > 0" class="flex justify-end">
           <Button :loading="upload_media_loading" @click="file_input?.click()">
             <Icon name="fluent:add-12-regular" />
-            Upload
+            {{ $t('common.upload') }}
           </Button>
         </div>
 
@@ -46,7 +45,7 @@
                 <AlertDialogTrigger class="absolute top-1 right-1">
                   <ButtonDestructive
                     :loading="delete_media_loading"
-                    aria-label="Delete image"
+                    :aria-label="$t('dashboard.media.delete_image')"
                     class="bg-background px-2"
                   >
                     <Icon name="fluent:delete-24-regular" />
@@ -54,17 +53,17 @@
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle
-                      >Are you sure you want to delete this
-                      image?</AlertDialogTitle
-                    >
+                    <AlertDialogTitle>{{
+                      $t('dashboard.media.delete_confirm_title')
+                    }}</AlertDialogTitle>
                     <AlertDialogDescription>
-                      The image is permanently removed from our storage and
-                      stops rendering wherever it is used.
+                      {{ $t('dashboard.media.delete_confirm_description') }}
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                    <AlertDialogCancel>Go back</AlertDialogCancel>
+                    <AlertDialogCancel>{{
+                      $t('common.go_back')
+                    }}</AlertDialogCancel>
                     <AlertDialogAction
                       :destructive="true"
                       @click="
@@ -74,7 +73,7 @@
                         )
                       "
                     >
-                      Delete
+                      {{ $t('common.delete') }}
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
@@ -87,7 +86,7 @@
               class="w-full justify-center"
               @click="$emit('select', m)"
             >
-              Select
+              {{ $t('common.select') }}
             </ButtonSecondary>
           </div>
         </div>
@@ -113,11 +112,11 @@
         >
           <IconLoading v-if="upload_media_loading" />
           <Icon v-else name="fluent:image-add-24-regular" class="size-8" />
-          <span>Drop an image here or click to upload</span>
+          <span>{{ $t('dashboard.media.drop_or_click') }}</span>
         </button>
       </template>
       <div v-else-if="media_error" class="center text-foreground-destructive">
-        Something went wrong, please try again later
+        {{ $t('common.error_generic') }}
       </div>
       <div v-else class="center py-6">
         <IconLoading />

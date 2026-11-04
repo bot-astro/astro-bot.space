@@ -221,7 +221,7 @@
   }
 
   .text-group-name {
-    @apply text-sm font-semibold text-dimmed;
+    @apply text-sm font-semibold text-dimmed uppercase;
   }
 
   .text-heading {

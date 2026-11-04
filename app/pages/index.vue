@@ -7,11 +7,10 @@
       <NuxtImg src="/img/logo.png" class="size-48 select-none" sizes="200px" />
       <p class="mt-5 font-display text-7xl tracking-widest">ASTRO</p>
       <p class="mt-4 text-center text-xl text-gray-400">
-        The most unique and complete discord bot for temporary voice channels
-        and voice roles!
+        {{ $t('home.tagline') }}
       </p>
       <ButtonStandout to="/guilds" class="mt-6 text-xl">
-        Get started
+        {{ $t('home.get_started') }}
       </ButtonStandout>
     </div>
 
@@ -19,36 +18,39 @@
     <div class="mx-12 flex w-3/4 flex-col gap-32 md:w-auto">
       <CoreFeatureBox
         illustration-src="illustration/temp_vc.gif"
-        description="Astro generates fully customisable temporary voice channels on prompt and deletes them when they get empty. Ships with extreme customisation so that you can create the perfect system for your server!"
+        :description="$t('home.temp_vc.description')"
         :reverse="false"
       >
         <span class="font-display text-2xl font-medium tracking-wide"
-          ><span class="animate-dissolve">Temporary </span>Voice Channels</span
+          ><span class="animate-dissolve">{{
+            $t('home.temp_vc.title_animated')
+          }}</span
+          >{{ $t('home.temp_vc.title') }}</span
         >
       </CoreFeatureBox>
 
       <CoreFeatureBox
-        title="Beautiful interface"
-        description="Astro ships with a beautiful default interface which makes it easy for mobile users to manage their private channel!"
+        :title="$t('home.default_interface.title')"
+        :description="$t('home.default_interface.description')"
         illustration-src="guides/default_interface.png"
         :reverse="true"
       />
 
       <CoreFeatureBox
-        title="But also customisable"
-        description="Astro interfaces are fully customisable down to the last pixel, make it look exactly how you need, imagination is your only limit!"
+        :title="$t('home.custom_interface.title')"
+        :description="$t('home.custom_interface.description')"
         illustration-src="illustration/custom_interface.png"
         :reverse="false"
       />
 
       <CoreFeatureBox
         illustration-src="illustration/voice_role.gif"
-        description="Astro can assign or remove a role when a user joins a specific voice channel! This way you can, for example, let people see gaming text chats only while they are in a gaming VC, imagination is your only limit!"
+        :description="$t('home.voice_role.description')"
         :reverse="true"
       >
         <span
           class="animate-light font-display text-2xl font-medium tracking-wide"
-          >Voice Roles</span
+          >{{ $t('home.voice_role.title') }}</span
         >
       </CoreFeatureBox>
 
@@ -56,15 +58,14 @@
         class="backlit-box flex flex-col items-center justify-center rounded-md bordered bg-background p-6 md:max-w-5xl"
         @mousemove="onBacklitBoxMouseMove"
       >
-        <span class="font-display text-2xl font-medium tracking-wide"
-          >Voice Channels Exclusive</span
-        >
+        <span class="font-display text-2xl font-medium tracking-wide">{{
+          $t('home.exclusive.title')
+        }}</span>
         <span class="mt-4 text-dimmed">
-          Focusing only on voice channels makes Astro the best bot of its kind,
-          try it now!
+          {{ $t('home.exclusive.description') }}
         </span>
         <ButtonStandout to="/guilds" class="mt-6 w-full md:w-fit">
-          Get started
+          {{ $t('home.get_started') }}
         </ButtonStandout>
       </div>
     </div>

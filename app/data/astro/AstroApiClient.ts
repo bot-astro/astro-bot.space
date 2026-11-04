@@ -8,6 +8,7 @@ import type {
 } from '~/types/discord'
 import type { User, UserChargebeeSubscriptions } from '~/types/user'
 import type { GSError } from '~/types/guild-settings/error'
+import type { GuildProfileRB } from '~/types/guild-settings/request-bodies/guild_profile_rb'
 import type { GuildSettingsRB } from '~/types/guild-settings/request-bodies/guild_settings_rb'
 import type { GSGenerator } from '~/types/guild-settings/generator'
 import type { GSVoiceRole } from '~/types/guild-settings/voice_role'
@@ -410,6 +411,16 @@ export class AstroApiClient {
         method: 'DELETE',
       },
     )
+  }
+
+  public update_guild_profile = async (
+    guild_id: string,
+    profile_rb: GuildProfileRB,
+  ): Promise<void> => {
+    return useApiFetch(this.url(`/v2/guilds/${guild_id}/settings/profile`), {
+      method: 'POST',
+      body: profile_rb,
+    })
   }
 
   /// MEDIA ///

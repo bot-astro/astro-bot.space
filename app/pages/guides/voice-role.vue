@@ -4,35 +4,28 @@ definePageMeta({
   layout: 'guide',
 })
 
-useHead({
-  title:
-    'Voice Role guide - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.guide_voice_role.title') }),
   meta: [
-    {
-      name: 'description',
-      content:
-        'Learn how to configure voice role to make your server look extra slick',
-    },
+    { name: 'description', content: t('meta.guide_voice_role.description') },
     {
       property: 'og:title',
-      content:
-        'Voice Role guide - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.guide_voice_role.title') }),
     },
     {
       property: 'og:description',
-      content:
-        'Learn how to configure voice role to make your server look extra slick',
+      content: t('meta.guide_voice_role.description'),
     },
     {
       property: 'og:url',
       content: 'https://astro-bot.space/guides/voice-role',
     },
   ],
-})
+}))
 
-const { data: page } = await useAsyncData('guide_voice_role', () =>
-  queryCollection('content').path('/guide_voice_role').first(),
-)
+const { data: page } = await useGuideContent('guide_voice_role')
 </script>
 
 <template>

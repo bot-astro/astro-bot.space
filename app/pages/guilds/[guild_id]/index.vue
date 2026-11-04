@@ -2,17 +2,8 @@
   <div class="flex flex-col">
     <DashboardSettingsSaveToast
       :open="guild_settings_edited"
-      :loading="save_guild_settings_pending"
-      @save="
-        save_guild_settings({
-          guild_id: guild_id!,
-          guild_settings_rb: {
-            allow_missing_admin_perms:
-              m_guild_settings!.allow_missing_admin_perm,
-            locale: m_guild_settings!.locale,
-          },
-        })
-      "
+      :loading="save_guild_settings_pending || save_guild_profile_pending"
+      @save="save_all"
       @reset="() => (m_guild_settings = useClone(guild_settings))"
     />
 
@@ -25,9 +16,9 @@
         }}</span>
         <Skeleton v-else class="h-10 w-72" />
 
-        <span class="dashboard-section-description"
-          >Manage your server's basic settings</span
-        >
+        <span class="dashboard-section-description">{{
+          $t('overview.description')
+        }}</span>
       </div>
     </div>
 
@@ -40,13 +31,13 @@
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Configure temporary voice channels</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('overview.shortcuts.generators.title') }}</span
           >
-          <span class="text-description"
-            >Head over to the generators section to configure temporary voice
-            channels</span
-          >
+          <span class="text-description">{{
+            $t('overview.shortcuts.generators.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown
@@ -62,13 +53,13 @@
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Create an interface</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('overview.shortcuts.interfaces.title') }}</span
           >
-          <span class="text-description"
-            >Create an interface to let your users manage their channel with
-            simple buttons</span
-          >
+          <span class="text-description">{{
+            $t('overview.shortcuts.interfaces.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown
@@ -84,13 +75,13 @@
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Setup voice roles</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('overview.shortcuts.voice_roles.title') }}</span
           >
-          <span class="text-description"
-            >Connect voice channels to roles to enhance the user experience in
-            your server!</span
-          >
+          <span class="text-description">{{
+            $t('overview.shortcuts.voice_roles.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown
@@ -102,39 +93,45 @@
     <!-- interactive content -->
     <div class="mt-12 flex flex-col gap-12">
       <div class="groups-wrapper">
-        <span class="text-group-name">SETTINGS</span>
+        <span class="text-group-name">{{ $t('overview.settings.group') }}</span>
         <div class="groups-container">
-          <GroupSetting heading="Require Admin permission">
+          <GroupSetting :heading="$t('overview.settings.require_admin.title')">
             <template #description>
               <span class="text-description">
-                Disabling this will make Astro ignore permission issues.
-                <span class="text-destructive"
-                  >It's recommended to keep this on!</span
-                >
+                {{ $t('overview.settings.require_admin.description') }}
+                <span class="text-destructive">{{
+                  $t('overview.settings.require_admin.recommendation')
+                }}</span>
               </span>
             </template>
             <Switch v-model:checked="require_admin_perms" />
           </GroupSetting>
           <GroupSetting
-            heading="Slash command permissions"
-            description="You can restrict access to Astro slash commands using Discord permissions directly!"
+            :heading="$t('overview.settings.slash_permissions.title')"
+            :description="$t('overview.settings.slash_permissions.description')"
           >
             <Button
               target="_blank"
               to="https://discord.com/blog/slash-commands-permissions-discord-apps-bots"
             >
-              Manage on Discord
+              {{ $t('overview.settings.slash_permissions.button') }}
             </Button>
           </GroupSetting>
         </div>
       </div>
 
       <div v-if="guild_settings" class="groups-wrapper">
-        <span class="text-group-name">ULTIMATE</span>
+        <span class="text-group-name">{{ $t('overview.ultimate.group') }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="Ultimate server"
-            :description="`Your server is currently ${isGuildUltimate(guild_settings) ? 'upgraded' : 'not upgraded'} to ultimate`"
+            :heading="$t('overview.ultimate.title')"
+            :description="
+              $t(
+                isGuildUltimate(guild_settings)
+                  ? 'overview.ultimate.status_upgraded'
+                  : 'overview.ultimate.status_not_upgraded',
+              )
+            "
           >
             <template #heading-action>
               <TooltipProvider>
@@ -154,7 +151,7 @@
                     </ButtonText>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Refresh Discord subscriptions data</p>
+                    <p>{{ $t('overview.ultimate.refresh_tooltip') }}</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -165,14 +162,14 @@
               :loading="downgrade_guild_loading"
               @click="on_downgrade_clicked"
             >
-              Downgrade
+              {{ $t('common.downgrade') }}
             </ButtonDestructive>
             <ButtonUltimate
               v-else
               :loading="upgrade_guild_loading"
               @click="upgrade_dialog_open = true"
             >
-              Upgrade
+              {{ $t('common.upgrade') }}
             </ButtonUltimate>
 
             <DashboardUpgradeDialog
@@ -204,14 +201,12 @@
             <Dialog v-model:open="downgrade_on_discord_dialog_open">
               <DialogContent>
                 <div class="flex flex-col gap-2">
-                  <p class="text-center text-xl">Downgrade server</p>
+                  <p class="text-center text-xl">
+                    {{ $t('overview.ultimate.downgrade_title') }}
+                  </p>
 
                   <div>
-                    <p>
-                      This server was upgraded to Ultimate via the Discord
-                      store. You need to cancel the subscription on Discord to
-                      downgrade from Ultimate.
-                    </p>
+                    <p>{{ $t('overview.ultimate.downgrade_on_discord') }}</p>
                   </div>
 
                   <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
@@ -224,7 +219,7 @@
                         )
                       "
                     >
-                      Official guide
+                      {{ $t('overview.ultimate.official_guide') }}
                     </ButtonSecondary>
                   </div>
                 </div>
@@ -234,40 +229,96 @@
         </div>
       </div>
 
-      <div class="groups-wrapper">
-        <span class="text-group-name">DANGEROUS</span>
+      <div v-if="m_guild_settings" class="groups-wrapper">
+        <span class="text-group-name">{{ $t('overview.profile.group') }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="Reset temporary voice channels cache"
-            description="If you are encountering weird issues with temporary voice channels, especially when the incremental names for the channels start with a wrong number or skip some, hit this button, otherwise try to avoid this!"
+            :heading="$t('overview.profile.nickname.title')"
+            :description="$t('overview.profile.nickname.description')"
+          >
+            <template #bottom-action>
+              <input
+                v-model="profile_nickname"
+                placeholder="Astro"
+                type="text"
+                class="grow"
+                maxlength="32"
+              />
+            </template>
+          </GroupSetting>
+
+          <GroupSetting
+            :heading="$t('overview.profile.bio.title')"
+            :description="$t('overview.profile.bio.description')"
+          >
+            <template #bottom-action>
+              <textarea
+                v-model="profile_bio"
+                :placeholder="$t('overview.profile.bio.placeholder')"
+                class="min-h-24 grow resize-y"
+                maxlength="190"
+              />
+            </template>
+          </GroupSetting>
+
+          <DashboardInterfaceImageSetting
+            :heading="$t('overview.profile.avatar.title')"
+            :description="$t('overview.profile.avatar.description')"
+            :url="m_guild_settings.avatar_url"
+            :disabled="false"
+            :empty-label="$t('overview.profile.using_default')"
+            @preview="preview_image_url = m_guild_settings!.avatar_url"
+            @choose="open_media_dialog('PROFILE_AVATAR')"
+            @remove="m_guild_settings!.avatar_url = null"
+          />
+
+          <DashboardInterfaceImageSetting
+            :heading="$t('overview.profile.banner.title')"
+            :description="$t('overview.profile.banner.description')"
+            :url="m_guild_settings.banner_url"
+            :disabled="false"
+            :empty-label="$t('overview.profile.using_default')"
+            @preview="preview_image_url = m_guild_settings!.banner_url"
+            @choose="open_media_dialog('PROFILE_BANNER')"
+            @remove="m_guild_settings!.banner_url = null"
+          />
+        </div>
+      </div>
+
+      <div class="groups-wrapper">
+        <span class="text-group-name">{{ $t('overview.danger.group') }}</span>
+        <div class="groups-container">
+          <GroupSetting
+            :heading="$t('overview.danger.clear_cache.title')"
+            :description="$t('overview.danger.clear_cache.description')"
           >
             <AlertDialog>
               <AlertDialogTrigger>
                 <ButtonDestructive
                   :loading="is_clear_temporary_vcs_cache_pending"
                 >
-                  Clear cache
+                  {{ $t('common.clear_cache') }}
                 </ButtonDestructive>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle
-                    >Are you sure you want to clear the cache?</AlertDialogTitle
-                  >
+                  <AlertDialogTitle>{{
+                    $t('overview.danger.clear_cache.confirm_title')
+                  }}</AlertDialogTitle>
                   <AlertDialogDescription>
-                    If you do this all the currently existing temporary voice
-                    channels wont be recognized by Astro anymore and you will
-                    need to delete them manually!
+                    {{ $t('overview.danger.clear_cache.confirm_description') }}
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Go back</AlertDialogCancel>
+                  <AlertDialogCancel>{{
+                    $t('common.go_back')
+                  }}</AlertDialogCancel>
                   <AlertDialogAction
                     :destructive="true"
                     :loading="is_clear_temporary_vcs_cache_pending"
                     @click="clear_temporary_vcs_cache({ guild_id: guild_id! })"
                   >
-                    Clear cache
+                    {{ $t('common.clear_cache') }}
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
@@ -276,6 +327,35 @@
         </div>
       </div>
     </div>
+
+    <DashboardMediaDialog
+      v-model:open="media_dialog_open"
+      :type="media_dialog_type"
+      @select="on_media_select"
+      @deleted="on_media_deleted"
+    />
+
+    <AlertDialog
+      :open="preview_image_url != null"
+      @update:open="(o) => !o && (preview_image_url = null)"
+    >
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle class="truncate">{{
+            preview_image_url ? image_name(preview_image_url) : ''
+          }}</AlertDialogTitle>
+        </AlertDialogHeader>
+        <img
+          v-if="preview_image_url"
+          :src="preview_image_url"
+          :alt="image_name(preview_image_url)"
+          class="max-h-96 w-full rounded object-contain"
+        />
+        <AlertDialogFooter>
+          <AlertDialogCancel>{{ $t('common.close') }}</AlertDialogCancel>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   </div>
 </template>
 
@@ -288,6 +368,7 @@ import type { GuildSettings } from '~/types/guild-settings/guild_settings'
 import { deepEqual } from 'fast-equals'
 import type { DashboardSection } from '~/types/dashboard'
 import { useToast } from '~/components/ui/toast'
+import type { Media, MediaType } from '~/types/media'
 import { useRefreshGuildEntitlementsMutation } from '~/data/astro/mutations/useRefreshGuildEntitlementsMutation'
 
 definePageMeta({
@@ -295,32 +376,26 @@ definePageMeta({
   layout: 'dashboard',
   section: {
     id: 1,
-    name: 'Overview',
+    name: 'dashboard.sections.overview',
     icon: 'astro:settings',
     description: 'Overview Description',
   } as DashboardSection,
 })
 
-useHead({
-  title: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.guild.title') }),
   meta: [
-    {
-      name: 'description',
-      content:
-        'Configure all Astro settings for your server with the powerful and intuitive dashboard',
-    },
+    { name: 'description', content: t('meta.guild.description') },
     {
       property: 'og:title',
-      content: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.guild.title') }),
     },
-    {
-      property: 'og:description',
-      content:
-        'Configure all Astro settings for your server with the powerful and intuitive dashboard',
-    },
+    { property: 'og:description', content: t('meta.guild.description') },
     { property: 'og:url', content: 'https://astro-bot.space/guilds' },
   ],
-})
+}))
 
 const { toast } = useToast()
 const guild_id = useGuildId()
@@ -341,6 +416,24 @@ const require_admin_perms = computed({
   set(required) {
     if (m_guild_settings.value) {
       m_guild_settings.value.allow_missing_admin_perm = !required
+    }
+  },
+})
+
+// empty inputs are stored as null so that they match the saved settings
+const profile_nickname = computed({
+  get: () => m_guild_settings.value?.nickname ?? '',
+  set(value) {
+    if (m_guild_settings.value) {
+      m_guild_settings.value.nickname = value || null
+    }
+  },
+})
+const profile_bio = computed({
+  get: () => m_guild_settings.value?.bio ?? '',
+  set(value) {
+    if (m_guild_settings.value) {
+      m_guild_settings.value.bio = value || null
     }
   },
 })
@@ -379,6 +472,11 @@ const {
   mutate: save_guild_settings,
 } = useGuildSettingsMutation()
 const {
+  isPending: save_guild_profile_pending,
+  error: save_guild_profile_error,
+  mutate: save_guild_profile,
+} = useUpdateGuildProfileMutation()
+const {
   mutate: upgrade_guild,
   isPending: upgrade_guild_loading,
   error: upgrade_guild_error,
@@ -398,6 +496,88 @@ const {
   isPending: is_refresh_entitlements_pending,
   error: refresh_entitlements_error,
 } = useRefreshGuildEntitlementsMutation()
+
+// the profile and the settings have separate endpoints, the profile goes first
+// so that the settings response already contains the new profile
+function save_all() {
+  const settings = guild_settings.value
+  const edited = m_guild_settings.value
+  if (!settings || !edited || !guild_id.value) return
+
+  const gid = guild_id.value
+  const settings_changed =
+    edited.allow_missing_admin_perm !== settings.allow_missing_admin_perm ||
+    edited.locale !== settings.locale
+  const profile_changed =
+    edited.nickname !== settings.nickname ||
+    edited.bio !== settings.bio ||
+    edited.avatar_url !== settings.avatar_url ||
+    edited.banner_url !== settings.banner_url
+
+  const save_settings = () =>
+    save_guild_settings({
+      guild_id: gid,
+      guild_settings_rb: {
+        allow_missing_admin_perms: edited.allow_missing_admin_perm,
+        locale: edited.locale,
+      },
+    })
+
+  if (profile_changed) {
+    save_guild_profile(
+      {
+        guild_id: gid,
+        profile_rb: {
+          nickname: edited.nickname,
+          bio: edited.bio,
+          avatar_url: edited.avatar_url,
+          banner_url: edited.banner_url,
+        },
+      },
+      { onSuccess: () => settings_changed && save_settings() },
+    )
+  } else if (settings_changed) {
+    save_settings()
+  }
+}
+
+/// IMAGES ///
+const media_dialog_open = ref(false)
+const media_dialog_type = ref<MediaType>('PROFILE_AVATAR')
+const preview_image_url = ref<string | null>(null)
+
+const { data: guild_media } = useGuildMedia(guild_id)
+
+const image_name = (url: string) =>
+  guild_media.value?.find((m) => m.url == url)?.file_name ??
+  decodeURIComponent(url.split('?')[0]!.split('/').pop() ?? url)
+
+function open_media_dialog(type: MediaType) {
+  media_dialog_type.value = type
+  media_dialog_open.value = true
+}
+
+function on_media_select(media: Media) {
+  if (m_guild_settings.value) {
+    if (media_dialog_type.value == 'PROFILE_AVATAR') {
+      m_guild_settings.value.avatar_url = media.url
+    } else {
+      m_guild_settings.value.banner_url = media.url
+    }
+  }
+  media_dialog_open.value = false
+}
+
+function on_media_deleted(media: Media) {
+  if (!m_guild_settings.value) return
+
+  if (m_guild_settings.value.avatar_url == media.url) {
+    m_guild_settings.value.avatar_url = null
+  }
+  if (m_guild_settings.value.banner_url == media.url) {
+    m_guild_settings.value.banner_url = null
+  }
+}
 
 const on_downgrade_clicked = () => {
   if (guild_settings.value) {
@@ -457,6 +637,15 @@ watch(guild_settings_error, (e) => {
 })
 
 watch(save_guild_settings_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
+watch(save_guild_profile_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,

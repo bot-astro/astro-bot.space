@@ -11,7 +11,7 @@
   <div
     v-for="role in unmanageable_roles"
     :key="role.id"
-    title="Astro cannot manage this role because it is above Astro's highest role in the server's role hierarchy"
+    :title="$t('dashboard.role.unmanageable')"
   >
     <SelectItem :value="role.id" disabled>
       <div class="vertical-center text-muted-foreground gap-2">

@@ -3,11 +3,12 @@
     <div class="flex items-center gap-4">
       <IconVoiceRole class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
-        <span class="dashboard-section-title">Voice roles</span>
-        <span class="dashboard-section-description"
-          >Voice roles allow to give temporary roles to users inside specific
-          voice channels!</span
-        >
+        <span class="dashboard-section-title">{{
+          $t('voice_roles.title')
+        }}</span>
+        <span class="dashboard-section-description">{{
+          $t('voice_roles.description')
+        }}</span>
       </div>
       <div class="grow" />
       <Button
@@ -15,25 +16,23 @@
         @click="create_voice_role_clicked"
       >
         <Icon name="fluent:add-12-regular" />
-        Create
+        {{ $t('common.create') }}
       </Button>
     </div>
 
     <Dialog v-model:open="create_voice_role_dialog_open">
       <DialogContent>
         <div class="flex flex-col gap-2">
-          <p class="text-center text-xl">Create voice role</p>
+          <p class="text-center text-xl">
+            {{ $t('voice_roles.create_title') }}
+          </p>
 
           <div class="groups-wrapper mt-4 max-h-[70vh] overflow-y-scroll">
             <div class="groups-container">
-              <GroupSetting heading="Channel">
+              <GroupSetting :heading="$t('common.channel')">
                 <template #description>
-                  <span class="text-foreground-secondary">
-                    Channel that triggers this voice role. If you select a
-                    category, all channels of that category will trigger this
-                    voice role.<br />If you select a generator, all temporary
-                    voice channels generated from it will trigger this voice
-                    role.
+                  <span class="whitespace-pre-line text-foreground-secondary">
+                    {{ $t('voice_roles.channel_description') }}
                   </span>
                 </template>
                 <template #bottom-action>
@@ -45,7 +44,7 @@
                   >
                     <SelectTrigger>
                       <SelectValue
-                        placeholder="Select a channel"
+                        :placeholder="$t('voice_roles.select_channel')"
                         aria-label="value"
                         >{{
                           guild_channels?.find(
@@ -72,8 +71,8 @@
               </GroupSetting>
 
               <GroupSetting
-                heading="Role"
-                description="This role will be applied when a user joins the channel selected above"
+                :heading="$t('common.role')"
+                :description="$t('voice_roles.role_description')"
               >
                 <template #bottom-action>
                   <Select
@@ -84,7 +83,7 @@
                   >
                     <SelectTrigger>
                       <SelectValue
-                        placeholder="Select a role"
+                        :placeholder="$t('voice_roles.select_role')"
                         aria-label="value"
                         >{{
                           guild_roles?.find(
@@ -106,8 +105,8 @@
               </GroupSetting>
 
               <GroupSetting
-                heading="Action"
-                description="Assign means Astro will give the role to the user when he joins the channel and remove it when he leaves. Remove does the opposite. Toggle behaves like 'Assign' if the user doesn't have the role, 'Remove' otherwise"
+                :heading="$t('common.action')"
+                :description="$t('voice_roles.action_description')"
               >
                 <template #bottom-action>
                   <Select
@@ -127,7 +126,7 @@
                           :key="v"
                           :value="v"
                         >
-                          {{ capitalize(v) }}
+                          {{ $t(`voice_roles.actions.${v.toLowerCase()}`) }}
                         </SelectItem>
                       </SelectGroup>
                     </SelectContent>
@@ -136,8 +135,8 @@
               </GroupSetting>
 
               <GroupSetting
-                heading="Permanent"
-                description="If enabled, Astro will not revert the action when the user leaves the channel"
+                :heading="$t('common.permanent')"
+                :description="$t('voice_roles.permanent_description')"
               >
                 <Switch v-model:checked="create_voice_role_permanent" />
               </GroupSetting>
@@ -145,7 +144,9 @@
           </div>
 
           <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
-            <Button @click="create_voice_role_form_submission"> Create </Button>
+            <Button @click="create_voice_role_form_submission">
+              {{ $t('common.create') }}
+            </Button>
           </div>
         </div>
       </DialogContent>
@@ -160,8 +161,7 @@
         }
       "
     >
-      Ultimate is required to have more than 1 voice role. Upgrade your server
-      to Ultimate to create more voice roles.
+      {{ $t('voice_roles.ultimate_required') }}
     </DashboardUltimateRequiredDialog>
 
     <div class="flex w-full items-center justify-center">
@@ -182,16 +182,20 @@
               <IconVoiceRole class="size-4 shrink-0" />
               <div class="flex flex-col gap-2 sm:gap-0">
                 <div class="flex flex-col gap-0 sm:flex-row sm:gap-2">
-                  <span class="text-foreground-secondary">Channel: </span>
+                  <span class="text-foreground-secondary">{{
+                    $t('voice_roles.channel_label')
+                  }}</span>
                   <div class="vertical-center gap-2">
                     {{
                       guild_channels.find((c) => c.id == voice_role.id)?.name ??
-                      'Deleted channel'
+                      $t('common.deleted_channel')
                     }}
                   </div>
                 </div>
                 <div class="flex flex-col gap-0 sm:flex-row sm:gap-2">
-                  <span class="text-foreground-secondary">Role: </span>
+                  <span class="text-foreground-secondary">{{
+                    $t('voice_roles.role_label')
+                  }}</span>
                   <div class="vertical-center gap-2">
                     <span
                       :class="`size-3 min-h-3 min-w-3 rounded-full`"
@@ -199,7 +203,7 @@
                     />
                     {{
                       guild_roles.find((r) => r.id == voice_role.role_id)
-                        ?.name ?? 'Deleted role'
+                        ?.name ?? $t('voice_roles.deleted_role')
                     }}
                   </div>
                 </div>
@@ -211,11 +215,11 @@
                         ?.parent_name
                     "
                     class="text-foreground-secondary"
-                    >Category:
+                    >{{ $t('voice_roles.category_label') }}
                   </span>
-                  <span v-else class="text-foreground-secondary"
-                    >Not in a category</span
-                  >
+                  <span v-else class="text-foreground-secondary">{{
+                    $t('voice_roles.no_category')
+                  }}</span>
                   <div
                     v-if="
                       guild_channels.find((c) => c.id == voice_role.id)
@@ -237,27 +241,27 @@
                 <Button
                   @click="navigateTo(`${$route.fullPath}/${voice_role.id}`)"
                 >
-                  Manage
+                  {{ $t('common.manage') }}
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger>
                     <ButtonDestructive :loading="delete_voice_role_loading">
-                      Delete
+                      {{ $t('common.delete') }}
                     </ButtonDestructive>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle
-                        >Are you sure you want to delete the voice
-                        role?</AlertDialogTitle
-                      >
+                      <AlertDialogTitle>{{
+                        $t('voice_roles.delete_confirm_title')
+                      }}</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This action cannot be un-done and you wont be able to
-                        restore this voice role!
+                        {{ $t('voice_roles.delete_confirm_description') }}
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Go back</AlertDialogCancel>
+                      <AlertDialogCancel>{{
+                        $t('common.go_back')
+                      }}</AlertDialogCancel>
                       <AlertDialogAction
                         :destructive="true"
                         :loading="delete_voice_role_loading"
@@ -268,7 +272,7 @@
                           })
                         "
                       >
-                        Delete
+                        {{ $t('common.delete') }}
                       </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
@@ -286,22 +290,22 @@
           v-else
           class="mt-12 flex min-h-full flex-col items-center justify-center gap-4"
         >
-          <span class="text-center text-xl font-semibold"
-            >You didn't create any voice role yet!</span
-          >
+          <span class="text-center text-xl font-semibold">{{
+            $t('voice_roles.none')
+          }}</span>
           <Button
             :loading="create_voice_role_loading"
             @click="create_voice_role_clicked"
           >
             <Icon name="fluent:add-12-regular" />
-            Create
+            {{ $t('common.create') }}
           </Button>
         </div>
       </div>
       <div v-else-if="guild_settings_error" class="grow">
-        <span class="center text-foreground-destructive"
-          >Something went wrong, please try again later</span
-        >
+        <span class="center text-foreground-destructive">{{
+          $t('common.error_generic')
+        }}</span>
       </div>
       <div v-else class="center">
         <IconLoading />
@@ -336,7 +340,6 @@
 
 <script lang="ts" setup>
 import { navigateTo } from '#imports'
-import capitalize from '~/utils/capitalize'
 import isGuildUltimate from '~/utils/isGuildUltimate'
 import { AError, AErrorCode } from '~/data/astro/core/AError'
 import type { DashboardSection } from '~/types/dashboard'
@@ -350,34 +353,32 @@ definePageMeta({
   layout: 'dashboard',
   section: {
     id: 5,
-    name: 'Voice role',
+    name: 'dashboard.sections.voice_roles',
     icon: 'astro:voice-role',
     description: 'Voice Role description',
   } as DashboardSection,
 })
 
-useHead({
-  title: 'Voice roles - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.voice_roles.title') }),
   meta: [
-    {
-      name: 'description',
-      content: 'Create, view and delete voice roles for your server',
-    },
+    { name: 'description', content: t('meta.voice_roles.description') },
     {
       property: 'og:title',
-      content:
-        'Voice roles - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.voice_roles.title') }),
     },
     {
       property: 'og:description',
-      content: 'Create, view and delete voice roles for your server',
+      content: t('meta.voice_roles.description'),
     },
     {
       property: 'og:url',
       content: 'https://astro-bot.space/guilds/voice_role',
     },
   ],
-})
+}))
 
 const { toast } = useToast()
 const guild_id = useGuildId()
@@ -430,7 +431,7 @@ const create_voice_role_clicked = () => {
 const create_voice_role_form_submission = () => {
   if (!create_voice_role_channel_id.value || !create_voice_role_role_id.value) {
     toast({
-      description: 'Please select a channel and role to create the voice role',
+      description: t('voice_roles.select_channel_and_role'),
       variant: 'destructive',
     })
   } else {

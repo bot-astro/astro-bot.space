@@ -33,7 +33,7 @@ defineEmits(['upgrade'])
           <Badge
             v-if="props.ultimate && !props.hideUltimateBadge"
             variant="ultimate"
-            >Ultimate</Badge
+            >{{ $t('common.ultimate') }}</Badge
           >
         </div>
         <span v-if="props.description" class="text-description">{{

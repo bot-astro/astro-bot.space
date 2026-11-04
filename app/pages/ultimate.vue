@@ -7,26 +7,20 @@ import { toast } from '~/components/ui/toast'
 //   middleware: 'auth',
 // })
 
-useHead({
-  title: 'Ultimate - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.ultimate.title') }),
   meta: [
-    {
-      name: 'description',
-      content:
-        'Take your server to the next level with premium Astro functionalities',
-    },
+    { name: 'description', content: t('meta.ultimate.description') },
     {
       property: 'og:title',
-      content: 'Ultimate - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.ultimate.title') }),
     },
-    {
-      property: 'og:description',
-      content:
-        'Take your server to the next level with premium Astro functionalities',
-    },
+    { property: 'og:description', content: t('meta.ultimate.description') },
     { property: 'og:url', content: 'https://astro-bot.space/ultimate' },
   ],
-})
+}))
 
 const { $astroApiClient } = useNuxtApp()
 useUser()
@@ -69,8 +63,7 @@ function subscribe() {
   } catch (e) {
     console.error(e)
     toast({
-      description:
-        'Something went wrong initiating the checkout, please try again later',
+      description: t('error.checkout'),
       variant: 'destructive',
     })
   }
@@ -80,10 +73,10 @@ function subscribe() {
 <template>
   <div class="mx-12 mt-16 flex w-3/4 flex-col items-center gap-16 md:w-auto">
     <div class="flex flex-col gap-4">
-      <span class="text-title text-center">Ultimate server</span>
-      <span class="text-subtitle text-center"
-        >Take your server to the next level with premium functionalities!</span
-      >
+      <span class="text-title text-center">{{ $t('ultimate.title') }}</span>
+      <span class="text-subtitle text-center">{{
+        $t('ultimate.subtitle')
+      }}</span>
     </div>
 
     <div class="flex flex-col rounded-lg bordered bg-background">
@@ -101,20 +94,20 @@ function subscribe() {
               >
                 ${{ price }}
               </span>
-              <span class="text-center text-xl"
-                >per {{ isMonthly ? 'month' : 'year ' }} for
-                {{ quantity }} server<span
-                  :class="quantity > 1 ? 'visible' : 'invisible'"
-                  >s</span
-                ></span
-              >
+              <span class="text-center text-xl">{{
+                $t(
+                  isMonthly ? 'ultimate.per_month' : 'ultimate.per_year',
+                  { count: quantity },
+                  quantity,
+                )
+              }}</span>
             </div>
             <!-- quantity & frequency -->
             <div class="flex flex-col items-center gap-6">
               <div class="flex flex-col gap-1">
-                <span class="text-center text-lg font-semibold"
-                  >Server quantity</span
-                >
+                <span class="text-center text-lg font-semibold">{{
+                  $t('ultimate.server_quantity')
+                }}</span>
                 <div class="flex items-center justify-center gap-2">
                   <ButtonSecondary
                     class="flex aspect-square items-center justify-center rounded-lg text-center"
@@ -140,7 +133,9 @@ function subscribe() {
                 </div>
               </div>
               <div class="flex flex-col gap-1">
-                <span class="text-center text-lg font-semibold">Billed</span>
+                <span class="text-center text-lg font-semibold">{{
+                  $t('ultimate.billed')
+                }}</span>
                 <div class="relative flex items-center justify-center gap-2">
                   <div
                     :class="
@@ -155,8 +150,8 @@ function subscribe() {
                   </div>
                   <SwitchTabs
                     v-model:checked="isMonthly"
-                    first="Monthly"
-                    second="Yearly"
+                    :first="$t('ultimate.monthly')"
+                    :second="$t('ultimate.yearly')"
                   />
                 </div>
               </div>
@@ -164,7 +159,9 @@ function subscribe() {
           </div>
           <!-- purchase button container -->
           <div>
-            <ButtonStandout @click="subscribe"> Subscribe </ButtonStandout>
+            <ButtonStandout @click="subscribe">
+              {{ $t('ultimate.subscribe') }}
+            </ButtonStandout>
           </div>
         </div>
       </div>
@@ -174,76 +171,65 @@ function subscribe() {
         class="mt-4 flex w-full flex-col justify-center gap-3 border-t border-border px-4 py-2 md:gap-1"
       >
         <div class="grid grid-cols-7 pt-1">
-          <span class="col-span-3 font-semibold md:text-lg">Feature</span>
-          <span class="col-span-2 text-center font-semibold md:text-lg"
-            >Premium</span
-          >
-          <span class="col-span-2 text-center font-semibold md:text-lg"
-            >Free</span
-          >
+          <span class="col-span-3 font-semibold md:text-lg">{{
+            $t('ultimate.feature')
+          }}</span>
+          <span class="col-span-2 text-center font-semibold md:text-lg">{{
+            $t('ultimate.premium')
+          }}</span>
+          <span class="col-span-2 text-center font-semibold md:text-lg">{{
+            $t('ultimate.free')
+          }}</span>
         </div>
         <hr class="my-2 opacity-20" />
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Unlimited temporary vc generators</span>
+          <span class="col-span-3">{{
+            $t('ultimate.features.generators')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
-          <span class="col-span-2 text-center select-none">Maximum 2</span>
+          <span class="col-span-2 text-center select-none">{{
+            $t('ultimate.maximum', { count: 2 })
+          }}</span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Unlimited interfaces</span>
+          <span class="col-span-3">{{
+            $t('ultimate.features.interfaces')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
-          <span class="col-span-2 text-center select-none">Maximum 1</span>
+          <span class="col-span-2 text-center select-none">{{
+            $t('ultimate.maximum', { count: 1 })
+          }}</span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Unlimited voice roles</span>
+          <span class="col-span-3">{{
+            $t('ultimate.features.voice_roles')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
-          <span class="col-span-2 text-center select-none">Maximum 1</span>
+          <span class="col-span-2 text-center select-none">{{
+            $t('ultimate.maximum', { count: 1 })
+          }}</span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Unlimited templates</span>
+          <span class="col-span-3">{{
+            $t('ultimate.features.templates')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
-          <span class="col-span-2 text-center select-none">Maximum 3</span>
+          <span class="col-span-2 text-center select-none">{{
+            $t('ultimate.maximum', { count: 3 })
+          }}</span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Numbered voice channel names</span>
-          <span class="col-span-2 text-center"
-            ><IconGreenCheck class="size-7"
-          /></span>
-          <span class="col-span-2 text-center"
-            ><IconRedCross class="size-6"
-          /></span>
-        </div>
-        <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3"
-            >User activity variables for channel names</span
-          >
-          <span class="col-span-2 text-center"
-            ><IconGreenCheck class="size-7"
-          /></span>
-          <span class="col-span-2 text-center"
-            ><IconRedCross class="size-6"
-          /></span>
-        </div>
-        <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Customisable interfaces</span>
-          <span class="col-span-2 text-center"
-            ><IconGreenCheck class="size-7"
-          /></span>
-          <span class="col-span-2 text-center"
-            ><IconRedCross class="size-6"
-          /></span>
-        </div>
-        <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3"
-            >Bypass voting requirements in any server</span
-          >
+          <span class="col-span-3">{{
+            $t('ultimate.features.numbered_names')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
@@ -252,9 +238,9 @@ function subscribe() {
           /></span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3"
-            >Badwords filter for voice channel names</span
-          >
+          <span class="col-span-3">{{
+            $t('ultimate.features.activity_variables')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
@@ -263,7 +249,9 @@ function subscribe() {
           /></span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Waiting rooms</span>
+          <span class="col-span-3">{{
+            $t('ultimate.features.custom_interfaces')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
@@ -272,7 +260,9 @@ function subscribe() {
           /></span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Private text chats</span>
+          <span class="col-span-3">{{
+            $t('ultimate.features.bypass_voting')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
@@ -281,7 +271,7 @@ function subscribe() {
           /></span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Voice role for channel owners</span>
+          <span class="col-span-3">{{ $t('ultimate.features.badwords') }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
@@ -290,9 +280,9 @@ function subscribe() {
           /></span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3"
-            >Custom messages at voice channel creation</span
-          >
+          <span class="col-span-3">{{
+            $t('ultimate.features.waiting_rooms')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>
@@ -301,7 +291,42 @@ function subscribe() {
           /></span>
         </div>
         <div class="grid grid-cols-7 items-center">
-          <span class="col-span-3">Fallback generators</span>
+          <span class="col-span-3">{{
+            $t('ultimate.features.private_chats')
+          }}</span>
+          <span class="col-span-2 text-center"
+            ><IconGreenCheck class="size-7"
+          /></span>
+          <span class="col-span-2 text-center"
+            ><IconRedCross class="size-6"
+          /></span>
+        </div>
+        <div class="grid grid-cols-7 items-center">
+          <span class="col-span-3">{{
+            $t('ultimate.features.owner_voice_role')
+          }}</span>
+          <span class="col-span-2 text-center"
+            ><IconGreenCheck class="size-7"
+          /></span>
+          <span class="col-span-2 text-center"
+            ><IconRedCross class="size-6"
+          /></span>
+        </div>
+        <div class="grid grid-cols-7 items-center">
+          <span class="col-span-3">{{
+            $t('ultimate.features.creation_message')
+          }}</span>
+          <span class="col-span-2 text-center"
+            ><IconGreenCheck class="size-7"
+          /></span>
+          <span class="col-span-2 text-center"
+            ><IconRedCross class="size-6"
+          /></span>
+        </div>
+        <div class="grid grid-cols-7 items-center">
+          <span class="col-span-3">{{
+            $t('ultimate.features.fallback_generators')
+          }}</span>
           <span class="col-span-2 text-center"
             ><IconGreenCheck class="size-7"
           /></span>

@@ -3,10 +3,12 @@
     <div class="flex items-center gap-4">
       <IconInterface class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
-        <span class="dashboard-section-title">Interfaces</span>
-        <span class="dashboard-section-description"
-          >Manage the interfaces of your server here!</span
-        >
+        <span class="dashboard-section-title">{{
+          $t('interfaces.title')
+        }}</span>
+        <span class="dashboard-section-description">{{
+          $t('interfaces.description')
+        }}</span>
       </div>
       <div class="grow" />
       <Button
@@ -23,30 +25,29 @@
           }
         "
       >
-        <Icon name="fluent:add-12-regular" />
-        Create
+        <Icon name="fluent:add-12-regular" /> {{ $t('common.create') }}
       </Button>
     </div>
 
     <Dialog v-model:open="create_interface_dialog_open">
       <DialogContent>
         <div class="flex flex-col gap-2">
-          <p class="text-center text-xl">Create interface</p>
+          <p class="text-center text-xl">{{ $t('interfaces.create_title') }}</p>
 
           <div class="mt-4 flex flex-col gap-6">
             <div class="flex flex-col gap-2">
               <div class="flex flex-col">
-                <span class="text-heading">Channel</span>
-                <span class="text-description"
-                  >The text channel in which the interface message is sent</span
-                >
+                <span class="text-heading">{{ $t('common.channel') }}</span>
+                <span class="text-description">{{
+                  $t('interfaces.channel_description')
+                }}</span>
               </div>
               <Select v-model:model-value="create_interface_channel_id">
                 <SelectTrigger>
                   <SelectValue aria-label="value">{{
                     guild_channels?.find(
                       (c) => c.id === create_interface_channel_id,
-                    )?.name ?? 'Select a channel'
+                    )?.name ?? $t('interfaces.select_channel')
                   }}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
@@ -81,7 +82,7 @@
                 }
               "
             >
-              Create
+              {{ $t('common.create') }}
             </Button>
           </div>
         </div>
@@ -97,8 +98,7 @@
         }
       "
     >
-      Ultimate is required to have more than 1 interface. Upgrade your server to
-      Ultimate to create more interfaces.
+      {{ $t('interfaces.ultimate_required') }}
     </DashboardUltimateRequiredDialog>
 
     <div class="flex w-full items-center justify-center">
@@ -116,11 +116,13 @@
               <IconInterface class="size-4 shrink-0" />
               <div class="flex flex-col gap-2 sm:gap-0">
                 <div class="flex flex-col gap-0 sm:flex-row sm:gap-2">
-                  <span class="text-foreground-secondary">Channel: </span>
+                  <span class="text-foreground-secondary">{{
+                    $t('voice_roles.channel_label')
+                  }}</span>
                   <div class="vertical-center gap-2">
                     {{
                       guild_channels.find((c) => c.id == inter.channel_id)
-                        ?.name ?? 'Deleted channel'
+                        ?.name ?? $t('common.deleted_channel')
                     }}
                   </div>
                 </div>
@@ -132,11 +134,11 @@
                         ?.parent_name
                     "
                     class="text-foreground-secondary"
-                    >Category:
+                    >{{ $t('voice_roles.category_label') }}
                   </span>
-                  <span v-else class="text-foreground-secondary"
-                    >Not in a category</span
-                  >
+                  <span v-else class="text-foreground-secondary">{{
+                    $t('voice_roles.no_category')
+                  }}</span>
                   <div
                     v-if="
                       guild_channels.find((c) => c.id == inter.channel_id)
@@ -158,27 +160,27 @@
                 <Button
                   @click="navigateTo(`${$route.fullPath}/${inter.message_id}`)"
                 >
-                  Manage
+                  {{ $t('common.manage') }}
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger>
                     <ButtonDestructive :loading="delete_interface_loading">
-                      Delete
+                      {{ $t('common.delete') }}
                     </ButtonDestructive>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle
-                        >Are you sure you want to delete the
-                        interface?</AlertDialogTitle
-                      >
+                      <AlertDialogTitle>{{
+                        $t('interfaces.delete_confirm_title')
+                      }}</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This action cannot be un-done and you wont be able to
-                        restore this interface!
+                        {{ $t('interfaces.delete_confirm_description') }}
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Go back</AlertDialogCancel>
+                      <AlertDialogCancel>{{
+                        $t('common.go_back')
+                      }}</AlertDialogCancel>
                       <AlertDialogAction
                         :destructive="true"
                         :loading="delete_interface_loading"
@@ -189,7 +191,7 @@
                           })
                         "
                       >
-                        Delete
+                        {{ $t('common.delete') }}
                       </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
@@ -207,22 +209,21 @@
           v-else
           class="flex min-h-full flex-col items-center justify-center gap-4"
         >
-          <span class="text-center text-xl font-semibold"
-            >You didn't create any interface yet!</span
-          >
+          <span class="text-center text-xl font-semibold">{{
+            $t('interfaces.none')
+          }}</span>
           <Button
             :loading="create_interface_loading"
             @click="create_interface_dialog_open = true"
           >
-            <Icon name="fluent:add-12-regular" />
-            Create
+            <Icon name="fluent:add-12-regular" /> {{ $t('common.create') }}
           </Button>
         </div>
       </div>
       <div v-else-if="guild_settings_error" class="grow">
-        <span class="center text-foreground-destructive"
-          >Something went wrong, please try again later</span
-        >
+        <span class="center text-foreground-destructive">{{
+          $t('common.error_generic')
+        }}</span>
       </div>
       <div v-else class="center">
         <IconLoading />
@@ -268,34 +269,29 @@ definePageMeta({
   layout: 'dashboard',
   section: {
     id: 4,
-    name: 'Interfaces',
+    name: 'dashboard.sections.interfaces',
     icon: 'astro:interface',
     description: 'Interfaces Description',
   } as DashboardSection,
 })
 
-useHead({
-  title: 'Interfaces - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.interfaces.title') }),
   meta: [
-    {
-      name: 'description',
-      content: 'Create, view and delete interfaces',
-    },
+    { name: 'description', content: t('meta.interfaces.description') },
     {
       property: 'og:title',
-      content:
-        'Interfaces - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.interfaces.title') }),
     },
-    {
-      property: 'og:description',
-      content: 'Create, view and delete interfaces',
-    },
+    { property: 'og:description', content: t('meta.interfaces.description') },
     {
       property: 'og:url',
       content: 'https://astro-bot.space/guilds/interfaces',
     },
   ],
-})
+}))
 
 const { toast } = useToast()
 const guild_id = useGuildId()

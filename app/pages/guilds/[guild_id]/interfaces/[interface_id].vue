@@ -24,40 +24,38 @@
         <span v-if="guild_channels" class="dashboard-section-title">
           {{
             guild_channels.find((c) => c.id == interface_settings?.channel_id)
-              ?.name ?? 'Deleted channel'
+              ?.name ?? $t('common.deleted_channel')
           }}
         </span>
         <Skeleton v-else class="h-10 w-72" />
-        <span class="dashboard-section-description"
-          >Manage the message and buttons of this interface!</span
-        >
+        <span class="dashboard-section-description">{{
+          $t('interfaces.editor.page_description')
+        }}</span>
       </div>
       <div class="flex grow flex-wrap justify-end gap-2">
         <ButtonSecondary
           :loading="move_interface_loading"
           @click="open_move_dialog"
         >
-          Move
+          {{ $t('interfaces.editor.move') }}
         </ButtonSecondary>
         <AlertDialog>
           <AlertDialogTrigger>
             <ButtonDestructive :loading="delete_interface_loading">
-              Delete
+              {{ $t('common.delete') }}
             </ButtonDestructive>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle
-                >Are you sure you want to delete the
-                interface?</AlertDialogTitle
-              >
+              <AlertDialogTitle>{{
+                $t('interfaces.delete_confirm_title')
+              }}</AlertDialogTitle>
               <AlertDialogDescription>
-                This action cannot be un-done and you wont be able to restore
-                this interface!
+                {{ $t('interfaces.delete_confirm_description') }}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Go back</AlertDialogCancel>
+              <AlertDialogCancel>{{ $t('common.go_back') }}</AlertDialogCancel>
               <AlertDialogAction
                 :destructive="true"
                 :loading="delete_interface_loading"
@@ -68,7 +66,7 @@
                   })
                 "
               >
-                Delete
+                {{ $t('common.delete') }}
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -79,22 +77,23 @@
     <Dialog v-model:open="move_dialog_open">
       <DialogContent>
         <div class="flex flex-col gap-2">
-          <p class="text-center text-xl">Move interface</p>
+          <p class="text-center text-xl">
+            {{ $t('interfaces.editor.move_title') }}
+          </p>
 
           <div class="mt-4 flex flex-col gap-6">
             <div class="flex flex-col gap-2">
               <div class="flex flex-col">
-                <span class="text-heading">Channel</span>
-                <span class="text-description"
-                  >The interface message is sent in the new channel and the old
-                  interface is deleted</span
-                >
+                <span class="text-heading">{{ $t('common.channel') }}</span>
+                <span class="text-description">{{
+                  $t('interfaces.editor.move_description')
+                }}</span>
               </div>
               <Select v-model:model-value="move_channel_id">
                 <SelectTrigger>
                   <SelectValue aria-label="value">{{
                     guild_channels?.find((c) => c.id === move_channel_id)
-                      ?.name ?? 'Select a channel'
+                      ?.name ?? $t('interfaces.select_channel')
                   }}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
@@ -116,7 +115,7 @@
 
           <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
             <ButtonSecondary @click="move_dialog_open = false">
-              Go back
+              {{ $t('common.go_back') }}
             </ButtonSecondary>
             <Button
               :loading="move_interface_loading"
@@ -126,7 +125,7 @@
               "
               @click="on_move_interface"
             >
-              Move
+              {{ $t('interfaces.editor.move') }}
             </Button>
           </div>
         </div>
@@ -136,13 +135,17 @@
     <div v-if="m_interface_settings" class="flex flex-col gap-12">
       <div class="groups-wrapper">
         <div class="vertical-center gap-2">
-          <span class="text-group-name">MESSAGE HEADER</span>
-          <Badge v-if="!is_ultimate" variant="ultimate">Ultimate</Badge>
+          <span class="text-group-name">{{
+            $t('interfaces.editor.message_header')
+          }}</span>
+          <Badge v-if="!is_ultimate" variant="ultimate">{{
+            $t('common.ultimate')
+          }}</Badge>
         </div>
         <div class="groups-container">
           <GroupSetting
-            heading="Author"
-            description="The name shown at the top of the message"
+            :heading="$t('interfaces.editor.author.title')"
+            :description="$t('interfaces.editor.author.description')"
             :ultimate="!is_ultimate"
             hide-ultimate-badge
             @upgrade="upgrade_dialog_open = true"
@@ -150,7 +153,7 @@
             <template #bottom-action>
               <input
                 v-model="m_interface_settings.embed_style.author_name"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="text"
                 class="grow"
                 maxlength="256"
@@ -160,8 +163,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Author link"
-            description="The link that opens when users click the author name"
+            :heading="$t('interfaces.editor.author_link.title')"
+            :description="$t('interfaces.editor.author_link.description')"
             :ultimate="!is_ultimate"
             hide-ultimate-badge
             @upgrade="upgrade_dialog_open = true"
@@ -169,7 +172,7 @@
             <template #bottom-action>
               <input
                 v-model="m_interface_settings.embed_style.author_url"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="text"
                 class="grow"
                 maxlength="2000"
@@ -179,8 +182,8 @@
           </GroupSetting>
 
           <DashboardInterfaceImageSetting
-            heading="Author image"
-            description="A small icon shown next to the author name"
+            :heading="$t('interfaces.editor.author_image.title')"
+            :description="$t('interfaces.editor.author_image.description')"
             :url="m_interface_settings.embed_style.author_icon_url"
             :default-url="DEFAULT_AUTHOR_ICON_URL"
             :disabled="!is_ultimate"
@@ -202,13 +205,17 @@
 
       <div class="groups-wrapper">
         <div class="vertical-center gap-2">
-          <span class="text-group-name">MESSAGE BODY</span>
-          <Badge v-if="!is_ultimate" variant="ultimate">Ultimate</Badge>
+          <span class="text-group-name">{{
+            $t('interfaces.editor.message_body')
+          }}</span>
+          <Badge v-if="!is_ultimate" variant="ultimate">{{
+            $t('common.ultimate')
+          }}</Badge>
         </div>
         <div class="groups-container">
           <GroupSetting
-            heading="Title"
-            description="The title of the message"
+            :heading="$t('interfaces.editor.title.title')"
+            :description="$t('interfaces.editor.title.description')"
             :ultimate="!is_ultimate"
             hide-ultimate-badge
             @upgrade="upgrade_dialog_open = true"
@@ -216,7 +223,7 @@
             <template #bottom-action>
               <input
                 v-model="m_interface_settings.embed_style.title"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="text"
                 class="grow"
                 maxlength="256"
@@ -226,8 +233,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Title link"
-            description="The link that opens when users click the title"
+            :heading="$t('interfaces.editor.title_link.title')"
+            :description="$t('interfaces.editor.title_link.description')"
             :ultimate="!is_ultimate"
             hide-ultimate-badge
             @upgrade="upgrade_dialog_open = true"
@@ -235,7 +242,7 @@
             <template #bottom-action>
               <input
                 v-model="m_interface_settings.embed_style.url"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="text"
                 class="grow"
                 maxlength="2000"
@@ -245,8 +252,8 @@
           </GroupSetting>
 
           <DashboardInterfaceImageSetting
-            heading="Thumbnail"
-            description="A small image shown on the top right of the message"
+            :heading="$t('interfaces.editor.thumbnail.title')"
+            :description="$t('interfaces.editor.thumbnail.description')"
             :url="m_interface_settings.embed_style.thumbnail"
             :disabled="!is_ultimate"
             hide-ultimate-badge
@@ -259,8 +266,8 @@
           />
 
           <GroupSetting
-            heading="Description"
-            description="The main text of the message"
+            :heading="$t('interfaces.editor.description.title')"
+            :description="$t('interfaces.editor.description.description')"
             :ultimate="!is_ultimate"
             hide-ultimate-badge
             @upgrade="upgrade_dialog_open = true"
@@ -268,7 +275,7 @@
             <template #bottom-action>
               <textarea
                 v-model="m_interface_settings.embed_style.description"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 class="min-h-32 grow resize-y"
                 maxlength="4000"
                 :disabled="!is_ultimate"
@@ -277,8 +284,8 @@
           </GroupSetting>
 
           <DashboardInterfaceImageSetting
-            heading="Image"
-            description="A large image shown below the description"
+            :heading="$t('interfaces.editor.image.title')"
+            :description="$t('interfaces.editor.image.description')"
             :url="m_interface_settings.embed_style.image"
             :default-url="DEFAULT_IMAGE_URL"
             :disabled="!is_ultimate"
@@ -296,13 +303,17 @@
 
       <div class="groups-wrapper">
         <div class="vertical-center gap-2">
-          <span class="text-group-name">MESSAGE FOOTER</span>
-          <Badge v-if="!is_ultimate" variant="ultimate">Ultimate</Badge>
+          <span class="text-group-name">{{
+            $t('interfaces.editor.message_footer')
+          }}</span>
+          <Badge v-if="!is_ultimate" variant="ultimate">{{
+            $t('common.ultimate')
+          }}</Badge>
         </div>
         <div class="groups-container">
           <GroupSetting
-            heading="Footer"
-            description="The text shown at the bottom of the message"
+            :heading="$t('interfaces.editor.footer.title')"
+            :description="$t('interfaces.editor.footer.description')"
             :ultimate="!is_ultimate"
             hide-ultimate-badge
             @upgrade="upgrade_dialog_open = true"
@@ -310,7 +321,7 @@
             <template #bottom-action>
               <input
                 v-model="m_interface_settings.embed_style.footer"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="text"
                 class="grow"
                 maxlength="2048"
@@ -320,8 +331,8 @@
           </GroupSetting>
 
           <DashboardInterfaceImageSetting
-            heading="Footer image"
-            description="A small icon shown next to the footer text"
+            :heading="$t('interfaces.editor.footer_image.title')"
+            :description="$t('interfaces.editor.footer_image.description')"
             :url="m_interface_settings.embed_style.footer_icon_url"
             :disabled="!is_ultimate"
             hide-ultimate-badge
@@ -336,8 +347,8 @@
 
           <div class="groups-container-compact">
             <GroupSetting
-              heading="Color"
-              description="The color of the line on the left of the message"
+              :heading="$t('interfaces.editor.color.title')"
+              :description="$t('interfaces.editor.color.description')"
               :ultimate="!is_ultimate"
               hide-ultimate-badge
               compact
@@ -355,8 +366,8 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="Timestamp"
-              description="A fixed date and time shown in the message"
+              :heading="$t('interfaces.editor.timestamp.title')"
+              :description="$t('interfaces.editor.timestamp.description')"
               :ultimate="!is_ultimate"
               hide-ultimate-badge
               compact
@@ -376,7 +387,7 @@
                     :disabled="!is_ultimate"
                     @click="timestamp_local = ''"
                   >
-                    Clear
+                    {{ $t('common.clear') }}
                   </ButtonSecondary>
                 </div>
               </template>
@@ -386,10 +397,12 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">BUTTONS LAYOUT</span>
+        <span class="text-group-name">{{
+          $t('interfaces.editor.buttons_layout')
+        }}</span>
         <GroupSetting
-          heading="Buttons"
-          description="Click a button to edit it, or an empty slot to add one"
+          :heading="$t('interfaces.editor.buttons.title')"
+          :description="$t('interfaces.editor.buttons.description')"
         >
           <template #bottom-action>
             <div class="grid grid-cols-5 gap-2">
@@ -408,7 +421,13 @@
                       ]
                     : 'bordered border-dashed text-dimmed'
                 "
-                :aria-label="`Row ${cell.row + 1}, position ${cell.col + 1}: ${button_label(cell.button?.id)}`"
+                :aria-label="
+                  $t('interfaces.editor.slot_label', {
+                    row: cell.row + 1,
+                    col: cell.col + 1,
+                    button: button_label(cell.button?.id),
+                  })
+                "
                 @click="open_slot(cell.row, cell.col)"
               >
                 <template v-if="cell.button">
@@ -441,7 +460,7 @@
       v-else-if="guild_settings_error"
       class="center text-foreground-destructive"
     >
-      Something went wrong, please try again later
+      {{ $t('common.error_generic') }}
     </div>
     <div v-else class="center">
       <IconLoading />
@@ -454,17 +473,23 @@
       <DialogContent v-if="selected_slot">
         <div class="flex flex-col gap-2">
           <p class="text-center text-xl">
-            Row {{ selected_slot.row + 1 }} - Position
-            {{ selected_slot.col + 1 }}
+            {{
+              $t('interfaces.editor.slot_title', {
+                row: selected_slot.row + 1,
+                col: selected_slot.col + 1,
+              })
+            }}
           </p>
 
           <div class="mt-4 flex max-h-[70vh] flex-col gap-6 overflow-y-auto">
             <div class="groups-wrapper">
-              <span class="text-group-name">BEHAVIOR</span>
+              <span class="text-group-name">{{
+                $t('interfaces.editor.behavior')
+              }}</span>
               <div class="groups-container">
                 <GroupSetting
-                  heading="Button"
-                  description="The button shown in this position, a button already used in another position can't be selected"
+                  :heading="$t('interfaces.editor.button.title')"
+                  :description="$t('interfaces.editor.button.description')"
                   :ultimate="!is_ultimate"
                   @upgrade="
                     () => {
@@ -503,7 +528,9 @@
                           >
                             {{ button_label(id) }}
                           </SelectItem>
-                          <SelectItem value="none">No button</SelectItem>
+                          <SelectItem value="none">{{
+                            $t('interfaces.editor.no_button')
+                          }}</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -511,8 +538,8 @@
                 </GroupSetting>
                 <GroupSetting
                   v-if="selected_button"
-                  heading="Disabled"
-                  description="Users can see the button but can't click it"
+                  :heading="$t('interfaces.editor.disabled.title')"
+                  :description="$t('interfaces.editor.disabled.description')"
                 >
                   <Switch v-model:checked="selected_button.button_disabled" />
                 </GroupSetting>
@@ -521,13 +548,17 @@
 
             <div v-if="selected_button" class="groups-wrapper">
               <div class="vertical-center gap-2">
-                <span class="text-group-name">APPEARANCE</span>
-                <Badge v-if="!is_ultimate" variant="ultimate">Ultimate</Badge>
+                <span class="text-group-name">{{
+                  $t('interfaces.editor.appearance')
+                }}</span>
+                <Badge v-if="!is_ultimate" variant="ultimate">{{
+                  $t('common.ultimate')
+                }}</Badge>
               </div>
               <div class="groups-container">
                 <GroupSetting
-                  heading="Name"
-                  description="The text shown on the button, a button needs a name or an emoji to be shown"
+                  :heading="$t('interfaces.editor.button_name.title')"
+                  :description="$t('interfaces.editor.button_name.description')"
                   :ultimate="!is_ultimate"
                   hide-ultimate-badge
                   @upgrade="
@@ -541,7 +572,7 @@
                     <input
                       v-model="selected_button.name"
                       :disabled="!is_ultimate"
-                      placeholder="Not set"
+                      :placeholder="$t('common.not_set')"
                       type="text"
                       class="grow"
                       maxlength="80"
@@ -550,8 +581,8 @@
                 </GroupSetting>
 
                 <GroupSetting
-                  heading="Emoji"
-                  description="A standard emoji, or the code of a custom Discord emoji"
+                  :heading="$t('interfaces.editor.emoji.title')"
+                  :description="$t('interfaces.editor.emoji.description')"
                   :ultimate="!is_ultimate"
                   hide-ultimate-badge
                   @upgrade="
@@ -564,31 +595,37 @@
                   <template #heading-action>
                     <AlertDialog>
                       <AlertDialogTrigger>
-                        <ButtonText aria-label="How to use custom emojis">
+                        <ButtonText
+                          :aria-label="
+                            $t('interfaces.editor.custom_emoji_help')
+                          "
+                        >
                           <IconQuestion class="size-5" />
                         </ButtonText>
                       </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
-                          <AlertDialogTitle
-                            >Using custom emojis</AlertDialogTitle
-                          >
+                          <AlertDialogTitle>{{
+                            $t('interfaces.editor.custom_emoji_title')
+                          }}</AlertDialogTitle>
                           <AlertDialogDescription class="flex flex-col gap-2">
-                            <span>
-                              To insert a custom Discord emoji, go on Discord,
-                              write the emoji prefixed with a backslash (for
-                              example {{ '\\:name:' }}) and send the message.
-                            </span>
-                            <span>
-                              Discord will send the emoji code in the channel,
-                              like &lt;:name:id&gt; or &lt;a:name:id&gt; for
-                              animated emojis. Copy it and paste it here in the
-                              editor, it will then be rendered on Discord.
-                            </span>
+                            <span>{{
+                              $t('interfaces.editor.custom_emoji_step1', {
+                                example: '\\:name:',
+                              })
+                            }}</span>
+                            <span>{{
+                              $t(
+                                'interfaces.editor.custom_emoji_step2',
+                                custom_emoji_codes,
+                              )
+                            }}</span>
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                          <AlertDialogCancel>Close</AlertDialogCancel>
+                          <AlertDialogCancel>{{
+                            $t('common.close')
+                          }}</AlertDialogCancel>
                         </AlertDialogFooter>
                       </AlertDialogContent>
                     </AlertDialog>
@@ -598,7 +635,7 @@
                       <input
                         v-model="selected_button.emoji"
                         :disabled="!is_ultimate"
-                        placeholder="Not set"
+                        :placeholder="$t('common.not_set')"
                         type="text"
                         class="min-w-0 grow"
                       />
@@ -617,8 +654,8 @@
                   </template>
                 </GroupSetting>
                 <GroupSetting
-                  heading="Style"
-                  description="The color of the button"
+                  :heading="$t('interfaces.editor.style.title')"
+                  :description="$t('interfaces.editor.style.description')"
                   :ultimate="!is_ultimate"
                   hide-ultimate-badge
                   @upgrade="
@@ -639,9 +676,9 @@
                     >
                       <SelectTrigger>
                         <SelectValue aria-label="value">{{
-                          button_styles.find(
-                            (s) => s.key == selected_button!.button_style_key,
-                          )?.name
+                          $t(
+                            `interfaces.styles.${button_styles.find((s) => s.key == selected_button!.button_style_key)?.name}`,
+                          )
                         }}</SelectValue>
                       </SelectTrigger>
                       <SelectContent>
@@ -651,7 +688,7 @@
                             :key="style.key"
                             :value="String(style.key)"
                           >
-                            {{ style.name }}
+                            {{ $t(`interfaces.styles.${style.name}`) }}
                           </SelectItem>
                         </SelectGroup>
                       </SelectContent>
@@ -689,7 +726,7 @@
           class="max-h-96 w-full rounded object-contain"
         />
         <AlertDialogFooter>
-          <AlertDialogCancel>Close</AlertDialogCancel>
+          <AlertDialogCancel>{{ $t('common.close') }}</AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -741,24 +778,20 @@ definePageMeta({
   layout: 'dashboard',
 })
 
-useHead({
-  title: 'Interface - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.interface.title') }),
   meta: [
-    {
-      name: 'description',
-      content: 'Edit the message and buttons of your interface',
-    },
+    { name: 'description', content: t('meta.interface.description') },
     {
       property: 'og:title',
-      content: 'Interface - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.interface.title') }),
     },
-    {
-      property: 'og:description',
-      content: 'Edit the message and buttons of your interface',
-    },
+    { property: 'og:description', content: t('meta.interface.description') },
     { property: 'og:url', content: 'https://astro-bot.space/guilds/interface' },
   ],
-})
+}))
 
 const DEFAULT_AUTHOR_ICON_URL =
   'https://cdn.discordapp.com/avatars/715621848489918495/dc0affdf8de07a3d88c4d192efad649f.png?size=2048'
@@ -902,73 +935,96 @@ function on_media_deleted(media: Media) {
 }
 
 /// BUTTONS ///
+// shown in the custom emoji help, here because the template parser reads `<` as a tag
+const custom_emoji_codes = { static: '<:name:id>', animated: '<a:name:id>' }
+
 const button_styles = [
-  { key: 1, name: 'Blurple' },
-  { key: 2, name: 'Grey' },
-  { key: 3, name: 'Green' },
-  { key: 4, name: 'Red' },
+  { key: 1, name: 'blurple' },
+  { key: 2, name: 'grey' },
+  { key: 3, name: 'green' },
+  { key: 4, name: 'red' },
 ]
 
 // the buttons the bot knows how to handle, with the emoji used when adding one
 const button_catalog = [
-  { id: 'button/vc/lock', name: 'Lock', emoji: '<:lock:1029831342575325225>' },
+  {
+    id: 'button/vc/lock',
+    name: 'interfaces.buttons.lock',
+    emoji: '<:lock:1029831342575325225>',
+  },
   {
     id: 'button/vc/unlock',
-    name: 'Unlock',
+    name: 'interfaces.buttons.unlock',
     emoji: '<:unlock:1029831345884647554>',
   },
-  { id: 'button/vc/hide', name: 'Hide', emoji: '<:hide:1029831340595626056>' },
+  {
+    id: 'button/vc/hide',
+    name: 'interfaces.buttons.hide',
+    emoji: '<:hide:1029831340595626056>',
+  },
   {
     id: 'button/vc/unhide',
-    name: 'Unhide',
+    name: 'interfaces.buttons.unhide',
     emoji: '<:unhide:1029831344278220833>',
   },
   {
     id: 'button/vc/limit',
-    name: 'User limit',
+    name: 'interfaces.buttons.limit',
     emoji: '<:limit:1029823585801478154>',
   },
   {
     id: 'button/vc/invite',
-    name: 'Invite',
+    name: 'interfaces.buttons.invite',
     emoji: '<:invite:1029823584287338496>',
   },
-  { id: 'button/vc/ban', name: 'Ban', emoji: '<:ban:1029823553077510327>' },
+  {
+    id: 'button/vc/ban',
+    name: 'interfaces.buttons.ban',
+    emoji: '<:ban:1029823553077510327>',
+  },
   {
     id: 'button/vc/permit',
-    name: 'Permit',
+    name: 'interfaces.buttons.permit',
     emoji: '<:permit:1029823602071191563>',
   },
-  { id: 'button/vc/name', name: 'Name', emoji: '<:name:1029823591329579039>' },
+  {
+    id: 'button/vc/name',
+    name: 'interfaces.buttons.name',
+    emoji: '<:name:1029823591329579039>',
+  },
   {
     id: 'button/vc/bitrate',
-    name: 'Bitrate',
+    name: 'interfaces.buttons.bitrate',
     emoji: '<:bitrate:1029823554574884997>',
   },
   {
     id: 'button/vc/region',
-    name: 'Region',
+    name: 'interfaces.buttons.region',
     emoji: '<:region:1029823605346930809>',
   },
   {
     id: 'button/vc/template',
-    name: 'Template',
+    name: 'interfaces.buttons.template',
     emoji: '<:template:1038794746249875567>',
   },
-  { id: 'button/vc/chat', name: 'Chat', emoji: '<:chat:1029823561063464960>' },
+  {
+    id: 'button/vc/chat',
+    name: 'interfaces.buttons.chat',
+    emoji: '<:chat:1029823561063464960>',
+  },
   {
     id: 'button/vc/waiting-room',
-    name: 'Waiting room',
+    name: 'interfaces.buttons.waiting_room',
     emoji: '<:waiting:1146421350819450920>',
   },
   {
     id: 'button/vc/claim',
-    name: 'Claim',
+    name: 'interfaces.buttons.claim',
     emoji: '<:owner:1030227494630076448>',
   },
   {
     id: 'button/vc/transfer',
-    name: 'Transfer ownership',
+    name: 'interfaces.buttons.transfer',
     emoji: '<:transfer_owner:1030227495892557826>',
   },
 ]
@@ -976,8 +1032,11 @@ const button_catalog = [
 // buttons removed from a slot, so that they get their customizations back if re-added
 const removed_buttons = new Map<string, GSInterfaceButton>()
 
-const button_label = (id: string | undefined) =>
-  id ? (button_catalog.find((b) => b.id == id)?.name ?? id) : 'No button'
+const button_label = (id: string | undefined) => {
+  if (!id) return t('interfaces.editor.no_button')
+  const known = button_catalog.find((b) => b.id == id)
+  return known ? t(known.name) : id
+}
 
 const button_at = (row: number, col: number) =>
   m_interface_settings.value?.buttons.find(
@@ -1110,7 +1169,7 @@ function on_interface_updated() {
   toast({
     duration: 6000,
     description: h('div', [
-      'The interface has been updated',
+      t('interfaces.editor.updated'),
       h('br'),
       h(
         'a',
@@ -1120,7 +1179,7 @@ function on_interface_updated() {
           rel: 'noopener noreferrer',
           class: 'text-foreground-link-standout hover:opacity-80',
         },
-        'Open in Discord',
+        t('interfaces.editor.open_in_discord'),
       ),
     ]),
   })

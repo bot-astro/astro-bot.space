@@ -9,7 +9,7 @@
       class="flex max-w-xs flex-col gap-4 border-border sm:max-w-sm md:max-w-lg"
     >
       <div class="flex">
-        <span class="text-lg">Variables</span>
+        <span class="text-lg">{{ $t('dashboard.variables.title') }}</span>
         <div class="grow" />
         <ButtonText
           @click="
@@ -26,7 +26,9 @@
         class="flex flex-col gap-1"
       >
         <div class="vertical-center gap-2">
-          <span class="text-foreground-secondary">{{ category }}</span>
+          <span class="text-foreground-secondary">{{
+            $t(`dashboard.variables.categories.${category}`)
+          }}</span>
           <Badge
             v-if="
               (category == VariableCategory.INCREMENTAL_VALUES ||
@@ -35,7 +37,7 @@
             "
             variant="ultimate"
             class="text-xs"
-            >Ultimate</Badge
+            >{{ $t('common.ultimate') }}</Badge
           >
         </div>
         <div class="flex flex-wrap gap-2 text-xs">

@@ -33,7 +33,11 @@
               <Skeleton v-else class="mb-1 h-2" />
 
               <span v-if="guild_settings" class="text-secondary text-xs">
-                {{ isGuildUltimate(guild_settings) ? 'Ultimate' : 'Free' }}
+                {{
+                  isGuildUltimate(guild_settings)
+                    ? $t('common.ultimate')
+                    : $t('common.free')
+                }}
               </span>
             </div>
 
@@ -103,7 +107,7 @@
           class="size-4"
         />
         <Icon v-else :name="section.icon" class="size-4" />
-        <span>{{ section.name }}</span>
+        <span>{{ $t(section.name) }}</span>
       </div>
     </div>
   </div>

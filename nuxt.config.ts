@@ -18,7 +18,23 @@ export default defineNuxtConfig({
     '@peterbud/nuxt-query',
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
+    '@nuxtjs/i18n',
   ],
+
+  i18n: {
+    strategy: 'no_prefix',
+    defaultLocale: 'en-US',
+    // same locale codes as the backend (shared/core/src/main/resources/i18n)
+    locales: [
+      { code: 'en-US', language: 'en-US', name: 'English', file: 'en-US.json' },
+      { code: 'it', language: 'it-IT', name: 'Italiano', file: 'it.json' },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_locale',
+      fallbackLocale: 'en-US',
+    },
+  },
 
   css: ['~/assets/css/tailwind.css'],
 
@@ -95,24 +111,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Astro - Temporary Voice Channels for your Discord!',
       meta: [
         { charset: 'utf-8' },
         { name: 'robots', content: 'noodp,noydir' },
-        {
-          name: 'description',
-          content:
-            'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!',
-        },
-        {
-          name: 'og:title',
-          content: 'Astro - Temporary Voice Channels for your Discord!',
-        },
-        {
-          name: 'og:description',
-          content:
-            'Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!',
-        },
         {
           name: 'og:image',
           content: 'https://astro-bot.space/img/logo_bg.png',

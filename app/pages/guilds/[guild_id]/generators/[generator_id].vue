@@ -19,33 +19,32 @@
         <span v-if="guild_channels" class="dashboard-section-title">
           {{
             guild_channels.find((c) => c.id == generator_id)?.name ??
-            'Deleted channel'
+            $t('common.deleted_channel')
           }}
         </span>
         <Skeleton v-else class="h-10 w-72" />
-        <span class="dashboard-section-description"
-          >Manage the settings of this temporary voice channel generator!</span
-        >
+        <span class="dashboard-section-description">{{
+          $t('generators.editor.description')
+        }}</span>
       </div>
       <div class="grow" />
       <AlertDialog>
         <AlertDialogTrigger>
           <ButtonDestructive :loading="delete_generator_loading">
-            Delete
+            {{ $t('common.delete') }}
           </ButtonDestructive>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle
-              >Are you sure you want to delete the generator?</AlertDialogTitle
-            >
+            <AlertDialogTitle>{{
+              $t('generators.delete_confirm_title')
+            }}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be un-done and you wont be able to restore this
-              generator!
+              {{ $t('generators.delete_confirm_description') }}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Go back</AlertDialogCancel>
+            <AlertDialogCancel>{{ $t('common.go_back') }}</AlertDialogCancel>
             <AlertDialogAction
               :destructive="true"
               :loading="delete_generator_loading"
@@ -56,7 +55,7 @@
                 })
               "
             >
-              Delete
+              {{ $t('common.delete') }}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -68,11 +67,13 @@
       class="flex flex-col gap-12"
     >
       <div class="groups-wrapper">
-        <span class="text-group-name">VOICE CHANNEL NAME</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_vc_name')
+        }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="Name"
-            description="The default name that temporary voice channels have when created"
+            :heading="$t('generators.editor.vc_name.title')"
+            :description="$t('generators.editor.vc_name.description')"
           >
             <template #bottom-action>
               <div class="flex gap-2">
@@ -95,14 +96,14 @@
             </template>
           </GroupSetting>
           <GroupSetting
-            heading="Locked name"
-            description="The name that temporary voice channels have when locked"
+            :heading="$t('generators.editor.locked_name.title')"
+            :description="$t('generators.editor.locked_name.description')"
           >
             <template #bottom-action>
               <div class="flex gap-2">
                 <input
                   v-model="m_generator_settings.default_locked_name"
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   type="text"
                   class="grow"
                   minlength="2"
@@ -119,14 +120,14 @@
             </template>
           </GroupSetting>
           <GroupSetting
-            heading="Hidden name"
-            description="The name that temporary voice channels have when hidden"
+            :heading="$t('generators.editor.hidden_name.title')"
+            :description="$t('generators.editor.hidden_name.description')"
           >
             <template #bottom-action>
               <div class="flex gap-2">
                 <input
                   v-model="m_generator_settings.default_hidden_name"
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   type="text"
                   class="grow"
                   minlength="2"
@@ -146,11 +147,13 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">VOICE CHANNEL RENAME CONDITIONS</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_rename')
+        }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="State change"
-            description="Whether the voice channel name should be update when the state of the voice channel changes. For example when the user locks or hides the channel"
+            :heading="$t('generators.editor.state_change.title')"
+            :description="$t('generators.editor.state_change.description')"
           >
             <Switch
               v-model:checked="
@@ -159,8 +162,8 @@
             />
           </GroupSetting>
           <GroupSetting
-            heading="Owner change"
-            description="Whether the voice channel name should be update when the owner changes"
+            :heading="$t('generators.editor.owner_change.title')"
+            :description="$t('generators.editor.owner_change.description')"
           >
             <Switch
               v-model:checked="
@@ -169,8 +172,8 @@
             />
           </GroupSetting>
           <GroupSetting
-            heading="Activity change"
-            description="Whether the voice channel name should be update when the activity of the owner changes. For example when the owner stops playing a game"
+            :heading="$t('generators.editor.activity_change.title')"
+            :description="$t('generators.editor.activity_change.description')"
             :ultimate="
               !is_ultimate &&
               !m_generator_settings.rename_conditions.activity_change
@@ -184,8 +187,8 @@
             />
           </GroupSetting>
           <GroupSetting
-            heading="Renaming"
-            description="Whether the voice channel name should be updated even if it was manually renamed by the owner. For example, if this setting is off and the owner renames the channel, it wont be updated when any of the above scenarios happen"
+            :heading="$t('generators.editor.renaming.title')"
+            :description="$t('generators.editor.renaming.description')"
           >
             <Switch
               v-model:checked="m_generator_settings.rename_conditions.renamed"
@@ -195,11 +198,13 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">VOICE CHANNEL SETTINGS</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_vc_settings')
+        }}</span>
         <div class="groups-container-compact flex-wrap">
           <GroupSetting
-            heading="Category"
-            description="The category in which temporary voice channels are generated"
+            :heading="$t('generators.editor.category.title')"
+            :description="$t('generators.editor.category.description')"
             compact
           >
             <template #bottom-action>
@@ -226,7 +231,9 @@
                       {{ category.name }}
                     </SelectItem>
                     <!-- 'No category' option -->
-                    <SelectItem value="no_category">No category</SelectItem>
+                    <SelectItem value="no_category">{{
+                      $t('common.no_category')
+                    }}</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -234,8 +241,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Position"
-            description="The exact position where temporary voice channels are placed inside the category."
+            :heading="$t('generators.editor.position.title')"
+            :description="$t('generators.editor.position.description')"
             compact
           >
             <template #bottom-action>
@@ -258,7 +265,9 @@
                       :key="pos"
                       :value="pos"
                     >
-                      {{ capitalize(pos) }}
+                      {{
+                        $t(`generators.editor.positions.${pos.toLowerCase()}`)
+                      }}
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
@@ -267,14 +276,14 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="User limit"
-            description="The user limit, or 0 for no user limit"
+            :heading="$t('generators.editor.user_limit.title')"
+            :description="$t('generators.editor.user_limit.description')"
             compact
           >
             <template #bottom-action>
               <input
                 :value="m_generator_settings.user_limit ?? ''"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="number"
                 min="0"
                 max="99"
@@ -289,8 +298,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Bitrate"
-            description="The bitrate in kbps, leave empty for using your Discord server default bitrate"
+            :heading="$t('generators.editor.bitrate.title')"
+            :description="$t('generators.editor.bitrate.description')"
             compact
           >
             <template #bottom-action>
@@ -305,7 +314,7 @@
                   min="0"
                   max="384"
                   class="grow"
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   @input="
                     m_generator_settings.bitrate =
                       ($event.target as HTMLInputElement).value === ''
@@ -326,18 +335,16 @@
                           : 'left-6',
                     )
                   "
-                  >kbps</span
+                  >{{ $t('common.kbps') }}</span
                 >
               </div>
             </template>
           </GroupSetting>
 
-          <GroupSetting heading="Region" compact>
+          <GroupSetting :heading="$t('generators.editor.region.title')" compact>
             <template #description>
               <span class="text-foreground-secondary">
-                To change region that is applied to temporary voice channels,
-                change the region of the generator, using the channel settings
-                inside Discord.
+                {{ $t('generators.editor.region.description') }}
                 <ButtonText
                   class="text-foreground-link-standout"
                   @click="
@@ -347,7 +354,7 @@
                     )
                   "
                 >
-                  See guide
+                  {{ $t('common.see_guide') }}
                 </ButtonText>
               </span>
             </template>
@@ -356,11 +363,13 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">VOICE CHANNEL PERMISSIONS</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_vc_permissions')
+        }}</span>
         <div class="groups-container-compact flex-wrap">
           <GroupSetting
-            heading="Inheriting"
-            description="Choose if temporary voice channels inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
+            :heading="$t('generators.editor.inheriting.title')"
+            :description="$t('generators.editor.inheriting.description')"
             compact
           >
             <template #bottom-action>
@@ -385,7 +394,9 @@
                       :key="v"
                       :value="v"
                     >
-                      {{ capitalize(v) }}
+                      {{
+                        $t(`generators.editor.inheritance.${v.toLowerCase()}`)
+                      }}
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
@@ -394,8 +405,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Default state"
-            description="Whether the temporary voice channel should be locked or hidden upon creation"
+            :heading="$t('generators.editor.default_state.title')"
+            :description="$t('generators.editor.default_state.description')"
             compact
           >
             <template #bottom-action>
@@ -418,7 +429,7 @@
                       :key="v"
                       :value="v"
                     >
-                      {{ capitalize(v) }}
+                      {{ $t(`generators.editor.states.${v.toLowerCase()}`) }}
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
@@ -427,8 +438,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Target role"
-            description="Astro will modify the permissions of this role when needed, for example when a user locks or hides the channel"
+            :heading="$t('generators.editor.target_role.title')"
+            :description="$t('generators.editor.target_role.description')"
             compact
           >
             <template #bottom-action>
@@ -460,8 +471,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Moderator role"
-            description="This role will always have permissions to manage the channel, even when the channel is locked or hidden"
+            :heading="$t('generators.editor.moderator_role.title')"
+            :description="$t('generators.editor.moderator_role.description')"
             compact
           >
             <template #bottom-action>
@@ -485,7 +496,9 @@
                       :guild_id="guild_id"
                     />
                     <!-- @everyone role option -->
-                    <SelectItem value="no_role">No role</SelectItem>
+                    <SelectItem value="no_role">{{
+                      $t('generators.editor.no_role')
+                    }}</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -495,11 +508,13 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">COMMANDS SETTINGS</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_commands')
+        }}</span>
         <div class="groups-container-compact">
           <GroupSetting
-            heading="Minimum user limit"
-            description="The minimum user limit users are allowed to set for their temporary voice channel, 0 means no limit"
+            :heading="$t('generators.editor.min_user_limit.title')"
+            :description="$t('generators.editor.min_user_limit.description')"
             compact
           >
             <template #bottom-action>
@@ -507,7 +522,7 @@
                 :value="
                   m_generator_settings.commands_settings.min_user_limit ?? ''
                 "
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="number"
                 min="0"
                 :max="
@@ -525,8 +540,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Maximum user limit"
-            description="The maximum user limit users are allowed to set for their temporary voice channel, 0 means no limit"
+            :heading="$t('generators.editor.max_user_limit.title')"
+            :description="$t('generators.editor.max_user_limit.description')"
             compact
           >
             <template #bottom-action>
@@ -534,7 +549,7 @@
                 :value="
                   m_generator_settings.commands_settings.max_user_limit ?? ''
                 "
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="number"
                 :min="
                   m_generator_settings.commands_settings.min_user_limit ??
@@ -552,8 +567,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Minimum bitrate"
-            description="The minimum bitrate, in kbps, users are allowed to set for their temporary voice channel"
+            :heading="$t('generators.editor.min_bitrate.title')"
+            :description="$t('generators.editor.min_bitrate.description')"
             compact
           >
             <template #bottom-action>
@@ -574,7 +589,7 @@
                       : 384
                   "
                   class="grow"
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   @input="
                     m_generator_settings.commands_settings.min_bitrate =
                       ($event.target as HTMLInputElement).value === ''
@@ -599,15 +614,15 @@
                           : 'left-6',
                     )
                   "
-                  >kbps</span
+                  >{{ $t('common.kbps') }}</span
                 >
               </div>
             </template>
           </GroupSetting>
 
           <GroupSetting
-            heading="Maximum bitrate"
-            description="The maximum bitrate, in kbps, users are allowed to set for their temporary voice channel"
+            :heading="$t('generators.editor.max_bitrate.title')"
+            :description="$t('generators.editor.max_bitrate.description')"
             compact
           >
             <template #bottom-action>
@@ -628,7 +643,7 @@
                   "
                   max="384"
                   class="grow"
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   @input="
                     m_generator_settings.commands_settings.max_bitrate =
                       ($event.target as HTMLInputElement).value === ''
@@ -653,7 +668,7 @@
                           : 'left-6',
                     )
                   "
-                  >kbps</span
+                  >{{ $t('common.kbps') }}</span
                 >
               </div>
             </template>
@@ -662,11 +677,13 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">UTILITIES</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_utilities')
+        }}</span>
         <div class="groups-container-compact">
           <GroupSetting
-            heading="Owner permissions"
-            description="Select the Discord permissions a voice channel owner has over its temporary voice channel"
+            :heading="$t('generators.editor.owner_permissions.title')"
+            :description="$t('generators.editor.owner_permissions.description')"
             compact
           >
             <template #bottom-action>
@@ -674,19 +691,20 @@
                 <DropdownMenuTrigger
                   class="focus-visible:border-opacity-80 h-9 w-full rounded bordered bg-background px-2.5 py-1 focus-visible:border-pink-500"
                 >
-                  {{ `${owner_permissions?.length ?? 0} selected permissions` }}
+                  {{
+                    $t('generators.editor.selected_permissions', {
+                      count: owner_permissions?.length ?? 0,
+                    })
+                  }}
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <template
                     v-for="category in permissionCategories"
                     :key="category"
                   >
-                    <DropdownMenuLabel
-                      >{{
-                        category.charAt(0).toUpperCase() + category.slice(1)
-                      }}
-                      permissions</DropdownMenuLabel
-                    >
+                    <DropdownMenuLabel>{{
+                      $t(`generators.editor.permission_categories.${category}`)
+                    }}</DropdownMenuLabel>
                     <DropdownMenuCheckboxItem
                       v-for="permission in (discord_permissions ?? []).filter(
                         (p) => p.category.toLowerCase() == category,
@@ -725,8 +743,8 @@
             </template>
           </GroupSetting>
           <GroupSetting
-            heading="Owner role"
-            description="This role will be given to temporary voice channel owners"
+            :heading="$t('generators.editor.owner_role.title')"
+            :description="$t('generators.editor.owner_role.description')"
             class="relative"
             :ultimate="!is_ultimate"
             compact
@@ -752,7 +770,9 @@
                       :guild_id="guild_id"
                     />
                     <!-- no role option -->
-                    <SelectItem value="no_role">No role</SelectItem>
+                    <SelectItem value="no_role">{{
+                      $t('generators.editor.no_role')
+                    }}</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -760,8 +780,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Queue mode"
-            description="When enabled, Astro will first move users into existing temporary voice channels if available. If there are no temporary voice channels available, it will create a new one"
+            :heading="$t('generators.editor.queue_mode.title')"
+            :description="$t('generators.editor.queue_mode.description')"
             compact
           >
             <template #bottom-action>
@@ -770,8 +790,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Fallback generator"
-            description="If this generator reaches the limit of temporary voice channels (Discord allows a maximum of 50 voice channels per category), Astro will move the user to this generator as fallback"
+            :heading="$t('generators.editor.fallback.title')"
+            :description="$t('generators.editor.fallback.description')"
             :ultimate="!is_ultimate"
             compact
             @upgrade="upgrade_dialog_open = true"
@@ -803,7 +823,9 @@
                       {{ generator.name }}
                     </SelectItem>
                     <!-- 'No category' option -->
-                    <SelectItem value="no_fallback">No fallback</SelectItem>
+                    <SelectItem value="no_fallback">{{
+                      $t('generators.editor.no_fallback')
+                    }}</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -813,11 +835,13 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">WAITING ROOM</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_waiting')
+        }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="Automatic waiting room creation"
-            description="When enabled, Astro will automatically create a waiting room for temporary voice channels upon creation"
+            :heading="$t('generators.editor.waiting_auto.title')"
+            :description="$t('generators.editor.waiting_auto.description')"
             :ultimate="!is_ultimate && !m_generator_settings.auto_waiting"
             @upgrade="upgrade_dialog_open = true"
           >
@@ -828,8 +852,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Name"
-            description="The default name for waiting rooms"
+            :heading="$t('generators.editor.waiting_name.title')"
+            :description="$t('generators.editor.waiting_name.description')"
           >
             <template #bottom-action>
               <div class="flex gap-2">
@@ -854,8 +878,10 @@
 
           <div class="groups-container-compact">
             <GroupSetting
-              heading="Category"
-              description="The category in which waiting rooms are generated"
+              :heading="$t('generators.editor.waiting_category.title')"
+              :description="
+                $t('generators.editor.waiting_category.description')
+              "
               compact
             >
               <template #bottom-action>
@@ -884,7 +910,9 @@
                         {{ category.name }}
                       </SelectItem>
                       <!-- 'No category' option -->
-                      <SelectItem value="no_category">No category</SelectItem>
+                      <SelectItem value="no_category">{{
+                        $t('common.no_category')
+                      }}</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -892,8 +920,10 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="Position"
-              description="Whether waiting rooms should be generated above or below their corresponding temporary voice channel. Or at the bottom of the category"
+              :heading="$t('generators.editor.waiting_position.title')"
+              :description="
+                $t('generators.editor.waiting_position.description')
+              "
               compact
             >
               <template #bottom-action>
@@ -916,7 +946,9 @@
                         :key="pos"
                         :value="pos"
                       >
-                        {{ capitalize(pos) }}
+                        {{
+                          $t(`generators.editor.positions.${pos.toLowerCase()}`)
+                        }}
                       </SelectItem>
                     </SelectGroup>
                   </SelectContent>
@@ -925,14 +957,16 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="User limit"
-              description="The user limit for waiting rooms"
+              :heading="$t('generators.editor.waiting_user_limit.title')"
+              :description="
+                $t('generators.editor.waiting_user_limit.description')
+              "
               compact
             >
               <template #bottom-action>
                 <input
                   :value="m_generator_settings.waiting_user_limit ?? ''"
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   type="number"
                   min="0"
                   max="99"
@@ -947,8 +981,8 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="Bitrate"
-              description="The bitrate in kbps for waiting rooms, leave empty for using your Discord server default bitrate"
+              :heading="$t('generators.editor.waiting_bitrate.title')"
+              :description="$t('generators.editor.waiting_bitrate.description')"
               compact
             >
               <template #bottom-action>
@@ -963,7 +997,7 @@
                     min="0"
                     max="384"
                     class="grow"
-                    placeholder="Not set"
+                    :placeholder="$t('common.not_set')"
                     @input="
                       m_generator_settings.waiting_bitrate =
                         ($event.target as HTMLInputElement).value === ''
@@ -984,15 +1018,17 @@
                             : 'left-6',
                       )
                     "
-                    >kbps</span
+                    >{{ $t('common.kbps') }}</span
                   >
                 </div>
               </template>
             </GroupSetting>
 
             <GroupSetting
-              heading="Permissions inheriting"
-              description="Choose if waiting rooms inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
+              :heading="$t('generators.editor.waiting_inheriting.title')"
+              :description="
+                $t('generators.editor.waiting_inheriting.description')
+              "
               compact
             >
               <template #bottom-action>
@@ -1019,7 +1055,9 @@
                         :key="v"
                         :value="v"
                       >
-                        {{ capitalize(v) }}
+                        {{
+                          $t(`generators.editor.inheritance.${v.toLowerCase()}`)
+                        }}
                       </SelectItem>
                     </SelectGroup>
                   </SelectContent>
@@ -1031,11 +1069,13 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">PRIVATE TEXT CHAT</span>
+        <span class="text-group-name">{{
+          $t('generators.editor.group_chat')
+        }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="Automatic private chat creation"
-            description="When enabled, Astro will automatically create a private text channel for each temporary voice channel upon creation"
+            :heading="$t('generators.editor.chat_auto.title')"
+            :description="$t('generators.editor.chat_auto.description')"
             :ultimate="!is_ultimate && !m_generator_settings.auto_chat"
             @upgrade="upgrade_dialog_open = true"
           >
@@ -1046,8 +1086,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Name"
-            description="The default name for private text chats"
+            :heading="$t('generators.editor.chat_name.title')"
+            :description="$t('generators.editor.chat_name.description')"
           >
             <template #bottom-action>
               <div class="flex gap-2">
@@ -1072,13 +1112,13 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Topic"
-            description="The topic automatically set on every private text chat"
+            :heading="$t('generators.editor.chat_topic.title')"
+            :description="$t('generators.editor.chat_topic.description')"
           >
             <template #bottom-action>
               <input
                 v-model="m_generator_settings.chat_topic"
-                placeholder="Not set"
+                :placeholder="$t('common.not_set')"
                 type="text"
                 minlength="0"
                 maxlength="1024"
@@ -1087,8 +1127,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Creation message type"
-            description="Choose the type of message that Astro should send in each private text chat upon creation"
+            :heading="$t('generators.editor.chat_message_type.title')"
+            :description="$t('generators.editor.chat_message_type.description')"
             :ultimate="
               !is_ultimate &&
               m_generator_settings.default_chat_text == null &&
@@ -1113,7 +1153,7 @@
                     :key="v"
                     :value="v"
                   >
-                    {{ capitalize(v) }}
+                    {{ $t(`generators.editor.chat_message_types.${v}`) }}
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
@@ -1126,8 +1166,8 @@
                 PrivateChatMessageType.TEXT_MESSAGE ||
               private_chat_message_type == PrivateChatMessageType.EMBED
             "
-            heading="Creation message"
-            description="A message that Astro sends in every private text chat upon creation"
+            :heading="$t('generators.editor.chat_message.title')"
+            :description="$t('generators.editor.chat_message.description')"
           >
             <template #bottom-action>
               <div class="flex items-start gap-2">
@@ -1156,8 +1196,8 @@
 
           <GroupSetting
             v-if="private_chat_message_type == PrivateChatMessageType.INTERFACE"
-            heading="Interface for creation message"
-            description="The interface that Astro should send in private text chats upon creation"
+            :heading="$t('generators.editor.chat_interface.title')"
+            :description="$t('generators.editor.chat_interface.description')"
           >
             <template #bottom-action>
               <Select
@@ -1172,9 +1212,11 @@
                 "
               >
                 <SelectTrigger>
-                  <SelectValue aria-label="value"
-                    >Interface in #{{ chat_interface }}</SelectValue
-                  >
+                  <SelectValue aria-label="value">{{
+                    $t('generators.editor.interface_in', {
+                      channel: chat_interface,
+                    })
+                  }}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
@@ -1185,15 +1227,18 @@
                       class=""
                     >
                       <div class="flex flex-col">
-                        <span
-                          >Interface in #{{
-                            guild_channels.find((c) => c.id == v.channel_id)
-                              ?.name
-                          }}</span
-                        >
-                        <span class="text-foreground-secondary"
-                          >Message id: {{ v.message_id }}</span
-                        >
+                        <span>{{
+                          $t('generators.editor.interface_in', {
+                            channel: guild_channels.find(
+                              (c) => c.id == v.channel_id,
+                            )?.name,
+                          })
+                        }}</span>
+                        <span class="text-foreground-secondary">{{
+                          $t('generators.editor.message_id', {
+                            id: v.message_id,
+                          })
+                        }}</span>
                       </div>
                     </SelectItem>
                   </SelectGroup>
@@ -1204,8 +1249,8 @@
 
           <div class="groups-container-compact">
             <GroupSetting
-              heading="Category"
-              description="The category in which private text chats are generated"
+              :heading="$t('generators.editor.chat_category.title')"
+              :description="$t('generators.editor.chat_category.description')"
               compact
             >
               <template #bottom-action>
@@ -1234,7 +1279,9 @@
                         {{ category.name }}
                       </SelectItem>
                       <!-- 'No category' option -->
-                      <SelectItem value="no_category">No category</SelectItem>
+                      <SelectItem value="no_category">{{
+                        $t('common.no_category')
+                      }}</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -1242,8 +1289,8 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="Permission Inheriting"
-              description="Choose if private text chats inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
+              :heading="$t('generators.editor.chat_inheriting.title')"
+              :description="$t('generators.editor.chat_inheriting.description')"
               compact
             >
               <template #bottom-action>
@@ -1270,7 +1317,9 @@
                         :key="v"
                         :value="v"
                       >
-                        {{ capitalize(v) }}
+                        {{
+                          $t(`generators.editor.inheritance.${v.toLowerCase()}`)
+                        }}
                       </SelectItem>
                     </SelectGroup>
                   </SelectContent>
@@ -1279,8 +1328,8 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="Nsfw"
-              description="Control the nsfw setting for private text chats"
+              :heading="$t('generators.editor.chat_nsfw.title')"
+              :description="$t('generators.editor.chat_nsfw.description')"
               compact
             >
               <template #bottom-action>
@@ -1289,14 +1338,14 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="Slowmode"
-              description="Set the slowmode of private text chats, in seconds. Use 0 for no slowmode"
+              :heading="$t('generators.editor.chat_slowmode.title')"
+              :description="$t('generators.editor.chat_slowmode.description')"
               compact
             >
               <template #bottom-action>
                 <input
                   :value="m_generator_settings.chat_slowmode ?? ''"
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   type="number"
                   min="0"
                   max="21600"
@@ -1319,7 +1368,7 @@
       v-else-if="guild_settings_error"
       class="center text-foreground-destructive"
     >
-      Something went wrong, please try again later
+      {{ $t('common.error_generic') }}
     </div>
     <div v-else class="center">
       <IconLoading />
@@ -1355,7 +1404,6 @@
 import { navigateTo } from '#imports'
 import useClone from '~/composables/useClone'
 import cn from '~/utils/cn'
-import capitalize from '~/utils/capitalize'
 import isGuildUltimate from '~/utils/isGuildUltimate'
 // enums are used as values in the template
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
@@ -1376,26 +1424,20 @@ definePageMeta({
   layout: 'dashboard',
 })
 
-useHead({
-  title: 'Generator - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.generator.title') }),
   meta: [
-    {
-      name: 'description',
-      content:
-        'Configure all the settings of your temporary voice channel generator',
-    },
+    { name: 'description', content: t('meta.generator.description') },
     {
       property: 'og:title',
-      content: 'Generator - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.generator.title') }),
     },
-    {
-      property: 'og:description',
-      content:
-        'Configure all the settings of your temporary voice channel generator',
-    },
+    { property: 'og:description', content: t('meta.generator.description') },
     { property: 'og:url', content: 'https://astro-bot.space/guilds/generator' },
   ],
-})
+}))
 
 const { toast } = useToast()
 const route = useRoute()
@@ -1484,7 +1526,7 @@ const category_id = computed({
 const category = computed(() => {
   return (
     guild_channels.value?.find((c) => c.id === category_id.value)?.name ??
-    'No category'
+    t('common.no_category')
   )
 })
 
@@ -1520,7 +1562,7 @@ const moderator_role_id = computed({
 const moderator_role = computed(() => {
   return (
     guild_roles.value?.find((r) => r.id === moderator_role_id.value)?.name ??
-    'Not set'
+    t('common.not_set')
   )
 })
 
@@ -1547,7 +1589,7 @@ const owner_role_id = computed({
 const owner_role = computed(() => {
   return (
     guild_roles.value?.find((r) => r.id === owner_role_id.value)?.name ??
-    'Not set'
+    t('common.not_set')
   )
 })
 
@@ -1565,7 +1607,7 @@ const fallback_generator_id = computed({
 const fallback_generator = computed(() => {
   return (
     guild_channels.value?.find((c) => c.id === fallback_generator_id.value)
-      ?.name ?? 'No fallback'
+      ?.name ?? t('generators.editor.no_fallback')
   )
 })
 
@@ -1583,7 +1625,7 @@ const waiting_category_id = computed({
 const waiting_category = computed(() => {
   return (
     guild_channels.value?.find((c) => c.id === waiting_category_id.value)
-      ?.name ?? 'No category'
+      ?.name ?? t('common.no_category')
   )
 })
 
@@ -1601,7 +1643,7 @@ const private_chat_category_id = computed({
 const private_chat_category = computed(() => {
   return (
     guild_channels.value?.find((c) => c.id === private_chat_category_id.value)
-      ?.name ?? 'No category'
+      ?.name ?? t('common.no_category')
   )
 })
 
@@ -1618,23 +1660,23 @@ const chat_interface = computed(() => {
           ]
         : null
     if (astro_interface == null) {
-      return 'No interface'
+      return t('generators.editor.no_interface')
     } else {
       return (
         guild_channels.value?.find((c) => c.id == astro_interface.channel_id)
-          ?.name ?? 'No interface'
+          ?.name ?? t('generators.editor.no_interface')
       )
     }
   } else {
-    return 'No interface'
+    return t('generators.editor.no_interface')
   }
 })
 
 enum PrivateChatMessageType {
-  NO_MESSAGE = 'No message',
-  TEXT_MESSAGE = 'Text message',
-  EMBED = 'Embed message',
-  INTERFACE = 'Astro interface',
+  NO_MESSAGE = 'no_message',
+  TEXT_MESSAGE = 'text_message',
+  EMBED = 'embed',
+  INTERFACE = 'interface',
 }
 
 const private_chat_message_type = computed({
@@ -1693,8 +1735,7 @@ const private_chat_message_type = computed({
             m_generator_settings.value.default_chat_text = null
           } else {
             toast({
-              description:
-                'You need to first create an Interface to be able to use it as the private text chat message',
+              description: t('generators.editor.need_interface'),
               variant: 'destructive',
             })
           }

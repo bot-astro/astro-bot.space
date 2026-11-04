@@ -1,7 +1,9 @@
 <script setup lang="ts">
-useHead({
-  title: 'Refund Policy - Astro - Temporary Voice Channels for your Discord!',
-})
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.refund.title'),
+}))
 
 const { data: page } = await useAsyncData('refund-policy', () =>
   queryCollection('content').path('/refund-policy').first(),

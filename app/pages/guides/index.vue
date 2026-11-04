@@ -1,33 +1,26 @@
 <script setup lang="ts">
 import { navigateTo } from '#imports'
-useHead({
-  title: 'Guides - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.guides.title') }),
   meta: [
-    {
-      name: 'description',
-      content: 'Need help with Astro, check out these beginner friendly guides',
-    },
+    { name: 'description', content: t('meta.guides.description') },
     {
       property: 'og:title',
-      content: 'Guides - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.guides.title') }),
     },
-    {
-      property: 'og:description',
-      content: 'Need help with Astro, check out these beginner friendly guides',
-    },
+    { property: 'og:description', content: t('meta.guides.description') },
     { property: 'og:url', content: 'https://astro-bot.space/guides' },
   ],
-})
+}))
 </script>
 
 <template>
   <div class="mx-12 mt-16 flex w-3/4 flex-col items-center gap-16 md:w-auto">
     <div class="flex flex-col gap-4">
-      <span class="text-title text-center">Guides</span>
-      <span class="text-subtitle text-center"
-        >Here are some handy guides that will help you get started using Astro
-        and creating the perfect setup for your server!</span
-      >
+      <span class="text-title text-center">{{ $t('guides.title') }}</span>
+      <span class="text-subtitle text-center">{{ $t('guides.subtitle') }}</span>
     </div>
 
     <div class="flex w-full flex-col gap-2">
@@ -39,12 +32,13 @@ useHead({
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Getting started</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('guides.basic.title') }}</span
           >
-          <span class="text-description"
-            >Get started using Astro learning the basics</span
-          >
+          <span class="text-description">{{
+            $t('meta.guide_basic.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown
@@ -60,13 +54,13 @@ useHead({
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Generators</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('guides.generator.title') }}</span
           >
-          <span class="text-description"
-            >Learn how to configure and use temporary voice channel
-            generators</span
-          >
+          <span class="text-description">{{
+            $t('meta.guide_generator.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown
@@ -82,13 +76,13 @@ useHead({
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Interfaces</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('guides.interface.title') }}</span
           >
-          <span class="text-description"
-            >Learn how to make your interface look amazing and unique with this
-            guide</span
-          >
+          <span class="text-description">{{
+            $t('meta.guide_interface.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown
@@ -104,13 +98,13 @@ useHead({
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Templates</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('guides.template.title') }}</span
           >
-          <span class="text-description"
-            >Discover templates and learn how to configure them, your users will
-            love them</span
-          >
+          <span class="text-description">{{
+            $t('meta.guide_template.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown
@@ -126,13 +120,13 @@ useHead({
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
         />
         <div class="flex flex-col">
-          <span class="text-heading group-hover:text-foreground-link-standout"
-            >Voice roles</span
+          <span
+            class="text-heading group-hover:text-foreground-link-standout"
+            >{{ $t('guides.voice_role.title') }}</span
           >
-          <span class="text-description"
-            >Learn how to configure voice role to make your server look extra
-            slick</span
-          >
+          <span class="text-description">{{
+            $t('meta.guide_voice_role.description')
+          }}</span>
         </div>
         <div class="grow" />
         <IconDropdown

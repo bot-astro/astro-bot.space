@@ -1,7 +1,9 @@
 <script setup lang="ts">
-useHead({
-  title: 'Privacy Policy - Astro - Temporary Voice Channels for your Discord!',
-})
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.privacy.title'),
+}))
 
 const { data: page } = await useAsyncData('privacy-policy', () =>
   queryCollection('content').path('/privacy-policy').first(),

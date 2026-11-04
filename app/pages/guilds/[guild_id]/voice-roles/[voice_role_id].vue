@@ -22,37 +22,36 @@
         >
           {{
             guild_channels.find((c) => c.id == voice_role_id)?.name ??
-            'Deleted channel'
+            $t('common.deleted_channel')
           }}
           <span class="text-foreground-secondary">x</span> @{{
             guild_roles.find((r) => r.id == voice_role_settings!.role_id)
-              ?.name ?? 'Deleted role'
+              ?.name ?? $t('voice_roles.deleted_role')
           }}
         </span>
         <Skeleton v-else class="h-10 w-72" />
-        <span class="dashboard-section-description"
-          >Manage the settings of this voice role!</span
-        >
+        <span class="dashboard-section-description">{{
+          $t('voice_roles.detail.description')
+        }}</span>
       </div>
       <div class="grow" />
       <AlertDialog>
         <AlertDialogTrigger>
           <ButtonDestructive :loading="delete_voice_role_loading">
-            Delete
+            {{ $t('common.delete') }}
           </ButtonDestructive>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle
-              >Are you sure you want to delete the voice role?</AlertDialogTitle
-            >
+            <AlertDialogTitle>{{
+              $t('voice_roles.delete_confirm_title')
+            }}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be un-done and you wont be able to restore this
-              voice role!
+              {{ $t('voice_roles.delete_confirm_description') }}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Go back</AlertDialogCancel>
+            <AlertDialogCancel>{{ $t('common.go_back') }}</AlertDialogCancel>
             <AlertDialogAction
               :destructive="true"
               :loading="delete_voice_role_loading"
@@ -63,7 +62,7 @@
                 })
               "
             >
-              Delete
+              {{ $t('common.delete') }}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -79,15 +78,12 @@
       class="flex flex-col gap-12"
     >
       <div class="groups-wrapper">
-        <span class="text-group-name">SETTINGS</span>
+        <span class="text-group-name">{{ $t('overview.settings.group') }}</span>
         <div class="groups-container">
-          <GroupSetting heading="Channel">
+          <GroupSetting :heading="$t('common.channel')">
             <template #description>
-              <span class="text-foreground-secondary">
-                Channel that triggers this voice role.<br />If you select a
-                category, all channels of that category will trigger this voice
-                role.<br />If you select a generator, all temporary voice
-                channels generated from it will trigger this voice role.
+              <span class="whitespace-pre-line text-foreground-secondary">
+                {{ $t('voice_roles.detail.channel_description') }}
               </span>
             </template>
             <template #bottom-action>
@@ -120,8 +116,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Role"
-            description="This role will be applied when a user joins the channel selected above"
+            :heading="$t('common.role')"
+            :description="$t('voice_roles.role_description')"
           >
             <template #bottom-action>
               <Select
@@ -150,8 +146,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Action"
-            description="Assign means Astro will give the role to the user when he joins the channel and remove it when he leaves. Remove does the opposite. Toggle behaves like 'Assign' if the user doesn't have the role, 'Remove' otherwise"
+            :heading="$t('common.action')"
+            :description="$t('voice_roles.action_description')"
           >
             <template #bottom-action>
               <Select
@@ -172,7 +168,7 @@
                       :key="v"
                       :value="v"
                     >
-                      {{ capitalize(v) }}
+                      {{ $t(`voice_roles.actions.${v.toLowerCase()}`) }}
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
@@ -181,8 +177,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Permanent"
-            description="If enabled, Astro will not revert the action when the user leaves the channel"
+            :heading="$t('common.permanent')"
+            :description="$t('voice_roles.permanent_description')"
           >
             <Switch v-model:checked="m_voice_role_settings.permanent" />
           </GroupSetting>
@@ -194,7 +190,7 @@
       v-else-if="guild_settings_error"
       class="center text-foreground-destructive"
     >
-      Something went wrong, please try again later
+      {{ $t('common.error_generic') }}
     </div>
     <div v-else-if="guild_settings_pending" class="center">
       <IconLoading />
@@ -205,7 +201,6 @@
 <script setup lang="ts">
 import { navigateTo } from '#imports'
 import useClone from '~/composables/useClone'
-import capitalize from '~/utils/capitalize'
 import { AError, AErrorCode } from '~/data/astro/core/AError'
 import { deepEqual } from 'fast-equals'
 import { useToast } from '~/components/ui/toast'
@@ -222,26 +217,26 @@ definePageMeta({
   layout: 'dashboard',
 })
 
-useHead({
-  title:
-    'Voice role settings - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.voice_role.title') }),
   meta: [
-    { name: 'description', content: 'Configure this voice role settings' },
+    { name: 'description', content: t('meta.voice_role.description') },
     {
       property: 'og:title',
-      content:
-        'Voice role settings - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.voice_role.title') }),
     },
     {
       property: 'og:description',
-      content: 'Configure this voice role settings',
+      content: t('meta.voice_role.description'),
     },
     {
       property: 'og:url',
       content: 'https://astro-bot.space/guilds/voice_role',
     },
   ],
-})
+}))
 
 const { toast } = useToast()
 const route = useRoute()

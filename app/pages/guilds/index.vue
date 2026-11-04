@@ -7,26 +7,20 @@ definePageMeta({
   middleware: 'auth',
 })
 
-useHead({
-  title: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.dashboard.title') }),
   meta: [
-    {
-      name: 'description',
-      content:
-        'Configure all Astro settings with the powerful and intuitive dashboard',
-    },
+    { name: 'description', content: t('meta.dashboard.description') },
     {
       property: 'og:title',
-      content: 'Dashboard - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.dashboard.title') }),
     },
-    {
-      property: 'og:description',
-      content:
-        'Configure all Astro settings with the powerful and intuitive dashboard',
-    },
+    { property: 'og:description', content: t('meta.dashboard.description') },
     { property: 'og:url', content: 'https://astro-bot.space/guilds' },
   ],
-})
+}))
 
 const search = ref('')
 const permission_dialog_open = ref(false)
@@ -52,13 +46,29 @@ const guilds = computed(() => {
         <DialogHeader>
           <DialogTitle class="vertical-center gap-2">
             <IconQuestion class="size-6" />
-            <span> Required permissions </span>
+            <span> {{ $t('guilds.required_permissions') }} </span>
           </DialogTitle>
           <DialogDescription>
-            In order to manage Astro's settings for a server, you need to have
-            either <Badge variant="discord">Manage channels</Badge>,
-            <Badge variant="discord">Manage server</Badge> or
-            <Badge variant="discord">Administrator</Badge> permissions.
+            <i18n-t
+              keypath="guilds.required_permissions_description"
+              tag="span"
+            >
+              <template #manage_channels>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_channels')
+                }}</Badge>
+              </template>
+              <template #manage_server>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_server')
+                }}</Badge>
+              </template>
+              <template #administrator>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.administrator')
+                }}</Badge>
+              </template>
+            </i18n-t>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
@@ -68,20 +78,36 @@ const guilds = computed(() => {
       class="group-setting flex w-full flex-col items-center justify-between gap-2 md:flex-row md:gap-0"
     >
       <div class="flex w-full flex-col text-center md:text-start">
-        <span class="text-xl font-semibold">Servers</span>
-        <span class="text-secondary text-sm">Select a server to manage</span>
+        <span class="text-xl font-semibold">{{ $t('guilds.title') }}</span>
+        <span class="text-secondary text-sm">{{ $t('guilds.subtitle') }}</span>
       </div>
 
       <div class="flex items-center gap-2">
         <DashboardInfoButton
-          title="Required permissions"
+          :title="$t('guilds.required_permissions')"
           guide-button-uri="/guides/basic"
         >
           <span>
-            In order to manage Astro's settings for a server, you need to have
-            either <Badge variant="discord">Manage channels</Badge>,
-            <Badge variant="discord">Manage server</Badge> or
-            <Badge variant="discord">Administrator</Badge> permissions.
+            <i18n-t
+              keypath="guilds.required_permissions_description"
+              tag="span"
+            >
+              <template #manage_channels>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_channels')
+                }}</Badge>
+              </template>
+              <template #manage_server>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_server')
+                }}</Badge>
+              </template>
+              <template #administrator>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.administrator')
+                }}</Badge>
+              </template>
+            </i18n-t>
           </span>
         </DashboardInfoButton>
 
@@ -97,7 +123,7 @@ const guilds = computed(() => {
           v-model="search"
           class="w-full md:w-auto"
           type="text"
-          placeholder="Search by name"
+          :placeholder="$t('guilds.search_placeholder')"
         />
       </div>
     </div>
@@ -109,7 +135,7 @@ const guilds = computed(() => {
       v-else-if="error"
       class="bordered-destructive text-destructive mt-4 flex w-full justify-center rounded-md p-4"
     >
-      Something went wrong, please try again later
+      {{ $t('common.error_generic') }}
     </div>
     <div v-else>
       <div
@@ -146,7 +172,7 @@ const guilds = computed(() => {
             class="flex w-full items-center justify-center"
             :to="`/guilds/${guild.id}`"
           >
-            Manage
+            {{ $t('guilds.manage') }}
           </Button>
         </div>
       </div>
@@ -156,15 +182,13 @@ const guilds = computed(() => {
         v-if="guilds.length === 0"
         class="mt-32 flex flex-col items-center gap-2"
       >
-        <span class="text-center"
-          >You cannot manage the settings of any server you are in!</span
-        >
+        <span class="text-center">{{ $t('guilds.none_manageable') }}</span>
         <ButtonText
           class="gap-2"
           @click="() => (permission_dialog_open = true)"
         >
           <IconQuestion class="size-6" />
-          See required permissions
+          {{ $t('guilds.see_required_permissions') }}
         </ButtonText>
       </div>
     </div>

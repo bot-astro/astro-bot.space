@@ -4,31 +4,25 @@ definePageMeta({
   layout: 'guide',
 })
 
-useHead({
-  title: 'Template guide - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.guide_template.title') }),
   meta: [
-    {
-      name: 'description',
-      content:
-        'Discover templates and learn how to configure them, your users will love them',
-    },
+    { name: 'description', content: t('meta.guide_template.description') },
     {
       property: 'og:title',
-      content:
-        'Template guide - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.guide_template.title') }),
     },
     {
       property: 'og:description',
-      content:
-        'Discover templates and learn how to configure them, your users will love them',
+      content: t('meta.guide_template.description'),
     },
     { property: 'og:url', content: 'https://astro-bot.space/guides/template' },
   ],
-})
+}))
 
-const { data: page } = await useAsyncData('guide_template', () =>
-  queryCollection('content').path('/guide_template').first(),
-)
+const { data: page } = await useGuideContent('guide_template')
 </script>
 
 <template>

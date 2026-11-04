@@ -13,28 +13,30 @@
           :class="{ 'text-dimmed': !url }"
           :title="url ? image_name : undefined"
         >
-          {{ url ? display_name : 'Not set' }}
+          {{
+            url ? display_name : (emptyLabel ?? $t('dashboard.image.not_set'))
+          }}
         </span>
         <ButtonSecondary
           v-if="defaultUrl && url !== defaultUrl"
           :disabled="disabled"
           @click="$emit('reset')"
         >
-          Reset to default
+          {{ $t('dashboard.image.reset_to_default') }}
         </ButtonSecondary>
         <template v-if="url">
           <ButtonSecondary :disabled="disabled" @click="$emit('preview')">
-            Preview
+            {{ $t('dashboard.image.preview') }}
           </ButtonSecondary>
           <ButtonSecondary :disabled="disabled" @click="$emit('choose')">
-            Replace
+            {{ $t('dashboard.image.replace') }}
           </ButtonSecondary>
           <ButtonDestructive :disabled="disabled" @click="$emit('remove')">
-            Remove
+            {{ $t('dashboard.image.remove') }}
           </ButtonDestructive>
         </template>
         <Button v-else :disabled="disabled" @click="$emit('choose')">
-          Choose image
+          {{ $t('dashboard.image.choose') }}
         </Button>
       </div>
     </template>
@@ -49,6 +51,7 @@ const props = defineProps<{
   defaultUrl?: string
   disabled: boolean
   hideUltimateBadge?: boolean
+  emptyLabel?: string
 }>()
 defineEmits<{
   upgrade: []

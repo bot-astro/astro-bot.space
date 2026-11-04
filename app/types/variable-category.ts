@@ -1,6 +1,6 @@
 export enum VariableCategory {
-  VOICE_CHANNEL_OWNER = 'Voice channel owner',
-  VOICE_CHANNEL_OWNER_ACTIVITY = 'Voice channel owner activity',
-  VOICE_CHANNEL_PROPERTIES = 'Voice channel properties',
-  INCREMENTAL_VALUES = 'Incremental values',
+  VOICE_CHANNEL_OWNER = 'voice_channel_owner',
+  VOICE_CHANNEL_OWNER_ACTIVITY = 'voice_channel_owner_activity',
+  VOICE_CHANNEL_PROPERTIES = 'voice_channel_properties',
+  INCREMENTAL_VALUES = 'incremental_values',
 }

@@ -20,7 +20,7 @@
           navigateTo(props.guideButtonUri, { open: { target: '_blank' } })
         "
       >
-        See guide
+        {{ $t('common.see_guide') }}
       </ButtonSecondary>
     </div>
   </PopoverContent>

@@ -20,29 +20,28 @@
           {{ template_settings.name }}
         </span>
         <Skeleton v-else class="h-10 w-72" />
-        <span class="dashboard-section-description"
-          >Manage the settings of this template!</span
-        >
+        <span class="dashboard-section-description">{{
+          $t('templates.detail.description')
+        }}</span>
       </div>
       <div class="grow" />
       <AlertDialog>
         <AlertDialogTrigger>
           <ButtonDestructive :loading="delete_template_loading">
-            Delete
-          </ButtonDestructive>
+            {{ $t('common.delete') }}</ButtonDestructive
+          >
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle
-              >Are you sure you want to delete the template?</AlertDialogTitle
-            >
+            <AlertDialogTitle>{{
+              $t('templates.delete_confirm_title')
+            }}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be un-done and you wont be able to restore this
-              template!
+              {{ $t('templates.delete_confirm_description') }}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Go back</AlertDialogCancel>
+            <AlertDialogCancel>{{ $t('common.go_back') }}</AlertDialogCancel>
             <AlertDialogAction
               :destructive="true"
               :loading="delete_template_loading"
@@ -53,7 +52,7 @@
                 })
               "
             >
-              Delete
+              {{ $t('common.delete') }}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -65,17 +64,17 @@
       class="flex flex-col gap-12"
     >
       <div class="groups-wrapper">
-        <span class="text-group-name">USAGE SETTINGS</span>
+        <span class="text-group-name">{{ $t('templates.usage_group') }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="Name"
-            description="The name that users see when they are choosing a template to apply to their temporary voice channel (this is not the name of the voice channel itself)"
+            :heading="$t('common.name')"
+            :description="$t('templates.name_description')"
           >
             <template #bottom-action>
               <div class="flex gap-2">
                 <input
                   v-model="m_template_settings.name"
-                  placeholder="Insert a name"
+                  :placeholder="$t('templates.name_placeholder')"
                   type="text"
                   class="grow"
                   minlength="1"
@@ -86,8 +85,8 @@
           </GroupSetting>
 
           <GroupSetting
-            heading="Enabled generators"
-            description="Make this template usable only in temporary voice channels created by certain generators"
+            :heading="$t('templates.generators.title')"
+            :description="$t('templates.generators.description')"
           >
             <DropdownMenu>
               <DropdownMenuTrigger
@@ -95,10 +94,17 @@
               >
                 {{
                   m_template_settings.enabled_generator_ids == null
-                    ? 'Any generator'
+                    ? $t('templates.generators.any')
                     : m_template_settings.enabled_generator_ids.length == 0
-                      ? 'Disabled for every generator'
-                      : `Allowed in ${m_template_settings.enabled_generator_ids.length} generators`
+                      ? $t('templates.generators.none')
+                      : $t(
+                          'templates.generators.count',
+                          {
+                            count:
+                              m_template_settings.enabled_generator_ids.length,
+                          },
+                          m_template_settings.enabled_generator_ids.length,
+                        )
                 }}
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -110,7 +116,7 @@
                       : (m_template_settings.enabled_generator_ids = null)
                   "
                 >
-                  Any generator
+                  {{ $t('templates.generators.any') }}
                 </DropdownMenuCheckboxItem>
 
                 <DropdownMenuCheckboxItem
@@ -151,7 +157,7 @@
                 >
                   {{
                     guild_channels!.find((c) => c.id == generator.id)?.name ??
-                    'Deleted channel'
+                    $t('common.deleted_channel')
                   }}
                 </DropdownMenuCheckboxItem>
               </DropdownMenuContent>
@@ -161,16 +167,16 @@
       </div>
 
       <div class="groups-wrapper">
-        <span class="text-group-name">VOICE CHANNEL SETTINGS</span>
+        <span class="text-group-name">{{ $t('templates.vc_group') }}</span>
         <div class="groups-container">
           <GroupSetting
-            heading="Name"
-            description="The name applied to temporary voice channels"
+            :heading="$t('common.name')"
+            :description="$t('templates.vc_name_description')"
           >
             <template #bottom-action>
               <div class="flex gap-2">
                 <input
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   type="text"
                   :value="
                     m_template_settings.vc_name != null
@@ -204,13 +210,13 @@
 
           <div class="groups-container-compact">
             <GroupSetting
-              heading="User limit"
-              description="The user limit applied to the temporary voice channel"
+              :heading="$t('common.user_limit')"
+              :description="$t('templates.user_limit_description')"
               compact
             >
               <template #bottom-action>
                 <input
-                  placeholder="Not set"
+                  :placeholder="$t('common.not_set')"
                   :value="
                     m_template_settings.vc_limit != null
                       ? m_template_settings.vc_limit
@@ -231,14 +237,14 @@
             </GroupSetting>
 
             <GroupSetting
-              heading="Bitrate"
-              description="The bitrate in kbps that gets applied to the temporary voice channel"
+              :heading="$t('common.bitrate')"
+              :description="$t('templates.bitrate_description')"
               compact
             >
               <template #bottom-action>
                 <div class="vertical-center relative">
                   <input
-                    placeholder="Not set"
+                    :placeholder="$t('common.not_set')"
                     :value="
                       m_template_settings.vc_bitrate != null
                         ? m_template_settings.vc_bitrate / 1000
@@ -269,15 +275,15 @@
                               : 'left-6',
                       )
                     "
-                    >kbps</span
+                    >{{ $t('common.kbps') }}</span
                   >
                 </div>
               </template>
             </GroupSetting>
 
             <GroupSetting
-              heading="Region"
-              description="The voice region applied to temporary voice channels"
+              :heading="$t('common.region')"
+              :description="$t('templates.region_description')"
               compact
             >
               <template #bottom-action>
@@ -290,11 +296,15 @@
                   "
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Not set" aria-label="value">{{
-                      discord_regions.find(
-                        (r) => r.key == m_template_settings!.vc_region,
-                      )?.name
-                    }}</SelectValue>
+                    <SelectValue
+                      :placeholder="$t('common.not_set')"
+                      aria-label="value"
+                      >{{
+                        m_template_settings!.vc_region
+                          ? $t(`regions.${m_template_settings!.vc_region}`)
+                          : undefined
+                      }}</SelectValue
+                    >
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -303,10 +313,12 @@
                         :key="region.key"
                         :value="region.key"
                       >
-                        {{ region.emoji }} {{ region.name }}
+                        {{ region.emoji }} {{ $t(`regions.${region.key}`) }}
                       </SelectItem>
 
-                      <SelectItem value="no_region">Not set</SelectItem>
+                      <SelectItem value="no_region">{{
+                        $t('common.not_set')
+                      }}</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -321,7 +333,7 @@
       v-else-if="guild_settings_error"
       class="center text-foreground-destructive"
     >
-      Something went wrong, please try again later
+      {{ $t('common.error_generic') }}
     </div>
     <div v-else class="center">
       <IconLoading />
@@ -370,20 +382,20 @@ definePageMeta({
   layout: 'dashboard',
 })
 
-useHead({
-  title:
-    'Template settings - Astro - Temporary Voice Channels for your Discord!',
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.template.title') }),
   meta: [
-    { name: 'description', content: 'Configure this template settings' },
+    { name: 'description', content: t('meta.template.description') },
     {
       property: 'og:title',
-      content:
-        'Template settings - Astro - Temporary Voice Channels for your Discord!',
+      content: t('meta.page_title', { page: t('meta.template.title') }),
     },
-    { property: 'og:description', content: 'Configure this template settings' },
+    { property: 'og:description', content: t('meta.template.description') },
     { property: 'og:url', content: 'https://astro-bot.space/guilds/template' },
   ],
-})
+}))
 
 const { toast } = useToast()
 const route = useRoute()
