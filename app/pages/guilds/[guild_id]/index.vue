@@ -96,11 +96,10 @@
         <span class="text-group-name">{{ $t('overview.settings.group') }}</span>
         <div class="groups-container">
           <GroupSetting
-            v-if="m_guild_settings"
             :heading="$t('overview.settings.language.title')"
             :description="$t('overview.settings.language.description')"
           >
-            <Select v-model="m_guild_settings.locale">
+            <Select v-if="m_guild_settings" v-model="m_guild_settings.locale">
               <SelectTrigger class="w-48">
                 <SelectValue aria-label="value">
                   <span class="flex items-center gap-2">
@@ -128,6 +127,7 @@
                 </SelectGroup>
               </SelectContent>
             </Select>
+            <Skeleton v-else class="h-10 w-48" />
           </GroupSetting>
           <GroupSetting :heading="$t('overview.settings.require_admin.title')">
             <template #description>
