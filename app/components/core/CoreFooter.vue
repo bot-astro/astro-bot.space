@@ -3,6 +3,7 @@ import type { LocaleObject } from '@nuxtjs/i18n'
 
 const { locale, locales, setLocale } = useI18n()
 const available_locales = computed(() => locales.value as LocaleObject[])
+const flags: Record<string, string> = { 'en-US': '🇺🇸', it: '🇮🇹' }
 </script>
 
 <template>
@@ -51,14 +52,29 @@ const available_locales = computed(() => locales.value as LocaleObject[])
       </div>
     </div>
 
-    <!-- footer socials and developed by text -->
-    <div class="mt-12 flex flex-col items-center justify-between sm:flex-row">
-      <span class="mb-2 text-center text-sm text-dimmed sm:mb-0">
-        {{ $t('footer.copyright', { year: new Date().getFullYear() }) }}
-      </span>
+    <!-- copyright, developed by text and language selector -->
+    <div
+      class="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:items-end sm:justify-between"
+    >
+      <div
+        class="flex flex-col items-center gap-2 text-sm text-dimmed sm:items-start"
+      >
+        <span class="flex items-center">
+          <Icon name="fluent:code-16-filled" class="size-5" />
+          &nbsp;{{ $t('footer.by') }}&nbsp;<a
+            href="https://giuliopime.dev"
+            target="_blank"
+            class="text-foreground-link-standout hover:opacity-80"
+            >Giuliopime</a
+          >
+        </span>
+        <span class="text-center">
+          {{ $t('footer.copyright', { year: new Date().getFullYear() }) }}
+        </span>
+      </div>
       <DropdownMenu>
-        <DropdownMenuTrigger class="flex items-center gap-1 text-sm">
-          <Icon name="fluent:globe-20-regular" class="size-5" />
+        <DropdownMenuTrigger class="flex items-center gap-2 text-sm">
+          <span class="text-lg leading-none">{{ flags[locale] }}</span>
           {{ available_locales.find((l) => l.code === locale)?.name }}
           <IconDropdown />
         </DropdownMenuTrigger>
@@ -66,21 +82,14 @@ const available_locales = computed(() => locales.value as LocaleObject[])
           <DropdownMenuItem
             v-for="l in available_locales"
             :key="l.code"
+            class="gap-2"
             @click="setLocale(l.code)"
           >
+            <span class="text-base leading-none">{{ flags[l.code] }}</span>
             {{ l.name }}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <div class="flex items-center text-sm">
-        <Icon name="fluent:code-16-filled" class="size-5" />
-        &nbsp;{{ $t('footer.by') }}&nbsp;<a
-          href="https://giuliopime.dev"
-          target="_blank"
-          class="text-foreground-link-standout hover:opacity-80"
-          >Giuliopime</a
-        >
-      </div>
     </div>
   </div>
 </template>

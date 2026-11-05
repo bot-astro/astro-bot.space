@@ -333,6 +333,10 @@
         "title": "Slash command permissions",
         "description": "You can restrict access to Astro slash commands using Discord permissions directly!",
         "button": "Manage on Discord"
+      },
+      "language": {
+        "title": "Language",
+        "description": "The language Astro uses for its messages and interface in Discord on this server. This does not change the language of this website."
       }
     },
     "ultimate": {

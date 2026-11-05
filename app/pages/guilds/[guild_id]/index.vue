@@ -95,6 +95,40 @@
       <div class="groups-wrapper">
         <span class="text-group-name">{{ $t('overview.settings.group') }}</span>
         <div class="groups-container">
+          <GroupSetting
+            v-if="m_guild_settings"
+            :heading="$t('overview.settings.language.title')"
+            :description="$t('overview.settings.language.description')"
+          >
+            <Select v-model="m_guild_settings.locale">
+              <SelectTrigger class="w-48">
+                <SelectValue aria-label="value">
+                  <span class="flex items-center gap-2">
+                    <span class="text-base leading-none">{{
+                      flags[m_guild_settings.locale]
+                    }}</span>
+                    {{ language_name(m_guild_settings.locale) }}
+                  </span>
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem
+                    v-for="l in available_locales"
+                    :key="l.code"
+                    :value="l.code"
+                  >
+                    <span class="flex items-center gap-2">
+                      <span class="text-base leading-none">{{
+                        flags[l.code]
+                      }}</span>
+                      {{ l.name }}
+                    </span>
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </GroupSetting>
           <GroupSetting :heading="$t('overview.settings.require_admin.title')">
             <template #description>
               <span class="text-description">
@@ -365,6 +399,7 @@ import useClone from '~/composables/useClone'
 import isGuildUltimate from '~/utils/isGuildUltimate'
 import { AError, AErrorCode } from '~/data/astro/core/AError'
 import type { GuildSettings } from '~/types/guild-settings/guild_settings'
+import type { LocaleObject } from '@nuxtjs/i18n'
 import { deepEqual } from 'fast-equals'
 import type { DashboardSection } from '~/types/dashboard'
 import { useToast } from '~/components/ui/toast'
@@ -382,7 +417,11 @@ definePageMeta({
   } as DashboardSection,
 })
 
-const { t } = useI18n()
+const { t, locales } = useI18n()
+const available_locales = computed(() => locales.value as LocaleObject[])
+const flags: Record<string, string> = { 'en-US': '🇺🇸', it: '🇮🇹' }
+const language_name = (code: string) =>
+  available_locales.value.find((l) => l.code === code)?.name ?? code
 
 useHead(() => ({
   title: t('meta.page_title', { page: t('meta.guild.title') }),
