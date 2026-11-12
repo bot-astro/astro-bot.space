@@ -1,8 +1,8 @@
 // @ts-check
-import withNuxt from './.nuxt/eslint.config.mjs';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
-import tailwindcss from 'eslint-plugin-tailwindcss';
-import vueQuery from '@tanstack/eslint-plugin-query';
+import withNuxt from './.nuxt/eslint.config.mjs'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
+import tailwindcss from 'eslint-plugin-tailwindcss'
+import vueQuery from '@tanstack/eslint-plugin-query'
 
 export default withNuxt(
   // Bridge the plugin's typescript-eslint types to ESLint's native config types.
@@ -20,8 +20,12 @@ export default withNuxt(
         }),
     },
     rules: {
-      'vue/html-self-closing': 'error', // re-enable with rule's own defaults
+      // void elements are left to prettier, which self-closes them
+      'vue/html-self-closing': [
+        'error',
+        { html: { void: 'any', normal: 'always', component: 'always' } },
+      ],
       'tailwindcss/no-custom-classname': 'off',
     },
   },
-);
+)

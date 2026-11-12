@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from 'vue'
 
 interface ButtonProps {
-  to?: string;
-  loading?: boolean;
-  class?: HTMLAttributes['class'];
-  target?: HTMLAnchorElement['target'];
+  to?: string
+  loading?: boolean
+  class?: HTMLAttributes['class']
+  target?: HTMLAnchorElement['target']
 }
 
-const props = defineProps<ButtonProps>();
+const props = defineProps<ButtonProps>()
 </script>
 
 <template>

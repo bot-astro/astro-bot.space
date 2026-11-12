@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from 'vue'
 
 interface ButtonStandoutProps {
-  to?: string;
-  class?: HTMLAttributes['class'];
+  to?: string
+  class?: HTMLAttributes['class']
 }
 
-const props = defineProps<ButtonStandoutProps>();
+const props = defineProps<ButtonStandoutProps>()
 </script>
 
 <template>

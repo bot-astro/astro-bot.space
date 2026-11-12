@@ -12,20 +12,20 @@
     <slot />
 
     <div
-      v-if="props.guide_button_uri"
+      v-if="props.guideButtonUri"
       class="flex w-full items-center justify-end"
     >
       <ButtonSecondary
         @click="
-          navigateTo(props.guide_button_uri, { open: { target: '_blank' } })
+          navigateTo(props.guideButtonUri, { open: { target: '_blank' } })
         "
       >
-        See guide
+        {{ $t('common.see_guide') }}
       </ButtonSecondary>
     </div>
   </PopoverContent>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ title: string; guide_button_uri?: string }>();
+const props = defineProps<{ title: string; guideButtonUri?: string }>()
 </script>

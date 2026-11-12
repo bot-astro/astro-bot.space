@@ -1,19 +1,30 @@
-<template>
-  <div />
-</template>
-
 <script lang="ts" setup>
 onMounted(() => {
   useInvite().invite()
 })
 
-useHead({
-  title: "Invite Astro - Astro - Temporary Voice Channels for your Discord!",
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.invite.title'),
   meta: [
-    { name: 'description', content: 'Invite Astro to your Discord server and start creating temporary voice channels for your community.' },
-    { property: 'og:title', content: 'Invite Astro - Astro - Temporary Voice Channels for your Discord!' },
-    { property: 'og:description', content: 'Invite Astro to your Discord server and start creating temporary voice channels for your community.' },
-    { property: 'og:url', content: 'https://astro-bot.space/invite' }
-  ]
-})
+    {
+      name: 'description',
+      content: t('meta.invite.description'),
+    },
+    {
+      property: 'og:title',
+      content: t('meta.invite.title'),
+    },
+    {
+      property: 'og:description',
+      content: t('meta.invite.description'),
+    },
+    { property: 'og:url', content: 'https://astro-bot.space/invite' },
+  ],
+}))
 </script>
+
+<template>
+  <div />
+</template>

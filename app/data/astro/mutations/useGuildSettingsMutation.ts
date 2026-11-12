@@ -1,4 +1,4 @@
-import type {GuildSettingsRB} from "~/types/guild-settings/request-bodies/guild_settings_rb";
+import type { GuildSettingsRB } from '~/types/guild-settings/request-bodies/guild_settings_rb'
 
 interface GuildSettingsMutationParams {
   guild_id: string
@@ -10,8 +10,12 @@ export function useGuildSettingsMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (params: GuildSettingsMutationParams) => $astroApiClient.update_guild_settings(params.guild_id, params.guild_settings_rb),
-    onSuccess(data, variables, context) {
+    mutationFn: (params: GuildSettingsMutationParams) =>
+      $astroApiClient.update_guild_settings(
+        params.guild_id,
+        params.guild_settings_rb,
+      ),
+    onSuccess(data, variables) {
       queryClient.setQueryData(guild_settings_qk(variables.guild_id), data)
     },
   })

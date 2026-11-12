@@ -1,27 +1,30 @@
 <script lang="ts" setup>
-const { size, color } = withDefaults(
+const props = withDefaults(
   defineProps<{
-    size?: number;
-    color?: string;
+    size?: number
+    color?: string
   }>(),
   {
     size: 48,
     color: 'text-white',
   },
-);
+)
 
-const viewBox = `0 0 ${size} ${size}`;
-const centerPoint = size / 2;
-const circleRadius = (size / 2) * 0.75;
-const strokeWidth = circleRadius * 0.25;
+const viewBox = `0 0 ${props.size} ${props.size}`
+const centerPoint = props.size / 2
+const circleRadius = (props.size / 2) * 0.75
+const strokeWidth = circleRadius * 0.25
 
-const full = 2 * Math.PI * circleRadius;
-const half = full / 2;
+const full = 2 * Math.PI * circleRadius
+const half = full / 2
 </script>
 
 <template>
-  <div class="wrapper" :style="`height: ${size}px; width: ${size}px;`">
-    <div class="inner" :style="`width: ${size}px`">
+  <div
+    class="wrapper"
+    :style="`height: ${props.size}px; width: ${props.size}px;`"
+  >
+    <div class="inner" :style="`width: ${props.size}px`">
       <div
         v-for="i in 2"
         :key="i"
@@ -30,7 +33,7 @@ const half = full / 2;
         <svg class="part-inner" :viewBox="viewBox">
           <circle
             fill="none"
-            :class="`path stroke-current ${color}`"
+            :class="`path stroke-current ${props.color}`"
             :cx="centerPoint"
             :cy="centerPoint"
             :r="circleRadius"

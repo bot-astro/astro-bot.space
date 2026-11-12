@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from 'vue'
 
 interface ButtonDestructiveProps {
-  to?: string;
-  loading?: boolean;
-  class?: HTMLAttributes['class'];
+  to?: string
+  loading?: boolean
+  class?: HTMLAttributes['class']
 }
 
-const props = defineProps<ButtonDestructiveProps>();
+const props = defineProps<ButtonDestructiveProps>()
 </script>
 
 <template>

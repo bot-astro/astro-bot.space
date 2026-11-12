@@ -3,13 +3,14 @@
 </template>
 
 <script setup lang="ts">
-import {toast} from "~/components/ui/toast";
+import { toast } from '~/components/ui/toast'
 
 definePageMeta({
-  middleware: 'auth'
+  middleware: 'auth',
 })
 
 const { $astroApiClient } = useNuxtApp()
+const { t } = useI18n()
 
 onMounted(async () => {
   try {
@@ -19,8 +20,8 @@ onMounted(async () => {
     console.log(e)
 
     toast({
-      description: 'Something went wrong when opening the billing portal, try again later',
-      variant: 'destructive'
+      description: t('error.billing_portal'),
+      variant: 'destructive',
     })
   }
 })

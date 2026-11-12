@@ -3,11 +3,11 @@
 </template>
 
 <script setup lang="ts">
-const { default: particlesSettings } = await import('~/assets/particles.json');
+const { default: particlesSettings } = await import('~/assets/particles.json')
 
 onMounted(() => {
-  window.particlesJS('particles-js', particlesSettings);
-});
+  window.particlesJS('particles-js', particlesSettings)
+})
 </script>
 
 <style scoped>

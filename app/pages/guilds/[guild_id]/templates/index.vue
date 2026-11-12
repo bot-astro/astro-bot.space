@@ -3,86 +3,119 @@
     <div class="flex items-center gap-4">
       <IconTemplate class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
-        <span class="dashboard-section-title">Templates</span>
-        <span class="dashboard-section-description">Templates let users apply multiple settings at once to their temporary voice channel!</span>
+        <span class="dashboard-section-title">{{ $t('templates.title') }}</span>
+        <span class="dashboard-section-description">{{
+          $t('templates.description')
+        }}</span>
       </div>
-      <div class="flex-grow" />
+      <div class="grow" />
       <Button
         :loading="create_template_loading"
         @click="create_template_clicked"
       >
         <Icon name="fluent:add-12-regular" />
-        Create
+        {{ $t('common.create') }}
       </Button>
     </div>
 
     <Dialog v-model:open="create_template_dialog_open">
       <DialogContent>
         <div class="flex flex-col gap-2">
-          <p class="text-xl text-center">
-            Create template
-          </p>
+          <p class="text-center text-xl">{{ $t('templates.create_title') }}</p>
 
-          <div class="flex flex-col gap-6 max-h-[70vh] overflow-y-scroll mt-4">
+          <div class="mt-4 flex max-h-[70vh] flex-col gap-6 overflow-y-scroll">
             <div class="groups-wrapper">
-              <span class="text-group-name">USAGE SETTINGS</span>
+              <span class="text-group-name">{{
+                $t('templates.usage_group')
+              }}</span>
               <div class="groups-container">
                 <GroupSetting
-                  heading="Name"
-                  description="The name that users see when they are choosing a template to apply to their temporary voice channel (this is not the name of the voice channel itself)"
+                  :heading="$t('common.name')"
+                  :description="$t('templates.name_description')"
                 >
                   <template #bottom-action>
                     <div class="flex gap-2">
                       <input
-                        placeholder="Insert a name"
-                        type="text"
                         v-model="create_template_name"
+                        :placeholder="$t('templates.name_placeholder')"
+                        type="text"
                         class="grow"
                         minlength="1"
                         required
-                      >
+                      />
                     </div>
                   </template>
                 </GroupSetting>
 
                 <GroupSetting
-                  heading="Enabled generators"
-                  description="Make this template usable only in temporary voice channels created by certain generators"
+                  :heading="$t('templates.generators.title')"
+                  :description="$t('templates.generators.description')"
                 >
                   <template #bottom-action>
                     <DropdownMenu>
                       <DropdownMenuTrigger
-                        class="w-full bg-background rounded bordered h-9 py-1 px-2.5 focus-visible:border-pink-500 focus-visible:border-opacity-80"
+                        class="focus-visible:border-opacity-80 h-9 w-full rounded bordered bg-background px-2.5 py-1 focus-visible:border-pink-500"
                       >
-                        {{create_template_generators == null ? 'Any generator' : create_template_generators.length == 0 ? 'Disabled for every generator' : `Allowed in ${create_template_generators.length} generators`}}
+                        {{
+                          create_template_generators == null
+                            ? $t('templates.generators.any')
+                            : create_template_generators.length == 0
+                              ? $t('templates.generators.none')
+                              : $t(
+                                  'templates.generators.count',
+                                  { count: create_template_generators.length },
+                                  create_template_generators.length,
+                                )
+                        }}
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>
                         <DropdownMenuCheckboxItem
-                          v-bind:checked="create_template_generators == null"
-                          @update:checked="create_template_generators == null ? create_template_generators = [] : create_template_generators = null"
+                          :checked="create_template_generators == null"
+                          @update:checked="
+                            create_template_generators == null
+                              ? (create_template_generators = [])
+                              : (create_template_generators = null)
+                          "
                         >
-                          Any generator
+                          {{ $t('templates.generators.any') }}
                         </DropdownMenuCheckboxItem>
 
                         <DropdownMenuCheckboxItem
                           v-for="generator in guild_settings!.generators"
                           :key="generator.id"
-                          v-bind:checked="create_template_generators != null && create_template_generators.some(g => g == generator.id)"
-                          @update:checked="() => {
-                            const was_checked = create_template_generators != null && create_template_generators.some(g => g == generator.id)
+                          :checked="
+                            create_template_generators != null &&
+                            create_template_generators.some(
+                              (g) => g == generator.id,
+                            )
+                          "
+                          @update:checked="
+                            () => {
+                              const was_checked =
+                                create_template_generators != null &&
+                                create_template_generators.some(
+                                  (g) => g == generator.id,
+                                )
 
-                            if (was_checked) {
-                              create_template_generators = create_template_generators!.filter(g => g != generator.id)
-                            } else {
-                              if (create_template_generators == null) {
-                                create_template_generators = []
+                              if (was_checked) {
+                                create_template_generators =
+                                  create_template_generators!.filter(
+                                    (g) => g != generator.id,
+                                  )
+                              } else {
+                                if (create_template_generators == null) {
+                                  create_template_generators = []
+                                }
+
+                                create_template_generators.push(generator.id)
                               }
-
-                              create_template_generators.push(generator.id)
                             }
-                          }"
+                          "
                         >
-                          {{guild_channels!.find(c => c.id == generator.id)?.name ?? 'Deleted channel'}}
+                          {{
+                            guild_channels!.find((c) => c.id == generator.id)
+                              ?.name ?? $t('common.deleted_channel')
+                          }}
                         </DropdownMenuCheckboxItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -92,75 +125,143 @@
             </div>
 
             <div class="groups-wrapper">
-              <span class="text-group-name">VOICE CHANNEL SETTINGS</span>
+              <span class="text-group-name">{{
+                $t('templates.vc_group')
+              }}</span>
               <div class="groups-container">
                 <GroupSetting
-                  heading="Name"
-                  description="The name applied to temporary voice channels"
+                  :heading="$t('common.name')"
+                  :description="$t('templates.vc_name_description')"
                 >
                   <template #bottom-action>
                     <div class="flex gap-2">
                       <input
-                        placeholder="Not set"
+                        :placeholder="$t('common.not_set')"
                         type="text"
-                        v-bind:value="create_template_vc_name != null ? create_template_vc_name : undefined"
-                        @input="$event.target.value ? (create_template_vc_name = $event.target.value) : (create_template_vc_name = null)"
+                        :value="
+                          create_template_vc_name != null
+                            ? create_template_vc_name
+                            : undefined
+                        "
                         class="grow"
                         minlength="2"
                         maxlength="500"
-                      >
-                      <DashboardVariablesButton @upgrade="upgrade_dialog_open = true" @variableSelect="(v) => create_template_vc_name != null ? (create_template_vc_name += v) : (create_template_vc_name = v)" :is_ultimate="is_ultimate" />
+                        @input="
+                          ($event.target as HTMLInputElement).value
+                            ? (create_template_vc_name = (
+                                $event.target as HTMLInputElement
+                              ).value)
+                            : (create_template_vc_name = null)
+                        "
+                      />
+                      <DashboardVariablesButton
+                        :is-ultimate="is_ultimate"
+                        @upgrade="upgrade_dialog_open = true"
+                        @variable-select="
+                          (v) =>
+                            create_template_vc_name != null
+                              ? (create_template_vc_name += v)
+                              : (create_template_vc_name = v)
+                        "
+                      />
                     </div>
                   </template>
                 </GroupSetting>
 
                 <GroupSetting
-                  heading="User limit"
-                  description="The user limit applied to the temporary voice channel"
+                  :heading="$t('common.user_limit')"
+                  :description="$t('templates.user_limit_description')"
                 >
                   <template #bottom-action>
                     <input
-                      placeholder="Not set"
-                      v-bind:value="create_template_vc_user_limit != null ? create_template_vc_user_limit : undefined"
-                      @input="$event.target.value ? (create_template_vc_user_limit = $event.target.value) : (create_template_vc_user_limit = null)"
+                      :placeholder="$t('common.not_set')"
+                      :value="
+                        create_template_vc_user_limit != null
+                          ? create_template_vc_user_limit
+                          : undefined
+                      "
                       type="number"
                       min="0"
                       max="99"
-                    >
+                      @input="
+                        ($event.target as HTMLInputElement).value
+                          ? (create_template_vc_user_limit = Number(
+                              ($event.target as HTMLInputElement).value,
+                            ))
+                          : (create_template_vc_user_limit = null)
+                      "
+                    />
                   </template>
                 </GroupSetting>
 
                 <GroupSetting
-                  heading="Bitrate"
-                  description="The bitrate in kbps that gets applied to the temporary voice channel"
+                  :heading="$t('common.bitrate')"
+                  :description="$t('templates.bitrate_description')"
                 >
                   <template #bottom-action>
-                    <div class="relative vertical-center">
+                    <div class="vertical-center relative">
                       <input
-                        placeholder="Not set"
-                        v-bind:value="create_template_vc_bitrate != null ? create_template_vc_bitrate / 1000 : undefined"
-                        @input="$event.target.value ? (create_template_vc_bitrate = $event.target.value * 1000) : (create_template_vc_bitrate = null)"
+                        :placeholder="$t('common.not_set')"
+                        :value="
+                          create_template_vc_bitrate != null
+                            ? create_template_vc_bitrate / 1000
+                            : undefined
+                        "
                         type="number"
                         min="8"
                         max="384"
                         class="grow"
+                        @input="
+                          ($event.target as HTMLInputElement).value
+                            ? (create_template_vc_bitrate =
+                                Number(
+                                  ($event.target as HTMLInputElement).value,
+                                ) * 1000)
+                            : (create_template_vc_bitrate = null)
+                        "
+                      />
+                      <span
+                        :class="
+                          cn(
+                            'absolute text-foreground-secondary transition-all duration-100',
+                            create_template_vc_bitrate == null
+                              ? 'hidden'
+                              : create_template_vc_bitrate >= 100000
+                                ? 'left-10'
+                                : create_template_vc_bitrate >= 10000
+                                  ? 'left-8'
+                                  : 'left-6',
+                          )
+                        "
+                        >{{ $t('common.kbps') }}</span
                       >
-                      <span :class="cn('absolute text-foreground-secondary transition-all duration-100', create_template_vc_bitrate == null ? 'hidden' : create_template_vc_bitrate >= 100000 ? 'left-10' : create_template_vc_bitrate >= 10000 ? 'left-8' : 'left-6')">kbps</span>
                     </div>
                   </template>
                 </GroupSetting>
 
                 <GroupSetting
-                  heading="Region"
-                  description="The voice region applied to temporary voice channels"
+                  :heading="$t('common.region')"
+                  :description="$t('templates.region_description')"
                 >
                   <template #bottom-action>
                     <Select
                       v-model:model-value="create_template_vc_region_model"
-                      @update:model-value="(key) => create_template_vc_region = key !== 'no_region' ? key : null"
+                      @update:model-value="
+                        (key) =>
+                          (create_template_vc_region =
+                            key !== 'no_region' ? key : null)
+                      "
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Not set" aria-label="value">{{discord_regions.find(r => r.key == create_template_vc_region)?.name}}</SelectValue>
+                        <SelectValue
+                          :placeholder="$t('common.not_set')"
+                          aria-label="value"
+                          >{{
+                            create_template_vc_region
+                              ? $t(`regions.${create_template_vc_region}`)
+                              : undefined
+                          }}</SelectValue
+                        >
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
@@ -169,10 +270,12 @@
                             :key="region.key"
                             :value="region.key"
                           >
-                            {{region.emoji}} {{ region.name }}
+                            {{ region.emoji }} {{ $t(`regions.${region.key}`) }}
                           </SelectItem>
 
-                          <SelectItem value="no_region">Not set</SelectItem>
+                          <SelectItem value="no_region">{{
+                            $t('common.not_set')
+                          }}</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -183,9 +286,9 @@
             </div>
           </div>
 
-          <div class="flex flex-col sm:flex-row justify-end mt-8 gap-2">
+          <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
             <Button @click="create_template_form_submission">
-              Create
+              {{ $t('common.create') }}
             </Button>
           </div>
         </div>
@@ -194,48 +297,71 @@
 
     <DashboardUltimateRequiredDialog
       v-model:model-value="ultimate_required_dialog_open"
-      @upgrade="ultimate_required_dialog_open=false; upgrade_dialog_open=true"
+      @upgrade="
+        () => {
+          ultimate_required_dialog_open = false
+          upgrade_dialog_open = true
+        }
+      "
     >
-      Ultimate is required to have more than 3 templates. Upgrade your server to Ultimate to create more templates.
+      {{ $t('templates.ultimate_required') }}
     </DashboardUltimateRequiredDialog>
 
     <div class="flex w-full items-center justify-center">
       <div v-if="guild_settings && guild_channels" class="w-full">
-        <div v-if="guild_settings.templates.length > 0" class="group-setting p-0">
-          <div v-for="(template, i) in guild_settings.templates" class="flex flex-col">
+        <div
+          v-if="guild_settings.templates.length > 0"
+          class="group-setting p-0"
+        >
+          <div
+            v-for="(template, i) in guild_settings.templates"
+            :key="i"
+            class="flex flex-col"
+          >
             <div class="flex items-center gap-4 px-4 py-6">
-              <IconTemplate class="flex-shrink-0 size-4" />
+              <IconTemplate class="size-4 shrink-0" />
               <span class="text-md">
                 {{ template.name }}
               </span>
               <div class="grow" />
-              <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-                <Button @click="navigateTo(`${$route.fullPath}/${template.id}`)">
-                  Manage
+              <div
+                class="flex flex-col items-center gap-2 md:flex-row md:gap-4"
+              >
+                <Button
+                  @click="navigateTo(`${$route.fullPath}/${template.id}`)"
+                >
+                  {{ $t('common.manage') }}
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger>
-                    <ButtonDestructive
-                      :loading="delete_template_loading"
-                    >
-                      Delete
+                    <ButtonDestructive :loading="delete_template_loading">
+                      {{ $t('common.delete') }}
                     </ButtonDestructive>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Are you sure you want to delete the template?</AlertDialogTitle>
+                      <AlertDialogTitle>{{
+                        $t('templates.delete_confirm_title')
+                      }}</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This action cannot be un-done and you wont be able to restore this template!
+                        {{ $t('templates.delete_confirm_description') }}
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Go back</AlertDialogCancel>
+                      <AlertDialogCancel>{{
+                        $t('common.go_back')
+                      }}</AlertDialogCancel>
                       <AlertDialogAction
                         :destructive="true"
                         :loading="delete_template_loading"
-                        @click="delete_template({ guild_id: guild_id!, template_id: template.id })"
+                        @click="
+                          delete_template({
+                            guild_id: guild_id!,
+                            template_id: template.id,
+                          })
+                        "
                       >
-                        Delete
+                        {{ $t('common.delete') }}
                       </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
@@ -243,22 +369,32 @@
               </div>
             </div>
 
-            <hr class="w-full bordered" v-if="i !== (guild_settings.templates.length - 1)">
+            <hr
+              v-if="i !== guild_settings.templates.length - 1"
+              class="w-full bordered"
+            />
           </div>
         </div>
-        <div v-else class="flex min-h-full flex-col items-center justify-center gap-4 mt-12">
-          <span class="text-center text-xl font-semibold">You didn't create any template yet!</span>
+        <div
+          v-else
+          class="mt-12 flex min-h-full flex-col items-center justify-center gap-4"
+        >
+          <span class="text-center text-xl font-semibold">{{
+            $t('templates.none')
+          }}</span>
           <Button
             :loading="create_template_loading"
             @click="create_template_clicked"
           >
             <Icon name="fluent:add-12-regular" />
-            Create
+            {{ $t('common.create') }}
           </Button>
         </div>
       </div>
       <div v-else-if="guild_settings_error" class="grow">
-        <span class="center text-foreground-destructive">Something went wrong, please try again later</span>
+        <span class="center text-foreground-destructive">{{
+          $t('common.error_generic')
+        }}</span>
       </div>
       <div v-else class="center">
         <IconLoading />
@@ -267,49 +403,83 @@
 
     <DashboardUpgradeDialog
       v-model:open="upgrade_dialog_open"
-      @onUpgrade="(sub_id) => { upgrade_dialog_open = false; upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id }) }"
-      @onPurchaseOnWebsite="() => navigateTo('/ultimate', { external: true, open: { target: '_blank' } })"
-      @onPurchaseOnDiscord="() => navigateTo('/discord-ultimate', { external: true, open: { target: '_blank' } })"
+      @on-upgrade="
+        (sub_id) => {
+          upgrade_dialog_open = false
+          upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id })
+        }
+      "
+      @on-purchase-on-website="
+        () =>
+          navigateTo('/ultimate', {
+            external: true,
+            open: { target: '_blank' },
+          })
+      "
+      @on-purchase-on-discord="
+        () =>
+          navigateTo('/discord-ultimate', {
+            external: true,
+            open: { target: '_blank' },
+          })
+      "
     />
   </div>
 </template>
 
 <script lang="ts" setup>
-import {IconNames} from "assets/config/IconNames";
-import type {DashboardSection} from "~/types/dashboard";
-import {useToast} from "~/components/ui/toast";
-import {Select, SelectItem} from "~/components/ui/select";
-import {discord_regions} from "../../../../types/discord";
+import { navigateTo } from '#imports'
+import cn from '~/utils/cn'
+import isGuildUltimate from '~/utils/isGuildUltimate'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
+import type { DashboardSection } from '~/types/dashboard'
+import { useToast } from '~/components/ui/toast'
+import { Select, SelectItem } from '~/components/ui/select'
+import { discord_regions } from '~/types/discord'
 
 definePageMeta({
   middleware: 'auth',
   layout: 'dashboard',
   section: {
     id: 6,
-    name: 'Templates',
+    name: 'dashboard.sections.templates',
     icon: 'astro:template',
     description: 'Template description',
-  } as DashboardSection
+  } as DashboardSection,
 })
 
-useHead({
-  title: "Templates - Astro - Temporary Voice Channels for your Discord!",
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.templates.title') }),
   meta: [
-    { name: 'description', content: 'Create, view and delete templates for your server' },
-    { property: 'og:title', content: 'Templates - Astro - Temporary Voice Channels for your Discord!' },
-    { property: 'og:description', content: 'Create, view and delete templates for your server' },
-    { property: 'og:url', content: 'https://astro-bot.space/guilds/templates' }
-  ]
-})
-
+    { name: 'description', content: t('meta.templates.description') },
+    {
+      property: 'og:title',
+      content: t('meta.page_title', { page: t('meta.templates.title') }),
+    },
+    { property: 'og:description', content: t('meta.templates.description') },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds/templates' },
+  ],
+}))
 
 const { toast } = useToast()
 const guild_id = useGuildId()
 const { data: guild_channels } = useGuildChannels(guild_id)
-const { data: guild_settings, isError: guild_settings_error } = useGuildSettings(guild_id)
-const { mutate: create_template, isPending: create_template_loading, error: create_template_error } = useCreateTemplateMutation()
-const { mutate: delete_template, isPending: delete_template_loading, error: delete_template_error } = useDeleteTemplateMutation()
-const { mutate: upgrade_guild } = useGuildUpgradeMutation()
+const { data: guild_settings, error: guild_settings_error } =
+  useGuildSettings(guild_id)
+const {
+  mutate: create_template,
+  isPending: create_template_loading,
+  error: create_template_error,
+} = useCreateTemplateMutation()
+const {
+  mutate: delete_template,
+  isPending: delete_template_loading,
+  error: delete_template_error,
+} = useDeleteTemplateMutation()
+const { mutate: upgrade_guild, error: upgrade_guild_error } =
+  useGuildUpgradeMutation()
 
 const create_template_dialog_open = ref(false)
 const create_template_name = ref<string>('')
@@ -331,29 +501,32 @@ const ultimate_required_dialog_open = ref(false)
 const upgrade_dialog_open = ref(false)
 
 const create_template_clicked = () => {
-  if(guild_settings.value && !is_ultimate.value && guild_settings.value.templates.length > 2)
+  if (
+    guild_settings.value &&
+    !is_ultimate.value &&
+    guild_settings.value.templates.length > 2
+  )
     ultimate_required_dialog_open.value = true
-  else
-    create_template_dialog_open.value = true
+  else create_template_dialog_open.value = true
 }
 
 const create_template_vc_region_model = computed({
   get() {
-    return create_template_vc_region.value != null ? create_template_vc_region.value : undefined
+    return create_template_vc_region.value != null
+      ? create_template_vc_region.value
+      : undefined
   },
   set(value) {
-    if (value != 'no_region' && value)
-      create_template_vc_region.value = value
-    else
-      create_template_vc_region.value = null
-  }
+    if (value != 'no_region' && value) create_template_vc_region.value = value
+    else create_template_vc_region.value = null
+  },
 })
 
 const create_template_form_submission = () => {
   if (!create_template_name.value) {
     toast({
-      description: 'Please select a name for the template',
-      variant: 'destructive'
+      description: t('templates.select_name'),
+      variant: 'destructive',
     })
   } else {
     create_template({
@@ -365,16 +538,29 @@ const create_template_form_submission = () => {
         vc_name: create_template_vc_name.value,
         vc_bitrate: create_template_vc_bitrate.value,
         vc_limit: create_template_vc_user_limit.value,
-        vc_region: create_template_vc_region.value
-      }
+        vc_region: create_template_vc_region.value,
+      },
     })
 
     create_template_dialog_open.value = false
   }
 }
 
+watch(upgrade_guild_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
 watch(guild_settings_error, (e) => {
-  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+  if (
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
+    guild_id.value
+  ) {
     useInvite().invite_to_guild(guild_id.value)
   }
 })
@@ -383,7 +569,7 @@ watch(create_template_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,
-      variant: 'destructive'
+      variant: 'destructive',
     })
   }
 })
@@ -392,7 +578,7 @@ watch(delete_template_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,
-      variant: 'destructive'
+      variant: 'destructive',
     })
   }
 })

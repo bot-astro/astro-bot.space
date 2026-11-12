@@ -3,74 +3,204 @@
     <div class="flex items-center gap-4">
       <IconGenerator class="size-10 stroke-foreground-link-standout" />
       <div class="flex flex-col">
-        <span class="dashboard-section-title">Generators</span>
-        <span class="dashboard-section-description">Manage temporary voice channels generators here!</span>
+        <span class="dashboard-section-title">{{
+          $t('generators.title')
+        }}</span>
+        <span class="dashboard-section-description">{{
+          $t('generators.description')
+        }}</span>
       </div>
-      <div class="flex-grow" />
+      <div class="grow" />
       <Button
         :loading="create_generator_loading"
-        @click="() => {
-            if(guild_settings && !is_ultimate && guild_settings.generators.length > 1)
+        @click="
+          () => {
+            if (
+              guild_settings &&
+              !is_ultimate &&
+              guild_settings.generators.length > 1
+            )
               ultimate_required_dialog_open = true
-            else
-              create_generator({ guild_id: guild_id! })
+            else create_generator_dialog_open = true
           }
-         "
+        "
       >
-        <Icon name="fluent:add-12-regular" />
-        Create
+        <Icon name="fluent:add-12-regular" /> {{ $t('common.create') }}
       </Button>
     </div>
 
+    <Dialog v-model:open="create_generator_dialog_open">
+      <DialogContent>
+        <div class="flex flex-col gap-2">
+          <p class="text-center text-xl">{{ $t('generators.create_title') }}</p>
+
+          <div class="mt-4 flex flex-col gap-6">
+            <div class="groups-wrapper">
+              <div class="groups-container">
+                <GroupSetting
+                  :heading="$t('common.name')"
+                  :description="$t('generators.name_description')"
+                >
+                  <template #bottom-action>
+                    <div class="flex gap-2">
+                      <input
+                        v-model="create_generator_name"
+                        :placeholder="$t('templates.name_placeholder')"
+                        type="text"
+                        class="grow"
+                        minlength="1"
+                        required
+                      />
+                    </div>
+                  </template>
+                </GroupSetting>
+
+                <GroupSetting
+                  :heading="$t('common.category')"
+                  :description="$t('generators.category_description')"
+                >
+                  <template #bottom-action>
+                    <Select v-model:model-value="create_generator_category_id">
+                      <SelectTrigger>
+                        <SelectValue aria-label="value">{{
+                          guild_channels?.find(
+                            (c) => c.id === create_generator_category_id,
+                          )?.name ?? $t('common.no_category')
+                        }}</SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectItem
+                            v-for="category in (guild_channels ?? []).filter(
+                              (c) => c.type == 4,
+                            )"
+                            :key="category.id"
+                            :value="category.id"
+                          >
+                            {{ category.name }}
+                          </SelectItem>
+                          <!-- 'No category' option -->
+                          <SelectItem value="no_category">{{
+                            $t('common.no_category')
+                          }}</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </template>
+                </GroupSetting>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
+            <Button
+              :loading="create_generator_loading"
+              @click="
+                () => {
+                  if (create_generator_name.trim().length === 0) return
+                  create_generator({
+                    guild_id: guild_id!,
+                    generator_rb: {
+                      name: create_generator_name,
+                      category_id:
+                        create_generator_category_id !== 'no_category'
+                          ? create_generator_category_id
+                          : null,
+                    },
+                  })
+                  create_generator_dialog_open = false
+                  create_generator_name = ''
+                  create_generator_category_id = 'no_category'
+                }
+              "
+            >
+              {{ $t('common.create') }}
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+
     <DashboardUltimateRequiredDialog
       v-model:model-value="ultimate_required_dialog_open"
-      @upgrade="ultimate_required_dialog_open=false; upgrade_dialog_open=true"
+      @upgrade="
+        () => {
+          ultimate_required_dialog_open = false
+          upgrade_dialog_open = true
+        }
+      "
     >
-      Ultimate is required to have more than 2 temporary voice channel generators. Upgrade your server to Ultimate to create more generators.
+      {{ $t('generators.ultimate_required') }}
     </DashboardUltimateRequiredDialog>
 
     <div class="flex w-full items-center justify-center">
       <div v-if="guild_settings && guild_channels" class="w-full">
-        <div v-if="guild_settings.generators.length > 0" class="group-setting p-0">
-          <div v-for="(gen, i) in guild_settings.generators" class="flex flex-col">
+        <div
+          v-if="guild_settings.generators.length > 0"
+          class="group-setting p-0"
+        >
+          <div
+            v-for="(gen, i) in guild_settings.generators"
+            :key="i"
+            class="flex flex-col"
+          >
             <div class="flex items-center gap-4 px-4 py-6">
-              <IconGenerator class="flex-shrink-0 size-4" />
+              <IconGenerator class="size-4 shrink-0" />
               <div class="flex flex-col">
                 <span class="text-md">
-                  {{ guild_channels.find(c => c.id == gen.id)?.name ?? "Deleted channel" }}
+                  {{
+                    guild_channels.find((c) => c.id == gen.id)?.name ??
+                    $t('common.deleted_channel')
+                  }}
                 </span>
                 <span class="text-foreground-secondary">
-                  {{ guild_channels.find(c => c.id == gen.id)?.parent_name ? `Category: ${guild_channels.find(c => c.id == gen.id)?.parent_name}` : "Not in a category" }}
+                  {{
+                    guild_channels.find((c) => c.id == gen.id)?.parent_name
+                      ? $t('generators.category_value', {
+                          name: guild_channels.find((c) => c.id == gen.id)
+                            ?.parent_name,
+                        })
+                      : $t('voice_roles.no_category')
+                  }}
                 </span>
               </div>
               <div class="grow" />
-              <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+              <div
+                class="flex flex-col items-center gap-2 md:flex-row md:gap-4"
+              >
                 <Button @click="navigateTo(`${$route.fullPath}/${gen.id}`)">
-                  Manage
+                  {{ $t('common.manage') }}
                 </Button>
                 <AlertDialog>
                   <AlertDialogTrigger>
-                    <ButtonDestructive
-                      :loading="delete_generator_loading"
-                    >
-                      Delete
+                    <ButtonDestructive :loading="delete_generator_loading">
+                      {{ $t('common.delete') }}
                     </ButtonDestructive>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Are you sure you want to delete the generator?</AlertDialogTitle>
+                      <AlertDialogTitle>{{
+                        $t('generators.delete_confirm_title')
+                      }}</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This action cannot be un-done and you wont be able to restore this generator!
+                        {{ $t('generators.delete_confirm_description') }}
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Go back</AlertDialogCancel>
+                      <AlertDialogCancel>{{
+                        $t('common.go_back')
+                      }}</AlertDialogCancel>
                       <AlertDialogAction
                         :destructive="true"
                         :loading="delete_generator_loading"
-                        @click="delete_generator({ guild_id: guild_id!, generator_id: gen.id })"
+                        @click="
+                          delete_generator({
+                            guild_id: guild_id!,
+                            generator_id: gen.id,
+                          })
+                        "
                       >
-                        Delete
+                        {{ $t('common.delete') }}
                       </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
@@ -78,22 +208,31 @@
               </div>
             </div>
 
-            <hr class="w-full bordered" v-if="i !== (guild_settings.generators.length - 1)">
+            <hr
+              v-if="i !== guild_settings.generators.length - 1"
+              class="w-full bordered"
+            />
           </div>
         </div>
-        <div v-else class="flex min-h-full flex-col items-center justify-center gap-4">
-          <span class="text-center text-xl font-semibold">You didn't create any generator yet!</span>
+        <div
+          v-else
+          class="flex min-h-full flex-col items-center justify-center gap-4"
+        >
+          <span class="text-center text-xl font-semibold">{{
+            $t('generators.none')
+          }}</span>
           <Button
             :loading="create_generator_loading"
-            @click="create_generator({ guild_id: guild_id! })"
+            @click="create_generator_dialog_open = true"
           >
-            <Icon name="fluent:add-12-regular" />
-            Create
+            <Icon name="fluent:add-12-regular" /> {{ $t('common.create') }}
           </Button>
         </div>
       </div>
       <div v-else-if="guild_settings_error" class="grow">
-        <span class="center text-foreground-destructive">Something went wrong, please try again later</span>
+        <span class="center text-foreground-destructive">{{
+          $t('common.error_generic')
+        }}</span>
       </div>
       <div v-else class="center">
         <IconLoading />
@@ -102,48 +241,84 @@
 
     <DashboardUpgradeDialog
       v-model:open="upgrade_dialog_open"
-      @onUpgrade="(sub_id) => { upgrade_dialog_open = false; upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id }) }"
-      @onPurchaseOnWebsite="() => navigateTo('/ultimate', { external: true, open: { target: '_blank' } })"
-      @onPurchaseOnDiscord="() => navigateTo('/discord-ultimate', { external: true, open: { target: '_blank' } })"
+      @on-upgrade="
+        (sub_id) => {
+          upgrade_dialog_open = false
+          upgrade_guild({ guild_id: guild_id!, subscription_id: sub_id })
+        }
+      "
+      @on-purchase-on-website="
+        () =>
+          navigateTo('/ultimate', {
+            external: true,
+            open: { target: '_blank' },
+          })
+      "
+      @on-purchase-on-discord="
+        () =>
+          navigateTo('/discord-ultimate', {
+            external: true,
+            open: { target: '_blank' },
+          })
+      "
     />
   </div>
 </template>
 
 <script lang="ts" setup>
-import {IconNames} from "assets/config/IconNames";
-import type {DashboardSection} from "~/types/dashboard";
-import {useToast} from "~/components/ui/toast";
-import DashboardUltimateRequiredDialog from "~/components/dashboard/DashboardUltimateRequiredDialog.vue";
+import { navigateTo } from '#imports'
+import isGuildUltimate from '~/utils/isGuildUltimate'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
+import type { DashboardSection } from '~/types/dashboard'
+import { useToast } from '~/components/ui/toast'
+import DashboardUltimateRequiredDialog from '~/components/dashboard/DashboardUltimateRequiredDialog.vue'
 
 definePageMeta({
   middleware: 'auth',
   layout: 'dashboard',
   section: {
     id: 3,
-    name: 'Generators',
+    name: 'dashboard.sections.generators',
     icon: 'astro:generator',
     description: 'Generators Description',
-  } as DashboardSection
+  } as DashboardSection,
 })
 
-useHead({
-  title: "Generators - Astro - Temporary Voice Channels for your Discord!",
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.generators.title') }),
   meta: [
-    { name: 'description', content: 'Create, view and delete temporary voice channel generators' },
-    { property: 'og:title', content: 'Generators - Astro - Temporary Voice Channels for your Discord!' },
-    { property: 'og:description', content: 'Create, view and delete temporary voice channel generators' },
-    { property: 'og:url', content: 'https://astro-bot.space/guilds/generators' }
-  ]
-})
-
+    { name: 'description', content: t('meta.generators.description') },
+    {
+      property: 'og:title',
+      content: t('meta.page_title', { page: t('meta.generators.title') }),
+    },
+    { property: 'og:description', content: t('meta.generators.description') },
+    {
+      property: 'og:url',
+      content: 'https://astro-bot.space/guilds/generators',
+    },
+  ],
+}))
 
 const { toast } = useToast()
 const guild_id = useGuildId()
 const { data: guild_channels } = useGuildChannels(guild_id)
-const { data: guild_settings, isError: guild_settings_error } = useGuildSettings(guild_id)
-const { mutate: create_generator, isPending: create_generator_loading, error: create_generator_error } = useCreateGeneratorMutation()
-const { mutate: delete_generator, isPending: delete_generator_loading, error: delete_generator_error } = useDeleteGeneratorMutation()
-const { mutate: upgrade_guild } = useGuildUpgradeMutation()
+const { data: guild_settings, error: guild_settings_error } =
+  useGuildSettings(guild_id)
+const {
+  mutate: create_generator,
+  isPending: create_generator_loading,
+  error: create_generator_error,
+} = useCreateGeneratorMutation()
+const {
+  mutate: delete_generator,
+  isPending: delete_generator_loading,
+  error: delete_generator_error,
+} = useDeleteGeneratorMutation()
+const { mutate: upgrade_guild, error: upgrade_guild_error } =
+  useGuildUpgradeMutation()
 
 const is_ultimate = computed(() => {
   if (guild_settings.value) {
@@ -153,11 +328,27 @@ const is_ultimate = computed(() => {
   }
 })
 
+const create_generator_dialog_open = ref(false)
+const create_generator_name = ref('Generator')
+const create_generator_category_id = ref('no_category')
 const ultimate_required_dialog_open = ref(false)
 const upgrade_dialog_open = ref(false)
 
+watch(upgrade_guild_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
 watch(guild_settings_error, (e) => {
-  if (e instanceof AstroApiError && e.code == AstroApiErrorCode.ASTRO_NOT_IN_GUILD && guild_id.value) {
+  if (
+    e instanceof AError &&
+    e.code === AErrorCode.BOT_NOT_IN_GUILD &&
+    guild_id.value
+  ) {
     useInvite().invite_to_guild(guild_id.value)
   }
 })
@@ -166,7 +357,7 @@ watch(create_generator_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,
-      variant: 'destructive'
+      variant: 'destructive',
     })
   }
 })
@@ -175,7 +366,7 @@ watch(delete_generator_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,
-      variant: 'destructive'
+      variant: 'destructive',
     })
   }
 })

@@ -33,7 +33,11 @@
               <Skeleton v-else class="mb-1 h-2" />
 
               <span v-if="guild_settings" class="text-secondary text-xs">
-                {{ isGuildUltimate(guild_settings) ? 'Ultimate' : 'Free' }}
+                {{
+                  isGuildUltimate(guild_settings)
+                    ? $t('common.ultimate')
+                    : $t('common.free')
+                }}
               </span>
             </div>
 
@@ -80,6 +84,7 @@
     >
       <div
         v-for="section in sections"
+        :key="section.id"
         class="flex cursor-pointer flex-row items-center gap-3 px-4 py-2 transition-colors hover:bg-background"
         :class="current_section.id === section.id ? 'bg-background' : ''"
         @click="set_section_and_guild(section)"
@@ -102,33 +107,29 @@
           class="size-4"
         />
         <Icon v-else :name="section.icon" class="size-4" />
-        <span>{{ section.name }}</span>
+        <span>{{ $t(section.name) }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import IconVoiceRole from '~/components/icon/IconVoiceRole.vue';
+import IconVoiceRole from '~/components/icon/IconVoiceRole.vue'
 
-const { width } = useWindowSize();
+const { width } = useWindowSize()
 
-const guild_id = useGuildId();
+const guild_id = useGuildId()
 const { sections, current_section, set_section_and_guild } =
-  useDashboardSections();
+  useDashboardSections()
 
-const { data: guilds } = useGuilds();
+const { data: guilds } = useGuilds()
 const managed_guilds = computed(() =>
   (guilds.value ?? [])
     .filter((g) => g.can_manage)
     .sort((a, b) => a.name.localeCompare(b.name)),
-);
+)
 
-const guild_info = useGuildInfo();
+const guild_info = useGuildInfo()
 
-const {
-  data: guild_settings,
-  error: guild_settings_error,
-  isPending: guild_settings_pending,
-} = useGuildSettings(guild_id);
+const { data: guild_settings } = useGuildSettings(guild_id)
 </script>

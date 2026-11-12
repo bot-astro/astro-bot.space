@@ -1,6 +1,6 @@
-import typography from '@tailwindcss/typography';
-import animate from 'tailwindcss-animate';
-import { fontFamily as _fontFamily } from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography'
+import animate from 'tailwindcss-animate'
+import { fontFamily as _fontFamily } from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config} */
 export const content = [
@@ -10,8 +10,8 @@ export const content = [
   './plugins/**/*.{js,ts}',
   './app.vue',
   './error.vue',
-];
-export const prefix = '';
+]
+export const prefix = ''
 export const theme = {
   container: {
     center: true,
@@ -146,7 +146,7 @@ export const theme = {
       'collapsible-up': 'collapsible-up 0.1s ease-in-out',
     },
   },
-};
-export const plugins = [typography, animate];
+}
+export const plugins = [typography, animate]
 
-export default { content, prefix, theme, plugins };
+export default { content, prefix, theme, plugins }

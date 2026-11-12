@@ -1,5 +1,9 @@
-import { FetchError } from 'ofetch';
-import { AError, AErrorCode, type AErrorResponse } from '~/data/astro/core/AError';
+import { FetchError } from 'ofetch'
+import {
+  AError,
+  AErrorCode,
+  type AErrorResponse,
+} from '~/data/astro/core/AError'
 
 /** Returns the response body, or throws an AError on failure. */
 export async function useApiFetch<T>(
@@ -7,7 +11,7 @@ export async function useApiFetch<T>(
   options: Parameters<typeof $fetch<T>>[1] = {},
 ): Promise<T> {
   try {
-    return await $fetch<T>(url, {
+    return (await $fetch<T>(url, {
       ...options,
       credentials: 'include',
       cache: 'no-cache',
@@ -17,12 +21,13 @@ export async function useApiFetch<T>(
         // this way auth cookie gets sent during ssr too!
         ...(import.meta.server ? useRequestHeaders(['cookie']) : {}),
       },
-    }) as T;
+    })) as T
   } catch (error) {
-    const data: AErrorResponse | undefined = error instanceof FetchError ? error.data : undefined;
+    const data: AErrorResponse | undefined =
+      error instanceof FetchError ? error.data : undefined
     throw new AError({
       code: data?.code ?? AErrorCode.UNKNOWN,
       message: data?.message,
-    });
+    })
   }
 }

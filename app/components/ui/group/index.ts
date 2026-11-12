@@ -1,1 +1,1 @@
-export { default as GroupSetting } from './GroupSetting.vue';
+export { default as GroupSetting } from './GroupSetting.vue'

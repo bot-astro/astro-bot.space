@@ -30,6 +30,7 @@
       >
         <div
           v-for="section in sections"
+          :key="section.id"
           class="flex cursor-pointer flex-row items-center justify-center py-2 transition-colors hover:bg-background"
           :class="current_section.id === section.id ? 'bg-background' : ''"
           @click="set_section_and_guild(section)"
@@ -61,7 +62,7 @@
 
     <ButtonText
       class="flex items-center justify-center border-t border-r border-border bg-background py-4 text-foreground-link-standout"
-      @click="$emit('onExpand')"
+      @click="$emit('expand')"
     >
       <Icon name="fluent:chevron-double-right-16-regular" class="size-6" />
     </ButtonText>
@@ -69,9 +70,10 @@
 </template>
 
 <script lang="ts" setup>
-import IconVoiceRole from '~/components/icon/IconVoiceRole.vue';
+import IconVoiceRole from '~/components/icon/IconVoiceRole.vue'
 
+defineEmits<{ expand: [] }>()
 const { sections, current_section, set_section_and_guild } =
-  useDashboardSections();
-const guild_info = useGuildInfo();
+  useDashboardSections()
+const guild_info = useGuildInfo()
 </script>

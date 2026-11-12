@@ -1,14 +1,15 @@
-import {AstroApiClient} from "~/data/astro/AstroApiClient";
+import { AstroApiClient } from '~/data/astro/AstroApiClient'
 
-export default defineNuxtPlugin(nuxtApp => {
+export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
   const astroApiClient = new AstroApiClient(
     config.public.astro_api_base_url,
+    config.public.mock_discord_guilds,
   )
 
   return {
     provide: {
-      astroApiClient
-    }
+      astroApiClient,
+    },
   }
 })

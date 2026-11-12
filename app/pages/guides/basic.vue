@@ -1,38 +1,53 @@
 <script setup lang="ts">
+import { useRouter } from '#imports'
 definePageMeta({
   layout: 'guide',
 })
 
-useHead({
-  title: "Basics guide - Astro - Temporary Voice Channels for your Discord!",
-  meta: [
-    { name: 'description', content: 'Get started using Astro learning the basics' },
-    { property: 'og:title', content: 'Basics guide - Astro - Temporary Voice Channels for your Discord!' },
-    { property: 'og:description', content: 'Get started using Astro learning the basics' },
-    { property: 'og:url', content: 'https://astro-bot.space/guides/basic' }
-  ]
-})
+const { t } = useI18n()
 
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.guide_basic.title') }),
+  meta: [
+    { name: 'description', content: t('meta.guide_basic.description') },
+    {
+      property: 'og:title',
+      content: t('meta.page_title', { page: t('meta.guide_basic.title') }),
+    },
+    {
+      property: 'og:description',
+      content: t('meta.guide_basic.description'),
+    },
+    { property: 'og:url', content: 'https://astro-bot.space/guides/basic' },
+  ],
+}))
+
+const { data: page } = await useGuideContent('guide_basic')
 </script>
 
 <template>
-  <div class="prose-td:text-center first:prose-td:text-start prose-th:text-center first:prose-th:text-start">
-    <ContentDoc path="guide_basic" v-slot="{ doc }">
+  <div
+    class="prose-th:text-center first:prose-th:text-start prose-td:text-center first:prose-td:text-start"
+  >
+    <template v-if="page">
       <!-- Post title -->
-      <div class="flex gap-4 items-center mb-4">
-        <IconBack class="size-8 shrink-0 hover:text-foreground-link-standout hover:cursor-pointer" @click="useRouter().back()"/>
-        <h1 class="mb-0">{{ doc.title }}</h1>
+      <div class="mb-4 flex items-center gap-4">
+        <IconBack
+          class="size-8 shrink-0 hover:cursor-pointer hover:text-foreground-link-standout"
+          @click="useRouter().back()"
+        />
+        <h1 class="mb-0">{{ page.title }}</h1>
       </div>
 
       <!-- Table of contents -->
       <ul>
-        <li v-for="link of doc.body?.toc?.links ?? []" :key="link.id">
+        <li v-for="link of page.body?.toc?.links ?? []" :key="link.id">
           <a :href="`#${link.id}`">{{ link.text }}</a>
         </li>
       </ul>
 
       <!-- Main post content -->
-      <ContentRenderer :value="doc" />
-    </ContentDoc>
+      <ContentRenderer :value="page" />
+    </template>
   </div>
 </template>

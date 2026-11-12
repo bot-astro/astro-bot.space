@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { isVNode } from 'vue';
-import { useToast } from './use-toast';
+import { isVNode } from 'vue'
+import { useToast } from './use-toast'
 import {
   Toast,
   ToastClose,
@@ -8,9 +8,9 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from '.';
+} from '.'
 
-const { toasts } = useToast();
+const { toasts } = useToast()
 </script>
 
 <template>

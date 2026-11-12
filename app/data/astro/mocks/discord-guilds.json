@@ -1,0 +1,44 @@
+[
+  {
+    "id": "700607091391594567",
+    "name": "Astro Bot Community",
+    "icon": "e18cd817a396c0db28385d1679e71384",
+    "permissions": 18014398509481983,
+    "can_manage": true
+  },
+  {
+    "id": "1026552055046881402",
+    "name": "Astro Dev",
+    "icon": "571a160f84892f3403a9da8a8248311d",
+    "permissions": 18014398509481983,
+    "can_manage": true
+  },
+  {
+    "id": "1549130655751995432",
+    "name": "giu's server",
+    "icon": null,
+    "permissions": 18014398509481983,
+    "can_manage": true
+  },
+  {
+    "id": "1549408052371792012",
+    "name": "giu's server 2",
+    "icon": null,
+    "permissions": 18014398509481983,
+    "can_manage": true
+  },
+  {
+    "id": "125227483518861312",
+    "name": "JDA (Java Discord API)",
+    "icon": "8be466a3cdafc8591fcec4cdbb0eefc0",
+    "permissions": 1060897828490816,
+    "can_manage": false
+  },
+  {
+    "id": "264445053596991498",
+    "name": "Top.gg",
+    "icon": "2aac87182ba93d330d575321fdbc3413",
+    "permissions": 458363241877056,
+    "can_manage": false
+  }
+]

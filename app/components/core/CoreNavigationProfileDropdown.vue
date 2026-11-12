@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import { useToast } from '~/components/ui/toast';
-import { useUser } from '~/data/astro/query/useUser';
+import { useToast } from '~/components/ui/toast'
+import { useUser } from '~/data/astro/query/useUser'
 
-const { $astroApiClient } = useNuxtApp();
+const { $astroApiClient } = useNuxtApp()
 const { invite } = useInvite()
-const { toast } = useToast();
-const { data: user, isPending: user_is_pending, error: user_error } = useUser();
-const auth = useAuth();
-const route = useRoute();
-const is_logged_in = computed(() => !!user.value);
+const { toast } = useToast()
+const { t } = useI18n()
+const { data: user } = useUser()
+const auth = useAuth()
+const route = useRoute()
+const is_logged_in = computed(() => !!user.value)
 
-const is_mobile_dropdown_open = ref(false);
+const is_mobile_dropdown_open = ref(false)
 
 const on_billing_clicked = async () => {
   try {
-    const url = await $astroApiClient.get_chargebee_portal_session_url();
-    navigateTo(url, { external: true, open: { target: '_blank' } });
+    const url = await $astroApiClient.get_chargebee_portal_session_url()
+    navigateTo(url, { external: true, open: { target: '_blank' } })
   } catch (e) {
-    console.log(e);
+    console.log(e)
 
     toast({
-      description:
-        'Something went wrong when opening the billing portal, try again later',
+      description: t('error.billing_portal'),
       variant: 'destructive',
-    });
+    })
   }
-};
+}
 </script>
 
 <template>
@@ -45,21 +45,23 @@ const on_billing_clicked = async () => {
 
         <DropdownMenuContent>
           <DropdownMenuItem @click="navigateTo('/guilds')">
-            Servers
+            {{ $t('nav.servers') }}
           </DropdownMenuItem>
           <DropdownMenuItem @click="on_billing_clicked">
-            Billing
+            {{ $t('nav.billing') }}
           </DropdownMenuItem>
           <DropdownMenuItem
             class="text-foreground-destructive"
             @click="auth.logout()"
           >
-            Logout
+            {{ $t('nav.logout') }}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Button v-else @click="auth.login(route.fullPath)"> Login </Button>
+      <Button v-else @click="auth.login(route.fullPath)">
+        {{ $t('nav.login') }}
+      </Button>
     </div>
 
     <!--  Mobile navbar  -->
@@ -86,35 +88,35 @@ const on_billing_clicked = async () => {
                 :src="discordUserAvatarUri(user.id, user.avatar)"
                 class="size-6 rounded-full"
               />
-              <span class="text-sm text-foreground-secondary"
-                >Logged in as {{ user.username }}</span
-              >
+              <span class="text-sm text-foreground-secondary">{{
+                $t('nav.logged_in_as', { username: user.username })
+              }}</span>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem v-if="is_logged_in" @click="navigateTo('/guilds')">
-            Servers
+            {{ $t('nav.servers') }}
           </DropdownMenuItem>
           <DropdownMenuItem v-if="is_logged_in" @click="on_billing_clicked">
-            Billing
+            {{ $t('nav.billing') }}
           </DropdownMenuItem>
           <DropdownMenuItem
             v-if="!is_logged_in"
             class="text-foreground-link-standout"
             @click="auth.login(route.fullPath)"
           >
-            Login
+            {{ $t('nav.login') }}
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />
 
           <DropdownMenuItem @click="invite">
-            Add to server
+            {{ $t('nav.add_to_server') }}
           </DropdownMenuItem>
           <DropdownMenuItem @click="navigateTo('/guides')">
-            Guides
+            {{ $t('nav.guides') }}
           </DropdownMenuItem>
           <DropdownMenuItem @click="navigateTo('/ultimate')">
-            Ultimate
+            {{ $t('nav.ultimate') }}
           </DropdownMenuItem>
           <DropdownMenuItem
             @click="
@@ -124,7 +126,7 @@ const on_billing_clicked = async () => {
               })
             "
           >
-            GitHub
+            {{ $t('nav.github') }}
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />
@@ -134,7 +136,7 @@ const on_billing_clicked = async () => {
             class="text-foreground-destructive"
             @click="auth.logout()"
           >
-            Logout
+            {{ $t('nav.logout') }}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

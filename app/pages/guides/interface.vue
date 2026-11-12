@@ -1,35 +1,49 @@
 <script setup lang="ts">
+import { useRouter } from '#imports'
 definePageMeta({
   layout: 'guide',
 })
 
-useHead({
-  title: "Interface guide - Astro - Temporary Voice Channels for your Discord!",
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.guide_interface.title') }),
   meta: [
-    { name: 'description', content: 'Learn how to make your interface look amazing and unique with this guide' },
-    { property: 'og:title', content: 'Interface guide - Astro - Temporary Voice Channels for your Discord!' },
-    { property: 'og:description', content: 'Learn how to make your interface look amazing and unique with this guide' },
-    { property: 'og:url', content: 'https://astro-bot.space/guides/interface' }
-  ]
-})
+    { name: 'description', content: t('meta.guide_interface.description') },
+    {
+      property: 'og:title',
+      content: t('meta.page_title', { page: t('meta.guide_interface.title') }),
+    },
+    {
+      property: 'og:description',
+      content: t('meta.guide_interface.description'),
+    },
+    { property: 'og:url', content: 'https://astro-bot.space/guides/interface' },
+  ],
+}))
+
+const { data: page } = await useGuideContent('guide_interface')
 </script>
 
 <template>
-  <ContentDoc path="guide_interface" v-slot="{ doc }">
+  <div v-if="page">
     <!-- Post title -->
-    <div class="flex gap-4 items-center mb-4">
-      <IconBack class="size-8 shrink-0 hover:text-foreground-link-standout hover:cursor-pointer" @click="useRouter().back()"/>
-      <h1 class="mb-0">{{ doc.title }}</h1>
+    <div class="mb-4 flex items-center gap-4">
+      <IconBack
+        class="size-8 shrink-0 hover:cursor-pointer hover:text-foreground-link-standout"
+        @click="useRouter().back()"
+      />
+      <h1 class="mb-0">{{ page.title }}</h1>
     </div>
 
     <!-- Table of contents -->
     <ul>
-      <li v-for="link of doc.body?.toc?.links ?? []" :key="link.id">
+      <li v-for="link of page.body?.toc?.links ?? []" :key="link.id">
         <a :href="`#${link.id}`">{{ link.text }}</a>
       </li>
     </ul>
 
     <!-- Main post content -->
-    <ContentRenderer :value="doc" />
-  </ContentDoc>
+    <ContentRenderer :value="page" />
+  </div>
 </template>

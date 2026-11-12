@@ -1,16 +1,17 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from 'vue'
 
 interface GroupSettingProps {
-  heading: string;
-  description?: string;
-  class?: HTMLAttributes['class'];
-  compact?: boolean;
-  ultimate?: boolean;
+  heading: string
+  description?: string
+  class?: HTMLAttributes['class']
+  compact?: boolean
+  ultimate?: boolean
+  hideUltimateBadge?: boolean
 }
 
-const props = defineProps<GroupSettingProps>();
-defineEmits(['upgrade']);
+const props = defineProps<GroupSettingProps>()
+defineEmits(['upgrade'])
 </script>
 
 <template>
@@ -29,7 +30,11 @@ defineEmits(['upgrade']);
         <div class="vertical-center gap-2">
           <span class="text-heading">{{ props.heading }}</span>
           <slot name="heading-action" />
-          <Badge v-if="props.ultimate" variant="ultimate">Ultimate</Badge>
+          <Badge
+            v-if="props.ultimate && !props.hideUltimateBadge"
+            variant="ultimate"
+            >{{ $t('common.ultimate') }}</Badge
+          >
         </div>
         <span v-if="props.description" class="text-description">{{
           props.description

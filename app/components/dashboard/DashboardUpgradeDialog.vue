@@ -4,7 +4,7 @@
       <div class="flex flex-col gap-2">
         <p class="text-center text-xl">
           <IconLoading v-if="user_subscriptions_pending" />
-          Upgrade server
+          {{ $t('dashboard.upgrade.title') }}
         </p>
         <div
           v-if="
@@ -14,7 +14,7 @@
           "
         >
           <p class="text-description mb-2">
-            Choose a subscription to use to upgrade the server to Ultimate:
+            {{ $t('dashboard.upgrade.choose_subscription') }}
           </p>
           <RadioGroup
             v-model="selected_subscription_id"
@@ -30,8 +30,14 @@
                 :value="sub.subscription_id"
               />
               <Label :for="sub.subscription_id">
-                {{ sub.annual ? 'Annual' : 'Monthly' }} sub with
-                {{ sub.available }}/{{ sub.quantities }} available upgrades
+                {{
+                  $t(
+                    sub.annual
+                      ? 'dashboard.upgrade.subscription_annual'
+                      : 'dashboard.upgrade.subscription_monthly',
+                    { available: sub.available, quantities: sub.quantities },
+                  )
+                }}
                 <span class="text-foreground-secondary">
                   ({{ sub.subscription_id }})</span
                 >
@@ -46,20 +52,20 @@
           class="text-description"
         >
           <p>
-            You already used all your upgrades. Either downgrade a server or
-            purchase more upgrades!
+            {{ $t('dashboard.upgrade.all_used') }}
           </p>
         </div>
         <div v-else class="text-description">
           <p>
-            You don't have any upgrade available.<br >Purchase a subscription
-            to upgrade the server to Ultimate and unlock advanced features!
+            <span class="whitespace-pre-line">{{
+              $t('dashboard.upgrade.none_available')
+            }}</span>
           </p>
         </div>
 
         <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
           <ButtonStandout @click="emit('onPurchaseOnWebsite')">
-            Purchase subscriptions
+            {{ $t('dashboard.upgrade.purchase') }}
           </ButtonStandout>
           <Button
             class="w-full sm:w-min"
@@ -70,7 +76,7 @@
                 : () => {}
             "
           >
-            Upgrade
+            {{ $t('dashboard.upgrade.upgrade') }}
           </Button>
         </div>
       </div>
@@ -79,18 +85,15 @@
 </template>
 
 <script setup lang="ts">
-const open = defineModel<boolean>();
+const open = defineModel<boolean>()
 
 const emit = defineEmits<{
-  onPurchaseOnDiscord: [];
-  onPurchaseOnWebsite: [];
-  onUpgrade: [subscription_id: string];
-}>();
+  onPurchaseOnDiscord: []
+  onPurchaseOnWebsite: []
+  onUpgrade: [subscription_id: string]
+}>()
 
-const {
-  data: user_subscriptions,
-  error: user_subscriptions_error,
-  isPending: user_subscriptions_pending,
-} = useUserSubscriptions();
-const selected_subscription_id = ref<string | undefined>(undefined);
+const { data: user_subscriptions, isPending: user_subscriptions_pending } =
+  useUserSubscriptions()
+const selected_subscription_id = ref<string | undefined>(undefined)
 </script>

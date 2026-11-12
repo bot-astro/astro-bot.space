@@ -1,7 +1,7 @@
-import {guild_errors_qk} from "~/data/astro/config/query-keys";
+import { guild_errors_qk } from '~/data/astro/config/query-keys'
 
 interface ClearGuildErrorsMutationParams {
-  guild_id: string;
+  guild_id: string
 }
 
 export function useClearGuildErrorsMutation() {
@@ -9,9 +9,12 @@ export function useClearGuildErrorsMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (params: ClearGuildErrorsMutationParams) => $astroApiClient.clear_guild_errors(params.guild_id),
-    async onSuccess(data, variables, context) {
-       await queryClient.invalidateQueries({ queryKey: guild_errors_qk(variables.guild_id) })
+    mutationFn: (params: ClearGuildErrorsMutationParams) =>
+      $astroApiClient.clear_guild_errors(params.guild_id),
+    async onSuccess(data, variables) {
+      await queryClient.invalidateQueries({
+        queryKey: guild_errors_qk(variables.guild_id),
+      })
     },
   })
 }

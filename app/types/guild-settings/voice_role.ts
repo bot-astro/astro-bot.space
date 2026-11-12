@@ -1,12 +1,18 @@
 export interface GSVoiceRole {
-  id: string;
-  role_id: string;
-  action: GSVoiceRoleAction;
-  permanent_dashboard: boolean;
+  /**
+   * id of the voice channel the connection is attached to
+   */
+  id: string
+  role_id: string
+  action: GSVoiceRoleAction
+  /**
+   * whether the role is kept after leaving the channel
+   */
+  permanent: boolean
 }
 
-export const enum GSVoiceRoleAction {
-  ASSIGN = "ASSIGN",
-  REMOVE = "REMOVE",
-  TOGGLE = "TOGGLE",
+export enum GSVoiceRoleAction {
+  ASSIGN = 'ASSIGN',
+  REMOVE = 'REMOVE',
+  TOGGLE = 'TOGGLE',
 }

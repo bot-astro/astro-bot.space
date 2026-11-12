@@ -2,14 +2,16 @@
   <Dialog v-model:open="open">
     <DialogContent>
       <div class="flex flex-col gap-2">
-        <p class="text-center text-xl">Ultimate required</p>
+        <p class="text-center text-xl">
+          {{ $t('dashboard.ultimate_required.title') }}
+        </p>
         <div class="text-description">
           <slot />
         </div>
 
         <div class="mt-8 flex flex-col justify-end gap-2 sm:flex-row">
           <ButtonUltimate @click="emit('upgrade')">
-            Upgrade server
+            {{ $t('dashboard.upgrade.title') }}
           </ButtonUltimate>
         </div>
       </div>
@@ -18,6 +20,6 @@
 </template>
 
 <script setup lang="ts">
-const open = defineModel<boolean>();
-const emit = defineEmits(['upgrade']);
+const open = defineModel<boolean>()
+const emit = defineEmits(['upgrade'])
 </script>

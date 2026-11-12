@@ -1,52 +1,46 @@
 export interface GSInterface {
-  channel_id: string;
-  message_id: string;
-  buttons: GSInterfaceButton[];
-  embed_style: GSInterfaceEmbedStyle;
+  channel_id: string
+  message_id: string
+  buttons: GSInterfaceButton[]
+  embed_style: GSInterfaceEmbedStyle
 }
 
 export interface GSInterfaceButton {
+  id: string
+  name: string | null
+  emoji: string | null
+  button_style_key: number
+  button_disabled: boolean
   /**
-   * id = command that the button executes
-   * TODO: figure out how to get the available commands and map them to a user readable name
-   *
-   * it contains query parameters too:
-   * - interface=true if it's an interface button
-   *
-   * example: `vc-lock?interface=true`
+   * action row (0-4) and position in the row (0-4)
    */
-  id: string;
-  name: string | null;
-  emoji: string | null;
+  position: { first: number; second: number }
   /**
-   * TODO: figure out how to get the available style keys and map them to colors
-   * probably do this statically instead of making an api call
+   * defaults to the id
    */
-  button_style_key: number;
-  button_disabled: boolean;
-  position: number[];
+  field_value: string
 }
 
 export interface GSInterfaceEmbedStyle {
-  url: string | null;
-  title: string | null;
-  description: string | null;
-  timestamp: number | null;
+  url: string | null
+  title: string | null
+  description: string | null
+  timestamp: number | null
   /**
-   * rgb integer representing the color
+   * color as a signed argb integer, the alpha is ignored by Discord
    */
-  color: number;
+  color: number
   /**
    * thumbnail url
    */
-  thumbnail: string | null;
+  thumbnail: string | null
   /**
    * image url
    */
-  image: string | null;
-  author_name: string | null;
-  author_url: string | null;
-  author_icon_url: string | null;
-  footer: string | null;
-  footer_icon_url: string | null;
+  image: string | null
+  author_name: string | null
+  author_url: string | null
+  author_icon_url: string | null
+  footer: string | null
+  footer_icon_url: string | null
 }

@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import {useGuilds} from "~/data/astro/query/useGuilds";
-import IconQuestion from "~/components/icon/IconQuestion.vue";
+import discordGuildIconUri from '~/utils/discordGuildIconUri'
+import { useGuilds } from '~/data/astro/query/useGuilds'
+import IconQuestion from '~/components/icon/IconQuestion.vue'
 
 definePageMeta({
   middleware: 'auth',
 })
 
-useHead({
-  title: "Dashboard - Astro - Temporary Voice Channels for your Discord!",
+const { t } = useI18n()
+
+useHead(() => ({
+  title: t('meta.page_title', { page: t('meta.dashboard.title') }),
   meta: [
-    { name: 'description', content: 'Configure all Astro settings with the powerful and intuitive dashboard' },
-    { property: 'og:title', content: 'Dashboard - Astro - Temporary Voice Channels for your Discord!' },
-    { property: 'og:description', content: 'Configure all Astro settings with the powerful and intuitive dashboard' },
-    { property: 'og:url', content: 'https://astro-bot.space/guilds' }
-  ]
-})
+    { name: 'description', content: t('meta.dashboard.description') },
+    {
+      property: 'og:title',
+      content: t('meta.page_title', { page: t('meta.dashboard.title') }),
+    },
+    { property: 'og:description', content: t('meta.dashboard.description') },
+    { property: 'og:url', content: 'https://astro-bot.space/guilds' },
+  ],
+}))
 
 const search = ref('')
 const permission_dialog_open = ref(false)
@@ -23,87 +29,166 @@ const { data, error, isPending: is_pending, refetch } = useGuilds()
 
 const guilds = computed(() => {
   return (data.value || [])
-    .filter(guild => guild.can_manage)
-    .filter(guild => search.value.length > 0 ? guild.name?.toLowerCase().includes(search.value.toLowerCase()) : true)
+    .filter((guild) => guild.can_manage)
+    .filter((guild) =>
+      search.value.length > 0
+        ? guild.name?.toLowerCase().includes(search.value.toLowerCase())
+        : true,
+    )
 })
 </script>
 
 <template>
   <div class="container mt-4 flex flex-col items-center px-4">
-<!--  permissions required dialog  -->
+    <!--  permissions required dialog  -->
     <Dialog v-model:open="permission_dialog_open">
       <DialogContent>
         <DialogHeader>
           <DialogTitle class="vertical-center gap-2">
-            <IconQuestion class="size-6"/>
-            <span>
-              Required permissions
-            </span>
+            <IconQuestion class="size-6" />
+            <span> {{ $t('guilds.required_permissions') }} </span>
           </DialogTitle>
           <DialogDescription>
-            In order to manage Astro's settings for a server, you need to have either <Badge variant="discord">Manage channels</Badge>, <Badge variant="discord">Manage server</Badge> or <Badge variant="discord">Administrator</Badge> permissions.
+            <i18n-t
+              keypath="guilds.required_permissions_description"
+              tag="span"
+            >
+              <template #manage_channels>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_channels')
+                }}</Badge>
+              </template>
+              <template #manage_server>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_server')
+                }}</Badge>
+              </template>
+              <template #administrator>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.administrator')
+                }}</Badge>
+              </template>
+            </i18n-t>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>
 
-    <div class="flex flex-col md:flex-row gap-2 md:gap-0 w-full justify-between items-center group-setting">
-      <div class="flex flex-col w-full text-center md:text-start">
-        <span class="text-xl font-semibold">Servers</span>
-        <span class="text-sm text-secondary">Select a server to manage</span>
+    <div
+      class="group-setting flex w-full flex-col items-center justify-between gap-2 md:flex-row md:gap-0"
+    >
+      <div class="flex w-full flex-col text-center md:text-start">
+        <span class="text-xl font-semibold">{{ $t('guilds.title') }}</span>
+        <span class="text-secondary text-sm">{{ $t('guilds.subtitle') }}</span>
       </div>
 
       <div class="flex items-center gap-2">
-        <DashboardInfoButton title="Required permissions" guide_button_uri="/guides/basic">
+        <DashboardInfoButton
+          :title="$t('guilds.required_permissions')"
+          guide-button-uri="/guides/basic"
+        >
           <span>
-            In order to manage Astro's settings for a server, you need to have either <Badge variant="discord">Manage channels</Badge>, <Badge variant="discord">Manage server</Badge> or <Badge variant="discord">Administrator</Badge> permissions.
+            <i18n-t
+              keypath="guilds.required_permissions_description"
+              tag="span"
+            >
+              <template #manage_channels>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_channels')
+                }}</Badge>
+              </template>
+              <template #manage_server>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.manage_server')
+                }}</Badge>
+              </template>
+              <template #administrator>
+                <Badge variant="discord">{{
+                  $t('guilds.permissions.administrator')
+                }}</Badge>
+              </template>
+            </i18n-t>
           </span>
         </DashboardInfoButton>
 
         <ButtonText destructive>
-          <Icon name="fluent:arrow-sync-12-regular" class="size-6" @click="refetch" />
+          <Icon
+            name="fluent:arrow-sync-12-regular"
+            class="size-6"
+            @click="refetch"
+          />
         </ButtonText>
 
-        <input v-model="search" class="w-full md:w-auto" type="text" placeholder="Search by name">
+        <input
+          v-model="search"
+          class="w-full md:w-auto"
+          type="text"
+          :placeholder="$t('guilds.search_placeholder')"
+        />
       </div>
     </div>
 
-    <div v-if="is_pending" class="w-full mt-4 flex justify-center">
+    <div v-if="is_pending" class="mt-4 flex w-full justify-center">
       <IconLoading />
     </div>
-    <div v-else-if="error" class="w-full mt-4 flex justify-center bordered-destructive rounded-md p-4 text-destructive">
-      Something went wrong, please try again later
+    <div
+      v-else-if="error"
+      class="bordered-destructive text-destructive mt-4 flex w-full justify-center rounded-md p-4"
+    >
+      {{ $t('common.error_generic') }}
     </div>
     <div v-else>
       <div
-        class="mt-4 w-full grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-4">
-        <div v-for="guild in guilds" :key="guild.id" class="flex select-none flex-col group-setting gap-4">
+        class="mt-4 grid w-full grid-flow-row-dense grid-cols-1 gap-4 gap-y-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+      >
+        <div
+          v-for="guild in guilds"
+          :key="guild.id"
+          class="group-setting flex flex-col gap-4 select-none"
+        >
           <div class="flex items-center gap-4">
             <div class="relative">
               <NuxtImg
-                v-if="guild.id && guild.icon" :src="discordGuildIconUri(guild.id, guild.icon)"
-                class="rounded-full max-w-none w-12 h-12 md:w-14 md:h-14 bordered" />
+                v-if="guild.id && guild.icon"
+                :src="discordGuildIconUri(guild.id, guild.icon)"
+                class="size-12 max-w-none rounded-full bordered md:size-14"
+              />
               <p
                 v-else
-                class="flex items-center justify-center truncate rounded-full font-semibold text-white size-14 bordered hover:opacity-80">
-                {{ guild.name?.split(" ").map((a) => a.charAt(0).toUpperCase()).join("") }}
+                class="flex size-14 items-center justify-center truncate rounded-full bordered font-semibold text-white hover:opacity-80"
+              >
+                {{
+                  guild.name
+                    ?.split(' ')
+                    .map((a) => a.charAt(0).toUpperCase())
+                    .join('')
+                }}
               </p>
             </div>
 
             <span>{{ guild.name }}</span>
           </div>
-          <Button class="w-full flex items-center justify-center" :to="`/guilds/${guild.id}`">
-            Manage
+          <Button
+            class="flex w-full items-center justify-center"
+            :to="`/guilds/${guild.id}`"
+          >
+            {{ $t('guilds.manage') }}
           </Button>
         </div>
       </div>
 
       <!-- empty guilds -->
-      <div v-if="guilds.length === 0" class="flex flex-col gap-2 mt-32 items-center">
-        <span class="text-center">You cannot manage the settings of any server you are in!</span>
-        <ButtonText class="gap-2" @click="() => permission_dialog_open = true">
-          <Icon name="fluent:question-circle-32-regular" class="size-6" />
-          See required permissions
+      <div
+        v-if="guilds.length === 0"
+        class="mt-32 flex flex-col items-center gap-2"
+      >
+        <span class="text-center">{{ $t('guilds.none_manageable') }}</span>
+        <ButtonText
+          class="gap-2"
+          @click="() => (permission_dialog_open = true)"
+        >
+          <IconQuestion class="size-6" />
+          {{ $t('guilds.see_required_permissions') }}
         </ButtonText>
       </div>
     </div>
