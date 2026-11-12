@@ -9,6 +9,9 @@ export function useGuilds() {
     queryFn: (): Promise<DiscordGuild[]> => {
       return $astroApiClient.get_guilds()
     },
-    staleTime: 300000,
+    // discord rate limits the guilds fetch (429), the list rarely changes and the refresh button on /guilds still forces a refetch
+    staleTime: 600000,
+    // keep it past unmount (default is 5 min), otherwise staleTime is lost when navigating away
+    gcTime: 600000,
   })
 }
