@@ -28,8 +28,7 @@ Otherwise you can also visit the [dashboard](/guilds) and you will be automatica
 ## Quick setup
 
 Don't wanna configure everything by hand? Use the `/setup` command, or the setup button Astro sends when it joins your server.  
-Astro will create a category with a generator and an interface inside it, so temporary voice channels work right away. Then you can change the name, category, position and everything else from the [dashboard](/guilds).  
-It needs room for 4 new channels, and the usual limits of the free plan apply (see [Ultimate](#ultimate)).
+Astro will create a category with a generator and an interface inside it, so temporary voice channels work right away. Then you can change the name, category, position and everything else from the [dashboard](/guilds).
 
 ## Server requirements
 
@@ -53,18 +52,11 @@ Remember that you can always configure who has access to Astro slash commands vi
 
 ## Server language
 
-Astro speaks English and Italian.  
 You can change the language of your server from the settings in the dashboard, all the messages the bot sends there will follow it.
 
 ## Bot profile
 
-Want Astro to look a bit more like part of your server? From the dashboard you can give it a custom nickname, avatar, banner and bio, only for your server.  
-This is free for everyone.
-
-## Voting
-
-Some commands that temporary voice channel owners can use are locked behind a [vote](https://top.gg/bot/715621848489918495/vote) if the server doesn't have Ultimate: `/chat`, `/invite`, `/claim`, `/transfer`, `/waiting-room` and `/region`.  
-Voting is free and takes a few seconds, servers with Ultimate skip it completely.
+Want Astro to look a bit more like part of your server? From the dashboard you can give it a custom nickname, avatar, banner and bio, only for your server.
 
 ## Errors & Issues
 
