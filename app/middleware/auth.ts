@@ -2,13 +2,16 @@ import { user_qk } from '~/data/astro/config/query-keys'
 import { AError, AErrorCode } from '~/data/astro/core/AError'
 
 export default defineNuxtRouteMiddleware(async (_to, _from) => {
-  const { $astroApiClient } = useNuxtApp()
+  const nuxtApp = useNuxtApp()
+  const { $astroApiClient } = nuxtApp
   const queryClient = useQueryClient()
 
   try {
     await queryClient.query({
       queryKey: user_qk,
-      queryFn: () => $astroApiClient.get_self_user(),
+      // restore the nuxt context: on ssr useApiFetch needs it to forward the cookie, and query-core can call queryFn outside of it
+      queryFn: () =>
+        nuxtApp.runWithContext(() => $astroApiClient.get_self_user()),
       retry: false,
     })
   } catch (error) {
