@@ -102,6 +102,7 @@ In the dashboard you will also find the options to change:
 - the bitrate
 - the position: whether the temporary voice channel should be created just before the generator, right after or at the bottom of the category
 - to change the region you can change the region of the generator channel inside Discord directly
+- the default voice channel status: the small text shown under the name of a voice channel, owners can change it anytime with the `/status` command
 
 ## Permission settings
 

@@ -25,6 +25,12 @@ Here we are gonna cover up the basics on how to get started using Astro in your 
 First thing first invite the bot to your server. To do so you can simply click [this link](/invite) and select a server!  
 Otherwise you can also visit the [dashboard](/guilds) and you will be automatically prompted to invite Astro in the server you want to manage if it's not added to it yet.
 
+## Quick setup
+
+Don't wanna configure everything by hand? Use the `/setup` command, or the setup button Astro sends when it joins your server.  
+Astro will create a category with a generator and an interface inside it, so temporary voice channels work right away. Then you can change the name, category, position and everything else from the [dashboard](/guilds).  
+It needs room for 4 new channels, and the usual limits of the free plan apply (see [Ultimate](#ultimate)).
+
 ## Server requirements
 
 In order to be able to use Astro in your server you must meet these requirements:
@@ -44,6 +50,21 @@ _You may ask for guidelines in the Support Server regarding the permissions that
 
 Remember that you can always configure who has access to Astro slash commands via Discord slash command permissions.  
 [Read more about it here](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+
+## Server language
+
+Astro speaks English and Italian.  
+You can change the language of your server from the settings in the dashboard, all the messages the bot sends there will follow it.
+
+## Bot profile
+
+Want Astro to look a bit more like part of your server? From the dashboard you can give it a custom nickname, avatar, banner and bio, only for your server.  
+This is free for everyone.
+
+## Voting
+
+Some commands that temporary voice channel owners can use are locked behind a [vote](https://top.gg/bot/715621848489918495/vote) if the server doesn't have Ultimate: `/chat`, `/invite`, `/claim`, `/transfer`, `/waiting-room` and `/region`.  
+Voting is free and takes a few seconds, servers with Ultimate skip it completely.
 
 ## Errors & Issues
 
