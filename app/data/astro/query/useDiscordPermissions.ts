@@ -6,7 +6,7 @@ export function useDiscordPermissions() {
   return useQuery({
     queryKey: discord_permissions_qk,
     queryFn: () => $astroApiClient.get_discord_permissions(),
-    // static constants
-    staleTime: Infinity,
+    // static constants, 1 day
+    staleTime: 86400000,
   })
 }
