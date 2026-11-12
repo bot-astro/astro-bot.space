@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
+    '@sentry/nuxt/module',
   ],
 
   i18n: {
@@ -34,6 +35,12 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_locale',
       fallbackLocale: 'en-US',
     },
+  },
+
+  // client only, the ssr runs on cloudflare workers
+  sentry: {
+    org: 'bot-astro',
+    project: 'website',
   },
 
   css: ['~/assets/css/tailwind.css'],
