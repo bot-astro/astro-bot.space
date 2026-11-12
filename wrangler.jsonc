@@ -1,0 +1,34 @@
+{
+  // Cloudflare Workers (SSR through Nitro's `cloudflare_module` preset) + static assets.
+  // The dashboard forwards the session cookie during SSR, so the site cannot be fully static.
+  // @nuxt/content switches to the D1 binding `DB` by itself when it builds for Cloudflare.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "astro-bot-space",
+  "main": ".output/server/index.mjs",
+  "compatibility_date": "2025-07-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".output/public",
+    "binding": "ASSETS",
+  },
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "astro-bot-space-prod",
+      "database_id": "2a2b8ec4-d817-4fb8-b9b3-83a339afe825",
+    },
+  ],
+  "env": {
+    "staging": {
+      "name": "astro-bot-space-staging",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "astro-bot-space-staging",
+          "database_id": "ec96a544-8602-4e56-95df-8d4f0c56a802",
+        },
+      ],
+    },
+  },
+}
