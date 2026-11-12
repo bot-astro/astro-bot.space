@@ -13,10 +13,8 @@ export async function useApiFetch<T>(
   try {
     return (await $fetch<T>(url, {
       ...options,
-      // cloudflare workers' fetch throws on the `cache` field, so only set these in the browser
-      ...(import.meta.client
-        ? { credentials: 'include' as const, cache: 'no-cache' as const }
-        : {}),
+      // cloudflare workers' fetch throws on the `cache` field, so only set this in the browser
+      ...(import.meta.client ? { credentials: 'include' as const } : {}),
       retry: false,
       headers: {
         ...options.headers,
