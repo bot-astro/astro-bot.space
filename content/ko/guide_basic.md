@@ -37,12 +37,12 @@ Astro가 생성기와 인터페이스가 들어 있는 카테고리를 만들어
 - 봇이 50개 미만일 것 (Discord가 정한 제한)
 - 최소한 `채널 관리` 권한이 있을 것
 
-## 봇 권한
+## Bot permissions
 
 Astro는 평범한 Discord 사용자에게 훌륭한 경험을 제공하기 위해 기본적으로 `관리자` 권한을 요구해요.
 
 전문적인 서버를 운영하고 있어서 보안상 Astro에게 그 권한을 줄 수 없다면, 대시보드의 토글로 이 요구 사항을 끌 수 있어요
-![관리자 권한 토글](/guides/admin_permissions.png '관리자 권한 토글')
+![관리자 권한 토글](/guides/admin_permissions.png "관리자 권한 토글")
 _Astro가 작동하는 데 필요한 권한에 대한 안내는 지원 서버에서 물어볼 수 있지만, 이에 대한 자세한 지원은 제공하지 않아요._
 
 ## 명령어 권한
@@ -67,25 +67,25 @@ Astro는 서버에서 작동하는 동안 겪는 모든 문제와 오류를 보�
 
 Ultimate는 Astro의 프리미엄 버전으로, 모든 제한을 없애고 유용한 고급 기능을 많이 제공해요:
 
-| 기능                                 |                     프리미엄                      |                            무료                            |
-| ------------------------------------ | :-----------------------------------------------: | :--------------------------------------------------------: |
-| 무제한 임시 음성 채널 생성기         | <span class="text-discord-green text-lg">✓</span> |                          최대 2개                          |
-| 무제한 인터페이스                    | <span class="text-discord-green text-lg">✓</span> |                          최대 1개                          |
-| 무제한 음성 역할                     | <span class="text-discord-green text-lg">✓</span> |                          최대 1개                          |
-| 무제한 템플릿                        | <span class="text-discord-green text-lg">✓</span> |                          최대 3개                          |
-| 번호가 매겨진 음성 채널 이름         | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| 커스터마이징 가능한 인터페이스       | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| 음성 채널 이름 비속어 필터           | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| 기능                                |                        프리미엄                       |                             무료                             |
+| --------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
+| Unlimited temporary vc generators | <span class="text-discord-green text-lg">✓</span> |                            최대 2개                           |
+| 무제한 인터페이스                         | <span class="text-discord-green text-lg">✓</span> |                            최대 1개                           |
+| 무제한 음성 역할                         | <span class="text-discord-green text-lg">✓</span> |                            최대 1개                           |
+| 무제한 템플릿                           | <span class="text-discord-green text-lg">✓</span> |                            최대 3개                           |
+| 번호가 매겨진 음성 채널 이름                  | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| 커스터마이징 가능한 인터페이스                  | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| 음성 채널 이름 비속어 필터                   | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | 대기실                               | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| 비공개 텍스트 채팅                   | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| 채널 소유자용 음성 역할              | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| 음성 채널 생성 시 사용자 지정 메시지 | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| 대체 생성기                          | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| 비공개 텍스트 채팅                        | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| 채널 소유자용 음성 역할                     | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| 음성 채널 생성 시 사용자 지정 메시지             | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| Fallback generators               | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 
 ### 서버를 Ultimate로 업그레이드하기
 
 [Ultimate 페이지](/ultimate)나 [Discord 앱 스토어](https://discord.com/application-directory/715621848489918495/premium)에서 구독을 구매한 뒤에는 대시보드의 버튼으로 서버를 업그레이드할 수 있어요
-![Ultimate 업그레이드](/guides/ultimate.png 'Ultimate 업그레이드')
+![Ultimate 업그레이드](/guides/ultimate.png "Ultimate 업그레이드")
 
 ### 구독 관리하기
 
