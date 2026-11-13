@@ -29,7 +29,7 @@ Un salon vocal temporaire peut être dans trois états : par défaut, verrouill�
 Ces états sont activés par les utilisateurs via des commandes slash ou l'interface.
 
 Tu peux définir un nom pour chaque état :
-![paramètres du nom du générateur](/guides/generator_name.png 'Paramètres du nom du générateur')
+![paramètres du nom du générateur](/guides/generator_name.png "Paramètres du nom du générateur")
 
 ### Variables
 
@@ -59,7 +59,7 @@ Tu peux utiliser des `Variables` pour rendre le nom du salon dynamique. Astro re
 
 | Variable         | Description                                         |
 | ---------------- | --------------------------------------------------- |
-| `{vc_name}`      | Le nom du salon vocal                               |
+| `{vc_name}`      | The name of the vc                                  |
 | `{vc_bitrate}`   | Le bitrate du salon vocal                           |
 | `{vc_userlimit}` | La limite d'utilisateurs du salon vocal             |
 | `{vc_users}`     | Le nombre d'utilisateurs dans le salon vocal        |
@@ -81,12 +81,12 @@ Les salons vocaux sont générés de manière incrémentale : le bot trouve le p
 Exemple : on a 5 salons vocaux générés par Astro de manière incrémentale [VC #1, VC#2, VC #3, VC #4 et VC#5]. Si VC #3 est supprimé, Astro ne renommera pas chaque salon pour avoir les bons noms (VC#4 en VC #3 et ainsi de suite). À la place, le prochain salon créé ne sera pas VC #6 mais VC #3, pour combler le trou.
 
 Si tu vois que les numéros commencent au mauvais nombre, tu peux cliquer sur le bouton `Vider le cache` dans le tableau de bord pour réinitialiser le compte
-![vider le cache](/guides/clear_cache.png 'Vider le cache')
+![vider le cache](/guides/clear_cache.png "Vider le cache")
 
 ### Conditions de mise à jour du nom
 
 Tu peux aussi configurer quand le nom d'un salon doit être mis à jour :
-![conditions de mise à jour du nom du générateur](/guides/generator_name_conditions.png 'Conditions de mise à jour du nom du générateur')
+![conditions de mise à jour du nom du générateur](/guides/generator_name_conditions.png "Conditions de mise à jour du nom du générateur")
 
 ### Limitations de la mise à jour du nom
 

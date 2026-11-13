@@ -9,7 +9,7 @@ Sprachrollen (früher Verbindungen genannt) ermöglichen es, Sprachkanäle mit R
 Damit erhalten Nutzer eine Rolle, solange sie sich in einem bestimmten Sprachkanal befinden, und Astro entfernt die Rolle wieder, wenn sie diesen Kanal verlassen.
 
 In diesem Beispiel wird eine Sprachrolle für die Kategorie erstellt. Der Nutzer erhält eine Rolle, die es ihm erlaubt, eine Reihe von Kanälen zu sehen, die zu dieser Kategorie gehören:
-![Beispiel einer Sprachrolle](/illustration/voice_role.gif 'Beispiel einer Sprachrolle')
+![Beispiel einer Sprachrolle](/illustration/voice_role.gif "Beispiel einer Sprachrolle")
 
 ## Sprachrollen erstellen und verwalten
 

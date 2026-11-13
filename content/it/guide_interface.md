@@ -7,7 +7,7 @@ description: Scopri come rendere la tua interfaccia fantastica e unica con quest
 
 Un'interfaccia è un messaggio che permette agli utenti di gestire rapidamente il proprio canale vocale temporaneo tramite semplici pulsanti.  
 Ecco come appare l'interfaccia predefinita:
-![interfaccia predefinita](/guides/default_interface.png 'Interfaccia predefinita')
+![interfaccia predefinita](/guides/default_interface.png "Interfaccia predefinita")
 
 ## Creare un'interfaccia
 
@@ -79,4 +79,4 @@ Puoi eliminare un'interfaccia in qualsiasi momento dalla dashboard.
 ### Esempio di interfaccia personalizzata
 
 L'immagine qui sotto è un esempio di interfaccia personalizzata:
-![interfaccia personalizzata](/illustration/custom_interface.png 'Interfaccia personalizzata')
+![interfaccia personalizzata](/illustration/custom_interface.png "Interfaccia personalizzata")

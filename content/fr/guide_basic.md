@@ -35,14 +35,14 @@ Astro créera une catégorie avec un générateur et une interface, pour que les
 Pour utiliser Astro sur ton serveur, tu dois remplir ces conditions :
 
 - avoir moins de 50 bots (limite imposée par Discord)
-- avoir au moins la permission `Gérer les salons`
+- have at least `Manage Channels` permissions
 
 ## Permissions du bot
 
 Astro demande par défaut la permission `Administrateur` pour fonctionner et garantir une bonne expérience aux utilisateurs Discord lambda.
 
 Si tu gères un serveur professionnel et que tu ne peux pas donner cette permission à Astro pour des raisons de sécurité, tu peux désactiver cette exigence avec l'interrupteur prévu dans le tableau de bord
-![interrupteur de la permission administrateur](/guides/admin_permissions.png 'Interrupteur de la permission administrateur')
+![interrupteur de la permission administrateur](/guides/admin_permissions.png "Interrupteur de la permission administrateur")
 _Tu peux demander des conseils sur le serveur d'assistance concernant les permissions dont Astro a besoin pour fonctionner, mais aucune assistance approfondie n'est fournie à ce sujet._
 
 ## Permissions des commandes
@@ -67,12 +67,12 @@ Chaque fois que quelque chose ne marche pas tout à fait comme prévu, pense à 
 
 Ultimate est la version premium d'Astro. Elle offre de nombreuses fonctionnalités avancées utiles et supprime toutes les limitations :
 
-| Fonctionnalité                                      |                      Premium                      |                          Gratuit                           |
+| Fonctionnalité                                      |                      Premium                      |                           Gratuit                          |
 | --------------------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
-| Générateurs de salons vocaux temporaires illimités  | <span class="text-discord-green text-lg">✓</span> |                         Maximum 2                          |
-| Interfaces illimitées                               | <span class="text-discord-green text-lg">✓</span> |                         Maximum 1                          |
-| Rôles vocaux illimités                              | <span class="text-discord-green text-lg">✓</span> |                         Maximum 1                          |
-| Modèles illimités                                   | <span class="text-discord-green text-lg">✓</span> |                         Maximum 3                          |
+| Générateurs de salons vocaux temporaires illimités  | <span class="text-discord-green text-lg">✓</span> |                          Maximum 2                         |
+| Interfaces illimitées                               | <span class="text-discord-green text-lg">✓</span> |                          Maximum 1                         |
+| Rôles vocaux illimités                              | <span class="text-discord-green text-lg">✓</span> |                          Maximum 1                         |
+| Modèles illimités                                   | <span class="text-discord-green text-lg">✓</span> |                          Maximum 3                         |
 | Noms de salons vocaux numérotés                     | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Interfaces personnalisables                         | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Filtre de gros mots pour les noms de salons vocaux  | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
@@ -85,7 +85,7 @@ Ultimate est la version premium d'Astro. Elle offre de nombreuses fonctionnalit�
 ### Passer ton serveur à Ultimate
 
 Une fois que tu as acheté un abonnement sur la [page Ultimate](/ultimate) ou via la [boutique d'applications Discord](https://discord.com/application-directory/715621848489918495/premium), tu peux faire passer ton serveur à Ultimate avec le bouton prévu dans le tableau de bord
-![amélioration Ultimate](/guides/ultimate.png 'Amélioration Ultimate')
+![amélioration Ultimate](/guides/ultimate.png "Amélioration Ultimate")
 
 ### Gérer ton abonnement
 

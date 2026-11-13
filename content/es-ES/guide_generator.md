@@ -29,7 +29,7 @@ Un canal de voz temporal puede estar en tres estados distintos: por defecto, blo
 Los usuarios activan estos estados con comandos de barra o con la interfaz.
 
 Puedes indicar un nombre para cada estado:
-![ajustes del nombre del generador](/guides/generator_name.png 'Ajustes del nombre del generador')
+![ajustes del nombre del generador](/guides/generator_name.png "Ajustes del nombre del generador")
 
 ### Variables
 
@@ -59,9 +59,9 @@ Puedes usar `Variables` para hacer dinámico el nombre del canal. Astro sustitui
 
 | Variable         | Descripción                                  |
 | ---------------- | -------------------------------------------- |
-| `{vc_name}`      | El nombre del canal de voz                   |
-| `{vc_bitrate}`   | El bitrate del canal de voz                  |
-| `{vc_userlimit}` | El límite de usuarios del canal de voz       |
+| `{vc_name}`      | The name of the vc                           |
+| `{vc_bitrate}`   | The bitrate of the vc                        |
+| `{vc_userlimit}` | The user limit of the vc                     |
 | `{vc_users}`     | La cantidad de usuarios en el canal de voz   |
 | `{vc_id}`        | El ID del canal de voz                       |
 | `{vc_mention}`   | El canal de voz como mención (#canal-de-voz) |
@@ -81,12 +81,12 @@ Los canales de voz se generarán de forma incremental: el bot encontrará el pri
 Ejemplo: tenemos 5 canales de voz generados por Astro de forma incremental [VC #1, VC#2, VC #3, VC #4 y VC#5], ahora supongamos que se elimina VC #3. Lo que Astro no hará es renombrar cada canal con el nombre adecuado (es decir, VC#4 a VC #3 y así sucesivamente), sino que la próxima vez que se cree un canal no será VC #6 sino VC #3, de modo que se rellene el hueco.
 
 Si ves que los números empiezan por un número equivocado, puedes pulsar el botón `Vaciar caché` del panel para reiniciar la cuenta
-![vaciar caché](/guides/clear_cache.png 'Vaciar caché')
+![vaciar caché](/guides/clear_cache.png "Vaciar caché")
 
 ### Condiciones de actualización del nombre
 
 También puedes configurar cuándo debe actualizarse el nombre de un canal:
-![condiciones de actualización del nombre del generador](/guides/generator_name_conditions.png 'Condiciones de actualización del nombre del generador')
+![condiciones de actualización del nombre del generador](/guides/generator_name_conditions.png "Condiciones de actualización del nombre del generador")
 
 ### Limitaciones de la actualización del nombre
 

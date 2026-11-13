@@ -42,7 +42,7 @@ Um Astro auf deinem Server verwenden zu können, musst du diese Anforderungen er
 Astro benötigt standardmäßig die Berechtigung `Administrator`, um zu funktionieren und den durchschnittlichen Discord-Nutzern ein großartiges Erlebnis zu bieten.
 
 Wenn du einen professionellen Server betreibst und Astro diese Berechtigung aus Sicherheitsgründen nicht geben kannst, kannst du diese Anforderung über den entsprechenden Schalter im Dashboard deaktivieren
-![Schalter für Administrator-Berechtigung](/guides/admin_permissions.png 'Schalter für Administrator-Berechtigung')
+![Schalter für Administrator-Berechtigung](/guides/admin_permissions.png "Schalter für Administrator-Berechtigung")
 _Du kannst im Support-Server nach Richtlinien zu den Berechtigungen fragen, die Astro zum Funktionieren benötigt, ausführlicher Support dafür wird aber nicht angeboten._
 
 ## Befehlsberechtigungen
@@ -67,12 +67,12 @@ Wenn etwas nicht ganz richtig funktioniert, denke daran, den Bereich Fehler im D
 
 Ultimate ist die Premium-Version von Astro. Sie bietet viele nützliche erweiterte Funktionen und hebt alle Einschränkungen auf:
 
-| Funktion                                           |                      Premium                      |                         Kostenlos                          |
+| Funktion                                           |                      Premium                      |                          Kostenlos                         |
 | -------------------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
-| Unbegrenzte Generatoren für temporäre Sprachkanäle | <span class="text-discord-green text-lg">✓</span> |                         Maximal 2                          |
-| Unbegrenzte Interfaces                             | <span class="text-discord-green text-lg">✓</span> |                         Maximal 1                          |
-| Unbegrenzte Sprachrollen                           | <span class="text-discord-green text-lg">✓</span> |                         Maximal 1                          |
-| Unbegrenzte Vorlagen                               | <span class="text-discord-green text-lg">✓</span> |                         Maximal 3                          |
+| Unbegrenzte Generatoren für temporäre Sprachkanäle | <span class="text-discord-green text-lg">✓</span> |                          Maximal 2                         |
+| Unbegrenzte Interfaces                             | <span class="text-discord-green text-lg">✓</span> |                          Maximal 1                         |
+| Unbegrenzte Sprachrollen                           | <span class="text-discord-green text-lg">✓</span> |                          Maximal 1                         |
+| Unbegrenzte Vorlagen                               | <span class="text-discord-green text-lg">✓</span> |                          Maximal 3                         |
 | Nummerierte Namen für Sprachkanäle                 | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Anpassbare Interfaces                              | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Schimpfwortfilter für Namen von Sprachkanälen      | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
@@ -85,7 +85,7 @@ Ultimate ist die Premium-Version von Astro. Sie bietet viele nützliche erweiter
 ### Deinen Server auf Ultimate aufwerten
 
 Sobald du ein Abonnement auf der [Ultimate-Seite](/ultimate) oder über den [Discord App Store](https://discord.com/application-directory/715621848489918495/premium) erworben hast, kannst du deinen Server über den entsprechenden Button im Dashboard aufwerten
-![Ultimate-Upgrade](/guides/ultimate.png 'Ultimate-Upgrade')
+![Ultimate-Upgrade](/guides/ultimate.png "Ultimate-Upgrade")
 
 ### Dein Abonnement verwalten
 

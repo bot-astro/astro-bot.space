@@ -7,8 +7,8 @@ description: Temukan template dan pelajari cara mengonfigurasinya, penggunamu pa
 
 Template menyatukan sejumlah pengaturan saluran suara yang dapat diterapkan sekaligus ke saluran suara sementara.
 
-Ini berguna misalnya di server gaming tempat pengguna mungkin memainkan banyak game berbeda.  
-Memiliki template untuk setiap game memungkinkan saluran suara lebih sesuai dengan game tersebut, misalnya dengan nama atau batas pengguna tertentu.
+This is useful for example in gaming servers where users might be playing many different games.  
+Having a template for each game would allow to make the voice channel more fitting to that game, for example with a specific name or user limit.
 
 ## Menggunakan template
 
@@ -22,8 +22,8 @@ _Ingat bahwa tanpa [Ultimate](/ultimate) kamu dapat memiliki maksimal 3 template
 
 ## Nama template
 
-Nama template hanyalah nama yang berguna bagi pengguna untuk mengenali sebuah template.  
-**Ini bukan** nama yang didapatkan saluran suara sementara saat template diterapkan.
+The name of a template is simply a name useful to users to identify a template.  
+**It is not** the name that the temporary voice channel gets when the template is applied.
 
 Saat pengguna ingin menerapkan template ke salurannya, mereka hanya akan melihat daftar template yang masing-masing memiliki namanya sendiri.
 
@@ -42,5 +42,5 @@ _Tidak ada satu pun pengaturan ini yang wajib, jadi kamu tidak perlu mengatur se
 
 ## Generator yang diaktifkan
 
-Jika kamu ingin membatasi template untuk generator tertentu, kamu dapat melakukannya di dashboard.  
-Jika begitu, template tidak dapat digunakan oleh saluran suara sementara mana pun yang dibuat oleh generator yang tidak ada dalam daftar `Generator yang diaktifkan`.
+If you want to restrict a template to some specific generators you can do that on the dashboard.  
+If you do so, the template will not be usable by any temporary voice channel that has been created by a generator not in that `Enabled generators` list.

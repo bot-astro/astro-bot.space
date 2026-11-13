@@ -5,14 +5,14 @@ description: Pelajari cara membuat antarmukamu terlihat luar biasa dan unik deng
 
 ## Apa itu interface?
 
-Interface adalah pesan yang memungkinkan pengguna mengelola saluran suara sementara mereka dengan cepat lewat tombol sederhana.  
-Seperti inilah tampilan interface default:
-![interface default](/guides/default_interface.png 'Interface default')
+An interface is a message that allows users to manage their temporary voice channel quickly via simple buttons.  
+Here is what the default interface looks like:
+![default interface](/guides/default_interface.png "Default interface")
 
 ## Membuat interface
 
-Kamu bisa membuat interface baru di dashboard, pada bagian interface.  
-Akan diminta sebuah saluran dan kamu bisa memilih yang kamu inginkan.
+You can create a new interface on the dashboard, in the interfaces section.  
+It will ask for a channel and you can choose the one you want.
 
 ## Mengganti saluran atau mengirim ulang interface
 
@@ -20,8 +20,8 @@ Jika kamu tidak sengaja menghapus pesan interface atau hanya ingin mengganti sal
 
 ## Menyesuaikan interface
 
-Kamu bisa menyesuaikan setiap interface di dashboard: buka bagian interface, pilih interface, lalu klik kelola.  
-Setelah selesai, simpan perubahanmu dan Astro akan langsung memperbarui pesannya.
+You can customise every interface on the dashboard: open the interfaces section, choose an interface and click on manage.  
+Once you are done, save your changes and Astro will update the message right away.
 
 _Ingat bahwa tanpa [Ultimate](/ultimate) kamu hanya bisa menonaktifkan atau mengaktifkan tombol pada interface, hal lainnya memerlukan Ultimate._
 
@@ -33,12 +33,12 @@ Pesan dibagi menjadi tiga bagian, masing-masing dengan pengaturannya sendiri:
 - `Isi`: judul, tautan judul, gambar mini, deskripsi, dan gambar
 - `Footer`: teks footer, gambar footer, warna garis di sebelah kiri pesan, dan stempel waktu
 
-Setiap pengaturan bersifat opsional, jika kamu mengosongkan sebuah teks maka teks itu tidak akan ditampilkan.  
-Gambar penulis dan gambar memiliki nilai default, kamu bisa mengembalikannya dengan tombol `Atur ulang ke default`.
+Every setting is optional, if you leave a text empty it simply won't be shown.  
+The author image and the image have a default value, you can bring it back with the `Reset to default` button.
 
 ### Gambar
 
-Gambar dipilih dari penyimpanan media servermu. Klik `Pilih gambar` untuk membukanya, dari sana kamu bisa:
+Images are picked from your server media storage. Click on `Choose image` to open it, from there you can:
 
 - mengunggah gambar baru
 - melihat pratinjau gambar yang sudah kamu unggah
@@ -51,7 +51,7 @@ Gambar yang tidak digunakan oleh interface mana pun akan dibersihkan secara otom
 
 ### Emoji kustom
 
-Emoji dapat digunakan pada teks pesan dan pada tombol. Emoji standar bisa langsung ditempel, sedangkan emoji kustom Discord membutuhkan kodenya:
+Emojis can be used in the message texts and on the buttons. Standard emojis can simply be pasted, custom Discord emojis need their code instead:
 
 1. Buka Discord dan tulis emoji diawali garis miring terbalik, misalnya `\:nama:`
 2. Kirim pesan, Discord akan mengirim kode emoji, seperti `<:nama:id>` (atau `<a:nama:id>` untuk emoji beranimasi)
@@ -59,12 +59,12 @@ Emoji dapat digunakan pada teks pesan dan pada tombol. Emoji standar bisa langsu
 
 ## Tombol
 
-Interface dapat memiliki hingga 5 baris dengan masing-masing 5 tombol, dashboard menampilkannya dalam bentuk grid.  
-Klik tombol untuk mengeditnya, atau klik posisi kosong untuk menambahkan yang baru.
+An interface can have up to 5 rows with 5 buttons each, the dashboard shows them as a grid.  
+Click on a button to edit it, or on an empty position to add a new one.
 
 Setiap tombol memiliki pengaturan berikut:
 
-- `Tombol`: tombol mana yang ditampilkan di posisi ini. Satu tombol hanya dapat digunakan sekali per interface, sehingga tombol yang sudah ditempatkan di posisi lain tidak dapat dipilih. Pilih `Tanpa tombol` untuk menghapusnya
+- `Button`: which button is shown in this position. A button can be used only once per interface, so the ones already placed somewhere else are not selectable. Choose `No button` to remove it
 - `Dinonaktifkan`: pengguna dapat melihat tombol tetapi tidak dapat mengkliknya
 - `Nama`: teks yang ditampilkan pada tombol
 - `Emoji`: emoji yang ditampilkan pada tombol
@@ -79,4 +79,4 @@ Kamu bisa menghapus interface kapan saja dari dashboard.
 ### Contoh interface kustom
 
 Gambar di bawah ini adalah contoh interface kustom:
-![interface kustom](/illustration/custom_interface.png 'Interface kustom')
+![interface kustom](/illustration/custom_interface.png "Interface kustom")

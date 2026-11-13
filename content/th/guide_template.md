@@ -7,6 +7,7 @@ description: ค้นพบเทมเพลตและเรียนรู�
 
 เทมเพลตรวมชุดการตั้งค่าช่องเสียงที่ใช้กับช่องเสียงชั่วคราวได้ในครั้งเดียว
 
+This is useful for example in gaming servers where users might be playing many different games.  
 มีประโยชน์ เช่น ในเซิร์ฟเวอร์เกมที่ผู้ใช้อาจเล่นหลายเกม  
 การมีเทมเพลตสำหรับแต่ละเกมช่วยให้ช่องเสียงเข้ากับเกมนั้นมากขึ้น เช่น มีชื่อหรือขีดจำกัดผู้ใช้เฉพาะ
 
@@ -22,6 +23,7 @@ _อย่าลืมว่าหากไม่มี [Ultimate](/ultimate) �
 
 ## ชื่อเทมเพลต
 
+The name of a template is simply a name useful to users to identify a template.  
 ชื่อของเทมเพลตเป็นเพียงชื่อที่ช่วยให้ผู้ใช้แยกแยะเทมเพลต  
 **ไม่ใช่** ชื่อที่ช่องเสียงชั่วคราวจะได้รับเมื่อใช้เทมเพลต
 
@@ -42,5 +44,6 @@ _ไม่มีการตั้งค่าใดจำเป็น ดัง
 
 ## Generator ที่เปิดใช้งาน
 
+If you want to restrict a template to some specific generators you can do that on the dashboard.  
 หากต้องการจำกัดเทมเพลตให้ใช้ได้เฉพาะ Generator บางตัว คุณทำได้ในแดชบอร์ด  
 เมื่อทำเช่นนั้น เทมเพลตจะใช้กับช่องเสียงชั่วคราวที่สร้างโดย Generator ที่ไม่อยู่ในรายการ `Generator ที่เปิดใช้งาน` ไม่ได้

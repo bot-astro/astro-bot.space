@@ -7,7 +7,7 @@ description: Apprends à rendre ton interface magnifique et unique grâce à ce 
 
 Une interface est un message qui permet aux utilisateurs de gérer rapidement leur salon vocal temporaire grâce à de simples boutons.  
 Voici à quoi ressemble l'interface par défaut :
-![interface par défaut](/guides/default_interface.png 'Interface par défaut')
+![interface par défaut](/guides/default_interface.png "Interface par défaut")
 
 ## Créer une interface
 
@@ -79,4 +79,4 @@ Tu peux supprimer une interface à tout moment depuis le tableau de bord.
 ### Exemple d'interface personnalisée
 
 L'image ci-dessous est un exemple d'interface personnalisée :
-![interface personnalisée](/illustration/custom_interface.png 'Interface personnalisée')
+![interface personnalisée](/illustration/custom_interface.png "Interface personnalisée")

@@ -1,5 +1,5 @@
 ---
-title: Plantillas
+title: Templates
 description: Descubre las plantillas y aprende a configurarlas, a tus usuarios les encantarán
 ---
 

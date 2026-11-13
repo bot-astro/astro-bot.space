@@ -7,28 +7,31 @@ description: เริ่มต้นใช้งาน Astro ด้วยกา
 
 Astro โฟกัสที่ด้านเสียงของ Discord เท่านั้น และยกระดับด้วยฟีเจอร์ขั้นสูงที่ไม่เหมือนใคร
 
-ฟีเจอร์หลักคือช่องเสียงชั่วคราว  
+The main feature it provides are Temporary voice channels.  
+A temporary voice channel gets created by so-called generators (which are created and managed by Astro). ฟีเจอร์หลักคือช่องเสียงชั่วคราว  
 ช่องเสียงชั่วคราวถูกสร้างโดย "Generator" (ที่ Astro สร้างและจัดการให้) เมื่อผู้ใช้เข้า Generator Astro จะสร้างช่องเสียงชั่วคราวให้ผู้ใช้และย้ายเข้าไป เมื่อช่องเสียงชั่วคราวว่างลง Astro จะลบให้โดยอัตโนมัติ  
-เซิร์ฟเวอร์ของคุณจะไม่มีช่องเสียงว่างๆ เกลื่อนอีกต่อไป!
+เซิร์ฟเวอร์ของคุณจะไม่มีช่องเสียงว่างๆ เกลื่อนอีกต่อไป! Once the temporary voice channel gets empty, Astro automatically deletes it.  
+This way you won't have a bunch of empty voice channels sitting around in your server!
 
-นอกจากนั้น Astro ยังมีวิธีให้ผู้ใช้จัดการช่องเสียงชั่วคราวของตนเอง เช่น เปลี่ยนชื่อช่อง เปลี่ยนขีดจำกัดผู้ใช้ ล็อก / ซ่อนช่อง และอื่นๆ อีกมาก ทำได้ทั้งผ่านคำสั่งสแลชหรืออินเทอร์เฟซของ Astro อินเทอร์เฟซคือข้อความที่มีปุ่มซึ่ง Astro สร้างขึ้น เพื่อให้ผู้ใช้ทำการต่างๆ กับช่องเสียงของตนได้อย่างรวดเร็ว
+นอกจากนั้น Astro ยังมีวิธีให้ผู้ใช้จัดการช่องเสียงชั่วคราวของตนเอง เช่น เปลี่ยนชื่อช่อง เปลี่ยนขีดจำกัดผู้ใช้ ล็อก / ซ่อนช่อง และอื่นๆ อีกมาก ทำได้ทั้งผ่านคำสั่งสแลชหรืออินเทอร์เฟซของ Astro อินเทอร์เฟซคือข้อความที่มีปุ่มซึ่ง Astro สร้างขึ้น เพื่อให้ผู้ใช้ทำการต่างๆ กับช่องเสียงของตนได้อย่างรวดเร็ว That can be done either via slash commands, or Astro interfaces. An interface is simply a message with buttons created by Astro that allows users to quickly perform actions on their voice channel.
 
-นอกจากนี้ Astro ยังมีวิธีรวมการตั้งค่าหลายอย่างเข้าด้วยกันแล้วใช้กับช่องเสียงชั่วคราวในครั้งเดียว นั่นคือเทมเพลต สมมติว่าคุณมีเซิร์ฟเวอร์เกมที่ผู้ใช้เล่นหลายเกม คุณสามารถสร้างเทมเพลตสำหรับแต่ละเกมพร้อมชื่อ ขีดจำกัดผู้ใช้ ฯลฯ ของเกมนั้นๆ
+นอกจากนี้ Astro ยังมีวิธีรวมการตั้งค่าหลายอย่างเข้าด้วยกันแล้วใช้กับช่องเสียงชั่วคราวในครั้งเดียว นั่นคือเทมเพลต สมมติว่าคุณมีเซิร์ฟเวอร์เกมที่ผู้ใช้เล่นหลายเกม คุณสามารถสร้างเทมเพลตสำหรับแต่ละเกมพร้อมชื่อ ขีดจำกัดผู้ใช้ ฯลฯ ของเกมนั้นๆ Lets say for example you have a gaming server where users play a bunch of different games, you can create a template for each game with its own name, user limit, etc...
 
-อีกฟีเจอร์ที่มีประโยชน์มากคือบทบาทเสียง ด้วยบทบาทเสียง คุณมั่นใจได้ว่าผู้ใช้จะได้รับบทบาทที่กำหนดเมื่ออยู่ในช่องเสียงที่กำหนด เป็นฟีเจอร์ที่ทรงพลังมากและเปิดโอกาสให้ใช้งานได้หลายรูปแบบ
+Another extremely useful feature are Voice roles. อีกฟีเจอร์ที่มีประโยชน์มากคือบทบาทเสียง ด้วยบทบาทเสียง คุณมั่นใจได้ว่าผู้ใช้จะได้รับบทบาทที่กำหนดเมื่ออยู่ในช่องเสียงที่กำหนด เป็นฟีเจอร์ที่ทรงพลังมากและเปิดโอกาสให้ใช้งานได้หลายรูปแบบ It's a really powerful feature which unlocks many different scenarios.
 
+You can read more about all those features in their corresponding [guide](/guides).  
 คุณอ่านรายละเอียดเพิ่มเติมของทุกฟีเจอร์ได้ใน[คู่มือ](/guides)ของแต่ละเรื่อง  
 ในที่นี้เราจะพูดถึงพื้นฐานการเริ่มใช้งาน Astro ในเซิร์ฟเวอร์ของคุณ!
 
 ## เชิญบอท
 
-ขั้นแรกให้เชิญบอทเข้าเซิร์ฟเวอร์ของคุณ เพียงคลิก[ลิงก์นี้](/invite)แล้วเลือกเซิร์ฟเวอร์!  
+First thing first invite the bot to your server. ขั้นแรกให้เชิญบอทเข้าเซิร์ฟเวอร์ของคุณ เพียงคลิก[ลิงก์นี้](/invite)แล้วเลือกเซิร์ฟเวอร์!  
 หรือจะเข้า[แดชบอร์ด](/guilds)ก็ได้ ระบบจะเตือนให้เชิญ Astro เข้าเซิร์ฟเวอร์ที่คุณต้องการจัดการโดยอัตโนมัติ หากยังไม่ได้เพิ่ม
 
 ## ตั้งค่าอย่างรวดเร็ว
 
-ไม่อยากตั้งค่าทุกอย่างด้วยมือ? ใช้คำสั่ง `/setup` หรือปุ่มตั้งค่าที่ Astro ส่งตอนเข้าเซิร์ฟเวอร์ของคุณ  
-Astro จะสร้างหมวดหมู่ที่มี Generator และอินเทอร์เฟซอยู่ข้างใน ช่องเสียงชั่วคราวจึงใช้งานได้ทันที จากนั้นคุณเปลี่ยนชื่อ หมวดหมู่ ตำแหน่ง และอื่นๆ ได้จาก[แดชบอร์ด](/guilds)
+ไม่อยากตั้งค่าทุกอย่างด้วยมือ? Use the `/setup` command, or the setup button Astro sends when it joins your server.  
+Astro will create a category with a generator and an interface inside it, so temporary voice channels work right away. Then you can change the name, category, position and everything else from the [dashboard](/guilds).
 
 ## ข้อกำหนดของเซิร์ฟเวอร์
 
@@ -42,13 +45,14 @@ Astro จะสร้างหมวดหมู่ที่มี Generator แ
 Astro ต้องการสิทธิ์ `ผู้ดูแลระบบ` โดยค่าเริ่มต้น เพื่อให้ทำงานได้และมอบประสบการณ์ที่ดีแก่ผู้ใช้ Discord ทั่วไป
 
 หากคุณดูแลเซิร์ฟเวอร์ระดับมืออาชีพและไม่สามารถให้สิทธิ์นั้นแก่ Astro ได้ด้วยเหตุผลด้านความปลอดภัย คุณปิดข้อกำหนดนี้ได้ด้วยสวิตช์บนแดชบอร์ด
-![สวิตช์สิทธิ์ผู้ดูแลระบบ](/guides/admin_permissions.png 'สวิตช์สิทธิ์ผู้ดูแลระบบ')
+![สวิตช์สิทธิ์ผู้ดูแลระบบ](/guides/admin_permissions.png "สวิตช์สิทธิ์ผู้ดูแลระบบ")
 _คุณสามารถขอคำแนะนำในเซิร์ฟเวอร์ซัพพอร์ตเกี่ยวกับสิทธิ์ที่ Astro ต้องใช้เพื่อทำงานได้ แต่ไม่มีการให้ซัพพอร์ตเชิงลึกในเรื่องนี้_
 
 ## สิทธิ์ของคำสั่ง
 
 อย่าลืมว่าคุณสามารถตั้งค่าได้เสมอว่าใครมีสิทธิ์ใช้คำสั่งสแลชของ Astro ผ่านสิทธิ์คำสั่งสแลชของ Discord  
-[อ่านเพิ่มเติมได้ที่นี่](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ)
+[อ่านเพิ่มเติมได้ที่นี่](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ)  
+[Read more about it here](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
 
 ## ภาษาของเซิร์ฟเวอร์
 
@@ -61,13 +65,14 @@ _คุณสามารถขอคำแนะนำในเซิร์ฟ�
 ## ข้อผิดพลาดและปัญหา
 
 Astro จะรายงานปัญหาและข้อผิดพลาดทั้งหมดที่พบขณะทำงานในเซิร์ฟเวอร์ของคุณ  
-เมื่อใดที่รู้สึกว่ามีอะไรทำงานไม่ถูกต้อง อย่าลืมตรวจสอบส่วนข้อผิดพลาดในแดชบอร์ด!
+เมื่อใดที่รู้สึกว่ามีอะไรทำงานไม่ถูกต้อง อย่าลืมตรวจสอบส่วนข้อผิดพลาดในแดชบอร์ด!  
+Anytime you experience something working not quite right remember to check the errors section in the dashboard!
 
 ## Ultimate
 
 Ultimate คือ Astro เวอร์ชันพรีเมียม ให้ฟีเจอร์ขั้นสูงที่มีประโยชน์มากมายและยกเลิกข้อจำกัดทั้งหมด:
 
-| ฟีเจอร์                               |                     พรีเมียม                      |                            ฟรี                             |
+| ฟีเจอร์                               |                      พรีเมียม                     |                             ฟรี                            |
 | ------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
 | Generator ช่องเสียงชั่วคราวไม่จำกัด   | <span class="text-discord-green text-lg">✓</span> |                          สูงสุด 2                          |
 | อินเทอร์เฟซไม่จำกัด                   | <span class="text-discord-green text-lg">✓</span> |                          สูงสุด 1                          |
@@ -85,13 +90,14 @@ Ultimate คือ Astro เวอร์ชันพรีเมียม ให
 ### อัปเกรดเซิร์ฟเวอร์ของคุณเป็น Ultimate
 
 เมื่อคุณซื้อการสมัครสมาชิกที่[หน้า Ultimate](/ultimate) หรือผ่าน [Discord App Store](https://discord.com/application-directory/715621848489918495/premium) แล้ว คุณอัปเกรดเซิร์ฟเวอร์ได้ด้วยปุ่มบนแดชบอร์ด
-![การอัปเกรด Ultimate](/guides/ultimate.png 'การอัปเกรด Ultimate')
+![การอัปเกรด Ultimate](/guides/ultimate.png "การอัปเกรด Ultimate")
 
 ### จัดการการสมัครสมาชิกของคุณ
 
+You can view, manage and cancel your Ultimate subscriptions using the [Billing portal](/billing).  
 คุณดู จัดการ และยกเลิกการสมัครสมาชิก Ultimate ได้ที่[พอร์ทัลการเรียกเก็บเงิน](/billing)  
 หากคุณซื้อ Ultimate ผ่านการชำระเงินของ Discord App Store ให้ดู[คู่มือนี้](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ)
 
-## ซัพพอร์ต
+## Support
 
 ยินดีเข้าร่วม[เซิร์ฟเวอร์ซัพพอร์ต / คอมมูนิตี้](/support)ได้เลยหากมีคำถาม!

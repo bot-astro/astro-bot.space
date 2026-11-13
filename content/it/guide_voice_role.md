@@ -9,7 +9,7 @@ I ruoli vocali (in precedenza chiamati connessioni) permettono di collegare i ca
 Permettono agli utenti di ottenere un ruolo mentre si trovano in uno specifico canale vocale, e Astro lo rimuoverà quando lasciano quel canale.
 
 In questo esempio, un ruolo vocale viene creato su una categoria. L'utente riceve un ruolo che gli permette di vedere una serie di canali legati a quella categoria:
-![esempio di ruolo vocale](/illustration/voice_role.gif 'Esempio di ruolo vocale')
+![esempio di ruolo vocale](/illustration/voice_role.gif "Esempio di ruolo vocale")
 
 ## Creare e gestire i ruoli vocali
 

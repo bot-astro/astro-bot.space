@@ -29,7 +29,7 @@ Um canal de voz temporário pode estar em três estados diferentes: padrão, blo
 Esses estados são alternados pelos usuários por comandos de barra ou pela interface.
 
 Você pode definir um nome para cada estado:
-![configurações de nome do gerador](/guides/generator_name.png 'Configurações de nome do gerador')
+![configurações de nome do gerador](/guides/generator_name.png "Configurações de nome do gerador")
 
 ### Variáveis
 
@@ -59,7 +59,7 @@ Você pode usar `Variáveis` para tornar o nome do canal dinâmico. O Astro subs
 
 | Variável         | Descrição                                  |
 | ---------------- | ------------------------------------------ |
-| `{vc_name}`      | O nome do canal de voz                     |
+| `{vc_name}`      | The name of the vc                         |
 | `{vc_bitrate}`   | O bitrate do canal de voz                  |
 | `{vc_userlimit}` | O limite de usuários do canal de voz       |
 | `{vc_users}`     | A quantidade de usuários no canal de voz   |
@@ -81,12 +81,12 @@ Os canais de voz serão gerados de forma incremental: o bot encontrará o primei
 Exemplo: temos 5 canais de voz gerados incrementalmente pelo Astro [VC #1, VC#2, VC #3, VC #4 e VC#5]; agora vamos supor que o VC #3 seja excluído. O que o Astro não fará é renomear cada canal para o nome certo (VC#4 para VC #3 e assim por diante); em vez disso, na próxima vez que um canal for criado, ele não será VC #6, mas VC #3, para que a lacuna seja preenchida.
 
 Se você perceber que os números estão começando do número errado, pode clicar no botão `Limpar cache` no painel para redefinir a contagem
-![limpar cache](/guides/clear_cache.png 'Limpar cache')
+![limpar cache](/guides/clear_cache.png "Limpar cache")
 
 ### Condições de atualização do nome
 
 Você também pode configurar quando o nome de um canal deve ser atualizado:
-![condições de atualização do nome do gerador](/guides/generator_name_conditions.png 'Condições de atualização do nome do gerador')
+![condições de atualização do nome do gerador](/guides/generator_name_conditions.png "Condições de atualização do nome do gerador")
 
 ### Limitações da atualização do nome
 
@@ -111,12 +111,12 @@ No painel você também encontrará as opções para mudar:
 Por padrão, os canais de voz temporários herdam as permissões do gerador.  
 Você pode mudar esse comportamento no painel: pode fazer os canais copiarem as permissões da categoria ou não copiarem nenhuma permissão.
 
-### Cargo alvo
+### Target role
 
 O cargo alvo é uma das configurações mais importantes. Quando as permissões do canal precisam ser modificadas, por exemplo quando ele é bloqueado ou ocultado, o Astro modificará as permissões do cargo alvo para chegar ao estado desejado.  
 Por exemplo, se no seu servidor os usuários precisam concluir um processo de verificação e receber um cargo `Verificado`, provavelmente você vai querer defini-lo como cargo alvo.
 
-### Cargo de moderador
+### Moderator role
 
 Se você definir um cargo de moderador, ele sempre terá as permissões necessárias para gerenciar o canal, mesmo quando estiver bloqueado ou oculto.
 
@@ -130,7 +130,7 @@ Você pode impor algumas limitações aos comandos dos usuários, como se eles p
 
 ## Utilitários
 
-### Cargo do dono
+### Owner role
 
 Se definido, o Astro atribuirá esse cargo aos donos de canais de voz temporários e o removerá quando eles saírem do canal ou quando a posse for transferida.
 
@@ -139,7 +139,7 @@ Se definido, o Astro atribuirá esse cargo aos donos de canais de voz temporári
 Com o modo fila ativado, o Astro tentará preencher os canais existentes antes de criar novos.  
 É um recurso útil quando os canais têm limite de usuários e você precisa garantir que todos fiquem cheios com o número máximo de usuários.
 
-### Gerador de reserva
+### Fallback generator
 
 Quando a categoria do gerador enche (chega a 50 canais), os usuários que entrarem no gerador serão movidos para o gerador de reserva, se definido.
 

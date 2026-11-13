@@ -7,8 +7,8 @@ description: Tuklasin ang mga template at alamin kung paano i-configure ang mga 
 
 Binubuo ang mga template ng isang hanay ng mga setting ng voice channel na maaaring ilapat nang sabay-sabay sa mga pansamantalang voice channel.
 
-Kapaki-pakinabang ito, halimbawa, sa mga gaming server kung saan maaaring maglaro ang mga user ng maraming iba't ibang laro.  
-Ang pagkakaroon ng template para sa bawat laro ay nagpapahintulot na gawing mas angkop ang voice channel sa larong iyon, halimbawa gamit ang partikular na pangalan o limitasyon ng user.
+This is useful for example in gaming servers where users might be playing many different games.  
+Having a template for each game would allow to make the voice channel more fitting to that game, for example with a specific name or user limit.
 
 ## Paggamit ng mga template
 
@@ -22,8 +22,8 @@ _Tandaan na hanggang 3 template lang ang puwede mo kung walang [Ultimate](/ultim
 
 ## Pangalan ng template
 
-Ang pangalan ng template ay isang pangalan lang na nakakatulong sa mga user na makilala ang isang template.  
-**Hindi ito** ang pangalang makukuha ng pansamantalang voice channel kapag inilapat ang template.
+The name of a template is simply a name useful to users to identify a template.  
+**It is not** the name that the temporary voice channel gets when the template is applied.
 
 Kapag gusto ng user na maglapat ng template sa kanyang channel, listahan lang ng mga template ang makikita niya na may kani-kaniyang pangalan.
 
@@ -42,5 +42,5 @@ _Walang kailangan sa mga setting na ito, kaya hindi mo kailangang itakda ang lah
 
 ## Mga naka-enable na generator
 
-Kung gusto mong limitahan ang isang template sa ilang partikular na generator, magagawa mo iyon sa dashboard.  
-Kung gagawin mo iyon, hindi magagamit ang template ng anumang pansamantalang voice channel na ginawa ng generator na wala sa listahan ng `Mga naka-enable na generator`.
+If you want to restrict a template to some specific generators you can do that on the dashboard.  
+If you do so, the template will not be usable by any temporary voice channel that has been created by a generator not in that `Enabled generators` list.
