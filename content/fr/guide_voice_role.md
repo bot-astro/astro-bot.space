@@ -9,7 +9,7 @@ Les rôles vocaux (appelés auparavant connexions) permettent de relier des salo
 Ils permettent aux utilisateurs d'obtenir un rôle tant qu'ils sont dans un salon vocal précis, et Astro le leur retire quand ils quittent ce salon.
 
 Dans cet exemple, un rôle vocal est créé sur la catégorie. L'utilisateur reçoit un rôle qui lui permet de voir plusieurs salons liés à cette catégorie :
-![exemple de rôle vocal](/illustration/voice_role.gif 'Exemple de rôle vocal')
+![exemple de rôle vocal](/illustration/voice_role.gif "Exemple de rôle vocal")
 
 ## Créer et gérer des rôles vocaux
 
@@ -17,7 +17,7 @@ Tu peux créer, gérer et supprimer des rôles vocaux dans le tableau de bord.
 
 _N'oublie pas que sans [Ultimate](/ultimate) tu ne peux avoir qu'un seul rôle vocal._
 
-## Paramètre du salon
+## Channel setting
 
 Quand tu crées ou modifies un rôle vocal, tu dois sélectionner un salon pour celui-ci.  
 Le salon peut être :
@@ -32,4 +32,4 @@ Tu peux choisir entre trois actions différentes :
 
 - `Attribuer` : Astro attribue le rôle à l'utilisateur quand il rejoint le salon et le retire quand l'utilisateur part
 - `Retirer` : retire le rôle quand l'utilisateur rejoint le salon et le lui rend quand l'utilisateur part
-- `Basculer` : si l'utilisateur n'a pas le rôle avant de rejoindre le salon, se comporte comme `Attribuer`, sinon comme `Retirer` (il bascule le rôle, comme son nom l'indique)
+- `Toggle`: if the user doesn't have the role before joining the channel, it will behave like `Assign`, otherwise like `Remove` (basically toggles the role as the name suggests)
