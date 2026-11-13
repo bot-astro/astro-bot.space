@@ -28,6 +28,7 @@ export async function useApiFetch<T>(
     throw new AError({
       code: data?.code ?? AErrorCode.UNKNOWN,
       message: data?.message,
+      cause: error,
     })
   }
 }

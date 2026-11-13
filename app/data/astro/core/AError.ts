@@ -18,8 +18,8 @@ export interface AErrorResponse {
 export class AError extends Error {
   readonly code: AErrorCode
 
-  constructor({ code, message }: AErrorResponse) {
-    super(message ?? code)
+  constructor({ code, message, cause }: AErrorResponse & { cause?: unknown }) {
+    super(message ?? code, { cause })
     this.name = 'AError'
     this.code = code
   }
