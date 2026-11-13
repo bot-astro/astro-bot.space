@@ -85,7 +85,7 @@ Ultimate คือ Astro เวอร์ชันพรีเมียม ให
 ### อัปเกรดเซิร์ฟเวอร์ของคุณเป็น Ultimate
 
 เมื่อคุณซื้อการสมัครสมาชิกที่[หน้า Ultimate](/ultimate) หรือผ่าน [Discord App Store](https://discord.com/application-directory/715621848489918495/premium) แล้ว คุณอัปเกรดเซิร์ฟเวอร์ได้ด้วยปุ่มบนแดชบอร์ด
-![การอัปเกรด ultimate](/guides/ultimate.png 'การอัปเกรด Ultimate')
+![การอัปเกรด Ultimate](/guides/ultimate.png 'การอัปเกรด Ultimate')
 
 ### จัดการการสมัครสมาชิกของคุณ
 

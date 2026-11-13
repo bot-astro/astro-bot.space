@@ -85,7 +85,7 @@ Ang Ultimate ang premium na bersyon ng Astro, at nagbibigay ito ng maraming kapa
 ### Pag-upgrade ng server mo sa Ultimate
 
 Kapag nakabili ka na ng subscription sa [pahina ng Ultimate](/ultimate) o sa pamamagitan ng [Discord App Store](https://discord.com/application-directory/715621848489918495/premium), maaari mong i-upgrade ang server mo gamit ang button sa dashboard
-![ultimate upgrade](/guides/ultimate.png 'Ultimate upgrade')
+![Ultimate upgrade](/guides/ultimate.png 'Ultimate upgrade')
 
 ### Pamamahala ng subscription mo
 

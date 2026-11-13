@@ -85,7 +85,7 @@ Ultimate è la versione premium di Astro e offre molte utili funzionalità avanz
 ### Potenziare il tuo server a Ultimate
 
 Una volta acquistato un abbonamento nella [pagina Ultimate](/ultimate) o tramite l'[App Store di Discord](https://discord.com/application-directory/715621848489918495/premium), puoi potenziare il tuo server tramite l'apposito pulsante nella dashboard
-![potenziamento ultimate](/guides/ultimate.png 'Potenziamento Ultimate')
+![potenziamento Ultimate](/guides/ultimate.png 'Potenziamento Ultimate')
 
 ### Gestire il tuo abbonamento
 

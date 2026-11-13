@@ -85,7 +85,7 @@ Ultimate는 Astro의 프리미엄 버전으로, 모든 제한을 없애고 유�
 ### 서버를 Ultimate로 업그레이드하기
 
 [Ultimate 페이지](/ultimate)나 [Discord 앱 스토어](https://discord.com/application-directory/715621848489918495/premium)에서 구독을 구매한 뒤에는 대시보드의 버튼으로 서버를 업그레이드할 수 있어요
-![ultimate 업그레이드](/guides/ultimate.png 'Ultimate 업그레이드')
+![Ultimate 업그레이드](/guides/ultimate.png 'Ultimate 업그레이드')
 
 ### 구독 관리하기
 

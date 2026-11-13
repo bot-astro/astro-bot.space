@@ -85,7 +85,7 @@ Ultimate adalah versi premium Astro, menyediakan banyak fitur lanjutan yang berg
 ### Meningkatkan servermu ke Ultimate
 
 Setelah membeli langganan di [halaman Ultimate](/ultimate) atau lewat [Discord App Store](https://discord.com/application-directory/715621848489918495/premium), kamu bisa meningkatkan servermu lewat tombol yang tersedia di dasbor
-![peningkatan ultimate](/guides/ultimate.png 'Peningkatan Ultimate')
+![peningkatan Ultimate](/guides/ultimate.png 'Peningkatan Ultimate')
 
 ### Mengelola langgananmu
 

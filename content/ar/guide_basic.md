@@ -85,7 +85,7 @@ Ultimate هي النسخة المميزة من Astro، وتوفر العديد �
 ### ترقية سيرفرك إلى Ultimate
 
 بعد شراء اشتراك من [صفحة Ultimate](/ultimate) أو عبر [متجر تطبيقات Discord](https://discord.com/application-directory/715621848489918495/premium) يمكنك ترقية سيرفرك عبر الزر المخصص في لوحة التحكم
-![ترقية ultimate](/guides/ultimate.png 'ترقية Ultimate')
+![ترقية Ultimate](/guides/ultimate.png 'ترقية Ultimate')
 
 ### إدارة اشتراكك
 

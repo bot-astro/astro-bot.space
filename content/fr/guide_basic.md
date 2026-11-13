@@ -85,7 +85,7 @@ Ultimate est la version premium d'Astro. Elle offre de nombreuses fonctionnalit�
 ### Passer ton serveur à Ultimate
 
 Une fois que tu as acheté un abonnement sur la [page Ultimate](/ultimate) ou via la [boutique d'applications Discord](https://discord.com/application-directory/715621848489918495/premium), tu peux faire passer ton serveur à Ultimate avec le bouton prévu dans le tableau de bord
-![amélioration ultimate](/guides/ultimate.png 'Amélioration Ultimate')
+![amélioration Ultimate](/guides/ultimate.png 'Amélioration Ultimate')
 
 ### Gérer ton abonnement
 
