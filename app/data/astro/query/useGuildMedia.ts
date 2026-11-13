@@ -7,7 +7,7 @@ export function useGuildMedia(guild_id: Ref<string | undefined>) {
   return useQuery({
     queryKey: guild_media_qk(guild_id),
     // only changed by our own mutations, which update the cache
-    staleTime: 600000,
+    staleTime: 300000,
     queryFn: (context) => {
       if (context.queryKey[1] === undefined) {
         throw Error('guild_id is undefined')

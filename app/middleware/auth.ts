@@ -14,7 +14,7 @@ export default defineNuxtRouteMiddleware(async (_to, _from) => {
         nuxtApp.runWithContext(() => $astroApiClient.get_self_user()),
       retry: false,
       // don't block every navigation on a fresh /auth/me call
-      staleTime: 300000,
+      staleTime: 120000,
     })
   } catch (error) {
     if (error instanceof AError && error.code === AErrorCode.UNAUTHENTICATED) {
