@@ -35,7 +35,7 @@ Puedes elegir:
 
 - el nombre del canal de voz, que admite [variables](/guides/generator#variables)
 - el límite de usuarios
-- la tasa de bits
+- el bitrate
 - la región
 
 _Ninguno de estos ajustes es obligatorio, así que no necesitas establecerlos todos._

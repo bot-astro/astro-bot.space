@@ -35,7 +35,7 @@ Tu peux choisir :
 
 - le nom du salon vocal, qui prend en charge les [variables](/guides/generator#variables)
 - la limite d'utilisateurs
-- le débit
+- le bitrate
 - la région
 
 _Aucun de ces paramètres n'est obligatoire, tu n'as donc pas besoin de tous les définir._

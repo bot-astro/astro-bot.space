@@ -9,7 +9,7 @@ Generator adalah saluran yang dibuat dan dikelola oleh Astro.
 Saat pengguna bergabung ke generator, Astro membuat saluran suara sementara dan memindahkan pengguna ke dalamnya.
 
 Pengguna yang membuat saluran suara sementara disebut pemilik.
-Pemilik dapat mengelola saluran dengan perintah slash Astro atau dengan [antarmuka](/guides/interface), keduanya memungkinkan pengguna mengubah nama saluran, batas pengguna, izin, dan hal lainnya.
+Pemilik dapat mengelola saluran dengan perintah slash Astro atau dengan [interface](/guides/interface), keduanya memungkinkan pengguna mengubah nama saluran, batas pengguna, izin, dan hal lainnya.
 
 Saat pemilik keluar, jika masih ada pengguna _non-bot_ di saluran, kepemilikan akan dipindahkan secara acak ke pengguna lain.  
 Jika pemilik keluar dan tidak ada lagi pengguna di saluran, saluran akan dihapus.
@@ -19,14 +19,14 @@ Generator sangat dapat disesuaikan, di panduan ini kamu akan belajar mengonfigur
 ## Membuat dan mengelola generator
 
 Astro dapat mengelola beberapa generator dan masing-masing memiliki pengaturannya sendiri.  
-Di bagian generator pada dasbor, kamu bisa melihat semua generator di servermu, membuat yang baru, serta mengelola dan menghapusnya.
+Di bagian generator pada dashboard, kamu bisa melihat semua generator di servermu, membuat yang baru, serta mengelola dan menghapusnya.
 
 _Ingat bahwa tanpa [Ultimate](/ultimate) kamu hanya bisa memiliki maksimal 2 generator._
 
 ## Pengaturan nama
 
 Saluran suara sementara dapat berada dalam tiga status berbeda: default, terkunci, atau tersembunyi.  
-Status ini diubah oleh pengguna lewat perintah slash atau antarmuka.
+Status ini diubah oleh pengguna lewat perintah slash atau interface.
 
 Kamu bisa memberi nama untuk setiap status:
 ![pengaturan nama generator](/guides/generator_name.png 'Pengaturan nama generator')
@@ -80,7 +80,7 @@ Saluran suara akan dibuat secara bertahap: bot akan mencari saluran suara pertam
 
 Contoh: Kita punya 5 saluran suara yang dibuat Astro secara bertahap [VC #1, VC#2, VC #3, VC #4, dan VC#5], lalu VC #3 dihapus. Astro tidak akan mengganti nama setiap saluran ke nama yang tepat (VC#4 menjadi VC #3 dan seterusnya), melainkan saluran berikutnya yang dibuat bukan VC #6 tetapi VC #3 sehingga celahnya terisi.
 
-Jika kamu melihat angkanya dimulai dari angka yang salah, kamu bisa menekan tombol `Hapus cache` di dasbor untuk mengatur ulang hitungan
+Jika kamu melihat angkanya dimulai dari angka yang salah, kamu bisa menekan tombol `Hapus cache` di dashboard untuk mengatur ulang hitungan
 ![hapus cache](/guides/clear_cache.png 'Hapus cache')
 
 ### Kondisi pembaruan nama
@@ -95,7 +95,7 @@ Karena itu nama saluran suara mungkin tidak selalu akurat jika terjadi perubahan
 
 ## Pengaturan dasar
 
-Di dasbor kamu juga akan menemukan opsi untuk mengubah:
+Di dashboard kamu juga akan menemukan opsi untuk mengubah:
 
 - kategori tempat saluran suara sementara dibuat
 - batas pengguna
@@ -109,7 +109,7 @@ Di dasbor kamu juga akan menemukan opsi untuk mengubah:
 ### Pewarisan izin
 
 Secara default saluran suara sementara mewarisi izin dari generator.  
-Kamu bisa mengubah perilaku ini di dasbor, kamu bisa membuat saluran menyalin izin dari kategori atau tidak menyalin izin sama sekali.
+Kamu bisa mengubah perilaku ini di dashboard, kamu bisa membuat saluran menyalin izin dari kategori atau tidak menyalin izin sama sekali.
 
 ### Peran target
 
@@ -148,16 +148,16 @@ Saat kategori generator penuh (mencapai 50 saluran), pengguna yang bergabung ke 
 Ruang tunggu adalah saluran suara yang dibuat di dekat saluran suara sementara.  
 Pengguna dapat bergabung ke ruang tunggu untuk menandakan bahwa mereka menunggu masuk ke saluran suara sementara, dan pemiliknya dapat menyeret pengguna dari ruang tunggu ke salurannya.
 
-Di dasbor kamu dapat memilih apakah Astro harus otomatis membuat ruang tunggu untuk setiap saluran suara sementara dan mengonfigurasi semua aspeknya: nama (variabel juga bisa digunakan di sini), batas pengguna, bitrate, dll.
+Di dashboard kamu dapat memilih apakah Astro harus otomatis membuat ruang tunggu untuk setiap saluran suara sementara dan mengonfigurasi semua aspeknya: nama (variabel juga bisa digunakan di sini), batas pengguna, bitrate, dll.
 
-Pengguna juga dapat membuat ruang tunggu dengan perintah slash atau tombol antarmuka yang sesuai.
+Pengguna juga dapat membuat ruang tunggu dengan perintah slash atau tombol interface yang sesuai.
 
 ## Obrolan teks pribadi
 
 Obrolan teks pribadi adalah saluran teks yang hanya terlihat oleh pengguna di dalam saluran suara sementara.  
-Kamu dapat mengatur di dasbor apakah Astro harus membuat obrolan teks pribadi untuk setiap saluran suara sementara, beserta pengaturannya, seperti pada ruang tunggu.
+Kamu dapat mengatur di dashboard apakah Astro harus membuat obrolan teks pribadi untuk setiap saluran suara sementara, beserta pengaturannya, seperti pada ruang tunggu.
 
-Pengguna juga dapat membuat obrolan teks pribadi dengan perintah slash atau tombol antarmuka yang sesuai.
+Pengguna juga dapat membuat obrolan teks pribadi dengan perintah slash atau tombol interface yang sesuai.
 
 ### Pesan pembuatan
 
@@ -166,4 +166,4 @@ Pesan akan dikirim di obrolan teks pribadi jika ada, jika tidak di obrolan salur
 
 Kamu bisa memilih apakah pesan berupa embed atau pesan teks biasa.
 
-Atau, kamu bisa membuat Astro mengirim [antarmuka](/guides/interface) di obrolan teks!
+Atau, kamu bisa membuat Astro mengirim [interface](/guides/interface) di obrolan teks!

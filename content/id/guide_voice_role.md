@@ -13,7 +13,7 @@ Dalam contoh ini, peran suara dibuat pada kategori. Pengguna menerima peran yang
 
 ## Membuat dan mengelola peran suara
 
-Kamu dapat membuat, mengelola, dan menghapus peran suara di dasbor.
+Kamu dapat membuat, mengelola, dan menghapus peran suara di dashboard.
 
 _Ingat bahwa tanpa [Ultimate](/ultimate) kamu hanya dapat memiliki 1 peran suara._
 

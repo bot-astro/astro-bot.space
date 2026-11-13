@@ -53,12 +53,12 @@
       "description": "Pelajari cara mengonfigurasi dan menggunakan generator saluran suara sementara"
     },
     "guide_interface": {
-      "title": "Panduan antarmuka",
+      "title": "Panduan interface",
       "description": "Pelajari cara membuat antarmukamu terlihat luar biasa dan unik dengan panduan ini"
     },
     "guide_template": {
-      "title": "Panduan templat",
-      "description": "Temukan templat dan pelajari cara mengonfigurasinya, penggunamu pasti akan menyukainya"
+      "title": "Panduan template",
+      "description": "Temukan template dan pelajari cara mengonfigurasinya, penggunamu pasti akan menyukainya"
     },
     "guide_voice_role": {
       "title": "Panduan peran suara",
@@ -73,16 +73,16 @@
       "description": "Bawa servermu ke level berikutnya dengan fungsi premium Astro"
     },
     "dashboard": {
-      "title": "Dasbor",
-      "description": "Atur semua pengaturan Astro dengan dasbor yang canggih dan intuitif"
+      "title": "Dashboard",
+      "description": "Atur semua pengaturan Astro dengan dashboard yang canggih dan intuitif"
     },
     "errors": {
       "title": "Error",
       "description": "Lihat semua masalah yang ditemui Astro saat bekerja di servermu"
     },
     "guild": {
-      "title": "Dasbor",
-      "description": "Atur semua pengaturan Astro untuk servermu dengan dasbor yang canggih dan intuitif"
+      "title": "Dashboard",
+      "description": "Atur semua pengaturan Astro untuk servermu dengan dashboard yang canggih dan intuitif"
     },
     "voice_roles": {
       "title": "Peran suara",
@@ -93,23 +93,23 @@
       "description": "Atur pengaturan peran suara ini"
     },
     "templates": {
-      "title": "Templat",
-      "description": "Buat, lihat, dan hapus templat untuk servermu"
+      "title": "Template",
+      "description": "Buat, lihat, dan hapus template untuk servermu"
     },
     "template": {
-      "title": "Pengaturan templat",
-      "description": "Atur pengaturan templat ini"
+      "title": "Pengaturan template",
+      "description": "Atur pengaturan template ini"
     },
     "interfaces": {
-      "title": "Antarmuka",
-      "description": "Buat, lihat, dan hapus antarmuka"
+      "title": "Interface",
+      "description": "Buat, lihat, dan hapus interface"
     },
     "generators": {
       "title": "Generator",
       "description": "Buat, lihat, dan hapus generator saluran suara sementara"
     },
     "interface": {
-      "title": "Antarmuka",
+      "title": "Interface",
       "description": "Edit pesan dan tombol antarmukamu"
     },
     "generator": {
@@ -130,12 +130,12 @@
       "animated": "Sementara"
     },
     "default_interface": {
-      "title": "Antarmuka yang indah",
-      "description": "Astro hadir dengan antarmuka bawaan yang indah sehingga pengguna seluler mudah mengelola saluran pribadi mereka!"
+      "title": "Interface yang indah",
+      "description": "Astro hadir dengan interface bawaan yang indah sehingga pengguna seluler mudah mengelola saluran pribadi mereka!"
     },
     "custom_interface": {
       "title": "Tapi juga bisa disesuaikan",
-      "description": "Antarmuka Astro dapat disesuaikan sampai ke piksel terakhir, buat tampilannya persis seperti yang kamu butuhkan, imajinasi adalah satu-satunya batasan!"
+      "description": "Interface Astro dapat disesuaikan sampai ke piksel terakhir, buat tampilannya persis seperti yang kamu butuhkan, imajinasi adalah satu-satunya batasan!"
     },
     "voice_role": {
       "description": "Astro dapat memberikan atau mencabut peran saat pengguna bergabung ke saluran suara tertentu! Dengan begitu kamu bisa, misalnya, membiarkan orang melihat obrolan teks gaming hanya saat mereka berada di saluran suara gaming, imajinasi adalah satu-satunya batasan!",
@@ -156,10 +156,10 @@
       "title": "Generator"
     },
     "interface": {
-      "title": "Antarmuka"
+      "title": "Interface"
     },
     "template": {
-      "title": "Templat"
+      "title": "Template"
     },
     "voice_role": {
       "title": "Peran suara"
@@ -181,12 +181,12 @@
     "maximum": "Maksimal {count}",
     "features": {
       "generators": "Generator saluran suara sementara tanpa batas",
-      "interfaces": "Antarmuka tanpa batas",
+      "interfaces": "Interface tanpa batas",
       "voice_roles": "Peran suara tanpa batas",
-      "templates": "Templat tanpa batas",
+      "templates": "Template tanpa batas",
       "numbered_names": "Nama saluran suara bernomor",
       "activity_variables": "Variabel aktivitas pengguna untuk nama saluran",
-      "custom_interfaces": "Antarmuka yang dapat disesuaikan",
+      "custom_interfaces": "Interface yang dapat disesuaikan",
       "bypass_voting": "Lewati syarat voting di server mana pun",
       "badwords": "Filter kata kasar untuk nama saluran suara",
       "waiting_rooms": "Ruang tunggu",
@@ -233,9 +233,9 @@
       "overview": "Ringkasan",
       "errors": "Error",
       "generators": "Generator",
-      "interfaces": "Antarmuka",
+      "interfaces": "Interface",
       "voice_roles": "Peran suara",
-      "templates": "Templat"
+      "templates": "Template"
     },
     "save_toast": {
       "message": "Hati-hati - ada perubahan yang belum disimpan!"
@@ -314,8 +314,8 @@
         "description": "Buka bagian generator untuk mengonfigurasi saluran suara sementara"
       },
       "interfaces": {
-        "title": "Buat antarmuka",
-        "description": "Buat antarmuka agar penggunamu dapat mengelola saluran mereka dengan tombol sederhana"
+        "title": "Buat interface",
+        "description": "Buat interface agar penggunamu dapat mengelola saluran mereka dengan tombol sederhana"
       },
       "voice_roles": {
         "title": "Atur peran suara",
@@ -429,16 +429,16 @@
     "automatic": "Otomatis"
   },
   "templates": {
-    "title": "Templat",
-    "description": "Templat memungkinkan pengguna menerapkan beberapa pengaturan sekaligus ke saluran suara sementara mereka!",
-    "create_title": "Buat templat",
+    "title": "Template",
+    "description": "Template memungkinkan pengguna menerapkan beberapa pengaturan sekaligus ke saluran suara sementara mereka!",
+    "create_title": "Buat template",
     "usage_group": "Pengaturan penggunaan",
     "vc_group": "Pengaturan saluran suara",
-    "name_description": "Nama yang dilihat pengguna saat memilih templat untuk diterapkan ke saluran suara sementara mereka (ini bukan nama saluran suara itu sendiri)",
+    "name_description": "Nama yang dilihat pengguna saat memilih template untuk diterapkan ke saluran suara sementara mereka (ini bukan nama saluran suara itu sendiri)",
     "name_placeholder": "Masukkan nama",
     "generators": {
       "title": "Generator yang diaktifkan",
-      "description": "Buat templat ini hanya dapat digunakan di saluran suara sementara yang dibuat oleh generator tertentu",
+      "description": "Buat template ini hanya dapat digunakan di saluran suara sementara yang dibuat oleh generator tertentu",
       "any": "Generator mana pun",
       "none": "Dinonaktifkan untuk semua generator",
       "count": "Diizinkan di {count} generator | Diizinkan di {count} generator"
@@ -447,25 +447,25 @@
     "user_limit_description": "Batas pengguna yang diterapkan pada saluran suara sementara",
     "bitrate_description": "Bitrate dalam kbps yang diterapkan pada saluran suara sementara",
     "region_description": "Wilayah suara yang diterapkan pada saluran suara sementara",
-    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 3 templat. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak templat.",
-    "delete_confirm_title": "Yakin ingin menghapus templat ini?",
-    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan templat ini!",
-    "none": "Kamu belum membuat templat apa pun!",
-    "select_name": "Pilih nama untuk templat",
+    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 3 template. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak template.",
+    "delete_confirm_title": "Yakin ingin menghapus template ini?",
+    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan template ini!",
+    "none": "Kamu belum membuat template apa pun!",
+    "select_name": "Pilih nama untuk template",
     "detail": {
-      "description": "Kelola pengaturan templat ini!"
+      "description": "Kelola pengaturan template ini!"
     }
   },
   "interfaces": {
-    "title": "Antarmuka",
-    "description": "Kelola antarmuka servermu di sini!",
-    "create_title": "Buat antarmuka",
-    "channel_description": "Saluran teks tempat pesan antarmuka dikirim",
+    "title": "Interface",
+    "description": "Kelola interface servermu di sini!",
+    "create_title": "Buat interface",
+    "channel_description": "Saluran teks tempat pesan interface dikirim",
     "select_channel": "Pilih saluran",
-    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 1 antarmuka. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak antarmuka.",
-    "delete_confirm_title": "Yakin ingin menghapus antarmuka ini?",
-    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan antarmuka ini!",
-    "none": "Kamu belum membuat antarmuka apa pun!",
+    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 1 interface. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak interface.",
+    "delete_confirm_title": "Yakin ingin menghapus interface ini?",
+    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan interface ini!",
+    "none": "Kamu belum membuat interface apa pun!",
     "buttons": {
       "lock": "Kunci",
       "unlock": "Buka kunci",
@@ -478,7 +478,7 @@
       "name": "Nama",
       "bitrate": "Bitrate",
       "region": "Wilayah",
-      "template": "Templat",
+      "template": "Template",
       "chat": "Obrolan",
       "waiting_room": "Ruang tunggu",
       "claim": "Klaim",
@@ -564,8 +564,8 @@
         "description": "Warna tombol"
       },
       "move": "Pindahkan",
-      "move_title": "Pindahkan antarmuka",
-      "move_description": "Pesan antarmuka dikirim di saluran baru dan antarmuka lama dihapus",
+      "move_title": "Pindahkan interface",
+      "move_description": "Pesan interface dikirim di saluran baru dan interface lama dihapus",
       "message_header": "Header pesan",
       "message_body": "Isi pesan",
       "message_footer": "Footer pesan",
@@ -579,9 +579,9 @@
       "custom_emoji_title": "Menggunakan emoji kustom",
       "custom_emoji_step1": "Untuk memasukkan emoji kustom Discord, buka Discord, tulis emoji diawali garis miring terbalik (misalnya {example}) lalu kirim pesannya.",
       "custom_emoji_step2": "Discord akan mengirim kode emoji di saluran, seperti {static} atau {animated} untuk emoji beranimasi. Salin dan tempel di sini pada editor, lalu emoji akan ditampilkan di Discord.",
-      "updated": "Antarmuka telah diperbarui",
+      "updated": "Interface telah diperbarui",
       "open_in_discord": "Buka di Discord",
-      "page_description": "Kelola pesan dan tombol antarmuka ini!"
+      "page_description": "Kelola pesan dan tombol interface ini!"
     }
   },
   "generators": {
@@ -737,8 +737,8 @@
         "description": "Pesan yang dikirim Astro di setiap obrolan teks pribadi saat dibuat"
       },
       "chat_interface": {
-        "title": "Antarmuka untuk pesan pembuatan",
-        "description": "Antarmuka yang harus dikirim Astro di obrolan teks pribadi saat dibuat"
+        "title": "Interface untuk pesan pembuatan",
+        "description": "Interface yang harus dikirim Astro di obrolan teks pribadi saat dibuat"
       },
       "chat_category": {
         "title": "Kategori",
@@ -779,7 +779,7 @@
       },
       "no_role": "Tanpa peran",
       "no_fallback": "Tanpa cadangan",
-      "interface_in": "Antarmuka di #{channel}",
+      "interface_in": "Interface di #{channel}",
       "message_id": "ID pesan: {id}",
       "positions": {
         "before": "Sebelum",
@@ -801,10 +801,10 @@
         "no_message": "Tanpa pesan",
         "text_message": "Pesan teks",
         "embed": "Pesan embed",
-        "interface": "Antarmuka Astro"
+        "interface": "Interface Astro"
       },
-      "need_interface": "Kamu harus membuat antarmuka terlebih dahulu agar dapat menggunakannya sebagai pesan obrolan teks pribadi",
-      "no_interface": "Tanpa antarmuka"
+      "need_interface": "Kamu harus membuat interface terlebih dahulu agar dapat menggunakannya sebagai pesan obrolan teks pribadi",
+      "no_interface": "Tanpa interface"
     }
   }
 }

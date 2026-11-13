@@ -60,7 +60,7 @@ Você pode usar `Variáveis` para tornar o nome do canal dinâmico. O Astro subs
 | Variável         | Descrição                                  |
 | ---------------- | ------------------------------------------ |
 | `{vc_name}`      | O nome do canal de voz                     |
-| `{vc_bitrate}`   | A taxa de bits do canal de voz             |
+| `{vc_bitrate}`   | O bitrate do canal de voz                  |
 | `{vc_userlimit}` | O limite de usuários do canal de voz       |
 | `{vc_users}`     | A quantidade de usuários no canal de voz   |
 | `{vc_id}`        | O ID do canal de voz                       |
@@ -99,7 +99,7 @@ No painel você também encontrará as opções para mudar:
 
 - a categoria em que os canais de voz temporários são gerados
 - o limite de usuários
-- a taxa de bits
+- o bitrate
 - a posição: se o canal de voz temporário deve ser criado logo antes do gerador, logo depois ou no final da categoria
 - para mudar a região, você pode mudar diretamente no Discord a região do canal do gerador
 - o status padrão do canal de voz: o pequeno texto exibido abaixo do nome de um canal de voz, que os donos podem mudar a qualquer momento com o comando `/status`
@@ -126,7 +126,7 @@ Você pode decidir se os canais de voz temporários devem ser gerados bloqueados
 
 ## Configurações de comandos
 
-Você pode impor algumas limitações aos comandos dos usuários, como se eles podem usar palavrões no nome do canal de voz (só funciona em inglês), e definir valores mínimos e máximos que os usuários podem usar para o limite de usuários e a taxa de bits.
+Você pode impor algumas limitações aos comandos dos usuários, como se eles podem usar palavrões no nome do canal de voz (só funciona em inglês), e definir valores mínimos e máximos que os usuários podem usar para o limite de usuários e o bitrate.
 
 ## Utilitários
 
@@ -148,7 +148,7 @@ Quando a categoria do gerador enche (chega a 50 canais), os usuários que entrar
 Uma sala de espera é simplesmente um canal de voz criado perto de um canal de voz temporário.  
 Os usuários podem entrar na sala de espera para indicar que estão esperando para entrar no canal de voz temporário, e o dono dele pode arrastar usuários da sala de espera para o seu canal.
 
-No painel você pode escolher se o Astro deve criar automaticamente uma sala de espera para cada canal de voz temporário e configurar todos os aspectos dela: nome (também pode usar variáveis), limite de usuários, taxa de bits etc.
+No painel você pode escolher se o Astro deve criar automaticamente uma sala de espera para cada canal de voz temporário e configurar todos os aspectos dela: nome (também pode usar variáveis), limite de usuários, bitrate etc.
 
 Os usuários também podem criar uma sala de espera com o comando de barra ou o botão de interface correspondente.
 

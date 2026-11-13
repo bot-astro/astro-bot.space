@@ -60,7 +60,7 @@ Tu peux utiliser des `Variables` pour rendre le nom du salon dynamique. Astro re
 | Variable         | Description                                         |
 | ---------------- | --------------------------------------------------- |
 | `{vc_name}`      | Le nom du salon vocal                               |
-| `{vc_bitrate}`   | Le débit du salon vocal                             |
+| `{vc_bitrate}`   | Le bitrate du salon vocal                           |
 | `{vc_userlimit}` | La limite d'utilisateurs du salon vocal             |
 | `{vc_users}`     | Le nombre d'utilisateurs dans le salon vocal        |
 | `{vc_id}`        | L'ID du salon vocal                                 |
@@ -99,7 +99,7 @@ Dans le tableau de bord, tu trouveras aussi les options pour changer :
 
 - la catégorie dans laquelle les salons vocaux temporaires sont générés
 - la limite d'utilisateurs
-- le débit
+- le bitrate
 - la position : si le salon vocal temporaire doit être créé juste avant le générateur, juste après ou tout en bas de la catégorie
 - pour changer la région, tu peux changer directement dans Discord la région du salon du générateur
 - le statut par défaut du salon vocal : le petit texte affiché sous le nom d'un salon vocal, les propriétaires peuvent le changer à tout moment avec la commande `/status`
@@ -126,7 +126,7 @@ Tu peux décider si les salons vocaux temporaires doivent être générés verro
 
 ## Paramètres des commandes
 
-Tu peux poser quelques limites sur les commandes des utilisateurs, par exemple s'ils peuvent utiliser des gros mots dans le nom de leur salon vocal (ne fonctionne qu'en anglais), et fournir des valeurs minimales et maximales que les utilisateurs peuvent utiliser pour la limite d'utilisateurs et le débit.
+Tu peux poser quelques limites sur les commandes des utilisateurs, par exemple s'ils peuvent utiliser des gros mots dans le nom de leur salon vocal (ne fonctionne qu'en anglais), et fournir des valeurs minimales et maximales que les utilisateurs peuvent utiliser pour la limite d'utilisateurs et le bitrate.
 
 ## Utilitaires
 
@@ -148,7 +148,7 @@ Quand la catégorie du générateur est pleine (50 salons atteints), les utilisa
 Une salle d'attente est simplement un salon vocal créé à côté d'un salon vocal temporaire.  
 Les utilisateurs peuvent rejoindre la salle d'attente pour indiquer qu'ils attendent d'entrer dans le salon vocal temporaire, et son propriétaire peut glisser des utilisateurs de la salle d'attente vers son salon.
 
-Dans le tableau de bord, tu peux choisir si Astro doit créer automatiquement une salle d'attente pour chaque salon vocal temporaire et configurer tous ses aspects : nom (les variables sont aussi utilisables ici), limite d'utilisateurs, débit, etc.
+Dans le tableau de bord, tu peux choisir si Astro doit créer automatiquement une salle d'attente pour chaque salon vocal temporaire et configurer tous ses aspects : nom (les variables sont aussi utilisables ici), limite d'utilisateurs, bitrate, etc.
 
 Les utilisateurs peuvent aussi créer une salle d'attente avec la commande slash ou le bouton d'interface prévus.
 

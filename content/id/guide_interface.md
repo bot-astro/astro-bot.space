@@ -1,29 +1,29 @@
 ---
-title: Antarmuka
+title: Interface
 description: Pelajari cara membuat antarmukamu terlihat luar biasa dan unik dengan panduan ini
 ---
 
-## Apa itu antarmuka?
+## Apa itu interface?
 
-Antarmuka adalah pesan yang memungkinkan pengguna mengelola saluran suara sementara mereka dengan cepat lewat tombol sederhana.  
-Seperti inilah tampilan antarmuka default:
-![antarmuka default](/guides/default_interface.png 'Antarmuka default')
+Interface adalah pesan yang memungkinkan pengguna mengelola saluran suara sementara mereka dengan cepat lewat tombol sederhana.  
+Seperti inilah tampilan interface default:
+![interface default](/guides/default_interface.png 'Interface default')
 
-## Membuat antarmuka
+## Membuat interface
 
-Kamu bisa membuat antarmuka baru di dasbor, pada bagian antarmuka.  
+Kamu bisa membuat interface baru di dashboard, pada bagian interface.  
 Akan diminta sebuah saluran dan kamu bisa memilih yang kamu inginkan.
 
-## Mengganti saluran atau mengirim ulang antarmuka
+## Mengganti saluran atau mengirim ulang interface
 
-Jika kamu tidak sengaja menghapus pesan antarmuka atau hanya ingin mengganti saluran, kamu bisa melakukannya dari pengaturan antarmuka di dasbor.
+Jika kamu tidak sengaja menghapus pesan interface atau hanya ingin mengganti saluran, kamu bisa melakukannya dari pengaturan interface di dashboard.
 
-## Menyesuaikan antarmuka
+## Menyesuaikan interface
 
-Kamu bisa menyesuaikan setiap antarmuka di dasbor: buka bagian antarmuka, pilih antarmuka, lalu klik kelola.  
+Kamu bisa menyesuaikan setiap interface di dashboard: buka bagian interface, pilih interface, lalu klik kelola.  
 Setelah selesai, simpan perubahanmu dan Astro akan langsung memperbarui pesannya.
 
-_Ingat bahwa tanpa [Ultimate](/ultimate) kamu hanya bisa menonaktifkan atau mengaktifkan tombol pada antarmuka, hal lainnya memerlukan Ultimate._
+_Ingat bahwa tanpa [Ultimate](/ultimate) kamu hanya bisa menonaktifkan atau mengaktifkan tombol pada interface, hal lainnya memerlukan Ultimate._
 
 ### Pengaturan pesan
 
@@ -45,9 +45,9 @@ Gambar dipilih dari penyimpanan media servermu. Klik `Pilih gambar` untuk membuk
 - memilih gambar untuk pengaturan yang sedang kamu edit
 - menghapus gambar yang tidak lagi kamu butuhkan
 
-_Menghapus gambar juga menghapusnya dari pengaturan antarmuka yang sedang kamu edit, antarmuka lain yang menggunakannya akan menampilkan gambar rusak sampai kamu mengubahnya._
+_Menghapus gambar juga menghapusnya dari pengaturan interface yang sedang kamu edit, interface lain yang menggunakannya akan menampilkan gambar rusak sampai kamu mengubahnya._
 
-Gambar yang tidak digunakan oleh antarmuka mana pun akan dibersihkan secara otomatis dari waktu ke waktu.
+Gambar yang tidak digunakan oleh interface mana pun akan dibersihkan secara otomatis dari waktu ke waktu.
 
 ### Emoji kustom
 
@@ -55,16 +55,16 @@ Emoji dapat digunakan pada teks pesan dan pada tombol. Emoji standar bisa langsu
 
 1. Buka Discord dan tulis emoji diawali garis miring terbalik, misalnya `\:nama:`
 2. Kirim pesan, Discord akan mengirim kode emoji, seperti `<:nama:id>` (atau `<a:nama:id>` untuk emoji beranimasi)
-3. Salin kode itu dan tempel di dasbor
+3. Salin kode itu dan tempel di dashboard
 
 ## Tombol
 
-Antarmuka dapat memiliki hingga 5 baris dengan masing-masing 5 tombol, dasbor menampilkannya dalam bentuk grid.  
+Interface dapat memiliki hingga 5 baris dengan masing-masing 5 tombol, dashboard menampilkannya dalam bentuk grid.  
 Klik tombol untuk mengeditnya, atau klik posisi kosong untuk menambahkan yang baru.
 
 Setiap tombol memiliki pengaturan berikut:
 
-- `Tombol`: tombol mana yang ditampilkan di posisi ini. Satu tombol hanya dapat digunakan sekali per antarmuka, sehingga tombol yang sudah ditempatkan di posisi lain tidak dapat dipilih. Pilih `Tanpa tombol` untuk menghapusnya
+- `Tombol`: tombol mana yang ditampilkan di posisi ini. Satu tombol hanya dapat digunakan sekali per interface, sehingga tombol yang sudah ditempatkan di posisi lain tidak dapat dipilih. Pilih `Tanpa tombol` untuk menghapusnya
 - `Dinonaktifkan`: pengguna dapat melihat tombol tetapi tidak dapat mengkliknya
 - `Nama`: teks yang ditampilkan pada tombol
 - `Emoji`: emoji yang ditampilkan pada tombol
@@ -72,11 +72,11 @@ Setiap tombol memiliki pengaturan berikut:
 
 Tombol membutuhkan setidaknya nama atau emoji agar dapat ditampilkan.
 
-## Menghapus antarmuka
+## Menghapus interface
 
-Kamu bisa menghapus antarmuka kapan saja dari dasbor.
+Kamu bisa menghapus interface kapan saja dari dashboard.
 
-### Contoh antarmuka kustom
+### Contoh interface kustom
 
-Gambar di bawah ini adalah contoh antarmuka kustom:
-![antarmuka kustom](/illustration/custom_interface.png 'Antarmuka kustom')
+Gambar di bawah ini adalah contoh interface kustom:
+![interface kustom](/illustration/custom_interface.png 'Interface kustom')

@@ -220,7 +220,7 @@
     "not_set": "Non défini",
     "name": "Nom",
     "user_limit": "Limite d'utilisateurs",
-    "bitrate": "Débit",
+    "bitrate": "Bitrate",
     "region": "Région",
     "kbps": "kbps",
     "deleted_channel": "Salon supprimé",
@@ -445,7 +445,7 @@
     },
     "vc_name_description": "Le nom appliqué aux salons vocaux temporaires",
     "user_limit_description": "La limite d'utilisateurs appliquée au salon vocal temporaire",
-    "bitrate_description": "Le débit en kbps appliqué au salon vocal temporaire",
+    "bitrate_description": "Le bitrate en kbps appliqué au salon vocal temporaire",
     "region_description": "La région vocale appliquée aux salons vocaux temporaires",
     "ultimate_required": "Ultimate est requis pour avoir plus de 3 modèles. Passe ton serveur à Ultimate pour créer plus de modèles.",
     "delete_confirm_title": "Es-tu sûr de vouloir supprimer le modèle ?",
@@ -476,7 +476,7 @@
       "ban": "Bannir",
       "permit": "Autoriser",
       "name": "Nom",
-      "bitrate": "Débit",
+      "bitrate": "Bitrate",
       "region": "Région",
       "template": "Modèle",
       "chat": "Chat",
@@ -637,8 +637,8 @@
         "description": "La limite d'utilisateurs, ou 0 pour aucune limite"
       },
       "bitrate": {
-        "title": "Débit",
-        "description": "Le débit en kbps, laisse vide pour utiliser le débit par défaut de ton serveur Discord"
+        "title": "Bitrate",
+        "description": "Le bitrate en kbps, laisse vide pour utiliser le bitrate par défaut de ton serveur Discord"
       },
       "inheriting": {
         "title": "Héritage",
@@ -665,12 +665,12 @@
         "description": "La limite d'utilisateurs maximale que les utilisateurs peuvent définir pour leur salon vocal temporaire, 0 signifie aucune limite"
       },
       "min_bitrate": {
-        "title": "Débit minimal",
-        "description": "Le débit minimal, en kbps, que les utilisateurs peuvent définir pour leur salon vocal temporaire"
+        "title": "Bitrate minimal",
+        "description": "Le bitrate minimal, en kbps, que les utilisateurs peuvent définir pour leur salon vocal temporaire"
       },
       "max_bitrate": {
-        "title": "Débit maximal",
-        "description": "Le débit maximal, en kbps, que les utilisateurs peuvent définir pour leur salon vocal temporaire"
+        "title": "Bitrate maximal",
+        "description": "Le bitrate maximal, en kbps, que les utilisateurs peuvent définir pour leur salon vocal temporaire"
       },
       "owner_permissions": {
         "title": "Permissions du propriétaire",
@@ -709,8 +709,8 @@
         "description": "La limite d'utilisateurs des salles d'attente"
       },
       "waiting_bitrate": {
-        "title": "Débit",
-        "description": "Le débit en kbps des salles d'attente, laisse vide pour utiliser le débit par défaut de ton serveur Discord"
+        "title": "Bitrate",
+        "description": "Le bitrate en kbps des salles d'attente, laisse vide pour utiliser le bitrate par défaut de ton serveur Discord"
       },
       "waiting_inheriting": {
         "title": "Héritage des permissions",

@@ -220,7 +220,7 @@
     "not_set": "Não definido",
     "name": "Nome",
     "user_limit": "Limite de usuários",
-    "bitrate": "Taxa de bits",
+    "bitrate": "Bitrate",
     "region": "Região",
     "kbps": "kbps",
     "deleted_channel": "Canal excluído",
@@ -445,7 +445,7 @@
     },
     "vc_name_description": "O nome aplicado aos canais de voz temporários",
     "user_limit_description": "O limite de usuários aplicado ao canal de voz temporário",
-    "bitrate_description": "A taxa de bits em kbps aplicada ao canal de voz temporário",
+    "bitrate_description": "O bitrate em kbps aplicado ao canal de voz temporário",
     "region_description": "A região de voz aplicada aos canais de voz temporários",
     "ultimate_required": "O Ultimate é necessário para ter mais de 3 modelos. Faça upgrade do seu servidor para o Ultimate para criar mais modelos.",
     "delete_confirm_title": "Tem certeza de que deseja excluir o modelo?",
@@ -476,7 +476,7 @@
       "ban": "Banir",
       "permit": "Permitir",
       "name": "Nome",
-      "bitrate": "Taxa de bits",
+      "bitrate": "Bitrate",
       "region": "Região",
       "template": "Modelo",
       "chat": "Chat",
@@ -637,8 +637,8 @@
         "description": "O limite de usuários, ou 0 para sem limite"
       },
       "bitrate": {
-        "title": "Taxa de bits",
-        "description": "A taxa de bits em kbps, deixe vazio para usar a taxa de bits padrão do seu servidor do Discord"
+        "title": "Bitrate",
+        "description": "O bitrate em kbps, deixe vazio para usar o bitrate padrão do seu servidor do Discord"
       },
       "inheriting": {
         "title": "Herança",
@@ -665,12 +665,12 @@
         "description": "O limite máximo de usuários que os usuários podem definir para o seu canal de voz temporário, 0 significa sem limite"
       },
       "min_bitrate": {
-        "title": "Taxa de bits mínima",
-        "description": "A taxa de bits mínima, em kbps, que os usuários podem definir para o seu canal de voz temporário"
+        "title": "Bitrate mínimo",
+        "description": "A bitrate mínimo, em kbps, que os usuários podem definir para o seu canal de voz temporário"
       },
       "max_bitrate": {
-        "title": "Taxa de bits máxima",
-        "description": "A taxa de bits máxima, em kbps, que os usuários podem definir para o seu canal de voz temporário"
+        "title": "Bitrate máximo",
+        "description": "A bitrate máximo, em kbps, que os usuários podem definir para o seu canal de voz temporário"
       },
       "owner_permissions": {
         "title": "Permissões do dono",
@@ -709,8 +709,8 @@
         "description": "O limite de usuários das salas de espera"
       },
       "waiting_bitrate": {
-        "title": "Taxa de bits",
-        "description": "A taxa de bits em kbps das salas de espera, deixe vazio para usar a taxa de bits padrão do seu servidor do Discord"
+        "title": "Bitrate",
+        "description": "O bitrate em kbps das salas de espera, deixe vazio para usar o bitrate padrão do seu servidor do Discord"
       },
       "waiting_inheriting": {
         "title": "Herança de permissões",
