@@ -5,11 +5,11 @@ description: Alamin kung paano i-configure ang voice role para maging mas astig 
 
 ## Ano ang voice role
 
-Ang mga voice role (dating tinatawag na mga koneksyon) ay nagbibigay-daan na ikonekta ang mga voice channel sa mga role.  
-Nagpapahintulot ito sa mga user na makakuha ng role habang nasa loob ng partikular na voice channel, at aalisin ito ng Astro sa kanila kapag umalis sila sa channel na iyon.
+Voice roles (previously called connections) allow to connect voice channels to roles.  
+They allow users to get a role while they are inside a specific voice channel, and Astro will remove the role from them when they leave that channel.
 
-Sa halimbawang ito, may voice role na ginawa sa category. Nakakatanggap ang user ng role na nagpapahintulot sa kanyang makakita ng ilang channel na kaugnay ng category na iyon:
-![halimbawa ng voice role](/illustration/voice_role.gif 'Halimbawa ng voice role')
+Here in this example, a voice role is created on the category. The user receives a role that permits the user to see a bunch of channels related to that category:
+![voice role example](/illustration/voice_role.gif "Voice role example")
 
 ## Paggawa at pamamahala ng mga voice role
 
@@ -19,8 +19,8 @@ _Tandaan na 1 voice role lang ang puwede mo kung walang [Ultimate](/ultimate)._
 
 ## Setting ng channel
 
-Kapag gumagawa o nag-e-edit ka ng voice role, kailangan mong pumili ng channel para rito.  
-Ang channel ay maaaring:
+When you create or edit a voice role, you must select a channel for it.  
+The channel can be either:
 
 - isang karaniwang voice channel (kasama ang mga stage channel)
 - isang category: lahat ng voice channel sa loob nito ay magti-trigger ng voice role
