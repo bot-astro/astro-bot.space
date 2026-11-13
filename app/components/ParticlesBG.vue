@@ -6,7 +6,8 @@
 const { default: particlesSettings } = await import('~/assets/particles.json')
 
 onMounted(() => {
-  window.particlesJS('particles-js', particlesSettings)
+  // the cdn script can be blocked or fail to load, the background is purely decorative
+  window.particlesJS?.('particles-js', particlesSettings)
 })
 </script>
 
