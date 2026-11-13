@@ -7,7 +7,7 @@ description: Aprenda com este guia a deixar sua interface incrível e única
 
 Uma interface é uma mensagem que permite aos usuários gerenciar rapidamente seu canal de voz temporário por meio de botões simples.  
 Veja como é a interface padrão:
-![interface padrão](/guides/default_interface.png 'Interface padrão')
+![interface padrão](/guides/default_interface.png "Interface padrão")
 
 ## Criando uma interface
 
@@ -79,4 +79,4 @@ Você pode excluir uma interface a qualquer momento pelo painel.
 ### Exemplo de interface personalizada
 
 A imagem abaixo é um exemplo de interface personalizada:
-![interface personalizada](/illustration/custom_interface.png 'Interface personalizada')
+![interface personalizada](/illustration/custom_interface.png "Interface personalizada")
