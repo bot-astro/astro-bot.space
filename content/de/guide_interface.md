@@ -7,7 +7,7 @@ description: Lerne mit dieser Anleitung, wie dein Interface großartig und einzi
 
 Ein Interface ist eine Nachricht, mit der Nutzer ihren temporären Sprachkanal schnell über einfache Buttons verwalten können.  
 So sieht das Standard-Interface aus:
-![Standard-Interface](/guides/default_interface.png 'Standard-Interface')
+![Standard-Interface](/guides/default_interface.png "Standard-Interface")
 
 ## Ein Interface erstellen
 
@@ -79,4 +79,4 @@ Du kannst ein Interface jederzeit im Dashboard löschen.
 ### Beispiel für ein angepasstes Interface
 
 Das Bild unten ist ein Beispiel für ein angepasstes Interface:
-![angepasstes Interface](/illustration/custom_interface.png 'Angepasstes Interface')
+![angepasstes Interface](/illustration/custom_interface.png "Angepasstes Interface")
