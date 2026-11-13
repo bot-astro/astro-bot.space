@@ -7,28 +7,28 @@ description: Magsimulang gumamit ng Astro sa pamamagitan ng pag-aaral ng mga pan
 
 Nakatuon ang Astro sa voice na aspeto ng Discord at pinapaganda ito gamit ang ilang kakaiba at advanced na feature.
 
-Ang pangunahing feature nito ay ang mga pansamantalang voice channel.  
-Ang pansamantalang voice channel ay ginagawa ng tinatawag na mga generator (na ginagawa at pinamamahalaan ng Astro). Kapag sumali ang isang user sa generator, gagawa ang Astro ng pansamantalang voice channel para sa user at ililipat siya roon. Kapag nawalan ng laman ang pansamantalang voice channel, awtomatikong tatanggalin ito ng Astro.  
-Sa ganitong paraan, wala kang makikitang maraming walang lamang voice channel sa server mo!
+The main feature it provides are Temporary voice channels.  
+A temporary voice channel gets created by so-called generators (which are created and managed by Astro). When a user joins a generator, Astro creates a temporary voice channel for the user and moves him/her into it. Once the temporary voice channel gets empty, Astro automatically deletes it.  
+This way you won't have a bunch of empty voice channels sitting around in your server!
 
-Bilang pandagdag, nagbibigay ang Astro ng mga paraan para mapamahalaan ng mga user ang kanilang pansamantalang voice channel, tulad ng pagpapalit ng pangalan, pagbabago ng limitasyon ng user, pag-lock / pagtatago ng channel at marami pang iba. Magagawa ito sa pamamagitan ng mga slash command o ng mga interface ng Astro. Ang interface ay isang mensaheng may mga button na ginawa ng Astro na nagbibigay-daan sa mga user na mabilis na magsagawa ng mga aksyon sa kanilang voice channel.
+Complementary to that, Astro provides ways to let users manage their temporary voice channels, such as renaming the channel, changing the user limit, locking / hiding the channel and much more. That can be done either via slash commands, or Astro interfaces. An interface is simply a message with buttons created by Astro that allows users to quickly perform actions on their voice channel.
 
-Bukod dito, may paraan ang Astro para pagsama-samahin ang ilang setting at ilapat ang lahat nang sabay sa isang pansamantalang voice channel: ang mga template. Halimbawa, kung may gaming server ka kung saan naglalaro ang mga user ng iba't ibang laro, makakagawa ka ng template para sa bawat laro na may sarili nitong pangalan, limitasyon ng user, atbp.
+Additionally, Astro provides a way to group a bunch of settings together and apply them all at once to a temporary voice channel: templates. Lets say for example you have a gaming server where users play a bunch of different games, you can create a template for each game with its own name, user limit, etc...
 
-Isa pang napakahalagang feature ang mga Voice role. Gamit ang voice role, matitiyak mong makakakuha ang mga user ng partikular na role kapag nasa partikular silang voice channel. Napakalakas na feature ito na nagbubukas ng maraming iba't ibang posibilidad.
+Another extremely useful feature are Voice roles. With voice roles, you can ensure users get a specific role when they are inside a specific voice channel. It's a really powerful feature which unlocks many different scenarios.
 
-Maaari kang magbasa pa tungkol sa lahat ng feature na iyon sa kani-kanilang [gabay](/guides).  
-Dito, tatalakayin natin ang mga pangunahing kaalaman sa pagsisimulang gumamit ng Astro sa server mo!
+You can read more about all those features in their corresponding [guide](/guides).  
+Here we are gonna cover up the basics on how to get started using Astro in your server!
 
 ## Pag-invite sa bot
 
-Una sa lahat, i-invite ang bot sa server mo. Para gawin ito, i-click lang ang [link na ito](/invite) at pumili ng server!  
-Maaari mo ring bisitahin ang [dashboard](/guilds) at awtomatiko kang mapo-prompt na i-invite ang Astro sa server na gusto mong pamahalaan kung hindi pa ito naidaragdag doon.
+First thing first invite the bot to your server. To do so you can simply click [this link](/invite) and select a server!  
+Otherwise you can also visit the [dashboard](/guilds) and you will be automatically prompted to invite Astro in the server you want to manage if it's not added to it yet.
 
 ## Mabilis na setup
 
-Ayaw mong i-configure ang lahat nang mano-mano? Gamitin ang `/setup` command, o ang setup button na ipinapadala ng Astro kapag sumali ito sa server mo.  
-Gagawa ang Astro ng category na may generator at interface sa loob, kaya agad na gagana ang mga pansamantalang voice channel. Pagkatapos, mababago mo ang pangalan, category, posisyon at lahat ng iba pa mula sa [dashboard](/guilds).
+Don't wanna configure everything by hand? Use the `/setup` command, or the setup button Astro sends when it joins your server.  
+Astro will create a category with a generator and an interface inside it, so temporary voice channels work right away. Then you can change the name, category, position and everything else from the [dashboard](/guilds).
 
 ## Mga kinakailangan ng server
 
@@ -42,13 +42,13 @@ Para magamit ang Astro sa server mo, kailangan mong matugunan ang mga kinakailan
 Kailangan ng Astro ang pahintulot na `Administrator` bilang default para gumana at matiyak ang magandang karanasan para sa karaniwang mga user ng Discord.
 
 Kung may propesyonal kang server at hindi mo maibibigay ang pahintulot na iyon sa Astro dahil sa seguridad, maaari mong i-disable ang kinakailangang ito gamit ang toggle sa dashboard
-![toggle ng pahintulot na admin](/guides/admin_permissions.png 'Toggle ng pahintulot na admin')
+![toggle ng pahintulot na admin](/guides/admin_permissions.png "Toggle ng pahintulot na admin")
 _Maaari kang humingi ng gabay sa Support Server tungkol sa mga pahintulot na kailangan ng Astro para gumana, pero hindi nagbibigay ng malalim na suporta para rito._
 
 ## Mga pahintulot ng command
 
-Tandaan na maaari mong i-configure anumang oras kung sino ang may access sa mga slash command ng Astro gamit ang mga pahintulot ng slash command ng Discord.  
-[Magbasa pa tungkol dito](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+Remember that you can always configure who has access to Astro slash commands via Discord slash command permissions.  
+[Read more about it here](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
 
 ## Wika ng server
 
@@ -56,18 +56,18 @@ Mababago mo ang wika ng server mo mula sa mga setting sa dashboard, susundin nit
 
 ## Profile ng bot
 
-Gusto mo bang magmukhang mas bahagi ng server mo ang Astro? Mula sa dashboard, mabibigyan mo ito ng custom na palayaw, avatar, banner at bio, para lang sa server mo.
+Want Astro to look a bit more like part of your server? From the dashboard you can give it a custom nickname, avatar, banner and bio, only for your server.
 
 ## Mga error at isyu
 
-Iuulat ng Astro ang lahat ng isyu at error na nararanasan nito habang gumagana sa server mo.  
-Tuwing may napapansin kang hindi gumagana nang tama, tandaang tingnan ang seksyon ng mga error sa dashboard!
+Astro will report all the issues and errors it encounters when working in your server.  
+Anytime you experience something working not quite right remember to check the errors section in the dashboard!
 
 ## Ultimate
 
 Ang Ultimate ang premium na bersyon ng Astro, at nagbibigay ito ng maraming kapaki-pakinabang na advanced na feature habang inaalis ang lahat ng limitasyon:
 
-| Feature                                            |                      Premium                      |                           Libre                            |
+| Feature                                            |                      Premium                      |                            Libre                           |
 | -------------------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
 | Walang limitasyong generator ng pansamantalang VC  | <span class="text-discord-green text-lg">✓</span> |                         Hanggang 2                         |
 | Walang limitasyong interface                       | <span class="text-discord-green text-lg">✓</span> |                         Hanggang 1                         |
@@ -85,12 +85,12 @@ Ang Ultimate ang premium na bersyon ng Astro, at nagbibigay ito ng maraming kapa
 ### Pag-upgrade ng server mo sa Ultimate
 
 Kapag nakabili ka na ng subscription sa [pahina ng Ultimate](/ultimate) o sa pamamagitan ng [Discord App Store](https://discord.com/application-directory/715621848489918495/premium), maaari mong i-upgrade ang server mo gamit ang button sa dashboard
-![Ultimate upgrade](/guides/ultimate.png 'Ultimate upgrade')
+![Ultimate upgrade](/guides/ultimate.png "Ultimate upgrade")
 
 ### Pamamahala ng subscription mo
 
-Maaari mong tingnan, pamahalaan at kanselahin ang mga subscription mo sa Ultimate gamit ang [Billing portal](/billing).  
-Kung binili mo ang Ultimate sa checkout ng Discord App Store, tingnan ang [gabay na ito](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+You can view, manage and cancel your Ultimate subscriptions using the [Billing portal](/billing).  
+If you purchased Ultimate via the Discord App Store checkout [this guide](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
 
 ## Suporta
 
