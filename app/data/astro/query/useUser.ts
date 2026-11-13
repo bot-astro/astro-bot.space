@@ -8,7 +8,7 @@ export function useUser() {
     enabled: import.meta.client,
     queryKey: user_qk,
     // same as the auth middleware, otherwise the navbar refetches right after the middleware
-    staleTime: 300000,
+    staleTime: 120000,
     queryFn: async () => {
       try {
         return await $astroApiClient.get_self_user()

@@ -7,7 +7,7 @@ export function useGuildRoles(guild_id: Ref<string | undefined>) {
   return useQuery({
     queryKey: guild_roles_qk(guild_id),
     // can change on discord outside the dashboard
-    staleTime: 120000,
+    staleTime: 60000,
     queryFn: (context) => {
       if (context.queryKey[1] === undefined) {
         throw Error('guild_id is undefined')
