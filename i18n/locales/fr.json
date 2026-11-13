@@ -1,0 +1,810 @@
+{
+  "nav": {
+    "add_to_server": "Ajouter au serveur",
+    "guides": "Guides",
+    "ultimate": "Ultimate",
+    "github": "GitHub",
+    "logo_alt": "Logo d'Astro",
+    "home": "Accueil",
+    "servers": "Serveurs",
+    "billing": "Facturation",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "logged_in_as": "Connecté en tant que {username}"
+  },
+  "footer": {
+    "resources": "Ressources",
+    "support": "Assistance",
+    "company": "Entreprise",
+    "home": "Accueil",
+    "contact_us": "Nous contacter",
+    "legal": "Mentions légales",
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_service": "Conditions d'utilisation",
+    "refund_policy": "Politique de remboursement",
+    "copyright": "© Astro Bot {year} - Tous droits réservés",
+    "by": "par"
+  },
+  "error": {
+    "billing_portal": "Un problème est survenu à l'ouverture du portail de facturation, réessaie plus tard",
+    "checkout": "Un problème est survenu au lancement du paiement, réessaie plus tard"
+  },
+  "meta": {
+    "page_title": "{page} - Astro - Des salons vocaux temporaires pour ton Discord !",
+    "invite": {
+      "title": "Inviter Astro - Astro - Des salons vocaux temporaires pour ton Discord !",
+      "description": "Invite Astro sur ton serveur Discord et commence à créer des salons vocaux temporaires pour ta communauté."
+    },
+    "privacy": {
+      "title": "Politique de confidentialité - Astro - Des salons vocaux temporaires pour ton Discord !"
+    },
+    "terms": {
+      "title": "Conditions d'utilisation - Astro - Des salons vocaux temporaires pour ton Discord !"
+    },
+    "refund": {
+      "title": "Politique de remboursement - Astro - Des salons vocaux temporaires pour ton Discord !"
+    },
+    "guide_basic": {
+      "title": "Guide des bases",
+      "description": "Découvre les bases pour bien démarrer avec Astro"
+    },
+    "guide_generator": {
+      "title": "Guide des générateurs",
+      "description": "Apprends à configurer et utiliser les générateurs de salons vocaux temporaires"
+    },
+    "guide_interface": {
+      "title": "Guide des interfaces",
+      "description": "Apprends à rendre ton interface magnifique et unique grâce à ce guide"
+    },
+    "guide_template": {
+      "title": "Guide des modèles",
+      "description": "Découvre les modèles et apprends à les configurer, tes utilisateurs vont les adorer"
+    },
+    "guide_voice_role": {
+      "title": "Guide des rôles vocaux",
+      "description": "Apprends à configurer les rôles vocaux pour donner encore plus de style à ton serveur"
+    },
+    "guides": {
+      "title": "Guides",
+      "description": "Besoin d'aide avec Astro ? Jette un œil à ces guides accessibles aux débutants"
+    },
+    "ultimate": {
+      "title": "Ultimate",
+      "description": "Fais passer ton serveur au niveau supérieur avec les fonctionnalités premium d'Astro"
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "description": "Configure tous les paramètres d'Astro avec le tableau de bord puissant et intuitif"
+    },
+    "errors": {
+      "title": "Erreurs",
+      "description": "Consulte tous les problèmes qu'Astro a rencontrés en fonctionnant sur ton serveur"
+    },
+    "guild": {
+      "title": "Tableau de bord",
+      "description": "Configure tous les paramètres d'Astro pour ton serveur avec le tableau de bord puissant et intuitif"
+    },
+    "voice_roles": {
+      "title": "Rôles vocaux",
+      "description": "Crée, consulte et supprime les rôles vocaux de ton serveur"
+    },
+    "voice_role": {
+      "title": "Paramètres du rôle vocal",
+      "description": "Configure les paramètres de ce rôle vocal"
+    },
+    "templates": {
+      "title": "Modèles",
+      "description": "Crée, consulte et supprime les modèles de ton serveur"
+    },
+    "template": {
+      "title": "Paramètres du modèle",
+      "description": "Configure les paramètres de ce modèle"
+    },
+    "interfaces": {
+      "title": "Interfaces",
+      "description": "Crée, consulte et supprime des interfaces"
+    },
+    "generators": {
+      "title": "Générateurs",
+      "description": "Crée, consulte et supprime des générateurs de salons vocaux temporaires"
+    },
+    "interface": {
+      "title": "Interface",
+      "description": "Modifie le message et les boutons de ton interface"
+    },
+    "generator": {
+      "title": "Générateur",
+      "description": "Configure tous les paramètres de ton générateur de salons vocaux temporaires"
+    },
+    "site": {
+      "title": "Astro - Des salons vocaux temporaires pour ton Discord !",
+      "description": "Astro est un bot Discord qui te permet de créer des salons vocaux temporaires sur ton serveur. Parfait pour les sessions de jeu, les groupes d'étude ou tout autre besoin de discussion vocale temporaire !"
+    }
+  },
+  "home": {
+    "tagline": "Le bot Discord le plus unique et le plus complet pour les salons vocaux temporaires et les rôles vocaux !",
+    "get_started": "Commencer",
+    "temp_vc": {
+      "description": "Astro génère à la demande des salons vocaux temporaires entièrement personnalisables et les supprime lorsqu'ils se vident. Il offre une personnalisation poussée pour que tu puisses créer le système parfait pour ton serveur !",
+      "title": "Salons vocaux {animated}",
+      "animated": "temporaires"
+    },
+    "default_interface": {
+      "title": "Une belle interface",
+      "description": "Astro est livré avec une belle interface par défaut qui permet aux utilisateurs mobiles de gérer facilement leur salon privé !"
+    },
+    "custom_interface": {
+      "title": "Mais aussi personnalisable",
+      "description": "Les interfaces d'Astro sont personnalisables jusqu'au dernier pixel, donne-leur exactement l'apparence dont tu as besoin, ton imagination est la seule limite !"
+    },
+    "voice_role": {
+      "description": "Astro peut attribuer ou retirer un rôle quand un utilisateur rejoint un salon vocal précis ! Ainsi, tu peux par exemple laisser les gens voir les salons textuels de jeu uniquement quand ils sont dans un salon vocal de jeu, ton imagination est la seule limite !",
+      "title": "Rôles vocaux"
+    },
+    "exclusive": {
+      "title": "Exclusivement des salons vocaux",
+      "description": "Se concentrer uniquement sur les salons vocaux fait d'Astro le meilleur bot de sa catégorie, essaie-le dès maintenant !"
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "subtitle": "Voici quelques guides pratiques qui t'aideront à démarrer avec Astro et à créer la configuration parfaite pour ton serveur !",
+    "basic": {
+      "title": "Pour commencer"
+    },
+    "generator": {
+      "title": "Générateurs"
+    },
+    "interface": {
+      "title": "Interfaces"
+    },
+    "template": {
+      "title": "Modèles"
+    },
+    "voice_role": {
+      "title": "Rôles vocaux"
+    }
+  },
+  "ultimate": {
+    "title": "Serveur Ultimate",
+    "subtitle": "Fais passer ton serveur au niveau supérieur avec des fonctionnalités premium !",
+    "per_month": "par mois pour {count} serveur | par mois pour {count} serveurs",
+    "per_year": "par an pour {count} serveur | par an pour {count} serveurs",
+    "server_quantity": "Nombre de serveurs",
+    "billed": "Facturation",
+    "monthly": "Mensuelle",
+    "yearly": "Annuelle",
+    "subscribe": "S'abonner",
+    "feature": "Fonctionnalité",
+    "premium": "Premium",
+    "free": "Gratuit",
+    "maximum": "Maximum {count}",
+    "features": {
+      "generators": "Générateurs de salons vocaux temporaires illimités",
+      "interfaces": "Interfaces illimitées",
+      "voice_roles": "Rôles vocaux illimités",
+      "templates": "Modèles illimités",
+      "numbered_names": "Noms de salons vocaux numérotés",
+      "activity_variables": "Variables d'activité de l'utilisateur pour les noms de salons",
+      "custom_interfaces": "Interfaces personnalisables",
+      "bypass_voting": "Contourne les exigences de vote sur n'importe quel serveur",
+      "badwords": "Filtre de gros mots pour les noms de salons vocaux",
+      "waiting_rooms": "Salles d'attente",
+      "private_chats": "Salons textuels privés",
+      "owner_voice_role": "Rôle vocal pour les propriétaires de salons",
+      "creation_message": "Messages personnalisés à la création du salon vocal",
+      "fallback_generators": "Générateurs de secours"
+    }
+  },
+  "common": {
+    "ultimate": "Ultimate",
+    "free": "Gratuit",
+    "save": "Enregistrer",
+    "reset": "Réinitialiser",
+    "delete": "Supprimer",
+    "select": "Sélectionner",
+    "upload": "Téléverser",
+    "go_back": "Retour",
+    "error_generic": "Un problème est survenu, réessaie plus tard",
+    "see_guide": "Voir le guide",
+    "close": "Fermer",
+    "downgrade": "Rétrograder",
+    "upgrade": "Améliorer",
+    "clear_cache": "Vider le cache",
+    "create": "Créer",
+    "manage": "Gérer",
+    "channel": "Salon",
+    "role": "Rôle",
+    "action": "Action",
+    "permanent": "Permanent",
+    "not_set": "Non défini",
+    "name": "Nom",
+    "user_limit": "Limite d'utilisateurs",
+    "bitrate": "Débit",
+    "region": "Région",
+    "kbps": "kbps",
+    "deleted_channel": "Salon supprimé",
+    "category": "Catégorie",
+    "no_category": "Aucune catégorie",
+    "clear": "Effacer"
+  },
+  "dashboard": {
+    "sections": {
+      "overview": "Vue d'ensemble",
+      "errors": "Erreurs",
+      "generators": "Générateurs",
+      "interfaces": "Interfaces",
+      "voice_roles": "Rôle vocal",
+      "templates": "Modèles"
+    },
+    "save_toast": {
+      "message": "Attention : tu as des modifications non enregistrées !"
+    },
+    "image": {
+      "not_set": "Non défini",
+      "reset_to_default": "Rétablir par défaut",
+      "preview": "Aperçu",
+      "replace": "Remplacer",
+      "remove": "Retirer",
+      "choose": "Choisir une image"
+    },
+    "media": {
+      "title": "Stockage multimédia",
+      "description": "Téléverse des images ou choisis-en une parmi celles déjà téléversées (png, jpeg, gif ou webp)",
+      "delete_image": "Supprimer l'image",
+      "delete_confirm_title": "Es-tu sûr de vouloir supprimer cette image ?",
+      "delete_confirm_description": "L'image est définitivement supprimée de notre stockage et n'est plus affichée là où elle est utilisée.",
+      "drop_or_click": "Dépose une image ici ou clique pour la téléverser"
+    },
+    "variables": {
+      "title": "Variables",
+      "categories": {
+        "voice_channel_owner": "Propriétaire du salon vocal",
+        "voice_channel_owner_activity": "Activité du propriétaire du salon vocal",
+        "voice_channel_properties": "Propriétés du salon vocal",
+        "incremental_values": "Valeurs incrémentales"
+      }
+    },
+    "role": {
+      "unmanageable": "Astro ne peut pas gérer ce rôle car il est au-dessus du rôle le plus élevé d'Astro dans la hiérarchie des rôles du serveur"
+    },
+    "upgrade": {
+      "title": "Améliorer le serveur",
+      "choose_subscription": "Choisis un abonnement à utiliser pour faire passer le serveur à Ultimate :",
+      "subscription_annual": "Abonnement annuel avec {available}/{quantities} améliorations disponibles",
+      "subscription_monthly": "Abonnement mensuel avec {available}/{quantities} améliorations disponibles",
+      "all_used": "Tu as déjà utilisé toutes tes améliorations. Rétrograde un serveur ou achète d'autres améliorations !",
+      "none_available": "Tu n'as aucune amélioration disponible.\nAchète un abonnement pour faire passer le serveur à Ultimate et débloquer les fonctionnalités avancées !",
+      "purchase": "Acheter des abonnements",
+      "upgrade": "Améliorer"
+    },
+    "ultimate_required": {
+      "title": "Ultimate requis"
+    }
+  },
+  "guilds": {
+    "required_permissions": "Permissions requises",
+    "required_permissions_description": "Pour gérer les paramètres d'Astro sur un serveur, tu dois avoir l'une des permissions {manage_channels}, {manage_server} ou {administrator}.",
+    "permissions": {
+      "manage_channels": "Gérer les salons",
+      "manage_server": "Gérer le serveur",
+      "administrator": "Administrateur"
+    },
+    "title": "Serveurs",
+    "subtitle": "Sélectionne un serveur à gérer",
+    "search_placeholder": "Rechercher par nom",
+    "manage": "Gérer",
+    "none_manageable": "Tu ne peux gérer les paramètres d'aucun des serveurs sur lesquels tu te trouves !",
+    "see_required_permissions": "Voir les permissions requises"
+  },
+  "errors": {
+    "title": "Erreurs",
+    "description": "Consulte et efface les erreurs de ton serveur",
+    "clear": "Effacer",
+    "view": "Voir",
+    "details": "Détails de l'erreur",
+    "none_title": "Aucune erreur rencontrée pour l'instant !",
+    "none_description": "Si quelque chose de grave se produit, ça apparaîtra ici ;)"
+  },
+  "overview": {
+    "description": "Gère les paramètres de base de ton serveur",
+    "shortcuts": {
+      "generators": {
+        "title": "Configurer les salons vocaux temporaires",
+        "description": "Rends-toi dans la section des générateurs pour configurer les salons vocaux temporaires"
+      },
+      "interfaces": {
+        "title": "Créer une interface",
+        "description": "Crée une interface pour permettre à tes utilisateurs de gérer leur salon avec de simples boutons"
+      },
+      "voice_roles": {
+        "title": "Configurer les rôles vocaux",
+        "description": "Associe des salons vocaux à des rôles pour améliorer l'expérience des utilisateurs sur ton serveur !"
+      }
+    },
+    "settings": {
+      "group": "Paramètres",
+      "require_admin": {
+        "title": "Exiger la permission Administrateur",
+        "description": "En désactivant cette option, Astro ignorera les problèmes de permissions.",
+        "recommendation": "Il est recommandé de la laisser activée !"
+      },
+      "slash_permissions": {
+        "title": "Permissions des commandes slash",
+        "description": "Tu peux restreindre l'accès aux commandes slash d'Astro directement avec les permissions Discord !",
+        "button": "Gérer sur Discord"
+      },
+      "language": {
+        "title": "Langue",
+        "description": "La langue qu'Astro utilise pour ses messages et son interface sur Discord pour ce serveur. Cela ne change pas la langue de ce site web."
+      }
+    },
+    "ultimate": {
+      "group": "Ultimate",
+      "title": "Serveur Ultimate",
+      "status_upgraded": "Ton serveur est actuellement passé à Ultimate",
+      "status_not_upgraded": "Ton serveur n'est actuellement pas passé à Ultimate",
+      "refresh_tooltip": "Actualiser les données des abonnements Discord",
+      "downgrade_title": "Rétrograder le serveur",
+      "downgrade_on_discord": "Ce serveur est passé à Ultimate via la boutique Discord. Tu dois annuler l'abonnement sur Discord pour quitter Ultimate.",
+      "official_guide": "Guide officiel"
+    },
+    "profile": {
+      "group": "Profil du bot",
+      "nickname": {
+        "title": "Pseudo",
+        "description": "Le nom du bot sur ce serveur"
+      },
+      "bio": {
+        "title": "Bio",
+        "description": "La description affichée sur le profil du bot sur ce serveur",
+        "placeholder": "Le bot Discord le plus unique et le plus complet pour les salons vocaux temporaires !"
+      },
+      "avatar": {
+        "title": "Avatar",
+        "description": "La photo de profil du bot sur ce serveur"
+      },
+      "banner": {
+        "title": "Bannière",
+        "description": "La bannière du profil du bot sur ce serveur"
+      },
+      "using_default": "Valeur par défaut utilisée"
+    },
+    "danger": {
+      "group": "Zone dangereuse",
+      "clear_cache": {
+        "title": "Réinitialiser le cache des salons vocaux temporaires",
+        "description": "Si tu rencontres des problèmes étranges avec les salons vocaux temporaires, notamment quand les noms incrémentaux des salons commencent par un mauvais numéro ou en sautent, clique sur ce bouton, sinon évite de l'utiliser !",
+        "confirm_title": "Es-tu sûr de vouloir vider le cache ?",
+        "confirm_description": "Si tu fais ça, tous les salons vocaux temporaires actuellement existants ne seront plus reconnus par Astro et tu devras les supprimer manuellement !"
+      }
+    }
+  },
+  "voice_roles": {
+    "title": "Rôles vocaux",
+    "description": "Les rôles vocaux permettent de donner des rôles temporaires aux utilisateurs dans des salons vocaux précis !",
+    "create_title": "Créer un rôle vocal",
+    "channel_description": "Salon qui déclenche ce rôle vocal. Si tu sélectionnes une catégorie, tous les salons de cette catégorie déclencheront ce rôle vocal.\nSi tu sélectionnes un générateur, tous les salons vocaux temporaires générés par celui-ci déclencheront ce rôle vocal.",
+    "select_channel": "Sélectionne un salon",
+    "select_role": "Sélectionne un rôle",
+    "role_description": "Ce rôle sera appliqué quand un utilisateur rejoint le salon sélectionné ci-dessus",
+    "action_description": "Attribuer signifie qu'Astro donnera le rôle à l'utilisateur quand il rejoint le salon et le retirera quand il le quitte. Retirer fait l'inverse. Basculer se comporte comme « Attribuer » si l'utilisateur n'a pas le rôle, « Retirer » sinon",
+    "actions": {
+      "assign": "Attribuer",
+      "remove": "Retirer",
+      "toggle": "Basculer"
+    },
+    "permanent_description": "Si activé, Astro n'annulera pas l'action quand l'utilisateur quitte le salon",
+    "ultimate_required": "Ultimate est requis pour avoir plus d'un rôle vocal. Passe ton serveur à Ultimate pour créer plus de rôles vocaux.",
+    "channel_label": "Salon :",
+    "role_label": "Rôle :",
+    "category_label": "Catégorie :",
+    "no_category": "Pas dans une catégorie",
+    "deleted_role": "Rôle supprimé",
+    "delete_confirm_title": "Es-tu sûr de vouloir supprimer le rôle vocal ?",
+    "delete_confirm_description": "Cette action est irréversible et tu ne pourras pas restaurer ce rôle vocal !",
+    "none": "Tu n'as encore créé aucun rôle vocal !",
+    "select_channel_and_role": "Sélectionne un salon et un rôle pour créer le rôle vocal",
+    "detail": {
+      "description": "Gère les paramètres de ce rôle vocal !",
+      "channel_description": "Salon qui déclenche ce rôle vocal.\nSi tu sélectionnes une catégorie, tous les salons de cette catégorie déclencheront ce rôle vocal.\nSi tu sélectionnes un générateur, tous les salons vocaux temporaires générés par celui-ci déclencheront ce rôle vocal."
+    }
+  },
+  "regions": {
+    "brazil": "Brésil",
+    "hongkong": "Hong Kong",
+    "india": "Inde",
+    "japan": "Japon",
+    "milan": "Milan",
+    "rotterdam": "Rotterdam",
+    "russia": "Russie",
+    "singapore": "Singapour",
+    "southafrica": "Afrique du Sud",
+    "south-korea": "Corée du Sud",
+    "sydney": "Sydney",
+    "us-central": "États-Unis centre",
+    "us-east": "États-Unis est",
+    "us-south": "États-Unis sud",
+    "us-west": "États-Unis ouest",
+    "automatic": "Automatique"
+  },
+  "templates": {
+    "title": "Modèles",
+    "description": "Les modèles permettent aux utilisateurs d'appliquer plusieurs paramètres à la fois à leur salon vocal temporaire !",
+    "create_title": "Créer un modèle",
+    "usage_group": "Paramètres d'utilisation",
+    "vc_group": "Paramètres du salon vocal",
+    "name_description": "Le nom que les utilisateurs voient quand ils choisissent un modèle à appliquer à leur salon vocal temporaire (ce n'est pas le nom du salon vocal lui-même)",
+    "name_placeholder": "Saisis un nom",
+    "generators": {
+      "title": "Générateurs activés",
+      "description": "Rendre ce modèle utilisable uniquement dans les salons vocaux temporaires créés par certains générateurs",
+      "any": "N'importe quel générateur",
+      "none": "Désactivé pour tous les générateurs",
+      "count": "Autorisé dans {count} générateur | Autorisé dans {count} générateurs"
+    },
+    "vc_name_description": "Le nom appliqué aux salons vocaux temporaires",
+    "user_limit_description": "La limite d'utilisateurs appliquée au salon vocal temporaire",
+    "bitrate_description": "Le débit en kbps appliqué au salon vocal temporaire",
+    "region_description": "La région vocale appliquée aux salons vocaux temporaires",
+    "ultimate_required": "Ultimate est requis pour avoir plus de 3 modèles. Passe ton serveur à Ultimate pour créer plus de modèles.",
+    "delete_confirm_title": "Es-tu sûr de vouloir supprimer le modèle ?",
+    "delete_confirm_description": "Cette action est irréversible et tu ne pourras pas restaurer ce modèle !",
+    "none": "Tu n'as encore créé aucun modèle !",
+    "select_name": "Choisis un nom pour le modèle",
+    "detail": {
+      "description": "Gère les paramètres de ce modèle !"
+    }
+  },
+  "interfaces": {
+    "title": "Interfaces",
+    "description": "Gère ici les interfaces de ton serveur !",
+    "create_title": "Créer une interface",
+    "channel_description": "Le salon textuel dans lequel le message de l'interface est envoyé",
+    "select_channel": "Sélectionne un salon",
+    "ultimate_required": "Ultimate est requis pour avoir plus d'une interface. Passe ton serveur à Ultimate pour créer plus d'interfaces.",
+    "delete_confirm_title": "Es-tu sûr de vouloir supprimer l'interface ?",
+    "delete_confirm_description": "Cette action est irréversible et tu ne pourras pas restaurer cette interface !",
+    "none": "Tu n'as encore créé aucune interface !",
+    "buttons": {
+      "lock": "Verrouiller",
+      "unlock": "Déverrouiller",
+      "hide": "Masquer",
+      "unhide": "Afficher",
+      "limit": "Limite d'utilisateurs",
+      "invite": "Inviter",
+      "ban": "Bannir",
+      "permit": "Autoriser",
+      "name": "Nom",
+      "bitrate": "Débit",
+      "region": "Région",
+      "template": "Modèle",
+      "chat": "Chat",
+      "waiting_room": "Salle d'attente",
+      "claim": "Réclamer",
+      "transfer": "Transférer la propriété"
+    },
+    "styles": {
+      "blurple": "Blurple",
+      "grey": "Gris",
+      "green": "Vert",
+      "red": "Rouge"
+    },
+    "editor": {
+      "author": {
+        "title": "Auteur",
+        "description": "Le nom affiché en haut du message"
+      },
+      "author_link": {
+        "title": "Lien de l'auteur",
+        "description": "Le lien qui s'ouvre quand les utilisateurs cliquent sur le nom de l'auteur"
+      },
+      "author_image": {
+        "title": "Image de l'auteur",
+        "description": "Une petite icône affichée à côté du nom de l'auteur"
+      },
+      "title": {
+        "title": "Titre",
+        "description": "Le titre du message"
+      },
+      "title_link": {
+        "title": "Lien du titre",
+        "description": "Le lien qui s'ouvre quand les utilisateurs cliquent sur le titre"
+      },
+      "thumbnail": {
+        "title": "Miniature",
+        "description": "Une petite image affichée en haut à droite du message"
+      },
+      "description": {
+        "title": "Description",
+        "description": "Le texte principal du message"
+      },
+      "image": {
+        "title": "Image",
+        "description": "Une grande image affichée sous la description"
+      },
+      "footer": {
+        "title": "Pied de page",
+        "description": "Le texte affiché en bas du message"
+      },
+      "footer_image": {
+        "title": "Image du pied de page",
+        "description": "Une petite icône affichée à côté du texte du pied de page"
+      },
+      "color": {
+        "title": "Couleur",
+        "description": "La couleur de la ligne à gauche du message"
+      },
+      "timestamp": {
+        "title": "Horodatage",
+        "description": "Une date et une heure fixes affichées dans le message"
+      },
+      "buttons": {
+        "title": "Boutons",
+        "description": "Clique sur un bouton pour le modifier, ou sur un emplacement vide pour en ajouter un"
+      },
+      "button": {
+        "title": "Bouton",
+        "description": "Le bouton affiché à cette position, un bouton déjà utilisé à une autre position ne peut pas être sélectionné"
+      },
+      "disabled": {
+        "title": "Désactivé",
+        "description": "Les utilisateurs voient le bouton mais ne peuvent pas cliquer dessus"
+      },
+      "button_name": {
+        "title": "Nom",
+        "description": "Le texte affiché sur le bouton, un bouton a besoin d'un nom ou d'un emoji pour être affiché"
+      },
+      "emoji": {
+        "title": "Emoji",
+        "description": "Un emoji standard, ou le code d'un emoji Discord personnalisé"
+      },
+      "style": {
+        "title": "Style",
+        "description": "La couleur du bouton"
+      },
+      "move": "Déplacer",
+      "move_title": "Déplacer l'interface",
+      "move_description": "Le message de l'interface est envoyé dans le nouveau salon et l'ancienne interface est supprimée",
+      "message_header": "En-tête du message",
+      "message_body": "Corps du message",
+      "message_footer": "Pied du message",
+      "buttons_layout": "Disposition des boutons",
+      "behavior": "Comportement",
+      "appearance": "Apparence",
+      "slot_label": "Ligne {row}, position {col} : {button}",
+      "slot_title": "Ligne {row} - Position {col}",
+      "no_button": "Aucun bouton",
+      "custom_emoji_help": "Comment utiliser des emojis personnalisés",
+      "custom_emoji_title": "Utiliser des emojis personnalisés",
+      "custom_emoji_step1": "Pour insérer un emoji Discord personnalisé, va sur Discord, écris l'emoji précédé d'une barre oblique inverse (par exemple {example}) et envoie le message.",
+      "custom_emoji_step2": "Discord enverra le code de l'emoji dans le salon, comme {static} ou {animated} pour les emojis animés. Copie-le et colle-le ici dans l'éditeur, il sera alors affiché sur Discord.",
+      "updated": "L'interface a été mise à jour",
+      "open_in_discord": "Ouvrir dans Discord",
+      "page_description": "Gère le message et les boutons de cette interface !"
+    }
+  },
+  "generators": {
+    "title": "Générateurs",
+    "description": "Gère ici les générateurs de salons vocaux temporaires !",
+    "create_title": "Créer un générateur",
+    "name_description": "Le nom du générateur",
+    "category_description": "La catégorie dans laquelle les salons vocaux temporaires sont générés",
+    "ultimate_required": "Ultimate est requis pour avoir plus de 2 générateurs de salons vocaux temporaires. Passe ton serveur à Ultimate pour créer plus de générateurs.",
+    "category_value": "Catégorie : {name}",
+    "delete_confirm_title": "Es-tu sûr de vouloir supprimer le générateur ?",
+    "delete_confirm_description": "Cette action est irréversible et tu ne pourras pas restaurer ce générateur !",
+    "none": "Tu n'as encore créé aucun générateur !",
+    "editor": {
+      "vc_name": {
+        "title": "Nom",
+        "description": "Le nom par défaut des salons vocaux temporaires à leur création"
+      },
+      "locked_name": {
+        "title": "Nom verrouillé",
+        "description": "Le nom des salons vocaux temporaires quand ils sont verrouillés"
+      },
+      "hidden_name": {
+        "title": "Nom masqué",
+        "description": "Le nom des salons vocaux temporaires quand ils sont masqués"
+      },
+      "state_change": {
+        "title": "Changement d'état",
+        "description": "Indique si le nom du salon vocal doit être mis à jour quand l'état du salon vocal change. Par exemple quand l'utilisateur verrouille ou masque le salon"
+      },
+      "owner_change": {
+        "title": "Changement de propriétaire",
+        "description": "Indique si le nom du salon vocal doit être mis à jour quand le propriétaire change"
+      },
+      "activity_change": {
+        "title": "Changement d'activité",
+        "description": "Indique si le nom du salon vocal doit être mis à jour quand l'activité du propriétaire change. Par exemple quand le propriétaire arrête de jouer à un jeu"
+      },
+      "renaming": {
+        "title": "Renommage",
+        "description": "Indique si le nom du salon vocal doit être mis à jour même s'il a été renommé manuellement par le propriétaire. Par exemple, si ce paramètre est désactivé et que le propriétaire renomme le salon, il ne sera pas mis à jour dans les cas ci-dessus"
+      },
+      "category": {
+        "title": "Catégorie",
+        "description": "La catégorie dans laquelle les salons vocaux temporaires sont générés"
+      },
+      "position": {
+        "title": "Position",
+        "description": "La position exacte où les salons vocaux temporaires sont placés dans la catégorie."
+      },
+      "user_limit": {
+        "title": "Limite d'utilisateurs",
+        "description": "La limite d'utilisateurs, ou 0 pour aucune limite"
+      },
+      "bitrate": {
+        "title": "Débit",
+        "description": "Le débit en kbps, laisse vide pour utiliser le débit par défaut de ton serveur Discord"
+      },
+      "inheriting": {
+        "title": "Héritage",
+        "description": "Choisis si les salons vocaux temporaires héritent des permissions du générateur, de la catégorie dans laquelle ils sont générés, ou s'ils ne doivent hériter d'aucune permission"
+      },
+      "default_state": {
+        "title": "État par défaut",
+        "description": "Indique si le salon vocal temporaire doit être verrouillé ou masqué à sa création"
+      },
+      "target_role": {
+        "title": "Rôle cible",
+        "description": "Astro modifiera les permissions de ce rôle si nécessaire, par exemple quand un utilisateur verrouille ou masque le salon"
+      },
+      "moderator_role": {
+        "title": "Rôle de modérateur",
+        "description": "Ce rôle aura toujours les permissions pour gérer le salon, même quand il est verrouillé ou masqué"
+      },
+      "min_user_limit": {
+        "title": "Limite d'utilisateurs minimale",
+        "description": "La limite d'utilisateurs minimale que les utilisateurs peuvent définir pour leur salon vocal temporaire, 0 signifie aucune limite"
+      },
+      "max_user_limit": {
+        "title": "Limite d'utilisateurs maximale",
+        "description": "La limite d'utilisateurs maximale que les utilisateurs peuvent définir pour leur salon vocal temporaire, 0 signifie aucune limite"
+      },
+      "min_bitrate": {
+        "title": "Débit minimal",
+        "description": "Le débit minimal, en kbps, que les utilisateurs peuvent définir pour leur salon vocal temporaire"
+      },
+      "max_bitrate": {
+        "title": "Débit maximal",
+        "description": "Le débit maximal, en kbps, que les utilisateurs peuvent définir pour leur salon vocal temporaire"
+      },
+      "owner_permissions": {
+        "title": "Permissions du propriétaire",
+        "description": "Sélectionne les permissions Discord qu'un propriétaire de salon vocal a sur son salon vocal temporaire"
+      },
+      "owner_role": {
+        "title": "Rôle du propriétaire",
+        "description": "Ce rôle sera donné aux propriétaires de salons vocaux temporaires"
+      },
+      "queue_mode": {
+        "title": "Mode file d'attente",
+        "description": "Si activé, Astro déplacera d'abord les utilisateurs dans des salons vocaux temporaires existants s'il y en a de disponibles. S'il n'y en a aucun, il en créera un nouveau"
+      },
+      "fallback": {
+        "title": "Générateur de secours",
+        "description": "Si ce générateur atteint la limite de salons vocaux temporaires (Discord autorise un maximum de 50 salons vocaux par catégorie), Astro déplacera l'utilisateur vers ce générateur en secours"
+      },
+      "waiting_auto": {
+        "title": "Création automatique de salle d'attente",
+        "description": "Si activé, Astro créera automatiquement une salle d'attente pour les salons vocaux temporaires à leur création"
+      },
+      "waiting_name": {
+        "title": "Nom",
+        "description": "Le nom par défaut des salles d'attente"
+      },
+      "waiting_category": {
+        "title": "Catégorie",
+        "description": "La catégorie dans laquelle les salles d'attente sont générées"
+      },
+      "waiting_position": {
+        "title": "Position",
+        "description": "Indique si les salles d'attente doivent être générées au-dessus ou en dessous du salon vocal temporaire correspondant. Ou en bas de la catégorie"
+      },
+      "waiting_user_limit": {
+        "title": "Limite d'utilisateurs",
+        "description": "La limite d'utilisateurs des salles d'attente"
+      },
+      "waiting_bitrate": {
+        "title": "Débit",
+        "description": "Le débit en kbps des salles d'attente, laisse vide pour utiliser le débit par défaut de ton serveur Discord"
+      },
+      "waiting_inheriting": {
+        "title": "Héritage des permissions",
+        "description": "Choisis si les salles d'attente héritent des permissions du générateur, de la catégorie dans laquelle elles sont générées, ou si elles ne doivent hériter d'aucune permission"
+      },
+      "chat_auto": {
+        "title": "Création automatique de salon privé",
+        "description": "Si activé, Astro créera automatiquement un salon textuel privé pour chaque salon vocal temporaire à sa création"
+      },
+      "chat_name": {
+        "title": "Nom",
+        "description": "Le nom par défaut des salons textuels privés"
+      },
+      "chat_topic": {
+        "title": "Sujet",
+        "description": "Le sujet défini automatiquement sur chaque salon textuel privé"
+      },
+      "chat_message_type": {
+        "title": "Type de message de création",
+        "description": "Choisis le type de message qu'Astro doit envoyer dans chaque salon textuel privé à sa création"
+      },
+      "chat_message": {
+        "title": "Message de création",
+        "description": "Un message qu'Astro envoie dans chaque salon textuel privé à sa création"
+      },
+      "chat_interface": {
+        "title": "Interface pour le message de création",
+        "description": "L'interface qu'Astro doit envoyer dans les salons textuels privés à leur création"
+      },
+      "chat_category": {
+        "title": "Catégorie",
+        "description": "La catégorie dans laquelle les salons textuels privés sont générés"
+      },
+      "chat_inheriting": {
+        "title": "Héritage des permissions",
+        "description": "Choisis si les salons textuels privés héritent des permissions du générateur, de la catégorie dans laquelle ils sont générés, ou s'ils ne doivent hériter d'aucune permission"
+      },
+      "chat_nsfw": {
+        "title": "NSFW",
+        "description": "Contrôle le paramètre NSFW des salons textuels privés"
+      },
+      "chat_slowmode": {
+        "title": "Mode lent",
+        "description": "Définis le mode lent des salons textuels privés, en secondes. Utilise 0 pour aucun mode lent"
+      },
+      "description": "Gère les paramètres de ce générateur de salons vocaux temporaires !",
+      "group_vc_name": "Nom du salon vocal",
+      "group_rename": "Conditions de renommage du salon vocal",
+      "group_vc_settings": "Paramètres du salon vocal",
+      "group_vc_permissions": "Permissions du salon vocal",
+      "group_commands": "Paramètres des commandes",
+      "group_utilities": "Utilitaires",
+      "group_waiting": "Salle d'attente",
+      "group_chat": "Salon textuel privé",
+      "region": {
+        "title": "Région",
+        "description": "Pour changer la région appliquée aux salons vocaux temporaires, change la région du générateur dans les paramètres du salon sur Discord."
+      },
+      "selected_permissions": "{count} permissions sélectionnées",
+      "permission_categories": {
+        "general": "Permissions générales",
+        "apps": "Permissions des applications",
+        "membership": "Permissions d'adhésion",
+        "text": "Permissions textuelles",
+        "voice": "Permissions vocales"
+      },
+      "no_role": "Aucun rôle",
+      "no_fallback": "Aucun secours",
+      "interface_in": "Interface dans #{channel}",
+      "message_id": "ID du message : {id}",
+      "positions": {
+        "before": "Avant",
+        "after": "Après",
+        "bottom": "En bas"
+      },
+      "inheritance": {
+        "none": "Aucun",
+        "category": "Catégorie",
+        "generator": "Générateur"
+      },
+      "states": {
+        "unlocked": "Déverrouillé",
+        "locked": "Verrouillé",
+        "hidden": "Masqué",
+        "unhidden": "Affiché"
+      },
+      "chat_message_types": {
+        "no_message": "Aucun message",
+        "text_message": "Message texte",
+        "embed": "Message embed",
+        "interface": "Interface Astro"
+      },
+      "need_interface": "Tu dois d'abord créer une interface pour pouvoir l'utiliser comme message du salon textuel privé",
+      "no_interface": "Aucune interface"
+    }
+  }
+}

@@ -1,1 +1,810 @@
-{}
+{
+  "nav": {
+    "add_to_server": "Aggiungi al server",
+    "guides": "Guide",
+    "ultimate": "Ultimate",
+    "github": "GitHub",
+    "logo_alt": "Logo di Astro",
+    "home": "Home",
+    "servers": "Server",
+    "billing": "Fatturazione",
+    "logout": "Esci",
+    "login": "Accedi",
+    "logged_in_as": "Connesso come {username}"
+  },
+  "footer": {
+    "resources": "Risorse",
+    "support": "Supporto",
+    "company": "Azienda",
+    "home": "Home",
+    "contact_us": "Contattaci",
+    "legal": "Note legali",
+    "privacy_policy": "Informativa sulla privacy",
+    "terms_of_service": "Termini di servizio",
+    "refund_policy": "Politica di rimborso",
+    "copyright": "© Astro Bot {year} - Tutti i diritti riservati",
+    "by": "di"
+  },
+  "error": {
+    "billing_portal": "Qualcosa è andato storto aprendo il portale di fatturazione, riprova più tardi",
+    "checkout": "Qualcosa è andato storto avviando il pagamento, riprova più tardi"
+  },
+  "meta": {
+    "page_title": "{page} - Astro - Canali vocali temporanei per il tuo Discord!",
+    "invite": {
+      "title": "Invita Astro - Astro - Canali vocali temporanei per il tuo Discord!",
+      "description": "Invita Astro nel tuo server Discord e inizia a creare canali vocali temporanei per la tua community."
+    },
+    "privacy": {
+      "title": "Informativa sulla privacy - Astro - Canali vocali temporanei per il tuo Discord!"
+    },
+    "terms": {
+      "title": "Termini di servizio - Astro - Canali vocali temporanei per il tuo Discord!"
+    },
+    "refund": {
+      "title": "Politica di rimborso - Astro - Canali vocali temporanei per il tuo Discord!"
+    },
+    "guide_basic": {
+      "title": "Guida di base",
+      "description": "Inizia a usare Astro imparando le basi"
+    },
+    "guide_generator": {
+      "title": "Guida ai generatori",
+      "description": "Scopri come configurare e usare i generatori di canali vocali temporanei"
+    },
+    "guide_interface": {
+      "title": "Guida alle interfacce",
+      "description": "Scopri come rendere la tua interfaccia fantastica e unica con questa guida"
+    },
+    "guide_template": {
+      "title": "Guida ai template",
+      "description": "Scopri i template e impara a configurarli, i tuoi utenti li adoreranno"
+    },
+    "guide_voice_role": {
+      "title": "Guida ai ruoli vocali",
+      "description": "Scopri come configurare i ruoli vocali per rendere il tuo server ancora più curato"
+    },
+    "guides": {
+      "title": "Guide",
+      "description": "Hai bisogno di aiuto con Astro? Dai un'occhiata a queste guide adatte ai principianti"
+    },
+    "ultimate": {
+      "title": "Ultimate",
+      "description": "Porta il tuo server al livello successivo con le funzionalità premium di Astro"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Configura tutte le impostazioni di Astro con la dashboard potente e intuitiva"
+    },
+    "errors": {
+      "title": "Errori",
+      "description": "Visualizza tutti i problemi che Astro ha riscontrato lavorando nel tuo server"
+    },
+    "guild": {
+      "title": "Dashboard",
+      "description": "Configura tutte le impostazioni di Astro per il tuo server con la dashboard potente e intuitiva"
+    },
+    "voice_roles": {
+      "title": "Ruoli vocali",
+      "description": "Crea, visualizza ed elimina i ruoli vocali del tuo server"
+    },
+    "voice_role": {
+      "title": "Impostazioni del ruolo vocale",
+      "description": "Configura le impostazioni di questo ruolo vocale"
+    },
+    "templates": {
+      "title": "Template",
+      "description": "Crea, visualizza ed elimina i template del tuo server"
+    },
+    "template": {
+      "title": "Impostazioni del template",
+      "description": "Configura le impostazioni di questo template"
+    },
+    "interfaces": {
+      "title": "Interfacce",
+      "description": "Crea, visualizza ed elimina le interfacce"
+    },
+    "generators": {
+      "title": "Generatori",
+      "description": "Crea, visualizza ed elimina i generatori di canali vocali temporanei"
+    },
+    "interface": {
+      "title": "Interfaccia",
+      "description": "Modifica il messaggio e i pulsanti della tua interfaccia"
+    },
+    "generator": {
+      "title": "Generatore",
+      "description": "Configura tutte le impostazioni del tuo generatore di canali vocali temporanei"
+    },
+    "site": {
+      "title": "Astro - Canali vocali temporanei per il tuo Discord!",
+      "description": "Astro è un bot Discord che ti permette di creare canali vocali temporanei nel tuo server. Perfetto per sessioni di gioco, gruppi di studio o qualsiasi esigenza di chat vocale temporanea!"
+    }
+  },
+  "home": {
+    "tagline": "Il bot Discord più unico e completo per canali vocali temporanei e ruoli vocali!",
+    "get_started": "Inizia",
+    "temp_vc": {
+      "description": "Astro genera su richiesta canali vocali temporanei completamente personalizzabili e li elimina quando si svuotano. Offre una personalizzazione estrema, così puoi creare il sistema perfetto per il tuo server!",
+      "title": "Canali vocali {animated}",
+      "animated": "temporanei"
+    },
+    "default_interface": {
+      "title": "Interfaccia bellissima",
+      "description": "Astro include una bellissima interfaccia predefinita che rende facile agli utenti mobile gestire il proprio canale privato!"
+    },
+    "custom_interface": {
+      "title": "Ma anche personalizzabile",
+      "description": "Le interfacce di Astro sono completamente personalizzabili fino all'ultimo pixel, fai in modo che appaiano esattamente come ti serve, l'unico limite è la fantasia!"
+    },
+    "voice_role": {
+      "description": "Astro può assegnare o rimuovere un ruolo quando un utente entra in uno specifico canale vocale! In questo modo puoi, ad esempio, far vedere le chat testuali di gaming solo mentre le persone sono in un canale vocale di gaming, l'unico limite è la fantasia!",
+      "title": "Ruoli vocali"
+    },
+    "exclusive": {
+      "title": "Esclusivamente canali vocali",
+      "description": "Concentrarsi solo sui canali vocali rende Astro il miglior bot del suo genere, provalo ora!"
+    }
+  },
+  "guides": {
+    "title": "Guide",
+    "subtitle": "Ecco alcune guide utili che ti aiuteranno a iniziare a usare Astro e a creare la configurazione perfetta per il tuo server!",
+    "basic": {
+      "title": "Per iniziare"
+    },
+    "generator": {
+      "title": "Generatori"
+    },
+    "interface": {
+      "title": "Interfacce"
+    },
+    "template": {
+      "title": "Template"
+    },
+    "voice_role": {
+      "title": "Ruoli vocali"
+    }
+  },
+  "ultimate": {
+    "title": "Server Ultimate",
+    "subtitle": "Porta il tuo server al livello successivo con le funzionalità premium!",
+    "per_month": "al mese per {count} server | al mese per {count} server",
+    "per_year": "all'anno per {count} server | all'anno per {count} server",
+    "server_quantity": "Numero di server",
+    "billed": "Fatturazione",
+    "monthly": "Mensile",
+    "yearly": "Annuale",
+    "subscribe": "Abbonati",
+    "feature": "Funzionalità",
+    "premium": "Premium",
+    "free": "Gratis",
+    "maximum": "Massimo {count}",
+    "features": {
+      "generators": "Generatori di canali vocali temporanei illimitati",
+      "interfaces": "Interfacce illimitate",
+      "voice_roles": "Ruoli vocali illimitati",
+      "templates": "Template illimitati",
+      "numbered_names": "Nomi numerati per i canali vocali",
+      "activity_variables": "Variabili sull'attività dell'utente per i nomi dei canali",
+      "custom_interfaces": "Interfacce personalizzabili",
+      "bypass_voting": "Salta i requisiti di voto in qualsiasi server",
+      "badwords": "Filtro parolacce per i nomi dei canali vocali",
+      "waiting_rooms": "Sale d'attesa",
+      "private_chats": "Chat testuali private",
+      "owner_voice_role": "Ruolo vocale per i proprietari dei canali",
+      "creation_message": "Messaggi personalizzati alla creazione del canale vocale",
+      "fallback_generators": "Generatori di riserva"
+    }
+  },
+  "common": {
+    "ultimate": "Ultimate",
+    "free": "Gratis",
+    "save": "Salva",
+    "reset": "Reimposta",
+    "delete": "Elimina",
+    "select": "Seleziona",
+    "upload": "Carica",
+    "go_back": "Indietro",
+    "error_generic": "Qualcosa è andato storto, riprova più tardi",
+    "see_guide": "Vedi la guida",
+    "close": "Chiudi",
+    "downgrade": "Declassa",
+    "upgrade": "Potenzia",
+    "clear_cache": "Svuota la cache",
+    "create": "Crea",
+    "manage": "Gestisci",
+    "channel": "Canale",
+    "role": "Ruolo",
+    "action": "Azione",
+    "permanent": "Permanente",
+    "not_set": "Non impostato",
+    "name": "Nome",
+    "user_limit": "Limite utenti",
+    "bitrate": "Bitrate",
+    "region": "Regione",
+    "kbps": "kbps",
+    "deleted_channel": "Canale eliminato",
+    "category": "Categoria",
+    "no_category": "Nessuna categoria",
+    "clear": "Svuota"
+  },
+  "dashboard": {
+    "sections": {
+      "overview": "Panoramica",
+      "errors": "Errori",
+      "generators": "Generatori",
+      "interfaces": "Interfacce",
+      "voice_roles": "Ruolo vocale",
+      "templates": "Template"
+    },
+    "save_toast": {
+      "message": "Attenzione: hai modifiche non salvate!"
+    },
+    "image": {
+      "not_set": "Non impostato",
+      "reset_to_default": "Ripristina predefinito",
+      "preview": "Anteprima",
+      "replace": "Sostituisci",
+      "remove": "Rimuovi",
+      "choose": "Scegli immagine"
+    },
+    "media": {
+      "title": "Archivio multimediale",
+      "description": "Carica immagini o scegline una tra quelle già caricate (png, jpeg, gif o webp)",
+      "delete_image": "Elimina immagine",
+      "delete_confirm_title": "Sei sicuro di voler eliminare questa immagine?",
+      "delete_confirm_description": "L'immagine viene rimossa definitivamente dal nostro archivio e smette di essere visualizzata ovunque sia usata.",
+      "drop_or_click": "Trascina qui un'immagine o clicca per caricarla"
+    },
+    "variables": {
+      "title": "Variabili",
+      "categories": {
+        "voice_channel_owner": "Proprietario del canale vocale",
+        "voice_channel_owner_activity": "Attività del proprietario del canale vocale",
+        "voice_channel_properties": "Proprietà del canale vocale",
+        "incremental_values": "Valori incrementali"
+      }
+    },
+    "role": {
+      "unmanageable": "Astro non può gestire questo ruolo perché è sopra il ruolo più alto di Astro nella gerarchia dei ruoli del server"
+    },
+    "upgrade": {
+      "title": "Potenzia server",
+      "choose_subscription": "Scegli un abbonamento da usare per potenziare il server a Ultimate:",
+      "subscription_annual": "Abbonamento annuale con {available}/{quantities} potenziamenti disponibili",
+      "subscription_monthly": "Abbonamento mensile con {available}/{quantities} potenziamenti disponibili",
+      "all_used": "Hai già usato tutti i tuoi potenziamenti. Declassa un server oppure acquista altri potenziamenti!",
+      "none_available": "Non hai nessun potenziamento disponibile.\nAcquista un abbonamento per potenziare il server a Ultimate e sbloccare le funzionalità avanzate!",
+      "purchase": "Acquista abbonamenti",
+      "upgrade": "Potenzia"
+    },
+    "ultimate_required": {
+      "title": "Ultimate richiesto"
+    }
+  },
+  "guilds": {
+    "required_permissions": "Permessi richiesti",
+    "required_permissions_description": "Per gestire le impostazioni di Astro per un server, devi avere almeno uno tra i permessi {manage_channels}, {manage_server} o {administrator}.",
+    "permissions": {
+      "manage_channels": "Gestire i canali",
+      "manage_server": "Gestire il server",
+      "administrator": "Amministratore"
+    },
+    "title": "Server",
+    "subtitle": "Seleziona un server da gestire",
+    "search_placeholder": "Cerca per nome",
+    "manage": "Gestisci",
+    "none_manageable": "Non puoi gestire le impostazioni di nessuno dei server in cui sei presente!",
+    "see_required_permissions": "Vedi i permessi richiesti"
+  },
+  "errors": {
+    "title": "Errori",
+    "description": "Visualizza e cancella gli errori del tuo server",
+    "clear": "Cancella",
+    "view": "Visualizza",
+    "details": "Dettagli dell'errore",
+    "none_title": "Nessun errore riscontrato finora!",
+    "none_description": "Se dovesse succedere qualcosa di brutto, comparirà qui ;)"
+  },
+  "overview": {
+    "description": "Gestisci le impostazioni di base del tuo server",
+    "shortcuts": {
+      "generators": {
+        "title": "Configura i canali vocali temporanei",
+        "description": "Vai alla sezione generatori per configurare i canali vocali temporanei"
+      },
+      "interfaces": {
+        "title": "Crea un'interfaccia",
+        "description": "Crea un'interfaccia per permettere ai tuoi utenti di gestire il proprio canale con semplici pulsanti"
+      },
+      "voice_roles": {
+        "title": "Configura i ruoli vocali",
+        "description": "Collega i canali vocali ai ruoli per migliorare l'esperienza degli utenti nel tuo server!"
+      }
+    },
+    "settings": {
+      "group": "Impostazioni",
+      "require_admin": {
+        "title": "Richiedi il permesso di Amministratore",
+        "description": "Disattivandolo, Astro ignorerà i problemi di permessi.",
+        "recommendation": "Ti consigliamo di lasciarlo attivo!"
+      },
+      "slash_permissions": {
+        "title": "Permessi dei comandi slash",
+        "description": "Puoi limitare l'accesso ai comandi slash di Astro direttamente tramite i permessi di Discord!",
+        "button": "Gestisci su Discord"
+      },
+      "language": {
+        "title": "Lingua",
+        "description": "La lingua che Astro usa per i suoi messaggi e per la sua interfaccia su Discord in questo server. Non cambia la lingua di questo sito web."
+      }
+    },
+    "ultimate": {
+      "group": "Ultimate",
+      "title": "Server Ultimate",
+      "status_upgraded": "Il tuo server è attualmente potenziato a Ultimate",
+      "status_not_upgraded": "Il tuo server al momento non è potenziato a Ultimate",
+      "refresh_tooltip": "Aggiorna i dati degli abbonamenti Discord",
+      "downgrade_title": "Declassa server",
+      "downgrade_on_discord": "Questo server è stato potenziato a Ultimate tramite lo store di Discord. Devi annullare l'abbonamento su Discord per tornare da Ultimate.",
+      "official_guide": "Guida ufficiale"
+    },
+    "profile": {
+      "group": "Profilo del bot",
+      "nickname": {
+        "title": "Soprannome",
+        "description": "Il nome del bot in questo server"
+      },
+      "bio": {
+        "title": "Biografia",
+        "description": "La descrizione mostrata sul profilo del bot in questo server",
+        "placeholder": "Il bot Discord più unico e completo per canali vocali temporanei!"
+      },
+      "avatar": {
+        "title": "Avatar",
+        "description": "L'immagine del profilo del bot in questo server"
+      },
+      "banner": {
+        "title": "Banner",
+        "description": "Il banner del profilo del bot in questo server"
+      },
+      "using_default": "Predefinito in uso"
+    },
+    "danger": {
+      "group": "Zona pericolosa",
+      "clear_cache": {
+        "title": "Reimposta la cache dei canali vocali temporanei",
+        "description": "Se riscontri problemi strani con i canali vocali temporanei, in particolare quando i nomi incrementali dei canali partono da un numero sbagliato o ne saltano alcuni, premi questo pulsante, altrimenti cerca di evitarlo!",
+        "confirm_title": "Sei sicuro di voler svuotare la cache?",
+        "confirm_description": "Se lo fai, tutti i canali vocali temporanei attualmente esistenti non verranno più riconosciuti da Astro e dovrai eliminarli manualmente!"
+      }
+    }
+  },
+  "voice_roles": {
+    "title": "Ruoli vocali",
+    "description": "I ruoli vocali permettono di assegnare ruoli temporanei agli utenti all'interno di specifici canali vocali!",
+    "create_title": "Crea ruolo vocale",
+    "channel_description": "Canale che attiva questo ruolo vocale. Se selezioni una categoria, tutti i canali di quella categoria attiveranno questo ruolo vocale.\nSe selezioni un generatore, tutti i canali vocali temporanei generati da esso attiveranno questo ruolo vocale.",
+    "select_channel": "Seleziona un canale",
+    "select_role": "Seleziona un ruolo",
+    "role_description": "Questo ruolo verrà applicato quando un utente entra nel canale selezionato sopra",
+    "action_description": "Assegna significa che Astro darà il ruolo all'utente quando entra nel canale e lo rimuoverà quando esce. Rimuovi fa l'opposto. Alterna si comporta come \"Assegna\" se l'utente non ha il ruolo, \"Rimuovi\" altrimenti",
+    "actions": {
+      "assign": "Assegna",
+      "remove": "Rimuovi",
+      "toggle": "Alterna"
+    },
+    "permanent_description": "Se attivo, Astro non annullerà l'azione quando l'utente lascia il canale",
+    "ultimate_required": "Serve Ultimate per avere più di 1 ruolo vocale. Potenzia il tuo server a Ultimate per creare più ruoli vocali.",
+    "channel_label": "Canale:",
+    "role_label": "Ruolo:",
+    "category_label": "Categoria:",
+    "no_category": "Non in una categoria",
+    "deleted_role": "Ruolo eliminato",
+    "delete_confirm_title": "Sei sicuro di voler eliminare il ruolo vocale?",
+    "delete_confirm_description": "Questa azione non può essere annullata e non potrai ripristinare questo ruolo vocale!",
+    "none": "Non hai ancora creato nessun ruolo vocale!",
+    "select_channel_and_role": "Seleziona un canale e un ruolo per creare il ruolo vocale",
+    "detail": {
+      "description": "Gestisci le impostazioni di questo ruolo vocale!",
+      "channel_description": "Canale che attiva questo ruolo vocale.\nSe selezioni una categoria, tutti i canali di quella categoria attiveranno questo ruolo vocale.\nSe selezioni un generatore, tutti i canali vocali temporanei generati da esso attiveranno questo ruolo vocale."
+    }
+  },
+  "regions": {
+    "brazil": "Brasile",
+    "hongkong": "Hong Kong",
+    "india": "India",
+    "japan": "Giappone",
+    "milan": "Milano",
+    "rotterdam": "Rotterdam",
+    "russia": "Russia",
+    "singapore": "Singapore",
+    "southafrica": "Sudafrica",
+    "south-korea": "Corea del Sud",
+    "sydney": "Sydney",
+    "us-central": "USA Centro",
+    "us-east": "USA Est",
+    "us-south": "USA Sud",
+    "us-west": "USA Ovest",
+    "automatic": "Automatica"
+  },
+  "templates": {
+    "title": "Template",
+    "description": "I template permettono agli utenti di applicare più impostazioni contemporaneamente al proprio canale vocale temporaneo!",
+    "create_title": "Crea template",
+    "usage_group": "Impostazioni di utilizzo",
+    "vc_group": "Impostazioni del canale vocale",
+    "name_description": "Il nome che gli utenti vedono quando scelgono un template da applicare al proprio canale vocale temporaneo (non è il nome del canale vocale stesso)",
+    "name_placeholder": "Inserisci un nome",
+    "generators": {
+      "title": "Generatori abilitati",
+      "description": "Rendi questo template utilizzabile solo nei canali vocali temporanei creati da determinati generatori",
+      "any": "Qualsiasi generatore",
+      "none": "Disabilitato per tutti i generatori",
+      "count": "Consentito in {count} generatore | Consentito in {count} generatori"
+    },
+    "vc_name_description": "Il nome applicato ai canali vocali temporanei",
+    "user_limit_description": "Il limite di utenti applicato al canale vocale temporaneo",
+    "bitrate_description": "Il bitrate in kbps applicato al canale vocale temporaneo",
+    "region_description": "La regione vocale applicata ai canali vocali temporanei",
+    "ultimate_required": "Serve Ultimate per avere più di 3 template. Potenzia il tuo server a Ultimate per creare più template.",
+    "delete_confirm_title": "Sei sicuro di voler eliminare il template?",
+    "delete_confirm_description": "Questa azione non può essere annullata e non potrai ripristinare questo template!",
+    "none": "Non hai ancora creato nessun template!",
+    "select_name": "Seleziona un nome per il template",
+    "detail": {
+      "description": "Gestisci le impostazioni di questo template!"
+    }
+  },
+  "interfaces": {
+    "title": "Interfacce",
+    "description": "Gestisci qui le interfacce del tuo server!",
+    "create_title": "Crea interfaccia",
+    "channel_description": "Il canale di testo in cui viene inviato il messaggio dell'interfaccia",
+    "select_channel": "Seleziona un canale",
+    "ultimate_required": "Serve Ultimate per avere più di 1 interfaccia. Potenzia il tuo server a Ultimate per creare più interfacce.",
+    "delete_confirm_title": "Sei sicuro di voler eliminare l'interfaccia?",
+    "delete_confirm_description": "Questa azione non può essere annullata e non potrai ripristinare questa interfaccia!",
+    "none": "Non hai ancora creato nessuna interfaccia!",
+    "buttons": {
+      "lock": "Blocca",
+      "unlock": "Sblocca",
+      "hide": "Nascondi",
+      "unhide": "Mostra",
+      "limit": "Limite utenti",
+      "invite": "Invita",
+      "ban": "Banna",
+      "permit": "Permetti",
+      "name": "Nome",
+      "bitrate": "Bitrate",
+      "region": "Regione",
+      "template": "Template",
+      "chat": "Chat",
+      "waiting_room": "Sala d'attesa",
+      "claim": "Rivendica",
+      "transfer": "Trasferisci proprietà"
+    },
+    "styles": {
+      "blurple": "Blurple",
+      "grey": "Grigio",
+      "green": "Verde",
+      "red": "Rosso"
+    },
+    "editor": {
+      "author": {
+        "title": "Autore",
+        "description": "Il nome mostrato in cima al messaggio"
+      },
+      "author_link": {
+        "title": "Link dell'autore",
+        "description": "Il link che si apre quando gli utenti cliccano sul nome dell'autore"
+      },
+      "author_image": {
+        "title": "Immagine dell'autore",
+        "description": "Una piccola icona mostrata accanto al nome dell'autore"
+      },
+      "title": {
+        "title": "Titolo",
+        "description": "Il titolo del messaggio"
+      },
+      "title_link": {
+        "title": "Link del titolo",
+        "description": "Il link che si apre quando gli utenti cliccano sul titolo"
+      },
+      "thumbnail": {
+        "title": "Miniatura",
+        "description": "Una piccola immagine mostrata in alto a destra del messaggio"
+      },
+      "description": {
+        "title": "Descrizione",
+        "description": "Il testo principale del messaggio"
+      },
+      "image": {
+        "title": "Immagine",
+        "description": "Una grande immagine mostrata sotto la descrizione"
+      },
+      "footer": {
+        "title": "Piè di pagina",
+        "description": "Il testo mostrato in fondo al messaggio"
+      },
+      "footer_image": {
+        "title": "Immagine del piè di pagina",
+        "description": "Una piccola icona mostrata accanto al testo del piè di pagina"
+      },
+      "color": {
+        "title": "Colore",
+        "description": "Il colore della linea a sinistra del messaggio"
+      },
+      "timestamp": {
+        "title": "Data e ora",
+        "description": "Una data e ora fisse mostrate nel messaggio"
+      },
+      "buttons": {
+        "title": "Pulsanti",
+        "description": "Clicca su un pulsante per modificarlo, o su uno slot vuoto per aggiungerne uno"
+      },
+      "button": {
+        "title": "Pulsante",
+        "description": "Il pulsante mostrato in questa posizione, un pulsante già usato in un'altra posizione non può essere selezionato"
+      },
+      "disabled": {
+        "title": "Disabilitato",
+        "description": "Gli utenti vedono il pulsante ma non possono cliccarlo"
+      },
+      "button_name": {
+        "title": "Nome",
+        "description": "Il testo mostrato sul pulsante, un pulsante ha bisogno di un nome o di un'emoji per essere mostrato"
+      },
+      "emoji": {
+        "title": "Emoji",
+        "description": "Un'emoji standard, o il codice di un'emoji personalizzata di Discord"
+      },
+      "style": {
+        "title": "Stile",
+        "description": "Il colore del pulsante"
+      },
+      "move": "Sposta",
+      "move_title": "Sposta interfaccia",
+      "move_description": "Il messaggio dell'interfaccia viene inviato nel nuovo canale e la vecchia interfaccia viene eliminata",
+      "message_header": "Intestazione del messaggio",
+      "message_body": "Corpo del messaggio",
+      "message_footer": "Piè di pagina del messaggio",
+      "buttons_layout": "Disposizione dei pulsanti",
+      "behavior": "Comportamento",
+      "appearance": "Aspetto",
+      "slot_label": "Riga {row}, posizione {col}: {button}",
+      "slot_title": "Riga {row} - Posizione {col}",
+      "no_button": "Nessun pulsante",
+      "custom_emoji_help": "Come usare le emoji personalizzate",
+      "custom_emoji_title": "Usare le emoji personalizzate",
+      "custom_emoji_step1": "Per inserire un'emoji personalizzata di Discord, vai su Discord, scrivi l'emoji preceduta da una barra rovesciata (ad esempio {example}) e invia il messaggio.",
+      "custom_emoji_step2": "Discord invierà nel canale il codice dell'emoji, come {static} oppure {animated} per le emoji animate. Copialo e incollalo qui nell'editor, poi verrà visualizzata su Discord.",
+      "updated": "L'interfaccia è stata aggiornata",
+      "open_in_discord": "Apri in Discord",
+      "page_description": "Gestisci il messaggio e i pulsanti di questa interfaccia!"
+    }
+  },
+  "generators": {
+    "title": "Generatori",
+    "description": "Gestisci qui i generatori di canali vocali temporanei!",
+    "create_title": "Crea generatore",
+    "name_description": "Il nome del generatore",
+    "category_description": "La categoria in cui vengono generati i canali vocali temporanei",
+    "ultimate_required": "Serve Ultimate per avere più di 2 generatori di canali vocali temporanei. Potenzia il tuo server a Ultimate per creare più generatori.",
+    "category_value": "Categoria: {name}",
+    "delete_confirm_title": "Sei sicuro di voler eliminare il generatore?",
+    "delete_confirm_description": "Questa azione non può essere annullata e non potrai ripristinare questo generatore!",
+    "none": "Non hai ancora creato nessun generatore!",
+    "editor": {
+      "vc_name": {
+        "title": "Nome",
+        "description": "Il nome predefinito dei canali vocali temporanei quando vengono creati"
+      },
+      "locked_name": {
+        "title": "Nome da bloccato",
+        "description": "Il nome che i canali vocali temporanei hanno quando sono bloccati"
+      },
+      "hidden_name": {
+        "title": "Nome da nascosto",
+        "description": "Il nome che i canali vocali temporanei hanno quando sono nascosti"
+      },
+      "state_change": {
+        "title": "Cambio di stato",
+        "description": "Se il nome del canale vocale deve essere aggiornato quando cambia lo stato del canale vocale. Ad esempio quando l'utente blocca o nasconde il canale"
+      },
+      "owner_change": {
+        "title": "Cambio di proprietario",
+        "description": "Se il nome del canale vocale deve essere aggiornato quando cambia il proprietario"
+      },
+      "activity_change": {
+        "title": "Cambio di attività",
+        "description": "Se il nome del canale vocale deve essere aggiornato quando cambia l'attività del proprietario. Ad esempio quando il proprietario smette di giocare"
+      },
+      "renaming": {
+        "title": "Rinomina",
+        "description": "Se il nome del canale vocale deve essere aggiornato anche se è stato rinominato manualmente dal proprietario. Ad esempio, se questa impostazione è disattivata e il proprietario rinomina il canale, il nome non verrà aggiornato quando si verifica uno degli scenari sopra"
+      },
+      "category": {
+        "title": "Categoria",
+        "description": "La categoria in cui vengono generati i canali vocali temporanei"
+      },
+      "position": {
+        "title": "Posizione",
+        "description": "La posizione esatta in cui i canali vocali temporanei vengono collocati all'interno della categoria."
+      },
+      "user_limit": {
+        "title": "Limite utenti",
+        "description": "Il limite di utenti, oppure 0 per nessun limite"
+      },
+      "bitrate": {
+        "title": "Bitrate",
+        "description": "Il bitrate in kbps, lascia vuoto per usare il bitrate predefinito del tuo server Discord"
+      },
+      "inheriting": {
+        "title": "Ereditarietà",
+        "description": "Scegli se i canali vocali temporanei ereditano i permessi dal generatore, dalla categoria in cui vengono generati, oppure se non devono ereditare alcun permesso"
+      },
+      "default_state": {
+        "title": "Stato predefinito",
+        "description": "Se il canale vocale temporaneo deve essere bloccato o nascosto alla creazione"
+      },
+      "target_role": {
+        "title": "Ruolo di destinazione",
+        "description": "Astro modificherà i permessi di questo ruolo quando necessario, ad esempio quando un utente blocca o nasconde il canale"
+      },
+      "moderator_role": {
+        "title": "Ruolo moderatore",
+        "description": "Questo ruolo avrà sempre i permessi per gestire il canale, anche quando è bloccato o nascosto"
+      },
+      "min_user_limit": {
+        "title": "Limite utenti minimo",
+        "description": "Il limite di utenti minimo che gli utenti possono impostare per il proprio canale vocale temporaneo, 0 significa nessun limite"
+      },
+      "max_user_limit": {
+        "title": "Limite utenti massimo",
+        "description": "Il limite di utenti massimo che gli utenti possono impostare per il proprio canale vocale temporaneo, 0 significa nessun limite"
+      },
+      "min_bitrate": {
+        "title": "Bitrate minimo",
+        "description": "Il bitrate minimo, in kbps, che gli utenti possono impostare per il proprio canale vocale temporaneo"
+      },
+      "max_bitrate": {
+        "title": "Bitrate massimo",
+        "description": "Il bitrate massimo, in kbps, che gli utenti possono impostare per il proprio canale vocale temporaneo"
+      },
+      "owner_permissions": {
+        "title": "Permessi del proprietario",
+        "description": "Seleziona i permessi Discord che il proprietario di un canale vocale ha sul proprio canale vocale temporaneo"
+      },
+      "owner_role": {
+        "title": "Ruolo del proprietario",
+        "description": "Questo ruolo verrà assegnato ai proprietari dei canali vocali temporanei"
+      },
+      "queue_mode": {
+        "title": "Modalità coda",
+        "description": "Se attiva, Astro sposterà prima gli utenti nei canali vocali temporanei esistenti, se disponibili. Se non ci sono canali vocali temporanei disponibili, ne creerà uno nuovo"
+      },
+      "fallback": {
+        "title": "Generatore di riserva",
+        "description": "Se questo generatore raggiunge il limite di canali vocali temporanei (Discord consente un massimo di 50 canali vocali per categoria), Astro sposterà l'utente in questo generatore come riserva"
+      },
+      "waiting_auto": {
+        "title": "Creazione automatica della sala d'attesa",
+        "description": "Se attiva, Astro creerà automaticamente una sala d'attesa per i canali vocali temporanei al momento della creazione"
+      },
+      "waiting_name": {
+        "title": "Nome",
+        "description": "Il nome predefinito delle sale d'attesa"
+      },
+      "waiting_category": {
+        "title": "Categoria",
+        "description": "La categoria in cui vengono generate le sale d'attesa"
+      },
+      "waiting_position": {
+        "title": "Posizione",
+        "description": "Se le sale d'attesa devono essere generate sopra o sotto il rispettivo canale vocale temporaneo. Oppure in fondo alla categoria"
+      },
+      "waiting_user_limit": {
+        "title": "Limite utenti",
+        "description": "Il limite di utenti per le sale d'attesa"
+      },
+      "waiting_bitrate": {
+        "title": "Bitrate",
+        "description": "Il bitrate in kbps per le sale d'attesa, lascia vuoto per usare il bitrate predefinito del tuo server Discord"
+      },
+      "waiting_inheriting": {
+        "title": "Ereditarietà dei permessi",
+        "description": "Scegli se le sale d'attesa ereditano i permessi dal generatore, dalla categoria in cui vengono generate, oppure se non devono ereditare alcun permesso"
+      },
+      "chat_auto": {
+        "title": "Creazione automatica della chat privata",
+        "description": "Se attiva, Astro creerà automaticamente un canale di testo privato per ogni canale vocale temporaneo al momento della creazione"
+      },
+      "chat_name": {
+        "title": "Nome",
+        "description": "Il nome predefinito delle chat testuali private"
+      },
+      "chat_topic": {
+        "title": "Argomento",
+        "description": "L'argomento impostato automaticamente su ogni chat testuale privata"
+      },
+      "chat_message_type": {
+        "title": "Tipo di messaggio di creazione",
+        "description": "Scegli il tipo di messaggio che Astro deve inviare in ogni chat testuale privata al momento della creazione"
+      },
+      "chat_message": {
+        "title": "Messaggio di creazione",
+        "description": "Un messaggio che Astro invia in ogni chat testuale privata al momento della creazione"
+      },
+      "chat_interface": {
+        "title": "Interfaccia per il messaggio di creazione",
+        "description": "L'interfaccia che Astro deve inviare nelle chat testuali private al momento della creazione"
+      },
+      "chat_category": {
+        "title": "Categoria",
+        "description": "La categoria in cui vengono generate le chat testuali private"
+      },
+      "chat_inheriting": {
+        "title": "Ereditarietà dei permessi",
+        "description": "Scegli se le chat testuali private ereditano i permessi dal generatore, dalla categoria in cui vengono generate, oppure se non devono ereditare alcun permesso"
+      },
+      "chat_nsfw": {
+        "title": "NSFW",
+        "description": "Controlla l'impostazione NSFW per le chat testuali private"
+      },
+      "chat_slowmode": {
+        "title": "Slowmode",
+        "description": "Imposta lo slowmode delle chat testuali private, in secondi. Usa 0 per nessuno slowmode"
+      },
+      "description": "Gestisci le impostazioni di questo generatore di canali vocali temporanei!",
+      "group_vc_name": "Nome del canale vocale",
+      "group_rename": "Condizioni di rinomina del canale vocale",
+      "group_vc_settings": "Impostazioni del canale vocale",
+      "group_vc_permissions": "Permessi del canale vocale",
+      "group_commands": "Impostazioni dei comandi",
+      "group_utilities": "Utilità",
+      "group_waiting": "Sala d'attesa",
+      "group_chat": "Chat testuale privata",
+      "region": {
+        "title": "Regione",
+        "description": "Per cambiare la regione applicata ai canali vocali temporanei, cambia la regione del generatore dalle impostazioni del canale all'interno di Discord."
+      },
+      "selected_permissions": "{count} permessi selezionati",
+      "permission_categories": {
+        "general": "Permessi generali",
+        "apps": "Permessi delle app",
+        "membership": "Permessi di appartenenza",
+        "text": "Permessi testuali",
+        "voice": "Permessi vocali"
+      },
+      "no_role": "Nessun ruolo",
+      "no_fallback": "Nessuna riserva",
+      "interface_in": "Interfaccia in #{channel}",
+      "message_id": "ID messaggio: {id}",
+      "positions": {
+        "before": "Prima",
+        "after": "Dopo",
+        "bottom": "In fondo"
+      },
+      "inheritance": {
+        "none": "Nessuna",
+        "category": "Categoria",
+        "generator": "Generatore"
+      },
+      "states": {
+        "unlocked": "Sbloccato",
+        "locked": "Bloccato",
+        "hidden": "Nascosto",
+        "unhidden": "Visibile"
+      },
+      "chat_message_types": {
+        "no_message": "Nessun messaggio",
+        "text_message": "Messaggio di testo",
+        "embed": "Messaggio embed",
+        "interface": "Interfaccia di Astro"
+      },
+      "need_interface": "Devi prima creare un'interfaccia per poterla usare come messaggio della chat testuale privata",
+      "no_interface": "Nessuna interfaccia"
+    }
+  }
+}

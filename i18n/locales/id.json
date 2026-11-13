@@ -1,0 +1,810 @@
+{
+  "nav": {
+    "add_to_server": "Tambahkan ke server",
+    "guides": "Panduan",
+    "ultimate": "Ultimate",
+    "github": "GitHub",
+    "logo_alt": "Logo Astro",
+    "home": "Beranda",
+    "servers": "Server",
+    "billing": "Tagihan",
+    "logout": "Keluar",
+    "login": "Masuk",
+    "logged_in_as": "Masuk sebagai {username}"
+  },
+  "footer": {
+    "resources": "Sumber daya",
+    "support": "Dukungan",
+    "company": "Perusahaan",
+    "home": "Beranda",
+    "contact_us": "Hubungi kami",
+    "legal": "Legal",
+    "privacy_policy": "Kebijakan privasi",
+    "terms_of_service": "Ketentuan layanan",
+    "refund_policy": "Kebijakan pengembalian dana",
+    "copyright": "© Astro Bot {year} - Semua hak dilindungi",
+    "by": "oleh"
+  },
+  "error": {
+    "billing_portal": "Terjadi kesalahan saat membuka portal tagihan, coba lagi nanti",
+    "checkout": "Terjadi kesalahan saat memulai pembayaran, silakan coba lagi nanti"
+  },
+  "meta": {
+    "page_title": "{page} - Astro - Saluran Suara Sementara untuk Discord kamu!",
+    "invite": {
+      "title": "Undang Astro - Astro - Saluran Suara Sementara untuk Discord kamu!",
+      "description": "Undang Astro ke server Discord kamu dan mulai buat saluran suara sementara untuk komunitasmu."
+    },
+    "privacy": {
+      "title": "Kebijakan Privasi - Astro - Saluran Suara Sementara untuk Discord kamu!"
+    },
+    "terms": {
+      "title": "Ketentuan Layanan - Astro - Saluran Suara Sementara untuk Discord kamu!"
+    },
+    "refund": {
+      "title": "Kebijakan Pengembalian Dana - Astro - Saluran Suara Sementara untuk Discord kamu!"
+    },
+    "guide_basic": {
+      "title": "Panduan dasar",
+      "description": "Mulai menggunakan Astro dengan mempelajari dasar-dasarnya"
+    },
+    "guide_generator": {
+      "title": "Panduan generator",
+      "description": "Pelajari cara mengonfigurasi dan menggunakan generator saluran suara sementara"
+    },
+    "guide_interface": {
+      "title": "Panduan antarmuka",
+      "description": "Pelajari cara membuat antarmukamu terlihat luar biasa dan unik dengan panduan ini"
+    },
+    "guide_template": {
+      "title": "Panduan templat",
+      "description": "Temukan templat dan pelajari cara mengonfigurasinya, penggunamu pasti akan menyukainya"
+    },
+    "guide_voice_role": {
+      "title": "Panduan peran suara",
+      "description": "Pelajari cara mengonfigurasi peran suara agar servermu terlihat ekstra keren"
+    },
+    "guides": {
+      "title": "Panduan",
+      "description": "Butuh bantuan dengan Astro? Lihat panduan yang ramah pemula ini"
+    },
+    "ultimate": {
+      "title": "Ultimate",
+      "description": "Bawa servermu ke level berikutnya dengan fungsi premium Astro"
+    },
+    "dashboard": {
+      "title": "Dasbor",
+      "description": "Atur semua pengaturan Astro dengan dasbor yang canggih dan intuitif"
+    },
+    "errors": {
+      "title": "Error",
+      "description": "Lihat semua masalah yang ditemui Astro saat bekerja di servermu"
+    },
+    "guild": {
+      "title": "Dasbor",
+      "description": "Atur semua pengaturan Astro untuk servermu dengan dasbor yang canggih dan intuitif"
+    },
+    "voice_roles": {
+      "title": "Peran suara",
+      "description": "Buat, lihat, dan hapus peran suara untuk servermu"
+    },
+    "voice_role": {
+      "title": "Pengaturan peran suara",
+      "description": "Atur pengaturan peran suara ini"
+    },
+    "templates": {
+      "title": "Templat",
+      "description": "Buat, lihat, dan hapus templat untuk servermu"
+    },
+    "template": {
+      "title": "Pengaturan templat",
+      "description": "Atur pengaturan templat ini"
+    },
+    "interfaces": {
+      "title": "Antarmuka",
+      "description": "Buat, lihat, dan hapus antarmuka"
+    },
+    "generators": {
+      "title": "Generator",
+      "description": "Buat, lihat, dan hapus generator saluran suara sementara"
+    },
+    "interface": {
+      "title": "Antarmuka",
+      "description": "Edit pesan dan tombol antarmukamu"
+    },
+    "generator": {
+      "title": "Generator",
+      "description": "Atur semua pengaturan generator saluran suara sementaramu"
+    },
+    "site": {
+      "title": "Astro - Saluran Suara Sementara untuk Discord kamu!",
+      "description": "Astro adalah bot Discord yang memungkinkanmu membuat saluran suara sementara di servermu. Cocok untuk sesi bermain game, kelompok belajar, atau kebutuhan obrolan suara sementara lainnya!"
+    }
+  },
+  "home": {
+    "tagline": "Bot Discord paling unik dan lengkap untuk saluran suara sementara dan peran suara!",
+    "get_started": "Mulai",
+    "temp_vc": {
+      "description": "Astro membuat saluran suara sementara yang sepenuhnya dapat disesuaikan sesuai permintaan dan menghapusnya saat kosong. Dilengkapi kustomisasi ekstrem sehingga kamu bisa membuat sistem yang sempurna untuk servermu!",
+      "title": "Saluran Suara {animated}",
+      "animated": "Sementara"
+    },
+    "default_interface": {
+      "title": "Antarmuka yang indah",
+      "description": "Astro hadir dengan antarmuka bawaan yang indah sehingga pengguna seluler mudah mengelola saluran pribadi mereka!"
+    },
+    "custom_interface": {
+      "title": "Tapi juga bisa disesuaikan",
+      "description": "Antarmuka Astro dapat disesuaikan sampai ke piksel terakhir, buat tampilannya persis seperti yang kamu butuhkan, imajinasi adalah satu-satunya batasan!"
+    },
+    "voice_role": {
+      "description": "Astro dapat memberikan atau mencabut peran saat pengguna bergabung ke saluran suara tertentu! Dengan begitu kamu bisa, misalnya, membiarkan orang melihat obrolan teks gaming hanya saat mereka berada di saluran suara gaming, imajinasi adalah satu-satunya batasan!",
+      "title": "Peran Suara"
+    },
+    "exclusive": {
+      "title": "Khusus Saluran Suara",
+      "description": "Berfokus hanya pada saluran suara menjadikan Astro bot terbaik di kelasnya, coba sekarang!"
+    }
+  },
+  "guides": {
+    "title": "Panduan",
+    "subtitle": "Berikut beberapa panduan praktis yang akan membantumu mulai menggunakan Astro dan membuat pengaturan yang sempurna untuk servermu!",
+    "basic": {
+      "title": "Memulai"
+    },
+    "generator": {
+      "title": "Generator"
+    },
+    "interface": {
+      "title": "Antarmuka"
+    },
+    "template": {
+      "title": "Templat"
+    },
+    "voice_role": {
+      "title": "Peran suara"
+    }
+  },
+  "ultimate": {
+    "title": "Server Ultimate",
+    "subtitle": "Bawa servermu ke level berikutnya dengan fungsi premium!",
+    "per_month": "per bulan untuk {count} server | per bulan untuk {count} server",
+    "per_year": "per tahun untuk {count} server | per tahun untuk {count} server",
+    "server_quantity": "Jumlah server",
+    "billed": "Ditagih",
+    "monthly": "Bulanan",
+    "yearly": "Tahunan",
+    "subscribe": "Berlangganan",
+    "feature": "Fitur",
+    "premium": "Premium",
+    "free": "Gratis",
+    "maximum": "Maksimal {count}",
+    "features": {
+      "generators": "Generator saluran suara sementara tanpa batas",
+      "interfaces": "Antarmuka tanpa batas",
+      "voice_roles": "Peran suara tanpa batas",
+      "templates": "Templat tanpa batas",
+      "numbered_names": "Nama saluran suara bernomor",
+      "activity_variables": "Variabel aktivitas pengguna untuk nama saluran",
+      "custom_interfaces": "Antarmuka yang dapat disesuaikan",
+      "bypass_voting": "Lewati syarat voting di server mana pun",
+      "badwords": "Filter kata kasar untuk nama saluran suara",
+      "waiting_rooms": "Ruang tunggu",
+      "private_chats": "Obrolan teks pribadi",
+      "owner_voice_role": "Peran suara untuk pemilik saluran",
+      "creation_message": "Pesan kustom saat saluran suara dibuat",
+      "fallback_generators": "Generator cadangan"
+    }
+  },
+  "common": {
+    "ultimate": "Ultimate",
+    "free": "Gratis",
+    "save": "Simpan",
+    "reset": "Atur ulang",
+    "delete": "Hapus",
+    "select": "Pilih",
+    "upload": "Unggah",
+    "go_back": "Kembali",
+    "error_generic": "Terjadi kesalahan, silakan coba lagi nanti",
+    "see_guide": "Lihat panduan",
+    "close": "Tutup",
+    "downgrade": "Turunkan",
+    "upgrade": "Tingkatkan",
+    "clear_cache": "Hapus cache",
+    "create": "Buat",
+    "manage": "Kelola",
+    "channel": "Saluran",
+    "role": "Peran",
+    "action": "Aksi",
+    "permanent": "Permanen",
+    "not_set": "Belum diatur",
+    "name": "Nama",
+    "user_limit": "Batas pengguna",
+    "bitrate": "Bitrate",
+    "region": "Wilayah",
+    "kbps": "kbps",
+    "deleted_channel": "Saluran terhapus",
+    "category": "Kategori",
+    "no_category": "Tanpa kategori",
+    "clear": "Bersihkan"
+  },
+  "dashboard": {
+    "sections": {
+      "overview": "Ringkasan",
+      "errors": "Error",
+      "generators": "Generator",
+      "interfaces": "Antarmuka",
+      "voice_roles": "Peran suara",
+      "templates": "Templat"
+    },
+    "save_toast": {
+      "message": "Hati-hati - ada perubahan yang belum disimpan!"
+    },
+    "image": {
+      "not_set": "Belum diatur",
+      "reset_to_default": "Atur ulang ke default",
+      "preview": "Pratinjau",
+      "replace": "Ganti",
+      "remove": "Hapus",
+      "choose": "Pilih gambar"
+    },
+    "media": {
+      "title": "Penyimpanan media",
+      "description": "Unggah gambar atau pilih salah satu gambar yang sudah kamu unggah (png, jpeg, gif, atau webp)",
+      "delete_image": "Hapus gambar",
+      "delete_confirm_title": "Yakin ingin menghapus gambar ini?",
+      "delete_confirm_description": "Gambar dihapus secara permanen dari penyimpanan kami dan tidak lagi tampil di mana pun gambar itu digunakan.",
+      "drop_or_click": "Letakkan gambar di sini atau klik untuk mengunggah"
+    },
+    "variables": {
+      "title": "Variabel",
+      "categories": {
+        "voice_channel_owner": "Pemilik saluran suara",
+        "voice_channel_owner_activity": "Aktivitas pemilik saluran suara",
+        "voice_channel_properties": "Properti saluran suara",
+        "incremental_values": "Nilai bertahap"
+      }
+    },
+    "role": {
+      "unmanageable": "Astro tidak dapat mengelola peran ini karena berada di atas peran tertinggi Astro dalam hierarki peran server"
+    },
+    "upgrade": {
+      "title": "Tingkatkan server",
+      "choose_subscription": "Pilih langganan yang akan digunakan untuk meningkatkan server ke Ultimate:",
+      "subscription_annual": "Langganan tahunan dengan {available}/{quantities} peningkatan tersedia",
+      "subscription_monthly": "Langganan bulanan dengan {available}/{quantities} peningkatan tersedia",
+      "all_used": "Kamu sudah menggunakan semua peningkatanmu. Turunkan salah satu server atau beli peningkatan lagi!",
+      "none_available": "Kamu tidak memiliki peningkatan yang tersedia.\nBeli langganan untuk meningkatkan server ke Ultimate dan membuka fitur lanjutan!",
+      "purchase": "Beli langganan",
+      "upgrade": "Tingkatkan"
+    },
+    "ultimate_required": {
+      "title": "Ultimate diperlukan"
+    }
+  },
+  "guilds": {
+    "required_permissions": "Izin yang diperlukan",
+    "required_permissions_description": "Untuk mengelola pengaturan Astro di sebuah server, kamu harus memiliki izin {manage_channels}, {manage_server}, atau {administrator}.",
+    "permissions": {
+      "manage_channels": "Kelola saluran",
+      "manage_server": "Kelola server",
+      "administrator": "Administrator"
+    },
+    "title": "Server",
+    "subtitle": "Pilih server untuk dikelola",
+    "search_placeholder": "Cari berdasarkan nama",
+    "manage": "Kelola",
+    "none_manageable": "Kamu tidak dapat mengelola pengaturan server mana pun yang kamu ikuti!",
+    "see_required_permissions": "Lihat izin yang diperlukan"
+  },
+  "errors": {
+    "title": "Error",
+    "description": "Lihat dan bersihkan error servermu",
+    "clear": "Bersihkan",
+    "view": "Lihat",
+    "details": "Detail error",
+    "none_title": "Belum ada error yang ditemui sejauh ini!",
+    "none_description": "Jika terjadi sesuatu yang buruk, akan muncul di sini ;)"
+  },
+  "overview": {
+    "description": "Kelola pengaturan dasar servermu",
+    "shortcuts": {
+      "generators": {
+        "title": "Konfigurasikan saluran suara sementara",
+        "description": "Buka bagian generator untuk mengonfigurasi saluran suara sementara"
+      },
+      "interfaces": {
+        "title": "Buat antarmuka",
+        "description": "Buat antarmuka agar penggunamu dapat mengelola saluran mereka dengan tombol sederhana"
+      },
+      "voice_roles": {
+        "title": "Atur peran suara",
+        "description": "Hubungkan saluran suara dengan peran untuk meningkatkan pengalaman pengguna di servermu!"
+      }
+    },
+    "settings": {
+      "group": "Pengaturan",
+      "require_admin": {
+        "title": "Wajibkan izin Administrator",
+        "description": "Menonaktifkan ini akan membuat Astro mengabaikan masalah izin.",
+        "recommendation": "Sebaiknya biarkan ini tetap aktif!"
+      },
+      "slash_permissions": {
+        "title": "Izin perintah slash",
+        "description": "Kamu bisa membatasi akses ke perintah slash Astro langsung menggunakan izin Discord!",
+        "button": "Kelola di Discord"
+      },
+      "language": {
+        "title": "Bahasa",
+        "description": "Bahasa yang digunakan Astro untuk pesan dan antarmukanya di Discord pada server ini. Ini tidak mengubah bahasa situs web ini."
+      }
+    },
+    "ultimate": {
+      "group": "Ultimate",
+      "title": "Server Ultimate",
+      "status_upgraded": "Servermu saat ini sudah ditingkatkan ke Ultimate",
+      "status_not_upgraded": "Servermu saat ini belum ditingkatkan ke Ultimate",
+      "refresh_tooltip": "Segarkan data langganan Discord",
+      "downgrade_title": "Turunkan server",
+      "downgrade_on_discord": "Server ini ditingkatkan ke Ultimate melalui toko Discord. Kamu perlu membatalkan langganan di Discord untuk menurunkan dari Ultimate.",
+      "official_guide": "Panduan resmi"
+    },
+    "profile": {
+      "group": "Profil bot",
+      "nickname": {
+        "title": "Nama panggilan",
+        "description": "Nama bot di server ini"
+      },
+      "bio": {
+        "title": "Bio",
+        "description": "Deskripsi yang ditampilkan pada profil bot di server ini",
+        "placeholder": "Bot Discord paling unik dan lengkap untuk saluran suara sementara!"
+      },
+      "avatar": {
+        "title": "Avatar",
+        "description": "Foto profil bot di server ini"
+      },
+      "banner": {
+        "title": "Banner",
+        "description": "Banner profil bot di server ini"
+      },
+      "using_default": "Menggunakan default"
+    },
+    "danger": {
+      "group": "Berbahaya",
+      "clear_cache": {
+        "title": "Atur ulang cache saluran suara sementara",
+        "description": "Jika kamu mengalami masalah aneh dengan saluran suara sementara, terutama saat nama bertahap saluran dimulai dari angka yang salah atau melewatkan beberapa angka, tekan tombol ini, jika tidak sebaiknya hindari!",
+        "confirm_title": "Yakin ingin menghapus cache?",
+        "confirm_description": "Jika kamu melakukannya, semua saluran suara sementara yang ada saat ini tidak akan dikenali Astro lagi dan kamu harus menghapusnya secara manual!"
+      }
+    }
+  },
+  "voice_roles": {
+    "title": "Peran suara",
+    "description": "Peran suara memungkinkan pemberian peran sementara kepada pengguna di dalam saluran suara tertentu!",
+    "create_title": "Buat peran suara",
+    "channel_description": "Saluran yang memicu peran suara ini. Jika kamu memilih kategori, semua saluran dalam kategori itu akan memicu peran suara ini.\nJika kamu memilih generator, semua saluran suara sementara yang dibuat darinya akan memicu peran suara ini.",
+    "select_channel": "Pilih saluran",
+    "select_role": "Pilih peran",
+    "role_description": "Peran ini akan diterapkan saat pengguna bergabung ke saluran yang dipilih di atas",
+    "action_description": "Berikan berarti Astro akan memberi peran kepada pengguna saat bergabung ke saluran dan mencabutnya saat keluar. Cabut melakukan sebaliknya. Alihkan berperilaku seperti \"Berikan\" jika pengguna belum memiliki peran, dan \"Cabut\" jika sudah",
+    "actions": {
+      "assign": "Berikan",
+      "remove": "Cabut",
+      "toggle": "Alihkan"
+    },
+    "permanent_description": "Jika diaktifkan, Astro tidak akan membatalkan aksi saat pengguna keluar dari saluran",
+    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 1 peran suara. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak peran suara.",
+    "channel_label": "Saluran:",
+    "role_label": "Peran:",
+    "category_label": "Kategori:",
+    "no_category": "Tidak dalam kategori",
+    "deleted_role": "Peran terhapus",
+    "delete_confirm_title": "Yakin ingin menghapus peran suara ini?",
+    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan peran suara ini!",
+    "none": "Kamu belum membuat peran suara apa pun!",
+    "select_channel_and_role": "Pilih saluran dan peran untuk membuat peran suara",
+    "detail": {
+      "description": "Kelola pengaturan peran suara ini!",
+      "channel_description": "Saluran yang memicu peran suara ini.\nJika kamu memilih kategori, semua saluran dalam kategori itu akan memicu peran suara ini.\nJika kamu memilih generator, semua saluran suara sementara yang dibuat darinya akan memicu peran suara ini."
+    }
+  },
+  "regions": {
+    "brazil": "Brasil",
+    "hongkong": "Hong Kong",
+    "india": "India",
+    "japan": "Jepang",
+    "milan": "Milan",
+    "rotterdam": "Rotterdam",
+    "russia": "Rusia",
+    "singapore": "Singapura",
+    "southafrica": "Afrika Selatan",
+    "south-korea": "Korea Selatan",
+    "sydney": "Sydney",
+    "us-central": "AS Tengah",
+    "us-east": "AS Timur",
+    "us-south": "AS Selatan",
+    "us-west": "AS Barat",
+    "automatic": "Otomatis"
+  },
+  "templates": {
+    "title": "Templat",
+    "description": "Templat memungkinkan pengguna menerapkan beberapa pengaturan sekaligus ke saluran suara sementara mereka!",
+    "create_title": "Buat templat",
+    "usage_group": "Pengaturan penggunaan",
+    "vc_group": "Pengaturan saluran suara",
+    "name_description": "Nama yang dilihat pengguna saat memilih templat untuk diterapkan ke saluran suara sementara mereka (ini bukan nama saluran suara itu sendiri)",
+    "name_placeholder": "Masukkan nama",
+    "generators": {
+      "title": "Generator yang diaktifkan",
+      "description": "Buat templat ini hanya dapat digunakan di saluran suara sementara yang dibuat oleh generator tertentu",
+      "any": "Generator mana pun",
+      "none": "Dinonaktifkan untuk semua generator",
+      "count": "Diizinkan di {count} generator | Diizinkan di {count} generator"
+    },
+    "vc_name_description": "Nama yang diterapkan pada saluran suara sementara",
+    "user_limit_description": "Batas pengguna yang diterapkan pada saluran suara sementara",
+    "bitrate_description": "Bitrate dalam kbps yang diterapkan pada saluran suara sementara",
+    "region_description": "Wilayah suara yang diterapkan pada saluran suara sementara",
+    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 3 templat. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak templat.",
+    "delete_confirm_title": "Yakin ingin menghapus templat ini?",
+    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan templat ini!",
+    "none": "Kamu belum membuat templat apa pun!",
+    "select_name": "Pilih nama untuk templat",
+    "detail": {
+      "description": "Kelola pengaturan templat ini!"
+    }
+  },
+  "interfaces": {
+    "title": "Antarmuka",
+    "description": "Kelola antarmuka servermu di sini!",
+    "create_title": "Buat antarmuka",
+    "channel_description": "Saluran teks tempat pesan antarmuka dikirim",
+    "select_channel": "Pilih saluran",
+    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 1 antarmuka. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak antarmuka.",
+    "delete_confirm_title": "Yakin ingin menghapus antarmuka ini?",
+    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan antarmuka ini!",
+    "none": "Kamu belum membuat antarmuka apa pun!",
+    "buttons": {
+      "lock": "Kunci",
+      "unlock": "Buka kunci",
+      "hide": "Sembunyikan",
+      "unhide": "Tampilkan",
+      "limit": "Batas pengguna",
+      "invite": "Undang",
+      "ban": "Blokir",
+      "permit": "Izinkan",
+      "name": "Nama",
+      "bitrate": "Bitrate",
+      "region": "Wilayah",
+      "template": "Templat",
+      "chat": "Obrolan",
+      "waiting_room": "Ruang tunggu",
+      "claim": "Klaim",
+      "transfer": "Pindahkan kepemilikan"
+    },
+    "styles": {
+      "blurple": "Blurple",
+      "grey": "Abu-abu",
+      "green": "Hijau",
+      "red": "Merah"
+    },
+    "editor": {
+      "author": {
+        "title": "Penulis",
+        "description": "Nama yang ditampilkan di bagian atas pesan"
+      },
+      "author_link": {
+        "title": "Tautan penulis",
+        "description": "Tautan yang terbuka saat pengguna mengklik nama penulis"
+      },
+      "author_image": {
+        "title": "Gambar penulis",
+        "description": "Ikon kecil yang ditampilkan di samping nama penulis"
+      },
+      "title": {
+        "title": "Judul",
+        "description": "Judul pesan"
+      },
+      "title_link": {
+        "title": "Tautan judul",
+        "description": "Tautan yang terbuka saat pengguna mengklik judul"
+      },
+      "thumbnail": {
+        "title": "Gambar mini",
+        "description": "Gambar kecil yang ditampilkan di kanan atas pesan"
+      },
+      "description": {
+        "title": "Deskripsi",
+        "description": "Teks utama pesan"
+      },
+      "image": {
+        "title": "Gambar",
+        "description": "Gambar besar yang ditampilkan di bawah deskripsi"
+      },
+      "footer": {
+        "title": "Footer",
+        "description": "Teks yang ditampilkan di bagian bawah pesan"
+      },
+      "footer_image": {
+        "title": "Gambar footer",
+        "description": "Ikon kecil yang ditampilkan di samping teks footer"
+      },
+      "color": {
+        "title": "Warna",
+        "description": "Warna garis di sebelah kiri pesan"
+      },
+      "timestamp": {
+        "title": "Stempel waktu",
+        "description": "Tanggal dan waktu tetap yang ditampilkan di pesan"
+      },
+      "buttons": {
+        "title": "Tombol",
+        "description": "Klik tombol untuk mengeditnya, atau slot kosong untuk menambahkan tombol"
+      },
+      "button": {
+        "title": "Tombol",
+        "description": "Tombol yang ditampilkan di posisi ini, tombol yang sudah digunakan di posisi lain tidak dapat dipilih"
+      },
+      "disabled": {
+        "title": "Dinonaktifkan",
+        "description": "Pengguna dapat melihat tombol tetapi tidak dapat mengkliknya"
+      },
+      "button_name": {
+        "title": "Nama",
+        "description": "Teks yang ditampilkan pada tombol, tombol memerlukan nama atau emoji agar dapat ditampilkan"
+      },
+      "emoji": {
+        "title": "Emoji",
+        "description": "Emoji standar, atau kode emoji kustom Discord"
+      },
+      "style": {
+        "title": "Gaya",
+        "description": "Warna tombol"
+      },
+      "move": "Pindahkan",
+      "move_title": "Pindahkan antarmuka",
+      "move_description": "Pesan antarmuka dikirim di saluran baru dan antarmuka lama dihapus",
+      "message_header": "Header pesan",
+      "message_body": "Isi pesan",
+      "message_footer": "Footer pesan",
+      "buttons_layout": "Tata letak tombol",
+      "behavior": "Perilaku",
+      "appearance": "Tampilan",
+      "slot_label": "Baris {row}, posisi {col}: {button}",
+      "slot_title": "Baris {row} - Posisi {col}",
+      "no_button": "Tanpa tombol",
+      "custom_emoji_help": "Cara menggunakan emoji kustom",
+      "custom_emoji_title": "Menggunakan emoji kustom",
+      "custom_emoji_step1": "Untuk memasukkan emoji kustom Discord, buka Discord, tulis emoji diawali garis miring terbalik (misalnya {example}) lalu kirim pesannya.",
+      "custom_emoji_step2": "Discord akan mengirim kode emoji di saluran, seperti {static} atau {animated} untuk emoji beranimasi. Salin dan tempel di sini pada editor, lalu emoji akan ditampilkan di Discord.",
+      "updated": "Antarmuka telah diperbarui",
+      "open_in_discord": "Buka di Discord",
+      "page_description": "Kelola pesan dan tombol antarmuka ini!"
+    }
+  },
+  "generators": {
+    "title": "Generator",
+    "description": "Kelola generator saluran suara sementara di sini!",
+    "create_title": "Buat generator",
+    "name_description": "Nama generator",
+    "category_description": "Kategori tempat saluran suara sementara dibuat",
+    "ultimate_required": "Ultimate diperlukan untuk memiliki lebih dari 2 generator saluran suara sementara. Tingkatkan servermu ke Ultimate untuk membuat lebih banyak generator.",
+    "category_value": "Kategori: {name}",
+    "delete_confirm_title": "Yakin ingin menghapus generator ini?",
+    "delete_confirm_description": "Tindakan ini tidak dapat dibatalkan dan kamu tidak akan bisa memulihkan generator ini!",
+    "none": "Kamu belum membuat generator apa pun!",
+    "editor": {
+      "vc_name": {
+        "title": "Nama",
+        "description": "Nama default yang dimiliki saluran suara sementara saat dibuat"
+      },
+      "locked_name": {
+        "title": "Nama saat terkunci",
+        "description": "Nama yang dimiliki saluran suara sementara saat dikunci"
+      },
+      "hidden_name": {
+        "title": "Nama saat tersembunyi",
+        "description": "Nama yang dimiliki saluran suara sementara saat disembunyikan"
+      },
+      "state_change": {
+        "title": "Perubahan status",
+        "description": "Apakah nama saluran suara harus diperbarui saat status saluran suara berubah. Misalnya saat pengguna mengunci atau menyembunyikan saluran"
+      },
+      "owner_change": {
+        "title": "Perubahan pemilik",
+        "description": "Apakah nama saluran suara harus diperbarui saat pemilik berubah"
+      },
+      "activity_change": {
+        "title": "Perubahan aktivitas",
+        "description": "Apakah nama saluran suara harus diperbarui saat aktivitas pemilik berubah. Misalnya saat pemilik berhenti memainkan game"
+      },
+      "renaming": {
+        "title": "Penggantian nama",
+        "description": "Apakah nama saluran suara harus diperbarui meskipun telah diganti namanya secara manual oleh pemilik. Misalnya, jika pengaturan ini nonaktif dan pemilik mengganti nama saluran, nama tidak akan diperbarui saat salah satu skenario di atas terjadi"
+      },
+      "category": {
+        "title": "Kategori",
+        "description": "Kategori tempat saluran suara sementara dibuat"
+      },
+      "position": {
+        "title": "Posisi",
+        "description": "Posisi tepat tempat saluran suara sementara ditempatkan di dalam kategori."
+      },
+      "user_limit": {
+        "title": "Batas pengguna",
+        "description": "Batas pengguna, atau 0 untuk tanpa batas"
+      },
+      "bitrate": {
+        "title": "Bitrate",
+        "description": "Bitrate dalam kbps, kosongkan untuk menggunakan bitrate default server Discord kamu"
+      },
+      "inheriting": {
+        "title": "Pewarisan",
+        "description": "Pilih apakah saluran suara sementara mewarisi izin dari generator, dari kategori tempat saluran dibuat, atau tidak mewarisi izin apa pun"
+      },
+      "default_state": {
+        "title": "Status default",
+        "description": "Apakah saluran suara sementara harus dikunci atau disembunyikan saat dibuat"
+      },
+      "target_role": {
+        "title": "Peran target",
+        "description": "Astro akan mengubah izin peran ini saat diperlukan, misalnya saat pengguna mengunci atau menyembunyikan saluran"
+      },
+      "moderator_role": {
+        "title": "Peran moderator",
+        "description": "Peran ini akan selalu memiliki izin untuk mengelola saluran, bahkan saat saluran dikunci atau disembunyikan"
+      },
+      "min_user_limit": {
+        "title": "Batas pengguna minimum",
+        "description": "Batas pengguna minimum yang boleh diatur pengguna untuk saluran suara sementara mereka, 0 berarti tanpa batas"
+      },
+      "max_user_limit": {
+        "title": "Batas pengguna maksimum",
+        "description": "Batas pengguna maksimum yang boleh diatur pengguna untuk saluran suara sementara mereka, 0 berarti tanpa batas"
+      },
+      "min_bitrate": {
+        "title": "Bitrate minimum",
+        "description": "Bitrate minimum, dalam kbps, yang boleh diatur pengguna untuk saluran suara sementara mereka"
+      },
+      "max_bitrate": {
+        "title": "Bitrate maksimum",
+        "description": "Bitrate maksimum, dalam kbps, yang boleh diatur pengguna untuk saluran suara sementara mereka"
+      },
+      "owner_permissions": {
+        "title": "Izin pemilik",
+        "description": "Pilih izin Discord yang dimiliki pemilik saluran suara atas saluran suara sementaranya"
+      },
+      "owner_role": {
+        "title": "Peran pemilik",
+        "description": "Peran ini akan diberikan kepada pemilik saluran suara sementara"
+      },
+      "queue_mode": {
+        "title": "Mode antrean",
+        "description": "Jika diaktifkan, Astro akan lebih dulu memindahkan pengguna ke saluran suara sementara yang sudah ada jika tersedia. Jika tidak ada saluran suara sementara yang tersedia, Astro akan membuat yang baru"
+      },
+      "fallback": {
+        "title": "Generator cadangan",
+        "description": "Jika generator ini mencapai batas saluran suara sementara (Discord mengizinkan maksimal 50 saluran suara per kategori), Astro akan memindahkan pengguna ke generator ini sebagai cadangan"
+      },
+      "waiting_auto": {
+        "title": "Pembuatan ruang tunggu otomatis",
+        "description": "Jika diaktifkan, Astro akan otomatis membuat ruang tunggu untuk saluran suara sementara saat dibuat"
+      },
+      "waiting_name": {
+        "title": "Nama",
+        "description": "Nama default untuk ruang tunggu"
+      },
+      "waiting_category": {
+        "title": "Kategori",
+        "description": "Kategori tempat ruang tunggu dibuat"
+      },
+      "waiting_position": {
+        "title": "Posisi",
+        "description": "Apakah ruang tunggu harus dibuat di atas atau di bawah saluran suara sementara yang bersangkutan. Atau di bagian bawah kategori"
+      },
+      "waiting_user_limit": {
+        "title": "Batas pengguna",
+        "description": "Batas pengguna untuk ruang tunggu"
+      },
+      "waiting_bitrate": {
+        "title": "Bitrate",
+        "description": "Bitrate dalam kbps untuk ruang tunggu, kosongkan untuk menggunakan bitrate default server Discord kamu"
+      },
+      "waiting_inheriting": {
+        "title": "Pewarisan izin",
+        "description": "Pilih apakah ruang tunggu mewarisi izin dari generator, dari kategori tempat ruang tunggu dibuat, atau tidak mewarisi izin apa pun"
+      },
+      "chat_auto": {
+        "title": "Pembuatan obrolan pribadi otomatis",
+        "description": "Jika diaktifkan, Astro akan otomatis membuat saluran teks pribadi untuk setiap saluran suara sementara saat dibuat"
+      },
+      "chat_name": {
+        "title": "Nama",
+        "description": "Nama default untuk obrolan teks pribadi"
+      },
+      "chat_topic": {
+        "title": "Topik",
+        "description": "Topik yang otomatis diatur pada setiap obrolan teks pribadi"
+      },
+      "chat_message_type": {
+        "title": "Jenis pesan pembuatan",
+        "description": "Pilih jenis pesan yang harus dikirim Astro di setiap obrolan teks pribadi saat dibuat"
+      },
+      "chat_message": {
+        "title": "Pesan pembuatan",
+        "description": "Pesan yang dikirim Astro di setiap obrolan teks pribadi saat dibuat"
+      },
+      "chat_interface": {
+        "title": "Antarmuka untuk pesan pembuatan",
+        "description": "Antarmuka yang harus dikirim Astro di obrolan teks pribadi saat dibuat"
+      },
+      "chat_category": {
+        "title": "Kategori",
+        "description": "Kategori tempat obrolan teks pribadi dibuat"
+      },
+      "chat_inheriting": {
+        "title": "Pewarisan izin",
+        "description": "Pilih apakah obrolan teks pribadi mewarisi izin dari generator, dari kategori tempat obrolan dibuat, atau tidak mewarisi izin apa pun"
+      },
+      "chat_nsfw": {
+        "title": "NSFW",
+        "description": "Atur pengaturan NSFW untuk obrolan teks pribadi"
+      },
+      "chat_slowmode": {
+        "title": "Mode lambat",
+        "description": "Atur mode lambat obrolan teks pribadi, dalam detik. Gunakan 0 untuk tanpa mode lambat"
+      },
+      "description": "Kelola pengaturan generator saluran suara sementara ini!",
+      "group_vc_name": "Nama saluran suara",
+      "group_rename": "Kondisi penggantian nama saluran suara",
+      "group_vc_settings": "Pengaturan saluran suara",
+      "group_vc_permissions": "Izin saluran suara",
+      "group_commands": "Pengaturan perintah",
+      "group_utilities": "Utilitas",
+      "group_waiting": "Ruang tunggu",
+      "group_chat": "Obrolan teks pribadi",
+      "region": {
+        "title": "Wilayah",
+        "description": "Untuk mengubah wilayah yang diterapkan pada saluran suara sementara, ubah wilayah generator melalui pengaturan saluran di dalam Discord."
+      },
+      "selected_permissions": "{count} izin dipilih",
+      "permission_categories": {
+        "general": "Izin umum",
+        "apps": "Izin aplikasi",
+        "membership": "Izin keanggotaan",
+        "text": "Izin teks",
+        "voice": "Izin suara"
+      },
+      "no_role": "Tanpa peran",
+      "no_fallback": "Tanpa cadangan",
+      "interface_in": "Antarmuka di #{channel}",
+      "message_id": "ID pesan: {id}",
+      "positions": {
+        "before": "Sebelum",
+        "after": "Sesudah",
+        "bottom": "Paling bawah"
+      },
+      "inheritance": {
+        "none": "Tidak ada",
+        "category": "Kategori",
+        "generator": "Generator"
+      },
+      "states": {
+        "unlocked": "Tidak terkunci",
+        "locked": "Terkunci",
+        "hidden": "Tersembunyi",
+        "unhidden": "Terlihat"
+      },
+      "chat_message_types": {
+        "no_message": "Tanpa pesan",
+        "text_message": "Pesan teks",
+        "embed": "Pesan embed",
+        "interface": "Antarmuka Astro"
+      },
+      "need_interface": "Kamu harus membuat antarmuka terlebih dahulu agar dapat menggunakannya sebagai pesan obrolan teks pribadi",
+      "no_interface": "Tanpa antarmuka"
+    }
+  }
+}

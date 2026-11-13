@@ -3,7 +3,19 @@ import type { LocaleObject } from '@nuxtjs/i18n'
 
 const { locale, locales, setLocale } = useI18n()
 const available_locales = computed(() => locales.value as LocaleObject[])
-const flags: Record<string, string> = { 'en-US': '🇺🇸', it: '🇮🇹' }
+const flags: Record<string, string> = {
+  'en-US': '🇺🇸',
+  it: '🇮🇹',
+  de: '🇩🇪',
+  fr: '🇫🇷',
+  'es-ES': '🇪🇸',
+  'pt-BR': '🇧🇷',
+  id: '🇮🇩',
+  ko: '🇰🇷',
+  th: '🇹🇭',
+  ar: '🇸🇦',
+  fil: '🇵🇭',
+}
 </script>
 
 <template>
