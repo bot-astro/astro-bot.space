@@ -1,0 +1,810 @@
+{
+  "nav": {
+    "add_to_server": "Zum Server hinzufügen",
+    "guides": "Anleitungen",
+    "ultimate": "Ultimate",
+    "github": "GitHub",
+    "logo_alt": "Astros Logo",
+    "home": "Startseite",
+    "servers": "Server",
+    "billing": "Abrechnung",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "logged_in_as": "Angemeldet als {username}"
+  },
+  "footer": {
+    "resources": "Ressourcen",
+    "support": "Support",
+    "company": "Unternehmen",
+    "home": "Startseite",
+    "contact_us": "Kontakt",
+    "legal": "Rechtliches",
+    "privacy_policy": "Datenschutzerklärung",
+    "terms_of_service": "Nutzungsbedingungen",
+    "refund_policy": "Rückerstattungsrichtlinie",
+    "copyright": "© Astro Bot {year} - Alle Rechte vorbehalten",
+    "by": "von"
+  },
+  "error": {
+    "billing_portal": "Beim Öffnen des Abrechnungsportals ist etwas schiefgelaufen, versuche es später erneut",
+    "checkout": "Beim Starten des Bezahlvorgangs ist etwas schiefgelaufen, bitte versuche es später erneut"
+  },
+  "meta": {
+    "page_title": "{page} - Astro - Temporäre Sprachkanäle für dein Discord!",
+    "invite": {
+      "title": "Astro einladen - Astro - Temporäre Sprachkanäle für dein Discord!",
+      "description": "Lade Astro auf deinen Discord-Server ein und erstelle temporäre Sprachkanäle für deine Community."
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung - Astro - Temporäre Sprachkanäle für dein Discord!"
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen - Astro - Temporäre Sprachkanäle für dein Discord!"
+    },
+    "refund": {
+      "title": "Rückerstattungsrichtlinie - Astro - Temporäre Sprachkanäle für dein Discord!"
+    },
+    "guide_basic": {
+      "title": "Grundlagen-Anleitung",
+      "description": "Lerne die Grundlagen und starte mit Astro durch"
+    },
+    "guide_generator": {
+      "title": "Generator-Anleitung",
+      "description": "Lerne, wie du Generatoren für temporäre Sprachkanäle konfigurierst und verwendest"
+    },
+    "guide_interface": {
+      "title": "Interface-Anleitung",
+      "description": "Lerne mit dieser Anleitung, wie dein Interface großartig und einzigartig aussieht"
+    },
+    "guide_template": {
+      "title": "Vorlagen-Anleitung",
+      "description": "Entdecke Vorlagen und lerne, wie du sie konfigurierst, deine Nutzer werden sie lieben"
+    },
+    "guide_voice_role": {
+      "title": "Sprachrollen-Anleitung",
+      "description": "Lerne, wie du Sprachrollen konfigurierst, damit dein Server besonders stylisch wirkt"
+    },
+    "guides": {
+      "title": "Anleitungen",
+      "description": "Du brauchst Hilfe mit Astro? Schau dir diese einsteigerfreundlichen Anleitungen an"
+    },
+    "ultimate": {
+      "title": "Ultimate",
+      "description": "Bring deinen Server mit den Premium-Funktionen von Astro aufs nächste Level"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Konfiguriere alle Astro-Einstellungen mit dem leistungsstarken und intuitiven Dashboard"
+    },
+    "errors": {
+      "title": "Fehler",
+      "description": "Sieh dir alle Probleme an, auf die Astro auf deinem Server gestoßen ist"
+    },
+    "guild": {
+      "title": "Dashboard",
+      "description": "Konfiguriere alle Astro-Einstellungen für deinen Server mit dem leistungsstarken und intuitiven Dashboard"
+    },
+    "voice_roles": {
+      "title": "Sprachrollen",
+      "description": "Erstelle, sieh dir an und lösche Sprachrollen für deinen Server"
+    },
+    "voice_role": {
+      "title": "Einstellungen der Sprachrolle",
+      "description": "Konfiguriere die Einstellungen dieser Sprachrolle"
+    },
+    "templates": {
+      "title": "Vorlagen",
+      "description": "Erstelle, sieh dir an und lösche Vorlagen für deinen Server"
+    },
+    "template": {
+      "title": "Einstellungen der Vorlage",
+      "description": "Konfiguriere die Einstellungen dieser Vorlage"
+    },
+    "interfaces": {
+      "title": "Interfaces",
+      "description": "Erstelle, sieh dir an und lösche Interfaces"
+    },
+    "generators": {
+      "title": "Generatoren",
+      "description": "Erstelle, sieh dir an und lösche Generatoren für temporäre Sprachkanäle"
+    },
+    "interface": {
+      "title": "Interface",
+      "description": "Bearbeite die Nachricht und die Buttons deines Interfaces"
+    },
+    "generator": {
+      "title": "Generator",
+      "description": "Konfiguriere alle Einstellungen deines Generators für temporäre Sprachkanäle"
+    },
+    "site": {
+      "title": "Astro - Temporäre Sprachkanäle für dein Discord!",
+      "description": "Astro ist ein Discord-Bot, mit dem du temporäre Sprachkanäle auf deinem Server erstellen kannst. Perfekt für Gaming-Sessions, Lerngruppen oder jeden anderen Bedarf an temporärem Sprachchat!"
+    }
+  },
+  "home": {
+    "tagline": "Der einzigartigste und umfassendste Discord-Bot für temporäre Sprachkanäle und Sprachrollen!",
+    "get_started": "Los geht's",
+    "temp_vc": {
+      "description": "Astro erzeugt auf Abruf vollständig anpassbare temporäre Sprachkanäle und löscht sie, sobald sie leer sind. Mit extremen Anpassungsmöglichkeiten kannst du das perfekte System für deinen Server aufbauen!",
+      "title": "{animated} Sprachkanäle",
+      "animated": "Temporäre"
+    },
+    "default_interface": {
+      "title": "Schönes Interface",
+      "description": "Astro bringt ein schönes Standard-Interface mit, mit dem mobile Nutzer ihren privaten Kanal ganz einfach verwalten können!"
+    },
+    "custom_interface": {
+      "title": "Aber auch anpassbar",
+      "description": "Astro-Interfaces sind bis auf den letzten Pixel anpassbar, gestalte sie genau so, wie du es brauchst, deine Fantasie ist die einzige Grenze!"
+    },
+    "voice_role": {
+      "description": "Astro kann eine Rolle vergeben oder entfernen, wenn ein Nutzer einem bestimmten Sprachkanal beitritt! So kannst du zum Beispiel Gaming-Textchats nur dann sichtbar machen, solange sich jemand in einem Gaming-Sprachkanal befindet, deine Fantasie ist die einzige Grenze!",
+      "title": "Sprachrollen"
+    },
+    "exclusive": {
+      "title": "Exklusiv für Sprachkanäle",
+      "description": "Die Konzentration auf Sprachkanäle macht Astro zum besten Bot seiner Art, probiere ihn jetzt aus!"
+    }
+  },
+  "guides": {
+    "title": "Anleitungen",
+    "subtitle": "Hier sind einige praktische Anleitungen, die dir beim Einstieg in Astro helfen und mit denen du das perfekte Setup für deinen Server erstellst!",
+    "basic": {
+      "title": "Erste Schritte"
+    },
+    "generator": {
+      "title": "Generatoren"
+    },
+    "interface": {
+      "title": "Interfaces"
+    },
+    "template": {
+      "title": "Vorlagen"
+    },
+    "voice_role": {
+      "title": "Sprachrollen"
+    }
+  },
+  "ultimate": {
+    "title": "Ultimate-Server",
+    "subtitle": "Bring deinen Server mit Premium-Funktionen aufs nächste Level!",
+    "per_month": "pro Monat für {count} Server | pro Monat für {count} Server",
+    "per_year": "pro Jahr für {count} Server | pro Jahr für {count} Server",
+    "server_quantity": "Anzahl der Server",
+    "billed": "Abrechnung",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "subscribe": "Abonnieren",
+    "feature": "Funktion",
+    "premium": "Premium",
+    "free": "Kostenlos",
+    "maximum": "Maximal {count}",
+    "features": {
+      "generators": "Unbegrenzte Generatoren für temporäre Sprachkanäle",
+      "interfaces": "Unbegrenzte Interfaces",
+      "voice_roles": "Unbegrenzte Sprachrollen",
+      "templates": "Unbegrenzte Vorlagen",
+      "numbered_names": "Nummerierte Namen für Sprachkanäle",
+      "activity_variables": "Variablen zur Nutzeraktivität für Kanalnamen",
+      "custom_interfaces": "Anpassbare Interfaces",
+      "bypass_voting": "Abstimmungsanforderungen auf jedem Server umgehen",
+      "badwords": "Schimpfwortfilter für Namen von Sprachkanälen",
+      "waiting_rooms": "Warteräume",
+      "private_chats": "Private Textchats",
+      "owner_voice_role": "Sprachrolle für Kanalbesitzer",
+      "creation_message": "Eigene Nachrichten bei der Erstellung von Sprachkanälen",
+      "fallback_generators": "Fallback-Generatoren"
+    }
+  },
+  "common": {
+    "ultimate": "Ultimate",
+    "free": "Kostenlos",
+    "save": "Speichern",
+    "reset": "Zurücksetzen",
+    "delete": "Löschen",
+    "select": "Auswählen",
+    "upload": "Hochladen",
+    "go_back": "Zurück",
+    "error_generic": "Etwas ist schiefgelaufen, bitte versuche es später erneut",
+    "see_guide": "Anleitung ansehen",
+    "close": "Schließen",
+    "downgrade": "Downgrade",
+    "upgrade": "Upgrade",
+    "clear_cache": "Cache leeren",
+    "create": "Erstellen",
+    "manage": "Verwalten",
+    "channel": "Kanal",
+    "role": "Rolle",
+    "action": "Aktion",
+    "permanent": "Dauerhaft",
+    "not_set": "Nicht festgelegt",
+    "name": "Name",
+    "user_limit": "Nutzerlimit",
+    "bitrate": "Bitrate",
+    "region": "Region",
+    "kbps": "kbps",
+    "deleted_channel": "Gelöschter Kanal",
+    "category": "Kategorie",
+    "no_category": "Keine Kategorie",
+    "clear": "Leeren"
+  },
+  "dashboard": {
+    "sections": {
+      "overview": "Übersicht",
+      "errors": "Fehler",
+      "generators": "Generatoren",
+      "interfaces": "Interfaces",
+      "voice_roles": "Sprachrolle",
+      "templates": "Vorlagen"
+    },
+    "save_toast": {
+      "message": "Achtung - du hast ungespeicherte Änderungen!"
+    },
+    "image": {
+      "not_set": "Nicht festgelegt",
+      "reset_to_default": "Auf Standard zurücksetzen",
+      "preview": "Vorschau",
+      "replace": "Ersetzen",
+      "remove": "Entfernen",
+      "choose": "Bild auswählen"
+    },
+    "media": {
+      "title": "Medienspeicher",
+      "description": "Lade Bilder hoch oder wähle eines der bereits hochgeladenen Bilder aus (png, jpeg, gif oder webp)",
+      "delete_image": "Bild löschen",
+      "delete_confirm_title": "Bist du sicher, dass du dieses Bild löschen möchtest?",
+      "delete_confirm_description": "Das Bild wird dauerhaft aus unserem Speicher entfernt und wird überall, wo es verwendet wird, nicht mehr angezeigt.",
+      "drop_or_click": "Ziehe ein Bild hierher oder klicke zum Hochladen"
+    },
+    "variables": {
+      "title": "Variablen",
+      "categories": {
+        "voice_channel_owner": "Besitzer des Sprachkanals",
+        "voice_channel_owner_activity": "Aktivität des Besitzers des Sprachkanals",
+        "voice_channel_properties": "Eigenschaften des Sprachkanals",
+        "incremental_values": "Inkrementelle Werte"
+      }
+    },
+    "role": {
+      "unmanageable": "Astro kann diese Rolle nicht verwalten, da sie in der Rollenhierarchie des Servers über Astros höchster Rolle liegt"
+    },
+    "upgrade": {
+      "title": "Server upgraden",
+      "choose_subscription": "Wähle ein Abonnement aus, mit dem der Server auf Ultimate aufgewertet werden soll:",
+      "subscription_annual": "Jahresabo mit {available}/{quantities} verfügbaren Upgrades",
+      "subscription_monthly": "Monatsabo mit {available}/{quantities} verfügbaren Upgrades",
+      "all_used": "Du hast bereits alle deine Upgrades verwendet. Führe entweder ein Downgrade für einen Server durch oder kaufe weitere Upgrades!",
+      "none_available": "Du hast keine verfügbaren Upgrades.\nKaufe ein Abonnement, um den Server auf Ultimate aufzuwerten und erweiterte Funktionen freizuschalten!",
+      "purchase": "Abonnements kaufen",
+      "upgrade": "Upgrade"
+    },
+    "ultimate_required": {
+      "title": "Ultimate erforderlich"
+    }
+  },
+  "guilds": {
+    "required_permissions": "Erforderliche Berechtigungen",
+    "required_permissions_description": "Um die Astro-Einstellungen für einen Server zu verwalten, benötigst du entweder die Berechtigung {manage_channels}, {manage_server} oder {administrator}.",
+    "permissions": {
+      "manage_channels": "Kanäle verwalten",
+      "manage_server": "Server verwalten",
+      "administrator": "Administrator"
+    },
+    "title": "Server",
+    "subtitle": "Wähle einen Server zum Verwalten aus",
+    "search_placeholder": "Nach Namen suchen",
+    "manage": "Verwalten",
+    "none_manageable": "Du kannst die Einstellungen keines Servers verwalten, auf dem du dich befindest!",
+    "see_required_permissions": "Erforderliche Berechtigungen ansehen"
+  },
+  "errors": {
+    "title": "Fehler",
+    "description": "Sieh dir die Fehler deines Servers an und lösche sie",
+    "clear": "Leeren",
+    "view": "Ansehen",
+    "details": "Fehlerdetails",
+    "none_title": "Bisher sind keine Fehler aufgetreten!",
+    "none_description": "Falls etwas Schlimmes passiert, wird es hier angezeigt ;)"
+  },
+  "overview": {
+    "description": "Verwalte die grundlegenden Einstellungen deines Servers",
+    "shortcuts": {
+      "generators": {
+        "title": "Temporäre Sprachkanäle konfigurieren",
+        "description": "Wechsle zum Bereich Generatoren, um temporäre Sprachkanäle zu konfigurieren"
+      },
+      "interfaces": {
+        "title": "Interface erstellen",
+        "description": "Erstelle ein Interface, mit dem deine Nutzer ihren Kanal über einfache Buttons verwalten können"
+      },
+      "voice_roles": {
+        "title": "Sprachrollen einrichten",
+        "description": "Verbinde Sprachkanäle mit Rollen, um das Nutzererlebnis auf deinem Server zu verbessern!"
+      }
+    },
+    "settings": {
+      "group": "Einstellungen",
+      "require_admin": {
+        "title": "Administrator-Berechtigung verlangen",
+        "description": "Wenn du dies deaktivierst, ignoriert Astro Berechtigungsprobleme.",
+        "recommendation": "Es wird empfohlen, dies aktiviert zu lassen!"
+      },
+      "slash_permissions": {
+        "title": "Berechtigungen für Slash-Befehle",
+        "description": "Du kannst den Zugriff auf Astros Slash-Befehle direkt über Discord-Berechtigungen einschränken!",
+        "button": "Auf Discord verwalten"
+      },
+      "language": {
+        "title": "Sprache",
+        "description": "Die Sprache, die Astro auf diesem Server für seine Nachrichten und seine Oberfläche in Discord verwendet. Dies ändert nicht die Sprache dieser Website."
+      }
+    },
+    "ultimate": {
+      "group": "Ultimate",
+      "title": "Ultimate-Server",
+      "status_upgraded": "Dein Server ist derzeit auf Ultimate aufgewertet",
+      "status_not_upgraded": "Dein Server ist derzeit nicht auf Ultimate aufgewertet",
+      "refresh_tooltip": "Discord-Abonnementdaten aktualisieren",
+      "downgrade_title": "Server downgraden",
+      "downgrade_on_discord": "Dieser Server wurde über den Discord-Store auf Ultimate aufgewertet. Du musst das Abonnement auf Discord kündigen, um Ultimate zu beenden.",
+      "official_guide": "Offizielle Anleitung"
+    },
+    "profile": {
+      "group": "Bot-Profil",
+      "nickname": {
+        "title": "Spitzname",
+        "description": "Der Name des Bots auf diesem Server"
+      },
+      "bio": {
+        "title": "Bio",
+        "description": "Die Beschreibung, die im Bot-Profil auf diesem Server angezeigt wird",
+        "placeholder": "Der einzigartigste und umfassendste Discord-Bot für temporäre Sprachkanäle!"
+      },
+      "avatar": {
+        "title": "Avatar",
+        "description": "Das Profilbild des Bots auf diesem Server"
+      },
+      "banner": {
+        "title": "Banner",
+        "description": "Das Banner des Bot-Profils auf diesem Server"
+      },
+      "using_default": "Standard wird verwendet"
+    },
+    "danger": {
+      "group": "Gefahrenzone",
+      "clear_cache": {
+        "title": "Cache der temporären Sprachkanäle zurücksetzen",
+        "description": "Wenn du merkwürdige Probleme mit temporären Sprachkanälen hast, besonders wenn die inkrementellen Namen der Kanäle mit einer falschen Zahl beginnen oder einige überspringen, drücke diesen Button, ansonsten versuche, ihn zu vermeiden!",
+        "confirm_title": "Bist du sicher, dass du den Cache leeren möchtest?",
+        "confirm_description": "Wenn du das tust, werden alle aktuell existierenden temporären Sprachkanäle von Astro nicht mehr erkannt und du musst sie manuell löschen!"
+      }
+    }
+  },
+  "voice_roles": {
+    "title": "Sprachrollen",
+    "description": "Mit Sprachrollen kannst du Nutzern innerhalb bestimmter Sprachkanäle temporäre Rollen geben!",
+    "create_title": "Sprachrolle erstellen",
+    "channel_description": "Kanal, der diese Sprachrolle auslöst. Wenn du eine Kategorie auswählst, lösen alle Kanäle dieser Kategorie diese Sprachrolle aus.\nWenn du einen Generator auswählst, lösen alle daraus erzeugten temporären Sprachkanäle diese Sprachrolle aus.",
+    "select_channel": "Kanal auswählen",
+    "select_role": "Rolle auswählen",
+    "role_description": "Diese Rolle wird angewendet, wenn ein Nutzer dem oben ausgewählten Kanal beitritt",
+    "action_description": "Zuweisen bedeutet, dass Astro dem Nutzer die Rolle gibt, wenn er den Kanal betritt, und sie entfernt, wenn er ihn verlässt. Entfernen macht das Gegenteil. Umschalten verhält sich wie „Zuweisen“, wenn der Nutzer die Rolle nicht hat, andernfalls wie „Entfernen“",
+    "actions": {
+      "assign": "Zuweisen",
+      "remove": "Entfernen",
+      "toggle": "Umschalten"
+    },
+    "permanent_description": "Wenn aktiviert, macht Astro die Aktion nicht rückgängig, wenn der Nutzer den Kanal verlässt",
+    "ultimate_required": "Für mehr als 1 Sprachrolle ist Ultimate erforderlich. Werte deinen Server auf Ultimate auf, um mehr Sprachrollen zu erstellen.",
+    "channel_label": "Kanal:",
+    "role_label": "Rolle:",
+    "category_label": "Kategorie:",
+    "no_category": "Nicht in einer Kategorie",
+    "deleted_role": "Gelöschte Rolle",
+    "delete_confirm_title": "Bist du sicher, dass du die Sprachrolle löschen möchtest?",
+    "delete_confirm_description": "Diese Aktion kann nicht rückgängig gemacht werden und du kannst diese Sprachrolle nicht wiederherstellen!",
+    "none": "Du hast noch keine Sprachrolle erstellt!",
+    "select_channel_and_role": "Bitte wähle einen Kanal und eine Rolle aus, um die Sprachrolle zu erstellen",
+    "detail": {
+      "description": "Verwalte die Einstellungen dieser Sprachrolle!",
+      "channel_description": "Kanal, der diese Sprachrolle auslöst.\nWenn du eine Kategorie auswählst, lösen alle Kanäle dieser Kategorie diese Sprachrolle aus.\nWenn du einen Generator auswählst, lösen alle daraus erzeugten temporären Sprachkanäle diese Sprachrolle aus."
+    }
+  },
+  "regions": {
+    "brazil": "Brasilien",
+    "hongkong": "Hongkong",
+    "india": "Indien",
+    "japan": "Japan",
+    "milan": "Mailand",
+    "rotterdam": "Rotterdam",
+    "russia": "Russland",
+    "singapore": "Singapur",
+    "southafrica": "Südafrika",
+    "south-korea": "Südkorea",
+    "sydney": "Sydney",
+    "us-central": "US-Mitte",
+    "us-east": "US-Ost",
+    "us-south": "US-Süd",
+    "us-west": "US-West",
+    "automatic": "Automatisch"
+  },
+  "templates": {
+    "title": "Vorlagen",
+    "description": "Mit Vorlagen können Nutzer mehrere Einstellungen auf einmal auf ihren temporären Sprachkanal anwenden!",
+    "create_title": "Vorlage erstellen",
+    "usage_group": "Nutzungseinstellungen",
+    "vc_group": "Einstellungen des Sprachkanals",
+    "name_description": "Der Name, den Nutzer sehen, wenn sie eine Vorlage für ihren temporären Sprachkanal auswählen (das ist nicht der Name des Sprachkanals selbst)",
+    "name_placeholder": "Namen eingeben",
+    "generators": {
+      "title": "Aktivierte Generatoren",
+      "description": "Diese Vorlage nur in temporären Sprachkanälen verwendbar machen, die von bestimmten Generatoren erstellt wurden",
+      "any": "Beliebiger Generator",
+      "none": "Für jeden Generator deaktiviert",
+      "count": "In {count} Generator erlaubt | In {count} Generatoren erlaubt"
+    },
+    "vc_name_description": "Der Name, der auf temporäre Sprachkanäle angewendet wird",
+    "user_limit_description": "Das Nutzerlimit, das auf den temporären Sprachkanal angewendet wird",
+    "bitrate_description": "Die Bitrate in kbps, die auf den temporären Sprachkanal angewendet wird",
+    "region_description": "Die Sprachregion, die auf temporäre Sprachkanäle angewendet wird",
+    "ultimate_required": "Für mehr als 3 Vorlagen ist Ultimate erforderlich. Werte deinen Server auf Ultimate auf, um mehr Vorlagen zu erstellen.",
+    "delete_confirm_title": "Bist du sicher, dass du die Vorlage löschen möchtest?",
+    "delete_confirm_description": "Diese Aktion kann nicht rückgängig gemacht werden und du kannst diese Vorlage nicht wiederherstellen!",
+    "none": "Du hast noch keine Vorlage erstellt!",
+    "select_name": "Bitte wähle einen Namen für die Vorlage",
+    "detail": {
+      "description": "Verwalte die Einstellungen dieser Vorlage!"
+    }
+  },
+  "interfaces": {
+    "title": "Interfaces",
+    "description": "Verwalte hier die Interfaces deines Servers!",
+    "create_title": "Interface erstellen",
+    "channel_description": "Der Textkanal, in dem die Interface-Nachricht gesendet wird",
+    "select_channel": "Kanal auswählen",
+    "ultimate_required": "Für mehr als 1 Interface ist Ultimate erforderlich. Werte deinen Server auf Ultimate auf, um mehr Interfaces zu erstellen.",
+    "delete_confirm_title": "Bist du sicher, dass du das Interface löschen möchtest?",
+    "delete_confirm_description": "Diese Aktion kann nicht rückgängig gemacht werden und du kannst dieses Interface nicht wiederherstellen!",
+    "none": "Du hast noch kein Interface erstellt!",
+    "buttons": {
+      "lock": "Sperren",
+      "unlock": "Entsperren",
+      "hide": "Verstecken",
+      "unhide": "Anzeigen",
+      "limit": "Nutzerlimit",
+      "invite": "Einladen",
+      "ban": "Sperren (Bann)",
+      "permit": "Erlauben",
+      "name": "Name",
+      "bitrate": "Bitrate",
+      "region": "Region",
+      "template": "Vorlage",
+      "chat": "Chat",
+      "waiting_room": "Warteraum",
+      "claim": "Übernehmen",
+      "transfer": "Besitz übertragen"
+    },
+    "styles": {
+      "blurple": "Blurple",
+      "grey": "Grau",
+      "green": "Grün",
+      "red": "Rot"
+    },
+    "editor": {
+      "author": {
+        "title": "Autor",
+        "description": "Der Name, der oben in der Nachricht angezeigt wird"
+      },
+      "author_link": {
+        "title": "Autor-Link",
+        "description": "Der Link, der sich öffnet, wenn Nutzer auf den Namen des Autors klicken"
+      },
+      "author_image": {
+        "title": "Autorenbild",
+        "description": "Ein kleines Symbol neben dem Namen des Autors"
+      },
+      "title": {
+        "title": "Titel",
+        "description": "Der Titel der Nachricht"
+      },
+      "title_link": {
+        "title": "Titel-Link",
+        "description": "Der Link, der sich öffnet, wenn Nutzer auf den Titel klicken"
+      },
+      "thumbnail": {
+        "title": "Vorschaubild",
+        "description": "Ein kleines Bild oben rechts in der Nachricht"
+      },
+      "description": {
+        "title": "Beschreibung",
+        "description": "Der Haupttext der Nachricht"
+      },
+      "image": {
+        "title": "Bild",
+        "description": "Ein großes Bild unter der Beschreibung"
+      },
+      "footer": {
+        "title": "Fußzeile",
+        "description": "Der Text am unteren Ende der Nachricht"
+      },
+      "footer_image": {
+        "title": "Bild der Fußzeile",
+        "description": "Ein kleines Symbol neben dem Text der Fußzeile"
+      },
+      "color": {
+        "title": "Farbe",
+        "description": "Die Farbe der Linie links neben der Nachricht"
+      },
+      "timestamp": {
+        "title": "Zeitstempel",
+        "description": "Ein festes Datum mit Uhrzeit, das in der Nachricht angezeigt wird"
+      },
+      "buttons": {
+        "title": "Buttons",
+        "description": "Klicke auf einen Button, um ihn zu bearbeiten, oder auf einen leeren Platz, um einen hinzuzufügen"
+      },
+      "button": {
+        "title": "Button",
+        "description": "Der Button, der an dieser Position angezeigt wird, ein bereits an anderer Stelle verwendeter Button kann nicht ausgewählt werden"
+      },
+      "disabled": {
+        "title": "Deaktiviert",
+        "description": "Nutzer können den Button sehen, aber nicht anklicken"
+      },
+      "button_name": {
+        "title": "Name",
+        "description": "Der Text auf dem Button, ein Button braucht einen Namen oder ein Emoji, um angezeigt zu werden"
+      },
+      "emoji": {
+        "title": "Emoji",
+        "description": "Ein Standard-Emoji oder der Code eines benutzerdefinierten Discord-Emojis"
+      },
+      "style": {
+        "title": "Stil",
+        "description": "Die Farbe des Buttons"
+      },
+      "move": "Verschieben",
+      "move_title": "Interface verschieben",
+      "move_description": "Die Interface-Nachricht wird im neuen Kanal gesendet und das alte Interface wird gelöscht",
+      "message_header": "Nachrichtenkopf",
+      "message_body": "Nachrichtentext",
+      "message_footer": "Nachrichtenfuß",
+      "buttons_layout": "Anordnung der Buttons",
+      "behavior": "Verhalten",
+      "appearance": "Darstellung",
+      "slot_label": "Zeile {row}, Position {col}: {button}",
+      "slot_title": "Zeile {row} - Position {col}",
+      "no_button": "Kein Button",
+      "custom_emoji_help": "So verwendest du benutzerdefinierte Emojis",
+      "custom_emoji_title": "Benutzerdefinierte Emojis verwenden",
+      "custom_emoji_step1": "Um ein benutzerdefiniertes Discord-Emoji einzufügen, gehe zu Discord, schreibe das Emoji mit einem vorangestellten Backslash (zum Beispiel {example}) und sende die Nachricht ab.",
+      "custom_emoji_step2": "Discord sendet den Emoji-Code in den Kanal, etwa {static} oder {animated} bei animierten Emojis. Kopiere ihn und füge ihn hier im Editor ein, danach wird er auf Discord dargestellt.",
+      "updated": "Das Interface wurde aktualisiert",
+      "open_in_discord": "In Discord öffnen",
+      "page_description": "Verwalte die Nachricht und die Buttons dieses Interfaces!"
+    }
+  },
+  "generators": {
+    "title": "Generatoren",
+    "description": "Verwalte hier die Generatoren für temporäre Sprachkanäle!",
+    "create_title": "Generator erstellen",
+    "name_description": "Der Name des Generators",
+    "category_description": "Die Kategorie, in der temporäre Sprachkanäle erzeugt werden",
+    "ultimate_required": "Für mehr als 2 Generatoren für temporäre Sprachkanäle ist Ultimate erforderlich. Werte deinen Server auf Ultimate auf, um mehr Generatoren zu erstellen.",
+    "category_value": "Kategorie: {name}",
+    "delete_confirm_title": "Bist du sicher, dass du den Generator löschen möchtest?",
+    "delete_confirm_description": "Diese Aktion kann nicht rückgängig gemacht werden und du kannst diesen Generator nicht wiederherstellen!",
+    "none": "Du hast noch keinen Generator erstellt!",
+    "editor": {
+      "vc_name": {
+        "title": "Name",
+        "description": "Der Standardname, den temporäre Sprachkanäle bei der Erstellung haben"
+      },
+      "locked_name": {
+        "title": "Name bei Sperrung",
+        "description": "Der Name, den temporäre Sprachkanäle haben, wenn sie gesperrt sind"
+      },
+      "hidden_name": {
+        "title": "Name bei Versteckung",
+        "description": "Der Name, den temporäre Sprachkanäle haben, wenn sie versteckt sind"
+      },
+      "state_change": {
+        "title": "Statusänderung",
+        "description": "Ob der Name des Sprachkanals aktualisiert werden soll, wenn sich der Status des Sprachkanals ändert. Zum Beispiel wenn der Nutzer den Kanal sperrt oder versteckt"
+      },
+      "owner_change": {
+        "title": "Besitzerwechsel",
+        "description": "Ob der Name des Sprachkanals aktualisiert werden soll, wenn sich der Besitzer ändert"
+      },
+      "activity_change": {
+        "title": "Aktivitätswechsel",
+        "description": "Ob der Name des Sprachkanals aktualisiert werden soll, wenn sich die Aktivität des Besitzers ändert. Zum Beispiel wenn der Besitzer aufhört, ein Spiel zu spielen"
+      },
+      "renaming": {
+        "title": "Umbenennung",
+        "description": "Ob der Name des Sprachkanals auch dann aktualisiert werden soll, wenn er vom Besitzer manuell umbenannt wurde. Ist diese Einstellung zum Beispiel aus und der Besitzer benennt den Kanal um, wird er in keinem der obigen Fälle aktualisiert"
+      },
+      "category": {
+        "title": "Kategorie",
+        "description": "Die Kategorie, in der temporäre Sprachkanäle erzeugt werden"
+      },
+      "position": {
+        "title": "Position",
+        "description": "Die genaue Position, an der temporäre Sprachkanäle innerhalb der Kategorie platziert werden."
+      },
+      "user_limit": {
+        "title": "Nutzerlimit",
+        "description": "Das Nutzerlimit, oder 0 für kein Nutzerlimit"
+      },
+      "bitrate": {
+        "title": "Bitrate",
+        "description": "Die Bitrate in kbps, leer lassen, um die Standard-Bitrate deines Discord-Servers zu verwenden"
+      },
+      "inheriting": {
+        "title": "Vererbung",
+        "description": "Wähle, ob temporäre Sprachkanäle Berechtigungen vom Generator, von der Kategorie, in der sie erzeugt werden, oder gar keine Berechtigungen erben"
+      },
+      "default_state": {
+        "title": "Standardzustand",
+        "description": "Ob der temporäre Sprachkanal bei der Erstellung gesperrt oder versteckt sein soll"
+      },
+      "target_role": {
+        "title": "Zielrolle",
+        "description": "Astro ändert bei Bedarf die Berechtigungen dieser Rolle, zum Beispiel wenn ein Nutzer den Kanal sperrt oder versteckt"
+      },
+      "moderator_role": {
+        "title": "Moderatorrolle",
+        "description": "Diese Rolle hat immer die Berechtigung, den Kanal zu verwalten, auch wenn der Kanal gesperrt oder versteckt ist"
+      },
+      "min_user_limit": {
+        "title": "Minimales Nutzerlimit",
+        "description": "Das minimale Nutzerlimit, das Nutzer für ihren temporären Sprachkanal festlegen dürfen, 0 bedeutet kein Limit"
+      },
+      "max_user_limit": {
+        "title": "Maximales Nutzerlimit",
+        "description": "Das maximale Nutzerlimit, das Nutzer für ihren temporären Sprachkanal festlegen dürfen, 0 bedeutet kein Limit"
+      },
+      "min_bitrate": {
+        "title": "Minimale Bitrate",
+        "description": "Die minimale Bitrate in kbps, die Nutzer für ihren temporären Sprachkanal festlegen dürfen"
+      },
+      "max_bitrate": {
+        "title": "Maximale Bitrate",
+        "description": "Die maximale Bitrate in kbps, die Nutzer für ihren temporären Sprachkanal festlegen dürfen"
+      },
+      "owner_permissions": {
+        "title": "Berechtigungen des Besitzers",
+        "description": "Wähle die Discord-Berechtigungen, die ein Besitzer eines Sprachkanals über seinen temporären Sprachkanal hat"
+      },
+      "owner_role": {
+        "title": "Besitzerrolle",
+        "description": "Diese Rolle wird den Besitzern temporärer Sprachkanäle gegeben"
+      },
+      "queue_mode": {
+        "title": "Warteschlangenmodus",
+        "description": "Wenn aktiviert, verschiebt Astro Nutzer zuerst in bestehende temporäre Sprachkanäle, falls verfügbar. Gibt es keine verfügbaren temporären Sprachkanäle, wird ein neuer erstellt"
+      },
+      "fallback": {
+        "title": "Fallback-Generator",
+        "description": "Wenn dieser Generator das Limit an temporären Sprachkanälen erreicht (Discord erlaubt maximal 50 Sprachkanäle pro Kategorie), verschiebt Astro den Nutzer als Fallback zu diesem Generator"
+      },
+      "waiting_auto": {
+        "title": "Automatische Erstellung von Warteräumen",
+        "description": "Wenn aktiviert, erstellt Astro bei der Erstellung temporärer Sprachkanäle automatisch einen Warteraum dafür"
+      },
+      "waiting_name": {
+        "title": "Name",
+        "description": "Der Standardname für Warteräume"
+      },
+      "waiting_category": {
+        "title": "Kategorie",
+        "description": "Die Kategorie, in der Warteräume erzeugt werden"
+      },
+      "waiting_position": {
+        "title": "Position",
+        "description": "Ob Warteräume über oder unter ihrem zugehörigen temporären Sprachkanal erzeugt werden sollen. Oder am Ende der Kategorie"
+      },
+      "waiting_user_limit": {
+        "title": "Nutzerlimit",
+        "description": "Das Nutzerlimit für Warteräume"
+      },
+      "waiting_bitrate": {
+        "title": "Bitrate",
+        "description": "Die Bitrate in kbps für Warteräume, leer lassen, um die Standard-Bitrate deines Discord-Servers zu verwenden"
+      },
+      "waiting_inheriting": {
+        "title": "Vererbung von Berechtigungen",
+        "description": "Wähle, ob Warteräume Berechtigungen vom Generator, von der Kategorie, in der sie erzeugt werden, oder gar keine Berechtigungen erben"
+      },
+      "chat_auto": {
+        "title": "Automatische Erstellung privater Chats",
+        "description": "Wenn aktiviert, erstellt Astro bei der Erstellung jedes temporären Sprachkanals automatisch einen privaten Textkanal dafür"
+      },
+      "chat_name": {
+        "title": "Name",
+        "description": "Der Standardname für private Textchats"
+      },
+      "chat_topic": {
+        "title": "Thema",
+        "description": "Das Thema, das automatisch in jedem privaten Textchat gesetzt wird"
+      },
+      "chat_message_type": {
+        "title": "Art der Erstellungsnachricht",
+        "description": "Wähle die Art der Nachricht, die Astro bei der Erstellung in jedem privaten Textchat senden soll"
+      },
+      "chat_message": {
+        "title": "Erstellungsnachricht",
+        "description": "Eine Nachricht, die Astro bei der Erstellung in jedem privaten Textchat sendet"
+      },
+      "chat_interface": {
+        "title": "Interface für die Erstellungsnachricht",
+        "description": "Das Interface, das Astro bei der Erstellung in privaten Textchats senden soll"
+      },
+      "chat_category": {
+        "title": "Kategorie",
+        "description": "Die Kategorie, in der private Textchats erzeugt werden"
+      },
+      "chat_inheriting": {
+        "title": "Vererbung von Berechtigungen",
+        "description": "Wähle, ob private Textchats Berechtigungen vom Generator, von der Kategorie, in der sie erzeugt werden, oder gar keine Berechtigungen erben"
+      },
+      "chat_nsfw": {
+        "title": "NSFW",
+        "description": "Steuert die NSFW-Einstellung für private Textchats"
+      },
+      "chat_slowmode": {
+        "title": "Langsamer Modus",
+        "description": "Lege den langsamen Modus privater Textchats in Sekunden fest. Verwende 0 für keinen langsamen Modus"
+      },
+      "description": "Verwalte die Einstellungen dieses Generators für temporäre Sprachkanäle!",
+      "group_vc_name": "Name des Sprachkanals",
+      "group_rename": "Bedingungen für die Umbenennung des Sprachkanals",
+      "group_vc_settings": "Einstellungen des Sprachkanals",
+      "group_vc_permissions": "Berechtigungen des Sprachkanals",
+      "group_commands": "Einstellungen für Befehle",
+      "group_utilities": "Hilfsfunktionen",
+      "group_waiting": "Warteraum",
+      "group_chat": "Privater Textchat",
+      "region": {
+        "title": "Region",
+        "description": "Um die Region zu ändern, die auf temporäre Sprachkanäle angewendet wird, ändere die Region des Generators über die Kanaleinstellungen in Discord."
+      },
+      "selected_permissions": "{count} Berechtigungen ausgewählt",
+      "permission_categories": {
+        "general": "Allgemeine Berechtigungen",
+        "apps": "App-Berechtigungen",
+        "membership": "Mitgliedschaftsberechtigungen",
+        "text": "Text-Berechtigungen",
+        "voice": "Sprach-Berechtigungen"
+      },
+      "no_role": "Keine Rolle",
+      "no_fallback": "Kein Fallback",
+      "interface_in": "Interface in #{channel}",
+      "message_id": "Nachrichten-ID: {id}",
+      "positions": {
+        "before": "Davor",
+        "after": "Danach",
+        "bottom": "Ganz unten"
+      },
+      "inheritance": {
+        "none": "Keine",
+        "category": "Kategorie",
+        "generator": "Generator"
+      },
+      "states": {
+        "unlocked": "Entsperrt",
+        "locked": "Gesperrt",
+        "hidden": "Versteckt",
+        "unhidden": "Sichtbar"
+      },
+      "chat_message_types": {
+        "no_message": "Keine Nachricht",
+        "text_message": "Textnachricht",
+        "embed": "Embed-Nachricht",
+        "interface": "Astro-Interface"
+      },
+      "need_interface": "Du musst zuerst ein Interface erstellen, um es als Nachricht des privaten Textchats verwenden zu können",
+      "no_interface": "Kein Interface"
+    }
+  }
+}

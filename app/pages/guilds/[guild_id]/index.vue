@@ -419,7 +419,19 @@ definePageMeta({
 
 const { t, locales } = useI18n()
 const available_locales = computed(() => locales.value as LocaleObject[])
-const flags: Record<string, string> = { 'en-US': '🇺🇸', it: '🇮🇹' }
+const flags: Record<string, string> = {
+  'en-US': '🇺🇸',
+  it: '🇮🇹',
+  de: '🇩🇪',
+  fr: '🇫🇷',
+  'es-ES': '🇪🇸',
+  'pt-BR': '🇧🇷',
+  id: '🇮🇩',
+  ko: '🇰🇷',
+  th: '🇹🇭',
+  ar: '🇸🇦',
+  fil: '🇵🇭',
+}
 const language_name = (code: string) =>
   available_locales.value.find((l) => l.code === code)?.name ?? code
 

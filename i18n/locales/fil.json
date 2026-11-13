@@ -1,0 +1,810 @@
+{
+  "nav": {
+    "add_to_server": "Idagdag sa server",
+    "guides": "Mga Gabay",
+    "ultimate": "Ultimate",
+    "github": "GitHub",
+    "logo_alt": "Logo ng Astro",
+    "home": "Home",
+    "servers": "Mga Server",
+    "billing": "Billing",
+    "logout": "Mag-logout",
+    "login": "Mag-login",
+    "logged_in_as": "Naka-login bilang {username}"
+  },
+  "footer": {
+    "resources": "Mga Resource",
+    "support": "Suporta",
+    "company": "Kumpanya",
+    "home": "Home",
+    "contact_us": "Makipag-ugnayan sa amin",
+    "legal": "Legal",
+    "privacy_policy": "Patakaran sa privacy",
+    "terms_of_service": "Mga Tuntunin ng Serbisyo",
+    "refund_policy": "Patakaran sa refund",
+    "copyright": "© Astro Bot {year} - Lahat ng karapatan ay nakalaan",
+    "by": "ni"
+  },
+  "error": {
+    "billing_portal": "Nagkaproblema sa pagbubukas ng billing portal, subukan ulit mamaya",
+    "checkout": "Nagkaproblema sa pagsisimula ng checkout, pakisubukan ulit mamaya"
+  },
+  "meta": {
+    "page_title": "{page} - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!",
+    "invite": {
+      "title": "I-invite si Astro - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!",
+      "description": "I-invite ang Astro sa Discord server mo at magsimulang gumawa ng mga pansamantalang voice channel para sa komunidad mo."
+    },
+    "privacy": {
+      "title": "Patakaran sa Privacy - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!"
+    },
+    "terms": {
+      "title": "Mga Tuntunin ng Serbisyo - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!"
+    },
+    "refund": {
+      "title": "Patakaran sa Refund - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!"
+    },
+    "guide_basic": {
+      "title": "Gabay sa mga pangunahing kaalaman",
+      "description": "Magsimulang gumamit ng Astro sa pamamagitan ng pag-aaral ng mga pangunahing kaalaman"
+    },
+    "guide_generator": {
+      "title": "Gabay sa generator",
+      "description": "Alamin kung paano i-configure at gamitin ang mga generator ng pansamantalang voice channel"
+    },
+    "guide_interface": {
+      "title": "Gabay sa interface",
+      "description": "Alamin kung paano gawing kamangha-mangha at kakaiba ang itsura ng interface mo gamit ang gabay na ito"
+    },
+    "guide_template": {
+      "title": "Gabay sa template",
+      "description": "Tuklasin ang mga template at alamin kung paano i-configure ang mga ito, magugustuhan sila ng mga user mo"
+    },
+    "guide_voice_role": {
+      "title": "Gabay sa voice role",
+      "description": "Alamin kung paano i-configure ang voice role para maging mas astig ang itsura ng server mo"
+    },
+    "guides": {
+      "title": "Mga Gabay",
+      "description": "Kailangan ng tulong sa Astro? Silipin ang mga gabay na madaling sundan ng mga baguhan"
+    },
+    "ultimate": {
+      "title": "Ultimate",
+      "description": "Dalhin ang server mo sa susunod na antas gamit ang mga premium na functionality ng Astro"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "I-configure ang lahat ng setting ng Astro gamit ang makapangyarihan at madaling gamiting dashboard"
+    },
+    "errors": {
+      "title": "Mga Error",
+      "description": "Tingnan ang lahat ng isyung naranasan ng Astro habang gumagana sa server mo"
+    },
+    "guild": {
+      "title": "Dashboard",
+      "description": "I-configure ang lahat ng setting ng Astro para sa server mo gamit ang makapangyarihan at madaling gamiting dashboard"
+    },
+    "voice_roles": {
+      "title": "Mga voice role",
+      "description": "Gumawa, tumingin, at magtanggal ng mga voice role para sa server mo"
+    },
+    "voice_role": {
+      "title": "Mga setting ng voice role",
+      "description": "I-configure ang mga setting ng voice role na ito"
+    },
+    "templates": {
+      "title": "Mga Template",
+      "description": "Gumawa, tumingin, at magtanggal ng mga template para sa server mo"
+    },
+    "template": {
+      "title": "Mga setting ng template",
+      "description": "I-configure ang mga setting ng template na ito"
+    },
+    "interfaces": {
+      "title": "Mga Interface",
+      "description": "Gumawa, tumingin, at magtanggal ng mga interface"
+    },
+    "generators": {
+      "title": "Mga Generator",
+      "description": "Gumawa, tumingin, at magtanggal ng mga generator ng pansamantalang voice channel"
+    },
+    "interface": {
+      "title": "Interface",
+      "description": "I-edit ang mensahe at mga button ng interface mo"
+    },
+    "generator": {
+      "title": "Generator",
+      "description": "I-configure ang lahat ng setting ng generator mo ng pansamantalang voice channel"
+    },
+    "site": {
+      "title": "Astro - Mga Pansamantalang Voice Channel para sa Discord mo!",
+      "description": "Ang Astro ay isang Discord bot na nagbibigay-daan sa iyong gumawa ng mga pansamantalang voice channel sa server mo. Perpekto para sa mga gaming session, study group, o anumang pangangailangan sa pansamantalang voice chat!"
+    }
+  },
+  "home": {
+    "tagline": "Ang pinaka-kakaiba at kumpletong Discord bot para sa mga pansamantalang voice channel at voice role!",
+    "get_started": "Magsimula",
+    "temp_vc": {
+      "description": "Gumagawa ang Astro ng ganap na na-customize na mga pansamantalang voice channel kapag hiniling at tinatanggal ang mga ito kapag nawalan ng laman. May napakalawak na customization para makagawa ka ng perpektong sistema para sa server mo!",
+      "title": "Mga {animated} Voice Channel",
+      "animated": "Pansamantalang"
+    },
+    "default_interface": {
+      "title": "Magandang interface",
+      "description": "May kasamang magandang default na interface ang Astro na nagpapadali sa mga mobile user na pamahalaan ang kanilang pribadong channel!"
+    },
+    "custom_interface": {
+      "title": "Pero maaari ring i-customize",
+      "description": "Ang mga interface ng Astro ay ganap na ma-customize hanggang sa huling pixel, gawin itong eksakto sa kailangan mo, imahinasyon mo lang ang limitasyon!"
+    },
+    "voice_role": {
+      "description": "Kayang magbigay o mag-alis ng role ang Astro kapag sumali ang user sa isang partikular na voice channel! Sa ganitong paraan, halimbawa, makikita lang ng mga tao ang mga gaming text chat habang nasa gaming VC sila, imahinasyon mo lang ang limitasyon!",
+      "title": "Mga Voice Role"
+    },
+    "exclusive": {
+      "title": "Eksklusibo sa mga Voice Channel",
+      "description": "Ang pagtutok lang sa mga voice channel ang dahilan kung bakit ang Astro ang pinakamahusay na bot sa uri nito, subukan na ngayon!"
+    }
+  },
+  "guides": {
+    "title": "Mga Gabay",
+    "subtitle": "Narito ang ilang kapaki-pakinabang na gabay na tutulong sa iyong magsimulang gumamit ng Astro at buuin ang perpektong setup para sa server mo!",
+    "basic": {
+      "title": "Pagsisimula"
+    },
+    "generator": {
+      "title": "Mga Generator"
+    },
+    "interface": {
+      "title": "Mga Interface"
+    },
+    "template": {
+      "title": "Mga Template"
+    },
+    "voice_role": {
+      "title": "Mga voice role"
+    }
+  },
+  "ultimate": {
+    "title": "Ultimate server",
+    "subtitle": "Dalhin ang server mo sa susunod na antas gamit ang mga premium na functionality!",
+    "per_month": "kada buwan para sa {count} server | kada buwan para sa {count} server",
+    "per_year": "kada taon para sa {count} server | kada taon para sa {count} server",
+    "server_quantity": "Dami ng server",
+    "billed": "Singil",
+    "monthly": "Buwanan",
+    "yearly": "Taunan",
+    "subscribe": "Mag-subscribe",
+    "feature": "Feature",
+    "premium": "Premium",
+    "free": "Libre",
+    "maximum": "Hanggang {count}",
+    "features": {
+      "generators": "Walang limitasyong generator ng pansamantalang VC",
+      "interfaces": "Walang limitasyong interface",
+      "voice_roles": "Walang limitasyong voice role",
+      "templates": "Walang limitasyong template",
+      "numbered_names": "May numerong pangalan ng voice channel",
+      "activity_variables": "Mga variable ng aktibidad ng user para sa pangalan ng channel",
+      "custom_interfaces": "Mga interface na maaaring i-customize",
+      "bypass_voting": "Laktawan ang mga kinakailangan sa pag-vote sa kahit anong server",
+      "badwords": "Filter ng masasamang salita para sa pangalan ng voice channel",
+      "waiting_rooms": "Mga waiting room",
+      "private_chats": "Mga pribadong text chat",
+      "owner_voice_role": "Voice role para sa mga may-ari ng channel",
+      "creation_message": "Mga custom na mensahe sa paggawa ng voice channel",
+      "fallback_generators": "Mga fallback generator"
+    }
+  },
+  "common": {
+    "ultimate": "Ultimate",
+    "free": "Libre",
+    "save": "I-save",
+    "reset": "I-reset",
+    "delete": "Tanggalin",
+    "select": "Piliin",
+    "upload": "Mag-upload",
+    "go_back": "Bumalik",
+    "error_generic": "May nangyaring mali, pakisubukan ulit mamaya",
+    "see_guide": "Tingnan ang gabay",
+    "close": "Isara",
+    "downgrade": "I-downgrade",
+    "upgrade": "I-upgrade",
+    "clear_cache": "I-clear ang cache",
+    "create": "Gumawa",
+    "manage": "Pamahalaan",
+    "channel": "Channel",
+    "role": "Role",
+    "action": "Aksyon",
+    "permanent": "Permanente",
+    "not_set": "Hindi naitakda",
+    "name": "Pangalan",
+    "user_limit": "Limitasyon ng user",
+    "bitrate": "Bitrate",
+    "region": "Rehiyon",
+    "kbps": "kbps",
+    "deleted_channel": "Natanggal na channel",
+    "category": "Category",
+    "no_category": "Walang category",
+    "clear": "I-clear"
+  },
+  "dashboard": {
+    "sections": {
+      "overview": "Pangkalahatang-ideya",
+      "errors": "Mga Error",
+      "generators": "Mga Generator",
+      "interfaces": "Mga Interface",
+      "voice_roles": "Voice role",
+      "templates": "Mga Template"
+    },
+    "save_toast": {
+      "message": "Mag-ingat - may mga hindi pa nase-save na pagbabago ka!"
+    },
+    "image": {
+      "not_set": "Hindi naitakda",
+      "reset_to_default": "I-reset sa default",
+      "preview": "Preview",
+      "replace": "Palitan",
+      "remove": "Alisin",
+      "choose": "Pumili ng larawan"
+    },
+    "media": {
+      "title": "Imbakan ng media",
+      "description": "Mag-upload ng mga larawan o pumili ng isa sa mga larawang na-upload mo na (png, jpeg, gif o webp)",
+      "delete_image": "Tanggalin ang larawan",
+      "delete_confirm_title": "Sigurado ka bang gusto mong tanggalin ang larawang ito?",
+      "delete_confirm_description": "Permanenteng tinatanggal ang larawan sa aming imbakan at hindi na ito ipapakita kahit saan ito ginagamit.",
+      "drop_or_click": "I-drop dito ang larawan o i-click para mag-upload"
+    },
+    "variables": {
+      "title": "Mga variable",
+      "categories": {
+        "voice_channel_owner": "May-ari ng voice channel",
+        "voice_channel_owner_activity": "Aktibidad ng may-ari ng voice channel",
+        "voice_channel_properties": "Mga katangian ng voice channel",
+        "incremental_values": "Mga halagang pataas ang bilang"
+      }
+    },
+    "role": {
+      "unmanageable": "Hindi mapapamahalaan ng Astro ang role na ito dahil nasa itaas ito ng pinakamataas na role ng Astro sa hierarchy ng mga role ng server"
+    },
+    "upgrade": {
+      "title": "I-upgrade ang server",
+      "choose_subscription": "Pumili ng subscription na gagamitin para i-upgrade ang server sa Ultimate:",
+      "subscription_annual": "Taunang subscription na may {available}/{quantities} available na upgrade",
+      "subscription_monthly": "Buwanang subscription na may {available}/{quantities} available na upgrade",
+      "all_used": "Nagamit mo na ang lahat ng upgrade mo. Mag-downgrade ng isang server o bumili ng mas maraming upgrade!",
+      "none_available": "Wala kang available na upgrade.\nBumili ng subscription para i-upgrade ang server sa Ultimate at i-unlock ang mga advanced na feature!",
+      "purchase": "Bumili ng mga subscription",
+      "upgrade": "I-upgrade"
+    },
+    "ultimate_required": {
+      "title": "Kailangan ang Ultimate"
+    }
+  },
+  "guilds": {
+    "required_permissions": "Mga kinakailangang pahintulot",
+    "required_permissions_description": "Para pamahalaan ang mga setting ng Astro para sa isang server, kailangan mong magkaroon ng alinman sa mga pahintulot na {manage_channels}, {manage_server} o {administrator}.",
+    "permissions": {
+      "manage_channels": "Manage channels",
+      "manage_server": "Manage server",
+      "administrator": "Administrator"
+    },
+    "title": "Mga Server",
+    "subtitle": "Pumili ng server na pamamahalaan",
+    "search_placeholder": "Maghanap ayon sa pangalan",
+    "manage": "Pamahalaan",
+    "none_manageable": "Wala kang mapamahalaang setting ng anumang server na kinabibilangan mo!",
+    "see_required_permissions": "Tingnan ang mga kinakailangang pahintulot"
+  },
+  "errors": {
+    "title": "Mga Error",
+    "description": "Tingnan at i-clear ang mga error ng server mo",
+    "clear": "I-clear",
+    "view": "Tingnan",
+    "details": "Mga Detalye ng Error",
+    "none_title": "Wala pang naranasang error sa ngayon!",
+    "none_description": "Kung may mangyaring masama, lalabas ito rito ;)"
+  },
+  "overview": {
+    "description": "Pamahalaan ang mga pangunahing setting ng server mo",
+    "shortcuts": {
+      "generators": {
+        "title": "I-configure ang mga pansamantalang voice channel",
+        "description": "Pumunta sa seksyon ng mga generator para i-configure ang mga pansamantalang voice channel"
+      },
+      "interfaces": {
+        "title": "Gumawa ng interface",
+        "description": "Gumawa ng interface para mapamahalaan ng mga user mo ang kanilang channel gamit ang mga simpleng button"
+      },
+      "voice_roles": {
+        "title": "I-setup ang mga voice role",
+        "description": "Ikonekta ang mga voice channel sa mga role para mapabuti ang karanasan ng mga user sa server mo!"
+      }
+    },
+    "settings": {
+      "group": "Mga Setting",
+      "require_admin": {
+        "title": "Kailangan ng pahintulot na Admin",
+        "description": "Kapag in-disable ito, hindi papansinin ng Astro ang mga isyu sa pahintulot.",
+        "recommendation": "Inirerekomendang panatilihin itong naka-on!"
+      },
+      "slash_permissions": {
+        "title": "Mga pahintulot ng slash command",
+        "description": "Maaari mong higpitan ang access sa mga slash command ng Astro gamit mismo ang mga pahintulot ng Discord!",
+        "button": "Pamahalaan sa Discord"
+      },
+      "language": {
+        "title": "Wika",
+        "description": "Ang wikang ginagamit ng Astro para sa mga mensahe at interface nito sa Discord sa server na ito. Hindi nito binabago ang wika ng website na ito."
+      }
+    },
+    "ultimate": {
+      "group": "Ultimate",
+      "title": "Ultimate server",
+      "status_upgraded": "Kasalukuyang naka-upgrade sa Ultimate ang server mo",
+      "status_not_upgraded": "Kasalukuyang hindi naka-upgrade sa Ultimate ang server mo",
+      "refresh_tooltip": "I-refresh ang data ng mga subscription sa Discord",
+      "downgrade_title": "I-downgrade ang server",
+      "downgrade_on_discord": "Na-upgrade ang server na ito sa Ultimate sa pamamagitan ng Discord store. Kailangan mong kanselahin ang subscription sa Discord para mag-downgrade mula sa Ultimate.",
+      "official_guide": "Opisyal na gabay"
+    },
+    "profile": {
+      "group": "Profile ng bot",
+      "nickname": {
+        "title": "Palayaw",
+        "description": "Ang pangalan ng bot sa server na ito"
+      },
+      "bio": {
+        "title": "Bio",
+        "description": "Ang paglalarawang ipinapakita sa profile ng bot sa server na ito",
+        "placeholder": "Ang pinaka-kakaiba at kumpletong Discord bot para sa mga pansamantalang voice channel!"
+      },
+      "avatar": {
+        "title": "Avatar",
+        "description": "Ang profile picture ng bot sa server na ito"
+      },
+      "banner": {
+        "title": "Banner",
+        "description": "Ang banner ng profile ng bot sa server na ito"
+      },
+      "using_default": "Gumagamit ng default"
+    },
+    "danger": {
+      "group": "Mapanganib",
+      "clear_cache": {
+        "title": "I-reset ang cache ng mga pansamantalang voice channel",
+        "description": "Kung nakakaranas ka ng kakaibang isyu sa mga pansamantalang voice channel, lalo na kapag ang mga pataas na pangalan ng channel ay nagsisimula sa maling numero o may nilalaktawan, pindutin ang button na ito, kung hindi, iwasan ito!",
+        "confirm_title": "Sigurado ka bang gusto mong i-clear ang cache?",
+        "confirm_description": "Kapag ginawa mo ito, hindi na makikilala ng Astro ang lahat ng kasalukuyang pansamantalang voice channel at kailangan mo silang tanggalin nang mano-mano!"
+      }
+    }
+  },
+  "voice_roles": {
+    "title": "Mga voice role",
+    "description": "Pinapayagan ng mga voice role na magbigay ng pansamantalang role sa mga user sa loob ng mga partikular na voice channel!",
+    "create_title": "Gumawa ng voice role",
+    "channel_description": "Ang channel na nagti-trigger ng voice role na ito. Kapag pumili ka ng category, lahat ng channel ng category na iyon ay magti-trigger ng voice role na ito.\nKapag pumili ka ng generator, lahat ng pansamantalang voice channel na ginawa mula rito ay magti-trigger ng voice role na ito.",
+    "select_channel": "Pumili ng channel",
+    "select_role": "Pumili ng role",
+    "role_description": "Ilalapat ang role na ito kapag sumali ang isang user sa channel na pinili sa itaas",
+    "action_description": "Ang Ibigay ay nangangahulugang ibibigay ng Astro ang role sa user kapag sumali siya sa channel at aalisin ito kapag umalis siya. Ang Alisin ay kabaligtaran nito. Ang I-toggle ay gumagana tulad ng \"Ibigay\" kung wala sa user ang role, at \"Alisin\" kung mayroon na",
+    "actions": {
+      "assign": "Ibigay",
+      "remove": "Alisin",
+      "toggle": "I-toggle"
+    },
+    "permanent_description": "Kapag naka-enable, hindi babawiin ng Astro ang aksyon kapag umalis ang user sa channel",
+    "ultimate_required": "Kailangan ang Ultimate para magkaroon ng higit sa 1 voice role. I-upgrade ang server mo sa Ultimate para makagawa ng mas maraming voice role.",
+    "channel_label": "Channel:",
+    "role_label": "Role:",
+    "category_label": "Category:",
+    "no_category": "Wala sa category",
+    "deleted_role": "Natanggal na role",
+    "delete_confirm_title": "Sigurado ka bang gusto mong tanggalin ang voice role?",
+    "delete_confirm_description": "Hindi na maibabalik ang aksyong ito at hindi mo na mababawi ang voice role na ito!",
+    "none": "Wala ka pang nagagawang voice role!",
+    "select_channel_and_role": "Pumili ng channel at role para makagawa ng voice role",
+    "detail": {
+      "description": "Pamahalaan ang mga setting ng voice role na ito!",
+      "channel_description": "Ang channel na nagti-trigger ng voice role na ito.\nKapag pumili ka ng category, lahat ng channel ng category na iyon ay magti-trigger ng voice role na ito.\nKapag pumili ka ng generator, lahat ng pansamantalang voice channel na ginawa mula rito ay magti-trigger ng voice role na ito."
+    }
+  },
+  "regions": {
+    "brazil": "Brazil",
+    "hongkong": "Hong Kong",
+    "india": "India",
+    "japan": "Japan",
+    "milan": "Milan",
+    "rotterdam": "Rotterdam",
+    "russia": "Russia",
+    "singapore": "Singapore",
+    "southafrica": "South Africa",
+    "south-korea": "South Korea",
+    "sydney": "Sydney",
+    "us-central": "US Central",
+    "us-east": "US East",
+    "us-south": "US South",
+    "us-west": "US West",
+    "automatic": "Awtomatiko"
+  },
+  "templates": {
+    "title": "Mga Template",
+    "description": "Pinapayagan ng mga template ang mga user na maglapat ng maraming setting nang sabay sa kanilang pansamantalang voice channel!",
+    "create_title": "Gumawa ng template",
+    "usage_group": "Mga setting ng paggamit",
+    "vc_group": "Mga setting ng voice channel",
+    "name_description": "Ang pangalang nakikita ng mga user kapag pumipili ng template na ilalapat sa kanilang pansamantalang voice channel (hindi ito ang pangalan ng voice channel mismo)",
+    "name_placeholder": "Maglagay ng pangalan",
+    "generators": {
+      "title": "Mga naka-enable na generator",
+      "description": "Gawing magagamit lang ang template na ito sa mga pansamantalang voice channel na ginawa ng ilang partikular na generator",
+      "any": "Anumang generator",
+      "none": "Naka-disable para sa bawat generator",
+      "count": "Pinapayagan sa {count} generator | Pinapayagan sa {count} generator"
+    },
+    "vc_name_description": "Ang pangalang inilalapat sa mga pansamantalang voice channel",
+    "user_limit_description": "Ang limitasyon ng user na inilalapat sa pansamantalang voice channel",
+    "bitrate_description": "Ang bitrate sa kbps na inilalapat sa pansamantalang voice channel",
+    "region_description": "Ang voice region na inilalapat sa mga pansamantalang voice channel",
+    "ultimate_required": "Kailangan ang Ultimate para magkaroon ng higit sa 3 template. I-upgrade ang server mo sa Ultimate para makagawa ng mas maraming template.",
+    "delete_confirm_title": "Sigurado ka bang gusto mong tanggalin ang template?",
+    "delete_confirm_description": "Hindi na maibabalik ang aksyong ito at hindi mo na mababawi ang template na ito!",
+    "none": "Wala ka pang nagagawang template!",
+    "select_name": "Pumili ng pangalan para sa template",
+    "detail": {
+      "description": "Pamahalaan ang mga setting ng template na ito!"
+    }
+  },
+  "interfaces": {
+    "title": "Mga Interface",
+    "description": "Pamahalaan dito ang mga interface ng server mo!",
+    "create_title": "Gumawa ng interface",
+    "channel_description": "Ang text channel kung saan ipinapadala ang mensahe ng interface",
+    "select_channel": "Pumili ng channel",
+    "ultimate_required": "Kailangan ang Ultimate para magkaroon ng higit sa 1 interface. I-upgrade ang server mo sa Ultimate para makagawa ng mas maraming interface.",
+    "delete_confirm_title": "Sigurado ka bang gusto mong tanggalin ang interface?",
+    "delete_confirm_description": "Hindi na maibabalik ang aksyong ito at hindi mo na mababawi ang interface na ito!",
+    "none": "Wala ka pang nagagawang interface!",
+    "buttons": {
+      "lock": "I-lock",
+      "unlock": "I-unlock",
+      "hide": "Itago",
+      "unhide": "Ipakita",
+      "limit": "Limitasyon ng user",
+      "invite": "Mag-imbita",
+      "ban": "I-ban",
+      "permit": "Payagan",
+      "name": "Pangalan",
+      "bitrate": "Bitrate",
+      "region": "Rehiyon",
+      "template": "Template",
+      "chat": "Chat",
+      "waiting_room": "Waiting room",
+      "claim": "Angkinin",
+      "transfer": "Ilipat ang pagmamay-ari"
+    },
+    "styles": {
+      "blurple": "Blurple",
+      "grey": "Abo",
+      "green": "Berde",
+      "red": "Pula"
+    },
+    "editor": {
+      "author": {
+        "title": "May-akda",
+        "description": "Ang pangalang ipinapakita sa itaas ng mensahe"
+      },
+      "author_link": {
+        "title": "Link ng may-akda",
+        "description": "Ang link na bubukas kapag na-click ng mga user ang pangalan ng may-akda"
+      },
+      "author_image": {
+        "title": "Larawan ng may-akda",
+        "description": "Maliit na icon na ipinapakita sa tabi ng pangalan ng may-akda"
+      },
+      "title": {
+        "title": "Pamagat",
+        "description": "Ang pamagat ng mensahe"
+      },
+      "title_link": {
+        "title": "Link ng pamagat",
+        "description": "Ang link na bubukas kapag na-click ng mga user ang pamagat"
+      },
+      "thumbnail": {
+        "title": "Thumbnail",
+        "description": "Maliit na larawang ipinapakita sa kanang itaas ng mensahe"
+      },
+      "description": {
+        "title": "Paglalarawan",
+        "description": "Ang pangunahing teksto ng mensahe"
+      },
+      "image": {
+        "title": "Larawan",
+        "description": "Malaking larawang ipinapakita sa ilalim ng paglalarawan"
+      },
+      "footer": {
+        "title": "Footer",
+        "description": "Ang tekstong ipinapakita sa ibaba ng mensahe"
+      },
+      "footer_image": {
+        "title": "Larawan ng footer",
+        "description": "Maliit na icon na ipinapakita sa tabi ng teksto ng footer"
+      },
+      "color": {
+        "title": "Kulay",
+        "description": "Ang kulay ng linya sa kaliwa ng mensahe"
+      },
+      "timestamp": {
+        "title": "Timestamp",
+        "description": "Isang nakapirming petsa at oras na ipinapakita sa mensahe"
+      },
+      "buttons": {
+        "title": "Mga Button",
+        "description": "Mag-click ng button para i-edit ito, o ng walang lamang slot para magdagdag ng isa"
+      },
+      "button": {
+        "title": "Button",
+        "description": "Ang button na ipinapakita sa posisyong ito, hindi mapipili ang button na gamit na sa ibang posisyon"
+      },
+      "disabled": {
+        "title": "Naka-disable",
+        "description": "Nakikita ng mga user ang button pero hindi nila ito ma-click"
+      },
+      "button_name": {
+        "title": "Pangalan",
+        "description": "Ang tekstong ipinapakita sa button, kailangan ng button ng pangalan o emoji para maipakita"
+      },
+      "emoji": {
+        "title": "Emoji",
+        "description": "Isang karaniwang emoji, o ang code ng custom na emoji ng Discord"
+      },
+      "style": {
+        "title": "Estilo",
+        "description": "Ang kulay ng button"
+      },
+      "move": "Ilipat",
+      "move_title": "Ilipat ang interface",
+      "move_description": "Ipapadala ang mensahe ng interface sa bagong channel at tatanggalin ang lumang interface",
+      "message_header": "Header ng mensahe",
+      "message_body": "Katawan ng mensahe",
+      "message_footer": "Footer ng mensahe",
+      "buttons_layout": "Layout ng mga button",
+      "behavior": "Pag-uugali",
+      "appearance": "Hitsura",
+      "slot_label": "Hilera {row}, posisyon {col}: {button}",
+      "slot_title": "Hilera {row} - Posisyon {col}",
+      "no_button": "Walang button",
+      "custom_emoji_help": "Paano gumamit ng mga custom na emoji",
+      "custom_emoji_title": "Paggamit ng mga custom na emoji",
+      "custom_emoji_step1": "Para maglagay ng custom na emoji ng Discord, pumunta sa Discord, isulat ang emoji na may backslash sa unahan (halimbawa {example}) at ipadala ang mensahe.",
+      "custom_emoji_step2": "Ipapadala ng Discord ang code ng emoji sa channel, gaya ng {static} o {animated} para sa mga animated na emoji. Kopyahin ito at i-paste rito sa editor, pagkatapos ay ire-render ito sa Discord.",
+      "updated": "Na-update ang interface",
+      "open_in_discord": "Buksan sa Discord",
+      "page_description": "Pamahalaan ang mensahe at mga button ng interface na ito!"
+    }
+  },
+  "generators": {
+    "title": "Mga Generator",
+    "description": "Pamahalaan dito ang mga generator ng pansamantalang voice channel!",
+    "create_title": "Gumawa ng generator",
+    "name_description": "Ang pangalan ng generator",
+    "category_description": "Ang category kung saan ginagawa ang mga pansamantalang voice channel",
+    "ultimate_required": "Kailangan ang Ultimate para magkaroon ng higit sa 2 generator ng pansamantalang voice channel. I-upgrade ang server mo sa Ultimate para makagawa ng mas maraming generator.",
+    "category_value": "Category: {name}",
+    "delete_confirm_title": "Sigurado ka bang gusto mong tanggalin ang generator?",
+    "delete_confirm_description": "Hindi na maibabalik ang aksyong ito at hindi mo na mababawi ang generator na ito!",
+    "none": "Wala ka pang nagagawang generator!",
+    "editor": {
+      "vc_name": {
+        "title": "Pangalan",
+        "description": "Ang default na pangalan ng mga pansamantalang voice channel kapag ginawa"
+      },
+      "locked_name": {
+        "title": "Pangalan kapag naka-lock",
+        "description": "Ang pangalan ng mga pansamantalang voice channel kapag naka-lock"
+      },
+      "hidden_name": {
+        "title": "Pangalan kapag nakatago",
+        "description": "Ang pangalan ng mga pansamantalang voice channel kapag nakatago"
+      },
+      "state_change": {
+        "title": "Pagbabago ng estado",
+        "description": "Kung dapat bang i-update ang pangalan ng voice channel kapag nagbago ang estado ng voice channel. Halimbawa kapag nilo-lock o itinatago ng user ang channel"
+      },
+      "owner_change": {
+        "title": "Pagpapalit ng may-ari",
+        "description": "Kung dapat bang i-update ang pangalan ng voice channel kapag nagpalit ang may-ari"
+      },
+      "activity_change": {
+        "title": "Pagbabago ng aktibidad",
+        "description": "Kung dapat bang i-update ang pangalan ng voice channel kapag nagbago ang aktibidad ng may-ari. Halimbawa kapag huminto ang may-ari sa paglalaro ng isang laro"
+      },
+      "renaming": {
+        "title": "Pagpapalit ng pangalan",
+        "description": "Kung dapat bang i-update ang pangalan ng voice channel kahit na manu-manong pinalitan ito ng may-ari. Halimbawa, kung naka-off ang setting na ito at pinalitan ng may-ari ang pangalan ng channel, hindi ito ia-update kapag nangyari ang alinman sa mga sitwasyon sa itaas"
+      },
+      "category": {
+        "title": "Category",
+        "description": "Ang category kung saan ginagawa ang mga pansamantalang voice channel"
+      },
+      "position": {
+        "title": "Posisyon",
+        "description": "Ang eksaktong posisyon kung saan inilalagay ang mga pansamantalang voice channel sa loob ng category."
+      },
+      "user_limit": {
+        "title": "Limitasyon ng user",
+        "description": "Ang limitasyon ng user, o 0 para walang limitasyon"
+      },
+      "bitrate": {
+        "title": "Bitrate",
+        "description": "Ang bitrate sa kbps, iwanang blangko para gamitin ang default na bitrate ng Discord server mo"
+      },
+      "inheriting": {
+        "title": "Pagmamana",
+        "description": "Piliin kung ang mga pansamantalang voice channel ay magmamana ng mga pahintulot mula sa generator, mula sa category kung saan sila ginawa, o kung hindi sila dapat magmana ng anumang pahintulot"
+      },
+      "default_state": {
+        "title": "Default na estado",
+        "description": "Kung dapat bang naka-lock o nakatago ang pansamantalang voice channel kapag ginawa"
+      },
+      "target_role": {
+        "title": "Target na role",
+        "description": "Babaguhin ng Astro ang mga pahintulot ng role na ito kapag kinakailangan, halimbawa kapag nilo-lock o itinatago ng user ang channel"
+      },
+      "moderator_role": {
+        "title": "Moderator role",
+        "description": "Palaging may pahintulot ang role na ito na pamahalaan ang channel, kahit naka-lock o nakatago ang channel"
+      },
+      "min_user_limit": {
+        "title": "Pinakamababang limitasyon ng user",
+        "description": "Ang pinakamababang limitasyon ng user na maaaring itakda ng mga user para sa kanilang pansamantalang voice channel, ang 0 ay nangangahulugang walang limitasyon"
+      },
+      "max_user_limit": {
+        "title": "Pinakamataas na limitasyon ng user",
+        "description": "Ang pinakamataas na limitasyon ng user na maaaring itakda ng mga user para sa kanilang pansamantalang voice channel, ang 0 ay nangangahulugang walang limitasyon"
+      },
+      "min_bitrate": {
+        "title": "Pinakamababang bitrate",
+        "description": "Ang pinakamababang bitrate, sa kbps, na maaaring itakda ng mga user para sa kanilang pansamantalang voice channel"
+      },
+      "max_bitrate": {
+        "title": "Pinakamataas na bitrate",
+        "description": "Ang pinakamataas na bitrate, sa kbps, na maaaring itakda ng mga user para sa kanilang pansamantalang voice channel"
+      },
+      "owner_permissions": {
+        "title": "Mga pahintulot ng may-ari",
+        "description": "Piliin ang mga pahintulot sa Discord na mayroon ang may-ari ng voice channel sa kanyang pansamantalang voice channel"
+      },
+      "owner_role": {
+        "title": "Role ng may-ari",
+        "description": "Ibibigay ang role na ito sa mga may-ari ng pansamantalang voice channel"
+      },
+      "queue_mode": {
+        "title": "Queue mode",
+        "description": "Kapag naka-enable, uunahin ng Astro na ilipat ang mga user sa mga kasalukuyang pansamantalang voice channel kung mayroon. Kung walang available na pansamantalang voice channel, gagawa ito ng bago"
+      },
+      "fallback": {
+        "title": "Fallback generator",
+        "description": "Kung maabot ng generator na ito ang limitasyon ng mga pansamantalang voice channel (pinapayagan ng Discord ang maximum na 50 voice channel kada category), ililipat ng Astro ang user sa generator na ito bilang fallback"
+      },
+      "waiting_auto": {
+        "title": "Awtomatikong paggawa ng waiting room",
+        "description": "Kapag naka-enable, awtomatikong gagawa ang Astro ng waiting room para sa mga pansamantalang voice channel sa paggawa"
+      },
+      "waiting_name": {
+        "title": "Pangalan",
+        "description": "Ang default na pangalan ng mga waiting room"
+      },
+      "waiting_category": {
+        "title": "Category",
+        "description": "Ang category kung saan ginagawa ang mga waiting room"
+      },
+      "waiting_position": {
+        "title": "Posisyon",
+        "description": "Kung dapat bang gawin ang mga waiting room sa itaas o sa ibaba ng kaukulang pansamantalang voice channel nila. O sa ibaba ng category"
+      },
+      "waiting_user_limit": {
+        "title": "Limitasyon ng user",
+        "description": "Ang limitasyon ng user para sa mga waiting room"
+      },
+      "waiting_bitrate": {
+        "title": "Bitrate",
+        "description": "Ang bitrate sa kbps para sa mga waiting room, iwanang blangko para gamitin ang default na bitrate ng Discord server mo"
+      },
+      "waiting_inheriting": {
+        "title": "Pagmamana ng pahintulot",
+        "description": "Piliin kung ang mga waiting room ay magmamana ng mga pahintulot mula sa generator, mula sa category kung saan sila ginawa, o kung hindi sila dapat magmana ng anumang pahintulot"
+      },
+      "chat_auto": {
+        "title": "Awtomatikong paggawa ng pribadong chat",
+        "description": "Kapag naka-enable, awtomatikong gagawa ang Astro ng pribadong text channel para sa bawat pansamantalang voice channel sa paggawa"
+      },
+      "chat_name": {
+        "title": "Pangalan",
+        "description": "Ang default na pangalan ng mga pribadong text chat"
+      },
+      "chat_topic": {
+        "title": "Paksa",
+        "description": "Ang paksang awtomatikong itinatakda sa bawat pribadong text chat"
+      },
+      "chat_message_type": {
+        "title": "Uri ng mensahe sa paggawa",
+        "description": "Piliin ang uri ng mensaheng dapat ipadala ng Astro sa bawat pribadong text chat sa paggawa"
+      },
+      "chat_message": {
+        "title": "Mensahe sa paggawa",
+        "description": "Isang mensaheng ipinapadala ng Astro sa bawat pribadong text chat sa paggawa"
+      },
+      "chat_interface": {
+        "title": "Interface para sa mensahe sa paggawa",
+        "description": "Ang interface na dapat ipadala ng Astro sa mga pribadong text chat sa paggawa"
+      },
+      "chat_category": {
+        "title": "Category",
+        "description": "Ang category kung saan ginagawa ang mga pribadong text chat"
+      },
+      "chat_inheriting": {
+        "title": "Pagmamana ng pahintulot",
+        "description": "Piliin kung ang mga pribadong text chat ay magmamana ng mga pahintulot mula sa generator, mula sa category kung saan sila ginawa, o kung hindi sila dapat magmana ng anumang pahintulot"
+      },
+      "chat_nsfw": {
+        "title": "NSFW",
+        "description": "Kontrolin ang NSFW na setting para sa mga pribadong text chat"
+      },
+      "chat_slowmode": {
+        "title": "Slowmode",
+        "description": "Itakda ang slowmode ng mga pribadong text chat, sa segundo. Gamitin ang 0 para walang slowmode"
+      },
+      "description": "Pamahalaan ang mga setting ng generator na ito ng pansamantalang voice channel!",
+      "group_vc_name": "Pangalan ng voice channel",
+      "group_rename": "Mga kondisyon sa pagpapalit ng pangalan ng voice channel",
+      "group_vc_settings": "Mga setting ng voice channel",
+      "group_vc_permissions": "Mga pahintulot ng voice channel",
+      "group_commands": "Mga setting ng command",
+      "group_utilities": "Mga utility",
+      "group_waiting": "Waiting room",
+      "group_chat": "Pribadong text chat",
+      "region": {
+        "title": "Rehiyon",
+        "description": "Para baguhin ang rehiyong inilalapat sa mga pansamantalang voice channel, baguhin ang rehiyon ng generator gamit ang mga setting ng channel sa loob ng Discord."
+      },
+      "selected_permissions": "{count} napiling pahintulot",
+      "permission_categories": {
+        "general": "Mga pangkalahatang pahintulot",
+        "apps": "Mga pahintulot ng apps",
+        "membership": "Mga pahintulot sa pagiging miyembro",
+        "text": "Mga pahintulot sa text",
+        "voice": "Mga pahintulot sa voice"
+      },
+      "no_role": "Walang role",
+      "no_fallback": "Walang fallback",
+      "interface_in": "Interface sa #{channel}",
+      "message_id": "Message ID: {id}",
+      "positions": {
+        "before": "Bago",
+        "after": "Pagkatapos",
+        "bottom": "Sa ibaba"
+      },
+      "inheritance": {
+        "none": "Wala",
+        "category": "Category",
+        "generator": "Generator"
+      },
+      "states": {
+        "unlocked": "Naka-unlock",
+        "locked": "Naka-lock",
+        "hidden": "Nakatago",
+        "unhidden": "Nakikita"
+      },
+      "chat_message_types": {
+        "no_message": "Walang mensahe",
+        "text_message": "Text message",
+        "embed": "Embed message",
+        "interface": "Interface ng Astro"
+      },
+      "need_interface": "Kailangan mo munang gumawa ng Interface para magamit ito bilang mensahe ng pribadong text chat",
+      "no_interface": "Walang interface"
+    }
+  }
+}
