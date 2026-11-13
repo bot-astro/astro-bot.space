@@ -42,7 +42,7 @@ Per poter usare Astro nel tuo server devi rispettare questi requisiti:
 Astro richiede di default il permesso `Amministratore` per funzionare e garantire una grande esperienza agli utenti Discord medi.
 
 Se gestisci un server professionale e non puoi concedere quel permesso ad Astro per motivi di sicurezza, puoi disattivare questo requisito tramite l'apposito interruttore nella dashboard
-![interruttore permesso amministratore](/guides/admin_permissions.png 'Interruttore permesso amministratore')
+![interruttore permesso amministratore](/guides/admin_permissions.png "Interruttore permesso amministratore")
 _Puoi chiedere indicazioni nel Server di Supporto sui permessi di cui Astro ha bisogno per funzionare, ma non viene fornito supporto approfondito a riguardo._
 
 ## Permessi dei comandi
@@ -69,10 +69,10 @@ Ultimate è la versione premium di Astro e offre molte utili funzionalità avanz
 
 | Funzionalità                                      |                      Premium                      |                           Gratis                           |
 | ------------------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
-| Generatori di canali vocali temporanei illimitati | <span class="text-discord-green text-lg">✓</span> |                         Massimo 2                          |
-| Interfacce illimitate                             | <span class="text-discord-green text-lg">✓</span> |                         Massimo 1                          |
-| Ruoli vocali illimitati                           | <span class="text-discord-green text-lg">✓</span> |                         Massimo 1                          |
-| Template illimitati                               | <span class="text-discord-green text-lg">✓</span> |                         Massimo 3                          |
+| Generatori di canali vocali temporanei illimitati | <span class="text-discord-green text-lg">✓</span> |                          Massimo 2                         |
+| Interfacce illimitate                             | <span class="text-discord-green text-lg">✓</span> |                          Massimo 1                         |
+| Ruoli vocali illimitati                           | <span class="text-discord-green text-lg">✓</span> |                          Massimo 1                         |
+| Template illimitati                               | <span class="text-discord-green text-lg">✓</span> |                          Massimo 3                         |
 | Nomi numerati per i canali vocali                 | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Interfacce personalizzabili                       | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Filtro parolacce per i nomi dei canali vocali     | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
@@ -85,7 +85,7 @@ Ultimate è la versione premium di Astro e offre molte utili funzionalità avanz
 ### Potenziare il tuo server a Ultimate
 
 Una volta acquistato un abbonamento nella [pagina Ultimate](/ultimate) o tramite l'[App Store di Discord](https://discord.com/application-directory/715621848489918495/premium), puoi potenziare il tuo server tramite l'apposito pulsante nella dashboard
-![potenziamento Ultimate](/guides/ultimate.png 'Potenziamento Ultimate')
+![potenziamento Ultimate](/guides/ultimate.png "Potenziamento Ultimate")
 
 ### Gestire il tuo abbonamento
 
