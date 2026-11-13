@@ -7,6 +7,8 @@ export function useGuildSettings(guild_id: Ref<string | undefined>) {
 
   return useQuery({
     queryKey: guild_settings_qk(guild_id),
+    // every mutation writes the server response into the cache, so only changes made by the bot are missed
+    staleTime: 60000,
     queryFn: (context) => {
       if (context.queryKey[1] === undefined || context.queryKey[1] === null) {
         throw Error('guild_id is undefined')

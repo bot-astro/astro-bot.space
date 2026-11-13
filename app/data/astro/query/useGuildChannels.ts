@@ -6,6 +6,8 @@ export function useGuildChannels(guild_id: Ref<string | undefined>) {
 
   return useQuery({
     queryKey: guild_channels_qk(guild_id),
+    // can change on discord outside the dashboard
+    staleTime: 120000,
     queryFn: (context) => {
       if (context.queryKey[1] === undefined) {
         throw Error('guild_id is undefined')
