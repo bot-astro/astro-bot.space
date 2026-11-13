@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware(async (_to, _from) => {
   const queryClient = useQueryClient()
 
   try {
-    await queryClient.query({
+    const user = await queryClient.query({
       queryKey: user_qk,
       // restore the nuxt context: on ssr useApiFetch needs it to forward the cookie, and query-core can call queryFn outside of it
       queryFn: () =>
@@ -16,6 +16,11 @@ export default defineNuxtRouteMiddleware(async (_to, _from) => {
       // don't block every navigation on a fresh /auth/me call
       staleTime: 120000,
     })
+
+    // useUser (navbar) caches null for unauthenticated visitors under the same key, so a fresh cache hit can be a logged-out user
+    if (!user) {
+      return $astroApiClient.loginViaDiscord(_to.fullPath)
+    }
   } catch (error) {
     if (error instanceof AError && error.code === AErrorCode.UNAUTHENTICATED) {
       // useAuth() can't be used here: the injection context is lost after the await
