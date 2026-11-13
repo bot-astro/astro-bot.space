@@ -16,6 +16,8 @@ export function useGuildUpgradeMutation() {
       await queryClient.invalidateQueries({
         queryKey: guild_settings_qk(variables.guild_id),
       })
+      // the used upgrades count changes
+      await queryClient.invalidateQueries({ queryKey: user_subscriptions_qk })
     },
   })
 }
