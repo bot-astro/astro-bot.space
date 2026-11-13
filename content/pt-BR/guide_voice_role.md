@@ -9,7 +9,7 @@ Os cargos de voz (antes chamados de conexões) permitem conectar canais de voz a
 Eles permitem que os usuários recebam um cargo enquanto estiverem dentro de um canal de voz específico, e o Astro o removerá deles quando saírem desse canal.
 
 Neste exemplo, um cargo de voz é criado na categoria. O usuário recebe um cargo que permite ver vários canais relacionados àquela categoria:
-![exemplo de cargo de voz](/illustration/voice_role.gif 'Exemplo de cargo de voz')
+![exemplo de cargo de voz](/illustration/voice_role.gif "Exemplo de cargo de voz")
 
 ## Criando e gerenciando cargos de voz
 
