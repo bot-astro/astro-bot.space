@@ -9,7 +9,7 @@ Los roles de voz (antes llamados conexiones) permiten conectar canales de voz co
 Permiten que los usuarios obtengan un rol mientras están dentro de un canal de voz concreto, y Astro se lo quitará cuando abandonen ese canal.
 
 En este ejemplo, se crea un rol de voz en la categoría. El usuario recibe un rol que le permite ver varios canales relacionados con esa categoría:
-![ejemplo de rol de voz](/illustration/voice_role.gif 'Ejemplo de rol de voz')
+![ejemplo de rol de voz](/illustration/voice_role.gif "Ejemplo de rol de voz")
 
 ## Crear y gestionar roles de voz
 
@@ -20,7 +20,8 @@ _Recuerda que sin [Ultimate](/ultimate) solo puedes tener 1 rol de voz._
 ## Ajuste del canal
 
 Cuando creas o editas un rol de voz, debes seleccionar un canal para él.  
-El canal puede ser:
+El canal puede ser:  
+The channel can be either:
 
 - un canal de voz normal (incluye los canales de escenario)
 - una categoría: cada canal de voz dentro de ella activará el rol de voz
