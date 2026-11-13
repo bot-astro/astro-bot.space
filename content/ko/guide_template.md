@@ -35,7 +35,7 @@ _[Ultimate](/ultimate) 없이는 템플릿을 최대 3개까지만 가질 수 �
 
 - 음성 채널의 이름 ([변수](/guides/generator#variables) 지원)
 - 사용자 제한
-- 비트레이트
+- the bitrate
 - 지역
 
 _이 설정들은 모두 필수가 아니므로 전부 설정할 필요는 없어요._
