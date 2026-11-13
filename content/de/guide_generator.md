@@ -29,7 +29,7 @@ Ein temporärer Sprachkanal kann sich in drei verschiedenen Zuständen befinden:
 Diese Zustände werden von Nutzern entweder über Slash-Befehle oder das Interface umgeschaltet.
 
 Du kannst für jeden Zustand einen Namen festlegen:
-![Namenseinstellungen des Generators](/guides/generator_name.png 'Namenseinstellungen des Generators')
+![Namenseinstellungen des Generators](/guides/generator_name.png "Namenseinstellungen des Generators")
 
 ### Variablen
 
@@ -57,14 +57,14 @@ Du kannst `Variablen` verwenden, um den Kanalnamen dynamisch zu machen. Astro er
 
 #### Variablen zum Sprachkanal
 
-| Variable         | Beschreibung                                 |
-| ---------------- | -------------------------------------------- |
-| `{vc_name}`      | Der Name des Sprachkanals                    |
-| `{vc_bitrate}`   | Die Bitrate des Sprachkanals                 |
-| `{vc_userlimit}` | Das Nutzerlimit des Sprachkanals             |
-| `{vc_users}`     | Die Anzahl der Nutzer im Sprachkanal         |
-| `{vc_id}`        | Die ID des Sprachkanals                      |
-| `{vc_mention}`   | Der Sprachkanal als Erwähnung (#sprachkanal) |
+| Variable         | Beschreibung                         |
+| ---------------- | ------------------------------------ |
+| `{vc_name}`      | Der Name des Sprachkanals            |
+| `{vc_bitrate}`   | Die Bitrate des Sprachkanals         |
+| `{vc_userlimit}` | Das Nutzerlimit des Sprachkanals     |
+| `{vc_users}`     | Die Anzahl der Nutzer im Sprachkanal |
+| `{vc_id}`        | Die ID des Sprachkanals              |
+| `{vc_mention}`   | The vc as a mention (#voice-channel) |
 
 #### Variablen für inkrementelle Werte · [erfordert Ultimate](/ultimate)
 
@@ -81,12 +81,12 @@ Die Sprachkanäle werden fortlaufend erzeugt: Der Bot sucht den ersten fehlenden
 Beispiel: Wir haben 5 von Astro fortlaufend erzeugte Sprachkanäle [VC #1, VC#2, VC #3, VC #4 und VC#5], nun wird VC #3 gelöscht. Astro wird nicht jeden einzelnen Sprachkanal auf den passenden Namen umbenennen (also VC#4 zu VC #3 und so weiter), stattdessen heißt der nächste erstellte Sprachkanal nicht VC #6, sondern VC #3, sodass die Lücke gefüllt wird.
 
 Wenn du siehst, dass die Nummern mit der falschen Zahl beginnen, kannst du im Dashboard auf den Button `Cache leeren` klicken, um den Zähler zurückzusetzen
-![Cache leeren](/guides/clear_cache.png 'Cache leeren')
+![Cache leeren](/guides/clear_cache.png "Cache leeren")
 
 ### Bedingungen für die Namensaktualisierung
 
 Du kannst auch festlegen, wann ein Kanalname aktualisiert werden soll:
-![Bedingungen für die Namensaktualisierung des Generators](/guides/generator_name_conditions.png 'Bedingungen für die Namensaktualisierung des Generators')
+![Bedingungen für die Namensaktualisierung des Generators](/guides/generator_name_conditions.png "Bedingungen für die Namensaktualisierung des Generators")
 
 ### Einschränkungen bei der Namensaktualisierung
 
