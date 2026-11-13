@@ -7,7 +7,7 @@ description: Aprende con esta guía a hacer que tu interfaz se vea increíble y 
 
 Una interfaz es un mensaje que permite a los usuarios gestionar rápidamente su canal de voz temporal con simples botones.  
 Así se ve la interfaz por defecto:
-![interfaz por defecto](/guides/default_interface.png 'Interfaz por defecto')
+![interfaz por defecto](/guides/default_interface.png "Interfaz por defecto")
 
 ## Crear una interfaz
 
@@ -79,4 +79,4 @@ Puedes eliminar una interfaz en cualquier momento desde el panel.
 ### Ejemplo de interfaz personalizada
 
 La imagen de abajo es un ejemplo de interfaz personalizada:
-![interfaz personalizada](/illustration/custom_interface.png 'Interfaz personalizada')
+![interfaz personalizada](/illustration/custom_interface.png "Interfaz personalizada")
