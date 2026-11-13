@@ -5,11 +5,11 @@ description: Pelajari cara mengonfigurasi peran suara agar servermu terlihat eks
 
 ## Apa itu peran suara
 
-Peran suara (sebelumnya disebut koneksi) memungkinkan menghubungkan saluran suara dengan peran.  
-Peran suara memungkinkan pengguna mendapatkan peran saat berada di dalam saluran suara tertentu, dan Astro akan mencabut peran itu saat mereka keluar dari saluran tersebut.
+Voice roles (previously called connections) allow to connect voice channels to roles.  
+They allow users to get a role while they are inside a specific voice channel, and Astro will remove the role from them when they leave that channel.
 
-Dalam contoh ini, peran suara dibuat pada kategori. Pengguna menerima peran yang memungkinkannya melihat beberapa saluran yang terkait dengan kategori itu:
-![contoh peran suara](/illustration/voice_role.gif 'Contoh peran suara')
+Here in this example, a voice role is created on the category. The user receives a role that permits the user to see a bunch of channels related to that category:
+![voice role example](/illustration/voice_role.gif "Voice role example")
 
 ## Membuat dan mengelola peran suara
 
@@ -19,8 +19,8 @@ _Ingat bahwa tanpa [Ultimate](/ultimate) kamu hanya dapat memiliki 1 peran suara
 
 ## Pengaturan saluran
 
-Saat membuat atau mengedit peran suara, kamu harus memilih saluran untuknya.  
-Saluran dapat berupa:
+When you create or edit a voice role, you must select a channel for it.  
+The channel can be either:
 
 - saluran suara biasa (termasuk saluran panggung)
 - kategori: setiap saluran suara di dalamnya akan memicu peran suara
