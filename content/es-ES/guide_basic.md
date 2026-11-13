@@ -42,7 +42,7 @@ Para poder usar Astro en tu servidor debes cumplir estos requisitos:
 Astro requiere el permiso `Administrador` por defecto para funcionar y garantizar una gran experiencia a los usuarios medios de Discord.
 
 Si tienes un servidor profesional y no puedes dar ese permiso a Astro por motivos de seguridad, puedes desactivar este requisito con el interruptor correspondiente del panel
-![interruptor del permiso de administrador](/guides/admin_permissions.png 'Interruptor del permiso de administrador')
+![interruptor del permiso de administrador](/guides/admin_permissions.png "Interruptor del permiso de administrador")
 _Puedes pedir orientación en el servidor de soporte sobre los permisos que Astro necesita para funcionar, pero no se ofrece soporte en profundidad sobre ello._
 
 ## Permisos de comandos
@@ -85,7 +85,7 @@ Ultimate es la versión premium de Astro y ofrece muchas funciones avanzadas út
 ### Mejorar tu servidor a Ultimate
 
 Una vez que compres una suscripción en la [página de Ultimate](/ultimate) o a través de la [tienda de aplicaciones de Discord](https://discord.com/application-directory/715621848489918495/premium), puedes mejorar tu servidor con el botón correspondiente del panel
-![mejora a Ultimate](/guides/ultimate.png 'Mejora a Ultimate')
+![mejora a Ultimate](/guides/ultimate.png "Mejora a Ultimate")
 
 ### Gestionar tu suscripción
 
