@@ -37,12 +37,12 @@ Para poder usar o Astro no seu servidor, você precisa cumprir estes requisitos:
 - ter menos de 50 bots (limite imposto pelo Discord)
 - ter pelo menos a permissão `Gerenciar canais`
 
-## Permissões do bot
+## Bot permissions
 
 O Astro exige a permissão `Administrador` por padrão para funcionar e garantir uma ótima experiência aos usuários comuns do Discord.
 
 Se você tem um servidor profissional e não pode dar essa permissão ao Astro por motivos de segurança, pode desativar esse requisito pela chave correspondente no painel
-![chave da permissão de administrador](/guides/admin_permissions.png 'Chave da permissão de administrador')
+![chave da permissão de administrador](/guides/admin_permissions.png "Chave da permissão de administrador")
 _Você pode pedir orientações no Servidor de Suporte sobre as permissões de que o Astro precisa para funcionar, mas não oferecemos suporte aprofundado sobre isso._
 
 ## Permissões de comandos
@@ -67,9 +67,9 @@ Sempre que notar algo não funcionando direito, lembre-se de conferir a seção 
 
 O Ultimate é a versão premium do Astro e oferece muitos recursos avançados úteis, removendo todas as limitações:
 
-| Recurso                                             |                      Premium                      |                           Grátis                           |
+| Feature                                             |                      Premium                      |                           Grátis                           |
 | --------------------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
-| Geradores de canais de voz temporários ilimitados   | <span class="text-discord-green text-lg">✓</span> |                          Máximo 2                          |
+| Unlimited temporary vc generators                   | <span class="text-discord-green text-lg">✓</span> |                          Máximo 2                          |
 | Interfaces ilimitadas                               | <span class="text-discord-green text-lg">✓</span> |                          Máximo 1                          |
 | Cargos de voz ilimitados                            | <span class="text-discord-green text-lg">✓</span> |                          Máximo 1                          |
 | Modelos ilimitados                                  | <span class="text-discord-green text-lg">✓</span> |                          Máximo 3                          |
@@ -80,12 +80,12 @@ O Ultimate é a versão premium do Astro e oferece muitos recursos avançados ú
 | Chats de texto privados                             | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Cargo de voz para donos de canais                   | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | Mensagens personalizadas na criação do canal de voz | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| Geradores de reserva                                | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| Fallback generators                                 | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 
 ### Fazendo upgrade do seu servidor para o Ultimate
 
 Depois de comprar uma assinatura na [página do Ultimate](/ultimate) ou pela [App Store do Discord](https://discord.com/application-directory/715621848489918495/premium), você pode fazer upgrade do seu servidor pelo botão correspondente no painel
-![upgrade para o Ultimate](/guides/ultimate.png 'Upgrade para o Ultimate')
+![upgrade para o Ultimate](/guides/ultimate.png "Upgrade para o Ultimate")
 
 ### Gerenciando sua assinatura
 
