@@ -1,4 +1,5 @@
 import { useApiFetch } from '~/composables/useApiFetch'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import type { GuildSettings } from '~/types/guild-settings/guild_settings'
 import type {
   DiscordGuild,
@@ -63,8 +64,23 @@ export class AstroApiClient {
   }
 
   /// USER ///
-  public get_self_user = async (): Promise<User> => {
-    return useApiFetch<User>(this.url('/v2/auth/me'))
+  /**
+   * Gets the logged-in user, or null when unauthenticated.
+   * Shared by the navbar and the auth middleware (same query key), so both agree on what "logged out" means.
+   */
+  public get_self_user = async (): Promise<User | null> => {
+    try {
+      return await useApiFetch<User>(this.url('/v2/auth/me'))
+    } catch (error) {
+      if (
+        error instanceof AError &&
+        error.code === AErrorCode.UNAUTHENTICATED
+      ) {
+        return null
+      }
+
+      throw error
+    }
   }
 
   /// DISCORD ///

@@ -26,7 +26,12 @@ export async function useApiFetch<T>(
     const data: AErrorResponse | undefined =
       error instanceof FetchError ? error.data : undefined
     throw new AError({
-      code: data?.code ?? AErrorCode.UNKNOWN,
+      // a 401 without a body (proxy, gateway) is still unauthenticated
+      code:
+        data?.code ??
+        (error instanceof FetchError && error.statusCode === 401
+          ? AErrorCode.UNAUTHENTICATED
+          : AErrorCode.UNKNOWN),
       message: data?.message,
     })
   }
