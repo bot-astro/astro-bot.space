@@ -27,10 +27,10 @@ description: ابدأ استخدام Astro بتعلّم الأساسيات
 
 ## الإعداد السريع
 
-لا تريد ضبط كل شيء يدويًا؟ استخدم الأمر `/setup` أو زر الإعداد الذي يرسله Astro عند انضمامه إلى سيرفرك.  
+Don't wanna configure everything by hand? لا تريد ضبط كل شيء يدويًا؟ استخدم الأمر `/setup` أو زر الإعداد الذي يرسله Astro عند انضمامه إلى سيرفرك.  
 سينشئ Astro فئة تحتوي على مولّد وواجهة، ليعمل نظام القنوات الصوتية المؤقتة فورًا. بعدها يمكنك تغيير الاسم والفئة والموضع وكل شيء آخر من [لوحة التحكم](/guilds).
 
-## متطلبات السيرفر
+## Server requirements
 
 لتتمكن من استخدام Astro في سيرفرك يجب أن تستوفي هذه المتطلبات:
 
@@ -42,7 +42,7 @@ description: ابدأ استخدام Astro بتعلّم الأساسيات
 يتطلب Astro صلاحية `المسؤول` افتراضيًا ليعمل ويضمن تجربة رائعة لمستخدمي Discord العاديين.
 
 إذا كنت تملك سيرفرًا احترافيًا ولا يمكنك منح هذه الصلاحية لـ Astro لأسباب أمنية، يمكنك تعطيل هذا المتطلب عبر المفتاح المخصص في لوحة التحكم
-![مفتاح صلاحية المسؤول](/guides/admin_permissions.png 'مفتاح صلاحية المسؤول')
+![مفتاح صلاحية المسؤول](/guides/admin_permissions.png "مفتاح صلاحية المسؤول")
 _يمكنك طلب إرشادات في سيرفر الدعم بخصوص الصلاحيات التي يحتاجها Astro ليعمل، لكن لا يُقدَّم دعم معمّق لذلك._
 
 ## صلاحيات الأوامر
@@ -56,7 +56,7 @@ _يمكنك طلب إرشادات في سيرفر الدعم بخصوص الصل
 
 ## الملف الشخصي للبوت
 
-هل تريد أن يبدو Astro أكثر كأنه جزء من سيرفرك؟ من لوحة التحكم يمكنك منحه اسمًا مستعارًا وصورة رمزية وبانر ونبذة مخصصة، لسيرفرك فقط.
+Want Astro to look a bit more like part of your server? From the dashboard you can give it a custom nickname, avatar, banner and bio, only for your server.
 
 ## الأخطاء والمشاكل
 
@@ -67,9 +67,9 @@ _يمكنك طلب إرشادات في سيرفر الدعم بخصوص الصل
 
 Ultimate هي النسخة المميزة من Astro، وتوفر العديد من الميزات المتقدمة المفيدة مع إزالة جميع القيود:
 
-| الميزة                                      |                       مميز                        |                           مجاني                            |
+| الميزة                                      |                      Premium                      |                            مجاني                           |
 | ------------------------------------------- | :-----------------------------------------------: | :--------------------------------------------------------: |
-| مولّدات قنوات صوتية مؤقتة غير محدودة        | <span class="text-discord-green text-lg">✓</span> |                         2 كحد أقصى                         |
+| Unlimited temporary vc generators           | <span class="text-discord-green text-lg">✓</span> |                         2 كحد أقصى                         |
 | واجهات غير محدودة                           | <span class="text-discord-green text-lg">✓</span> |                         1 كحد أقصى                         |
 | رتب صوتية غير محدودة                        | <span class="text-discord-green text-lg">✓</span> |                         1 كحد أقصى                         |
 | قوالب غير محدودة                            | <span class="text-discord-green text-lg">✓</span> |                         3 كحد أقصى                         |
@@ -78,14 +78,14 @@ Ultimate هي النسخة المميزة من Astro، وتوفر العديد �
 | فلتر الكلمات المسيئة لأسماء القنوات الصوتية | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | غرف انتظار                                  | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | دردشات نصية خاصة                            | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| رتبة صوتية لمالكي القنوات                   | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| Voice role for channel owners               | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 | رسائل مخصصة عند إنشاء القناة الصوتية        | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
-| مولّدات احتياطية                            | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
+| Fallback generators                         | <span class="text-discord-green text-lg">✓</span> | <span class="text-foreground-destructive text-lg">✗</span> |
 
 ### ترقية سيرفرك إلى Ultimate
 
 بعد شراء اشتراك من [صفحة Ultimate](/ultimate) أو عبر [متجر تطبيقات Discord](https://discord.com/application-directory/715621848489918495/premium) يمكنك ترقية سيرفرك عبر الزر المخصص في لوحة التحكم
-![ترقية Ultimate](/guides/ultimate.png 'ترقية Ultimate')
+![ترقية Ultimate](/guides/ultimate.png "ترقية Ultimate")
 
 ### إدارة اشتراكك
 
