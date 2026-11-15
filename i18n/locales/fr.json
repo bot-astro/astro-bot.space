@@ -308,6 +308,17 @@
   },
   "overview": {
     "description": "Gère les paramètres de base de ton serveur",
+    "quick_setup": {
+      "button": "Configuration rapide",
+      "description": "Crée une catégorie avec un générateur et une interface, prêts à l'emploi",
+      "success_title": "Astro est prêt !",
+      "success_description": "Voici ce qui a été créé sur ton serveur :",
+      "created_category": "Catégorie {name}",
+      "created_generator": "Générateur {name}, rejoins-le pour obtenir un salon vocal temporaire",
+      "created_interface": "Interface dans {name}, elle permet aux utilisateurs de gérer leur salon vocal temporaire avec des boutons",
+      "modify": "Tu peux renommer et déplacer ces salons librement. Pour changer leur fonctionnement, ouvre leurs paramètres :",
+      "voice_roles_hint": "Tu veux donner des rôles aux personnes dans les salons vocaux ? Configure aussi les rôles vocaux."
+    },
     "shortcuts": {
       "generators": {
         "title": "Configurer les salons vocaux temporaires",

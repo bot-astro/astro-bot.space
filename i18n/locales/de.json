@@ -308,6 +308,17 @@
   },
   "overview": {
     "description": "Verwalte die grundlegenden Einstellungen deines Servers",
+    "quick_setup": {
+      "button": "Schnellstart",
+      "description": "Erstellt eine Kategorie mit einem Generator und einem Interface, sofort einsatzbereit",
+      "success_title": "Astro ist bereit!",
+      "success_description": "Das wurde auf deinem Server erstellt:",
+      "created_category": "Kategorie {name}",
+      "created_generator": "Generator {name}, tritt ihm bei, um einen temporären Sprachkanal zu bekommen",
+      "created_interface": "Interface in {name}, damit können Nutzer ihren temporären Sprachkanal per Buttons verwalten",
+      "modify": "Du kannst diese Kanäle frei umbenennen und verschieben. Um zu ändern, wie sie funktionieren, öffne ihre Einstellungen:",
+      "voice_roles_hint": "Du möchtest Rollen für Personen in Sprachkanälen vergeben? Richte auch Sprachrollen ein."
+    },
     "shortcuts": {
       "generators": {
         "title": "Temporäre Sprachkanäle konfigurieren",
