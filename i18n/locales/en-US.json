@@ -234,7 +234,7 @@
       "errors": "Errors",
       "generators": "Generators",
       "interfaces": "Interfaces",
-      "voice_roles": "Voice roles",
+      "voice_roles": "Voice role",
       "templates": "Templates"
     },
     "save_toast": {
@@ -325,8 +325,8 @@
     "settings": {
       "group": "Settings",
       "require_admin": {
-        "title": "Require Administrator permission",
-        "description": "When enabled, Astro refuses to run commands if it is missing permissions it needs. Disabling this makes Astro skip that check and try anyway.",
+        "title": "Require Admin permission",
+        "description": "When disabled, Astro will try to run even if it is missing the permissions it needs, instead of warning you.",
         "recommendation": "It's recommended to keep this on!"
       },
       "slash_permissions": {
@@ -388,7 +388,7 @@
     "select_channel": "Select a channel",
     "select_role": "Select a role",
     "role_description": "This role will be applied when a user joins the channel selected above",
-    "action_description": "Assign means Astro will give the role to the user when they join the channel and remove it when they leave. Remove does the opposite. Toggle behaves like 'Assign' if the user doesn't have the role, 'Remove' otherwise",
+    "action_description": "Assign means Astro will give the role to the user when he joins the channel and remove it when he leaves. Remove does the opposite. Toggle behaves like 'Assign' if the user doesn't have the role, 'Remove' otherwise",
     "actions": {
       "assign": "Assign",
       "remove": "Remove",
@@ -609,20 +609,20 @@
         "description": "The name that temporary voice channels have when hidden"
       },
       "state_change": {
-        "title": "Rename on state change",
-        "description": "Whether the voice channel name should be updated when the state of the voice channel changes. For example when the owner locks or hides the channel"
+        "title": "State change",
+        "description": "Whether the voice channel name should be update when the state of the voice channel changes. For example when the user locks or hides the channel"
       },
       "owner_change": {
-        "title": "Rename on owner change",
-        "description": "Whether the voice channel name should be updated when the owner of the voice channel changes"
+        "title": "Owner change",
+        "description": "Whether the voice channel name should be update when the owner changes"
       },
       "activity_change": {
-        "title": "Rename on activity change",
-        "description": "Whether the voice channel name should be updated when the activity of the owner changes. For example when the owner stops playing a game"
+        "title": "Activity change",
+        "description": "Whether the voice channel name should be update when the activity of the owner changes. For example when the owner stops playing a game"
       },
       "renaming": {
-        "title": "Rename manually renamed channels",
-        "description": "Whether the voice channel name should still be updated after the owner renamed it manually. For example, if this setting is off and the owner renames the channel, it won't be updated anymore when any of the above scenarios happen"
+        "title": "Renaming",
+        "description": "Whether the voice channel name should be updated even if it was manually renamed by the owner. For example, if this setting is off and the owner renames the channel, it wont be updated when any of the above scenarios happen"
       },
       "category": {
         "title": "Category",
@@ -630,7 +630,7 @@
       },
       "position": {
         "title": "Position",
-        "description": "The exact position where temporary voice channels are placed inside the category. Before and after the generator only work when the category is the same as the one of the generator, otherwise channels are placed at the bottom of the category."
+        "description": "The exact position where temporary voice channels are placed inside the category. Before and after only work when the category is the same as the generator one, otherwise they go to the bottom"
       },
       "user_limit": {
         "title": "User limit",
@@ -641,20 +641,20 @@
         "description": "The bitrate in kbps, leave empty for using your Discord server default bitrate"
       },
       "inheriting": {
-        "title": "Permissions inheriting",
-        "description": "Choose where temporary voice channels copy their permissions from: the generator, the category in which they are generated, or nowhere if they should not inherit any permissions"
+        "title": "Inheriting",
+        "description": "Choose if temporary voice channels inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
       },
       "default_state": {
-        "title": "State on creation",
-        "description": "Whether temporary voice channels are created unlocked, locked (users cannot join them) or hidden (users cannot see them)"
+        "title": "Default state",
+        "description": "Whether the temporary voice channel should be locked or hidden upon creation"
       },
       "target_role": {
         "title": "Target role",
-        "description": "The role whose permissions Astro changes when a user locks or hides the channel, usually @everyone"
+        "description": "Astro will modify the permissions of this role when needed, for example when a user locks or hides the channel"
       },
       "moderator_role": {
         "title": "Moderator role",
-        "description": "Members with this role can always see, join and manage temporary voice channels, even when they are locked or hidden"
+        "description": "This role will always have permissions to manage the channel, even when the channel is locked or hidden"
       },
       "min_user_limit": {
         "title": "Minimum user limit",
@@ -678,7 +678,7 @@
       },
       "owner_role": {
         "title": "Owner role",
-        "description": "A role Astro gives to the owner of a temporary voice channel for as long as they own it"
+        "description": "This role will be given to temporary voice channel owners"
       },
       "queue_mode": {
         "title": "Queue mode",
@@ -702,7 +702,7 @@
       },
       "waiting_position": {
         "title": "Position",
-        "description": "The exact position where waiting rooms are placed inside the category. Before and after the temporary voice channel only work when the category is the same as the one of the temporary voice channel, otherwise waiting rooms are placed at the bottom of the category."
+        "description": "The exact position where waiting rooms are placed inside the category, relative to their temporary voice channel. Before and after only work when the category is the same as the temporary voice channel one, otherwise they go to the bottom"
       },
       "waiting_user_limit": {
         "title": "User limit",
@@ -714,7 +714,7 @@
       },
       "waiting_inheriting": {
         "title": "Permissions inheriting",
-        "description": "Choose where waiting rooms copy their permissions from: the generator, the category in which they are generated, or nowhere if they should not inherit any permissions"
+        "description": "Choose if waiting rooms inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
       },
       "chat_auto": {
         "title": "Automatic private chat creation",
@@ -745,12 +745,12 @@
         "description": "The category in which private text chats are generated"
       },
       "chat_inheriting": {
-        "title": "Permissions inheriting",
-        "description": "Choose where private text chats copy their permissions from: the generator, the category in which they are generated, or nowhere if they should not inherit any permissions"
+        "title": "Permission Inheriting",
+        "description": "Choose if private text chats inherit permissions from the generator, the category in which they are generated, or if they should not inherit any permissions"
       },
       "chat_nsfw": {
-        "title": "Age-restricted (NSFW)",
-        "description": "Whether private text chats are marked as age-restricted channels"
+        "title": "Nsfw",
+        "description": "Control the nsfw setting for private text chats"
       },
       "chat_slowmode": {
         "title": "Slowmode",
@@ -792,14 +792,14 @@
         "bottom": "Bottom of the category"
       },
       "inheritance": {
-        "none": "Don't inherit",
-        "category": "Inherit from the category",
-        "generator": "Inherit from the generator"
+        "none": "None",
+        "category": "Category",
+        "generator": "Generator"
       },
       "states": {
-        "unlocked": "Unlocked (visible and open to everyone)",
-        "locked": "Locked (visible but users cannot join)",
-        "hidden": "Hidden (users cannot see it)",
+        "unlocked": "Unlocked",
+        "locked": "Locked",
+        "hidden": "Hidden",
         "unhidden": "Unhidden"
       },
       "chat_message_types": {
