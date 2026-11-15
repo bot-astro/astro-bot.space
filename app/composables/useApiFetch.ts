@@ -1,4 +1,3 @@
-import { FetchError } from 'ofetch'
 import {
   AError,
   AErrorCode,
@@ -21,14 +20,17 @@ export async function useApiFetch<T>(
         // this way auth cookie gets sent during ssr too!
         ...(import.meta.server ? useRequestHeaders(['cookie']) : {}),
       },
+      onResponseError: ({ response }) => {
+        const data: AErrorResponse | undefined = response._data
+        throw new AError({
+          code: data?.code ?? AErrorCode.UNKNOWN,
+          message: data?.message,
+        })
+      },
     })) as T
   } catch (error) {
-    const data: AErrorResponse | undefined =
-      error instanceof FetchError ? error.data : undefined
-    throw new AError({
-      code: data?.code ?? AErrorCode.UNKNOWN,
-      message: data?.message,
-      cause: error,
-    })
+    if (error instanceof AError) throw error
+
+    throw new AError({ code: AErrorCode.UNKNOWN, cause: error })
   }
 }
