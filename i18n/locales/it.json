@@ -786,6 +786,11 @@
         "after": "Dopo",
         "bottom": "In fondo"
       },
+      "waiting_positions": {
+        "before": "Prima del canale vocale temporaneo",
+        "after": "Dopo il canale vocale temporaneo",
+        "bottom": "In fondo alla categoria"
+      },
       "inheritance": {
         "none": "Nessuna",
         "category": "Categoria",

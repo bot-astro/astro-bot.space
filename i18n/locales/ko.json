@@ -786,6 +786,11 @@
         "after": "뒤",
         "bottom": "맨 아래"
       },
+      "waiting_positions": {
+        "before": "임시 음성 채널 앞",
+        "after": "임시 음성 채널 뒤",
+        "bottom": "카테고리 맨 아래"
+      },
       "inheritance": {
         "none": "없음",
         "category": "카테고리",

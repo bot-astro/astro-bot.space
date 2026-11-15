@@ -786,6 +786,11 @@
         "after": "Después",
         "bottom": "Al final"
       },
+      "waiting_positions": {
+        "before": "Antes del canal de voz temporal",
+        "after": "Después del canal de voz temporal",
+        "bottom": "Al final de la categoría"
+      },
       "inheritance": {
         "none": "Ninguna",
         "category": "Categoría",

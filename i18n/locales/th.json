@@ -786,6 +786,11 @@
         "after": "ถัดไป",
         "bottom": "ล่างสุด"
       },
+      "waiting_positions": {
+        "before": "ก่อนห้องเสียงชั่วคราว",
+        "after": "หลังห้องเสียงชั่วคราว",
+        "bottom": "ท้ายหมวดหมู่"
+      },
       "inheritance": {
         "none": "ไม่มี",
         "category": "หมวดหมู่",

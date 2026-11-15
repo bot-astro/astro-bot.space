@@ -786,6 +786,11 @@
         "after": "بعد",
         "bottom": "في الأسفل"
       },
+      "waiting_positions": {
+        "before": "قبل القناة الصوتية المؤقتة",
+        "after": "بعد القناة الصوتية المؤقتة",
+        "bottom": "أسفل الفئة"
+      },
       "inheritance": {
         "none": "لا شيء",
         "category": "الفئة",

@@ -786,6 +786,11 @@
         "after": "Pagkatapos",
         "bottom": "Sa ibaba"
       },
+      "waiting_positions": {
+        "before": "Bago ang pansamantalang voice channel",
+        "after": "Pagkatapos ng pansamantalang voice channel",
+        "bottom": "Sa ilalim ng category"
+      },
       "inheritance": {
         "none": "Wala",
         "category": "Category",
