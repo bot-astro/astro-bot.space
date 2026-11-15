@@ -326,7 +326,7 @@
       "group": "Settings",
       "require_admin": {
         "title": "Require Admin permission",
-        "description": "Disabling this will make Astro ignore permission issues.",
+        "description": "When disabled, Astro will try to run even if it is missing the permissions it needs, instead of warning you.",
         "recommendation": "It's recommended to keep this on!"
       },
       "slash_permissions": {
@@ -630,7 +630,7 @@
       },
       "position": {
         "title": "Position",
-        "description": "The exact position where temporary voice channels are placed inside the category."
+        "description": "The exact position where temporary voice channels are placed inside the category. Before and after only work when the category is the same as the generator one, otherwise they go to the bottom"
       },
       "user_limit": {
         "title": "User limit",
@@ -702,7 +702,7 @@
       },
       "waiting_position": {
         "title": "Position",
-        "description": "Whether waiting rooms should be generated above or below their corresponding temporary voice channel. Or at the bottom of the category"
+        "description": "The exact position where waiting rooms are placed inside the category, relative to their temporary voice channel. Before and after only work when the category is the same as the temporary voice channel one, otherwise they go to the bottom"
       },
       "waiting_user_limit": {
         "title": "User limit",
@@ -782,9 +782,14 @@
       "interface_in": "Interface in #{channel}",
       "message_id": "Message id: {id}",
       "positions": {
-        "before": "Before",
-        "after": "After",
-        "bottom": "Bottom"
+        "before": "Before the generator",
+        "after": "After the generator",
+        "bottom": "Bottom of the category"
+      },
+      "waiting_positions": {
+        "before": "Before the temporary voice channel",
+        "after": "After the temporary voice channel",
+        "bottom": "Bottom of the category"
       },
       "inheritance": {
         "none": "None",
