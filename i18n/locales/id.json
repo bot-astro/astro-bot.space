@@ -786,6 +786,11 @@
         "after": "Sesudah",
         "bottom": "Paling bawah"
       },
+      "waiting_positions": {
+        "before": "Sebelum voice channel sementara",
+        "after": "Setelah voice channel sementara",
+        "bottom": "Bagian bawah kategori"
+      },
       "inheritance": {
         "none": "Tidak ada",
         "category": "Kategori",

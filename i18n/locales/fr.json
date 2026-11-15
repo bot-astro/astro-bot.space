@@ -786,6 +786,11 @@
         "after": "Après",
         "bottom": "En bas"
       },
+      "waiting_positions": {
+        "before": "Avant le salon vocal temporaire",
+        "after": "Après le salon vocal temporaire",
+        "bottom": "Au bas de la catégorie"
+      },
       "inheritance": {
         "none": "Aucun",
         "category": "Catégorie",

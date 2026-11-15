@@ -786,6 +786,11 @@
         "after": "Danach",
         "bottom": "Ganz unten"
       },
+      "waiting_positions": {
+        "before": "Vor dem temporären Sprachkanal",
+        "after": "Nach dem temporären Sprachkanal",
+        "bottom": "Ende der Kategorie"
+      },
       "inheritance": {
         "none": "Keine",
         "category": "Kategorie",
