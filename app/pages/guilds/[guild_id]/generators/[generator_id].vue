@@ -947,7 +947,9 @@
                         :value="pos"
                       >
                         {{
-                          $t(`generators.editor.waiting_positions.${pos.toLowerCase()}`)
+                          $t(
+                            `generators.editor.waiting_positions.${pos.toLowerCase()}`,
+                          )
                         }}
                       </SelectItem>
                     </SelectGroup>
