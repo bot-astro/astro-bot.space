@@ -1,4 +1,3 @@
-import { FetchError } from 'ofetch'
 import {
   AError,
   AErrorCode,
@@ -23,10 +22,19 @@ export async function useApiFetch<T>(
       },
     })) as T
   } catch (error) {
-    const data: AErrorResponse | undefined =
-      error instanceof FetchError ? error.data : undefined
+    // no `instanceof FetchError`: on the ssr worker $fetch comes from nitro's own ofetch copy, so the check is false and a 401 became UNKNOWN (500 page)
+    const fetch_error = error as {
+      data?: AErrorResponse
+      response?: { status?: number }
+    }
+    const data = fetch_error?.data
+    const code =
+      data?.code ??
+      (fetch_error?.response?.status === 401
+        ? AErrorCode.UNAUTHENTICATED
+        : AErrorCode.UNKNOWN)
     throw new AError({
-      code: data?.code ?? AErrorCode.UNKNOWN,
+      code,
       message: data?.message,
       cause: error,
     })
