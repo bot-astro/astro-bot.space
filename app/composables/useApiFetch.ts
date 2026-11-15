@@ -20,23 +20,18 @@ export async function useApiFetch<T>(
         // this way auth cookie gets sent during ssr too!
         ...(import.meta.server ? useRequestHeaders(['cookie']) : {}),
       },
+      // built here instead of in the catch: an `instanceof FetchError` check is false on the ssr worker (nitro bundles its own ofetch), which turned a 401 into UNKNOWN and a 500 page
+      onResponseError: ({ response }) => {
+        const data: AErrorResponse | undefined = response._data
+        throw new AError({
+          code: data?.code ?? AErrorCode.UNKNOWN,
+          message: data?.message,
+        })
+      },
     })) as T
   } catch (error) {
-    // no `instanceof FetchError`: on the ssr worker $fetch comes from nitro's own ofetch copy, so the check is false and a 401 became UNKNOWN (500 page)
-    const fetch_error = error as {
-      data?: AErrorResponse
-      response?: { status?: number }
-    }
-    const data = fetch_error?.data
-    const code =
-      data?.code ??
-      (fetch_error?.response?.status === 401
-        ? AErrorCode.UNAUTHENTICATED
-        : AErrorCode.UNKNOWN)
-    throw new AError({
-      code,
-      message: data?.message,
-      cause: error,
-    })
+    if (error instanceof AError) throw error
+
+    throw new AError({ code: AErrorCode.UNKNOWN, cause: error })
   }
 }
