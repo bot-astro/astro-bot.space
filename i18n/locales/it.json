@@ -309,6 +309,17 @@
   },
   "overview": {
     "description": "Gestisci le impostazioni di base del tuo server",
+    "quick_setup": {
+      "button": "Configurazione rapida",
+      "description": "Crea una categoria con un generatore e un'interfaccia, pronti all'uso",
+      "success_title": "Astro è pronto!",
+      "success_description": "Questo è stato creato nel tuo server:",
+      "created_category": "Categoria {name}",
+      "created_generator": "Generatore {name}, entra per ottenere un canale vocale temporaneo",
+      "created_interface": "Interfaccia in {name}, permette agli utenti di gestire il proprio canale vocale temporaneo con dei pulsanti",
+      "modify": "Puoi rinominare e spostare questi canali liberamente. Per cambiare come funzionano, apri le loro impostazioni:",
+      "voice_roles_hint": "Vuoi assegnare ruoli alle persone nei canali vocali? Configura anche i ruoli vocali."
+    },
     "shortcuts": {
       "generators": {
         "title": "Configura i canali vocali temporanei",
