@@ -309,17 +309,6 @@
   },
   "overview": {
     "description": "Gerencie as configurações básicas do seu servidor",
-    "quick_setup": {
-      "button": "Configuração rápida",
-      "description": "Cria uma categoria com um gerador e uma interface, prontos para usar",
-      "success_title": "O Astro está pronto!",
-      "success_description": "Isto foi criado no seu servidor:",
-      "created_category": "Categoria {name}",
-      "created_generator": "Gerador {name}, entre nele para ganhar um canal de voz temporário",
-      "created_interface": "Interface em {name}, permite que os usuários gerenciem seu canal de voz temporário com botões",
-      "modify": "Você pode renomear e mover esses canais livremente. Para mudar como eles funcionam, abra as configurações deles:",
-      "voice_roles_hint": "Quer dar cargos às pessoas nos canais de voz? Configure também os cargos de voz."
-    },
     "shortcuts": {
       "generators": {
         "title": "Configurar canais de voz temporários",

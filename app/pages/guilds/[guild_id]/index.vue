@@ -22,80 +22,7 @@
       </div>
     </div>
 
-    <div
-      v-if="setup_result"
-      class="mt-12 flex flex-col gap-3 rounded-md bordered bg-background-container p-4"
-    >
-      <div class="flex items-center gap-2">
-        <IconGreenCheck class="size-5 shrink-0" />
-        <span class="text-heading">{{
-          $t('overview.quick_setup.success_title')
-        }}</span>
-        <div class="grow" />
-        <ButtonText @click="setup_result = null">{{
-          $t('common.close')
-        }}</ButtonText>
-      </div>
-      <span class="text-description">{{
-        $t('overview.quick_setup.success_description')
-      }}</span>
-      <ul class="text-description flex list-inside list-disc flex-col gap-1">
-        <li>
-          {{
-            $t('overview.quick_setup.created_category', {
-              name: setup_result.category.name,
-            })
-          }}
-        </li>
-        <li>
-          {{
-            $t('overview.quick_setup.created_generator', {
-              name: setup_result.generator_channel.name,
-            })
-          }}
-        </li>
-        <li>
-          {{
-            $t('overview.quick_setup.created_interface', {
-              name: setup_result.interface_channel.name,
-            })
-          }}
-        </li>
-      </ul>
-      <span class="text-description">{{
-        $t('overview.quick_setup.modify')
-      }}</span>
-      <div class="flex flex-wrap gap-4">
-        <ButtonText
-          :to="`/guilds/${guild_id}/generators/${setup_result.generator_channel.id}`"
-        >
-          {{ $t('dashboard.sections.generators') }}
-        </ButtonText>
-        <ButtonText
-          v-if="setup_interface_id"
-          :to="`/guilds/${guild_id}/interfaces/${setup_interface_id}`"
-        >
-          {{ $t('dashboard.sections.interfaces') }}
-        </ButtonText>
-        <ButtonText :to="`/guilds/${guild_id}/voice-roles`">
-          {{ $t('dashboard.sections.voice_roles') }}
-        </ButtonText>
-      </div>
-      <span class="text-description">{{
-        $t('overview.quick_setup.voice_roles_hint')
-      }}</span>
-    </div>
-
-    <div v-if="is_guild_clean" class="mt-12 flex flex-wrap items-center gap-4">
-      <Button :loading="is_setup_pending" @click="on_quick_setup_clicked">
-        {{ $t('overview.quick_setup.button') }}
-      </Button>
-      <span class="text-description">{{
-        $t('overview.quick_setup.description')
-      }}</span>
-    </div>
-    <Skeleton v-else-if="!guild_settings" class="mt-12 h-16 w-96" />
-    <div v-else class="mt-12 flex flex-wrap gap-4">
+    <div class="mt-12 flex flex-wrap gap-4">
       <div
         class="group flex max-w-none items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90 md:max-w-96"
         @click="navigateTo(`${$route.fullPath}/generators`)"
@@ -477,7 +404,6 @@ import { deepEqual } from 'fast-equals'
 import type { DashboardSection } from '~/types/dashboard'
 import { useToast } from '~/components/ui/toast'
 import type { Media, MediaType } from '~/types/media'
-import type { GuildSetupResult } from '~/types/guild-settings/setup'
 import { useRefreshGuildEntitlementsMutation } from '~/data/astro/mutations/useRefreshGuildEntitlementsMutation'
 
 definePageMeta({
@@ -563,21 +489,6 @@ const profile_bio = computed({
   },
 })
 
-const is_guild_clean = computed(
-  () =>
-    guild_settings.value !== undefined &&
-    guild_settings.value.generators.length === 0 &&
-    guild_settings.value.interfaces.length === 0 &&
-    guild_settings.value.connections.length === 0,
-)
-const setup_result = ref<GuildSetupResult | null>(null)
-const setup_interface_id = computed(
-  () =>
-    setup_result.value?.guild_settings.interfaces.find(
-      (i) => i.channel_id === setup_result.value?.interface_channel.id,
-    )?.message_id,
-)
-
 watch(
   guild_settings,
   (new_settings) => {
@@ -636,18 +547,6 @@ const {
   isPending: is_refresh_entitlements_pending,
   error: refresh_entitlements_error,
 } = useRefreshGuildEntitlementsMutation()
-const {
-  mutate: setup_guild,
-  isPending: is_setup_pending,
-  error: setup_guild_error,
-} = useSetupGuildMutation()
-
-function on_quick_setup_clicked() {
-  setup_guild(
-    { guild_id: guild_id.value! },
-    { onSuccess: (result) => (setup_result.value = result) },
-  )
-}
 
 // the profile and the settings have separate endpoints, the profile goes first
 // so that the settings response already contains the new profile
@@ -798,15 +697,6 @@ watch(save_guild_settings_error, (e) => {
 })
 
 watch(save_guild_profile_error, (e) => {
-  if (e?.message) {
-    toast({
-      description: e.message,
-      variant: 'destructive',
-    })
-  }
-})
-
-watch(setup_guild_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,
