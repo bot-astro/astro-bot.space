@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "Discord membatasi seberapa sering server kamu dapat dimuat, harap tunggu beberapa detik lalu coba lagi",
     "required_permissions": "Izin yang diperlukan",
     "required_permissions_description": "Untuk mengelola pengaturan Astro di sebuah server, kamu harus memiliki izin {manage_channels}, {manage_server}, atau {administrator}.",
     "permissions": {

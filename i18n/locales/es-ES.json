@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "Discord está limitando la frecuencia con la que se pueden cargar tus servidores, espera unos segundos e inténtalo de nuevo",
     "required_permissions": "Permisos necesarios",
     "required_permissions_description": "Para gestionar los ajustes de Astro en un servidor, necesitas tener el permiso {manage_channels}, {manage_server} o {administrator}.",
     "permissions": {

@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "Discord limite la fréquence de chargement de tes serveurs, patiente quelques secondes et réessaie",
     "required_permissions": "Permissions requises",
     "required_permissions_description": "Pour gérer les paramètres d'Astro sur un serveur, tu dois avoir l'une des permissions {manage_channels}, {manage_server} ou {administrator}.",
     "permissions": {

@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "Discord에서 서버 목록을 불러오는 횟수를 제한하고 있습니다. 몇 초 후에 다시 시도해 주세요",
     "required_permissions": "필요한 권한",
     "required_permissions_description": "서버의 Astro 설정을 관리하려면 {manage_channels}, {manage_server} 또는 {administrator} 권한 중 하나가 있어야 해요.",
     "permissions": {

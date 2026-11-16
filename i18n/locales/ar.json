@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "ديسكورد يحدّ من عدد مرات تحميل خوادمك، يرجى الانتظار بضع ثوانٍ ثم المحاولة مرة أخرى",
     "required_permissions": "الصلاحيات المطلوبة",
     "required_permissions_description": "لإدارة إعدادات Astro في سيرفر، يجب أن تملك إحدى الصلاحيات {manage_channels} أو {manage_server} أو {administrator}.",
     "permissions": {
