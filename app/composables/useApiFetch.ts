@@ -22,9 +22,11 @@ export async function useApiFetch<T>(
       },
       onResponseError: ({ response }) => {
         const data: AErrorResponse | undefined = response._data
+        const retry_after = response.headers.get('retry-after')
         throw new AError({
           code: data?.code ?? AErrorCode.UNKNOWN,
           message: data?.message,
+          retryAfterSeconds: retry_after ? Number(retry_after) : undefined,
         })
       },
     })) as T

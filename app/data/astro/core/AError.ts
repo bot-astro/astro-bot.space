@@ -13,14 +13,22 @@ export enum AErrorCode {
 export interface AErrorResponse {
   code: AErrorCode
   message?: string | null
+  retryAfterSeconds?: number
 }
 
 export class AError extends Error {
   readonly code: AErrorCode
+  readonly retryAfterSeconds?: number
 
-  constructor({ code, message, cause }: AErrorResponse & { cause?: unknown }) {
+  constructor({
+    code,
+    message,
+    retryAfterSeconds,
+    cause,
+  }: AErrorResponse & { cause?: unknown }) {
     super(message ?? code, { cause })
     this.name = 'AError'
     this.code = code
+    this.retryAfterSeconds = retryAfterSeconds
   }
 }
