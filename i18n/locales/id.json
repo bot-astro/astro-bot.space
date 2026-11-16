@@ -309,17 +309,6 @@
   },
   "overview": {
     "description": "Kelola pengaturan dasar servermu",
-    "quick_setup": {
-      "button": "Setup cepat",
-      "description": "Membuat kategori dengan generator dan interface, siap digunakan",
-      "success_title": "Astro sudah siap!",
-      "success_description": "Ini yang sudah dibuat di servermu:",
-      "created_category": "Kategori {name}",
-      "created_generator": "Generator {name}, bergabunglah untuk mendapatkan voice channel sementara",
-      "created_interface": "Interface di {name}, memungkinkan pengguna mengelola voice channel sementara mereka dengan tombol",
-      "modify": "Kamu bebas mengganti nama dan memindahkan channel ini. Untuk mengubah cara kerjanya, buka pengaturannya:",
-      "voice_roles_hint": "Ingin memberi peran kepada orang di voice channel? Atur juga peran suara."
-    },
     "shortcuts": {
       "generators": {
         "title": "Konfigurasikan saluran suara sementara",

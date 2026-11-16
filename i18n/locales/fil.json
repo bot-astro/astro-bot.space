@@ -309,17 +309,6 @@
   },
   "overview": {
     "description": "Pamahalaan ang mga pangunahing setting ng server mo",
-    "quick_setup": {
-      "button": "Mabilis na setup",
-      "description": "Gumagawa ng category na may generator at interface, handa nang gamitin",
-      "success_title": "Handa na ang Astro!",
-      "success_description": "Ito ang nagawa sa server mo:",
-      "created_category": "Category na {name}",
-      "created_generator": "Generator na {name}, sumali rito para makakuha ng pansamantalang voice channel",
-      "created_interface": "Interface sa {name}, nagbibigay-daan ito sa mga user na pamahalaan ang kanilang pansamantalang voice channel gamit ang mga button",
-      "modify": "Malaya mong mapapalitan ng pangalan at mailipat ang mga channel na ito. Para baguhin kung paano gumagana ang mga ito, buksan ang kanilang settings:",
-      "voice_roles_hint": "Gusto mo bang magbigay ng roles sa mga tao sa voice channels? I-setup din ang voice roles."
-    },
     "shortcuts": {
       "generators": {
         "title": "I-configure ang mga pansamantalang voice channel",

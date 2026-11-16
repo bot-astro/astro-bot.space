@@ -309,17 +309,6 @@
   },
   "overview": {
     "description": "서버의 기본 설정을 관리하세요",
-    "quick_setup": {
-      "button": "빠른 설정",
-      "description": "생성기와 인터페이스가 포함된 카테고리를 만들어요. 바로 사용할 수 있어요",
-      "success_title": "Astro가 준비되었어요!",
-      "success_description": "서버에 다음이 만들어졌어요:",
-      "created_category": "카테고리 {name}",
-      "created_generator": "생성기 {name}, 참여하면 임시 음성 채널이 만들어져요",
-      "created_interface": "{name}의 인터페이스, 사용자가 버튼으로 임시 음성 채널을 관리할 수 있어요",
-      "modify": "이 채널들은 이름과 위치를 자유롭게 바꿀 수 있어요. 작동 방식을 바꾸려면 설정을 열어보세요:",
-      "voice_roles_hint": "음성 채널의 사람들에게 역할을 주고 싶으신가요? 음성 역할도 설정해 보세요."
-    },
     "shortcuts": {
       "generators": {
         "title": "임시 음성 채널 설정",
