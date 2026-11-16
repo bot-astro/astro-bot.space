@@ -2,6 +2,7 @@
 import discordGuildIconUri from '~/utils/discordGuildIconUri'
 import { useGuilds } from '~/data/astro/query/useGuilds'
 import IconQuestion from '~/components/icon/IconQuestion.vue'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 
 definePageMeta({
   middleware: 'auth',
@@ -135,7 +136,11 @@ const guilds = computed(() => {
       v-else-if="error"
       class="bordered-destructive text-destructive mt-4 flex w-full justify-center rounded-md p-4"
     >
-      {{ $t('common.error_generic') }}
+      {{
+        error instanceof AError && error.code === AErrorCode.TOO_MANY_REQUESTS
+          ? $t('guilds.error_rate_limited')
+          : $t('common.error_generic')
+      }}
     </div>
     <div v-else>
       <div

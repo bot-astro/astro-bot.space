@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "Discord จำกัดความถี่ในการโหลดเซิร์ฟเวอร์ของคุณ โปรดรอสักครู่แล้วลองอีกครั้ง",
     "required_permissions": "สิทธิ์ที่จำเป็น",
     "required_permissions_description": "หากต้องการจัดการการตั้งค่า Astro ของเซิร์ฟเวอร์ คุณต้องมีสิทธิ์ {manage_channels}, {manage_server} หรือ {administrator} อย่างใดอย่างหนึ่ง",
     "permissions": {

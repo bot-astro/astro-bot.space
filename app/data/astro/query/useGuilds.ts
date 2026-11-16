@@ -1,4 +1,5 @@
 import { guilds_qk } from '~/data/astro/config/query-keys'
+import { AError, AErrorCode } from '~/data/astro/core/AError'
 import type { DiscordGuild } from '~/types/discord'
 
 export function useGuilds() {
@@ -13,5 +14,15 @@ export function useGuilds() {
     staleTime: 600000,
     // keep it past unmount (default is 5 min), otherwise staleTime is lost when navigating away
     gcTime: 600000,
+    // retrying a rate limited request only extends the rate limit
+    retry: (failureCount, error): boolean => {
+      if (
+        error instanceof AError &&
+        error.code === AErrorCode.TOO_MANY_REQUESTS
+      )
+        return false
+
+      return failureCount < 3
+    },
   })
 }

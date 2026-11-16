@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "Nililimitahan ng Discord kung gaano kadalas ma-load ang iyong mga server, pakihintay ng ilang segundo at subukan muli",
     "required_permissions": "Mga kinakailangang pahintulot",
     "required_permissions_description": "Para pamahalaan ang mga setting ng Astro para sa isang server, kailangan mong magkaroon ng alinman sa mga pahintulot na {manage_channels}, {manage_server} o {administrator}.",
     "permissions": {

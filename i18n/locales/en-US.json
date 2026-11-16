@@ -283,6 +283,7 @@
     }
   },
   "guilds": {
+    "error_rate_limited": "Discord is limiting how often your servers can be loaded, please wait a few seconds and try again",
     "required_permissions": "Required permissions",
     "required_permissions_description": "In order to manage Astro's settings for a server, you need to have either {manage_channels}, {manage_server} or {administrator} permissions.",
     "permissions": {
