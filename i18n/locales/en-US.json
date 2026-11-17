@@ -341,11 +341,9 @@
       }
     },
     "updates_channel": {
-      "group": "Updates channel",
       "title": "Channel for updates and alerts",
       "description": "Astro posts updates and alerts in this channel whenever something in your setup needs attention.",
-      "select_channel": "Select a channel",
-      "create": "Create #astro-updates",
+      "create": "Create channel",
       "disable": "Disable",
       "retry": "Retry",
       "status_ok": "Everything is working.",
