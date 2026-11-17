@@ -155,89 +155,58 @@
             :heading="$t('overview.updates_channel.title')"
             :description="$t('overview.updates_channel.description')"
           >
-            <Select
-              v-if="updates_channel"
-              :model-value="updates_channel.channel_id ?? undefined"
-              :disabled="is_update_updates_channel_pending"
-              @update:model-value="on_updates_channel_selected"
-            >
-              <SelectTrigger class="w-48">
-                <SelectValue aria-label="value">{{
-                  guild_channels?.find(
-                    (c) => c.id === updates_channel!.channel_id,
-                  )?.name ?? $t('common.not_set')
-                }}</SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem :value="CREATE_CHANNEL_VALUE">
-                    <span class="flex items-center gap-2">
-                      <Icon name="fluent:add-12-regular" class="size-4" />
-                      {{ $t('overview.updates_channel.create') }}
-                    </span>
-                  </SelectItem>
-                  <SelectSeparator />
-                  <SelectItem
-                    v-for="channel in (guild_channels ?? []).filter(
-                      (c) => c.type == 0,
-                    )"
-                    :key="channel.id"
-                    :value="channel.id"
+            <div v-if="guild_settings" class="flex items-center gap-2">
+              <Select
+                :model-value="guild_settings.updates_channel_id ?? undefined"
+                :disabled="is_update_updates_channel_pending"
+                @update:model-value="on_updates_channel_selected"
+              >
+                <SelectTrigger class="w-48">
+                  <SelectValue
+                    aria-label="value"
+                    :placeholder="$t('overview.updates_channel.disabled')"
+                    >{{
+                      selected_updates_channel_name
+                        ? `#${selected_updates_channel_name}`
+                        : ''
+                    }}</SelectValue
                   >
-                    {{ channel.name }}
-                  </SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Skeleton v-else class="h-10 w-48" />
-
-            <template #bottom-action>
-              <span
-                v-if="updates_channel?.status"
-                :class="
-                  cn(
-                    'text-description',
-                    updates_channel.status !== UpdatesChannelStatus.OK &&
-                      'text-destructive',
-                  )
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem :value="CREATE_CHANNEL_VALUE" class="pl-2">
+                      <span class="flex items-center gap-2">
+                        <Icon name="fluent:add-12-regular" class="size-4" />
+                        {{ $t('overview.updates_channel.create') }}
+                      </span>
+                    </SelectItem>
+                    <SelectSeparator />
+                    <SelectItem
+                      v-for="channel in (guild_channels ?? []).filter(
+                        (c) => c.type == 0,
+                      )"
+                      :key="channel.id"
+                      :value="channel.id"
+                    >
+                      #{{ channel.name }}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              <ButtonDestructive
+                v-if="guild_settings.updates_channel_id"
+                :loading="is_update_updates_channel_pending"
+                @click="
+                  update_updates_channel({
+                    guild_id: guild_id!,
+                    updates_channel_rb: { channel_id: null },
+                  })
                 "
-                >{{
-                  $t(
-                    `overview.updates_channel.status_${updates_channel.status.toLowerCase()}`,
-                  )
-                }}</span
               >
-              <div
-                v-if="updates_channel?.channel_id"
-                class="flex flex-wrap gap-2"
-              >
-                <Button
-                  v-if="updates_channel.status !== UpdatesChannelStatus.OK"
-                  :loading="is_update_updates_channel_pending"
-                  @click="
-                    update_updates_channel({
-                      guild_id: guild_id!,
-                      updates_channel_rb: {
-                        channel_id: updates_channel.channel_id,
-                      },
-                    })
-                  "
-                >
-                  {{ $t('overview.updates_channel.retry') }}
-                </Button>
-                <ButtonDestructive
-                  :loading="is_update_updates_channel_pending"
-                  @click="
-                    update_updates_channel({
-                      guild_id: guild_id!,
-                      updates_channel_rb: { channel_id: null },
-                    })
-                  "
-                >
-                  {{ $t('overview.updates_channel.disable') }}
-                </ButtonDestructive>
-              </div>
-            </template>
+                {{ $t('overview.updates_channel.disable') }}
+              </ButtonDestructive>
+            </div>
+            <Skeleton v-else class="h-10 w-48" />
           </GroupSetting>
         </div>
       </div>
@@ -494,7 +463,6 @@ import { useToast } from '~/components/ui/toast'
 import type { Media, MediaType } from '~/types/media'
 import { useRefreshGuildEntitlementsMutation } from '~/data/astro/mutations/useRefreshGuildEntitlementsMutation'
 import { useUpdateUpdatesChannelMutation } from '~/data/astro/mutations/useUpdateUpdatesChannelMutation'
-import { UpdatesChannelStatus } from '~/types/guild-settings/updates_channel'
 
 definePageMeta({
   middleware: 'auth',
@@ -547,9 +515,6 @@ const downgrade_on_discord_dialog_open = ref(false)
 
 const { data: guild_settings, error: guild_settings_error } =
   useGuildSettings(guild_id)
-const { data: updates_channel } = useUpdatesChannel(guild_id)
-// not a channel id, picks the option that creates the channel
-const CREATE_CHANNEL_VALUE = 'create'
 const { data: guild_channels } = useGuildChannels(guild_id)
 const m_guild_settings = ref<GuildSettings | undefined>(undefined)
 const guild_settings_edited = ref(false)
@@ -646,6 +611,15 @@ const {
   isPending: is_refresh_entitlements_pending,
   error: refresh_entitlements_error,
 } = useRefreshGuildEntitlementsMutation()
+
+// not a channel id, picks the option that creates the channel
+const CREATE_CHANNEL_VALUE = 'create'
+const selected_updates_channel_name = computed(
+  () =>
+    guild_channels.value?.find(
+      (c) => c.id === guild_settings.value?.updates_channel_id,
+    )?.name,
+)
 
 function on_updates_channel_selected(value: unknown) {
   if (typeof value !== 'string' || !guild_id.value) return

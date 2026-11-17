@@ -340,6 +340,13 @@
         "description": "이 서버의 Discord에서 Astro가 메시지와 인터페이스에 사용하는 언어예요. 이 웹사이트의 언어는 바뀌지 않아요."
       }
     },
+    "updates_channel": {
+      "title": "업데이트 및 알림 채널",
+      "description": "설정에서 확인이 필요한 부분이 생기면 Astro가 이 채널에 업데이트와 알림을 올려요.",
+      "create": "채널 만들기",
+      "disable": "비활성화",
+      "disabled": "비활성화됨"
+    },
     "ultimate": {
       "group": "Ultimate",
       "title": "Ultimate 서버",

@@ -340,6 +340,13 @@
         "description": "La langue qu'Astro utilise pour ses messages et son interface sur Discord pour ce serveur. Cela ne change pas la langue de ce site web."
       }
     },
+    "updates_channel": {
+      "title": "Salon des mises à jour et alertes",
+      "description": "Astro publie des mises à jour et des alertes dans ce salon dès que quelque chose dans ta configuration demande de l'attention.",
+      "create": "Créer le salon",
+      "disable": "Désactiver",
+      "disabled": "Désactivé"
+    },
     "ultimate": {
       "group": "Ultimate",
       "title": "Serveur Ultimate",

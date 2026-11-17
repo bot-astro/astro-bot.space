@@ -47,7 +47,9 @@
                   <SelectValue aria-label="value">{{
                     guild_channels?.find(
                       (c) => c.id === create_interface_channel_id,
-                    )?.name ?? $t('interfaces.select_channel')
+                    )?.name
+                      ? `#${guild_channels.find((c) => c.id === create_interface_channel_id)!.name}`
+                      : $t('interfaces.select_channel')
                   }}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
@@ -59,7 +61,7 @@
                       :key="channel.id"
                       :value="channel.id"
                     >
-                      {{ channel.name }}
+                      #{{ channel.name }}
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>

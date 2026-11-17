@@ -340,6 +340,13 @@
         "description": "Ang wikang ginagamit ng Astro para sa mga mensahe at interface nito sa Discord sa server na ito. Hindi nito binabago ang wika ng website na ito."
       }
     },
+    "updates_channel": {
+      "title": "Channel para sa mga update at alerto",
+      "description": "Nagpo-post ang Astro ng mga update at alerto sa channel na ito tuwing may kailangang bigyan ng pansin sa iyong setup.",
+      "create": "Gumawa ng channel",
+      "disable": "I-disable",
+      "disabled": "Naka-disable"
+    },
     "ultimate": {
       "group": "Ultimate",
       "title": "Ultimate server",

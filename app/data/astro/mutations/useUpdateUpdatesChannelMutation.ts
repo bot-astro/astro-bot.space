@@ -1,6 +1,6 @@
 import {
   guild_channels_qk,
-  guild_updates_channel_qk,
+  guild_settings_qk,
 } from '~/data/astro/config/query-keys'
 import type { UpdatesChannelRB } from '~/types/guild-settings/request-bodies/updates_channel_rb'
 
@@ -20,10 +20,7 @@ export function useUpdateUpdatesChannelMutation() {
         params.updates_channel_rb,
       ),
     async onSuccess(data, variables) {
-      queryClient.setQueryData(
-        guild_updates_channel_qk(variables.guild_id),
-        data,
-      )
+      queryClient.setQueryData(guild_settings_qk(variables.guild_id), data)
       // a channel may have been created
       await queryClient.invalidateQueries({
         queryKey: guild_channels_qk(variables.guild_id),

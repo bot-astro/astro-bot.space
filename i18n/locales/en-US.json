@@ -345,10 +345,7 @@
       "description": "Astro posts updates and alerts in this channel whenever something in your setup needs attention.",
       "create": "Create channel",
       "disable": "Disable",
-      "retry": "Retry",
-      "status_ok": "Everything is working.",
-      "status_missing_permission": "Astro needs the Manage Webhooks permission to follow the announcements and send alerts. Give it to Astro and retry.",
-      "status_webhook_missing": "The webhook Astro uses to send alerts is missing, retry to set it up again."
+      "disabled": "Disabled"
     },
     "ultimate": {
       "group": "Ultimate",

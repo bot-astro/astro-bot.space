@@ -24,4 +24,6 @@ export interface GuildSettings {
   connections: GSVoiceRole[]
   generators: GSGenerator[]
   interfaces: GSInterface[]
+  /** null when the updates channel is disabled */
+  updates_channel_id: string | null
 }
