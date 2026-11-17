@@ -18,5 +18,8 @@ export const guild_channels_qk = (guild_id: Ref<string | undefined> | string) =>
   guild_settings_qk(guild_id).concat('channels')
 export const guild_roles_qk = (guild_id: Ref<string | undefined> | string) =>
   guild_settings_qk(guild_id).concat('roles')
+export const guild_updates_channel_qk = (
+  guild_id: Ref<string | undefined> | string,
+) => guild_settings_qk(guild_id).concat('updates-channel')
 export const guild_media_qk = (guild_id: Ref<string | undefined> | string) =>
   guild_settings_qk(guild_id).concat('media')

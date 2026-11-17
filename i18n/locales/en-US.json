@@ -340,6 +340,18 @@
         "description": "The language Astro uses for its messages and interface in Discord on this server. This does not change the language of this website."
       }
     },
+    "updates_channel": {
+      "group": "Updates channel",
+      "title": "Channel for announcements and alerts",
+      "description": "Astro posts its announcements and status updates here, plus an alert whenever something in your setup needs attention. Only admins can see the channel Astro creates.",
+      "select_channel": "Select a channel",
+      "create": "Create #astro-updates",
+      "disable": "Disable",
+      "retry": "Retry",
+      "status_ok": "Everything is working.",
+      "status_missing_permission": "Astro needs the Manage Webhooks permission to follow the announcements and send alerts. Give it to Astro and retry.",
+      "status_webhook_missing": "The webhook Astro uses to send alerts is missing, retry to set it up again."
+    },
     "ultimate": {
       "group": "Ultimate",
       "title": "Ultimate server",
