@@ -133,28 +133,6 @@ useHead(() => ({
           class="size-5 shrink-0 -rotate-90 group-hover:text-foreground-link-standout"
         />
       </div>
-
-      <div
-        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90"
-        @click="navigateTo('/guides/join-to-create-voice-channels')"
-      >
-        <IconGenerator
-          class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
-        />
-        <div class="flex flex-col">
-          <span
-            class="text-heading group-hover:text-foreground-link-standout"
-            >{{ $t('guides.join_to_create.title') }}</span
-          >
-          <span class="text-description">{{
-            $t('meta.guide_join_to_create.description')
-          }}</span>
-        </div>
-        <div class="grow" />
-        <IconDropdown
-          class="size-5 shrink-0 -rotate-90 group-hover:text-foreground-link-standout"
-        />
-      </div>
     </div>
   </div>
 </template>
