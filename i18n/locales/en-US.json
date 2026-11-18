@@ -64,6 +64,14 @@
       "title": "Voice Role guide",
       "description": "Learn how to configure voice role to make your server look extra slick"
     },
+    "guide_join_to_create": {
+      "title": "How to make join-to-create voice channels in Discord",
+      "description": "Set up join-to-create voice channels on your Discord server. Members join one channel and get their own temporary voice channel, deleted when everyone leaves."
+    },
+    "compare_voicemaster": {
+      "title": "Astro vs VoiceMaster",
+      "description": "Looking at Astro and VoiceMaster for join-to-create voice channels on Discord? Here is what Astro offers and what to compare before you choose."
+    },
     "guides": {
       "title": "Guides",
       "description": "Need help with Astro, check out these beginner friendly guides"
@@ -163,6 +171,9 @@
     },
     "voice_role": {
       "title": "Voice roles"
+    },
+    "join_to_create": {
+      "title": "Join-to-create voice channels"
     }
   },
   "ultimate": {
