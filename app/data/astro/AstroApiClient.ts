@@ -47,12 +47,14 @@ export class AstroApiClient {
     redirect_path: string,
     invite: boolean = false,
     invite_guild_id: string | null = null,
+    source: string | null = null,
   ) => {
     const query = new URLSearchParams({
       redirect_path,
       invite: String(invite),
     })
     if (invite_guild_id !== null) query.set('invite_guild_id', invite_guild_id)
+    if (source !== null) query.set('source', source)
     return navigateTo(`${this.url('/v2/auth/discord')}?${query}`, {
       external: true,
     })
