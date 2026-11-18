@@ -22,7 +22,92 @@
       </div>
     </div>
 
-    <div class="mt-12 flex flex-wrap gap-4">
+    <div
+      v-if="setup_result"
+      class="mt-12 flex flex-col gap-3 rounded-md bordered bg-background-container p-4"
+    >
+      <div class="flex items-center gap-2">
+        <IconGreenCheck class="size-5 shrink-0" />
+        <span class="text-heading">{{
+          $t('overview.quick_setup.success_title')
+        }}</span>
+        <div class="grow" />
+        <ButtonText @click="setup_result = null">{{
+          $t('common.close')
+        }}</ButtonText>
+      </div>
+      <span class="text-description">{{
+        $t('overview.quick_setup.success_description')
+      }}</span>
+      <ul class="text-description flex list-inside list-disc flex-col gap-1">
+        <li>
+          {{
+            $t('overview.quick_setup.created_category', {
+              name: setup_result.category.name,
+            })
+          }}
+        </li>
+        <li v-if="setup_result.updates_channel">
+          {{
+            $t('overview.quick_setup.created_updates', {
+              name: `#${setup_result.updates_channel.name}`,
+            })
+          }}
+        </li>
+        <i18n-t keypath="overview.quick_setup.created_generator" tag="li">
+          <template #generator>
+            <NuxtLink
+              class="text-foreground-link-standout hover:opacity-80"
+              :to="`/guilds/${guild_id}/generators/${setup_result.generator_channel.id}`"
+              >{{ setup_result.generator_channel.name }}</NuxtLink
+            >
+          </template>
+        </i18n-t>
+        <i18n-t keypath="overview.quick_setup.created_interface" tag="li">
+          <template #interface>
+            <NuxtLink
+              class="text-foreground-link-standout hover:opacity-80"
+              :to="`/guilds/${guild_id}/interfaces/${setup_interface_id}`"
+              >#{{ setup_result.interface_channel.name }}</NuxtLink
+            >
+          </template>
+        </i18n-t>
+      </ul>
+      <span class="text-description">{{
+        $t('overview.quick_setup.modify')
+      }}</span>
+      <i18n-t
+        keypath="overview.quick_setup.voice_roles_hint"
+        tag="span"
+        class="text-description"
+      >
+        <template #voice_roles>
+          <NuxtLink
+            class="text-foreground-link-standout hover:opacity-80"
+            :to="`/guilds/${guild_id}/voice-roles`"
+            >{{ $t('overview.quick_setup.voice_roles_link') }}</NuxtLink
+          >
+        </template>
+      </i18n-t>
+    </div>
+
+    <div
+      v-if="is_guild_clean"
+      class="mt-12 flex w-fit max-w-full flex-col gap-4 rounded-md bordered bg-background-container p-4 sm:flex-row sm:items-center"
+    >
+      <Button
+        class="shrink-0 bg-[#248046] hover:bg-discord-green"
+        :loading="is_setup_pending"
+        @click="on_quick_setup_clicked"
+      >
+        {{ $t('overview.quick_setup.button') }}
+      </Button>
+      <span class="text-description grow">{{
+        $t('overview.quick_setup.description')
+      }}</span>
+    </div>
+    <Skeleton v-else-if="!guild_settings" class="mt-12 h-16 w-96" />
+    <div v-else class="mt-12 flex flex-wrap gap-4">
       <div
         class="group flex max-w-none items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90 md:max-w-96"
         @click="navigateTo(`${$route.fullPath}/generators`)"
@@ -404,6 +489,7 @@ import { deepEqual } from 'fast-equals'
 import type { DashboardSection } from '~/types/dashboard'
 import { useToast } from '~/components/ui/toast'
 import type { Media, MediaType } from '~/types/media'
+import type { GuildSetupResult } from '~/types/guild-settings/setup'
 import { useRefreshGuildEntitlementsMutation } from '~/data/astro/mutations/useRefreshGuildEntitlementsMutation'
 
 definePageMeta({
@@ -489,6 +575,21 @@ const profile_bio = computed({
   },
 })
 
+const is_guild_clean = computed(
+  () =>
+    guild_settings.value !== undefined &&
+    guild_settings.value.generators.length === 0 &&
+    guild_settings.value.interfaces.length === 0 &&
+    guild_settings.value.connections.length === 0,
+)
+const setup_result = ref<GuildSetupResult | null>(null)
+const setup_interface_id = computed(
+  () =>
+    setup_result.value?.guild_settings.interfaces.find(
+      (i) => i.channel_id === setup_result.value?.interface_channel.id,
+    )?.message_id,
+)
+
 watch(
   guild_settings,
   (new_settings) => {
@@ -547,6 +648,18 @@ const {
   isPending: is_refresh_entitlements_pending,
   error: refresh_entitlements_error,
 } = useRefreshGuildEntitlementsMutation()
+const {
+  mutate: setup_guild,
+  isPending: is_setup_pending,
+  error: setup_guild_error,
+} = useSetupGuildMutation()
+
+function on_quick_setup_clicked() {
+  setup_guild(
+    { guild_id: guild_id.value! },
+    { onSuccess: (result) => (setup_result.value = result) },
+  )
+}
 
 // the profile and the settings have separate endpoints, the profile goes first
 // so that the settings response already contains the new profile
@@ -697,6 +810,15 @@ watch(save_guild_settings_error, (e) => {
 })
 
 watch(save_guild_profile_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
+watch(setup_guild_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,
