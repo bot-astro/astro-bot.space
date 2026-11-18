@@ -236,6 +236,63 @@
               {{ $t('overview.settings.slash_permissions.button') }}
             </Button>
           </GroupSetting>
+          <GroupSetting
+            :heading="$t('overview.updates_channel.title')"
+            :description="$t('overview.updates_channel.description')"
+          >
+            <div v-if="guild_settings" class="flex items-center gap-2">
+              <Select
+                :model-value="guild_settings.updates_channel_id ?? undefined"
+                :disabled="is_update_updates_channel_pending"
+                @update:model-value="on_updates_channel_selected"
+              >
+                <SelectTrigger class="w-48">
+                  <SelectValue
+                    aria-label="value"
+                    :placeholder="$t('overview.updates_channel.disabled')"
+                    >{{
+                      selected_updates_channel_name
+                        ? `#${selected_updates_channel_name}`
+                        : ''
+                    }}</SelectValue
+                  >
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem :value="CREATE_CHANNEL_VALUE" class="pl-2">
+                      <span class="flex items-center gap-2">
+                        <Icon name="fluent:add-12-regular" class="size-4" />
+                        {{ $t('overview.updates_channel.create') }}
+                      </span>
+                    </SelectItem>
+                    <SelectSeparator />
+                    <SelectItem
+                      v-for="channel in (guild_channels ?? []).filter(
+                        (c) => c.type == 0,
+                      )"
+                      :key="channel.id"
+                      :value="channel.id"
+                    >
+                      #{{ channel.name }}
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              <ButtonDestructive
+                v-if="guild_settings.updates_channel_id"
+                :loading="is_update_updates_channel_pending"
+                @click="
+                  update_updates_channel({
+                    guild_id: guild_id!,
+                    updates_channel_rb: { channel_id: null },
+                  })
+                "
+              >
+                {{ $t('overview.updates_channel.disable') }}
+              </ButtonDestructive>
+            </div>
+            <Skeleton v-else class="h-10 w-48" />
+          </GroupSetting>
         </div>
       </div>
 
@@ -491,6 +548,7 @@ import { useToast } from '~/components/ui/toast'
 import type { Media, MediaType } from '~/types/media'
 import type { GuildSetupResult } from '~/types/guild-settings/setup'
 import { useRefreshGuildEntitlementsMutation } from '~/data/astro/mutations/useRefreshGuildEntitlementsMutation'
+import { useUpdateUpdatesChannelMutation } from '~/data/astro/mutations/useUpdateUpdatesChannelMutation'
 
 definePageMeta({
   middleware: 'auth',
@@ -543,6 +601,7 @@ const downgrade_on_discord_dialog_open = ref(false)
 
 const { data: guild_settings, error: guild_settings_error } =
   useGuildSettings(guild_id)
+const { data: guild_channels } = useGuildChannels(guild_id)
 const m_guild_settings = ref<GuildSettings | undefined>(undefined)
 const guild_settings_edited = ref(false)
 
@@ -644,6 +703,11 @@ const {
   error: clear_temporary_vcs_cache_error,
 } = useClearTemporaryVCsCacheMutation()
 const {
+  mutate: update_updates_channel,
+  isPending: is_update_updates_channel_pending,
+  error: update_updates_channel_error,
+} = useUpdateUpdatesChannelMutation()
+const {
   mutate: refresh_entitlements,
   isPending: is_refresh_entitlements_pending,
   error: refresh_entitlements_error,
@@ -659,6 +723,27 @@ function on_quick_setup_clicked() {
     { guild_id: guild_id.value! },
     { onSuccess: (result) => (setup_result.value = result) },
   )
+}
+
+// not a channel id, picks the option that creates the channel
+const CREATE_CHANNEL_VALUE = 'create'
+const selected_updates_channel_name = computed(
+  () =>
+    guild_channels.value?.find(
+      (c) => c.id === guild_settings.value?.updates_channel_id,
+    )?.name,
+)
+
+function on_updates_channel_selected(value: unknown) {
+  if (typeof value !== 'string' || !guild_id.value) return
+
+  update_updates_channel({
+    guild_id: guild_id.value,
+    updates_channel_rb:
+      value === CREATE_CHANNEL_VALUE
+        ? { channel_id: null, create_channel: true }
+        : { channel_id: value },
+  })
 }
 
 // the profile and the settings have separate endpoints, the profile goes first
@@ -810,6 +895,15 @@ watch(save_guild_settings_error, (e) => {
 })
 
 watch(save_guild_profile_error, (e) => {
+  if (e?.message) {
+    toast({
+      description: e.message,
+      variant: 'destructive',
+    })
+  }
+})
+
+watch(update_updates_channel_error, (e) => {
   if (e?.message) {
     toast({
       description: e.message,

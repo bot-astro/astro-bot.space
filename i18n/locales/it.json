@@ -353,6 +353,13 @@
         "description": "La lingua che Astro usa per i suoi messaggi e per la sua interfaccia su Discord in questo server. Non cambia la lingua di questo sito web."
       }
     },
+    "updates_channel": {
+      "title": "Canale per aggiornamenti e avvisi",
+      "description": "Astro pubblica aggiornamenti e avvisi in questo canale ogni volta che qualcosa nella tua configurazione richiede attenzione.",
+      "create": "Crea canale",
+      "disable": "Disattiva",
+      "disabled": "Disattivato"
+    },
     "ultimate": {
       "group": "Ultimate",
       "title": "Server Ultimate",
