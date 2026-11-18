@@ -15,7 +15,7 @@ const source =
   typeof src === 'string' && INVITE_SOURCES.includes(src) ? src : 'unknown'
 
 onMounted(() => {
-  useInvite().invite(source)
+  useInvite().invite_from(source)
 })
 
 const { t } = useI18n()
