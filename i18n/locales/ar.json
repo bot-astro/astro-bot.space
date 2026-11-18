@@ -309,6 +309,19 @@
   },
   "overview": {
     "description": "أدر الإعدادات الأساسية لسيرفرك",
+    "quick_setup": {
+      "button": "إعداد سريع",
+      "description": "ينشئ فئة تحتوي على مولّد وواجهة، جاهزة للاستخدام!",
+      "success_title": "إعداد Astro!",
+      "success_description": "تم إنشاء ما يلي في خادمك:",
+      "created_category": "الفئة {name}",
+      "created_updates": "{name}، ستتلقى هنا التنبيهات المهمة",
+      "created_generator": "{generator}، انضم إليه للحصول على قناة صوتية مؤقتة",
+      "created_interface": "{interface}، يتيح للمستخدمين إدارة قناتهم الصوتية المؤقتة بالأزرار",
+      "modify": "يمكنك إعادة تسمية هذه القنوات ونقلها بحرية.",
+      "voice_roles_hint": "هل تريد منح رتب للأشخاص في القنوات الصوتية؟ قم بإعداد {voice_roles} أيضًا.",
+      "voice_roles_link": "الرتب الصوتية"
+    },
     "shortcuts": {
       "generators": {
         "title": "ضبط القنوات الصوتية المؤقتة",

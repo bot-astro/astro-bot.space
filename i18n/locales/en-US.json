@@ -309,6 +309,19 @@
   },
   "overview": {
     "description": "Manage your server's basic settings",
+    "quick_setup": {
+      "button": "Quick setup",
+      "description": "Creates a category with a generator and an interface, ready to use!",
+      "success_title": "Astro setup!",
+      "success_description": "These have been created in your server:",
+      "created_category": "Category {name}",
+      "created_updates": "{name}, you'll receive important alerts here",
+      "created_generator": "{generator}, join it to get a temporary voice channel",
+      "created_interface": "{interface}, it lets users manage their temporary voice channel with buttons",
+      "modify": "You can rename and move these channels freely.",
+      "voice_roles_hint": "Want to give roles to people in voice channels? Set up {voice_roles} too.",
+      "voice_roles_link": "voice roles"
+    },
     "shortcuts": {
       "generators": {
         "title": "Configure temporary voice channels",
