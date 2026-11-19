@@ -1,18 +1,6 @@
 <script lang="ts" setup>
-const INVITE_SOURCES = [
-  'topgg',
-  'dbl',
-  'interface',
-  'help',
-  'web-guide',
-  'youtube',
-  'reddit',
-  'partner',
-]
-
 const src = useRoute().query.src
-const source =
-  typeof src === 'string' && INVITE_SOURCES.includes(src) ? src : 'unknown'
+const source = typeof src === 'string' && src !== '' ? src : 'unknown'
 
 onMounted(() => {
   useInvite().invite_from(source)
