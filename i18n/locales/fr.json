@@ -309,6 +309,19 @@
   },
   "overview": {
     "description": "Gère les paramètres de base de ton serveur",
+    "quick_setup": {
+      "button": "Configuration rapide",
+      "description": "Crée une catégorie avec un générateur et une interface, prêts à l'emploi !",
+      "success_title": "Configuration d'Astro !",
+      "success_description": "Voici ce qui a été créé sur ton serveur :",
+      "created_category": "Catégorie {name}",
+      "created_updates": "{name}, tu recevras ici les alertes importantes",
+      "created_generator": "{generator}, rejoins-le pour obtenir un salon vocal temporaire",
+      "created_interface": "{interface}, elle permet aux utilisateurs de gérer leur salon vocal temporaire avec des boutons",
+      "modify": "Tu peux renommer et déplacer ces salons librement.",
+      "voice_roles_hint": "Tu veux donner des rôles aux personnes dans les salons vocaux ? Configure aussi les {voice_roles}.",
+      "voice_roles_link": "rôles vocaux"
+    },
     "shortcuts": {
       "generators": {
         "title": "Configurer les salons vocaux temporaires",
@@ -339,6 +352,13 @@
         "title": "Langue",
         "description": "La langue qu'Astro utilise pour ses messages et son interface sur Discord pour ce serveur. Cela ne change pas la langue de ce site web."
       }
+    },
+    "updates_channel": {
+      "title": "Salon des mises à jour et alertes",
+      "description": "Astro publie des mises à jour et des alertes dans ce salon dès que quelque chose dans ta configuration demande de l'attention.",
+      "create": "Créer le salon",
+      "disable": "Désactiver",
+      "disabled": "Désactivé"
     },
     "ultimate": {
       "group": "Ultimate",

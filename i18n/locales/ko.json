@@ -309,6 +309,19 @@
   },
   "overview": {
     "description": "서버의 기본 설정을 관리하세요",
+    "quick_setup": {
+      "button": "빠른 설정",
+      "description": "생성기와 인터페이스가 포함된 카테고리를 만들어요. 바로 사용할 수 있어요!",
+      "success_title": "Astro 설정 완료!",
+      "success_description": "서버에 다음이 만들어졌어요:",
+      "created_category": "카테고리 {name}",
+      "created_updates": "{name}, 여기에서 중요한 알림을 받아요",
+      "created_generator": "{generator}, 참여하면 임시 음성 채널이 만들어져요",
+      "created_interface": "{interface}, 사용자가 버튼으로 임시 음성 채널을 관리할 수 있어요",
+      "modify": "이 채널들은 이름과 위치를 자유롭게 바꿀 수 있어요.",
+      "voice_roles_hint": "음성 채널의 사람들에게 역할을 주고 싶으신가요? {voice_roles}도 설정해 보세요.",
+      "voice_roles_link": "음성 역할"
+    },
     "shortcuts": {
       "generators": {
         "title": "임시 음성 채널 설정",
@@ -339,6 +352,13 @@
         "title": "언어",
         "description": "이 서버의 Discord에서 Astro가 메시지와 인터페이스에 사용하는 언어예요. 이 웹사이트의 언어는 바뀌지 않아요."
       }
+    },
+    "updates_channel": {
+      "title": "업데이트 및 알림 채널",
+      "description": "설정에서 확인이 필요한 부분이 생기면 Astro가 이 채널에 업데이트와 알림을 올려요.",
+      "create": "채널 만들기",
+      "disable": "비활성화",
+      "disabled": "비활성화됨"
     },
     "ultimate": {
       "group": "Ultimate",

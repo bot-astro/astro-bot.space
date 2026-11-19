@@ -309,6 +309,19 @@
   },
   "overview": {
     "description": "Kelola pengaturan dasar servermu",
+    "quick_setup": {
+      "button": "Setup cepat",
+      "description": "Membuat kategori dengan generator dan interface, siap digunakan!",
+      "success_title": "Setup Astro!",
+      "success_description": "Ini yang sudah dibuat di servermu:",
+      "created_category": "Kategori {name}",
+      "created_updates": "{name}, kamu akan menerima peringatan penting di sini",
+      "created_generator": "{generator}, bergabunglah untuk mendapatkan voice channel sementara",
+      "created_interface": "{interface}, memungkinkan pengguna mengelola voice channel sementara mereka dengan tombol",
+      "modify": "Kamu bebas mengganti nama dan memindahkan channel ini.",
+      "voice_roles_hint": "Ingin memberi peran kepada orang di voice channel? Atur juga {voice_roles}.",
+      "voice_roles_link": "peran suara"
+    },
     "shortcuts": {
       "generators": {
         "title": "Konfigurasikan saluran suara sementara",
@@ -339,6 +352,13 @@
         "title": "Bahasa",
         "description": "Bahasa yang digunakan Astro untuk pesan dan antarmukanya di Discord pada server ini. Ini tidak mengubah bahasa situs web ini."
       }
+    },
+    "updates_channel": {
+      "title": "Saluran pembaruan dan peringatan",
+      "description": "Astro memposting pembaruan dan peringatan di saluran ini setiap kali ada yang perlu diperhatikan pada pengaturanmu.",
+      "create": "Buat saluran",
+      "disable": "Nonaktifkan",
+      "disabled": "Nonaktif"
     },
     "ultimate": {
       "group": "Ultimate",

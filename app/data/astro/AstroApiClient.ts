@@ -15,7 +15,9 @@ import type { GSVoiceRole } from '~/types/guild-settings/voice_role'
 import type { GeneratorCreateRB } from '~/types/guild-settings/request-bodies/generator_create_rb'
 import type { GSTemplate } from '~/types/guild-settings/template'
 import type { GSInterface } from '~/types/guild-settings/interface'
+import type { GuildSetupResult } from '~/types/guild-settings/setup'
 import type { Media, MediaType } from '~/types/media'
+import type { UpdatesChannelRB } from '~/types/guild-settings/request-bodies/updates_channel_rb'
 
 /**
  * Api client to interact with the Astro APIs
@@ -213,6 +215,16 @@ export class AstroApiClient {
     return useApiFetch(this.url(`/v2/guilds/${guild_id}/errors`), {
       method: 'DELETE',
     })
+  }
+
+  /// SETUP ///
+  public setup_guild = async (guild_id: string): Promise<GuildSetupResult> => {
+    return useApiFetch<GuildSetupResult>(
+      this.url(`/v2/guilds/${guild_id}/settings/setup`),
+      {
+        method: 'POST',
+      },
+    )
   }
 
   /// GENERATOR ///
@@ -431,6 +443,20 @@ export class AstroApiClient {
       method: 'POST',
       body: profile_rb,
     })
+  }
+
+  /// UPDATES CHANNEL ///
+  public update_updates_channel = async (
+    guild_id: string,
+    updates_channel_rb: UpdatesChannelRB,
+  ): Promise<GuildSettings> => {
+    return useApiFetch<GuildSettings>(
+      this.url(`/v2/guilds/${guild_id}/settings/updates-channel`),
+      {
+        method: 'PUT',
+        body: updates_channel_rb,
+      },
+    )
   }
 
   /// MEDIA ///

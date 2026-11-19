@@ -309,6 +309,19 @@
   },
   "overview": {
     "description": "Gerencie as configurações básicas do seu servidor",
+    "quick_setup": {
+      "button": "Configuração rápida",
+      "description": "Cria uma categoria com um gerador e uma interface, prontos para usar!",
+      "success_title": "Configuração do Astro!",
+      "success_description": "Isto foi criado no seu servidor:",
+      "created_category": "Categoria {name}",
+      "created_updates": "{name}, você receberá alertas importantes aqui",
+      "created_generator": "{generator}, entre nele para ganhar um canal de voz temporário",
+      "created_interface": "{interface}, permite que os usuários gerenciem seu canal de voz temporário com botões",
+      "modify": "Você pode renomear e mover esses canais livremente.",
+      "voice_roles_hint": "Quer dar cargos às pessoas nos canais de voz? Configure também os {voice_roles}.",
+      "voice_roles_link": "cargos de voz"
+    },
     "shortcuts": {
       "generators": {
         "title": "Configurar canais de voz temporários",
@@ -339,6 +352,13 @@
         "title": "Idioma",
         "description": "O idioma que o Astro usa para suas mensagens e sua interface no Discord neste servidor. Isso não altera o idioma deste site."
       }
+    },
+    "updates_channel": {
+      "title": "Canal de atualizações e alertas",
+      "description": "O Astro publica atualizações e alertas neste canal sempre que algo na sua configuração precisar de atenção.",
+      "create": "Criar canal",
+      "disable": "Desativar",
+      "disabled": "Desativado"
     },
     "ultimate": {
       "group": "Ultimate",
