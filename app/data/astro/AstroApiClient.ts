@@ -60,6 +60,14 @@ export class AstroApiClient {
     })
   }
 
+  public completeInstall = (code: string, state: string | null) => {
+    const query = new URLSearchParams({ code })
+    if (state !== null) query.set('state', state)
+    return navigateTo(`${this.url('/v2/auth/discord/install')}?${query}`, {
+      external: true,
+    })
+  }
+
   public logout = async (): Promise<void> => {
     return useApiFetch(this.url('/v2/auth/logout'), { method: 'POST' })
   }
