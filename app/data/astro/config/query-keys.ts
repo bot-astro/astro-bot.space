@@ -20,3 +20,5 @@ export const guild_roles_qk = (guild_id: Ref<string | undefined> | string) =>
   guild_settings_qk(guild_id).concat('roles')
 export const guild_media_qk = (guild_id: Ref<string | undefined> | string) =>
   guild_settings_qk(guild_id).concat('media')
+export const guild_ai_usage_qk = (guild_id: Ref<string | undefined> | string) =>
+  guild_settings_qk(guild_id).concat('ai_usage')

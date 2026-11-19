@@ -6,6 +6,7 @@ const mobile_sidebar_open = ref(false)
 <template>
   <div class="w-full">
     <NuxtLoadingIndicator />
+    <DashboardAiChat />
     <div class="flex w-full text-sm">
       <DashboardSidebar
         class="fixed hidden h-dvh w-[250px] overflow-hidden md:flex"

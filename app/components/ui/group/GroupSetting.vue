@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, Ref } from 'vue'
+import { AI_CHANGED_FIELDS_KEY } from '~/composables/dashboard/useAiChangedFields'
 
 interface GroupSettingProps {
   heading: string
@@ -8,10 +9,26 @@ interface GroupSettingProps {
   compact?: boolean
   ultimate?: boolean
   hideUltimateBadge?: boolean
+  /**
+   * form field this setting edits, highlighted when the AI fill changed it
+   */
+  field?: string
 }
 
 const props = defineProps<GroupSettingProps>()
 defineEmits(['upgrade'])
+
+const ai_changed_fields = inject<Ref<string[]>>(AI_CHANGED_FIELDS_KEY, ref([]))
+const ai_changed = computed(
+  () =>
+    props.field !== undefined &&
+    ai_changed_fields.value.some(
+      (f) =>
+        f === props.field ||
+        f.startsWith(`${props.field}.`) ||
+        props.field!.startsWith(`${f}.`),
+    ),
+)
 </script>
 
 <template>
@@ -21,6 +38,7 @@ defineEmits(['upgrade'])
         props.class,
         props.compact && 'max-w-64',
         props.ultimate && 'relative',
+        ai_changed && 'border-pink-500/80 bg-pink-500/5',
         'group-setting flex min-w-full flex-col gap-2 md:min-w-0',
       )
     "

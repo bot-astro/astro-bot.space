@@ -69,6 +69,22 @@
       </AlertDialog>
     </div>
 
+    <DashboardAiFillForm
+      v-if="m_voice_role_settings"
+      page="voice_role"
+      :entity-id="voice_role_id"
+      :current-values="m_voice_role_settings"
+      @fill="
+        (result) => {
+          m_voice_role_settings = {
+            ...m_voice_role_settings!,
+            ...result.values,
+          }
+          ai_changed_fields = result.changedFields
+        }
+      "
+    />
+
     <div
       v-if="
         m_voice_role_settings != undefined &&
@@ -80,7 +96,7 @@
       <div class="groups-wrapper">
         <span class="text-group-name">{{ $t('overview.settings.group') }}</span>
         <div class="groups-container">
-          <GroupSetting :heading="$t('common.channel')">
+          <GroupSetting field="id" :heading="$t('common.channel')">
             <template #description>
               <span class="whitespace-pre-line text-foreground-secondary">
                 {{ $t('voice_roles.detail.channel_description') }}
@@ -116,6 +132,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="role_id"
             :heading="$t('common.role')"
             :description="$t('voice_roles.role_description')"
           >
@@ -146,6 +163,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="action"
             :heading="$t('common.action')"
             :description="$t('voice_roles.action_description')"
           >
@@ -177,6 +195,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="permanent"
             :heading="$t('common.permanent')"
             :description="$t('voice_roles.permanent_description')"
           >
@@ -267,6 +286,10 @@ const voice_role_settings = computed(() => {
 })
 const m_voice_role_settings = ref<GSVoiceRole | undefined>(undefined)
 const voice_role_settings_edited = ref(false)
+const ai_changed_fields = useAiChangedFields()
+watch(voice_role_settings_edited, (edited) => {
+  if (!edited) ai_changed_fields.value = []
+})
 
 watch(
   voice_role_settings,

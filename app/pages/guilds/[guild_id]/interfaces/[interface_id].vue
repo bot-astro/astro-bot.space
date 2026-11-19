@@ -132,6 +132,19 @@
       </DialogContent>
     </Dialog>
 
+    <DashboardAiFillForm
+      v-if="m_interface_settings"
+      page="interface"
+      :entity-id="interface_id"
+      :current-values="m_interface_settings"
+      @fill="
+        (result) => {
+          m_interface_settings = { ...m_interface_settings!, ...result.values }
+          ai_changed_fields = result.changedFields
+        }
+      "
+    />
+
     <div v-if="m_interface_settings" class="flex flex-col gap-12">
       <div class="groups-wrapper">
         <div class="vertical-center gap-2">
@@ -144,6 +157,7 @@
         </div>
         <div class="groups-container">
           <GroupSetting
+            field="embed_style.author_name"
             :heading="$t('interfaces.editor.author.title')"
             :description="$t('interfaces.editor.author.description')"
             :ultimate="!is_ultimate"
@@ -163,6 +177,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="embed_style.author_url"
             :heading="$t('interfaces.editor.author_link.title')"
             :description="$t('interfaces.editor.author_link.description')"
             :ultimate="!is_ultimate"
@@ -214,6 +229,7 @@
         </div>
         <div class="groups-container">
           <GroupSetting
+            field="embed_style.title"
             :heading="$t('interfaces.editor.title.title')"
             :description="$t('interfaces.editor.title.description')"
             :ultimate="!is_ultimate"
@@ -233,6 +249,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="embed_style.url"
             :heading="$t('interfaces.editor.title_link.title')"
             :description="$t('interfaces.editor.title_link.description')"
             :ultimate="!is_ultimate"
@@ -266,6 +283,7 @@
           />
 
           <GroupSetting
+            field="embed_style.description"
             :heading="$t('interfaces.editor.description.title')"
             :description="$t('interfaces.editor.description.description')"
             :ultimate="!is_ultimate"
@@ -312,6 +330,7 @@
         </div>
         <div class="groups-container">
           <GroupSetting
+            field="embed_style.footer"
             :heading="$t('interfaces.editor.footer.title')"
             :description="$t('interfaces.editor.footer.description')"
             :ultimate="!is_ultimate"
@@ -347,6 +366,7 @@
 
           <div class="groups-container-compact">
             <GroupSetting
+              field="embed_style.color"
               :heading="$t('interfaces.editor.color.title')"
               :description="$t('interfaces.editor.color.description')"
               :ultimate="!is_ultimate"
@@ -366,6 +386,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="embed_style.timestamp"
               :heading="$t('interfaces.editor.timestamp.title')"
               :description="$t('interfaces.editor.timestamp.description')"
               :ultimate="!is_ultimate"
@@ -401,6 +422,7 @@
           $t('interfaces.editor.buttons_layout')
         }}</span>
         <GroupSetting
+          field="buttons"
           :heading="$t('interfaces.editor.buttons.title')"
           :description="$t('interfaces.editor.buttons.description')"
         >
@@ -488,6 +510,7 @@
               }}</span>
               <div class="groups-container">
                 <GroupSetting
+                  field="buttons"
                   :heading="$t('interfaces.editor.button.title')"
                   :description="$t('interfaces.editor.button.description')"
                   :ultimate="!is_ultimate"
@@ -538,6 +561,7 @@
                 </GroupSetting>
                 <GroupSetting
                   v-if="selected_button"
+                  field="buttons"
                   :heading="$t('interfaces.editor.disabled.title')"
                   :description="$t('interfaces.editor.disabled.description')"
                 >
@@ -557,6 +581,7 @@
               </div>
               <div class="groups-container">
                 <GroupSetting
+                  field="buttons"
                   :heading="$t('interfaces.editor.button_name.title')"
                   :description="$t('interfaces.editor.button_name.description')"
                   :ultimate="!is_ultimate"
@@ -581,6 +606,7 @@
                 </GroupSetting>
 
                 <GroupSetting
+                  field="buttons"
                   :heading="$t('interfaces.editor.emoji.title')"
                   :description="$t('interfaces.editor.emoji.description')"
                   :ultimate="!is_ultimate"
@@ -654,6 +680,7 @@
                   </template>
                 </GroupSetting>
                 <GroupSetting
+                  field="buttons"
                   :heading="$t('interfaces.editor.style.title')"
                   :description="$t('interfaces.editor.style.description')"
                   :ultimate="!is_ultimate"
@@ -833,6 +860,10 @@ const move_channel_id = ref('')
 
 const m_interface_settings = ref<GSInterface | undefined>(undefined)
 const interface_settings_edited = ref(false)
+const ai_changed_fields = useAiChangedFields()
+watch(interface_settings_edited, (edited) => {
+  if (!edited) ai_changed_fields.value = []
+})
 
 watch(
   interface_settings,

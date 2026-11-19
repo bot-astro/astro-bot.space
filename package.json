@@ -15,6 +15,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@ai-sdk/vue": "^4.0.177",
     "@nuxt/content": "3.16.0",
     "@nuxt/eslint": "1.17.0",
     "@nuxt/fonts": "0.14.0",
@@ -29,6 +30,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/vue-query": "^5.102.8",
     "@tanstack/vue-query-devtools": "^6.1.48",
+    "ai": "^7.0.177",
     "better-sqlite3": "^13.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -59,6 +59,19 @@
       </AlertDialog>
     </div>
 
+    <DashboardAiFillForm
+      v-if="m_template_settings"
+      page="template"
+      :entity-id="template_id"
+      :current-values="m_template_settings"
+      @fill="
+        (result) => {
+          m_template_settings = { ...m_template_settings!, ...result.values }
+          ai_changed_fields = result.changedFields
+        }
+      "
+    />
+
     <div
       v-if="m_template_settings && guild_channels"
       class="flex flex-col gap-12"
@@ -67,6 +80,7 @@
         <span class="text-group-name">{{ $t('templates.usage_group') }}</span>
         <div class="groups-container">
           <GroupSetting
+            field="name"
             :heading="$t('common.name')"
             :description="$t('templates.name_description')"
           >
@@ -85,6 +99,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="enabled_generator_ids"
             :heading="$t('templates.generators.title')"
             :description="$t('templates.generators.description')"
           >
@@ -170,6 +185,7 @@
         <span class="text-group-name">{{ $t('templates.vc_group') }}</span>
         <div class="groups-container">
           <GroupSetting
+            field="vc_name"
             :heading="$t('common.name')"
             :description="$t('templates.vc_name_description')"
           >
@@ -210,6 +226,7 @@
 
           <div class="groups-container-compact">
             <GroupSetting
+              field="vc_limit"
               :heading="$t('common.user_limit')"
               :description="$t('templates.user_limit_description')"
               compact
@@ -237,6 +254,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="vc_bitrate"
               :heading="$t('common.bitrate')"
               :description="$t('templates.bitrate_description')"
               compact
@@ -282,6 +300,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="vc_region"
               :heading="$t('common.region')"
               :description="$t('templates.region_description')"
               compact
@@ -429,6 +448,10 @@ const template_settings = computed(() => {
 })
 const m_template_settings = ref<GSTemplate | undefined>(undefined)
 const template_settings_edited = ref(false)
+const ai_changed_fields = useAiChangedFields()
+watch(template_settings_edited, (edited) => {
+  if (!edited) ai_changed_fields.value = []
+})
 
 watch(
   template_settings,

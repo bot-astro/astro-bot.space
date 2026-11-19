@@ -832,5 +832,34 @@
       "need_interface": "You need to first create an Interface to be able to use it as the private text chat message",
       "no_interface": "No interface"
     }
+  },
+  "ai": {
+    "chat": {
+      "title": "Ask Astro",
+      "open": "Open the Astro assistant",
+      "close": "Close the assistant",
+      "empty": "Ask me to create or change generators, interfaces, templates and voice roles. I will always show you the changes and wait for your approval before applying them.",
+      "placeholder": "Describe what you want to change...",
+      "send": "Send",
+      "thinking": "Thinking...",
+      "usage": "{used} / {limit} messages this month",
+      "usage_resets": "Resets on {date}",
+      "error": "The assistant could not answer, please try again"
+    },
+    "proposal": {
+      "before": "Before",
+      "after": "After",
+      "approve": "Approve",
+      "cancel": "Cancel",
+      "applied": "Applied",
+      "cancelled": "Cancelled",
+      "apply_failed": "The settings changed or the proposal expired, ask again to get a new one"
+    },
+    "form_fill": {
+      "title": "Fill the form with AI",
+      "placeholder": "Describe the settings you want, e.g. \"gaming channels limited to 5 people\"",
+      "submit": "Fill",
+      "review": "Review the highlighted fields, nothing is saved until you press Save"
+    }
   }
 }

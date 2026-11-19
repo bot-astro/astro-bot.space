@@ -18,6 +18,7 @@ import type { GSInterface } from '~/types/guild-settings/interface'
 import type { GuildSetupResult } from '~/types/guild-settings/setup'
 import type { Media, MediaType } from '~/types/media'
 import type { UpdatesChannelRB } from '~/types/guild-settings/request-bodies/updates_channel_rb'
+import type { AIFormFillRB, AIFormFillResult, AIUsage } from '~/types/ai'
 
 /**
  * Api client to interact with the Astro APIs
@@ -25,7 +26,7 @@ import type { UpdatesChannelRB } from '~/types/guild-settings/request-bodies/upd
 export class AstroApiClient {
   // base url will be injected from env variables on global instance creation
   private readonly base_url
-  // local dev only, avoids Discord's rate limits on the user guilds endpoint
+  // local dev only, avoids Discord's rate limits on the user guilds endpoint and serves canned AI replies
   private readonly mock_discord_guilds
 
   constructor(base_url: string, mock_discord_guilds: boolean = false) {
@@ -483,5 +484,76 @@ export class AstroApiClient {
     return useApiFetch(this.url(`/v2/guilds/${guild_id}/media/${media_id}`), {
       method: 'DELETE',
     })
+  }
+
+  /// AI ///
+  public ai_chat_url = (guild_id: string) =>
+    this.url(`/v2/guilds/${guild_id}/ai/chat`)
+
+  /**
+   * Fetch used by the chat transport, serves a canned stream in mock mode
+   */
+  public ai_chat_fetch: typeof fetch = async (input, init) => {
+    if (this.mock_discord_guilds) {
+      return (await import('~/data/astro/mocks/ai')).mock_ai_chat_fetch(
+        input,
+        init,
+      )
+    }
+
+    return fetch(input, init)
+  }
+
+  public get_ai_usage = async (guild_id: string): Promise<AIUsage> => {
+    if (this.mock_discord_guilds) {
+      return (await import('~/data/astro/mocks/ai')).mock_ai_usage()
+    }
+
+    return useApiFetch<AIUsage>(this.url(`/v2/guilds/${guild_id}/ai/usage`))
+  }
+
+  public apply_ai_proposal = async (
+    guild_id: string,
+    proposal_id: string,
+  ): Promise<void> => {
+    if (this.mock_discord_guilds) {
+      return (await import('~/data/astro/mocks/ai')).mock_ai_apply_proposal()
+    }
+
+    return useApiFetch(
+      this.url(`/v2/guilds/${guild_id}/ai/proposals/${proposal_id}/apply`),
+      { method: 'POST' },
+    )
+  }
+
+  public cancel_ai_proposal = async (
+    guild_id: string,
+    proposal_id: string,
+  ): Promise<void> => {
+    if (this.mock_discord_guilds) return
+
+    return useApiFetch(
+      this.url(`/v2/guilds/${guild_id}/ai/proposals/${proposal_id}/cancel`),
+      { method: 'POST' },
+    )
+  }
+
+  public ai_form_fill = async (
+    guild_id: string,
+    form_fill_rb: AIFormFillRB,
+  ): Promise<AIFormFillResult> => {
+    if (this.mock_discord_guilds) {
+      return (await import('~/data/astro/mocks/ai')).mock_ai_form_fill(
+        form_fill_rb,
+      )
+    }
+
+    return useApiFetch<AIFormFillResult>(
+      this.url(`/v2/guilds/${guild_id}/ai/form-fill`),
+      {
+        method: 'POST',
+        body: form_fill_rb,
+      },
+    )
   }
 }
