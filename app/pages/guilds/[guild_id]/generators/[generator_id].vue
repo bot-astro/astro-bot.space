@@ -62,6 +62,19 @@
       </AlertDialog>
     </div>
 
+    <DashboardAiFillForm
+      v-if="m_generator_settings"
+      page="generator"
+      :entity-id="generator_id"
+      :current-values="m_generator_settings"
+      @fill="
+        (result) => {
+          m_generator_settings = { ...m_generator_settings!, ...result.values }
+          ai_changed_fields = result.changedFields
+        }
+      "
+    />
+
     <div
       v-if="m_generator_settings && guild_channels && guild_roles"
       class="flex flex-col gap-12"
@@ -72,6 +85,7 @@
         }}</span>
         <div class="groups-container">
           <GroupSetting
+            field="default_name"
             :heading="$t('generators.editor.vc_name.title')"
             :description="$t('generators.editor.vc_name.description')"
           >
@@ -96,6 +110,7 @@
             </template>
           </GroupSetting>
           <GroupSetting
+            field="default_locked_name"
             :heading="$t('generators.editor.locked_name.title')"
             :description="$t('generators.editor.locked_name.description')"
           >
@@ -120,6 +135,7 @@
             </template>
           </GroupSetting>
           <GroupSetting
+            field="default_hidden_name"
             :heading="$t('generators.editor.hidden_name.title')"
             :description="$t('generators.editor.hidden_name.description')"
           >
@@ -152,6 +168,7 @@
         }}</span>
         <div class="groups-container">
           <GroupSetting
+            field="rename_conditions.state_change"
             :heading="$t('generators.editor.state_change.title')"
             :description="$t('generators.editor.state_change.description')"
           >
@@ -162,6 +179,7 @@
             />
           </GroupSetting>
           <GroupSetting
+            field="rename_conditions.owner_change"
             :heading="$t('generators.editor.owner_change.title')"
             :description="$t('generators.editor.owner_change.description')"
           >
@@ -172,6 +190,7 @@
             />
           </GroupSetting>
           <GroupSetting
+            field="rename_conditions.activity_change"
             :heading="$t('generators.editor.activity_change.title')"
             :description="$t('generators.editor.activity_change.description')"
             :ultimate="
@@ -187,6 +206,7 @@
             />
           </GroupSetting>
           <GroupSetting
+            field="rename_conditions.renamed"
             :heading="$t('generators.editor.renaming.title')"
             :description="$t('generators.editor.renaming.description')"
           >
@@ -203,6 +223,7 @@
         }}</span>
         <div class="groups-container-compact flex-wrap">
           <GroupSetting
+            field="category"
             :heading="$t('generators.editor.category.title')"
             :description="$t('generators.editor.category.description')"
             compact
@@ -241,6 +262,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="initial_position"
             :heading="$t('generators.editor.position.title')"
             :description="$t('generators.editor.position.description')"
             compact
@@ -276,6 +298,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="user_limit"
             :heading="$t('generators.editor.user_limit.title')"
             :description="$t('generators.editor.user_limit.description')"
             compact
@@ -298,6 +321,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="bitrate"
             :heading="$t('generators.editor.bitrate.title')"
             :description="$t('generators.editor.bitrate.description')"
             compact
@@ -368,6 +392,7 @@
         }}</span>
         <div class="groups-container-compact flex-wrap">
           <GroupSetting
+            field="permissions_inherited"
             :heading="$t('generators.editor.inheriting.title')"
             :description="$t('generators.editor.inheriting.description')"
             compact
@@ -405,6 +430,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="initial_state"
             :heading="$t('generators.editor.default_state.title')"
             :description="$t('generators.editor.default_state.description')"
             compact
@@ -438,6 +464,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="permissions_target_role"
             :heading="$t('generators.editor.target_role.title')"
             :description="$t('generators.editor.target_role.description')"
             compact
@@ -471,6 +498,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="permissions_immune_role"
             :heading="$t('generators.editor.moderator_role.title')"
             :description="$t('generators.editor.moderator_role.description')"
             compact
@@ -513,6 +541,7 @@
         }}</span>
         <div class="groups-container-compact">
           <GroupSetting
+            field="commands_settings.min_user_limit"
             :heading="$t('generators.editor.min_user_limit.title')"
             :description="$t('generators.editor.min_user_limit.description')"
             compact
@@ -540,6 +569,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="commands_settings.max_user_limit"
             :heading="$t('generators.editor.max_user_limit.title')"
             :description="$t('generators.editor.max_user_limit.description')"
             compact
@@ -567,6 +597,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="commands_settings.min_bitrate"
             :heading="$t('generators.editor.min_bitrate.title')"
             :description="$t('generators.editor.min_bitrate.description')"
             compact
@@ -621,6 +652,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="commands_settings.max_bitrate"
             :heading="$t('generators.editor.max_bitrate.title')"
             :description="$t('generators.editor.max_bitrate.description')"
             compact
@@ -682,6 +714,7 @@
         }}</span>
         <div class="groups-container-compact">
           <GroupSetting
+            field="owner_permission_ids"
             :heading="$t('generators.editor.owner_permissions.title')"
             :description="$t('generators.editor.owner_permissions.description')"
             compact
@@ -743,6 +776,7 @@
             </template>
           </GroupSetting>
           <GroupSetting
+            field="owner_role"
             :heading="$t('generators.editor.owner_role.title')"
             :description="$t('generators.editor.owner_role.description')"
             class="relative"
@@ -780,6 +814,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="queue_mode"
             :heading="$t('generators.editor.queue_mode.title')"
             :description="$t('generators.editor.queue_mode.description')"
             compact
@@ -790,6 +825,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="fallback_id"
             :heading="$t('generators.editor.fallback.title')"
             :description="$t('generators.editor.fallback.description')"
             :ultimate="!is_ultimate"
@@ -840,6 +876,7 @@
         }}</span>
         <div class="groups-container">
           <GroupSetting
+            field="auto_waiting"
             :heading="$t('generators.editor.waiting_auto.title')"
             :description="$t('generators.editor.waiting_auto.description')"
             :ultimate="!is_ultimate && !m_generator_settings.auto_waiting"
@@ -852,6 +889,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="default_waiting_name"
             :heading="$t('generators.editor.waiting_name.title')"
             :description="$t('generators.editor.waiting_name.description')"
           >
@@ -878,6 +916,7 @@
 
           <div class="groups-container-compact">
             <GroupSetting
+              field="waiting_category"
               :heading="$t('generators.editor.waiting_category.title')"
               :description="
                 $t('generators.editor.waiting_category.description')
@@ -920,6 +959,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="waiting_position"
               :heading="$t('generators.editor.waiting_position.title')"
               :description="
                 $t('generators.editor.waiting_position.description')
@@ -947,7 +987,9 @@
                         :value="pos"
                       >
                         {{
-                          $t(`generators.editor.waiting_positions.${pos.toLowerCase()}`)
+                          $t(
+                            `generators.editor.waiting_positions.${pos.toLowerCase()}`,
+                          )
                         }}
                       </SelectItem>
                     </SelectGroup>
@@ -957,6 +999,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="waiting_user_limit"
               :heading="$t('generators.editor.waiting_user_limit.title')"
               :description="
                 $t('generators.editor.waiting_user_limit.description')
@@ -981,6 +1024,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="waiting_bitrate"
               :heading="$t('generators.editor.waiting_bitrate.title')"
               :description="$t('generators.editor.waiting_bitrate.description')"
               compact
@@ -1025,6 +1069,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="waiting_permissions_inherited"
               :heading="$t('generators.editor.waiting_inheriting.title')"
               :description="
                 $t('generators.editor.waiting_inheriting.description')
@@ -1074,6 +1119,7 @@
         }}</span>
         <div class="groups-container">
           <GroupSetting
+            field="auto_chat"
             :heading="$t('generators.editor.chat_auto.title')"
             :description="$t('generators.editor.chat_auto.description')"
             :ultimate="!is_ultimate && !m_generator_settings.auto_chat"
@@ -1086,6 +1132,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="default_chat_name"
             :heading="$t('generators.editor.chat_name.title')"
             :description="$t('generators.editor.chat_name.description')"
           >
@@ -1112,6 +1159,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="chat_topic"
             :heading="$t('generators.editor.chat_topic.title')"
             :description="$t('generators.editor.chat_topic.description')"
           >
@@ -1127,6 +1175,7 @@
           </GroupSetting>
 
           <GroupSetting
+            field="default_chat_text"
             :heading="$t('generators.editor.chat_message_type.title')"
             :description="$t('generators.editor.chat_message_type.description')"
             :ultimate="
@@ -1166,6 +1215,7 @@
                 PrivateChatMessageType.TEXT_MESSAGE ||
               private_chat_message_type == PrivateChatMessageType.EMBED
             "
+            field="default_chat_text"
             :heading="$t('generators.editor.chat_message.title')"
             :description="$t('generators.editor.chat_message.description')"
           >
@@ -1196,6 +1246,7 @@
 
           <GroupSetting
             v-if="private_chat_message_type == PrivateChatMessageType.INTERFACE"
+            field="chat_interface"
             :heading="$t('generators.editor.chat_interface.title')"
             :description="$t('generators.editor.chat_interface.description')"
           >
@@ -1249,6 +1300,7 @@
 
           <div class="groups-container-compact">
             <GroupSetting
+              field="chat_category"
               :heading="$t('generators.editor.chat_category.title')"
               :description="$t('generators.editor.chat_category.description')"
               compact
@@ -1289,6 +1341,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="chat_permissions_inherited"
               :heading="$t('generators.editor.chat_inheriting.title')"
               :description="$t('generators.editor.chat_inheriting.description')"
               compact
@@ -1328,6 +1381,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="chat_nsfw"
               :heading="$t('generators.editor.chat_nsfw.title')"
               :description="$t('generators.editor.chat_nsfw.description')"
               compact
@@ -1338,6 +1392,7 @@
             </GroupSetting>
 
             <GroupSetting
+              field="chat_slowmode"
               :heading="$t('generators.editor.chat_slowmode.title')"
               :description="$t('generators.editor.chat_slowmode.description')"
               compact
@@ -1481,6 +1536,10 @@ watch(
 
 const m_generator_settings = ref<GSGenerator | undefined>(undefined)
 const generator_settings_edited = ref(false)
+const ai_changed_fields = useAiChangedFields()
+watch(generator_settings_edited, (edited) => {
+  if (!edited) ai_changed_fields.value = []
+})
 
 watch(
   generator_settings,
