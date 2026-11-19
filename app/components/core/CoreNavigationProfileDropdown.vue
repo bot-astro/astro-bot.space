@@ -3,7 +3,7 @@ import { useToast } from '~/components/ui/toast'
 import { useUser } from '~/data/astro/query/useUser'
 
 const { $astroApiClient } = useNuxtApp()
-const { invite } = useInvite()
+const { invite_from } = useInvite()
 const { toast } = useToast()
 const { t } = useI18n()
 const { data: user } = useUser()
@@ -109,7 +109,7 @@ const on_billing_clicked = async () => {
 
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem @click="invite">
+          <DropdownMenuItem @click="invite_from('website-profile-menu')">
             {{ $t('nav.add_to_server') }}
           </DropdownMenuItem>
           <DropdownMenuItem @click="navigateTo('/guides')">

@@ -4,7 +4,7 @@ SCROLLING ANIMATION
 */
 import { useWindowScroll } from '@vueuse/core'
 
-const { invite } = useInvite()
+const { invite_from } = useInvite()
 
 // Navbar border toggling
 const navbarContainer = ref<HTMLElement | null>(null)
@@ -47,7 +47,9 @@ watch(y, () => {
       <div
         class="hidden w-full items-center gap-8 whitespace-nowrap select-none lg:flex"
       >
-        <ButtonText @click="invite"> {{ $t('nav.add_to_server') }} </ButtonText>
+        <ButtonText @click="invite_from('website-nav')">
+          {{ $t('nav.add_to_server') }}
+        </ButtonText>
         <ButtonText to="/guides"> {{ $t('nav.guides') }} </ButtonText>
         <ButtonText to="/ultimate"> {{ $t('nav.ultimate') }} </ButtonText>
         <ButtonText to="https://github.com/bot-astro/astro" target="_blank">
