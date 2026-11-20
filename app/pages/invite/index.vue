@@ -1,6 +1,9 @@
 <script lang="ts" setup>
+const src = useRoute().query.src
+const source = typeof src === 'string' && src !== '' ? src : 'unknown'
+
 onMounted(() => {
-  useInvite().invite()
+  useInvite().invite_from(source)
 })
 
 const { t } = useI18n()
