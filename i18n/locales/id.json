@@ -123,7 +123,6 @@
   },
   "home": {
     "tagline": "Bot Discord paling unik dan lengkap untuk saluran suara sementara dan peran suara!",
-    "get_started": "Mulai",
     "temp_vc": {
       "description": "Astro membuat saluran suara sementara yang sepenuhnya dapat disesuaikan sesuai permintaan dan menghapusnya saat kosong. Dilengkapi kustomisasi ekstrem sehingga kamu bisa membuat sistem yang sempurna untuk servermu!",
       "title": "Saluran Suara {animated}",
@@ -144,6 +143,97 @@
     "exclusive": {
       "title": "Khusus Saluran Suara",
       "description": "Berfokus hanya pada saluran suara menjadikan Astro bot terbaik di kelasnya, coba sekarang!"
+    },
+    "hero": {
+      "invite": "Tambahkan ke Discord",
+      "how_it_works": "Cara kerjanya",
+      "servers": "{count} server mempercayai Astro",
+      "open_source": "100% open source"
+    },
+    "demo": {
+      "join": "Gabung",
+      "leave": "Keluar"
+    },
+    "servers": {
+      "title": "Dipercaya komunitas dari segala ukuran",
+      "members": "{count} anggota"
+    },
+    "open_source": {
+      "title": "Bangga menjadi open source",
+      "description": "Kode Astro bersifat publik. Lihat cara kerjanya, laporkan masalah, atau berkontribusi di GitHub.",
+      "button": "Lihat di GitHub"
+    },
+    "big_text": {
+      "first": "Saluran suara sementara",
+      "second": "Peran suara"
+    },
+    "stage": {
+      "hint": "Gulir untuk menjelajah",
+      "steps": {
+        "temp": {
+          "title": "Saluran suara sementara",
+          "description": "Gabung ke generator dan Astro membuat saluran suara milikmu, lalu menghapusnya saat semua orang keluar.",
+          "p1": "Dinamai dari template dan variabel",
+          "p2": "Pemilik mendapat kendali penuh",
+          "p3": "Dihapus otomatis saat kosong"
+        },
+        "numbered": {
+          "title": "Saluran bernomor, atau NATO",
+          "description": "Saluran mendapat nomor berikutnya atau nama alfabet NATO berikutnya, dan melepasnya begitu kosong.",
+          "p1": "Alpha, Bravo, Charlie...",
+          "p2": "1, 2, 3, 4...",
+          "p3": "I, II, III, IV..."
+        },
+        "interface": {
+          "label": "Interface kontrol",
+          "title": "Setiap saluran punya remote",
+          "description": "Astro mengirim pesan interface agar anggota bisa mengganti nama, membatasi, mengunci, atau menyerahkan saluran mereka dengan satu ketukan, bahkan dari ponsel.",
+          "p1": "Nyaman di ponsel",
+          "p2": "Tata letak bisa disesuaikan sepenuhnya",
+          "p3": "16 aksi, satu ketukan untuk masing-masing"
+        },
+        "voice_role": {
+          "label": "Peran suara",
+          "title": "Masuk saluran, dapat peran",
+          "description": "Beri anggota sebuah peran selama mereka berada di saluran suara, cocok untuk membuka chat teks gaming hanya bagi yang ada di VC gaming.",
+          "p1": "Peran ditambahkan saat masuk",
+          "p2": "Dihapus saat keluar",
+          "p3": "Membuka chat teks privat"
+        },
+        "dash_sections": {
+          "label": "Dasbor",
+          "title": "Servermu, satu dasbor",
+          "description": "Admin server mengelola setiap fitur Astro dari dasbor web, tanpa perlu menghafal perintah.",
+          "p1": "Generator, interface, peran suara, dan template",
+          "p2": "Berfungsi untuk setiap server yang kamu kelola",
+          "p3": "Hanya orang dengan izin yang tepat yang bisa masuk"
+        },
+        "dash_generator": {
+          "label": "Generator",
+          "title": "Atur setiap generator",
+          "description": "Generator sangat bisa disesuaikan: ubah lebih dari 40 pengaturan, tekan simpan dan langsung aktif di servermu.",
+          "p1": "Chat privat dan ruang tunggu otomatis",
+          "p2": "Pengaturan yang bisa disesuaikan",
+          "p3": "40+ opsi konfigurasi"
+        },
+        "dash_interface": {
+          "label": "Interface",
+          "title": "Rancang interface sendiri",
+          "description": "Atur tombol yang dipakai anggota untuk mengontrol saluran mereka, satu slot demi satu slot.",
+          "p1": "Ganti nama, ubah gaya, atau hapus tombol apa pun",
+          "p2": "Rancang pesan interface-mu",
+          "p3": "Pindahkan interface ke saluran mana pun"
+        },
+        "dash_errors": {
+          "label": "Error",
+          "title": "Lihat apa yang salah",
+          "description": "Saat Astro tidak bisa melakukan sesuatu di servermu, misalnya karena izin yang kurang, hal itu muncul di sini beserta detailnya.",
+          "p1": "Pesan yang jelas dan mudah dibaca",
+          "p2": "Tahu persis kapan terjadinya",
+          "p3": "Panduan untuk memperbaiki setiap masalah"
+        }
+      },
+      "try": "Coba: klik “Join to create”, lalu keluar untuk menghapus salurannya."
     }
   },
   "guides": {
@@ -176,7 +266,7 @@
     "yearly": "Tahunan",
     "subscribe": "Berlangganan",
     "feature": "Fitur",
-    "premium": "Premium",
+    "premium": "Ultimate",
     "free": "Gratis",
     "maximum": "Maksimal {count}",
     "features": {

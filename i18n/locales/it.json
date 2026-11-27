@@ -123,7 +123,6 @@
   },
   "home": {
     "tagline": "Il bot Discord più unico e completo per canali vocali temporanei e ruoli vocali!",
-    "get_started": "Inizia",
     "temp_vc": {
       "description": "Astro genera su richiesta canali vocali temporanei completamente personalizzabili e li elimina quando si svuotano. Offre una personalizzazione estrema, così puoi creare il sistema perfetto per il tuo server!",
       "title": "Canali vocali {animated}",
@@ -144,6 +143,97 @@
     "exclusive": {
       "title": "Esclusivamente canali vocali",
       "description": "Concentrarsi solo sui canali vocali rende Astro il miglior bot del suo genere, provalo ora!"
+    },
+    "hero": {
+      "invite": "Aggiungi a Discord",
+      "how_it_works": "Come funziona",
+      "servers": "{count} server si fidano di Astro",
+      "open_source": "100% open source"
+    },
+    "demo": {
+      "join": "Entra",
+      "leave": "Esci"
+    },
+    "servers": {
+      "title": "Scelto da community di ogni dimensione",
+      "members": "{count} membri"
+    },
+    "open_source": {
+      "title": "Orgogliosamente open source",
+      "description": "Il codice di Astro è pubblico. Scopri come funziona, segnala problemi o contribuisci su GitHub.",
+      "button": "Vedi su GitHub"
+    },
+    "big_text": {
+      "first": "Canali vocali temporanei",
+      "second": "Ruoli vocali"
+    },
+    "stage": {
+      "hint": "Scorri per esplorare",
+      "steps": {
+        "temp": {
+          "title": "Canali vocali temporanei",
+          "description": "Entra nel generatore e Astro crea il tuo canale vocale, poi lo elimina quando tutti escono.",
+          "p1": "Nomi da template e variabili",
+          "p2": "Il proprietario ha il controllo completo",
+          "p3": "Eliminato automaticamente quando è vuoto"
+        },
+        "numbered": {
+          "title": "Canali numerati, o NATO",
+          "description": "I canali ottengono il numero successivo o il nome successivo dell’alfabeto NATO e lo liberano appena si svuotano.",
+          "p1": "Alpha, Bravo, Charlie...",
+          "p2": "1, 2, 3, 4...",
+          "p3": "I, II, III, IV..."
+        },
+        "interface": {
+          "label": "Interfaccia di controllo",
+          "title": "Ogni canale ha il suo telecomando",
+          "description": "Astro pubblica un messaggio con interfaccia così i membri possono rinominare, limitare, bloccare o cedere il proprio canale con un tocco, anche da mobile.",
+          "p1": "Perfetta su mobile",
+          "p2": "Layout completamente personalizzabile",
+          "p3": "16 azioni, un tocco ciascuna"
+        },
+        "voice_role": {
+          "label": "Ruoli vocali",
+          "title": "Entra in un canale, ottieni un ruolo",
+          "description": "Assegna un ruolo ai membri finché sono in un canale vocale, perfetto per sbloccare una chat testuale di gaming solo per chi è nel canale vocale di gaming.",
+          "p1": "Ruolo aggiunto all’ingresso",
+          "p2": "Rimosso all’uscita",
+          "p3": "Sblocca chat testuali private"
+        },
+        "dash_sections": {
+          "label": "Dashboard",
+          "title": "Il tuo server, una dashboard",
+          "description": "Gli admin del server gestiscono ogni funzione di Astro dalla dashboard web, senza comandi da ricordare.",
+          "p1": "Generatori, interfacce, ruoli vocali e template",
+          "p2": "Funziona per ogni server che gestisci",
+          "p3": "Entra solo chi ha i permessi giusti"
+        },
+        "dash_generator": {
+          "label": "Generatori",
+          "title": "Regola ogni generatore",
+          "description": "I generatori sono estremamente personalizzabili: modifica oltre 40 impostazioni, premi salva ed è subito attivo nel tuo server.",
+          "p1": "Chat private e sale d’attesa automatiche",
+          "p2": "Impostazioni personalizzabili",
+          "p3": "Oltre 40 opzioni di configurazione"
+        },
+        "dash_interface": {
+          "label": "Interfacce",
+          "title": "Progetta la tua interfaccia",
+          "description": "Disponi i pulsanti che i membri usano per controllare il loro canale, uno slot alla volta.",
+          "p1": "Rinomina, ridisegna o rimuovi qualsiasi pulsante",
+          "p2": "Progetta il messaggio della tua interfaccia",
+          "p3": "Sposta l’interfaccia in qualsiasi canale"
+        },
+        "dash_errors": {
+          "label": "Errori",
+          "title": "Scopri cosa è andato storto",
+          "description": "Quando Astro non riesce a fare qualcosa nel tuo server, come per un permesso mancante, compare qui con tutti i dettagli.",
+          "p1": "Messaggi chiari e leggibili",
+          "p2": "Sai esattamente quando è successo",
+          "p3": "Guide per risolvere ogni problema"
+        }
+      },
+      "try": "Prova: clicca su “Join to create”, poi esci per eliminare il tuo canale."
     }
   },
   "guides": {
@@ -176,7 +266,7 @@
     "yearly": "Annuale",
     "subscribe": "Abbonati",
     "feature": "Funzionalità",
-    "premium": "Premium",
+    "premium": "Ultimate",
     "free": "Gratis",
     "maximum": "Massimo {count}",
     "features": {

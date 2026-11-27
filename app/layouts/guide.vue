@@ -17,5 +17,6 @@
     </div>
 
     <CoreFooter class="mt-32" />
+    <HomeFooterMarquee />
   </div>
 </template>

@@ -67,7 +67,7 @@ const on_billing_clicked = async () => {
     <!--  Mobile navbar  -->
     <div class="flex items-center lg:hidden">
       <DropdownMenu v-model:open="is_mobile_dropdown_open">
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger as-child>
           <ButtonText>
             <Icon
               :name="

@@ -140,15 +140,20 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'robots', content: 'noodp,noydir' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'Astro' },
         {
-          name: 'og:image',
+          property: 'og:image',
           content: 'https://astro-bot.space/img/logo_bg.png',
         },
-        { name: 'og:url', content: 'https://astro-bot.space' },
+        { name: 'twitter:card', content: 'summary' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
       script: [
-        { src: 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js' },
+        {
+          src: 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js',
+          defer: true,
+        },
       ],
     },
   },

@@ -123,7 +123,6 @@
   },
   "home": {
     "tagline": "Le bot Discord le plus unique et le plus complet pour les salons vocaux temporaires et les rôles vocaux !",
-    "get_started": "Commencer",
     "temp_vc": {
       "description": "Astro génère à la demande des salons vocaux temporaires entièrement personnalisables et les supprime lorsqu'ils se vident. Il offre une personnalisation poussée pour que tu puisses créer le système parfait pour ton serveur !",
       "title": "Salons vocaux {animated}",
@@ -144,6 +143,97 @@
     "exclusive": {
       "title": "Exclusivement des salons vocaux",
       "description": "Se concentrer uniquement sur les salons vocaux fait d'Astro le meilleur bot de sa catégorie, essaie-le dès maintenant !"
+    },
+    "hero": {
+      "invite": "Ajouter à Discord",
+      "how_it_works": "Comment ça marche",
+      "servers": "{count} serveurs font confiance à Astro",
+      "open_source": "100 % open source"
+    },
+    "demo": {
+      "join": "Rejoindre",
+      "leave": "Quitter"
+    },
+    "servers": {
+      "title": "Adopté par des communautés de toutes tailles",
+      "members": "{count} membres"
+    },
+    "open_source": {
+      "title": "Fièrement open source",
+      "description": "Le code d’Astro est public. Découvrez comment il fonctionne, signalez des problèmes ou contribuez sur GitHub.",
+      "button": "Voir sur GitHub"
+    },
+    "big_text": {
+      "first": "Salons vocaux temporaires",
+      "second": "Rôles vocaux"
+    },
+    "stage": {
+      "hint": "Faites défiler pour explorer",
+      "steps": {
+        "temp": {
+          "title": "Salons vocaux temporaires",
+          "description": "Rejoignez le générateur et Astro crée votre propre salon vocal, puis le supprime quand tout le monde est parti.",
+          "p1": "Nommés via des modèles et des variables",
+          "p2": "Le propriétaire a le contrôle total",
+          "p3": "Supprimé automatiquement quand il est vide"
+        },
+        "numbered": {
+          "title": "Salons numérotés, ou NATO",
+          "description": "Les salons reçoivent le numéro suivant ou le nom suivant de l’alphabet NATO, et le libèrent dès qu’ils sont vides.",
+          "p1": "Alpha, Bravo, Charlie...",
+          "p2": "1, 2, 3, 4...",
+          "p3": "I, II, III, IV..."
+        },
+        "interface": {
+          "label": "Interface de contrôle",
+          "title": "Chaque salon a sa télécommande",
+          "description": "Astro publie un message d’interface pour que les membres puissent renommer, limiter, verrouiller ou céder leur salon d’un simple clic, même sur mobile.",
+          "p1": "Idéal sur mobile",
+          "p2": "Disposition entièrement personnalisable",
+          "p3": "16 actions, un clic chacune"
+        },
+        "voice_role": {
+          "label": "Rôles vocaux",
+          "title": "Rejoignez un salon, obtenez un rôle",
+          "description": "Donnez un rôle aux membres tant qu’ils sont dans un salon vocal, idéal pour débloquer un salon textuel gaming uniquement pour ceux qui sont dans le salon vocal gaming.",
+          "p1": "Rôle ajouté à l’arrivée",
+          "p2": "Retiré au départ",
+          "p3": "Débloque des salons textuels privés"
+        },
+        "dash_sections": {
+          "label": "Tableau de bord",
+          "title": "Votre serveur, un seul tableau de bord",
+          "description": "Les admins gèrent chaque fonctionnalité d’Astro depuis le tableau de bord web, sans commandes à retenir.",
+          "p1": "Générateurs, interfaces, rôles vocaux et modèles",
+          "p2": "Fonctionne pour chaque serveur que vous gérez",
+          "p3": "Seules les personnes avec les bonnes permissions peuvent entrer"
+        },
+        "dash_generator": {
+          "label": "Générateurs",
+          "title": "Réglez chaque générateur",
+          "description": "Les générateurs sont extrêmement personnalisables : modifiez plus de 40 paramètres, enregistrez et c’est actif immédiatement sur votre serveur.",
+          "p1": "Salons privés et salles d’attente automatiques",
+          "p2": "Paramètres personnalisables",
+          "p3": "Plus de 40 options de configuration"
+        },
+        "dash_interface": {
+          "label": "Interfaces",
+          "title": "Concevez votre propre interface",
+          "description": "Disposez les boutons que les membres utilisent pour contrôler leur salon, un emplacement à la fois.",
+          "p1": "Renommez, restylisez ou supprimez n’importe quel bouton",
+          "p2": "Concevez le message de votre interface",
+          "p3": "Déplacez l’interface dans n’importe quel salon"
+        },
+        "dash_errors": {
+          "label": "Erreurs",
+          "title": "Voyez ce qui n’a pas fonctionné",
+          "description": "Quand Astro ne peut pas faire quelque chose sur votre serveur, comme à cause d’une permission manquante, cela apparaît ici avec les détails.",
+          "p1": "Messages clairs et lisibles",
+          "p2": "Sachez exactement quand c’est arrivé",
+          "p3": "Des guides pour résoudre chaque problème"
+        }
+      },
+      "try": "Essayez : cliquez sur « Join to create », puis quittez pour supprimer votre salon."
     }
   },
   "guides": {
@@ -176,7 +266,7 @@
     "yearly": "Annuelle",
     "subscribe": "S'abonner",
     "feature": "Fonctionnalité",
-    "premium": "Premium",
+    "premium": "Ultimate",
     "free": "Gratuit",
     "maximum": "Maximum {count}",
     "features": {

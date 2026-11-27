@@ -123,7 +123,6 @@
   },
   "home": {
     "tagline": "The most unique and complete discord bot for temporary voice channels and voice roles!",
-    "get_started": "Get started",
     "temp_vc": {
       "description": "Astro generates fully customisable temporary voice channels on prompt and deletes them when they get empty. Ships with extreme customisation so that you can create the perfect system for your server!",
       "title": "{animated} Voice Channels",
@@ -144,6 +143,97 @@
     "exclusive": {
       "title": "Voice Channels Exclusive",
       "description": "Focusing only on voice channels makes Astro the best bot of its kind, try it now!"
+    },
+    "hero": {
+      "invite": "Add to Discord",
+      "how_it_works": "How it works",
+      "servers": "{count} servers trust Astro",
+      "open_source": "100% open source"
+    },
+    "demo": {
+      "join": "Join",
+      "leave": "Leave"
+    },
+    "servers": {
+      "title": "Trusted by communities of every size",
+      "members": "{count} members"
+    },
+    "open_source": {
+      "title": "Proudly open source",
+      "description": "Astro's code is public. See how it works, report issues or contribute on GitHub.",
+      "button": "View on GitHub"
+    },
+    "big_text": {
+      "first": "Temporary voice channels",
+      "second": "Voice roles"
+    },
+    "stage": {
+      "hint": "Scroll to explore",
+      "steps": {
+        "temp": {
+          "title": "Temporary voice channels",
+          "description": "Join the generator and Astro creates your own voice channel, then deletes it when everyone leaves.",
+          "p1": "Named from templates and variables",
+          "p2": "The owner gets full control",
+          "p3": "Deleted automatically when empty"
+        },
+        "numbered": {
+          "title": "Numbered channels, or NATO",
+          "description": "Channels get the next number or the next NATO alphabet name, and free it up as soon as they are empty.",
+          "p1": "Alpha, Bravo, Charlie...",
+          "p2": "1, 2, 3, 4...",
+          "p3": "I, II, III, IV..."
+        },
+        "interface": {
+          "label": "Control interface",
+          "title": "Every channel gets a remote",
+          "description": "Astro posts an interface message so members can rename, limit, lock or hand over their channel with a tap, even from mobile.",
+          "p1": "Great on mobile",
+          "p2": "Fully customisable layout",
+          "p3": "16 actions, one tap each"
+        },
+        "voice_role": {
+          "label": "Voice roles",
+          "title": "Join a channel, get a role",
+          "description": "Give members a role while they sit in a voice channel, perfect to unlock a gaming text chat only for people in the gaming VC.",
+          "p1": "Role added on join",
+          "p2": "Removed on leave",
+          "p3": "Unlocks private text chats"
+        },
+        "dash_sections": {
+          "label": "Dashboard",
+          "title": "Your server, one dashboard",
+          "description": "Server admins manage every Astro feature from the web dashboard, no commands to memorise.",
+          "p1": "Generators, interfaces, voice roles and templates",
+          "p2": "Works for every server you manage",
+          "p3": "Only people with the right permissions get in"
+        },
+        "dash_generator": {
+          "label": "Generators",
+          "title": "Tune every generator",
+          "description": "Generators are extremely customisable, modify over 40 settings, hit save and it is live in your server right away.",
+          "p1": "Automatic private chats and waiting rooms",
+          "p2": "Customisable settings",
+          "p3": "40+ configuration options"
+        },
+        "dash_interface": {
+          "label": "Interfaces",
+          "title": "Design your own interface",
+          "description": "Lay out the buttons members use to control their channel, one slot at a time.",
+          "p1": "Rename, restyle or remove any button",
+          "p2": "Design your interface message",
+          "p3": "Move the interface to any channel"
+        },
+        "dash_errors": {
+          "label": "Errors",
+          "title": "See what went wrong",
+          "description": "When Astro cannot do something in your server, like a missing permission, it shows up here with the details.",
+          "p1": "Clear, readable messages",
+          "p2": "Know exactly when it happened",
+          "p3": "Guides to fix each issue"
+        }
+      },
+      "try": "Try it: click “Join to create”, then leave to delete your channel."
     }
   },
   "guides": {
@@ -176,7 +266,7 @@
     "yearly": "Yearly",
     "subscribe": "Subscribe",
     "feature": "Feature",
-    "premium": "Premium",
+    "premium": "Ultimate",
     "free": "Free",
     "maximum": "Maximum {count}",
     "features": {

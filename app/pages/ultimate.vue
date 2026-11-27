@@ -140,9 +140,9 @@ function subscribe() {
                   <div
                     :class="
                       cn(
-                        'absolute -top-3 -right-4 rounded-full bg-discord-green px-2 py-1 text-xs',
-                        isMonthly && 'bg-opacity-50 animate-pulse',
-                        !isMonthly && 'bg-opacity-95',
+                        'absolute -top-3 -right-4 rounded-full px-2 py-1 text-xs',
+                        isMonthly && 'animate-pulse bg-discord-green/50',
+                        !isMonthly && 'bg-discord-green/95',
                       )
                     "
                   >

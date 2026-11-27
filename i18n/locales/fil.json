@@ -123,7 +123,6 @@
   },
   "home": {
     "tagline": "Ang pinaka-kakaiba at kumpletong Discord bot para sa mga pansamantalang voice channel at voice role!",
-    "get_started": "Magsimula",
     "temp_vc": {
       "description": "Gumagawa ang Astro ng ganap na na-customize na mga pansamantalang voice channel kapag hiniling at tinatanggal ang mga ito kapag nawalan ng laman. May napakalawak na customization para makagawa ka ng perpektong sistema para sa server mo!",
       "title": "Mga {animated} Voice Channel",
@@ -144,6 +143,97 @@
     "exclusive": {
       "title": "Eksklusibo sa mga Voice Channel",
       "description": "Ang pagtutok lang sa mga voice channel ang dahilan kung bakit ang Astro ang pinakamahusay na bot sa uri nito, subukan na ngayon!"
+    },
+    "hero": {
+      "invite": "Idagdag sa Discord",
+      "how_it_works": "Paano ito gumagana",
+      "servers": "{count} server ang nagtitiwala sa Astro",
+      "open_source": "100% open source"
+    },
+    "demo": {
+      "join": "Sumali",
+      "leave": "Umalis"
+    },
+    "servers": {
+      "title": "Pinagkakatiwalaan ng mga komunidad sa lahat ng laki",
+      "members": "{count} miyembro"
+    },
+    "open_source": {
+      "title": "Ipinagmamalaking open source",
+      "description": "Pampubliko ang code ng Astro. Tingnan kung paano ito gumagana, mag-ulat ng mga isyu o mag-ambag sa GitHub.",
+      "button": "Tingnan sa GitHub"
+    },
+    "big_text": {
+      "first": "Mga pansamantalang voice channel",
+      "second": "Mga Voice Role"
+    },
+    "stage": {
+      "hint": "Mag-scroll para mag-explore",
+      "steps": {
+        "temp": {
+          "title": "Mga pansamantalang voice channel",
+          "description": "Sumali sa generator at gagawa ang Astro ng sarili mong voice channel, tapos buburahin ito kapag umalis na ang lahat.",
+          "p1": "Pinapangalanan mula sa mga template at variable",
+          "p2": "May buong kontrol ang owner",
+          "p3": "Awtomatikong binubura kapag walang laman"
+        },
+        "numbered": {
+          "title": "Mga may numerong channel, o NATO",
+          "description": "Nakakakuha ang mga channel ng susunod na numero o susunod na pangalan sa NATO alphabet, at pinapalaya ito kapag wala nang laman.",
+          "p1": "Alpha, Bravo, Charlie...",
+          "p2": "1, 2, 3, 4...",
+          "p3": "I, II, III, IV..."
+        },
+        "interface": {
+          "label": "Control interface",
+          "title": "May remote ang bawat channel",
+          "description": "Nagpo-post ang Astro ng interface message para mapalitan ng pangalan, malimitahan, ma-lock o maipasa ng mga miyembro ang kanilang channel sa isang tap, kahit sa mobile.",
+          "p1": "Mahusay sa mobile",
+          "p2": "Ganap na maaaring i-customize ang layout",
+          "p3": "16 na aksyon, isang tap bawat isa"
+        },
+        "voice_role": {
+          "label": "Mga Voice Role",
+          "title": "Sumali sa channel, makakuha ng role",
+          "description": "Bigyan ang mga miyembro ng role habang nasa voice channel sila, perpekto para buksan ang gaming text chat para lang sa mga nasa gaming VC.",
+          "p1": "Idinadagdag ang role pag sumali",
+          "p2": "Tinatanggal pag umalis",
+          "p3": "Nagbubukas ng mga pribadong text chat"
+        },
+        "dash_sections": {
+          "label": "Dashboard",
+          "title": "Ang server mo, isang dashboard",
+          "description": "Pinamamahalaan ng mga server admin ang bawat feature ng Astro mula sa web dashboard, walang commands na kailangang kabisaduhin.",
+          "p1": "Mga generator, interface, voice role at template",
+          "p2": "Gumagana sa bawat server na pinamamahalaan mo",
+          "p3": "Ang may tamang permissions lang ang makakapasok"
+        },
+        "dash_generator": {
+          "label": "Mga Generator",
+          "title": "I-tune ang bawat generator",
+          "description": "Napaka-customizable ng mga generator: baguhin ang mahigit 40 setting, i-save, at live na agad sa server mo.",
+          "p1": "Awtomatikong pribadong chat at waiting room",
+          "p2": "Mga setting na maaaring i-customize",
+          "p3": "40+ opsyon sa configuration"
+        },
+        "dash_interface": {
+          "label": "Mga Interface",
+          "title": "Idisenyo ang sarili mong interface",
+          "description": "Ayusin ang mga button na ginagamit ng mga miyembro para kontrolin ang kanilang channel, isang slot sa bawat pagkakataon.",
+          "p1": "Palitan ng pangalan, i-restyle o alisin ang anumang button",
+          "p2": "Idisenyo ang interface message mo",
+          "p3": "Ilipat ang interface sa anumang channel"
+        },
+        "dash_errors": {
+          "label": "Mga Error",
+          "title": "Tingnan kung ano ang nagkamali",
+          "description": "Kapag may hindi magawa ang Astro sa server mo, gaya ng kulang na permission, lalabas ito rito kasama ang mga detalye.",
+          "p1": "Malinaw at madaling basahing mga mensahe",
+          "p2": "Alamin kung eksaktong kailan ito nangyari",
+          "p3": "Mga gabay para ayusin ang bawat isyu"
+        }
+      },
+      "try": "Subukan: i-click ang “Join to create”, tapos umalis para mabura ang channel mo."
     }
   },
   "guides": {
@@ -176,7 +266,7 @@
     "yearly": "Taunan",
     "subscribe": "Mag-subscribe",
     "feature": "Feature",
-    "premium": "Premium",
+    "premium": "Ultimate",
     "free": "Libre",
     "maximum": "Hanggang {count}",
     "features": {
