@@ -122,6 +122,14 @@ export default defineNuxtConfig({
         },
       })),
     ),
+    // old urls still indexed by search engines whose content moved
+    '/premium': { redirect: { to: '/ultimate', statusCode: 301 } },
+    '/dashboard': { redirect: { to: '/guilds', statusCode: 301 } },
+    '/documentation': { redirect: { to: '/guides', statusCode: 301 } },
+    // only work when logged in, keep them out of the sitemap and search results
+    '/billing': { robots: false },
+    '/guilds/**': { robots: false },
+    '/invite/callback': { robots: false },
   },
 
   nuxtQuery: {
