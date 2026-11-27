@@ -29,9 +29,9 @@ onMounted(() => {
       ease: 'none',
       scrollTrigger: {
         trigger: root.value,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
+        start: 'top 95%',
+        end: 'top 50%',
+        scrub: 0.6,
       },
     })
   }, root.value)

@@ -123,7 +123,6 @@
   },
   "home": {
     "tagline": "The most unique and complete discord bot for temporary voice channels and voice roles!",
-    "get_started": "Get started",
     "temp_vc": {
       "description": "Astro generates fully customisable temporary voice channels on prompt and deletes them when they get empty. Ships with extreme customisation so that you can create the perfect system for your server!",
       "title": "{animated} Voice Channels",
@@ -152,16 +151,8 @@
       "open_source": "100% open source"
     },
     "demo": {
-      "channel_name": "Channel name template",
-      "voice_channels": "Voice channels",
-      "generator": "Create your channel",
       "join": "Join",
-      "leave": "Leave",
-      "you": "you"
-    },
-    "features": {
-      "title": "Join a channel, Astro does the rest",
-      "subtitle": "Try the generator setups below, then see how members manage their channel."
+      "leave": "Leave"
     },
     "servers": {
       "title": "Trusted by communities of every size",
@@ -172,59 +163,26 @@
       "description": "Astro's code is public. See how it works, report issues or contribute on GitHub.",
       "button": "View on GitHub"
     },
-    "statement": "Voice channels that appear the moment your community needs them, and vanish when they don't.",
-    "showcase": {
-      "gaming": {
-        "title": "Gaming channels",
-        "description": "Name every channel after the game its owner is playing, straight from their Discord activity. Join the generator to try it."
-      },
-      "incremental": {
-        "title": "Numbered lounges",
-        "description": "Channels count up on their own and free their number when they get empty. Simple, tidy and predictable."
-      },
-      "squad": {
-        "title": "Squads",
-        "description": "Give every channel the next NATO alphabet name, perfect for teams that need quick callouts."
-      },
-      "personal": {
-        "title": "Personal rooms",
-        "description": "Everyone gets a room named after them, great for study groups, streams or hanging out."
-      },
-      "interface": {
-        "title": "Beautiful interface",
-        "description": "Astro ships with a beautiful default interface which makes it easy for mobile users to manage their private channel!"
-      },
-      "custom_interface": {
-        "title": "But also customisable",
-        "description": "Astro interfaces are fully customisable down to the last pixel, make it look exactly how you need, imagination is your only limit!"
-      },
-      "voice_role": {
-        "title": "Voice roles",
-        "description": "Astro can assign or remove a role when a user joins a specific voice channel! This way you can, for example, let people see gaming text chats only while they are in a gaming VC, imagination is your only limit!"
-      }
-    },
     "big_text": {
       "first": "Temporary voice channels",
       "second": "Voice roles"
     },
-    "lab": {
+    "stage": {
       "hint": "Scroll to explore",
       "steps": {
         "temp": {
-          "label": "Temporary voice",
-          "title": "Channels that make themselves",
-          "description": "Join the generator and Astro creates your own voice channel, named after you or the game you play, then deletes it when everyone leaves.",
+          "title": "Temporary voice channels",
+          "description": "Join the generator and Astro creates your own voice channel, then deletes it when everyone leaves.",
           "p1": "Named from templates and variables",
           "p2": "The owner gets full control",
           "p3": "Deleted automatically when empty"
         },
         "numbered": {
-          "label": "Numbered channels",
-          "title": "Count up, or call it in NATO",
+          "title": "Numbered channels, or NATO",
           "description": "Channels get the next number or the next NATO alphabet name, and free it up as soon as they are empty.",
-          "p1": "Squad Alpha, Bravo, Charlie...",
-          "p2": "Numbers or NATO with variables",
-          "p3": "Always tidy, never gaps"
+          "p1": "Alpha, Bravo, Charlie...",
+          "p2": "1, 2, 3, 4...",
+          "p3": "I, II, III, IV..."
         },
         "interface": {
           "label": "Control interface",
@@ -253,17 +211,17 @@
         "dash_generator": {
           "label": "Generators",
           "title": "Tune every generator",
-          "description": "Choose how channels are named, when they rename and more. Hit save and it is live in your server right away.",
-          "p1": "Names with variables",
-          "p2": "Rename rules per generator",
-          "p3": "Changes apply in seconds"
+          "description": "Generators are extremely customisable, modify over 40 settings, hit save and it is live in your server right away.",
+          "p1": "Automatic private chats and waiting rooms",
+          "p2": "Customisable settings",
+          "p3": "40+ configuration options"
         },
         "dash_interface": {
           "label": "Interfaces",
           "title": "Design your own interface",
           "description": "Lay out the buttons members use to control their channel, one slot at a time.",
-          "p1": "Pick which buttons to show",
-          "p2": "Rename and restyle each button",
+          "p1": "Rename, restyle or remove any button",
+          "p2": "Design your interface message",
           "p3": "Move the interface to any channel"
         },
         "dash_errors": {
@@ -275,11 +233,7 @@
           "p3": "Guides to fix each issue"
         }
       },
-      "try": "Try it: click “Join to create”, then leave to delete your channel.",
-      "finale": {
-        "title": "Your server is ready for Astro",
-        "description": "Add Astro in a few clicks and never create a voice channel by hand again."
-      }
+      "try": "Try it: click “Join to create”, then leave to delete your channel."
     }
   },
   "guides": {
@@ -312,7 +266,7 @@
     "yearly": "Yearly",
     "subscribe": "Subscribe",
     "feature": "Feature",
-    "premium": "Premium",
+    "premium": "Ultimate",
     "free": "Free",
     "maximum": "Maximum {count}",
     "features": {

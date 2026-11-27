@@ -4,11 +4,9 @@ const { invite } = useInvite()
 
 const root = ref<HTMLElement | null>(null)
 let ctx: gsap.Context | undefined
-const magnetic = useHomeMagnetic(root)
 
 onMounted(() => {
   if (!root.value || reducedMotion()) return
-  magnetic.attach()
   ctx = gsap.context(() => {
     const title = root.value!.querySelector<HTMLElement>('.cta-title')!
     gsap.to(title, {
@@ -54,7 +52,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  magnetic.detach()
   ctx?.revert()
   ScrollTrigger.refresh()
 })
@@ -79,7 +76,7 @@ onUnmounted(() => {
         {{ $t('home.exclusive.description') }}
       </p>
       <ButtonStandout
-        class="magnetic mt-8 w-full text-lg md:w-fit md:px-10"
+        class="mt-8 w-full text-lg md:w-fit md:px-10"
         @click="invite"
       >
         {{ $t('home.hero.invite') }}

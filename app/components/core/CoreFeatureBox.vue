@@ -29,6 +29,8 @@ function setIsIllustrationDialogOpen(value: boolean) {
         :src="illustrationSrc"
         class="z-10 cursor-zoom-in border-white-500 select-none hover:border-2 md:h-64"
         :class="reverse ? 'rounded-r' : 'rounded-l'"
+        :alt="title ?? ''"
+        loading="lazy"
         draggable="false"
         @click="setIsIllustrationDialogOpen(true)"
       />

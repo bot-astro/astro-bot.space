@@ -1,39 +1,60 @@
 <script lang="ts" setup>
 import IconVoiceRole from '~/components/icon/IconVoiceRole.vue'
 import { IconNames } from '~/constants/IconNames'
-import {
-  ChevronDown,
-  Clock,
-  Copy,
-  Crown,
-  Eye,
-  EyeOff,
-  Gamepad2,
-  Headphones,
-  Hash,
-  Lock,
-  LockOpen,
-  MessageSquare,
-  Pencil,
-  Plus,
-  Server,
-  UserCheck,
-  UserPlus,
-  Users,
-  UserX,
-  Volume2,
-} from 'lucide-vue-next'
+import { ChevronDown, Gamepad2, Hash, Plus, Volume2 } from 'lucide-vue-next'
 
 const WORLD_W = 3000
 const WORLD_H = 1700
+const NAV_HEIGHT = 64
+
+// timeline units, one unit is PX_PER_UNIT pixels of scroll
+const PX_PER_UNIT = 105
+const INTRO = 1
 const STEP_LENGTH = 9
+const ZOOM_IN = 3
+const ZOOM_OUT = 2.5
+const ZOOM_OUT_AT = 6.2
+const RING_AT = 2
+const PANEL_AT = 2.2
+const REVEAL_AT = 3.2
+const WORLD_SWAP = 3.6
+const WORLD_SWAP_FADE_AT = 2.6
+const DASH_GAP = 4
+// the last scroll units of the story are trimmed from the one-screen hold
+const HOLD_TRIM = 2.5
+
+// share of the stage a world fills when seen from far away
+const OVERVIEW_FILL = { discord: 0.97, dash: 0.92 }
+const FOCUS_MAX_SCALE = { discord: 1, dash: 2 }
+const FOCUS_WIDTH = { discord: 0.46, dash: 0.5 }
+const FOCUS_HEIGHT = 0.78
+// horizontal position of the focused element, the text panel takes the other side
+const FOCUS_ANCHOR = { right: 0.32, left: 0.68 }
+const EXIT_SCALE = 0.45
+const EXIT_MARGIN = 80
+const ENTER_MARGIN = 40
+const GRID_PARALLAX = 0.25
+const GRID_ZOOM = 0.4
+const DASH_NAV_ROW = 36
+const DASH_NAV_FIRST = 2
 
 const { gsap, ScrollTrigger, reducedMotion } = useHomeMotion()
-const { invite } = useInvite()
 
 const steps = [
-  { id: 'temp', side: 'right', interactive: true, world: 'discord' },
-  { id: 'numbered', side: 'right', interactive: true, world: 'discord' },
+  {
+    id: 'temp',
+    side: 'right',
+    interactive: true,
+    world: 'discord',
+    noLabel: true,
+  },
+  {
+    id: 'numbered',
+    side: 'right',
+    interactive: true,
+    world: 'discord',
+    noLabel: true,
+  },
   { id: 'interface', side: 'left', interactive: false, world: 'discord' },
   { id: 'voice_role', side: 'left', interactive: false, world: 'discord' },
   {
@@ -81,60 +102,35 @@ const dashNav = [
   { label: 'dashboard.sections.templates', icon: 'template' },
 ]
 
-const interfaceEmojis = [
-  '🔒',
-  '🔓',
-  '🙈',
-  '👁️',
-  null,
-  '👥',
-  '➕',
-  '🚫',
-  '✅',
-  null,
-  '✏️',
-  '🎧',
-  '🌍',
-  '📋',
-  null,
-  '💬',
-  '🕒',
-  '👑',
-  '🔄',
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
+const interfaceButtons = [
+  { emoji: 'lock', label: 'Lock', dashLabel: 'Lock' },
+  { emoji: 'unlock', label: 'Unlock', dashLabel: 'Unlock' },
+  { emoji: 'hide', label: 'Hide', dashLabel: 'Hide' },
+  { emoji: 'unhide', label: 'Unhide', dashLabel: 'Unhide' },
+  { emoji: 'limit', label: 'Limit', dashLabel: 'User limit' },
+  { emoji: 'invite', label: 'Invite', dashLabel: 'Invite' },
+  { emoji: 'ban', label: 'Ban', dashLabel: 'Ban' },
+  { emoji: 'permit', label: 'Permit', dashLabel: 'Permit' },
+  { emoji: 'name', label: 'Rename', dashLabel: 'Name' },
+  { emoji: 'bitrate', label: 'Bitrate', dashLabel: 'Bitrate' },
+  { emoji: 'region', label: 'Region', dashLabel: 'Region' },
+  { emoji: 'template', label: 'Template', dashLabel: 'Template' },
+  { emoji: 'chat', label: 'Chat', dashLabel: 'Chat' },
+  { emoji: 'waiting', label: 'Waiting', dashLabel: 'Waiting room' },
+  { emoji: 'owner', label: 'Claim', dashLabel: 'Claim' },
+  {
+    emoji: 'transfer_owner',
+    label: 'Transfer',
+    dashLabel: 'Transfer ownership',
+  },
 ]
-const interfaceLabels = [
-  'Lock',
-  'Unlock',
-  'Hide',
-  'Unhide',
-  '',
-  'User limit',
-  'Invite',
-  'Ban',
-  'Permit',
-  '',
-  'Name',
-  'Bitrate',
-  'Region',
-  'Template',
-  '',
-  'Chat',
-  'Waiting room',
-  'Claim',
-  'Transfer ownership',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-]
+
+// the dashboard editor is a 5 columns grid, the default interface fills the first 4
+const dashInterfaceCells = Array.from({ length: 25 }, (_, n) =>
+  n % 5 === 4 || n >= 20
+    ? null
+    : interfaceButtons[Math.floor(n / 5) * 4 + (n % 5)],
+)
 
 const dashErrors = [
   'Astro cannot create channels in the category “Squads” because it is missing the Manage Channels permission.',
@@ -150,7 +146,7 @@ const colors = [
   '#f87171',
   '#a855f7',
 ]
-const you = { name: 'Nova', color: colors[5] }
+const you = { name: 'Nova', color: '#a855f7' }
 
 const categories = [
   {
@@ -168,36 +164,16 @@ const categories = [
     id: 'numbered',
     title: 'Squads',
     generator: 'Join to create a squad',
-    yours: 'Squad Echo',
+    yours: 'Squad Delta',
     channels: [
       { name: 'Squad Alpha', members: [0, 1, 2], reveal: false },
       { name: 'Squad Bravo', members: [3, 4], reveal: false },
       { name: 'Squad Charlie', members: [5], reveal: true },
-      { name: 'Squad Delta', members: [], reveal: true },
     ],
   },
 ] as const
 
 const textChannels = ['general', 'memes', 'clips', 'off-topic']
-
-const interfaceButtons = [
-  { label: 'Lock', icon: Lock },
-  { label: 'Unlock', icon: LockOpen },
-  { label: 'Hide', icon: EyeOff },
-  { label: 'Unhide', icon: Eye },
-  { label: 'Limit', icon: Users },
-  { label: 'Invite', icon: UserPlus },
-  { label: 'Ban', icon: UserX },
-  { label: 'Permit', icon: UserCheck },
-  { label: 'Rename', icon: Pencil },
-  { label: 'Bitrate', icon: Headphones },
-  { label: 'Region', icon: Server },
-  { label: 'Template', icon: Copy },
-  { label: 'Chat', icon: MessageSquare },
-  { label: 'Waiting', icon: Clock },
-  { label: 'Claim', icon: Crown, gold: true },
-  { label: 'Transfer', icon: Crown, gold: true, slash: true },
-]
 
 const gamers = [
   { name: 'Luna', color: colors[3], reveal: false },
@@ -241,7 +217,6 @@ const root = ref<HTMLElement | null>(null)
 const stage = ref<HTMLElement | null>(null)
 const world = ref<HTMLElement | null>(null)
 const dash = ref<HTMLElement | null>(null)
-const activeStep = ref(-1)
 let mm: gsap.MatchMedia | undefined
 
 onMounted(() => {
@@ -262,7 +237,7 @@ onMounted(() => {
         const h = stageEl.clientHeight
         const scale =
           Math.min(w / el.offsetWidth, h / el.offsetHeight) *
-          (el === dashEl ? 0.92 : 0.97)
+          (el === dashEl ? OVERVIEW_FILL.dash : OVERVIEW_FILL.discord)
         return {
           x: (w - el.offsetWidth * scale) / 2,
           y: (h - el.offsetHeight * scale) / 2,
@@ -289,11 +264,11 @@ onMounted(() => {
         const w = stageEl.clientWidth
         const h = stageEl.clientHeight
         const scale = Math.min(
-          step.world === 'dash' ? 2 : 1,
-          (w * (step.world === 'dash' ? 0.5 : 0.46)) / target.offsetWidth,
-          (h * 0.78) / target.offsetHeight,
+          FOCUS_MAX_SCALE[step.world],
+          (w * FOCUS_WIDTH[step.world]) / target.offsetWidth,
+          (h * FOCUS_HEIGHT) / target.offsetHeight,
         )
-        const anchor = step.side === 'right' ? 0.32 : 0.68
+        const anchor = FOCUS_ANCHOR[step.side]
         return {
           x: w * anchor - (left + target.offsetWidth / 2) * scale,
           y: h / 2 - (top + target.offsetHeight / 2) * scale,
@@ -303,17 +278,17 @@ onMounted(() => {
 
       const exitUp = (el: HTMLElement) => () => {
         const o = overview(el)()
-        const scale = o.scale * 0.45
+        const scale = o.scale * EXIT_SCALE
         return {
           x: (stageEl.clientWidth - el.offsetWidth * scale) / 2,
-          y: -el.offsetHeight * scale - 80,
+          y: -el.offsetHeight * scale - EXIT_MARGIN,
           scale,
         }
       }
 
       const enterBelow = (el: HTMLElement) => () => ({
         ...overview(el)(),
-        y: stageEl.clientHeight + 40,
+        y: stageEl.clientHeight + ENTER_MARGIN,
       })
 
       const lazy = (camera: () => { x: number; y: number; scale: number }) => ({
@@ -322,36 +297,47 @@ onMounted(() => {
         scale: () => camera().scale,
       })
 
-      const starts: number[] = []
-      const DASH_AT = 1 + 4 * STEP_LENGTH + 4
+      const SWAP_AT = INTRO + DASH_FIRST * STEP_LENGTH
+      const DASH_AT = SWAP_AT + DASH_GAP
+      const gridEl = q('.stage-grid')
+      // overview scale only changes on resize, reading it every frame forces a layout
+      const baseScale = new Map<HTMLElement, number>()
 
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
           trigger: stageEl,
-          start: 'top top+=64',
-          end: () => `+=${tl.duration() * 105}`,
+          start: `top top+=${NAV_HEIGHT}`,
+          end: () => `+=${tl.duration() * PX_PER_UNIT}`,
           pin: true,
           scrub: 0.6,
           invalidateOnRefresh: true,
+          onRefreshInit: () => baseScale.clear(),
         },
         onUpdate: () => {
           const time = tl.time()
-          activeStep.value = starts.filter((t) => time >= t - 0.5).length - 1
-          const live = time < DASH_AT - 0.5 ? worldEl : dashEl
+          const live = time < SWAP_AT + WORLD_SWAP ? worldEl : dashEl
+          let base = baseScale.get(live)
+          if (base === undefined) {
+            base = overview(live)().scale
+            baseScale.set(live, base)
+          }
           const x = gsap.getProperty(live, 'x') as number
           const y = gsap.getProperty(live, 'y') as number
           const scale = gsap.getProperty(live, 'scale') as number
-          gsap.set(q('.lab-grid'), {
-            x: x * 0.25,
-            y: y * 0.25,
-            scale: 1 + (scale - overview(live)().scale) * 0.4,
+          gsap.set(gridEl, {
+            x: x * GRID_PARALLAX,
+            y: y * GRID_PARALLAX,
+            scale: 1 + (scale - base) * GRID_ZOOM,
           })
         },
       })
 
+      // both worlds start hidden in the markup so the server render does not flash them unscaled
+      gsap.set(worldEl, { autoAlpha: 1 })
+
       tl.fromTo(
-        q('.lab-hint'),
+        q('.stage-hint'),
         { autoAlpha: 1 },
         { autoAlpha: 0, duration: 0.8 },
         0.4,
@@ -361,8 +347,7 @@ onMounted(() => {
         const t0 =
           step.world === 'dash'
             ? DASH_AT + (i - DASH_FIRST) * STEP_LENGTH
-            : 1 + i * STEP_LENGTH
-        starts.push(t0)
+            : INTRO + i * STEP_LENGTH
         if (step.world === 'dash') {
           const prev = steps[i - 1]
           if (!(prev && prev.world === 'dash' && prev.page === step.page)) {
@@ -375,7 +360,11 @@ onMounted(() => {
           }
           tl.to(
             q('.dash-nav-active'),
-            { y: (step.nav - 2) * 36, duration: 0.6, ease: 'power2.inOut' },
+            {
+              y: (step.nav - DASH_NAV_FIRST) * DASH_NAV_ROW,
+              duration: 0.6,
+              ease: 'power2.inOut',
+            },
             t0,
           )
         }
@@ -389,7 +378,7 @@ onMounted(() => {
           lazy(overview(el)),
           {
             ...lazy(() => focus(i)),
-            duration: 3,
+            duration: ZOOM_IN,
             ease: 'power2.inOut',
             immediateRender: i === 0,
           },
@@ -400,24 +389,29 @@ onMounted(() => {
           lazy(() => focus(i)),
           {
             ...lazy(overview(el)),
-            duration: 2.5,
+            duration: ZOOM_OUT,
             ease: 'power2.inOut',
             immediateRender: false,
           },
-          t0 + 6.2,
+          t0 + ZOOM_OUT_AT,
         )
-        tl.fromTo(ring, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 }, t0 + 2)
-        tl.to(ring, { autoAlpha: 0, duration: 0.6 }, t0 + 6.2)
+        tl.fromTo(
+          ring,
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 1 },
+          t0 + RING_AT,
+        )
+        tl.to(ring, { autoAlpha: 0, duration: 0.6 }, t0 + ZOOM_OUT_AT)
         tl.fromTo(
           panel,
           { autoAlpha: 0, x: 80 * dir },
           { autoAlpha: 1, x: 0, duration: 1, ease: 'power3.out' },
-          t0 + 2.2,
+          t0 + PANEL_AT,
         )
         tl.to(
           panel,
           { autoAlpha: 0, x: -40 * dir, duration: 0.8, ease: 'power2.in' },
-          t0 + 6.2,
+          t0 + ZOOM_OUT_AT,
         )
 
         const items = q(`[data-reveal="${step.id}"]`)
@@ -433,7 +427,7 @@ onMounted(() => {
               yoyo: true,
               ease: 'power2.out',
             },
-            t0 + 3.2,
+            t0 + REVEAL_AT,
           )
         } else {
           tl.fromTo(
@@ -449,7 +443,7 @@ onMounted(() => {
               stagger: 0.8,
               ease: 'power3.out',
             },
-            t0 + 3.2,
+            t0 + REVEAL_AT,
           )
         }
       })
@@ -459,54 +453,72 @@ onMounted(() => {
         lazy(overview(worldEl)),
         {
           ...lazy(exitUp(worldEl)),
-          duration: 3.6,
+          duration: WORLD_SWAP,
           ease: 'power2.inOut',
           immediateRender: false,
         },
-        1 + 4 * STEP_LENGTH,
+        SWAP_AT,
       )
-      tl.to(worldEl, { autoAlpha: 0, duration: 1 }, 1 + 4 * STEP_LENGTH + 2.6)
+      tl.to(
+        worldEl,
+        { autoAlpha: 0, duration: 1 },
+        SWAP_AT + WORLD_SWAP_FADE_AT,
+      )
       tl.fromTo(
         dashEl,
         { autoAlpha: 0, ...lazy(enterBelow(dashEl)) },
         {
           autoAlpha: 1,
           ...lazy(overview(dashEl)),
-          duration: 3.6,
+          duration: WORLD_SWAP,
           ease: 'power2.inOut',
         },
-        1 + 4 * STEP_LENGTH,
+        SWAP_AT,
       )
 
-      const finaleAt = DASH_AT + (steps.length - DASH_FIRST) * STEP_LENGTH - 1
+      const dashExitAt = DASH_AT + (steps.length - DASH_FIRST) * STEP_LENGTH - 1
+      tl.fromTo(
+        dashEl,
+        lazy(overview(dashEl)),
+        {
+          ...lazy(exitUp(dashEl)),
+          duration: WORLD_SWAP,
+          ease: 'power2.inOut',
+          immediateRender: false,
+        },
+        dashExitAt,
+      )
       tl.to(
         dashEl,
-        { autoAlpha: 0, duration: 1.6, ease: 'power2.in' },
-        finaleAt,
+        { autoAlpha: 0, duration: 1 },
+        dashExitAt + WORLD_SWAP_FADE_AT,
       )
-      tl.fromTo(
-        q('.lab-finale'),
-        { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 1.6 },
-        finaleAt + 0.6,
-      )
-      tl.fromTo(
-        q('.lab-finale-content'),
-        { y: 120, scale: 0.94 },
-        { y: 0, scale: 1, duration: 2, ease: 'power3.out' },
-        finaleAt + 0.8,
-      )
-      tl.to({}, { duration: 2.5 }, finaleAt + 2.8)
 
-      tl.fromTo(
-        q('.lab-progress'),
-        { scaleX: 0 },
-        { scaleX: 1, duration: tl.duration() },
-        0,
+      // the stage ends up empty and the next section is pulled over it, so it has to disappear
+      tl.to(
+        stageEl,
+        { backgroundColor: 'rgba(0, 0, 0, 0)', duration: 3 },
+        dashExitAt + 0.6,
+      )
+      tl.to(
+        q('.stage-glow, .stage-grid'),
+        { autoAlpha: 0, duration: 3 },
+        dashExitAt + 0.6,
+      )
+      tl.set(stageEl, { pointerEvents: 'none' }, dashExitAt + WORLD_SWAP)
+
+      // the next section is pulled over the stage, it starts entering the viewport one screen
+      // before the pin ends, so hold a bit less than one screen of scroll after the demo is gone
+      tl.to(
+        {},
+        { duration: window.innerHeight / PX_PER_UNIT - HOLD_TRIM },
+        dashExitAt + WORLD_SWAP,
       )
 
       return () => {
-        gsap.set(q('.lab-grid'), { clearProps: 'all' })
+        gsap.set([q('.stage-grid'), q('.stage-glow'), stageEl], {
+          clearProps: 'all',
+        })
       }
     },
   )
@@ -519,53 +531,58 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section ref="root" class="w-full">
+  <section
+    id="demo"
+    ref="root"
+    class="w-full scroll-mt-16 motion-safe:lg:-mb-[calc(100svh-4rem)]"
+  >
     <!-- desktop: pinned camera moving around a fake Discord server -->
     <div
       ref="stage"
       class="relative hidden h-[calc(100svh-4rem)] w-full overflow-hidden bg-black/20 motion-reduce:hidden lg:block"
     >
       <div
-        class="lab-grid pointer-events-none absolute -inset-1/4"
+        class="stage-grid pointer-events-none absolute -inset-1/4"
         aria-hidden="true"
       />
       <div
-        class="pointer-events-none absolute top-1/4 left-1/4 size-128 rounded-full bg-purple-500/15 blur-[140px]"
+        class="stage-glow pointer-events-none absolute top-1/4 left-1/4 size-128 rounded-full bg-purple-500/15 blur-[140px]"
         aria-hidden="true"
       />
       <div
-        class="pointer-events-none absolute right-1/4 bottom-0 size-128 rounded-full bg-pink-500/10 blur-[140px]"
+        class="stage-glow pointer-events-none absolute right-1/4 bottom-0 size-128 rounded-full bg-pink-500/10 blur-[140px]"
         aria-hidden="true"
       />
 
       <div
         ref="world"
-        class="absolute top-0 left-0 flex origin-top-left overflow-hidden rounded-[28px] border border-white/10 bg-[#313338] text-[#dbdee1] shadow-[0_0_120px_rgba(168,85,247,0.25)] will-change-transform"
+        class="invisible absolute top-0 left-0 flex origin-top-left overflow-hidden rounded-[28px] border border-white/10 bg-[#313338] text-[#dbdee1] shadow-[0_0_120px_rgba(168,85,247,0.25)] will-change-transform"
         :style="{ width: `${WORLD_W}px`, height: `${WORLD_H}px` }"
       >
-        <svg width="0" height="0" class="absolute" aria-hidden="true">
-          <defs>
-            <linearGradient id="lab-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#c084fc" />
-              <stop offset="1" stop-color="#ec4899" />
-            </linearGradient>
-          </defs>
-        </svg>
-
         <!-- server rail -->
         <div
           class="flex w-35 shrink-0 flex-col items-center gap-5 bg-[#1e1f22] py-6"
           aria-hidden="true"
         >
+          <div
+            class="flex size-22 items-center justify-center rounded-[28px] bg-[#5865f2]"
+          >
+            <svg viewBox="0 0 24 24" class="size-12 fill-white">
+              <path
+                d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"
+              />
+            </svg>
+          </div>
+          <div class="h-1 w-12 rounded bg-white/10" />
           <NuxtImg
-            src="/img/logo.png"
-            class="size-22 rounded-[28px] bg-[#313338] p-3"
+            src="/img/server-icon.webp"
+            class="size-22 rounded-[28px]"
             sizes="96px"
             alt=""
+            loading="lazy"
           />
-          <div class="h-1 w-12 rounded bg-white/10" />
           <div
-            v-for="n in 7"
+            v-for="n in 6"
             :key="n"
             class="size-22 rounded-full bg-[#313338]"
           />
@@ -576,7 +593,7 @@ onUnmounted(() => {
           <div
             class="flex h-22 items-center justify-between border-b border-black/30 px-8 text-[30px] font-semibold text-white"
           >
-            Astro Lounge
+            Astro Community
             <ChevronDown class="size-8" />
           </div>
 
@@ -631,6 +648,25 @@ onUnmounted(() => {
                 </span>
               </button>
 
+              <div
+                v-for="channel in category.channels"
+                :key="channel.name"
+                :data-reveal="channel.reveal ? category.id : undefined"
+                class="pointer-events-none flex items-center gap-3 px-4 py-3 text-[28px] text-[#949ba4]"
+                aria-hidden="true"
+              >
+                <Volume2 class="size-7 shrink-0" />
+                <span class="truncate">{{ channel.name }}</span>
+                <span class="ml-auto flex -space-x-2">
+                  <span
+                    v-for="m in channel.members"
+                    :key="m"
+                    class="size-8 rounded-full border-2 border-[#2b2d31]"
+                    :style="{ background: colors[m] }"
+                  />
+                </span>
+              </div>
+
               <Transition :css="false" @enter="onEnter" @leave="onLeave">
                 <div v-if="joined[category.id]" class="overflow-hidden">
                   <div
@@ -655,26 +691,7 @@ onUnmounted(() => {
                 </div>
               </Transition>
 
-              <div
-                v-for="channel in category.channels"
-                :key="channel.name"
-                :data-reveal="channel.reveal ? category.id : undefined"
-                class="pointer-events-none flex items-center gap-3 px-4 py-3 text-[28px] text-[#949ba4]"
-                aria-hidden="true"
-              >
-                <Volume2 class="size-7 shrink-0" />
-                <span class="truncate">{{ channel.name }}</span>
-                <span class="ml-auto flex -space-x-2">
-                  <span
-                    v-for="m in channel.members"
-                    :key="m"
-                    class="size-8 rounded-full border-2 border-[#2b2d31]"
-                    :style="{ background: colors[m] }"
-                  />
-                </span>
-              </div>
-
-              <div class="lab-ring" :data-ring-id="category.id" />
+              <div class="stage-ring" :data-ring-id="category.id" />
             </div>
 
             <div class="flex flex-col gap-1" aria-hidden="true">
@@ -756,6 +773,7 @@ onUnmounted(() => {
                 class="size-21 shrink-0 rounded-full bg-[#1e1f22] p-3"
                 sizes="96px"
                 alt=""
+                loading="lazy"
               />
               <div>
                 <div
@@ -777,6 +795,7 @@ onUnmounted(() => {
                       class="size-14 rounded-full"
                       sizes="64px"
                       alt=""
+                      loading="lazy"
                     />
                     <span class="text-[34px] font-bold text-white"
                       >Astro Interface</span
@@ -793,26 +812,21 @@ onUnmounted(() => {
                       v-for="button in interfaceButtons"
                       :key="button.label"
                       data-reveal="interface"
-                      class="relative flex items-center gap-3 rounded-lg bg-[#4e5058] px-5 py-4 text-[28px] font-semibold text-white"
+                      class="flex items-center gap-3 rounded-lg bg-[#4e5058] px-5 py-4 text-[28px] font-semibold text-white"
                     >
-                      <component
-                        :is="button.icon"
-                        class="size-8 shrink-0"
-                        :style="{
-                          stroke: button.gold ? '#f59e0b' : 'url(#lab-grad)',
-                        }"
+                      <img
+                        :src="`/img/emojis/${button.emoji}.png`"
+                        class="size-8 shrink-0 object-contain"
+                        alt=""
+                        loading="lazy"
                       />
                       {{ button.label }}
-                      <span
-                        v-if="button.slash"
-                        class="absolute top-1/2 left-4 h-0.5 w-10 -rotate-45 bg-white"
-                      />
                     </div>
                   </div>
                   <div class="text-[24px]">
                     Use the buttons below to manage your voice channel
                   </div>
-                  <div class="lab-ring" data-ring-id="interface" />
+                  <div class="stage-ring" data-ring-id="interface" />
                 </div>
               </div>
             </div>
@@ -867,7 +881,7 @@ onUnmounted(() => {
               />
               <span class="text-[#2ecc71]">{{ gamer.name }}</span>
             </div>
-            <div class="lab-ring" data-ring-id="voice_role" />
+            <div class="stage-ring" data-ring-id="voice_role" />
           </div>
 
           <div class="flex flex-col gap-2 opacity-60">
@@ -891,7 +905,7 @@ onUnmounted(() => {
       <!-- dashboard showcase, built with the real dashboard classes and components -->
       <div
         ref="dash"
-        class="pointer-events-none absolute top-0 left-0 flex origin-top-left overflow-hidden rounded-xl border border-white/10 bg-background text-sm shadow-[0_0_120px_rgba(168,85,247,0.25)] select-none"
+        class="pointer-events-none invisible absolute top-0 left-0 flex origin-top-left overflow-hidden rounded-xl border border-white/10 bg-background text-sm shadow-[0_0_120px_rgba(168,85,247,0.25)] select-none"
         :style="{ width: '1400px', height: '820px' }"
         aria-hidden="true"
       >
@@ -907,10 +921,10 @@ onUnmounted(() => {
               <p
                 class="flex size-8 items-center justify-center truncate rounded-full bordered font-semibold text-white"
               >
-                AL
+                AC
               </p>
               <div class="flex grow flex-col">
-                <span>Astro Lounge</span>
+                <span>Astro Community</span>
                 <span class="text-secondary text-xs">{{
                   $t('common.ultimate')
                 }}</span>
@@ -956,7 +970,7 @@ onUnmounted(() => {
               <span>{{ $t(item.label) }}</span>
             </div>
           </div>
-          <div class="lab-ring" data-ring-id="dash_sections" />
+          <div class="stage-ring" data-ring-id="dash_sections" />
         </div>
 
         <div class="relative flex flex-1 flex-col">
@@ -995,62 +1009,96 @@ onUnmounted(() => {
                 data-target="dash_generator"
                 class="relative flex max-w-3xl flex-col gap-8"
               >
-                <div class="groups-wrapper">
-                  <span class="text-group-name">{{
-                    $t('generators.editor.group_vc_name')
-                  }}</span>
-                  <div class="groups-container">
-                    <GroupSetting
-                      :heading="$t('generators.editor.vc_name.title')"
-                      :description="$t('generators.editor.vc_name.description')"
-                    >
-                      <template #bottom-action>
-                        <div class="flex gap-2">
-                          <input
-                            value="{activity_emoji} {activity_name} | {nickname}"
-                            type="text"
-                            class="grow"
-                            readonly
-                          />
-                          <ButtonSecondary>
-                            <IconVariable class="size-6" />
-                          </ButtonSecondary>
-                        </div>
-                      </template>
-                    </GroupSetting>
+                <div
+                  class="relative flex max-h-112 flex-col gap-8 overflow-hidden"
+                >
+                  <div class="groups-wrapper">
+                    <span class="text-group-name">{{
+                      $t('generators.editor.group_vc_name')
+                    }}</span>
+                    <div class="groups-container">
+                      <GroupSetting
+                        :heading="$t('generators.editor.vc_name.title')"
+                        :description="
+                          $t('generators.editor.vc_name.description')
+                        "
+                      >
+                        <template #bottom-action>
+                          <div class="flex gap-2">
+                            <input
+                              value="{activity_emoji} {activity_name} | {nickname}"
+                              type="text"
+                              class="grow"
+                              readonly
+                            />
+                            <ButtonSecondary>
+                              <IconVariable class="size-6" />
+                            </ButtonSecondary>
+                          </div>
+                        </template>
+                      </GroupSetting>
+                    </div>
                   </div>
-                </div>
 
-                <div class="groups-wrapper">
-                  <span class="text-group-name">{{
-                    $t('generators.editor.group_rename')
-                  }}</span>
-                  <div class="groups-container">
-                    <GroupSetting
-                      :heading="$t('generators.editor.state_change.title')"
-                      :description="
-                        $t('generators.editor.state_change.description')
-                      "
-                    >
-                      <Switch :checked="true" />
-                    </GroupSetting>
-                    <GroupSetting
-                      :heading="$t('generators.editor.owner_change.title')"
-                      :description="
-                        $t('generators.editor.owner_change.description')
-                      "
-                    >
-                      <Switch :checked="true" />
-                    </GroupSetting>
-                    <GroupSetting
-                      :heading="$t('generators.editor.renaming.title')"
-                      :description="
-                        $t('generators.editor.renaming.description')
-                      "
-                    >
-                      <Switch :checked="false" />
-                    </GroupSetting>
+                  <div class="groups-wrapper">
+                    <span class="text-group-name">{{
+                      $t('generators.editor.group_rename')
+                    }}</span>
+                    <div class="groups-container">
+                      <GroupSetting
+                        :heading="$t('generators.editor.state_change.title')"
+                        :description="
+                          $t('generators.editor.state_change.description')
+                        "
+                      >
+                        <Switch :checked="true" />
+                      </GroupSetting>
+                      <GroupSetting
+                        :heading="$t('generators.editor.owner_change.title')"
+                        :description="
+                          $t('generators.editor.owner_change.description')
+                        "
+                      >
+                        <Switch :checked="true" />
+                      </GroupSetting>
+                      <GroupSetting
+                        :heading="$t('generators.editor.renaming.title')"
+                        :description="
+                          $t('generators.editor.renaming.description')
+                        "
+                      >
+                        <Switch :checked="false" />
+                      </GroupSetting>
+                    </div>
                   </div>
+
+                  <div class="groups-wrapper">
+                    <span class="text-group-name">{{
+                      $t('generators.editor.group_vc_settings')
+                    }}</span>
+                    <div class="groups-container">
+                      <GroupSetting
+                        :heading="$t('generators.editor.user_limit.title')"
+                        :description="
+                          $t('generators.editor.user_limit.description')
+                        "
+                      >
+                        <Switch :checked="true" />
+                      </GroupSetting>
+                      <GroupSetting
+                        :heading="$t('generators.editor.bitrate.title')"
+                        :description="
+                          $t('generators.editor.bitrate.description')
+                        "
+                      >
+                        <Switch :checked="true" />
+                      </GroupSetting>
+                    </div>
+                  </div>
+
+                  <div
+                    class="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-linear-to-b from-transparent to-background mask-[linear-gradient(to_bottom,transparent,black_70%)] backdrop-blur-md"
+                  />
                 </div>
 
                 <div
@@ -1067,7 +1115,7 @@ onUnmounted(() => {
                     }}</Button>
                   </div>
                 </div>
-                <div class="lab-ring" data-ring-id="dash_generator" />
+                <div class="stage-ring" data-ring-id="dash_generator" />
               </div>
             </div>
 
@@ -1108,19 +1156,24 @@ onUnmounted(() => {
                     <template #bottom-action>
                       <div class="grid grid-cols-5 gap-2">
                         <div
-                          v-for="(emoji, n) in interfaceEmojis"
+                          v-for="(button, n) in dashInterfaceCells"
                           :key="n"
                           class="flex h-10 min-w-0 items-center justify-center gap-1.5 rounded px-1.5 text-sm"
                           :class="
-                            emoji
+                            button
                               ? 'bg-[#4e5058] text-white'
                               : 'bordered border-dashed text-dimmed'
                           "
                         >
-                          <template v-if="emoji">
-                            <span class="shrink-0">{{ emoji }}</span>
+                          <template v-if="button">
+                            <img
+                              :src="`/img/emojis/${button.emoji}.png`"
+                              class="size-4 shrink-0 object-contain"
+                              alt=""
+                              loading="lazy"
+                            />
                             <span class="min-w-0 truncate">{{
-                              interfaceLabels[n]
+                              button.dashLabel
                             }}</span>
                           </template>
                           <Icon v-else name="fluent:add-12-regular" />
@@ -1129,7 +1182,7 @@ onUnmounted(() => {
                     </template>
                   </GroupSetting>
                 </div>
-                <div class="lab-ring" data-ring-id="dash_interface" />
+                <div class="stage-ring" data-ring-id="dash_interface" />
               </div>
             </div>
 
@@ -1182,7 +1235,7 @@ onUnmounted(() => {
                     class="w-full bordered"
                   />
                 </div>
-                <div class="lab-ring" data-ring-id="dash_errors" />
+                <div class="stage-ring" data-ring-id="dash_errors" />
               </div>
             </div>
           </div>
@@ -1191,127 +1244,101 @@ onUnmounted(() => {
 
       <!-- explanation panels -->
       <div
-        v-for="(step, i) in steps"
+        v-for="step in steps"
         :key="step.id"
         :data-panel="step.id"
         class="invisible absolute inset-y-0 my-auto h-fit w-104 rounded-md bordered bg-background/80 p-7 backdrop-blur xl:w-120"
         :class="step.side === 'right' ? 'right-[5%]' : 'left-[5%]'"
       >
-        <div
-          class="flex items-center justify-between text-xs tracking-widest uppercase"
+        <span
+          v-if="!('noLabel' in step)"
+          class="text-xs tracking-widest text-purple-300 uppercase"
         >
-          <span class="text-purple-300">
-            {{ $t(`home.lab.steps.${step.id}.label`) }}
-          </span>
-          <span class="text-foreground-secondary"
-            >0{{ i + 1 }} / 0{{ steps.length }}</span
-          >
-        </div>
-        <h3 class="mt-4 font-display text-3xl tracking-wide">
-          {{ $t(`home.lab.steps.${step.id}.title`) }}
+          {{ $t(`home.stage.steps.${step.id}.label`) }}
+        </span>
+        <h3
+          class="font-display text-3xl tracking-wide"
+          :class="'noLabel' in step ? '' : 'mt-4'"
+        >
+          {{ $t(`home.stage.steps.${step.id}.title`) }}
         </h3>
         <p class="mt-3 text-dimmed">
-          {{ $t(`home.lab.steps.${step.id}.description`) }}
+          {{ $t(`home.stage.steps.${step.id}.description`) }}
         </p>
         <ul class="mt-5 flex flex-col gap-2 text-sm">
           <li v-for="p in 3" :key="p" class="flex gap-2">
             <span class="text-purple-400">✓</span>
-            {{ $t(`home.lab.steps.${step.id}.p${p}`) }}
+            {{ $t(`home.stage.steps.${step.id}.p${p}`) }}
           </li>
         </ul>
         <p
           v-if="step.interactive"
           class="mt-5 rounded bg-purple-500/15 px-3 py-2 text-sm text-purple-300"
         >
-          {{ $t('home.lab.try') }}
+          {{ $t('home.stage.try') }}
         </p>
       </div>
 
       <div
-        class="lab-finale invisible absolute inset-0 flex items-center justify-center bg-black/80 p-4"
+        class="stage-hint stage-hint-pill pointer-events-none absolute bottom-24 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-purple-400/70 bg-purple-500/25 px-6 py-3 text-sm font-medium tracking-widest text-foreground uppercase backdrop-blur"
       >
-        <div
-          class="pointer-events-none absolute top-1/2 left-1/2 size-176 -translate-1/2 rounded-full bg-purple-500/25 blur-[140px]"
-          aria-hidden="true"
-        />
-        <div
-          class="lab-finale-content relative flex max-w-3xl flex-col items-center text-center"
-        >
-          <NuxtImg
-            src="/img/logo.png"
-            class="size-32 select-none"
-            sizes="160px"
-            alt=""
-          />
-          <h3 class="mt-6 font-display text-5xl tracking-wide md:text-6xl">
-            {{ $t('home.lab.finale.title') }}
-          </h3>
-          <p class="mt-4 max-w-xl text-lg text-dimmed">
-            {{ $t('home.lab.finale.description') }}
-          </p>
-          <div class="mt-10 flex gap-3">
-            <ButtonStandout class="px-10 text-lg" @click="invite">
-              {{ $t('home.hero.invite') }}
-            </ButtonStandout>
-            <ButtonSecondary to="/guides" class="px-8 py-2 text-lg">
-              {{ $t('home.hero.how_it_works') }}
-            </ButtonSecondary>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="lab-hint lab-hint-pill pointer-events-none absolute bottom-24 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-purple-400/70 bg-purple-500/25 px-6 py-3 text-sm font-medium tracking-widest text-foreground uppercase backdrop-blur"
-      >
-        {{ $t('home.lab.hint') }}
-        <ChevronDown class="lab-bounce size-4" />
-      </div>
-      <div
-        class="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 pb-5"
-      >
-        <div class="flex gap-6 text-xs tracking-widest uppercase">
-          <span
-            v-for="(step, i) in steps"
-            :key="step.id"
-            class="transition-colors duration-300"
-            :class="activeStep === i ? 'text-purple-300' : 'text-white/30'"
-          >
-            0{{ i + 1 }}
-          </span>
-        </div>
-        <div class="h-px w-72 bg-white/10">
-          <div
-            class="lab-progress h-full origin-left bg-linear-to-r from-purple-500 to-pink-500"
-          />
-        </div>
+        {{ $t('home.stage.hint') }}
+        <ChevronDown class="stage-bounce size-4" />
       </div>
     </div>
 
-    <!-- mobile / tablet / reduced motion: plain cards -->
+    <!-- mobile / tablet / reduced motion: feature cards with their image -->
     <div
-      class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 motion-reduce:flex lg:hidden"
+      class="mx-auto flex w-full flex-col items-center gap-8 px-4 motion-reduce:flex lg:hidden"
     >
-      <article
-        v-for="step in steps"
-        :key="step.id"
-        class="rounded-md bordered bg-background/80 p-6"
+      <CoreFeatureBox
+        illustration-src="illustration/temp_vc.gif"
+        :description="$t('home.temp_vc.description')"
+        :reverse="false"
       >
-        <span class="text-xs tracking-widest text-purple-300 uppercase">
-          {{ $t(`home.lab.steps.${step.id}.label`) }}
-        </span>
-        <h3 class="mt-3 font-display text-2xl tracking-wide">
-          {{ $t(`home.lab.steps.${step.id}.title`) }}
-        </h3>
-        <p class="mt-2 text-dimmed">
-          {{ $t(`home.lab.steps.${step.id}.description`) }}
-        </p>
-      </article>
+        <i18n-t
+          keypath="home.temp_vc.title"
+          tag="span"
+          class="font-display text-2xl font-medium tracking-wide"
+        >
+          <template #animated>
+            <span class="animate-dissolve">{{
+              $t('home.temp_vc.animated')
+            }}</span>
+          </template>
+        </i18n-t>
+      </CoreFeatureBox>
+
+      <CoreFeatureBox
+        :title="$t('home.default_interface.title')"
+        :description="$t('home.default_interface.description')"
+        illustration-src="guides/default_interface.png"
+        :reverse="true"
+      />
+
+      <CoreFeatureBox
+        :title="$t('home.custom_interface.title')"
+        :description="$t('home.custom_interface.description')"
+        illustration-src="illustration/custom_interface.png"
+        :reverse="false"
+      />
+
+      <CoreFeatureBox
+        illustration-src="illustration/voice_role.gif"
+        :description="$t('home.voice_role.description')"
+        :reverse="true"
+      >
+        <span
+          class="animate-light font-display text-2xl font-medium tracking-wide"
+          >{{ $t('home.voice_role.title') }}</span
+        >
+      </CoreFeatureBox>
     </div>
   </section>
 </template>
 
 <style scoped>
-.lab-grid {
+.stage-grid {
   background-image:
     linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
@@ -1320,7 +1347,7 @@ onUnmounted(() => {
 }
 
 /* the huge spread shadow darkens everything in the world except the target */
-.lab-ring {
+.stage-ring {
   position: absolute;
   inset: -18px;
   z-index: 10;
@@ -1333,23 +1360,59 @@ onUnmounted(() => {
   visibility: hidden;
 }
 
-.lab-bounce {
-  animation: lab-bounce 1.2s ease-in-out infinite;
+.stage-bounce {
+  animation: stage-bounce 1.2s ease-in-out infinite;
 }
 
-@keyframes lab-bounce {
+@keyframes stage-bounce {
   50% {
     transform: translateY(4px);
   }
 }
 
-.lab-hint-pill {
-  animation: lab-glow 1.8s ease-in-out infinite;
+.stage-hint-pill {
+  animation: stage-glow 1.8s ease-in-out infinite;
 }
 
-@keyframes lab-glow {
+@keyframes stage-glow {
   50% {
     box-shadow: 0 0 28px rgb(168 85 247 / 0.7);
+  }
+}
+
+.animate-dissolve {
+  animation: dissolve 4s steps(1, end) infinite;
+}
+
+.animate-light {
+  animation: light 4s steps(1, end) infinite;
+}
+
+@keyframes dissolve {
+  0%,
+  20%,
+  80%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes light {
+  0%,
+  25%,
+  70%,
+  80%,
+  100% {
+    opacity: 1;
+  }
+  23%,
+  68%,
+  79%,
+  85% {
+    opacity: 0.2;
   }
 }
 </style>

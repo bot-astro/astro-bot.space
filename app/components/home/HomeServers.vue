@@ -8,12 +8,16 @@ const formatMembers = new Intl.NumberFormat('en-US', {
 })
 
 const rowCount = 3
+// scroll velocity (px/s) that adds one unit of marquee speed, up to MAX_SPEED_BOOST
+const VELOCITY_PER_BOOST = 150
+const MAX_SPEED_BOOST = 10
 const rows = Array.from({ length: rowCount }, (_, row) =>
   servers.filter((_, i) => i % rowCount === row),
 )
 
 const root = ref<HTMLElement | null>(null)
 let ctx: gsap.Context | undefined
+let onScrollEnd: (() => void) | undefined
 
 function hueOf(name: string) {
   let hash = 0
@@ -59,11 +63,18 @@ onMounted(() => {
       start: 0,
       end: 'max',
       onUpdate: (self) =>
-        setSpeed(1 + Math.min(Math.abs(self.getVelocity()) / 150, 10)),
+        setSpeed(
+          1 +
+            Math.min(
+              Math.abs(self.getVelocity()) / VELOCITY_PER_BOOST,
+              MAX_SPEED_BOOST,
+            ),
+        ),
     })
-    ScrollTrigger.addEventListener('scrollEnd', () => setSpeed(1))
+    onScrollEnd = () => setSpeed(1)
+    ScrollTrigger.addEventListener('scrollEnd', onScrollEnd)
 
-    gsap.from('.marquee-row', {
+    gsap.from('.marquee-title, .marquee-row', {
       autoAlpha: 0,
       y: 30,
       duration: 1,
@@ -74,12 +85,15 @@ onMounted(() => {
   }, root.value)
 })
 
-onUnmounted(() => ctx?.revert())
+onUnmounted(() => {
+  if (onScrollEnd) ScrollTrigger.removeEventListener('scrollEnd', onScrollEnd)
+  ctx?.revert()
+})
 </script>
 
 <template>
   <div ref="root" class="w-full overflow-hidden">
-    <p class="px-4 text-center text-sm text-foreground-secondary">
+    <p class="marquee-title px-4 text-center text-sm text-foreground-secondary">
       {{ $t('home.servers.title') }}
     </p>
 
@@ -144,5 +158,13 @@ onUnmounted(() => ctx?.revert())
     black 92%,
     transparent
   );
+}
+</style>
+
+<style>
+/* hidden before hydration, the intro fade-in shows them (see HomeHero) */
+html.motion-ok .marquee-title,
+html.motion-ok .marquee-row {
+  visibility: hidden;
 }
 </style>

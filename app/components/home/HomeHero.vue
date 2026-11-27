@@ -1,31 +1,22 @@
 <script lang="ts" setup>
 import { Github } from 'lucide-vue-next'
 
+const emit = defineEmits<{ explore: [] }>()
+
 const { gsap, ScrollTrigger, reducedMotion } = useHomeMotion()
 const { serverCount } = useHomeShowcase()
 const { invite } = useInvite()
 
 const root = ref<HTMLElement | null>(null)
 const counter = ref<HTMLElement | null>(null)
-const formattedCount = new Intl.NumberFormat('en-US').format(serverCount)
+const formattedCount = `${Math.floor(serverCount / 1000)}k+`
 let ctx: gsap.Context | undefined
-const magnetic = useHomeMagnetic(root)
 let onPointerMove: ((e: PointerEvent) => void) | undefined
 
 onMounted(() => {
   if (!root.value || reducedMotion()) return
 
-  magnetic.attach()
-
   ctx = gsap.context(() => {
-    gsap.to('.hero-logo-float', {
-      y: -10,
-      duration: 2.6,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-    })
-
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       const rotateY = gsap.quickTo('.hero-logo-tilt', 'rotationY', {
         duration: 0.8,
@@ -51,11 +42,6 @@ onMounted(() => {
         { yPercent: 110, rotate: 6, autoAlpha: 0, duration: 1, stagger: 0.07 },
         '-=0.8',
       )
-      .from(
-        '.hero-fade',
-        { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.12 },
-        '-=0.6',
-      )
 
     const count = { value: 0 }
     gsap.to(count, {
@@ -65,9 +51,7 @@ onMounted(() => {
       ease: 'power3.out',
       onUpdate: () => {
         if (counter.value)
-          counter.value.textContent = new Intl.NumberFormat('en-US').format(
-            Math.round(count.value),
-          )
+          counter.value.textContent = `${Math.floor(count.value / 1000)}k+`
       },
     })
 
@@ -96,7 +80,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  magnetic.detach()
   if (onPointerMove) window.removeEventListener('pointermove', onPointerMove)
   ctx?.revert()
   ScrollTrigger.refresh()
@@ -108,7 +91,10 @@ onUnmounted(() => {
     ref="root"
     class="relative flex min-h-[calc(100svh-4rem)] w-full flex-col items-center overflow-hidden"
   >
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div
+      class="pointer-events-none absolute inset-0 mask-[linear-gradient(to_bottom,black_45%,transparent_95%)]"
+      aria-hidden="true"
+    >
       <div
         class="hero-orb absolute top-1/4 left-1/2 size-144 translate-x-[-90%] rounded-full bg-purple-500/25 blur-[120px]"
       />
@@ -120,16 +106,14 @@ onUnmounted(() => {
     <div
       class="hero-content relative flex max-w-3xl flex-1 flex-col items-center justify-center p-4 text-center"
     >
-      <div class="hero-logo-float">
-        <div class="hero-logo-tilt">
-          <NuxtImg
-            src="/img/logo.png"
-            class="hero-logo size-20 select-none md:size-28"
-            sizes="160px"
-            alt=""
-            draggable="false"
-          />
-        </div>
+      <div class="hero-logo-tilt">
+        <NuxtImg
+          src="/img/logo.png"
+          class="hero-logo size-20 select-none md:size-28"
+          sizes="160px"
+          alt=""
+          draggable="false"
+        />
       </div>
 
       <h1
@@ -146,7 +130,7 @@ onUnmounted(() => {
         </span>
       </h1>
 
-      <p class="hero-fade mt-4 text-lg text-gray-400 md:text-xl">
+      <p class="hero-fade hero-tagline mt-4 text-lg text-gray-400 md:text-xl">
         {{ $t('home.tagline') }}
       </p>
 
@@ -154,14 +138,14 @@ onUnmounted(() => {
         class="hero-fade mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row"
       >
         <ButtonStandout
-          class="magnetic w-full text-lg sm:w-auto sm:px-8"
+          class="w-full text-lg sm:w-auto sm:px-8"
           @click="invite"
         >
           {{ $t('home.hero.invite') }}
         </ButtonStandout>
         <ButtonSecondary
-          to="/guides"
-          class="magnetic w-full justify-center py-2 text-lg sm:w-auto sm:px-8"
+          class="w-full justify-center py-2 text-lg sm:w-auto sm:px-8"
+          @click="emit('explore')"
         >
           {{ $t('home.hero.how_it_works') }}
         </ButtonSecondary>
@@ -202,3 +186,27 @@ onUnmounted(() => {
     <HomeServers class="relative pb-6" />
   </section>
 </template>
+
+<style>
+/* hidden before hydration so the server render does not flash before the intro animation, html.motion-ok is set by an inline script in the page head */
+html.motion-ok .hero-logo,
+html.motion-ok .hero-letter {
+  visibility: hidden;
+}
+
+/* css instead of gsap so the buttons show without waiting for the js bundle, the tagline is the LCP element so it starts earlier than the rest */
+html.motion-ok .hero-fade {
+  animation: hero-fade-in 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.1s backwards;
+}
+
+html.motion-ok .hero-tagline {
+  animation-delay: 0.5s;
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+</style>

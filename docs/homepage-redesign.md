@@ -2,7 +2,7 @@
 
 Goal: make the homepage drive acquisition. Show the bot name, a short pitch, an invite CTA, the main features (with small interactive demos), the open source aspect, and social proof (biggest servers and total server count). Mobile friendly, efficient, visually impactful. Follow the existing site style (dark, purple/pink gradient, Evolve display font).
 
-Status: iteration 3 of N, user said "good point", kept as is. Other languages not updated yet. A second prototype with a different approach lives at `/home-lab`, see `home-lab-experiment.md`.
+Status: iteration 3 of N, user said "good point", kept as is. Other languages not updated yet. Replaced by the scroll story described in `homepage.md`.
 
 ## Stack choices
 
