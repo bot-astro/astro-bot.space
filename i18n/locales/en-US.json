@@ -10,7 +10,8 @@
     "billing": "Billing",
     "logout": "Logout",
     "login": "Login",
-    "logged_in_as": "Logged in as {username}"
+    "logged_in_as": "Logged in as {username}",
+    "ai_assistants": "AI assistants"
   },
   "footer": {
     "resources": "Resources",
@@ -119,6 +120,10 @@
     "site": {
       "title": "Astro - Temporary Voice Channels for your Discord!",
       "description": "Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!"
+    },
+    "ai_assistants": {
+      "title": "AI assistants",
+      "description": "Connect Astro to Claude, ChatGPT, Cursor, VS Code and other AI assistants and manage your server settings by chatting"
     }
   },
   "home": {
@@ -922,5 +927,23 @@
       "need_interface": "You need to first create an Interface to be able to use it as the private text chat message",
       "no_interface": "No interface"
     }
+  },
+  "ai_assistants": {
+    "title": "AI assistants",
+    "subtitle": "Connect Astro to your AI assistant and manage the settings of your servers by chatting",
+    "url_title": "Astro's MCP URL",
+    "url_description": "Paste this URL in any AI assistant that supports MCP connectors, then log in with Discord to approve the access",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "claude_steps": "Open Settings → Connectors, click \"Add custom connector\", name it Astro, paste the URL above and click Connect.",
+    "chatgpt_steps": "Open Settings → Apps & Connectors → Advanced settings and enable developer mode, then click \"Create\", name it Astro, paste the URL above and click Connect.",
+    "open_directory": "Open in the directory",
+    "claude_code_plugin": "Install the plugin, it adds the connector and the Astro skills:",
+    "claude_code_mcp": "Or add only the connector:",
+    "editors_description": "Install the connector in one click:",
+    "install_in": "Install in {app}",
+    "other_title": "Other agents",
+    "other_description": "Use the URL above as a remote MCP server, and add the Astro skills to teach your agent how to configure Astro.",
+    "see_skills": "See the skills on GitHub"
   }
 }
