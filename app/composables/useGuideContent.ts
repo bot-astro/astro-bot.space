@@ -6,11 +6,11 @@ export default function useGuideContent(name: string) {
   return useAsyncData(
     () => `${name}_${locale.value}`,
     async () =>
-      (await queryCollection('content')
-        .where('stem', '=', `${locale.value}/${name}`)
+      (await queryCollection('guides')
+        .where('stem', '=', `guides/${locale.value}/${name}`)
         .first()) ??
-      (await queryCollection('content')
-        .where('stem', '=', `en-US/${name}`)
+      (await queryCollection('guides')
+        .where('stem', '=', `guides/en-US/${name}`)
         .first()),
     { watch: [locale] },
   )

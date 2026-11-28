@@ -5,8 +5,8 @@ files:
       two_letters_code:
         es-ES: es-ES
         pt-BR: pt-BR
-  - source: /content/en-US/*.md
-    translation: /content/%two_letters_code%/%original_file_name%
+  - source: /content/guides/en-US/*.md
+    translation: /content/guides/%two_letters_code%/%original_file_name%
     languages_mapping:
       two_letters_code:
         es-ES: es-ES

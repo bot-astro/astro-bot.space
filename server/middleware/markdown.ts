@@ -18,7 +18,7 @@ function markdownSource(path: string) {
   if (guide)
     return {
       storage: 'assets:content',
-      key: `en-US/guide_${guide[1]!.replaceAll('-', '_')}.md`,
+      key: `guides/en-US/${guide[1]}.md`,
     }
 }
 
