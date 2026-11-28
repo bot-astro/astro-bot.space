@@ -65,7 +65,7 @@ const disconnect = (grant_id: string) =>
         class="group-setting flex flex-col justify-between gap-4 md:flex-row md:items-center"
       >
         <div class="flex flex-col gap-1">
-          <span class="font-semibold">{{ grant.clientName }}</span>
+          <span class="font-semibold">{{ grant.client_name }}</span>
           <div class="flex flex-wrap gap-2">
             <Badge v-for="scope in grant.scopes" :key="scope">
               {{ scope_label(scope) }}
@@ -74,14 +74,16 @@ const disconnect = (grant_id: string) =>
           <span class="text-secondary text-sm">
             {{
               $t('connected_apps.connected_on', {
-                date: new Date(grant.createdAt).toLocaleDateString(locale),
+                date: new Date(grant.created_at).toLocaleDateString(locale),
               })
             }}
             ·
             {{
-              grant.lastUsedAt
+              grant.last_used_at
                 ? $t('connected_apps.last_used', {
-                    date: new Date(grant.lastUsedAt).toLocaleDateString(locale),
+                    date: new Date(grant.last_used_at).toLocaleDateString(
+                      locale,
+                    ),
                   })
                 : $t('connected_apps.never_used')
             }}
@@ -98,7 +100,7 @@ const disconnect = (grant_id: string) =>
             <AlertDialogHeader>
               <AlertDialogTitle>{{
                 $t('connected_apps.disconnect_confirm_title', {
-                  name: grant.clientName,
+                  name: grant.client_name,
                 })
               }}</AlertDialogTitle>
               <AlertDialogDescription>

@@ -1,8 +1,8 @@
 export interface Grant {
   id: string
-  clientId: string
-  clientName: string
+  client_id: string
+  client_name: string
   scopes: string[]
-  createdAt: string
-  lastUsedAt: string | null
+  created_at: string
+  last_used_at: string | null
 }
