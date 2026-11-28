@@ -28,6 +28,7 @@ const flags: Record<string, string> = {
         <p>{{ $t('footer.resources') }}</p>
         <div class="flex flex-col gap-y-3 text-sm">
           <ButtonText to="/guides"> {{ $t('nav.guides') }} </ButtonText>
+          <ButtonText to="/articles"> {{ $t('nav.articles') }} </ButtonText>
           <ButtonText to="/ultimate"> {{ $t('nav.ultimate') }} </ButtonText>
           <ButtonText to="/support"> {{ $t('footer.support') }} </ButtonText>
         </div>

@@ -95,7 +95,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://astro-bot.space',
-    name: 'Astro - Temporary Voice Channels for your Discord!',
+    name: 'Astro Discord Bot',
   },
 
   components: [
@@ -130,6 +130,8 @@ export default defineNuxtConfig({
     '/billing': { robots: false },
     '/guilds/**': { robots: false },
     '/invite/callback': { robots: false },
+    // empty page that only redirects to the Discord invite
+    '/invite': { robots: false },
   },
 
   nuxtQuery: {
@@ -147,9 +149,8 @@ export default defineNuxtConfig({
     head: {
       meta: [
         { charset: 'utf-8' },
-        { name: 'robots', content: 'noodp,noydir' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'Astro' },
+        { property: 'og:site_name', content: 'Astro Discord Bot' },
         {
           property: 'og:image',
           content: 'https://astro-bot.space/img/logo_bg.png',

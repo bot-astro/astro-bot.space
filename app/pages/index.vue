@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import Lenis from 'lenis'
+import { UltimatePrices } from '~/constants/UltimatePrices'
 
 const { t } = useI18n()
 const { url: siteUrl } = useSiteConfig()
+const { formattedServerCount } = useHomeShowcase()
 
 useHead({
   link: [
@@ -21,22 +23,63 @@ useHead({
         '@context': 'https://schema.org',
         '@graph': [
           {
+            '@type': 'Organization',
+            '@id': `${siteUrl}/#organization`,
+            name: 'Astro Bot',
+            url: siteUrl,
+            logo: `${siteUrl}/img/logo_bg.png`,
+            email: 'hi@astro-bot.space',
+            sameAs: [
+              'https://github.com/bot-astro',
+              'https://discord.com/invite/yeXwVhg',
+            ],
+          },
+          {
             '@type': 'WebSite',
             '@id': `${siteUrl}/#website`,
             url: siteUrl,
-            name: 'Astro',
+            name: 'Astro Discord Bot',
+            publisher: { '@id': `${siteUrl}/#organization` },
           },
           {
             '@type': 'SoftwareApplication',
             '@id': `${siteUrl}/#app`,
-            name: 'Astro',
-            description: t('meta.site.description'),
+            name: 'Astro Discord Bot',
+            alternateName: 'Astro',
+            description: t('meta.site.description', {
+              count: formattedServerCount,
+            }),
             url: siteUrl,
             image: `${siteUrl}/img/logo_bg.png`,
-            applicationCategory: 'UtilitiesApplication',
+            applicationCategory: 'CommunicationApplication',
             operatingSystem: 'Discord',
-            offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD' },
-            sameAs: ['https://github.com/bot-astro/astro'],
+            publisher: { '@id': `${siteUrl}/#organization` },
+            offers: [
+              {
+                '@type': 'Offer',
+                name: 'Free',
+                price: 0,
+                priceCurrency: 'USD',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Astro Ultimate (monthly, per server)',
+                price: UltimatePrices.MONTHLY,
+                priceCurrency: 'USD',
+                url: `${siteUrl}/ultimate`,
+              },
+              {
+                '@type': 'Offer',
+                name: 'Astro Ultimate (yearly, per server)',
+                price: UltimatePrices.YEARLY,
+                priceCurrency: 'USD',
+                url: `${siteUrl}/ultimate`,
+              },
+            ],
+            sameAs: [
+              'https://github.com/bot-astro/astro',
+              'https://discord.com/application-directory/715621848489918495',
+            ],
           },
         ],
       }),
@@ -85,6 +128,7 @@ onUnmounted(() => {
     <HomeHero @explore="scrollToDemo" />
     <HomeStage />
     <HomeOpenSource />
+    <HomeFaq />
     <HomeCta />
   </div>
 </template>
