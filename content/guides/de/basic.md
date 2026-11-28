@@ -48,7 +48,7 @@ _Du kannst im Support-Server nach Richtlinien zu den Berechtigungen fragen, die 
 ## Befehlsberechtigungen
 
 Denke daran, dass du über die Slash-Befehl-Berechtigungen von Discord jederzeit festlegen kannst, wer Zugriff auf die Slash-Befehle von Astro hat.  
-[Hier kannst du mehr darüber lesen](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[Hier kannst du mehr darüber lesen](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## Serversprache
 

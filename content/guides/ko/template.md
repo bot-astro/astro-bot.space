@@ -33,7 +33,7 @@ _[Ultimate](/ultimate) 없이는 템플릿을 최대 3개까지만 가질 수 �
 
 다음을 선택할 수 있어요:
 
-- 음성 채널의 이름 ([변수](/guides/generator#variables) 지원)
+- 음성 채널의 이름 ([변수](/guides/generator#변수) 지원)
 - 사용자 제한
 - 비트레이트
 - 지역

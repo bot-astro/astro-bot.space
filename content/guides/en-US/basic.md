@@ -48,7 +48,7 @@ _You may ask for guidelines in the Support Server regarding the permissions that
 ## Command permissions
 
 Remember that you can always configure who has access to Astro slash commands via Discord slash command permissions.  
-[Read more about it here](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[Read more about it here](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## Server language
 

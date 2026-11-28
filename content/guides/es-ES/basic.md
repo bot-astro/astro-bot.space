@@ -48,7 +48,7 @@ _Puedes pedir orientación en el servidor de soporte sobre los permisos que Astr
 ## Permisos de comandos
 
 Recuerda que siempre puedes configurar quién tiene acceso a los comandos de barra de Astro mediante los permisos de comandos de barra de Discord.  
-[Lee más sobre ello aquí](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[Lee más sobre ello aquí](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## Idioma del servidor
 

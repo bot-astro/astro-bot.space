@@ -33,7 +33,7 @@ Di dashboard kamu dapat mengonfigurasi pengaturan yang diterapkan ke saluran sua
 
 Kamu dapat memilih:
 
-- nama saluran suara, yang mendukung [variabel](/guides/generator#variables)
+- nama saluran suara, yang mendukung [variabel](/guides/generator#variabel)
 - batas pengguna
 - bitrate
 - wilayah

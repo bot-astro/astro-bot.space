@@ -33,7 +33,7 @@ Nella dashboard puoi configurare le impostazioni che vengono applicate al canale
 
 Puoi scegliere:
 
-- il nome del canale vocale, che supporta le [variabili](/guides/generator#variables)
+- il nome del canale vocale, che supporta le [variabili](/guides/generator#variabili)
 - il limite di utenti
 - il bitrate
 - la regione

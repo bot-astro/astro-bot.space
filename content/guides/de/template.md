@@ -33,7 +33,7 @@ Im Dashboard kannst du die Einstellungen konfigurieren, die auf den temporären 
 
 Du kannst wählen:
 
-- den Namen des Sprachkanals, der [Variablen](/guides/generator#variables) unterstützt
+- den Namen des Sprachkanals, der [Variablen](/guides/generator#variablen) unterstützt
 - das Nutzerlimit
 - die Bitrate
 - die Region

@@ -33,7 +33,7 @@ Sa dashboard, maaari mong i-configure ang mga setting na inilalapat sa pansamant
 
 Maaari kang pumili ng:
 
-- ang pangalan ng voice channel, na sumusuporta sa mga [variable](/guides/generator#variables)
+- ang pangalan ng voice channel, na sumusuporta sa mga [variable](/guides/generator#mga-variable)
 - ang limitasyon ng user
 - ang bitrate
 - ang rehiyon

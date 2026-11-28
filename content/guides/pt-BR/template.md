@@ -33,7 +33,7 @@ No painel você pode configurar as opções que são aplicadas ao canal de voz t
 
 Você pode escolher:
 
-- o nome do canal de voz, que aceita [variáveis](/guides/generator#variables)
+- o nome do canal de voz, que aceita [variáveis](/guides/generator#variáveis)
 - o limite de usuários
 - o bitrate
 - a região

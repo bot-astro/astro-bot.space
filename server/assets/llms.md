@@ -1,6 +1,6 @@
 # Astro Discord Bot
 
-> Astro is a free Discord bot for temporary voice channels (join to create) and voice roles, trusted by 150k+ Discord servers. It is open source and fully configurable from a web dashboard. Not to be confused with the Astro web framework (astro.build).
+> Astro is a free Discord bot for temporary voice channels (join to create) and voice roles, trusted by 150k+ Discord servers. It is 100% open source and fully configurable from a web dashboard. Not to be confused with the Astro web framework (astro.build).
 
 Key facts:
 
@@ -9,6 +9,7 @@ Key facts:
 - Setup: invite the bot and run `/setup`, it creates a category with a generator and an interface. Everything else is configured from the dashboard at https://astro-bot.space/guilds.
 - Free plan: up to 2 generators, 1 interface, 1 voice role and 3 templates per server.
 - Astro Ultimate (premium): $3.99 a month or $39.99 a year per server. Unlimited generators, interfaces, voice roles and templates, plus numbered channel names, activity variables, customisable interfaces, waiting rooms, private text chats, a badwords filter, owner voice role, creation messages and fallback generators.
+- Open source: the whole bot is 100% open source, the code is public on GitHub at https://github.com/bot-astro/astro.
 - Languages: English, Italian, German, French, Spanish, Brazilian Portuguese, Indonesian, Korean, Thai, Arabic, Filipino.
 
 ## Pages

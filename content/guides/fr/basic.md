@@ -48,7 +48,7 @@ _Tu peux demander des conseils sur le serveur d'assistance concernant les permis
 ## Permissions des commandes
 
 N'oublie pas que tu peux toujours configurer qui a accès aux commandes slash d'Astro grâce aux permissions des commandes slash de Discord.  
-[En savoir plus ici](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[En savoir plus ici](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## Langue du serveur
 

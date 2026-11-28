@@ -48,7 +48,7 @@ _Kamu boleh meminta panduan di Server Dukungan terkait izin yang dibutuhkan Astr
 ## Izin perintah
 
 Ingat bahwa kamu selalu bisa mengatur siapa yang memiliki akses ke perintah slash Astro lewat izin perintah slash Discord.  
-[Baca selengkapnya di sini](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[Baca selengkapnya di sini](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## Bahasa server
 

@@ -48,7 +48,7 @@ _Puoi chiedere indicazioni nel Server di Supporto sui permessi di cui Astro ha b
 ## Permessi dei comandi
 
 Ricorda che puoi sempre configurare chi ha accesso ai comandi slash di Astro tramite i permessi dei comandi slash di Discord.  
-[Scopri di più qui](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[Scopri di più qui](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## Lingua del server
 

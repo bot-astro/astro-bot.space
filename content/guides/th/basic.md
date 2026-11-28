@@ -48,7 +48,7 @@ _คุณสามารถขอคำแนะนำในเซิร์ฟ�
 ## สิทธิ์ของคำสั่ง
 
 อย่าลืมว่าคุณสามารถตั้งค่าได้เสมอว่าใครมีสิทธิ์ใช้คำสั่งสแลชของ Astro ผ่านสิทธิ์คำสั่งสแลชของ Discord  
-[อ่านเพิ่มเติมได้ที่นี่](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ)
+[อ่านเพิ่มเติมได้ที่นี่](https://discord.com/blog/slash-commands-permissions-discord-apps-bots)
 
 ## ภาษาของเซิร์ฟเวอร์
 

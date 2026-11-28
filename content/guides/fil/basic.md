@@ -48,7 +48,7 @@ _Maaari kang humingi ng gabay sa Support Server tungkol sa mga pahintulot na kai
 ## Mga pahintulot ng command
 
 Tandaan na maaari mong i-configure anumang oras kung sino ang may access sa mga slash command ng Astro gamit ang mga pahintulot ng slash command ng Discord.  
-[Magbasa pa tungkol dito](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[Magbasa pa tungkol dito](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## Wika ng server
 

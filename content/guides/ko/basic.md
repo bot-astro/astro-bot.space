@@ -48,7 +48,7 @@ _Astro가 작동하는 데 필요한 권한에 대한 안내는 지원 서버에
 ## 명령어 권한
 
 Discord 슬래시 명령어 권한을 통해 Astro 슬래시 명령어를 누가 사용할 수 있는지 언제든지 설정할 수 있다는 점을 기억하세요.  
-[여기에서 더 알아보세요](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[여기에서 더 알아보세요](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## 서버 언어
 

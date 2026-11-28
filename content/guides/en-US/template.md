@@ -33,7 +33,7 @@ On the dashboard you can configure the settings that get applied to the temporar
 
 You can choose:
 
-- the name for the voice channel, which supports [variables](http://localhost:3000/guides/generator#variables)
+- the name for the voice channel, which supports [variables](/guides/generator#variables)
 - the user limit
 - the bitrate
 - the region

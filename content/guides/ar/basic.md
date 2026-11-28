@@ -48,7 +48,7 @@ _يمكنك طلب إرشادات في سيرفر الدعم بخصوص الصل
 ## صلاحيات الأوامر
 
 تذكّر أنه يمكنك دائمًا ضبط من يملك حق الوصول إلى أوامر الشرطة المائلة الخاصة بـ Astro عبر صلاحيات أوامر الشرطة المائلة في Discord.  
-[اقرأ المزيد عن ذلك هنا](https://support.discord.com/hc/en-us/articles/9359445233303-Premium-App-FAQ#h_01HW8TY8QFZKNGT5SSSNEGWEEJ).
+[اقرأ المزيد عن ذلك هنا](https://discord.com/blog/slash-commands-permissions-discord-apps-bots).
 
 ## لغة السيرفر
 
