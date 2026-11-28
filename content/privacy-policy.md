@@ -43,6 +43,30 @@ If you choose to make purchases or subscribe to paid services through our websit
 
 Please note that billing information is handled by third-party services like Chargebee and Stripe. We do not store or process payment card details directly on our servers.
 
+## AI Clients (MCP Connector)
+
+You can connect an AI assistant (for example Claude, ChatGPT, Cursor or VS Code) to Astro through our MCP connector at `https://mcp.astro-bot.space/mcp`. The AI assistant only gets access after you log in with Discord and approve the requested permissions.
+
+### Data the connector reads
+
+- Your Discord user ID
+- The Discord servers you manage
+- The Astro settings of those servers
+
+### Data the connector changes
+
+The connector can only change the Astro settings of the servers you manage, and only if you approved the write permission when connecting the AI assistant. With the read permission alone it cannot change anything.
+
+The requests are made by the AI assistant you connected, on your behalf. We do not receive your conversations with the AI assistant: we only receive the arguments of the tool calls it makes to Astro. How the AI assistant handles your conversations is covered by the privacy policy of its provider.
+
+### Tokens and retention
+
+Connecting an AI assistant creates an access token valid for 1 hour and a refresh token valid for 30 days. The refresh token is replaced with a new one every time it is used. We only store hashes of the tokens, never the tokens themselves, together with the name of the AI assistant, the approved permissions, and when it was connected and last used.
+
+### Disconnecting
+
+You can disconnect an AI assistant at any time from the [Connected apps](/connected-apps) page of the website, or by removing the connector from the AI assistant. Disconnecting immediately invalidates all of its tokens.
+
 ## Use of Data
 
 We use the collected data for various purposes, including but not limited to:
