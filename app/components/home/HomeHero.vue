@@ -139,7 +139,7 @@ onUnmounted(() => {
       >
         <ButtonStandout
           class="w-full text-lg sm:w-auto sm:px-8"
-          @click="invite_from('website-hero')"
+          @click="invite_from('website-nav')"
         >
           {{ $t('home.hero.invite') }}
         </ButtonStandout>
