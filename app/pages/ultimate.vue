@@ -2,6 +2,7 @@
 import cn from '~/utils/cn'
 import { useUser } from '~/data/astro/query/useUser'
 import { toast } from '~/components/ui/toast'
+import { UltimatePrices } from '~/constants/UltimatePrices'
 
 // definePageMeta({
 //   middleware: 'auth',
@@ -9,15 +10,19 @@ import { toast } from '~/components/ui/toast'
 
 const { t } = useI18n()
 
+const description = computed(() =>
+  t('meta.ultimate.description', { price: `$${UltimatePrices.MONTHLY}` }),
+)
+
 useHead(() => ({
   title: t('meta.page_title', { page: t('meta.ultimate.title') }),
   meta: [
-    { name: 'description', content: t('meta.ultimate.description') },
+    { name: 'description', content: description.value },
     {
       property: 'og:title',
       content: t('meta.page_title', { page: t('meta.ultimate.title') }),
     },
-    { property: 'og:description', content: t('meta.ultimate.description') },
+    { property: 'og:description', content: description.value },
     { property: 'og:url', content: 'https://astro-bot.space/ultimate' },
   ],
 }))
@@ -29,8 +34,9 @@ const quantity = ref(1)
 const isMonthly = ref(true)
 
 const price = computed(() => {
-  if (isMonthly.value) return (quantity.value * 3.99).toFixed(2)
-  else return (quantity.value * 39.99).toFixed(2)
+  if (isMonthly.value)
+    return (quantity.value * UltimatePrices.MONTHLY).toFixed(2)
+  else return (quantity.value * UltimatePrices.YEARLY).toFixed(2)
 })
 
 function increaseQuantity() {
@@ -73,7 +79,7 @@ function subscribe() {
 <template>
   <div class="mx-12 mt-16 flex w-3/4 flex-col items-center gap-16 md:w-auto">
     <div class="flex flex-col gap-4">
-      <span class="text-title text-center">{{ $t('ultimate.title') }}</span>
+      <h1 class="text-title text-center">{{ $t('ultimate.title') }}</h1>
       <span class="text-subtitle text-center">{{
         $t('ultimate.subtitle')
       }}</span>

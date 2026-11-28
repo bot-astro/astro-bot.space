@@ -10,7 +10,8 @@
     "billing": "Facturación",
     "logout": "Cerrar sesión",
     "login": "Iniciar sesión",
-    "logged_in_as": "Sesión iniciada como {username}"
+    "logged_in_as": "Sesión iniciada como {username}",
+    "articles": "Artículos"
   },
   "footer": {
     "resources": "Recursos",
@@ -30,19 +31,19 @@
     "checkout": "Algo salió mal al iniciar el pago, inténtalo de nuevo más tarde"
   },
   "meta": {
-    "page_title": "{page} - Astro - ¡Canales de voz temporales para tu Discord!",
+    "page_title": "{page} - Bot de Discord Astro",
     "invite": {
-      "title": "Invitar a Astro - Astro - ¡Canales de voz temporales para tu Discord!",
-      "description": "Invita a Astro a tu servidor de Discord y empieza a crear canales de voz temporales para tu comunidad."
+      "title": "Invitar al bot de Discord Astro",
+      "description": "Añade el bot de Discord Astro a tu servidor y empieza a crear canales de voz temporales para tu comunidad."
     },
     "privacy": {
-      "title": "Política de privacidad - Astro - ¡Canales de voz temporales para tu Discord!"
+      "title": "Política de privacidad - Bot de Discord Astro"
     },
     "terms": {
-      "title": "Términos del servicio - Astro - ¡Canales de voz temporales para tu Discord!"
+      "title": "Términos del servicio - Bot de Discord Astro"
     },
     "refund": {
-      "title": "Política de reembolso - Astro - ¡Canales de voz temporales para tu Discord!"
+      "title": "Política de reembolso - Bot de Discord Astro"
     },
     "guide_basic": {
       "title": "Guía básica",
@@ -69,8 +70,8 @@
       "description": "¿Necesitas ayuda con Astro? Echa un vistazo a estas guías pensadas para principiantes"
     },
     "ultimate": {
-      "title": "Ultimate",
-      "description": "Lleva tu servidor al siguiente nivel con las funciones premium de Astro"
+      "title": "Ultimate (Premium)",
+      "description": "Astro Ultimate es el plan premium del bot de Discord Astro: generadores, interfaces, roles de voz y plantillas ilimitados, además de salas de espera, chats de texto privados y más, desde {price} al mes por servidor."
     },
     "dashboard": {
       "title": "Panel",
@@ -117,8 +118,12 @@
       "description": "Configura todos los ajustes de tu generador de canales de voz temporales"
     },
     "site": {
-      "title": "Astro - ¡Canales de voz temporales para tu Discord!",
-      "description": "Astro es un bot de Discord que te permite crear canales de voz temporales en tu servidor. ¡Perfecto para sesiones de juego, grupos de estudio o cualquier necesidad de chat de voz temporal!"
+      "title": "Bot de Discord Astro - Canales de voz temporales y roles de voz",
+      "description": "Astro es un bot de Discord gratuito para canales de voz temporales (join to create) y roles de voz, con la confianza de {count} servidores. Configúralo con un solo comando o desde el panel web."
+    },
+    "articles": {
+      "title": "Artículos",
+      "description": "Artículos sobre el bot de Discord Astro y los canales de voz temporales: guías prácticas y consejos para administradores de servidores de Discord."
     }
   },
   "home": {
@@ -234,6 +239,39 @@
         }
       },
       "try": "Pruébalo: haz clic en “Join to create” y sal para eliminar tu canal."
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": {
+        "what": {
+          "question": "¿Qué es el bot de Discord Astro?",
+          "answer": "Astro es un bot de Discord gratuito para canales de voz temporales y roles de voz. Cuando un miembro se une a un canal generador, Astro crea un canal de voz para él y lo elimina cuando todos se van. Cuenta con la confianza de {count} servidores y es totalmente de código abierto."
+        },
+        "free": {
+          "question": "¿Astro es gratis?",
+          "answer": "Sí, todas las funciones principales son gratis: hasta 2 generadores, 1 interfaz, 1 rol de voz y 3 plantillas por servidor. Astro Ultimate cuesta {monthly} al mes o {yearly} al año por servidor, elimina todos los límites y desbloquea salas de espera, chats de texto privados, nombres de canal numerados, interfaces personalizables y más."
+        },
+        "setup": {
+          "question": "¿Cómo creo canales de voz temporales en Discord con Astro?",
+          "answer": "Invita a Astro a tu servidor y ejecuta el comando {command}, o pulsa el botón de configuración que Astro envía al unirse. Astro crea una categoría con un generador y una interfaz, así que los canales de voz temporales funcionan al instante. Después puedes cambiarlo todo desde el panel web."
+        },
+        "owner": {
+          "question": "¿Pueden los miembros gestionar su propio canal de voz?",
+          "answer": "Sí. El miembro que crea un canal de voz temporal es su propietario y puede renombrarlo, establecer un límite de usuarios, bloquearlo u ocultarlo y cedérselo a otra persona, con comandos de barra o con los botones de la interfaz de Astro. Cuando el propietario se va, la propiedad pasa a otro miembro del canal."
+        },
+        "voice_roles": {
+          "question": "¿Qué son los roles de voz?",
+          "answer": "Un rol de voz es un rol que Astro da a los miembros mientras están en un canal de voz concreto y que quita cuando salen, por ejemplo para mostrar un chat de texto de juegos solo a quienes están en el canal de voz de juegos."
+        },
+        "permissions": {
+          "question": "¿Qué permisos necesita Astro?",
+          "answer": "Por defecto, Astro pide el permiso de Administrador para que todas las funciones funcionen desde el principio. Si tu servidor no puede concederlo, puedes desactivar este requisito desde el panel. Para configurar Astro necesitas el permiso Gestionar canales."
+        },
+        "languages": {
+          "question": "¿Qué idiomas admite Astro?",
+          "answer": "Astro habla inglés, italiano, alemán, francés, español, portugués de Brasil, indonesio, coreano, tailandés, árabe y filipino. Puedes elegir el idioma de tu servidor desde el panel."
+        }
+      }
     }
   },
   "guides": {
@@ -257,7 +295,7 @@
   },
   "ultimate": {
     "title": "Servidor Ultimate",
-    "subtitle": "¡Lleva tu servidor al siguiente nivel con funciones premium!",
+    "subtitle": "¡Lleva tu servidor al siguiente nivel con el plan premium del bot de Discord Astro!",
     "per_month": "al mes por {count} servidor | al mes por {count} servidores",
     "per_year": "al año por {count} servidor | al año por {count} servidores",
     "server_quantity": "Cantidad de servidores",
@@ -922,5 +960,10 @@
       "need_interface": "Primero debes crear una interfaz para poder usarla como mensaje del chat de texto privado",
       "no_interface": "Sin interfaz"
     }
+  },
+  "articles": {
+    "title": "Artículos",
+    "subtitle": "Guías prácticas y consejos sobre canales de voz temporales y el bot de Discord Astro.",
+    "updated": "Actualizado el {date}"
   }
 }

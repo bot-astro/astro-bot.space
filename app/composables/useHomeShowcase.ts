@@ -6,6 +6,7 @@ import {
 export default function useHomeShowcase() {
   return {
     serverCount: mockShowcaseServerCount,
+    formattedServerCount: `${Math.floor(mockShowcaseServerCount / 1000)}k+`,
     servers: mockShowcaseServers,
   }
 }

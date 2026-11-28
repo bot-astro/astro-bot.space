@@ -10,7 +10,8 @@
     "billing": "Billing",
     "logout": "Logout",
     "login": "Login",
-    "logged_in_as": "Logged in as {username}"
+    "logged_in_as": "Logged in as {username}",
+    "articles": "Articles"
   },
   "footer": {
     "resources": "Resources",
@@ -30,19 +31,19 @@
     "checkout": "Something went wrong initiating the checkout, please try again later"
   },
   "meta": {
-    "page_title": "{page} - Astro - Temporary Voice Channels for your Discord!",
+    "page_title": "{page} - Astro Discord Bot",
     "invite": {
-      "title": "Invite Astro - Astro - Temporary Voice Channels for your Discord!",
-      "description": "Invite Astro to your Discord server and start creating temporary voice channels for your community."
+      "title": "Invite the Astro Discord Bot",
+      "description": "Add the Astro Discord bot to your server and start creating temporary voice channels for your community."
     },
     "privacy": {
-      "title": "Privacy Policy - Astro - Temporary Voice Channels for your Discord!"
+      "title": "Privacy Policy - Astro Discord Bot"
     },
     "terms": {
-      "title": "Terms of Service - Astro - Temporary Voice Channels for your Discord!"
+      "title": "Terms of Service - Astro Discord Bot"
     },
     "refund": {
-      "title": "Refund Policy - Astro - Temporary Voice Channels for your Discord!"
+      "title": "Refund Policy - Astro Discord Bot"
     },
     "guide_basic": {
       "title": "Basics guide",
@@ -69,8 +70,8 @@
       "description": "Need help with Astro, check out these beginner friendly guides"
     },
     "ultimate": {
-      "title": "Ultimate",
-      "description": "Take your server to the next level with premium Astro functionalities"
+      "title": "Ultimate (Premium)",
+      "description": "Astro Ultimate is the premium plan of the Astro Discord bot: unlimited generators, interfaces, voice roles and templates, plus waiting rooms, private text chats and more, from {price} a month per server."
     },
     "dashboard": {
       "title": "Dashboard",
@@ -117,12 +118,16 @@
       "description": "Configure all the settings of your temporary voice channel generator"
     },
     "site": {
-      "title": "Astro - Temporary Voice Channels for your Discord!",
-      "description": "Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!"
+      "title": "Astro Discord Bot - Temporary Voice Channels & Voice Roles",
+      "description": "Astro is a free Discord bot for temporary voice channels (join to create) and voice roles, trusted by {count} servers. Set it up with one command or from the web dashboard."
+    },
+    "articles": {
+      "title": "Articles",
+      "description": "Articles about the Astro Discord bot and temporary voice channels: how-tos and tips for Discord server admins."
     }
   },
   "home": {
-    "tagline": "The most unique and complete discord bot for temporary voice channels and voice roles!",
+    "tagline": "The most unique and complete Discord bot for temporary voice channels and voice roles!",
     "temp_vc": {
       "description": "Astro generates fully customisable temporary voice channels on prompt and deletes them when they get empty. Ships with extreme customisation so that you can create the perfect system for your server!",
       "title": "{animated} Voice Channels",
@@ -234,6 +239,39 @@
         }
       },
       "try": "Try it: click “Join to create”, then leave to delete your channel."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "what": {
+          "question": "What is the Astro Discord bot?",
+          "answer": "Astro is a free Discord bot for temporary voice channels and voice roles. When a member joins a generator channel, Astro creates a voice channel for them and deletes it once everyone leaves. It is trusted by {count} servers and is fully open source."
+        },
+        "free": {
+          "question": "Is Astro free?",
+          "answer": "Yes, all the core features are free: up to 2 generators, 1 interface, 1 voice role and 3 templates per server. Astro Ultimate costs {monthly} a month or {yearly} a year per server, removes every limit and unlocks waiting rooms, private text chats, numbered channel names, customisable interfaces and more."
+        },
+        "setup": {
+          "question": "How do I create temporary voice channels in Discord with Astro?",
+          "answer": "Invite Astro to your server and run the {command} command, or press the setup button Astro sends when it joins. Astro creates a category with a generator and an interface, so temporary voice channels work right away. Then you can change everything from the web dashboard."
+        },
+        "owner": {
+          "question": "Can members manage their own voice channel?",
+          "answer": "Yes. The member who creates a temporary voice channel owns it and can rename it, set a user limit, lock or hide it and hand it over to someone else, with slash commands or with the buttons of the Astro interface. When the owner leaves, the ownership moves to another member in the channel."
+        },
+        "voice_roles": {
+          "question": "What are voice roles?",
+          "answer": "A voice role is a role Astro gives to members while they are in a specific voice channel and removes when they leave, for example to show a gaming text chat only to the people in the gaming voice channel."
+        },
+        "permissions": {
+          "question": "Which permissions does Astro need?",
+          "answer": "Astro asks for the Administrator permission by default so every feature works out of the box. If your server cannot grant it, you can turn this requirement off from the dashboard. To configure Astro you need the Manage Channels permission."
+        },
+        "languages": {
+          "question": "Which languages does Astro support?",
+          "answer": "Astro speaks English, Italian, German, French, Spanish, Brazilian Portuguese, Indonesian, Korean, Thai, Arabic and Filipino. You can pick the language of your server from the dashboard."
+        }
+      }
     }
   },
   "guides": {
@@ -257,7 +295,7 @@
   },
   "ultimate": {
     "title": "Ultimate server",
-    "subtitle": "Take your server to the next level with premium functionalities!",
+    "subtitle": "Take your server to the next level with the premium plan of the Astro Discord bot!",
     "per_month": "per month for {count} server | per month for {count} servers",
     "per_year": "per year for {count} server | per year for {count} servers",
     "server_quantity": "Server quantity",
@@ -922,5 +960,10 @@
       "need_interface": "You need to first create an Interface to be able to use it as the private text chat message",
       "no_interface": "No interface"
     }
+  },
+  "articles": {
+    "title": "Articles",
+    "subtitle": "How-tos and tips about temporary voice channels and the Astro Discord bot.",
+    "updated": "Updated on {date}"
   }
 }

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { navigateTo } from '#imports'
 const { t } = useI18n()
 
 useHead(() => ({
@@ -19,14 +18,14 @@ useHead(() => ({
 <template>
   <div class="mx-12 mt-16 flex w-3/4 flex-col items-center gap-16 md:w-auto">
     <div class="flex flex-col gap-4">
-      <span class="text-title text-center">{{ $t('guides.title') }}</span>
+      <h1 class="text-title text-center">{{ $t('guides.title') }}</h1>
       <span class="text-subtitle text-center">{{ $t('guides.subtitle') }}</span>
     </div>
 
     <div class="flex w-full flex-col gap-2">
-      <div
-        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90"
-        @click="navigateTo('/guides/basic')"
+      <NuxtLink
+        to="/guides/basic"
+        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:bg-background-container/90"
       >
         <IconQuestion
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
@@ -44,11 +43,11 @@ useHead(() => ({
         <IconDropdown
           class="size-5 shrink-0 -rotate-90 group-hover:text-foreground-link-standout"
         />
-      </div>
+      </NuxtLink>
 
-      <div
-        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90"
-        @click="navigateTo('/guides/generator')"
+      <NuxtLink
+        to="/guides/generator"
+        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:bg-background-container/90"
       >
         <IconGenerator
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
@@ -66,11 +65,11 @@ useHead(() => ({
         <IconDropdown
           class="size-5 shrink-0 -rotate-90 group-hover:text-foreground-link-standout"
         />
-      </div>
+      </NuxtLink>
 
-      <div
-        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90"
-        @click="navigateTo('/guides/interface')"
+      <NuxtLink
+        to="/guides/interface"
+        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:bg-background-container/90"
       >
         <IconInterface
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
@@ -88,11 +87,11 @@ useHead(() => ({
         <IconDropdown
           class="size-5 shrink-0 -rotate-90 group-hover:text-foreground-link-standout"
         />
-      </div>
+      </NuxtLink>
 
-      <div
-        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90"
-        @click="navigateTo('/guides/template')"
+      <NuxtLink
+        to="/guides/template"
+        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:bg-background-container/90"
       >
         <IconTemplate
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
@@ -110,11 +109,11 @@ useHead(() => ({
         <IconDropdown
           class="size-5 shrink-0 -rotate-90 group-hover:text-foreground-link-standout"
         />
-      </div>
+      </NuxtLink>
 
-      <div
-        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:cursor-pointer hover:bg-background-container/90"
-        @click="navigateTo('/guides/voice-role')"
+      <NuxtLink
+        to="/guides/voice-role"
+        class="group flex w-full items-center gap-4 rounded-md bordered bg-background-container p-3 hover:bg-background-container/90"
       >
         <IconVoiceRole
           class="size-5 shrink-0 group-hover:stroke-foreground-link-standout"
@@ -132,7 +131,7 @@ useHead(() => ({
         <IconDropdown
           class="size-5 shrink-0 -rotate-90 group-hover:text-foreground-link-standout"
         />
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>

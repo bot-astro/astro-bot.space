@@ -4,12 +4,11 @@ import { Github } from 'lucide-vue-next'
 const emit = defineEmits<{ explore: [] }>()
 
 const { gsap, ScrollTrigger, reducedMotion } = useHomeMotion()
-const { serverCount } = useHomeShowcase()
+const { serverCount, formattedServerCount } = useHomeShowcase()
 const { invite_from } = useInvite()
 
 const root = ref<HTMLElement | null>(null)
 const counter = ref<HTMLElement | null>(null)
-const formattedCount = `${Math.floor(serverCount / 1000)}k+`
 let ctx: gsap.Context | undefined
 let onPointerMove: ((e: PointerEvent) => void) | undefined
 
@@ -139,7 +138,7 @@ onUnmounted(() => {
       >
         <ButtonStandout
           class="w-full text-lg sm:w-auto sm:px-8"
-          @click="invite_from('website-hero')"
+          @click="invite_from('website-nav')"
         >
           {{ $t('home.hero.invite') }}
         </ButtonStandout>
@@ -168,7 +167,7 @@ onUnmounted(() => {
           <i18n-t keypath="home.hero.servers" tag="span">
             <template #count>
               <span ref="counter" class="font-semibold text-foreground">{{
-                formattedCount
+                formattedServerCount
               }}</span>
             </template>
           </i18n-t>

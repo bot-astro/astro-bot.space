@@ -2,15 +2,22 @@
 const { locale, t } = useI18n()
 const route = useRoute()
 const { url: siteUrl } = useSiteConfig()
+const { formattedServerCount } = useHomeShowcase()
 
 useHead(() => ({
   htmlAttrs: { lang: locale.value },
   title: t('meta.site.title'),
   link: [{ rel: 'canonical', href: `${siteUrl}${route.path}` }],
   meta: [
-    { name: 'description', content: t('meta.site.description') },
+    {
+      name: 'description',
+      content: t('meta.site.description', { count: formattedServerCount }),
+    },
     { property: 'og:title', content: t('meta.site.title') },
-    { property: 'og:description', content: t('meta.site.description') },
+    {
+      property: 'og:description',
+      content: t('meta.site.description', { count: formattedServerCount }),
+    },
     { property: 'og:url', content: `${siteUrl}${route.path}` },
   ],
 }))

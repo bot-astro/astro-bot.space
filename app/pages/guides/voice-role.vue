@@ -25,7 +25,7 @@ useHead(() => ({
   ],
 }))
 
-const { data: page } = await useGuideContent('guide_voice_role')
+const { data: page } = await useGuideContent('voice-role')
 </script>
 
 <template>

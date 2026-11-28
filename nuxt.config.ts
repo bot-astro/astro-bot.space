@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import { redirects } from './app/constants/redirects'
 
@@ -73,6 +74,16 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
+  nitro: {
+    // markdown sources served to AI agents, see server/middleware/markdown.ts
+    serverAssets: [
+      {
+        baseName: 'content',
+        dir: fileURLToPath(new URL('./content', import.meta.url)),
+      },
+    ],
+  },
+
   runtimeConfig: {
     public: {
       astro_api_base_url: process.env.ASTRO_API_BASE_URL,
@@ -93,9 +104,20 @@ export default defineNuxtConfig({
     },
   },
 
+  robots: {
+    groups: [
+      {
+        userAgent: '*',
+        allow: '/',
+        // https://contentsignals.org, search engines and AI assistants are welcome to index, quote and train on the public pages
+        contentSignal: { search: 'yes', 'ai-input': 'yes', 'ai-train': 'yes' },
+      },
+    ],
+  },
+
   site: {
     url: 'https://astro-bot.space',
-    name: 'Astro - Temporary Voice Channels for your Discord!',
+    name: 'Astro Discord Bot',
   },
 
   components: [
@@ -130,6 +152,8 @@ export default defineNuxtConfig({
     '/billing': { robots: false },
     '/guilds/**': { robots: false },
     '/invite/callback': { robots: false },
+    // empty page that only redirects to the Discord invite
+    '/invite': { robots: false },
   },
 
   nuxtQuery: {
@@ -147,9 +171,8 @@ export default defineNuxtConfig({
     head: {
       meta: [
         { charset: 'utf-8' },
-        { name: 'robots', content: 'noodp,noydir' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'Astro' },
+        { property: 'og:site_name', content: 'Astro Discord Bot' },
         {
           property: 'og:image',
           content: 'https://astro-bot.space/img/logo_bg.png',
