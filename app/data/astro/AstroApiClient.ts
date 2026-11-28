@@ -7,6 +7,7 @@ import type {
   DiscordRole,
 } from '~/types/discord'
 import type { User, UserChargebeeSubscriptions } from '~/types/user'
+import type { Grant } from '~/types/grant'
 import type { GSError } from '~/types/guild-settings/error'
 import type { GuildProfileRB } from '~/types/guild-settings/request-bodies/guild_profile_rb'
 import type { GuildSettingsRB } from '~/types/guild-settings/request-bodies/guild_settings_rb'
@@ -69,6 +70,17 @@ export class AstroApiClient {
   /// USER ///
   public get_self_user = async (): Promise<User> => {
     return useApiFetch<User>(this.url('/v2/auth/me'))
+  }
+
+  /// CONNECTED APPS ///
+  public get_grants = async (): Promise<Grant[]> => {
+    return useApiFetch<Grant[]>(this.url('/v2/auth/grants'))
+  }
+
+  public revoke_grant = async (grant_id: string): Promise<void> => {
+    return useApiFetch(this.url(`/v2/auth/grants/${grant_id}`), {
+      method: 'DELETE',
+    })
   }
 
   /// DISCORD ///

@@ -10,7 +10,8 @@
     "billing": "Billing",
     "logout": "Logout",
     "login": "Login",
-    "logged_in_as": "Logged in as {username}"
+    "logged_in_as": "Logged in as {username}",
+    "connected_apps": "Connected apps"
   },
   "footer": {
     "resources": "Resources",
@@ -119,6 +120,10 @@
     "site": {
       "title": "Astro - Temporary Voice Channels for your Discord!",
       "description": "Astro is a Discord bot that allows you to create temporary voice channels in your server. Perfect for gaming sessions, study groups, or any temporary voice chat needs!"
+    },
+    "connected_apps": {
+      "title": "Connected apps",
+      "description": "See and disconnect the AI assistants that can access your Astro settings"
     }
   },
   "home": {
@@ -922,5 +927,22 @@
       "need_interface": "You need to first create an Interface to be able to use it as the private text chat message",
       "no_interface": "No interface"
     }
+  },
+  "connected_apps": {
+    "title": "Connected apps",
+    "subtitle": "AI assistants you connected to Astro, they can access the Astro settings of the servers you manage",
+    "scopes": {
+      "guilds_read": "Read server settings",
+      "guilds_write": "Change server settings"
+    },
+    "connected_on": "Connected on {date}",
+    "last_used": "last used on {date}",
+    "never_used": "never used",
+    "disconnect": "Disconnect",
+    "disconnect_confirm_title": "Disconnect {name}?",
+    "disconnect_confirm_description": "The app will immediately lose access to your Astro settings. You can connect it again from the AI assistant at any time.",
+    "disconnect_error": "Couldn't disconnect the app, please try again later",
+    "none": "No connected apps",
+    "none_description": "When you connect an AI assistant to Astro, it will show up here"
   }
 }

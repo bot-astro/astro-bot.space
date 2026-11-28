@@ -50,6 +50,9 @@ const on_billing_clicked = async () => {
           <DropdownMenuItem @click="on_billing_clicked">
             {{ $t('nav.billing') }}
           </DropdownMenuItem>
+          <DropdownMenuItem @click="navigateTo('/connected-apps')">
+            {{ $t('nav.connected_apps') }}
+          </DropdownMenuItem>
           <DropdownMenuItem
             class="text-foreground-destructive"
             @click="auth.logout()"
@@ -98,6 +101,12 @@ const on_billing_clicked = async () => {
           </DropdownMenuItem>
           <DropdownMenuItem v-if="is_logged_in" @click="on_billing_clicked">
             {{ $t('nav.billing') }}
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            v-if="is_logged_in"
+            @click="navigateTo('/connected-apps')"
+          >
+            {{ $t('nav.connected_apps') }}
           </DropdownMenuItem>
           <DropdownMenuItem
             v-if="!is_logged_in"

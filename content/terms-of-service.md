@@ -23,6 +23,12 @@ You may not:
 
 This license shall automatically terminate if you violate any of these restrictions and may be terminated by us at any time.
 
+## AI Clients (MCP Connector)
+
+You may connect an AI assistant to Astro through our MCP connector. By doing so you authorize that AI assistant to act on your behalf: to read the Astro settings of the servers you manage and, if you approved the write permission, to change them. You are responsible for the changes made by the AI assistants you connect, as if you made them yourself, and you should review what they do. AI assistants can make mistakes.
+
+The AI assistant is a third-party service, its use is governed by its provider's terms. You can disconnect an AI assistant at any time from the [Connected apps](/connected-apps) page of the website. We may disconnect AI assistants or limit their requests to protect the Service.
+
 ## Limitations
 
 In no event shall we be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the Service.

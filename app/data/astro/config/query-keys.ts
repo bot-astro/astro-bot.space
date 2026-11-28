@@ -6,6 +6,7 @@ export const user_chargebee_portal_session_url: unknown[] = [
   'chargebee_portal_session_url',
 ]
 export const user_subscriptions_qk: unknown[] = ['user', 'subscriptions']
+export const user_grants_qk: unknown[] = ['user', 'grants']
 
 export const discord_permissions_qk: unknown[] = ['discord', 'permissions']
 

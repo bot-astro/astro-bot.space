@@ -128,6 +128,7 @@ export default defineNuxtConfig({
     '/documentation': { redirect: { to: '/guides', statusCode: 301 } },
     // only work when logged in, keep them out of the sitemap and search results
     '/billing': { robots: false },
+    '/connected-apps': { robots: false },
     '/guilds/**': { robots: false },
     '/invite/callback': { robots: false },
   },
