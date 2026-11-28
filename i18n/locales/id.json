@@ -270,10 +270,6 @@
         "languages": {
           "question": "Bahasa apa saja yang didukung Astro?",
           "answer": "Astro mendukung bahasa Inggris, Italia, Jerman, Prancis, Spanyol, Portugis Brasil, Indonesia, Korea, Thailand, Arab, dan Filipino. Kamu bisa memilih bahasa servermu dari dashboard."
-        },
-        "open_source": {
-          "question": "Apakah Astro open source?",
-          "answer": "Ya, kode bot Discord Astro dan situs web ini tersedia secara publik di GitHub."
         }
       }
     }

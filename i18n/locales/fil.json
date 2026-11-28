@@ -270,10 +270,6 @@
         "languages": {
           "question": "Anong mga wika ang sinusuportahan ng Astro?",
           "answer": "Nagsasalita ang Astro ng English, Italian, German, French, Spanish, Brazilian Portuguese, Indonesian, Korean, Thai, Arabic at Filipino. Mapipili mo ang wika ng server mo mula sa dashboard."
-        },
-        "open_source": {
-          "question": "Open source ba ang Astro?",
-          "answer": "Oo, pampubliko sa GitHub ang code ng Astro Discord bot at ng website na ito."
         }
       }
     }

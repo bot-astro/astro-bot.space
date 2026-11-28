@@ -21,7 +21,6 @@ const faqs = computed(() =>
     'voice_roles',
     'permissions',
     'languages',
-    'open_source',
   ].map((key) => ({
     key,
     question: t(`home.faq.items.${key}.question`),

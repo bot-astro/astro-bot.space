@@ -270,10 +270,6 @@
         "languages": {
           "question": "Quelles langues Astro prend-il en charge ?",
           "answer": "Astro parle anglais, italien, allemand, français, espagnol, portugais brésilien, indonésien, coréen, thaï, arabe et filipino. Tu peux choisir la langue de ton serveur depuis le tableau de bord."
-        },
-        "open_source": {
-          "question": "Astro est-il open source ?",
-          "answer": "Oui, le code du bot Discord Astro et de ce site est public sur GitHub."
         }
       }
     }

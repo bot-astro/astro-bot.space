@@ -128,7 +128,7 @@ onUnmounted(() => {
     <HomeHero @explore="scrollToDemo" />
     <HomeStage />
     <HomeOpenSource />
-    <HomeFaq />
     <HomeCta />
+    <HomeFaq />
   </div>
 </template>

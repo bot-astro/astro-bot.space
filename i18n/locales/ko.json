@@ -270,10 +270,6 @@
         "languages": {
           "question": "Astro는 어떤 언어를 지원하나요?",
           "answer": "Astro는 영어, 이탈리아어, 독일어, 프랑스어, 스페인어, 브라질 포르투갈어, 인도네시아어, 한국어, 태국어, 아랍어, 필리핀어를 지원해요. 대시보드에서 서버 언어를 선택할 수 있어요."
-        },
-        "open_source": {
-          "question": "Astro는 오픈 소스인가요?",
-          "answer": "네, Astro Discord 봇과 이 웹사이트의 코드는 GitHub에 공개되어 있어요."
         }
       }
     }
