@@ -10,7 +10,8 @@
     "billing": "Facturation",
     "logout": "Déconnexion",
     "login": "Connexion",
-    "logged_in_as": "Connecté en tant que {username}"
+    "logged_in_as": "Connecté en tant que {username}",
+    "articles": "Articles"
   },
   "footer": {
     "resources": "Ressources",
@@ -30,19 +31,19 @@
     "checkout": "Un problème est survenu au lancement du paiement, réessaie plus tard"
   },
   "meta": {
-    "page_title": "{page} - Astro - Des salons vocaux temporaires pour ton Discord !",
+    "page_title": "{page} - Bot Discord Astro",
     "invite": {
-      "title": "Inviter Astro - Astro - Des salons vocaux temporaires pour ton Discord !",
-      "description": "Invite Astro sur ton serveur Discord et commence à créer des salons vocaux temporaires pour ta communauté."
+      "title": "Inviter le bot Discord Astro",
+      "description": "Ajoute le bot Discord Astro à ton serveur et commence à créer des salons vocaux temporaires pour ta communauté."
     },
     "privacy": {
-      "title": "Politique de confidentialité - Astro - Des salons vocaux temporaires pour ton Discord !"
+      "title": "Politique de confidentialité - Bot Discord Astro"
     },
     "terms": {
-      "title": "Conditions d'utilisation - Astro - Des salons vocaux temporaires pour ton Discord !"
+      "title": "Conditions d'utilisation - Bot Discord Astro"
     },
     "refund": {
-      "title": "Politique de remboursement - Astro - Des salons vocaux temporaires pour ton Discord !"
+      "title": "Politique de remboursement - Bot Discord Astro"
     },
     "guide_basic": {
       "title": "Guide des bases",
@@ -69,8 +70,8 @@
       "description": "Besoin d'aide avec Astro ? Jette un œil à ces guides accessibles aux débutants"
     },
     "ultimate": {
-      "title": "Ultimate",
-      "description": "Fais passer ton serveur au niveau supérieur avec les fonctionnalités premium d'Astro"
+      "title": "Ultimate (Premium)",
+      "description": "Astro Ultimate est l'offre premium du bot Discord Astro : générateurs, interfaces, rôles vocaux et modèles illimités, plus des salles d'attente, des salons textuels privés et bien plus, à partir de {price} par mois et par serveur."
     },
     "dashboard": {
       "title": "Tableau de bord",
@@ -117,8 +118,12 @@
       "description": "Configure tous les paramètres de ton générateur de salons vocaux temporaires"
     },
     "site": {
-      "title": "Astro - Des salons vocaux temporaires pour ton Discord !",
-      "description": "Astro est un bot Discord qui te permet de créer des salons vocaux temporaires sur ton serveur. Parfait pour les sessions de jeu, les groupes d'étude ou tout autre besoin de discussion vocale temporaire !"
+      "title": "Bot Discord Astro - Salons vocaux temporaires et rôles vocaux",
+      "description": "Astro est un bot Discord gratuit pour les salons vocaux temporaires (join to create) et les rôles vocaux, utilisé par {count} serveurs. Configure-le en une seule commande ou depuis le tableau de bord web."
+    },
+    "articles": {
+      "title": "Articles",
+      "description": "Articles sur le bot Discord Astro et les salons vocaux temporaires : tutoriels et conseils pour les admins de serveurs Discord."
     }
   },
   "home": {
@@ -234,6 +239,43 @@
         }
       },
       "try": "Essayez : cliquez sur « Join to create », puis quittez pour supprimer votre salon."
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "what": {
+          "question": "Qu'est-ce que le bot Discord Astro ?",
+          "answer": "Astro est un bot Discord gratuit pour les salons vocaux temporaires et les rôles vocaux. Quand un membre rejoint un salon générateur, Astro crée un salon vocal pour lui et le supprime dès que tout le monde est parti. Il est utilisé par {count} serveurs et entièrement open source."
+        },
+        "free": {
+          "question": "Astro est-il gratuit ?",
+          "answer": "Oui, toutes les fonctionnalités principales sont gratuites : jusqu'à 2 générateurs, 1 interface, 1 rôle vocal et 3 modèles par serveur. Astro Ultimate coûte {monthly} par mois ou {yearly} par an et par serveur, supprime toutes les limites et débloque les salles d'attente, les salons textuels privés, les noms de salons numérotés, les interfaces personnalisables et bien plus."
+        },
+        "setup": {
+          "question": "Comment créer des salons vocaux temporaires sur Discord avec Astro ?",
+          "answer": "Invite Astro sur ton serveur et lance la commande {command}, ou appuie sur le bouton de configuration qu'Astro envoie en arrivant. Astro crée une catégorie avec un générateur et une interface, pour que les salons vocaux temporaires fonctionnent tout de suite. Ensuite, tu peux tout modifier depuis le tableau de bord web."
+        },
+        "owner": {
+          "question": "Les membres peuvent-ils gérer leur propre salon vocal ?",
+          "answer": "Oui. Le membre qui crée un salon vocal temporaire en est le propriétaire et peut le renommer, définir une limite d'utilisateurs, le verrouiller ou le masquer et le transférer à quelqu'un d'autre, avec les commandes slash ou les boutons de l'interface d'Astro. Quand le propriétaire part, la propriété passe à un autre membre du salon."
+        },
+        "voice_roles": {
+          "question": "Que sont les rôles vocaux ?",
+          "answer": "Un rôle vocal est un rôle qu'Astro donne aux membres tant qu'ils sont dans un salon vocal précis et qu'il retire quand ils partent, par exemple pour afficher un salon textuel gaming uniquement aux personnes présentes dans le salon vocal gaming."
+        },
+        "permissions": {
+          "question": "De quelles permissions Astro a-t-il besoin ?",
+          "answer": "Par défaut, Astro demande la permission Administrateur pour que toutes les fonctionnalités marchent directement. Si ton serveur ne peut pas l'accorder, tu peux désactiver cette exigence depuis le tableau de bord. Pour configurer Astro, tu as besoin de la permission Gérer les salons."
+        },
+        "languages": {
+          "question": "Quelles langues Astro prend-il en charge ?",
+          "answer": "Astro parle anglais, italien, allemand, français, espagnol, portugais brésilien, indonésien, coréen, thaï, arabe et filipino. Tu peux choisir la langue de ton serveur depuis le tableau de bord."
+        },
+        "open_source": {
+          "question": "Astro est-il open source ?",
+          "answer": "Oui, le code du bot Discord Astro et de ce site est public sur GitHub."
+        }
+      }
     }
   },
   "guides": {
@@ -257,7 +299,7 @@
   },
   "ultimate": {
     "title": "Serveur Ultimate",
-    "subtitle": "Fais passer ton serveur au niveau supérieur avec des fonctionnalités premium !",
+    "subtitle": "Fais passer ton serveur au niveau supérieur avec l'offre premium du bot Discord Astro !",
     "per_month": "par mois pour {count} serveur | par mois pour {count} serveurs",
     "per_year": "par an pour {count} serveur | par an pour {count} serveurs",
     "server_quantity": "Nombre de serveurs",
@@ -922,5 +964,10 @@
       "need_interface": "Tu dois d'abord créer une interface pour pouvoir l'utiliser comme message du salon textuel privé",
       "no_interface": "Aucune interface"
     }
+  },
+  "articles": {
+    "title": "Articles",
+    "subtitle": "Tutoriels et conseils sur les salons vocaux temporaires et le bot Discord Astro.",
+    "updated": "Mis à jour le {date}"
   }
 }

@@ -10,7 +10,8 @@
     "billing": "Tagihan",
     "logout": "Keluar",
     "login": "Masuk",
-    "logged_in_as": "Masuk sebagai {username}"
+    "logged_in_as": "Masuk sebagai {username}",
+    "articles": "Artikel"
   },
   "footer": {
     "resources": "Sumber daya",
@@ -30,19 +31,19 @@
     "checkout": "Terjadi kesalahan saat memulai pembayaran, silakan coba lagi nanti"
   },
   "meta": {
-    "page_title": "{page} - Astro - Saluran Suara Sementara untuk Discord kamu!",
+    "page_title": "{page} - Bot Discord Astro",
     "invite": {
-      "title": "Undang Astro - Astro - Saluran Suara Sementara untuk Discord kamu!",
-      "description": "Undang Astro ke server Discord kamu dan mulai buat saluran suara sementara untuk komunitasmu."
+      "title": "Undang Bot Discord Astro",
+      "description": "Tambahkan bot Discord Astro ke servermu dan mulai buat saluran suara sementara untuk komunitasmu."
     },
     "privacy": {
-      "title": "Kebijakan Privasi - Astro - Saluran Suara Sementara untuk Discord kamu!"
+      "title": "Kebijakan Privasi - Bot Discord Astro"
     },
     "terms": {
-      "title": "Ketentuan Layanan - Astro - Saluran Suara Sementara untuk Discord kamu!"
+      "title": "Ketentuan Layanan - Bot Discord Astro"
     },
     "refund": {
-      "title": "Kebijakan Pengembalian Dana - Astro - Saluran Suara Sementara untuk Discord kamu!"
+      "title": "Kebijakan Pengembalian Dana - Bot Discord Astro"
     },
     "guide_basic": {
       "title": "Panduan dasar",
@@ -69,8 +70,8 @@
       "description": "Butuh bantuan dengan Astro? Lihat panduan yang ramah pemula ini"
     },
     "ultimate": {
-      "title": "Ultimate",
-      "description": "Bawa servermu ke level berikutnya dengan fungsi premium Astro"
+      "title": "Ultimate (Premium)",
+      "description": "Astro Ultimate adalah paket premium bot Discord Astro: generator, interface, peran suara, dan template tanpa batas, ditambah ruang tunggu, chat teks privat, dan lainnya, mulai dari {price} per bulan per server."
     },
     "dashboard": {
       "title": "Dashboard",
@@ -117,8 +118,12 @@
       "description": "Atur semua pengaturan generator saluran suara sementaramu"
     },
     "site": {
-      "title": "Astro - Saluran Suara Sementara untuk Discord kamu!",
-      "description": "Astro adalah bot Discord yang memungkinkanmu membuat saluran suara sementara di servermu. Cocok untuk sesi bermain game, kelompok belajar, atau kebutuhan obrolan suara sementara lainnya!"
+      "title": "Bot Discord Astro - Saluran Suara Sementara & Peran Suara",
+      "description": "Astro adalah bot Discord gratis untuk saluran suara sementara (join to create) dan peran suara, dipercaya oleh {count} server. Atur dengan satu perintah atau lewat dashboard web."
+    },
+    "articles": {
+      "title": "Artikel",
+      "description": "Artikel tentang bot Discord Astro dan saluran suara sementara: panduan dan tips untuk admin server Discord."
     }
   },
   "home": {
@@ -234,6 +239,43 @@
         }
       },
       "try": "Coba: klik “Join to create”, lalu keluar untuk menghapus salurannya."
+    },
+    "faq": {
+      "title": "Pertanyaan yang sering diajukan",
+      "items": {
+        "what": {
+          "question": "Apa itu bot Discord Astro?",
+          "answer": "Astro adalah bot Discord gratis untuk saluran suara sementara dan peran suara. Saat anggota bergabung ke saluran generator, Astro membuatkan saluran suara untuknya dan menghapusnya setelah semua orang keluar. Astro dipercaya oleh {count} server dan sepenuhnya open source."
+        },
+        "free": {
+          "question": "Apakah Astro gratis?",
+          "answer": "Ya, semua fitur utama gratis: hingga 2 generator, 1 interface, 1 peran suara, dan 3 template per server. Astro Ultimate seharga {monthly} per bulan atau {yearly} per tahun per server, menghapus semua batas, dan membuka ruang tunggu, chat teks privat, nama saluran bernomor, interface yang bisa dikustomisasi, dan lainnya."
+        },
+        "setup": {
+          "question": "Bagaimana cara membuat saluran suara sementara di Discord dengan Astro?",
+          "answer": "Undang Astro ke servermu lalu jalankan perintah {command}, atau tekan tombol pengaturan yang dikirim Astro saat bergabung. Astro membuat kategori berisi generator dan interface, jadi saluran suara sementara langsung berfungsi. Setelah itu kamu bisa mengubah semuanya dari dashboard web."
+        },
+        "owner": {
+          "question": "Apakah anggota bisa mengelola saluran suara mereka sendiri?",
+          "answer": "Ya. Anggota yang membuat saluran suara sementara menjadi pemiliknya dan bisa mengganti namanya, mengatur batas pengguna, mengunci atau menyembunyikannya, dan menyerahkannya ke orang lain, dengan slash command atau tombol di interface Astro. Saat pemilik keluar, kepemilikan berpindah ke anggota lain di saluran tersebut."
+        },
+        "voice_roles": {
+          "question": "Apa itu peran suara?",
+          "answer": "Peran suara adalah peran yang diberikan Astro kepada anggota selama mereka berada di saluran suara tertentu dan dicabut saat mereka keluar, misalnya untuk menampilkan chat teks gaming hanya kepada orang-orang di saluran suara gaming."
+        },
+        "permissions": {
+          "question": "Izin apa saja yang dibutuhkan Astro?",
+          "answer": "Secara default, Astro meminta izin Administrator agar semua fitur langsung berfungsi. Jika servermu tidak bisa memberikannya, kamu bisa menonaktifkan persyaratan ini dari dashboard. Untuk mengatur Astro, kamu membutuhkan izin Kelola saluran."
+        },
+        "languages": {
+          "question": "Bahasa apa saja yang didukung Astro?",
+          "answer": "Astro mendukung bahasa Inggris, Italia, Jerman, Prancis, Spanyol, Portugis Brasil, Indonesia, Korea, Thailand, Arab, dan Filipino. Kamu bisa memilih bahasa servermu dari dashboard."
+        },
+        "open_source": {
+          "question": "Apakah Astro open source?",
+          "answer": "Ya, kode bot Discord Astro dan situs web ini tersedia secara publik di GitHub."
+        }
+      }
     }
   },
   "guides": {
@@ -257,7 +299,7 @@
   },
   "ultimate": {
     "title": "Server Ultimate",
-    "subtitle": "Bawa servermu ke level berikutnya dengan fungsi premium!",
+    "subtitle": "Bawa servermu ke level berikutnya dengan paket premium bot Discord Astro!",
     "per_month": "per bulan untuk {count} server | per bulan untuk {count} server",
     "per_year": "per tahun untuk {count} server | per tahun untuk {count} server",
     "server_quantity": "Jumlah server",
@@ -922,5 +964,10 @@
       "need_interface": "Kamu harus membuat interface terlebih dahulu agar dapat menggunakannya sebagai pesan obrolan teks pribadi",
       "no_interface": "Tanpa interface"
     }
+  },
+  "articles": {
+    "title": "Artikel",
+    "subtitle": "Panduan dan tips seputar saluran suara sementara dan bot Discord Astro.",
+    "updated": "Diperbarui pada {date}"
   }
 }

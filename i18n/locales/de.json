@@ -10,7 +10,8 @@
     "billing": "Abrechnung",
     "logout": "Abmelden",
     "login": "Anmelden",
-    "logged_in_as": "Angemeldet als {username}"
+    "logged_in_as": "Angemeldet als {username}",
+    "articles": "Artikel"
   },
   "footer": {
     "resources": "Ressourcen",
@@ -30,19 +31,19 @@
     "checkout": "Beim Starten des Bezahlvorgangs ist etwas schiefgelaufen, bitte versuche es später erneut"
   },
   "meta": {
-    "page_title": "{page} - Astro - Temporäre Sprachkanäle für dein Discord!",
+    "page_title": "{page} - Astro Discord-Bot",
     "invite": {
-      "title": "Astro einladen - Astro - Temporäre Sprachkanäle für dein Discord!",
-      "description": "Lade Astro auf deinen Discord-Server ein und erstelle temporäre Sprachkanäle für deine Community."
+      "title": "Den Astro Discord-Bot einladen",
+      "description": "Füge den Astro Discord-Bot zu deinem Server hinzu und erstelle temporäre Sprachkanäle für deine Community."
     },
     "privacy": {
-      "title": "Datenschutzerklärung - Astro - Temporäre Sprachkanäle für dein Discord!"
+      "title": "Datenschutzerklärung - Astro Discord-Bot"
     },
     "terms": {
-      "title": "Nutzungsbedingungen - Astro - Temporäre Sprachkanäle für dein Discord!"
+      "title": "Nutzungsbedingungen - Astro Discord-Bot"
     },
     "refund": {
-      "title": "Rückerstattungsrichtlinie - Astro - Temporäre Sprachkanäle für dein Discord!"
+      "title": "Rückerstattungsrichtlinie - Astro Discord-Bot"
     },
     "guide_basic": {
       "title": "Grundlagen-Anleitung",
@@ -69,8 +70,8 @@
       "description": "Du brauchst Hilfe mit Astro? Schau dir diese einsteigerfreundlichen Anleitungen an"
     },
     "ultimate": {
-      "title": "Ultimate",
-      "description": "Bring deinen Server mit den Premium-Funktionen von Astro aufs nächste Level"
+      "title": "Ultimate (Premium)",
+      "description": "Astro Ultimate ist der Premium-Plan des Astro Discord-Bots: unbegrenzte Generatoren, Interfaces, Sprachrollen und Vorlagen, dazu Warteräume, private Textchats und mehr, ab {price} pro Monat und Server."
     },
     "dashboard": {
       "title": "Dashboard",
@@ -117,8 +118,12 @@
       "description": "Konfiguriere alle Einstellungen deines Generators für temporäre Sprachkanäle"
     },
     "site": {
-      "title": "Astro - Temporäre Sprachkanäle für dein Discord!",
-      "description": "Astro ist ein Discord-Bot, mit dem du temporäre Sprachkanäle auf deinem Server erstellen kannst. Perfekt für Gaming-Sessions, Lerngruppen oder jeden anderen Bedarf an temporärem Sprachchat!"
+      "title": "Astro Discord-Bot - Temporäre Sprachkanäle & Sprachrollen",
+      "description": "Astro ist ein kostenloser Discord-Bot für temporäre Sprachkanäle (join to create) und Sprachrollen, dem {count} Server vertrauen. Richte ihn mit einem einzigen Befehl oder über das Web-Dashboard ein."
+    },
+    "articles": {
+      "title": "Artikel",
+      "description": "Artikel über den Astro Discord-Bot und temporäre Sprachkanäle: Anleitungen und Tipps für Admins von Discord-Servern."
     }
   },
   "home": {
@@ -234,6 +239,43 @@
         }
       },
       "try": "Probier es aus: Klicke auf „Join to create“ und verlasse den Kanal wieder, um ihn zu löschen."
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "items": {
+        "what": {
+          "question": "Was ist der Astro Discord-Bot?",
+          "answer": "Astro ist ein kostenloser Discord-Bot für temporäre Sprachkanäle und Sprachrollen. Wenn ein Mitglied einem Generator-Kanal beitritt, erstellt Astro einen Sprachkanal für das Mitglied und löscht ihn, sobald alle gegangen sind. {count} Server vertrauen Astro und der Bot ist komplett Open Source."
+        },
+        "free": {
+          "question": "Ist Astro kostenlos?",
+          "answer": "Ja, alle Kernfunktionen sind kostenlos: bis zu 2 Generatoren, 1 Interface, 1 Sprachrolle und 3 Vorlagen pro Server. Astro Ultimate kostet {monthly} im Monat oder {yearly} im Jahr pro Server, hebt alle Limits auf und schaltet Warteräume, private Textchats, nummerierte Kanalnamen, anpassbare Interfaces und mehr frei."
+        },
+        "setup": {
+          "question": "Wie erstelle ich mit Astro temporäre Sprachkanäle in Discord?",
+          "answer": "Lade Astro auf deinen Server ein und führe den Befehl {command} aus oder klicke auf den Einrichtungs-Button, den Astro beim Beitreten sendet. Astro erstellt eine Kategorie mit einem Generator und einem Interface, sodass temporäre Sprachkanäle sofort funktionieren. Danach kannst du alles im Web-Dashboard anpassen."
+        },
+        "owner": {
+          "question": "Können Mitglieder ihren eigenen Sprachkanal verwalten?",
+          "answer": "Ja. Das Mitglied, das einen temporären Sprachkanal erstellt, ist sein Besitzer und kann ihn umbenennen, ein Nutzerlimit festlegen, ihn sperren oder verstecken und an jemand anderen übergeben, per Slash-Befehl oder über die Buttons des Astro-Interfaces. Verlässt der Besitzer den Kanal, geht der Besitz auf ein anderes Mitglied im Kanal über."
+        },
+        "voice_roles": {
+          "question": "Was sind Sprachrollen?",
+          "answer": "Eine Sprachrolle ist eine Rolle, die Astro Mitgliedern gibt, solange sie in einem bestimmten Sprachkanal sind, und wieder entfernt, wenn sie ihn verlassen, zum Beispiel um einen Gaming-Textchat nur den Leuten im Gaming-Sprachkanal anzuzeigen."
+        },
+        "permissions": {
+          "question": "Welche Berechtigungen braucht Astro?",
+          "answer": "Astro fragt standardmäßig nach der Berechtigung Administrator, damit alle Funktionen sofort funktionieren. Wenn dein Server sie nicht vergeben kann, kannst du diese Voraussetzung im Dashboard deaktivieren. Um Astro zu konfigurieren, brauchst du die Berechtigung Kanäle verwalten."
+        },
+        "languages": {
+          "question": "Welche Sprachen unterstützt Astro?",
+          "answer": "Astro spricht Englisch, Italienisch, Deutsch, Französisch, Spanisch, brasilianisches Portugiesisch, Indonesisch, Koreanisch, Thai, Arabisch und Filipino. Die Sprache deines Servers kannst du im Dashboard auswählen."
+        },
+        "open_source": {
+          "question": "Ist Astro Open Source?",
+          "answer": "Ja, der Code des Astro Discord-Bots und dieser Website ist öffentlich auf GitHub."
+        }
+      }
     }
   },
   "guides": {
@@ -257,7 +299,7 @@
   },
   "ultimate": {
     "title": "Ultimate-Server",
-    "subtitle": "Bring deinen Server mit Premium-Funktionen aufs nächste Level!",
+    "subtitle": "Bring deinen Server mit dem Premium-Plan des Astro Discord-Bots aufs nächste Level!",
     "per_month": "pro Monat für {count} Server | pro Monat für {count} Server",
     "per_year": "pro Jahr für {count} Server | pro Jahr für {count} Server",
     "server_quantity": "Anzahl der Server",
@@ -922,5 +964,10 @@
       "need_interface": "Du musst zuerst ein Interface erstellen, um es als Nachricht des privaten Textchats verwenden zu können",
       "no_interface": "Kein Interface"
     }
+  },
+  "articles": {
+    "title": "Artikel",
+    "subtitle": "Anleitungen und Tipps zu temporären Sprachkanälen und dem Astro Discord-Bot.",
+    "updated": "Aktualisiert am {date}"
   }
 }

@@ -10,7 +10,8 @@
     "billing": "Billing",
     "logout": "Mag-logout",
     "login": "Mag-login",
-    "logged_in_as": "Naka-login bilang {username}"
+    "logged_in_as": "Naka-login bilang {username}",
+    "articles": "Mga Artikulo"
   },
   "footer": {
     "resources": "Mga Resource",
@@ -30,19 +31,19 @@
     "checkout": "Nagkaproblema sa pagsisimula ng checkout, pakisubukan ulit mamaya"
   },
   "meta": {
-    "page_title": "{page} - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!",
+    "page_title": "{page} - Astro Discord Bot",
     "invite": {
-      "title": "I-invite si Astro - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!",
-      "description": "I-invite ang Astro sa Discord server mo at magsimulang gumawa ng mga pansamantalang voice channel para sa komunidad mo."
+      "title": "I-invite ang Astro Discord Bot",
+      "description": "Idagdag ang Astro Discord bot sa server mo at magsimulang gumawa ng mga pansamantalang voice channel para sa komunidad mo."
     },
     "privacy": {
-      "title": "Patakaran sa Privacy - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!"
+      "title": "Patakaran sa Privacy - Astro Discord Bot"
     },
     "terms": {
-      "title": "Mga Tuntunin ng Serbisyo - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!"
+      "title": "Mga Tuntunin ng Serbisyo - Astro Discord Bot"
     },
     "refund": {
-      "title": "Patakaran sa Refund - Astro - Mga Pansamantalang Voice Channel para sa Discord mo!"
+      "title": "Patakaran sa Refund - Astro Discord Bot"
     },
     "guide_basic": {
       "title": "Gabay sa mga pangunahing kaalaman",
@@ -69,8 +70,8 @@
       "description": "Kailangan ng tulong sa Astro? Silipin ang mga gabay na madaling sundan ng mga baguhan"
     },
     "ultimate": {
-      "title": "Ultimate",
-      "description": "Dalhin ang server mo sa susunod na antas gamit ang mga premium na functionality ng Astro"
+      "title": "Ultimate (Premium)",
+      "description": "Ang Astro Ultimate ang premium plan ng Astro Discord bot: walang limitasyong generator, interface, voice role at template, pati mga waiting room, pribadong text chat at marami pang iba, simula {price} kada buwan bawat server."
     },
     "dashboard": {
       "title": "Dashboard",
@@ -117,8 +118,12 @@
       "description": "I-configure ang lahat ng setting ng generator mo ng pansamantalang voice channel"
     },
     "site": {
-      "title": "Astro - Mga Pansamantalang Voice Channel para sa Discord mo!",
-      "description": "Ang Astro ay isang Discord bot na nagbibigay-daan sa iyong gumawa ng mga pansamantalang voice channel sa server mo. Perpekto para sa mga gaming session, study group, o anumang pangangailangan sa pansamantalang voice chat!"
+      "title": "Astro Discord Bot - Mga Pansamantalang Voice Channel at Voice Role",
+      "description": "Ang Astro ay isang libreng Discord bot para sa mga pansamantalang voice channel (join to create) at voice role, pinagkakatiwalaan ng {count} server. I-set up ito gamit ang isang command o mula sa web dashboard."
+    },
+    "articles": {
+      "title": "Mga Artikulo",
+      "description": "Mga artikulo tungkol sa Astro Discord bot at mga pansamantalang voice channel: mga how-to at tip para sa mga admin ng Discord server."
     }
   },
   "home": {
@@ -234,6 +239,43 @@
         }
       },
       "try": "Subukan: i-click ang “Join to create”, tapos umalis para mabura ang channel mo."
+    },
+    "faq": {
+      "title": "Mga madalas itanong",
+      "items": {
+        "what": {
+          "question": "Ano ang Astro Discord bot?",
+          "answer": "Ang Astro ay isang libreng Discord bot para sa mga pansamantalang voice channel at voice role. Kapag sumali ang isang member sa isang generator channel, gagawa ang Astro ng voice channel para sa kanya at buburahin ito kapag umalis na ang lahat. Pinagkakatiwalaan ito ng {count} server at ganap na open source."
+        },
+        "free": {
+          "question": "Libre ba ang Astro?",
+          "answer": "Oo, libre ang lahat ng pangunahing feature: hanggang 2 generator, 1 interface, 1 voice role at 3 template bawat server. Ang Astro Ultimate ay {monthly} kada buwan o {yearly} kada taon bawat server, inaalis ang lahat ng limitasyon at binubuksan ang mga waiting room, pribadong text chat, may-numerong pangalan ng channel, nako-customize na interface at marami pang iba."
+        },
+        "setup": {
+          "question": "Paano gumawa ng mga pansamantalang voice channel sa Discord gamit ang Astro?",
+          "answer": "I-invite ang Astro sa server mo at patakbuhin ang command na {command}, o pindutin ang setup button na ipinapadala ng Astro pagsali nito. Gagawa ang Astro ng category na may generator at interface, kaya gagana agad ang mga pansamantalang voice channel. Pagkatapos, mababago mo ang lahat mula sa web dashboard."
+        },
+        "owner": {
+          "question": "Puwede bang i-manage ng mga member ang sarili nilang voice channel?",
+          "answer": "Oo. Ang member na gumawa ng pansamantalang voice channel ang may-ari nito at puwede niya itong i-rename, lagyan ng user limit, i-lock o itago at ibigay sa iba, gamit ang mga slash command o ang mga button ng Astro interface. Kapag umalis ang may-ari, lilipat ang pagmamay-ari sa ibang member sa channel."
+        },
+        "voice_roles": {
+          "question": "Ano ang mga voice role?",
+          "answer": "Ang voice role ay isang role na ibinibigay ng Astro sa mga member habang nasa isang partikular na voice channel sila at inaalis kapag umalis sila, halimbawa para ipakita ang isang gaming text chat sa mga nasa gaming voice channel lang."
+        },
+        "permissions": {
+          "question": "Anong mga permission ang kailangan ng Astro?",
+          "answer": "Bilang default, hinihingi ng Astro ang Administrator permission para gumana agad ang bawat feature. Kung hindi ito maibibigay ng server mo, puwede mong i-off ang requirement na ito mula sa dashboard. Para i-configure ang Astro, kailangan mo ang Manage Channels permission."
+        },
+        "languages": {
+          "question": "Anong mga wika ang sinusuportahan ng Astro?",
+          "answer": "Nagsasalita ang Astro ng English, Italian, German, French, Spanish, Brazilian Portuguese, Indonesian, Korean, Thai, Arabic at Filipino. Mapipili mo ang wika ng server mo mula sa dashboard."
+        },
+        "open_source": {
+          "question": "Open source ba ang Astro?",
+          "answer": "Oo, pampubliko sa GitHub ang code ng Astro Discord bot at ng website na ito."
+        }
+      }
     }
   },
   "guides": {
@@ -257,7 +299,7 @@
   },
   "ultimate": {
     "title": "Ultimate server",
-    "subtitle": "Dalhin ang server mo sa susunod na antas gamit ang mga premium na functionality!",
+    "subtitle": "Dalhin ang server mo sa susunod na antas gamit ang premium plan ng Astro Discord bot!",
     "per_month": "kada buwan para sa {count} server | kada buwan para sa {count} server",
     "per_year": "kada taon para sa {count} server | kada taon para sa {count} server",
     "server_quantity": "Dami ng server",
@@ -922,5 +964,10 @@
       "need_interface": "Kailangan mo munang gumawa ng Interface para magamit ito bilang mensahe ng pribadong text chat",
       "no_interface": "Walang interface"
     }
+  },
+  "articles": {
+    "title": "Mga Artikulo",
+    "subtitle": "Mga how-to at tip tungkol sa mga pansamantalang voice channel at sa Astro Discord bot.",
+    "updated": "Na-update noong {date}"
   }
 }
