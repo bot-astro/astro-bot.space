@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const { gsap, ScrollTrigger, reducedMotion } = useHomeMotion()
-const { invite } = useInvite()
+const { invite_from } = useInvite()
 
 const root = ref<HTMLElement | null>(null)
 let ctx: gsap.Context | undefined
@@ -77,7 +77,7 @@ onUnmounted(() => {
       </p>
       <ButtonStandout
         class="mt-8 w-full text-lg md:w-fit md:px-10"
-        @click="invite"
+        @click="invite_from('website-nav')"
       >
         {{ $t('home.hero.invite') }}
       </ButtonStandout>
