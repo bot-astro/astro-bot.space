@@ -5,7 +5,7 @@ const emit = defineEmits<{ explore: [] }>()
 
 const { gsap, ScrollTrigger, reducedMotion } = useHomeMotion()
 const { serverCount } = useHomeShowcase()
-const { invite } = useInvite()
+const { invite_from } = useInvite()
 
 const root = ref<HTMLElement | null>(null)
 const counter = ref<HTMLElement | null>(null)
@@ -139,7 +139,7 @@ onUnmounted(() => {
       >
         <ButtonStandout
           class="w-full text-lg sm:w-auto sm:px-8"
-          @click="invite"
+          @click="invite_from('website-hero')"
         >
           {{ $t('home.hero.invite') }}
         </ButtonStandout>
