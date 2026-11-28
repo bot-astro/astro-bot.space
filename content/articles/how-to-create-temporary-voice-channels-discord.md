@@ -14,7 +14,7 @@ date: 2026-11-28
 
 ## Step 1: invite the Astro Discord bot
 
-[Add Astro to your server](/invite?src=article-temp-vc) and pick the server you want to set it up in. You need the `Manage Channels` permission on that server.
+[Add Astro to your server](/invite?src=website-nav) and pick the server you want to set it up in. You need the `Manage Channels` permission on that server.
 
 Astro asks for the `Administrator` permission by default, so every feature works out of the box. If your server cannot grant it, you can turn this requirement off from the dashboard.
 
