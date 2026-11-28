@@ -29,6 +29,9 @@ const flags: Record<string, string> = {
         <div class="flex flex-col gap-y-3 text-sm">
           <ButtonText to="/guides"> {{ $t('nav.guides') }} </ButtonText>
           <ButtonText to="/ultimate"> {{ $t('nav.ultimate') }} </ButtonText>
+          <ButtonText to="/ai-assistants">
+            {{ $t('nav.ai_assistants') }}
+          </ButtonText>
           <ButtonText to="/support"> {{ $t('footer.support') }} </ButtonText>
         </div>
       </div>

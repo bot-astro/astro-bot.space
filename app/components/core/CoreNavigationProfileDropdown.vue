@@ -118,6 +118,9 @@ const on_billing_clicked = async () => {
           <DropdownMenuItem @click="navigateTo('/ultimate')">
             {{ $t('nav.ultimate') }}
           </DropdownMenuItem>
+          <DropdownMenuItem @click="navigateTo('/ai-assistants')">
+            {{ $t('nav.ai_assistants') }}
+          </DropdownMenuItem>
           <DropdownMenuItem
             @click="
               navigateTo('https://github.com/bot-astro/astro', {
