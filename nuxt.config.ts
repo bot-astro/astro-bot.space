@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import { redirects } from './app/constants/redirects'
 
@@ -73,6 +74,16 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
+  nitro: {
+    // markdown sources served to AI agents, see server/middleware/markdown.ts
+    serverAssets: [
+      {
+        baseName: 'content',
+        dir: fileURLToPath(new URL('./content', import.meta.url)),
+      },
+    ],
+  },
+
   runtimeConfig: {
     public: {
       astro_api_base_url: process.env.ASTRO_API_BASE_URL,
@@ -91,6 +102,17 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+
+  robots: {
+    groups: [
+      {
+        userAgent: '*',
+        allow: '/',
+        // https://contentsignals.org, search engines and AI assistants are welcome to index, quote and train on the public pages
+        contentSignal: { search: 'yes', 'ai-input': 'yes', 'ai-train': 'yes' },
+      },
+    ],
   },
 
   site: {
