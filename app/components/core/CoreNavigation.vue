@@ -51,7 +51,6 @@ watch(y, () => {
           {{ $t('nav.add_to_server') }}
         </ButtonText>
         <ButtonText to="/guides"> {{ $t('nav.guides') }} </ButtonText>
-        <ButtonText to="/articles"> {{ $t('nav.articles') }} </ButtonText>
         <ButtonText to="/ultimate"> {{ $t('nav.ultimate') }} </ButtonText>
         <ButtonText to="https://github.com/bot-astro/astro" target="_blank">
           {{ $t('nav.github') }}
